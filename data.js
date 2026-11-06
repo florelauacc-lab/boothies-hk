@@ -9362,6 +9362,7 @@ window.HK = {
     "💳 Contactless Visa or Mastercard works in most places, including the MTR, buses, the tram and most shops and restaurants.",
     "🐙 An Octopus card (or Octopus in Apple Wallet) covers the rest: taxis, minibuses and small local spots.",
     "🚕 Taking a taxi? Open any place and tap \"Show the driver\". It shows the name and address in Chinese, so just hand them your phone.",
+    "🛗 On escalators, stand on the right and walk on the left.",
     "💵 Keep a little cash for cha chaan tengs and dai pai dongs.",
     "🧭 Citymapper is the best app for getting around."
    ]
@@ -9369,12 +9370,10 @@ window.HK = {
   {
    "title": "Did you know?",
    "items": [
-    "🇬🇧 Hong Kong was a British colony from 1842 until it was handed back to China on 1 July 1997. Today it's a Special Administrative Region under \"one country, two systems\".",
-    "🚗 That's why cars drive on the left, English is an official language, and Hong Kong has its own currency, passport and legal system.",
-    "💵 Three banks issue Hong Kong's banknotes (HSBC, Standard Chartered and Bank of China), so the same HK$100 note comes in three designs.",
-    "🌸 Hong Kong (香港) means \"Fragrant Harbour\".",
-    "🏙️ It has more skyscrapers than any other city, yet about 40% of its land is country park.",
-    "🚋 The ding ding trams have run since 1904 and are the world's largest double-decker tram fleet."
+    "🇬🇧 A British colony until 1997, which is why cars drive on the left and English signs are everywhere.",
+    "🌸 \"Hong Kong\" means \"Fragrant Harbour\".",
+    "🏙️ More skyscrapers than any other city, yet 40% of the land is country park.",
+    "🚋 The ding ding trams have run since 1904. Sit upstairs at the front."
    ]
   }
  ]
