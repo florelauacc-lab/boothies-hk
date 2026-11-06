@@ -939,3 +939,6 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
 }
 /* phones: no mini sign (it looked cramped); the full sign shows from tablet up */
 @media (max-width: 600px) { .neon-sign { display: none !important; } }
+.tone-list { list-style: none; padding: 0; margin: 8px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.tone-list li { background: rgba(0,0,0,.25); border-radius: 10px; padding: 6px 8px; font-size: 13.5px; color: #cfeee2; text-align: center; }
+.tone-list b { display: block; color: #fff; font-size: 15px; }

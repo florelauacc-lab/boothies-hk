@@ -3,3 +3,5 @@
 __pycache__/
 # raw shared-map export (has a private address); the site uses only the filtered data.js
 tools/research/boothies.json
+.vercel
+.env*
