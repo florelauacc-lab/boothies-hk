@@ -9365,6 +9365,16 @@ window.HK = {
     "💵 Keep a little cash for cha chaan tengs and dai pai dongs.",
     "🧭 Citymapper is the best app for getting around."
    ]
+  },
+  {
+   "title": "Did you know?",
+   "items": [
+    "🌸 Hong Kong (香港) means \"Fragrant Harbour\".",
+    "🏙️ It has more skyscrapers than any other city, yet about 40% of its land is country park.",
+    "🚋 The ding ding trams have run since 1904 and are the world's largest double-decker tram fleet.",
+    "⛴️ The Star Ferry has crossed the harbour since 1888.",
+    "🐙 The Octopus card launched in 1997, years before tap-to-pay reached most countries."
+   ]
   }
  ]
 };
