@@ -866,3 +866,76 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
   .hero-top .neon-sign { justify-self: center; margin: 0; }
   .hero-top .hero-actions { justify-self: end; }
 }
+/* centre "HONG KONG" exactly: cancel the trailing letter-space on each word */
+.neon-sign .tag { display: flex; justify-content: center; gap: .75em; padding-left: 0; letter-spacing: .28em; }
+.neon-sign .tag > span { margin-right: -.28em; }
+.neon-sign .tag { gap: .5em; }
+.neon-sign .tag > span { margin-right: 0; padding-left: .28em; } /* equal space before and after each word */
+
+/* ---------- neon sign v3 (SVG) ---------- */
+.neon-sign { padding-top: 0; }
+.neon-sign .board, .neon-sign .bracket, .neon-sign .chain { display: none; }
+.neon-svg { display: block; width: clamp(92px, 9vw, 124px); height: auto; overflow: visible; }
+.neon-svg .hz { font-family: "Noto Sans TC", "PingFang HK", sans-serif; font-weight: 700; font-size: 60px; fill: #ffe9f1; }
+.neon-svg .en { font-family: var(--sans); font-weight: 800; font-size: 11px; fill: #e6fff6; }
+.neon-svg .flick { animation: svgflick 9s infinite; }
+@keyframes svgflick { 0%, 41%, 44%, 46%, 100% { opacity: 1; } 42%, 45% { opacity: .25; } }
+.neon-svg .tube.pink { animation: tubehum 4s ease-in-out infinite; }
+@keyframes tubehum { 50% { opacity: .88; } }
+@media (prefers-reduced-motion: reduce) { .neon-svg .flick, .neon-svg .tube.pink { animation: none; } }
+@media (max-width: 600px) {
+  .neon-svg { width: 40px; }
+  .neon-svg .en, .neon-svg rect[x="16"], .neon-svg line[y1="210"] { display: none; }
+  .neon-sign { margin-top: -2px; }
+}
+.opt { font-style: normal; font-size: 11.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+       color: #2a1400; background: var(--gold); border-radius: 999px; padding: 1px 7px; vertical-align: 1px; }
+.plan .slotrow.optional { color: #d9d4f4; opacity: .9; }
+.plan .slotrow.optional span { color: var(--gold); }
+/* crisper neon characters: white core, pink tube edge, tight glow */
+.neon-svg .hz { font-size: 66px; font-weight: 900; fill: #fff5f9; stroke: #ff5c98; stroke-width: 1.1px; paint-order: stroke fill; letter-spacing: 0; }
+.neon-svg { width: clamp(100px, 9.5vw, 132px); }
+@media (max-width: 600px) { .neon-svg { width: 42px; } }
+
+/* ---------- neon sign v4: real tube construction ---------- */
+.neon-svg .tubes use { fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.neon-svg #nC1, .neon-svg #nC2 { font-family: "Kaiti TC", "STKaiti", "BiauKai", "DFKai-SB", "Noto Serif TC", serif; font-weight: 900; font-size: 68px; }
+.neon-svg #nEn { font-family: var(--sans); font-weight: 700; font-size: 11.5px; }
+.neon-svg .pink { --c: #ff3d86; --core: #ffe3ee; }
+.neon-svg .green { --c: #2ff0b0; --core: #e4fff5; }
+.neon-svg .h2    { stroke: var(--c); stroke-width: 9;   opacity: .55; filter: url(#nHalo2); }
+.neon-svg .h1    { stroke: var(--c); stroke-width: 4.5; opacity: .9;  filter: url(#nHalo); }
+.neon-svg .glass { stroke: var(--c); stroke-width: 2.6; }
+.neon-svg .core  { stroke: var(--core); stroke-width: 1; }
+.neon-svg .chars .h2 { stroke-width: 7; }
+.neon-svg .chars .h1 { stroke-width: 3.6; }
+.neon-svg .chars .glass { stroke-width: 2.1; }
+.neon-svg .chars .core { stroke-width: .8; }
+.neon-svg .inner .glass { stroke-width: 1.6; } .neon-svg .inner .core { stroke-width: .6; } .neon-svg .inner .h1 { stroke-width: 3; }
+.neon-svg .en .h1 { stroke-width: 2.4; } .neon-svg .en .glass { stroke-width: 1.1; } .neon-svg .en .core { stroke-width: .45; }
+.neon-svg .plate .glass { stroke-width: 1.6; } .neon-svg .plate .core { stroke-width: .6; }
+/* irregular flicker on 港 only: glow dies completely, the glass goes dark, then catches */
+.neon-svg .flick { animation: tubeflick 7s infinite steps(1, end); }
+@keyframes tubeflick {
+  0%, 60%, 100% { opacity: 1; }
+  61% { opacity: .15; } 62% { opacity: 1; } 63.5% { opacity: .1; } 64% { opacity: .9; } 66% { opacity: .2; } 67% { opacity: 1; }
+}
+.neon-svg .frame { animation: hum 3.2s ease-in-out infinite; }
+@keyframes hum { 50% { opacity: .9; } }
+.neon-svg .flick .h1, .neon-svg .flick .h2 { transition: opacity .05s; }
+@media (prefers-reduced-motion: reduce) { .neon-svg .flick, .neon-svg .frame { animation: none; } }
+/* tiny phone version: thicker tubes so they still read */
+@media (max-width: 600px) {
+  .neon-svg { width: 46px; }
+  .neon-svg .chars .glass { stroke-width: 3.2; } .neon-svg .chars .core { stroke-width: 1.4; }
+  .neon-svg .chars .h1 { stroke-width: 6; }
+  .neon-svg .plate, .neon-svg .en, .neon-svg use[href="#nPlate"] { display: none; }
+}
+@media (max-width: 600px) {
+  /* crop the phone sign to the box (the plate is hidden) so it lines up with the title */
+  .neon-sign { height: calc(46px * 212 / 120); overflow: visible; clip-path: inset(-12px -12px 0 -12px); }
+  .neon-svg { width: 46px; }
+  .hero-top { align-items: flex-start; }
+}
+/* phones: no mini sign (it looked cramped); the full sign shows from tablet up */
+@media (max-width: 600px) { .neon-sign { display: none !important; } }

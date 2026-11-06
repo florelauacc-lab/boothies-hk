@@ -20,6 +20,8 @@
         { k: "views", label: "Views", em: "🏙️", c: C.cyan },
         { k: "culture", label: "Culture", em: "🏮", c: C.pink },
         { k: "night", label: "After dark", em: "🌃", c: C.violet },
+        { k: "neon", label: "Neon lights", em: "🌈", c: C.pink },
+        { k: "architecture", label: "Cool buildings", em: "🏢", c: C.violet },
         { k: "beach", label: "Beaches", em: "🏖️", c: C.cyan },
         { k: "free", label: "Free", em: "🆓", c: C.lime },
         { k: "near-campus", label: "Near Booth", em: "🎓", c: C.orange },
@@ -65,6 +67,9 @@
     return "other";
   }
   const FOOD_STYLES = [["any", "any style"], ["local", "a local favourite 🏮"], ["veg", "vegetarian-friendly 🥬"], ["cheap", "cheap & cheerful $"], ["fancy", "a bit fancy $$$"]];
+  // When someone wants drinks, "that's…" offers kinds of bar instead of food styles
+  const BAR_STYLES = [["any", "any kind of bar"], ["top", "a top cocktail bar ★"], ["k:Cocktails", "a cocktail bar 🍸"], ["k:Rooftops & views", "a rooftop or view 🌃"],
+    ["k:Wine bars", "a wine bar 🍷"], ["k:Beer & pubs", "a pub or craft beer 🍺"], ["k:Jazz & live music", "live music or jazz 🎷"], ["k:Clubbing", "a club for dancing 🪩"]];
   const WHAT = [
     ["food:all", "anything to eat or drink"], ["food:coffee", "☕ good coffee"], ["food:lunch", "🍜 lunch"], ["food:dinner", "🥘 dinner"], ["food:dessert", "🍧 dessert"],
     ["food:drinks", "🍸 drinks"], ["food:late-night", "🌙 a late-night bite"],
@@ -158,7 +163,7 @@
   const allCount = () => live.filter((p) => (FOOD.has(state.tab) ? FOOD.has(p.tab) : p.tab === state.tab) && (state.where === "all" || whereOf(p) === state.where)).length;
   const startLimit = (tab) => (tab === "sights" || tab === "hikes" ? 9 : 6);
   let me = null; // the user's location once they tap "Near me"
-  const rank = (p) => (p.essential ? 0 : p.picked ? 1 : p.lite ? 3 : 2);
+  const rank = (p) => (state.mood === "drinks" && p.topBar ? -1 : p.essential ? 0 : p.picked ? 1 : p.lite ? 3 : 2);
   function filtered() {
     const q = state.q.trim().toLowerCase();
     return pool().filter((p) => {
@@ -174,6 +179,8 @@
         if (state.style === "cheap" && p.price !== "$") return false;
         if (state.style === "fancy" && !/\$\$\$/.test(p.price || "")) return false;
         if (state.style.startsWith("g:") && !groupsOf(p).includes(state.style.slice(2))) return false;
+        if (state.style.startsWith("k:") && !(p.kinds || []).includes(state.style.slice(2))) return false;
+        if (state.style === "top" && !p.topBar) return false;
       }
       if (state.boothies && !p.boothies) return false;
       if (state.kinds.size && !groupsOf(p).some((g) => state.kinds.has(g))) return false;
@@ -191,7 +198,7 @@
     document.body.classList.toggle("no-picker", !TABS[state.tab] && !state.shortlist);
     const isFood = FOOD.has(state.tab);
     const whatVal = isFood ? `food:${state.mood}` : TABS[state.tab] ? `${state.tab}:all` : "food:all";
-    const styles = isFood ? FOOD_STYLES : [["all", "any kind"], ...(TABS[state.tab]?.moods || []).map((m) => [m.k, `${m.label.toLowerCase()} ${m.em}`])];
+    const styles = isFood ? (state.mood === "drinks" ? BAR_STYLES : FOOD_STYLES) : [["all", "any kind"], ...(TABS[state.tab]?.moods || []).map((m) => [m.k, `${m.label.toLowerCase()} ${m.em}`])];
     const styleVal = isFood ? state.style : state.mood;
     const opt = (list, v) => list.map(([k, l]) => `<option value="${esc(k)}"${k === v ? " selected" : ""}>${esc(l)}</option>`).join("");
     const n = TABS[state.tab] ? filtered().length : 0;
@@ -223,7 +230,10 @@
     const id = e.target.id, v = e.target.value;
     if (id === "b-what") {
       const [t, m] = v.split(":");
-      if (t === "food") setTab("city", { mood: m, keepWhere: true });
+      if (t === "food") {
+        const keep = (m === "drinks") === (state.mood === "drinks") ? state.style : "any";
+        setTab("city", { mood: m, keepWhere: true }); state.style = keep; render();
+      }
       else setTab(t, { keepWhere: true });
     } else if (id === "b-where") {
       state.where = v;
@@ -269,7 +279,7 @@
   function card(p, i = 0) {
     const tab = TABS[p.tab];
     const tags = uniq([p.section, ...p.category.map((c) => moodOf(c, p.tab)?.label)]).map((t) => `<span class="tag">${esc(t)}</span>`).join("")
-      + (p.veg ? `<span class="tag badge-veg">🥬 ${esc(p.veg)}</span>` : "") + (p.boothies ? `<span class="tag badge-boothies">👥 Boothies map</span>` : "") + (p.local ? `<span class="tag badge-local">🏮 Local favourite</span>` : "") + (p.picked ? `<span class="tag badge-pick">★ Class pick</span>` : "") + (p.flags || []).map((f) => `<span class="tag warn">${esc(f)}</span>`).join("");
+      + (p.veg ? `<span class="tag badge-veg">🥬 ${esc(p.veg)}</span>` : "") + (p.boothies ? `<span class="tag badge-boothies">👥 Boothies map</span>` : "") + (p.local ? `<span class="tag badge-local">🏮 Local favourite</span>` : "") + (p.topBar ? `<span class="tag badge-pick">★ Top bar${p.award ? ` · ${esc(p.award)}` : ""}</span>` : "") + (p.picked ? `<span class="tag badge-pick">★ Class pick</span>` : "") + (p.flags || []).map((f) => `<span class="tag warn">${esc(f)}</span>`).join("");
     const meta = [
       p.price && `<span class="price">${esc(p.price)}</span>`,
       `<span>${esc(p.cuisine)}</span>`,
@@ -494,7 +504,7 @@
     const dayBtns = PLAN.map((d, i) => `<button class="pd${i === planDay ? " on" : ""}" data-planday="${i}"><b>${esc(d.day)}</b><span>${esc(d.date.split(" ")[0])}</span></button>`).join("");
     const dayCard = (d, i) => `<li class="${i === planDay ? "sel" : ""}">
       <div class="day"><small>${esc(d.date)}</small>${esc(d.day)}</div>
-      ${d.slots.map(([t, v, kind]) => `<div class="slotrow ${kind === "ours" ? "ours" : "school"}"><span>${esc(t)}</span>${kind === "ours" ? "🎉 " : ""}${esc(v)}</div>`).join("")}
+      ${d.slots.map(([t, v, kind]) => `<div class="slotrow ${kind || "school"}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : ""}</span>${kind === "ours" ? "🎉 " : ""}${esc(v)}</div>`).join("")}
       ${[d.go, d.go2].filter(Boolean).map((g) => `<button class="go" data-go='${esc(JSON.stringify(g))}'>${esc(g.label)} →</button>`).join(" ")}
     </li>`;
     $("#plan").innerHTML = PLAN.map(dayCard).join("");

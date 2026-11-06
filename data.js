@@ -158,7 +158,7 @@ window.HK = {
    "kinds": [
     "Korean"
    ],
-   "emoji": "🥘"
+   "emoji": "🍲"
   },
   {
    "tab": "saiwan",
@@ -204,8 +204,7 @@ window.HK = {
    "section": "Eat",
    "cuisine": "Hong Kong-style skewers / izakaya",
    "category": [
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "price": "$$",
    "intro": "A neon-signed, izakaya-style grill bar (formerly 'BBQ') doing made-to-order skewers and Hong Kong snacks with beer – a fun, casual night out.",
@@ -782,7 +781,6 @@ window.HK = {
    "cuisine": "Mexican restaurant & tequila bar",
    "category": [
     "dinner",
-    "drinks",
     "late-night"
    ],
    "intro": "A long-running, casual Mexican bar-restaurant with a big tequila list, plus an upstairs room ('Tequila Upstairs') for private parties.",
@@ -806,8 +804,7 @@ window.HK = {
    "local": false,
    "id": "tequila-on-davis",
    "kinds": [
-    "Western & Med",
-    "Cocktails"
+    "Western & Med"
    ],
    "emoji": "🌮"
   },
@@ -1332,8 +1329,7 @@ window.HK = {
    "cuisine": "Modern dim sum and cocktails",
    "category": [
     "lunch",
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "price": "$$$",
    "intro": "A stylish, modern take on dim sum with truffle twists and tea-based cocktails, in a mall right above Admiralty MTR.",
@@ -1353,8 +1349,7 @@ window.HK = {
    "local": false,
    "id": "dim-sum-library",
    "kinds": [
-    "Dim sum",
-    "Cocktails"
+    "Dim sum"
    ],
    "addressZh": "中西區金鐘道88號太古廣場港麗酒店",
    "emoji": "🥟"
@@ -1367,8 +1362,7 @@ window.HK = {
    "cuisine": "Modern Cantonese / dim sum / afternoon tea",
    "category": [
     "lunch",
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "price": "$$$",
    "intro": "A glamorous Chinese café inside the restored Tai Kwun police compound, known for dim sum, afternoon tea and its veranda bar.",
@@ -1627,7 +1621,7 @@ window.HK = {
     "Cha chaan teng & cafés"
    ],
    "addressZh": "灣仔區進教圍17-18號澤堂樓",
-   "emoji": "🧋"
+   "emoji": "🍞"
   },
   {
    "tab": "city",
@@ -1769,8 +1763,7 @@ window.HK = {
    "section": "Japanese",
    "cuisine": "Hakata-style izakaya (sushi and kushiyaki)",
    "category": [
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "price": "$$",
    "intro": "A small, lively izakaya run by a Fukuoka-born owner, doing sushi, skewers and sake.",
@@ -1968,8 +1961,7 @@ window.HK = {
    "cuisine": "Spanish tapas",
    "category": [
     "lunch",
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "price": "$$$",
    "intro": "A lively tapas bar from an ex-BCN chef, best for sharing plates and paella.",
@@ -2036,8 +2028,7 @@ window.HK = {
    "cuisine": "Mexican tacos",
    "category": [
     "lunch",
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "price": "$$",
    "intro": "A casual taqueria with al pastor carved off a trompo, house salsas and margaritas.",
@@ -2997,7 +2988,7 @@ window.HK = {
    "addressZh": "中環德己立街21號地舖",
    "lat": 22.28119,
    "lng": 114.15546,
-   "emoji": "🍻",
+   "emoji": "🐟",
    "id": "twelve-flavors-d-aguilar-street-central",
    "kinds": [
     "Cantonese & seafood"
@@ -3031,6 +3022,228 @@ window.HK = {
    "id": "bu-er-jiang-hu-cuisine",
    "kinds": [
     "Cantonese & seafood"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "name": "% Arabica (Kennedy Town)",
+   "zh": "% Arabica（堅尼地城）",
+   "area": "Kennedy Town",
+   "section": "Coffee",
+   "cuisine": "Specialty coffee, Kyoto-born minimalist espresso bar",
+   "category": [
+    "coffee",
+    "lunch"
+   ],
+   "price": "$$",
+   "intro": "The Kyoto chain's best-loved Hong Kong branch, a white-box espresso bar facing the Kennedy Town waterfront and harbour.",
+   "order": [
+    "Kyoto latte",
+    "Spanish latte",
+    "Single-origin pour-over"
+   ],
+   "reviews": "Reliably clean, well-made espresso and a great harbour view, but it is mostly takeaway with very little seating and weekend queues are common.",
+   "tips": "Ten minutes' walk from the Booth campus; grab a cup and sit on the waterfront promenade across the road.",
+   "hours": "Mon-Fri 8:30am-7pm; Sat, Sun & public holidays 8:30am-8pm",
+   "addressEn": "Shop 4, G/F (incl. cockloft), Grand Fortune Mansion, 1 Davis Street, Kennedy Town",
+   "addressZh": "堅尼地城爹核士街1號裕福大廈地下4號舖",
+   "lat": 22.28359,
+   "lng": 114.12678,
+   "emoji": "☕",
+   "id": "arabica-kennedy-town",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "name": "NOC Coffee Co. (Sai Ying Pun)",
+   "zh": "NOC Coffee Co.（西營盤）",
+   "area": "Sai Ying Pun",
+   "section": "Coffee",
+   "cuisine": "Specialty coffee, house-roasted, brunch",
+   "category": [
+    "coffee",
+    "lunch"
+   ],
+   "price": "$$",
+   "intro": "One of Hong Kong's best-known local roasters; the Sai Ying Pun coffeehouse is a large, airy room with an open pour-over bar and retail beans.",
+   "order": [
+    "Pour-over of the day",
+    "Fizzpresso (seasonal citrus espresso tonic)",
+    "Avocado and smoked salmon toast"
+   ],
+   "reviews": "Praised for its house roasts, bright space and solid brunch, though it gets busy at meal times, ordering is at the counter and laptop users compete with brunch tables.",
+   "tips": "Good for a sit-down group coffee between classes; go mid-morning or mid-afternoon to avoid the brunch rush.",
+   "hours": "Daily 8am-6pm",
+   "addressEn": "Shop 4, G/F, Bohemian House, 321 Des Voeux Road West, Sai Ying Pun",
+   "addressZh": "西營盤德輔道西321號地下4號舖",
+   "lat": 22.28773,
+   "lng": 114.13914,
+   "emoji": "☕",
+   "id": "noc-coffee-co-sai-ying-pun",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "project c",
+   "zh": "project c",
+   "area": "Causeway Bay",
+   "section": "Coffee",
+   "cuisine": "Specialty coffee, standing espresso and cold-brew bar",
+   "category": [
+    "coffee",
+    "lunch"
+   ],
+   "price": "$",
+   "intro": "Named by FLTR's 2026 guide as Causeway Bay's essential coffee bar, a tiny standing counter focused purely on single-origin coffee.",
+   "order": [
+    "Oat cold brew",
+    "Espresso tonic",
+    "Single-origin pour-over"
+   ],
+   "reviews": "Cold brew and espresso tonic get rave reviews, but there are no seats or food, and a few reviewers found pour-overs pricey for a paper cup or staff aloof.",
+   "tips": "About 10 minutes' walk from The Park Lane; check Instagram @projectchk for irregular days off.",
+   "hours": "Daily 8am-6pm (irregular holidays)",
+   "addressEn": "G/F, Phoenix Apartments, 29 Hysan Avenue, Causeway Bay",
+   "addressZh": "銅鑼灣希慎道29號鳳鳴大廈地下",
+   "lat": 22.27829,
+   "lng": 114.18409,
+   "emoji": "☕",
+   "id": "project-c",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "EN Coffee (Causeway Bay)",
+   "zh": "E N（銅鑼灣）",
+   "area": "Causeway Bay",
+   "section": "Coffee",
+   "cuisine": "Specialty coffee, hand-drip and Basque cheesecake",
+   "category": [
+    "coffee",
+    "lunch",
+    "dessert"
+   ],
+   "price": "$$",
+   "intro": "The 2026 second branch of the cult Sheung Wan staircase café, famous for hand-drip coffee and its wobbly Basque cheesecake.",
+   "order": [
+    "Basque cheesecake",
+    "Hand-drip coffee",
+    "Egg sandwich"
+   ],
+   "reviews": "Buzzing, with a mezzanine for seating, and the cheesecake is the star, though one 2026 reviewer wanted it cheesier and found it pricey.",
+   "tips": "About 8 minutes' walk from The Park Lane and opens at 8am on weekdays, so it works for a pre-class breakfast.",
+   "hours": "Mon-Fri 8am-8pm; Sat-Sun 9am-8pm (OpenRice lists 7:30pm close)",
+   "addressEn": "Shop G06, G/F, Leighton Centre, 77 Leighton Road, Causeway Bay",
+   "addressZh": "銅鑼灣禮頓道77號禮頓中心地下G06號舖",
+   "lat": 22.2779,
+   "lng": 114.18312,
+   "emoji": "☕",
+   "id": "en-coffee-causeway-bay",
+   "kinds": [
+    "Coffee",
+    "Dessert & sweets"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Cupping Room (Central)",
+   "zh": "Cupping Room（中環）",
+   "area": "Central / Soho",
+   "section": "Coffee",
+   "cuisine": "Specialty coffee, house roaster, all-day brunch",
+   "category": [
+    "coffee",
+    "lunch"
+   ],
+   "price": "$$",
+   "intro": "Hong Kong's pioneering championship-barista roaster, now upstairs at Hilltop Plaza on Hollywood Road with window seats over Soho.",
+   "order": [
+    "Competition single-origin filter",
+    "The Dirty (espresso over cold milk)",
+    "Eggs Benedict"
+   ],
+   "reviews": "Strong filter bar and a proper brunch menu, but it is crowded at peak meal times, has a 90-minute table limit and mixed wifi.",
+   "tips": "It moved to 1/F, 49 Hollywood Road; older maps still show the Cochrane Street address, so follow this one.",
+   "hours": "Mon-Fri 8am-6pm; Sat-Sun 9am-6pm",
+   "addressEn": "1/F, Hilltop Plaza, 49 Hollywood Road, Central",
+   "addressZh": "中環荷李活道49號鴻豐商業中心1樓",
+   "lat": 22.28278,
+   "lng": 114.1531,
+   "emoji": "☕",
+   "id": "cupping-room-central",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Blue Bottle Coffee (Central)",
+   "zh": "藍瓶咖啡（中環）",
+   "area": "Central / Soho",
+   "section": "Coffee",
+   "cuisine": "Specialty coffee, Californian third-wave",
+   "category": [
+    "coffee",
+    "lunch"
+   ],
+   "price": "$$",
+   "intro": "The Oakland-born third-wave icon's two-storey Hong Kong flagship on Lyndhurst Terrace, just off the Mid-Levels escalator.",
+   "order": [
+    "New Orleans iced coffee",
+    "Latte",
+    "Croissant"
+   ],
+   "reviews": "The bright two-floor space and New Orleans iced coffee win praise, but several reviewers call the coffee pricey and merely good, not special.",
+   "tips": "Order downstairs, then head upstairs for seats; there is also a smaller branch in IFC mall.",
+   "hours": "Daily 8am-7pm",
+   "addressEn": "G/F & 1/F, The Mood Lyndhurst, 38 Lyndhurst Terrace, Central",
+   "addressZh": "中環擺花街38號THE MOOD LYNDHURST地下及1樓",
+   "lat": 22.2824,
+   "lng": 114.15403,
+   "emoji": "☕",
+   "id": "blue-bottle-coffee-central",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Barista Jam",
+   "zh": "Barista Jam",
+   "area": "Sheung Wan",
+   "section": "Coffee",
+   "cuisine": "Specialty coffee, filter, siphon and ice drip",
+   "category": [
+    "coffee",
+    "lunch"
+   ],
+   "price": "$",
+   "intro": "One of the earliest drivers of Hong Kong's third-wave scene, with about ten single origins on filter, siphon and ice drip.",
+   "order": [
+    "Siphon single origin",
+    "Ice drip coffee",
+    "House-blend flat white"
+   ],
+   "reviews": "Coffee fans call it some of the best in the city and quiet for a break, but the space is small, food is limited and some say Sundays are drinks-only.",
+   "tips": "Browse the coffee gear shop upstairs; hours vary by source, so check its Facebook page before a weekend visit.",
+   "hours": "Tue-Fri 8am-6pm; Sat-Mon 10/11am-6pm (sources differ)",
+   "addressEn": "Shop 1, G/F, Tung Lee Commercial Building, 97 Jervois Street, Sheung Wan",
+   "addressZh": "上環蘇杭街97號東利商業大廈地下1號舖",
+   "lat": 22.28556,
+   "lng": 114.15062,
+   "emoji": "☕",
+   "flags": [
+    "Check it's open first"
+   ],
+   "id": "barista-jam",
+   "kinds": [
+    "Coffee"
    ]
   },
   {
@@ -3168,7 +3381,7 @@ window.HK = {
     "Cha chaan teng & cafés",
     "Cantonese & seafood"
    ],
-   "emoji": "🧋"
+   "emoji": "🍞"
   },
   {
    "tab": "city",
@@ -3203,7 +3416,7 @@ window.HK = {
    "kinds": [
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🧋"
+   "emoji": "🍞"
   },
   {
    "tab": "city",
@@ -3239,7 +3452,7 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍗"
+   "emoji": "🍖"
   },
   {
    "tab": "city",
@@ -3275,7 +3488,7 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍗"
+   "emoji": "🍖"
   },
   {
    "tab": "city",
@@ -3309,7 +3522,7 @@ window.HK = {
    "kinds": [
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🧋"
+   "emoji": "🍞"
   },
   {
    "tab": "city",
@@ -3345,7 +3558,7 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍗"
+   "emoji": "🍖"
   },
   {
    "tab": "city",
@@ -3759,7 +3972,6 @@ window.HK = {
    "cuisine": "Modern Cantonese / Lingnan",
    "category": [
     "dinner",
-    "drinks",
     "late-night"
    ],
    "price": "$$$$",
@@ -3791,8 +4003,7 @@ window.HK = {
    "section": "Across the harbour",
    "cuisine": "Italian & Japanese",
    "category": [
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "price": "$$$$",
    "intro": "A harbour-view Italian-Japanese restaurant and bar, now on the 17th floor of H Zentre (it moved from One Peking).",
@@ -3824,8 +4035,7 @@ window.HK = {
    "section": "Across the harbour",
    "cuisine": "Northern Chinese / Sichuan",
    "category": [
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "price": "$$$$",
    "intro": "A theatrical Northern Chinese restaurant with panoramic harbour views on the 18th floor of H Zentre.",
@@ -3984,8 +4194,7 @@ window.HK = {
    "section": "Class dinner",
    "cuisine": "Hong Kong dai pai dong (wok-fried Cantonese)",
    "category": [
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "price": "$$",
    "intro": "Black Sheep Restaurants' neon-lit, indoor take on a Hong Kong open-air street stall (dai pai dong), with wok-fried dishes, cold beer and Canto-pop; it began as a pop-up and is now permanent.",
@@ -4199,7 +4408,7 @@ window.HK = {
    "kinds": [
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🧋"
+   "emoji": "🍞"
   },
   {
    "tab": "saiwan",
@@ -4233,7 +4442,7 @@ window.HK = {
    "kinds": [
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🧋"
+   "emoji": "🍞"
   },
   {
    "tab": "saiwan",
@@ -4335,7 +4544,7 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍗"
+   "emoji": "🍖"
   },
   {
    "tab": "saiwan",
@@ -4368,7 +4577,7 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍗"
+   "emoji": "🍖"
   },
   {
    "tab": "saiwan",
@@ -5003,7 +5212,7 @@ window.HK = {
     "Dessert & sweets",
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🥧"
+   "emoji": "🥐"
   },
   {
    "tab": "city",
@@ -5033,7 +5242,7 @@ window.HK = {
     "Cha chaan teng & cafés",
     "Cantonese & seafood"
    ],
-   "emoji": "🧋"
+   "emoji": "🍞"
   },
   {
    "tab": "city",
@@ -5043,8 +5252,7 @@ window.HK = {
    "section": "Stanley",
    "cuisine": "Seafood grill & bar",
    "category": [
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "price": "$$",
    "intro": "A Stanley Plaza grill and bar with an outdoor terrace, pool table and live music, good for a big group dinner.",
@@ -6015,7 +6223,7 @@ window.HK = {
    "kinds": [
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🧋"
+   "emoji": "🍞"
   },
   {
    "tab": "sights",
@@ -6917,8 +7125,7 @@ window.HK = {
    "cuisine": "Restaurant (british) with outdoor gin bar",
    "category": [
     "lunch",
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "intro": "Black Sheep's London-style British dining room in Tai Kwun's former Central Magistracy, with the leafy outdoor Botanical Garden bar alongside known for gin and tonics.",
    "classmateNote": "There is a nice outdoor gin bar outside the restaurant. It called Botanical Garden. Google maps confuses it with an actual botanical gardens 😄 so it’s hard to find if you don’t know",
@@ -6943,7 +7150,6 @@ window.HK = {
    "cuisine": "Street/drinking area",
    "category": [
     "dinner",
-    "drinks",
     "late-night"
    ],
    "intro": "A pedestrian terrace street lined with bars and restaurants, long one of Kowloon's main nightlife strips though quieter than in its heyday.",
@@ -6969,7 +7175,6 @@ window.HK = {
    "cuisine": "Pub",
    "category": [
     "dinner",
-    "drinks",
     "late-night"
    ],
    "intro": "A long-running Australian-themed pub named after the outlaw Ned Kelly, known for nightly live Dixieland jazz and blues.",
@@ -7021,7 +7226,6 @@ window.HK = {
    "cuisine": "Pub",
    "category": [
     "dinner",
-    "drinks",
     "late-night"
    ],
    "intro": "A long-standing British gastropub on Graham Street with a broad rotating ale selection and a large space suited to groups.",
@@ -7070,8 +7274,7 @@ window.HK = {
    "section": "Boothies map",
    "cuisine": "Restaurant (japanese izakaya)",
    "category": [
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "intro": "A sake-focused izakaya stocking over 200 sakes from across Japan, served by the glass alongside sashimi, yakitori and grilled dishes.",
    "classmateNote": "Izakaya, many sake",
@@ -7146,7 +7349,6 @@ window.HK = {
    "cuisine": "Street/drinking area",
    "category": [
     "dinner",
-    "drinks",
     "late-night"
    ],
    "intro": "A sloping SoHo street packed with bars and casual eateries such as Chom Chom and Kinsman, where drinkers spill out onto the pavement.",
@@ -7171,8 +7373,7 @@ window.HK = {
    "section": "Boothies map",
    "cuisine": "Rooftop bar",
    "category": [
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "intro": "A steakhouse at the top of V Point with an open-air rooftop bar above, popular for sunset drinks over Causeway Bay and Happy Valley.",
    "classmateNote": "Bar - rooftop view",
@@ -7197,7 +7398,6 @@ window.HK = {
    "cuisine": "Rooftop bar",
    "category": [
     "dinner",
-    "drinks",
     "late-night"
    ],
    "intro": "The Murray hotel's 26th-floor Italian restaurant and bar with one of Central's largest wraparound terraces.",
@@ -7222,8 +7422,7 @@ window.HK = {
    "section": "Boothies map",
    "cuisine": "Craft beer bar",
    "category": [
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "intro": "A gastropub from the TAP: The Ale Project and May Chow team with 22 rotating craft taps favouring local brewers, plus Cantonese-twist bar food.",
    "classmateNote": "Beer",
@@ -7247,8 +7446,7 @@ window.HK = {
    "section": "Boothies map",
    "cuisine": "Craft beer bar",
    "category": [
-    "dinner",
-    "drinks"
+    "dinner"
    ],
    "intro": "A Belgian-leaning craft beer bar and restaurant known for farmhouse ales, saisons and lambics alongside modern American food.",
    "classmateNote": "Beer",
@@ -7298,7 +7496,6 @@ window.HK = {
    "cuisine": "Karaoke",
    "category": [
     "dinner",
-    "drinks",
     "late-night"
    ],
    "intro": "A Neway karaoke outlet in Emperor Group Centre offering private karaoke rooms with food and drinks until early morning.",
@@ -7403,7 +7600,7 @@ window.HK = {
    "iso": "2026-11-16",
    "slots": [
     [
-     "8:00",
+     "8:00–9:30",
      "Breakfast, Student Lounge",
      "school"
     ],
@@ -7445,6 +7642,11 @@ window.HK = {
    "iso": "2026-11-17",
    "slots": [
     [
+     "8:00–9:00",
+     "Breakfast, Student Lounge",
+     "school"
+    ],
+    [
      "9:00–12:00",
      "Microeconomics",
      "school"
@@ -7452,7 +7654,7 @@ window.HK = {
     [
      "12:30–1:30",
      "Heritage Tour (G/F Reception)",
-     "school"
+     "optional"
     ],
     [
      "2:00–5:00",
@@ -7469,13 +7671,24 @@ window.HK = {
      "Boxed dinner, Student Lounge",
      "school"
     ]
-   ]
+   ],
+   "go": {
+    "label": "Dinner near Booth",
+    "tab": "city",
+    "mood": "dinner",
+    "where": "saiwan"
+   }
   },
   {
    "day": "Wed",
    "date": "18 Nov",
    "iso": "2026-11-18",
    "slots": [
+    [
+     "8:00–9:00",
+     "Breakfast, Student Lounge",
+     "school"
+    ],
     [
      "9:00–12:00",
      "Microeconomics",
@@ -7503,9 +7716,16 @@ window.HK = {
     ]
    ],
    "go": {
-    "label": "Bars",
+    "label": "LKF & Soho bars",
     "tab": "city",
-    "mood": "drinks"
+    "mood": "drinks",
+    "where": "central"
+   },
+   "go2": {
+    "label": "Dinner near Booth",
+    "tab": "city",
+    "mood": "dinner",
+    "where": "saiwan"
    }
   },
   {
@@ -7551,6 +7771,11 @@ window.HK = {
    "iso": "2026-11-20",
    "slots": [
     [
+     "8:00–9:00",
+     "Breakfast, Student Lounge",
+     "school"
+    ],
+    [
      "9:00–12:00",
      "Microeconomics",
      "school"
@@ -7575,13 +7800,24 @@ window.HK = {
      "Boxed dinner, Student Lounge",
      "school"
     ]
-   ]
+   ],
+   "go": {
+    "label": "Dinner near Booth",
+    "tab": "city",
+    "mood": "dinner",
+    "where": "saiwan"
+   }
   },
   {
    "day": "Sat",
    "date": "21 Nov",
    "iso": "2026-11-21",
    "slots": [
+    [
+     "8:00–9:00",
+     "Breakfast, Student Lounge",
+     "school"
+    ],
     [
      "9:00–12:00",
      "Microeconomics",
@@ -7847,7 +8083,7 @@ window.HK = {
   {
    "name": "Hong Kong milk tea",
    "zh": "港式奶茶",
-   "emoji": "🧋",
+   "emoji": "☕",
    "what": "Strong black tea strained many times through a cloth bag and mixed with evaporated milk, so it's silky, rich and slightly bitter; order it hot or iced.",
    "fun_fact": "It's nicknamed 'silk stocking' milk tea because the tea-stained cloth strainer looks like a woman's stocking. Hong Kong drinks an estimated 2.5 million cups a day, and the brewing technique was listed as intangible cultural heritage in 2017.",
    "where": [
@@ -7958,7 +8194,7 @@ window.HK = {
   {
    "name": "Beef brisket noodles",
    "zh": "牛腩麵",
-   "emoji": "🐄",
+   "emoji": "🍜",
    "what": "Slow-braised beef brisket and tendon over noodles, either in a clear beefy broth or a spiced curry sauce.",
    "fun_fact": "Kau Kee on Gough Street has been serving brisket since the 1930s, and the queue is part of the experience.",
    "where": [
@@ -8000,7 +8236,7 @@ window.HK = {
   {
    "name": "Claypot rice",
    "zh": "煲仔飯",
-   "emoji": "🍲",
+   "emoji": "🍚",
    "what": "Rice cooked to order in an individual clay pot over a flame, topped with things like Chinese sausage or eel, finished with sweet soy sauce, and prized for its crispy bottom crust.",
    "fun_fact": "The best part is the scorched rice crust at the bottom of the pot. Kwan Kee blends three types of rice for chew and fragrance and makes sure that crust is always perfectly scorched.",
    "where": [

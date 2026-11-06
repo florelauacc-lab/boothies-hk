@@ -301,6 +301,24 @@ for x in load("stanley.json") or []:
         "flags": ["Check it's open first"] if x.get("status") == "unclear" else None,
     })
 
+# ---------- Neon & architecture sights ----------
+NA_CATS = ["neon", "architecture", "iconic", "views", "night", "free", "local", "culture"]
+for x in load("neon_arch.json") or []:
+    if x.get("lat") is None or x.get("status") == "closed":
+        continue
+    if any(norm(p["name"])[:9] == norm(x["name"])[:9] for p in places):
+        continue
+    c = cats(x.get("category"), NA_CATS)
+    facts = [[k, x.get(f)] for k, f in (("Cost", "cost"), ("Time", "time_needed")) if clean(x.get(f))]
+    add({
+        "tab": "sights", "name": x["name"], "zh": x.get("name_zh"), "area": short_area(x.get("area")),
+        "cuisine": "Neon spot" if c[0] == "neon" else "Architecture", "category": c, "intro": x.get("intro"),
+        "funFact": x.get("fun_fact"), "tips": x.get("tip"), "getting": x.get("getting_there"), "facts": facts,
+        "addressEn": x.get("address_en"), "addressZh": x.get("address_zh"), "lat": x["lat"], "lng": x["lng"],
+        "emoji": "🌈" if c[0] == "neon" else "🏢", "local": "local" in c,
+        "flags": ["Check it's open first"] if x.get("status") == "unclear" else None,
+    })
+
 # ---------- Sights ----------
 SIGHT = ["iconic", "views", "culture", "night", "free", "near-campus", "local", "walk"]
 for x in load("sights.json") or []:
@@ -391,6 +409,29 @@ for x in load("boothies.json") or []:
     added_b += 1
 print(f"boothies: added {added_b}, merged {merged_b}, skipped {skipped_b}")
 
+# ---------- Top cocktail bars ----------
+for x in load("bars.json") or []:
+    if x.get("lat") is None or str(x.get("status", "")).lower().startswith("closed"):
+        continue
+    hit = next((p for p in places if p["tab"] in ("city", "saiwan") and norm(p["name"])[:7] == norm(x["name"])[:7]), None)
+    if hit:
+        hit["topBar"] = True
+        if clean(x.get("award")): hit["award"] = x["award"]
+        for k, v in (("intro", x.get("intro")), ("order", x.get("must_order")), ("tips", x.get("tips")), ("addressZh", x.get("address_zh"))):
+            if clean(v) and not hit.get(k): hit[k] = v
+        if "drinks" not in hit["category"]: hit["category"].insert(0, "drinks")
+        continue
+    area = short_area(x.get("area"))
+    add({
+        "tab": "saiwan" if area.startswith(("Sai Ying Pun", "Kennedy Town", "Shek Tong Tsui")) else "city",
+        "name": x["name"], "zh": x.get("name_zh") if x.get("name_zh") != x["name"] else None, "area": area,
+        "section": "Top cocktail bars", "cuisine": x.get("cuisine") or "Cocktail bar", "category": ["drinks", "late-night"],
+        "price": x.get("price"), "intro": x.get("intro"), "order": x.get("must_order"), "reviews": x.get("reviews"),
+        "tips": x.get("tips"), "addressEn": x.get("address_en"), "addressZh": x.get("address_zh"),
+        "lat": x["lat"], "lng": x["lng"], "topBar": True, "award": x.get("award"), "emoji": "🍸",
+        "flags": ["Check it's open first"] if str(x.get("status")) == "unclear" else None,
+    })
+
 # ---------- drop places found to be closed/moved ----------
 drop = {n.lower() for n in EXTRAS.get("drop", [])}
 places[:] = [p for p in places if p["name"].lower() not in drop]
@@ -464,6 +505,9 @@ for p in places:
     p["kinds"] = [k for k, rx in KINDS if re.search(rx, hay)][:2]
     if not p["kinds"]:  # fall back to the description only when the cuisine label says nothing
         p["kinds"] = [k for k, rx in KINDS if re.search(rx, str(p.get("intro", "")).lower())][:1] or ["Other"]
+    if p.get("section") == "Coffee":
+        p["kinds"] = ["Coffee"] + (["Dessert & sweets"] if "dessert" in p["category"] else [])
+        continue
     DRINK_KINDS = {"Cocktails", "Wine bars", "Beer & pubs", "Jazz & live music", "Rooftops & views", "Clubbing"}
     if p["category"][0] == "drinks" and "dinner" not in p["category"] and "lunch" not in p["category"]:
         p["kinds"] = [k for k in p["kinds"] if k in DRINK_KINDS] or ["Cocktails"]
@@ -495,10 +539,10 @@ EMOJI = [
     (r"sugar cane|juice", "🥤"), (r"tofu|beancurd|douhua", "🍮"), (r"milk pudding|double-skin|milk company", "🍮"),
     (r"taro|tong sui|sweet soup|dessert", "🍧"), (r"afternoon tea|high tea", "🫖"),
     (r"dim sum|yum cha|teahouse|tea house", "🥟"), (r"claypot|clay pot", "🍚"), (r"chicken pot|chicken hotpot", "🍗"),
-    (r"hotpot|hot pot", "🍲"), (r"roast goose|roast meat|siu mei|roasted", "🍗"), (r"typhoon|seafood|crab", "🦀"),
+    (r"hotpot|hot pot", "🍲"), (r"roast goose|roast meat|siu mei|roasted", "🍖"), (r"typhoon|seafood|crab", "🦀"),
     (r"ramen|tsukemen", "🍜"), (r"sushi|omakase|japanese|izakaya|yakitori", "🍣"), (r"korean bbq|korean", "🥩"),
     (r"skewer|kushi|grill|bbq|barbecue", "🍢"), (r"mixian|rice noodle|wonton|noodle|brisket", "🍜"),
-    (r"cha chaan|café|cafe|dairy|milk tea|breakfast", "🧋"), (r"fried rice|rice plate|fast food", "🍳"),
+    (r"cha chaan|café|cafe|dairy|milk tea|breakfast", "🍞"), (r"fried rice|rice plate|fast food", "🍳"),
     (r"taiwan", "🍱"), (r"street|drinking area", "🍻"), (r"thai", "🌶️"), (r"vietnam|pho", "🍲"),
     (r"malay|indian|curry|singapore", "🍛"), (r"italian|pasta|trattoria|osteria", "🍝"), (r"pizza", "🍕"),
     (r"spanish|tapas|paella", "🥘"), (r"mexican|taco|taquer", "🌮"), (r"steak", "🥩"), (r"burger|american", "🍔"),
@@ -511,6 +555,8 @@ for p in places:
     if p["tab"] not in ("saiwan", "city") or p.get("emoji") in (None, "🥬") and p.get("veg"):
         if p["tab"] not in ("saiwan", "city"):
             continue
+    if p.get("section") in ("Coffee", "Sour fish"):
+        continue  # these carry their own icon (☕ / 🐟)
     hay = f'{p.get("cuisine", "")} {p.get("section", "")} {p["name"]}'.lower()
     for rx, em in EMOJI:
         if re.search(rx, hay):
@@ -529,15 +575,15 @@ SIGHT_EMOJI = [(r"dragon boat", "🛶", "Dragon boat beach"), (r"murray", "🏛�
                (r"tai kwun", "🏛️", "Heritage & arts"), (r"wet market|market", "🐟", "Wet market walk"),
                (r"possession|tai ping shan", "🏮", "Heritage walk")]
 for p in places:
-    if p["tab"] == "sights" and p.get("cuisine") != "Beach":
+    if p["tab"] == "sights" and p.get("cuisine") not in ("Beach", "Neon spot", "Architecture"):
         n = p["name"].lower()
         for rx, em, kind in SIGHT_EMOJI:
             if re.search(rx, n):
                 p["emoji"], p["cuisine"] = em, kind; break
     elif p.get("classic"):
         c = p["classic"].lower()
-        for k, em in (("egg tart", "🥧"), ("pineapple", "🍍"), ("milk tea", "🧋"), ("wonton", "🍜"), ("brisket", "🍜"),
-                      ("roast", "🍗"), ("congee", "🥣"), ("dim sum", "🥟"), ("waffle", "🧇"), ("sago", "🥭"), ("claypot", "🍚")):
+        for k, em in (("egg tart", "🥧"), ("pineapple", "🍍"), ("milk tea", "🍞"), ("wonton", "🍜"), ("brisket", "🍜"),
+                      ("roast", "🍖"), ("congee", "🥣"), ("dim sum", "🥟"), ("waffle", "🧇"), ("sago", "🥭"), ("claypot", "🍚")):
             if k in c:
                 p["emoji"] = em; break
     elif p["tab"] == "hikes":
@@ -558,10 +604,22 @@ for p in places:
     elif p["name"] == "Mountain Road Cafe":
         p["emoji"] = "🧋"
 
+# "Drinks" means a bar: restaurants that merely serve drinks stay under lunch/dinner
+BAR_KINDS = {"Cocktails", "Wine bars", "Beer & pubs", "Jazz & live music", "Rooftops & views", "Clubbing"}
+for p in places:
+    c = p.get("category", [])
+    if "drinks" in c and c[0] != "drinks":
+        c.remove("drinks")
+        p["kinds"] = [k for k in p.get("kinds", []) if k not in BAR_KINDS] or p.get("kinds")
+
 # hand-checked emoji overrides win over keyword guesses
 for p in places:
     if p["name"] in EXTRAS.get("emoji", {}):
         p["emoji"] = EXTRAS["emoji"][p["name"]]
+
+for t in taste:
+    if t["name"] in EXTRAS.get("taste_emoji", {}):
+        t["emoji"] = EXTRAS["taste_emoji"][t["name"]]
 
 out = {"HOME": home, "PLACES": places, "PLAN": EXTRAS["plan"], "TASTE": taste, "TIPS": tips}
 (ROOT / "data.js").write_text("window.HK = " + json.dumps(out, ensure_ascii=False, indent=1) + ";\n")
