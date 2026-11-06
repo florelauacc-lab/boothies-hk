@@ -47,7 +47,6 @@ window.HK = {
    "essentialTitle": "Claypot rice near Booth",
    "essentialWhy": "Crispy-bottomed rice, a Michelin pick.",
    "kinds": [
-    "Roast meats & noodles",
     "Cantonese & seafood"
    ],
    "emoji": "🍚"
@@ -228,7 +227,7 @@ window.HK = {
    "local": false,
    "id": "joy-tonight-grill",
    "kinds": [
-    "Japanese"
+    "Cantonese & seafood"
    ],
    "emoji": "🍢"
   },
@@ -411,7 +410,7 @@ window.HK = {
    "local": false,
    "id": "yuan-is-here",
    "kinds": [
-    "Other"
+    "Taiwanese"
    ],
    "emoji": "🍱"
   },
@@ -555,7 +554,6 @@ window.HK = {
    "local": false,
    "id": "aya-tsukemen-ramen",
    "kinds": [
-    "Roast meats & noodles",
     "Japanese"
    ],
    "emoji": "🍜"
@@ -592,7 +590,6 @@ window.HK = {
    "local": false,
    "id": "caf-malacca",
    "kinds": [
-    "Cha chaan teng & cafés",
     "Thai & SE Asian"
    ],
    "emoji": "🍛"
@@ -1385,7 +1382,7 @@ window.HK = {
    "id": "madame-f-grand-caf-chinois",
    "kinds": [
     "Dim sum",
-    "Cha chaan teng & cafés"
+    "Cantonese & seafood"
    ],
    "addressZh": "中西區荷李活道10號大館古蹟及藝術館3座",
    "emoji": "🥟"
@@ -2402,7 +2399,6 @@ window.HK = {
    "cuisine": "Japanese-Italian restobar with shisha",
    "category": [
     "drinks",
-    "dinner",
     "late-night"
    ],
    "price": "$$$",
@@ -2423,8 +2419,7 @@ window.HK = {
    "local": false,
    "id": "ciclo",
    "kinds": [
-    "Japanese",
-    "Western & Med"
+    "Cocktails"
    ],
    "addressZh": "灣仔區霎東街15號OLIV",
    "emoji": "🍸"
@@ -3053,8 +3048,7 @@ window.HK = {
    "section": "Coffee",
    "cuisine": "Specialty coffee, Kyoto-born minimalist espresso bar",
    "category": [
-    "coffee",
-    "lunch"
+    "coffee"
    ],
    "price": "$$",
    "intro": "The Kyoto chain's best-loved Hong Kong branch, a white-box espresso bar facing the Kennedy Town waterfront and harbour.",
@@ -3115,8 +3109,7 @@ window.HK = {
    "section": "Coffee",
    "cuisine": "Specialty coffee, standing espresso and cold-brew bar",
    "category": [
-    "coffee",
-    "lunch"
+    "coffee"
    ],
    "price": "$",
    "intro": "Named by FLTR's 2026 guide as Causeway Bay's essential coffee bar, a tiny standing counter focused purely on single-origin coffee.",
@@ -3147,7 +3140,6 @@ window.HK = {
    "cuisine": "Specialty coffee, hand-drip and Basque cheesecake",
    "category": [
     "coffee",
-    "lunch",
     "dessert"
    ],
    "price": "$$",
@@ -3210,8 +3202,7 @@ window.HK = {
    "section": "Coffee",
    "cuisine": "Specialty coffee, Californian third-wave",
    "category": [
-    "coffee",
-    "lunch"
+    "coffee"
    ],
    "price": "$$",
    "intro": "The Oakland-born third-wave icon's two-storey Hong Kong flagship on Lyndhurst Terrace, just off the Mid-Levels escalator.",
@@ -3241,8 +3232,7 @@ window.HK = {
    "section": "Coffee",
    "cuisine": "Specialty coffee, filter, siphon and ice drip",
    "category": [
-    "coffee",
-    "lunch"
+    "coffee"
    ],
    "price": "$",
    "intro": "One of the earliest drivers of Hong Kong's third-wave scene, with about ten single origins on filter, siphon and ice drip.",
@@ -3331,7 +3321,6 @@ window.HK = {
    "status": "open",
    "id": "kam-wah-cafe",
    "kinds": [
-    "Dessert & sweets",
     "Cha chaan teng & cafés"
    ],
    "emoji": "🍍"
@@ -3682,8 +3671,7 @@ window.HK = {
    "status": "open",
    "id": "kung-lee-sugar-cane-juice",
    "kinds": [
-    "Dessert & sweets",
-    "Other"
+    "Dessert & sweets"
    ],
    "emoji": "🥤"
   },
@@ -3864,8 +3852,7 @@ window.HK = {
    "section": "Vegan & vegetarian",
    "cuisine": "Chinese tea house, vegetarian dim sum",
    "category": [
-    "lunch",
-    "dessert"
+    "lunch"
    ],
    "price": "$$",
    "intro": "Lock Cha's flagship tea house and shop inside Tai Kwun, the restored police-station heritage complex on Hollywood Road, with the same vegetarian dim sum and tea list. It is easy to fit around a walk through Central and Sheung Wan.",
@@ -3883,7 +3870,6 @@ window.HK = {
    "emoji": "🥟",
    "id": "lock-cha-tea-house-tai-kwun",
    "kinds": [
-    "Dessert & sweets",
     "Vegan & vegetarian",
     "Dim sum"
    ]
@@ -3896,8 +3882,7 @@ window.HK = {
    "cuisine": "Plant-based casual: burgers, bowls, flatbreads",
    "category": [
     "lunch",
-    "dinner",
-    "dessert"
+    "dinner"
    ],
    "price": "$",
    "intro": "A casual plant-based restaurant group serving burgers, build-your-own bowls and flatbreads, and baked sweets. This branch is beside Times Square, a few minutes' walk from The Park Lane.",
@@ -3916,7 +3901,6 @@ window.HK = {
    "emoji": "🥗",
    "id": "treehouse-causeway-bay",
    "kinds": [
-    "Dessert & sweets",
     "Vegan & vegetarian",
     "Western & Med"
    ]
@@ -3929,8 +3913,7 @@ window.HK = {
    "cuisine": "Plant-based casual: burgers, bowls, flatbreads",
    "category": [
     "lunch",
-    "dinner",
-    "dessert"
+    "dinner"
    ],
    "price": "$",
    "intro": "The Central branch of TREEHOUSE, on the ground floor of the H Code building on Pottinger Street. It is a quick, reliable plant-based lunch near the Central and Sheung Wan offices.",
@@ -3949,7 +3932,6 @@ window.HK = {
    "emoji": "🥗",
    "id": "treehouse-h-code-central",
    "kinds": [
-    "Dessert & sweets",
     "Vegan & vegetarian",
     "Western & Med"
    ]
@@ -4173,7 +4155,7 @@ window.HK = {
    "picked": false,
    "id": "harbourside-regent-hong-kong",
    "kinds": [
-    "Rooftops & views"
+    "Western & Med"
    ],
    "emoji": "🍽️"
   },
@@ -4314,7 +4296,6 @@ window.HK = {
    "section": "HK classics",
    "cuisine": "Hong Kong-style bakery",
    "category": [
-    "lunch",
     "dessert"
    ],
    "price": "$",
@@ -4345,7 +4326,6 @@ window.HK = {
    "section": "HK classics",
    "cuisine": "Modern bakery",
    "category": [
-    "lunch",
     "dessert"
    ],
    "price": "$",
@@ -4376,7 +4356,6 @@ window.HK = {
    "section": "HK classics",
    "cuisine": "Hong Kong bakery",
    "category": [
-    "lunch",
     "dessert"
    ],
    "price": "$",
@@ -4787,8 +4766,7 @@ window.HK = {
    "classic": "claypot rice",
    "id": "sheung-hei-claypot-rice",
    "kinds": [
-    "Dim sum",
-    "Roast meats & noodles"
+    "Cantonese & seafood"
    ],
    "emoji": "🍚"
   },
@@ -5213,8 +5191,7 @@ window.HK = {
    "cuisine": "Italian bakery & all-day café",
    "category": [
     "lunch",
-    "dessert",
-    "dinner"
+    "dessert"
    ],
    "price": "$$",
    "intro": "A Pirata Group Italian seaside-style bakery and café near the waterfront, open roughly 8am-9pm.",
@@ -5231,8 +5208,8 @@ window.HK = {
    "stanley": true,
    "id": "pane-e-latte",
    "kinds": [
-    "Dessert & sweets",
-    "Cha chaan teng & cafés"
+    "Western & Med",
+    "Dessert & sweets"
    ],
    "emoji": "🥐"
   },
@@ -5291,7 +5268,7 @@ window.HK = {
    "stanley": true,
    "id": "surf-turf-grill-and-bar",
    "kinds": [
-    "Cantonese & seafood"
+    "Western & Med"
    ],
    "emoji": "🦀"
   },
@@ -8366,7 +8343,8 @@ window.HK = {
    ],
    "id": "carnegies",
    "kinds": [
-    "Clubbing"
+    "Clubbing",
+    "Jazz & live music"
    ]
   },
   {
@@ -8471,10 +8449,41 @@ window.HK = {
    "essentialTitle": "Afternoon tea at The Peninsula",
    "essentialWhy": "Scones and a string quartet since 1928.",
    "kinds": [
-    "Dessert & sweets",
-    "Other"
+    "Dessert & sweets"
    ],
    "addressZh": "尖沙咀梳士巴利道22號半島酒店"
+  },
+  {
+   "tab": "city",
+   "name": "Mott 32",
+   "zh": "卅二公館",
+   "area": "Central",
+   "section": "Cantonese fine dining",
+   "cuisine": "Modern Cantonese (famous Peking duck)",
+   "category": [
+    "dinner",
+    "lunch"
+   ],
+   "price": "$$$$",
+   "intro": "A glamorous, moody basement restaurant in an old bank building, and one of Hong Kong's most famous Chinese restaurants.",
+   "order": [
+    "Applewood-roasted Peking duck (book it when you reserve)",
+    "Barbecue Iberico pork char siu",
+    "Dim sum at lunch"
+   ],
+   "reviews": "Loved for the room and the duck; it's pricey, and the duck's second course costs extra.",
+   "tips": "Book ahead on SevenRooms and pre-order the duck. Lunch is 11:30–2:30 and dinner 5:30 till late.",
+   "addressEn": "Basement, Standard Chartered Bank Building, 4-4A Des Voeux Road Central",
+   "addressZh": "中環德輔道中4-4A號渣打銀行大廈地庫",
+   "url": "https://mott32.com/hong-kong/",
+   "lat": 22.28026,
+   "lng": 114.15894,
+   "mapsQuery": "Mott 32 Standard Chartered Bank Building Central",
+   "emoji": "🦆",
+   "id": "mott-32",
+   "kinds": [
+    "Cantonese & seafood"
+   ]
   }
  ],
  "PLAN": [

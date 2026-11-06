@@ -368,6 +368,34 @@
       "url": "https://www.peninsula.com/en/hong-kong/hotel-fine-dining/the-lobby-afternoon-tea",
       "picked": true,
       "section": "HK classics"
+    },
+    {
+      "tab": "city",
+      "name": "Mott 32",
+      "zh": "卅二公館",
+      "area": "Central",
+      "section": "Cantonese fine dining",
+      "cuisine": "Modern Cantonese (famous Peking duck)",
+      "category": [
+        "dinner",
+        "lunch"
+      ],
+      "price": "$$$$",
+      "intro": "A glamorous, moody basement restaurant in an old bank building, and one of Hong Kong's most famous Chinese restaurants.",
+      "order": [
+        "Applewood-roasted Peking duck (book it when you reserve)",
+        "Barbecue Iberico pork char siu",
+        "Dim sum at lunch"
+      ],
+      "reviews": "Loved for the room and the duck; it's pricey, and the duck's second course costs extra.",
+      "tips": "Book ahead on SevenRooms and pre-order the duck. Lunch is 11:30–2:30 and dinner 5:30 till late.",
+      "addressEn": "Basement, Standard Chartered Bank Building, 4-4A Des Voeux Road Central",
+      "addressZh": "中環德輔道中4-4A號渣打銀行大廈地庫",
+      "url": "https://mott32.com/hong-kong/",
+      "lat": 22.28026,
+      "lng": 114.15894,
+      "mapsQuery": "Mott 32 Standard Chartered Bank Building Central",
+      "emoji": "🦆"
     }
   ],
   "patch": {
@@ -428,7 +456,10 @@
     "Kwan Kee Clay Pot Rice": {
       "essential": 5,
       "essentialTitle": "Claypot rice near Booth",
-      "essentialWhy": "Crispy-bottomed rice, a Michelin pick."
+      "essentialWhy": "Crispy-bottomed rice, a Michelin pick.",
+      "kinds_override": [
+        "Cantonese & seafood"
+      ]
     },
     "Shun Kee Typhoon Shelter Seafood": {
       "essential": 6,
@@ -443,7 +474,10 @@
     "Afternoon tea at The Peninsula": {
       "essential": 8,
       "essentialTitle": "Afternoon tea at The Peninsula",
-      "essentialWhy": "Scones and a string quartet since 1928."
+      "essentialWhy": "Scones and a string quartet since 1928.",
+      "kinds_override": [
+        "Dessert & sweets"
+      ]
     },
     "Cha chaan teng breakfast (Mountain Road Cafe)": {
       "tab": "saiwan",
@@ -598,6 +632,174 @@
         "local",
         "culture",
         "iconic"
+      ]
+    },
+    "TREEHOUSE (Causeway Bay)": {
+      "category": [
+        "lunch",
+        "dinner"
+      ],
+      "kinds_override": [
+        "Vegan & vegetarian",
+        "Western & Med"
+      ]
+    },
+    "TREEHOUSE (H Code, Central)": {
+      "category": [
+        "lunch",
+        "dinner"
+      ],
+      "kinds_override": [
+        "Vegan & vegetarian",
+        "Western & Med"
+      ]
+    },
+    "Lock Cha Tea House (Tai Kwun)": {
+      "category": [
+        "lunch"
+      ],
+      "kinds_override": [
+        "Vegan & vegetarian",
+        "Dim sum"
+      ]
+    },
+    "Lock Cha Tea House (Hong Kong Park)": {
+      "category": [
+        "lunch"
+      ],
+      "kinds_override": [
+        "Vegan & vegetarian",
+        "Dim sum"
+      ]
+    },
+    "Kam Wah Cafe": {
+      "category": [
+        "lunch"
+      ],
+      "kinds_override": [
+        "Cha chaan teng & cafés"
+      ]
+    },
+    "Kung Lee Sugar Cane Juice": {
+      "kinds_override": [
+        "Dessert & sweets"
+      ]
+    },
+    "Pane e Latte": {
+      "category": [
+        "lunch",
+        "dessert"
+      ],
+      "kinds_override": [
+        "Western & Med",
+        "Dessert & sweets"
+      ]
+    },
+    "Madame Fù – Grand Café Chinois": {
+      "kinds_override": [
+        "Dim sum",
+        "Cantonese & seafood"
+      ]
+    },
+    "Café Malacca": {
+      "kinds_override": [
+        "Thai & SE Asian"
+      ]
+    },
+    "House of Culture": {
+      "kinds_override": [
+        "Thai & SE Asian"
+      ]
+    },
+    "Aya (Tsukemen & Ramen)": {
+      "kinds_override": [
+        "Japanese"
+      ]
+    },
+    "Baka Ramen": {
+      "kinds_override": [
+        "Japanese"
+      ]
+    },
+    "Joy Tonight Grill": {
+      "kinds_override": [
+        "Cantonese & seafood"
+      ]
+    },
+    "Yuan Is Here": {
+      "kinds_override": [
+        "Taiwanese"
+      ]
+    },
+    "Ciclo": {
+      "category": [
+        "drinks",
+        "late-night"
+      ],
+      "kinds_override": [
+        "Cocktails"
+      ]
+    },
+    "Harbourside (Regent Hong Kong)": {
+      "kinds_override": [
+        "Western & Med"
+      ]
+    },
+    "Surf & Turf Grill and Bar": {
+      "kinds_override": [
+        "Western & Med"
+      ]
+    },
+    "Sheung Hei Claypot Rice": {
+      "kinds_override": [
+        "Cantonese & seafood"
+      ]
+    },
+    "Carnegies": {
+      "kinds_override": [
+        "Clubbing",
+        "Jazz & live music"
+      ]
+    },
+    "% Arabica (Kennedy Town)": {
+      "category": [
+        "coffee"
+      ]
+    },
+    "project c": {
+      "category": [
+        "coffee"
+      ]
+    },
+    "Blue Bottle Coffee (Central)": {
+      "category": [
+        "coffee"
+      ]
+    },
+    "Barista Jam": {
+      "category": [
+        "coffee"
+      ]
+    },
+    "EN Coffee (Causeway Bay)": {
+      "category": [
+        "coffee",
+        "dessert"
+      ]
+    },
+    "St. Lolan Bakery": {
+      "category": [
+        "dessert"
+      ]
+    },
+    "Bernice Bakery": {
+      "category": [
+        "dessert"
+      ]
+    },
+    "Pineapple Bakery": {
+      "category": [
+        "dessert"
       ]
     }
   },

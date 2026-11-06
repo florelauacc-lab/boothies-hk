@@ -85,7 +85,7 @@
   // Six big groups for the map legend (the detailed kinds still power search)
   const GROUP_OF = {
     "Dim sum": "Local HK", "Roast meats & noodles": "Local HK", "Cha chaan teng & cafés": "Local HK", "Cantonese & seafood": "Local HK",
-    "Japanese": "Asian", "Korean": "Asian", "Thai & SE Asian": "Asian",
+    "Japanese": "Asian", "Korean": "Asian", "Thai & SE Asian": "Asian", "Taiwanese": "Asian",
     "Western & Med": "Western",
     "Dessert & sweets": "Dessert",
     "Cocktails": "Bars", "Wine bars": "Bars", "Beer & pubs": "Bars", "Jazz & live music": "Bars", "Rooftops & views": "Bars", "Clubbing": "Bars",
