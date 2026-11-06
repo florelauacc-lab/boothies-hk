@@ -458,57 +458,66 @@
       "category": [
         "luxury",
         "malls"
-      ]
+      ],
+      "cuisine": "Luxury mall"
     },
     "Pacific Place": {
       "category": [
         "luxury",
         "malls"
-      ]
+      ],
+      "cuisine": "Luxury mall"
     },
     "IFC Mall": {
       "category": [
         "luxury",
         "malls"
-      ]
+      ],
+      "cuisine": "Luxury mall"
     },
     "Lee Gardens": {
       "category": [
         "luxury",
         "malls"
-      ]
+      ],
+      "cuisine": "Luxury mall"
     },
     "K11 MUSEA": {
       "category": [
         "luxury",
         "design",
         "malls"
-      ]
+      ],
+      "cuisine": "Art & design mall"
     },
     "Harbour City & Canton Road": {
       "category": [
         "luxury",
         "malls"
-      ]
+      ],
+      "cuisine": "Mega-mall & luxury street"
     },
     "Ying Kee Tea House (Johnston Road)": {
       "category": [
         "gifts",
         "local"
-      ]
+      ],
+      "cuisine": "Chinese tea shop"
     },
     "PMQ (with Tai Kwun nearby)": {
       "category": [
         "gifts",
         "design",
         "local"
-      ]
+      ],
+      "cuisine": "Design studios & shops"
     },
     "Stanley Market": {
       "category": [
         "gifts",
         "local"
-      ]
+      ],
+      "cuisine": "Souvenir market"
     },
     "英皇 CEO Neway Karaoke": {
       "name_override": "Neway CEO Karaoke"
@@ -541,6 +550,29 @@
         "easy",
         "south"
       ]
+    },
+    "Times Square": {
+      "cuisine": "Shopping mall"
+    },
+    "Shanghai Tang": {
+      "category": [
+        "gifts",
+        "luxury",
+        "design"
+      ]
+    },
+    "Chinese Arts & Crafts": {
+      "category": [
+        "gifts",
+        "local"
+      ]
+    },
+    "Maggie Choo's": {
+      "kinds_override": [
+        "Jazz & live music",
+        "Cocktails"
+      ],
+      "cuisine": "Live music & cocktail bar (jazz, soul, funk)"
     }
   },
   "drop": [
@@ -623,7 +655,18 @@
     "Mountain Road Cafe": "🍞",
     "Si Yik": "🍞",
     "Tak Yu Restaurant": "🍞",
-    "Pane e Latte": "🥐"
+    "Pane e Latte": "🥐",
+    "Jenny Bakery": "🍪",
+    "Kee Wah Bakery": "🥮",
+    "Wing Wah Cake Shop": "🥮",
+    "Yiu Fung Store": "🍬",
+    "Kowloon Soy Company": "🫙",
+    "Chinese Arts & Crafts": "🏺",
+    "Shanghai Tang": "🎁",
+    "Stanley Market": "🧧",
+    "Gokan": "🍸",
+    "Kinsman": "🍸",
+    "Maggie Choo's": "🎷"
   },
   "taste_emoji": {
     "Hong Kong milk tea": "☕",

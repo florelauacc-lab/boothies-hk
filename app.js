@@ -68,8 +68,7 @@
   }
   const FOOD_STYLES = [["any", "any style"], ["local", "a local favourite 🏮"], ["veg", "vegetarian-friendly 🥬"], ["cheap", "cheap & cheerful $"], ["fancy", "a bit fancy $$$"]];
   // When someone wants drinks, "that's…" offers kinds of bar instead of food styles
-  const BAR_STYLES = [["any", "any kind of bar"], ["top", "a top cocktail bar ★"], ["k:Cocktails", "a cocktail bar 🍸"], ["k:Rooftops & views", "a rooftop or view 🌃"],
-    ["k:Wine bars", "a wine bar 🍷"], ["k:Beer & pubs", "a pub or craft beer 🍺"], ["k:Jazz & live music", "live music or jazz 🎷"], ["k:Clubbing", "a club for dancing 🪩"]];
+  const BAR_STYLES = [["any", "any kind of bar"], ["top", "a top cocktail bar ★"], ["fancy", "a bit fancy $$$"]];
   const WHAT = [
     ["food:all", "anything to eat or drink"], ["food:coffee", "☕ good coffee"], ["food:lunch", "🍜 lunch"], ["food:dinner", "🥘 dinner"], ["food:dessert", "🍧 dessert"],
     ["food:drinks", "🍸 drinks"], ["food:late-night", "🌙 a late-night bite"],
@@ -96,6 +95,11 @@
   const GROUP_ORDER = Object.keys(GROUP_EMOJI);
   const GROUP_SHORT = { "Local HK": "Local", "Asian": "Asian", "Western": "Western", "Dessert": "Sweets", "Bars": "Bars", "Veggie": "Veggie" };
   const groupsOf = (p) => uniq((p.kinds || []).map((k) => GROUP_OF[k]));
+  // drinks get their own map filters: kinds of bar
+  const BAR_GROUPS = ["Cocktails", "Rooftops & views", "Wine bars", "Beer & pubs", "Jazz & live music", "Clubbing"];
+  const BAR_EMOJI = { "Cocktails": "🍸", "Rooftops & views": "🌃", "Wine bars": "🍷", "Beer & pubs": "🍺", "Jazz & live music": "🎷", "Clubbing": "🪩" };
+  const BAR_SHORT = { "Cocktails": "Cocktails", "Rooftops & views": "Rooftop", "Wine bars": "Wine", "Beer & pubs": "Pubs", "Jazz & live music": "Live music", "Clubbing": "Clubs" };
+  const filterKeysOf = (p) => (state.mood === "drinks" ? (p.kinds || []).filter((k) => BAR_GROUPS.includes(k)) : groupsOf(p));
 
   const LS = "hk-shortlist-v1";
   const loved = new Set(JSON.parse(localStorage.getItem(LS) || "[]"));
@@ -161,7 +165,7 @@
     return tabItems.filter((p) => !p.lite);
   }
   const allCount = () => live.filter((p) => (FOOD.has(state.tab) ? FOOD.has(p.tab) : p.tab === state.tab) && (state.where === "all" || whereOf(p) === state.where)).length;
-  const startLimit = (tab) => (tab === "sights" || tab === "hikes" ? 9 : 6);
+  const startLimit = (tab) => (tab === "sights" || tab === "hikes" ? 9 : FOOD.has(tab) && state.mood === "drinks" ? 10 : 6);
   let me = null; // the user's location once they tap "Near me"
   const rank = (p) => (state.mood === "drinks" && p.topBar ? -1 : p.essential ? 0 : p.picked ? 1 : p.lite ? 3 : 2);
   function filtered() {
@@ -183,13 +187,13 @@
         if (state.style === "top" && !p.topBar) return false;
       }
       if (state.boothies && !p.boothies) return false;
-      if (state.kinds.size && !groupsOf(p).some((g) => state.kinds.has(g))) return false;
+      if (state.kinds.size && !filterKeysOf(p).some((g) => state.kinds.has(g))) return false;
       if (q) {
         const hay = [p.name, p.zh, p.cuisine, p.area, p.section, p.intro, p.reviews, p.classmateNote, ...(p.order || []), ...(p.kinds || []), ...p.category].join(" ").toLowerCase();
         if (!hay.includes(q)) return false;
       }
       return true;
-    }).sort((a, b) => me && a.lat != null && b.lat != null ? km(me, a) - km(me, b) : rank(a) - rank(b));
+    }).sort((a, b) => me && a.lat != null && b.lat != null ? km(me, a) - km(me, b) : rank(a) - rank(b) || (a.topRank ?? 99) - (b.topRank ?? 99));
   }
   const uniq = (arr) => [...new Set(arr.filter(Boolean))];
 
@@ -232,7 +236,7 @@
       const [t, m] = v.split(":");
       if (t === "food") {
         const keep = (m === "drinks") === (state.mood === "drinks") ? state.style : "any";
-        setTab("city", { mood: m, keepWhere: true }); state.style = keep; render();
+        setTab("city", { mood: m, keepWhere: true }); state.style = keep; state.kinds = new Set(); state.limit = startLimit("city"); render();
       }
       else setTab(t, { keepWhere: true });
     } else if (id === "b-where") {
@@ -258,9 +262,10 @@
     const kindCounts = {};
     // count cuisines within the chosen meal/mood so the choices always make sense (no cocktail bars under Lunch)
     items.filter((p) => state.mood === "all" || p.category.includes(state.mood))
-      .forEach((p) => groupsOf(p).forEach((g) => { kindCounts[g] = (kindCounts[g] || 0) + 1; }));
+      .forEach((p) => filterKeysOf(p).forEach((g) => { kindCounts[g] = (kindCounts[g] || 0) + 1; }));
     [...state.kinds].forEach((k) => { if (!kindCounts[k]) state.kinds.delete(k); });
-    const kinds = GROUP_ORDER.filter((g) => kindCounts[g]);
+    const hideForMeal = state.mood === "all" ? [] : state.mood === "dessert" ? ["Bars"] : ["Bars", "Dessert"];
+    const kinds = state.mood === "coffee" ? [] : (state.mood === "drinks" ? BAR_GROUPS : GROUP_ORDER).filter((g) => kindCounts[g] && !hideForMeal.includes(g));
     lastKinds = { list: state.shortlist ? [] : kinds, counts: kindCounts };
     $("#kinds").innerHTML = "";
     if (false) $("#kinds").innerHTML = kinds.length > 1 && !state.shortlist
@@ -279,7 +284,7 @@
   function card(p, i = 0) {
     const tab = TABS[p.tab];
     const tags = uniq([p.section, ...p.category.map((c) => moodOf(c, p.tab)?.label)]).map((t) => `<span class="tag">${esc(t)}</span>`).join("")
-      + (p.veg ? `<span class="tag badge-veg">🥬 ${esc(p.veg)}</span>` : "") + (p.boothies ? `<span class="tag badge-boothies">👥 Boothies map</span>` : "") + (p.local ? `<span class="tag badge-local">🏮 Local favourite</span>` : "") + (p.topBar ? `<span class="tag badge-pick">★ Top bar${p.award ? ` · ${esc(p.award)}` : ""}</span>` : "") + (p.picked ? `<span class="tag badge-pick">★ Class pick</span>` : "") + (p.flags || []).map((f) => `<span class="tag warn">${esc(f)}</span>`).join("");
+      + (p.veg ? `<span class="tag badge-veg">🥬 ${esc(p.veg)}</span>` : "") + (p.boothies ? `<span class="tag badge-boothies">👥 Boothies map</span>` : "") + (p.local ? `<span class="tag badge-local">🏮 Local favourite</span>` : "") + (p.topBar ? `<span class="tag badge-pick">★ Top bar${p.award ? ` · ${esc(p.award.split(/[;+(]/)[0].trim())}` : ""}</span>` : "") + (p.picked ? `<span class="tag badge-pick">★ Class pick</span>` : "") + (p.flags || []).map((f) => `<span class="tag warn">${esc(f)}</span>`).join("");
     const meta = [
       p.price && `<span class="price">${esc(p.price)}</span>`,
       `<span>${esc(p.cuisine)}</span>`,
@@ -330,7 +335,9 @@
     let countHtml;
     if (state.shortlist) countHtml = `${items.length} on your shortlist${items.length ? ` · <a href="#" id="share">Copy share link</a>` : ""}`;
     else {
-      const extra = allCount() - pool().filter((p) => !p.lite).length;
+      const moodOk = (p) => state.mood === "all" || p.category.includes(state.mood);
+      const extra = live.filter((p) => p.lite && moodOk(p) && (FOOD.has(state.tab) ? FOOD.has(p.tab) : p.tab === state.tab)
+        && (state.where === "all" || whereOf(p) === state.where)).length;
       const curated = !state.all && !state.boothies && !state.q.trim();
       countHtml = `${items.length} ${curated ? "hand-picked " : ""}place${items.length === 1 ? "" : "s"}`
         + (extra > 0 && curated ? ` · <a href="#" data-all="1">+ ${extra} classmate picks from the Boothies map</a>` : "")
@@ -463,9 +470,10 @@
     let chips = "";
     if (FOOD.has(state.tab) && lastKinds.list.length) {
       const ordered = lastKinds.list;
-      chips = ordered.filter((k) => k !== "Veggie").map((k) => `<button class="lg${state.kinds.has(k) ? " on" : ""}" data-kind="${esc(k)}" aria-pressed="${state.kinds.has(k)}"><span class="li">${GROUP_EMOJI[k] || "•"}</span><span class="ll"><span class="long">${esc(k)}</span><span class="short">${esc(GROUP_SHORT[k] || k)}</span></span></button>`).join("")
+      const EM = state.mood === "drinks" ? BAR_EMOJI : GROUP_EMOJI, SH = state.mood === "drinks" ? BAR_SHORT : GROUP_SHORT;
+      chips = ordered.filter((k) => k !== "Veggie").map((k) => `<button class="lg${state.kinds.has(k) ? " on" : ""}" data-kind="${esc(k)}" aria-pressed="${state.kinds.has(k)}"><span class="li">${EM[k] || "•"}</span><span class="ll"><span class="long">${esc(k)}</span><span class="short">${esc(SH[k] || k)}</span></span></button>`).join("")
         ;
-    } else if (TABS[state.tab] && !state.shortlist) {
+    } else if (TABS[state.tab] && !state.shortlist && !FOOD.has(state.tab)) {
       chips = TABS[state.tab].moods.filter((m) => pool().some((p) => p.category.includes(m.k)))
         .map((m) => `<button class="lg${state.mood === m.k ? " on" : ""}" data-mood="${m.k}"><span class="li">${m.em}</span><span class="ll">${esc(m.label)}</span></button>`).join("")
         + (state.mood !== "all" ? `<button class="lg clear" data-mood="all"><span class="li">✕</span><span class="ll">All</span></button>` : "");

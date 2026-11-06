@@ -410,12 +410,12 @@ for x in load("boothies.json") or []:
 print(f"boothies: added {added_b}, merged {merged_b}, skipped {skipped_b}")
 
 # ---------- Top cocktail bars ----------
-for x in load("bars.json") or []:
+for bi, x in enumerate(load("bars.json") or []):
     if x.get("lat") is None or str(x.get("status", "")).lower().startswith("closed"):
         continue
     hit = next((p for p in places if p["tab"] in ("city", "saiwan") and norm(p["name"])[:7] == norm(x["name"])[:7]), None)
     if hit:
-        hit["topBar"] = True
+        hit["topBar"] = True; hit["topRank"] = bi; hit.pop("lite", None)
         if clean(x.get("award")): hit["award"] = x["award"]
         for k, v in (("intro", x.get("intro")), ("order", x.get("must_order")), ("tips", x.get("tips")), ("addressZh", x.get("address_zh"))):
             if clean(v) and not hit.get(k): hit[k] = v
@@ -428,7 +428,27 @@ for x in load("bars.json") or []:
         "section": "Top cocktail bars", "cuisine": x.get("cuisine") or "Cocktail bar", "category": ["drinks", "late-night"],
         "price": x.get("price"), "intro": x.get("intro"), "order": x.get("must_order"), "reviews": x.get("reviews"),
         "tips": x.get("tips"), "addressEn": x.get("address_en"), "addressZh": x.get("address_zh"),
-        "lat": x["lat"], "lng": x["lng"], "topBar": True, "award": x.get("award"), "emoji": "🍸",
+        "lat": x["lat"], "lng": x["lng"], "topBar": True, "topRank": bi, "award": x.get("award"), "emoji": "🍸",
+        "flags": ["Check it's open first"] if str(x.get("status")) == "unclear" else None,
+    })
+
+# ---------- Clubs ----------
+for x in load("clubs.json") or []:
+    if x.get("lat") is None or str(x.get("status", "")).lower().startswith("closed"):
+        continue
+    hit = next((p for p in places if p["tab"] in ("city", "saiwan") and norm(p["name"])[:6] == norm(x["name"])[:6]), None)
+    if hit:
+        for k, v in (("intro", x.get("intro")), ("tips", x.get("tips")), ("reviews", x.get("reviews")), ("addressZh", x.get("address_zh"))):
+            if clean(v): hit[k] = v
+        hit["kinds"] = ["Clubbing"]; hit["emoji"] = "🪩"
+        continue
+    add({
+        "tab": "city", "name": x["name"], "zh": x.get("name_zh") if x.get("name_zh") != x["name"] else None,
+        "area": short_area(x.get("area")), "section": "Clubbing", "cuisine": x.get("cuisine") or "Nightclub",
+        "category": ["drinks", "late-night"], "price": x.get("price"), "intro": x.get("intro"), "order": x.get("must_order"),
+        "reviews": x.get("reviews"), "tips": x.get("tips"), "addressEn": x.get("address_en"), "addressZh": x.get("address_zh"),
+        "lat": x["lat"], "lng": x["lng"], "emoji": "🎷" if (x.get("cuisine") or "").lower().startswith("live music") else "🪩",
+        "clubFix": "live" if (x.get("cuisine") or "").lower().startswith("live music") else True,
         "flags": ["Check it's open first"] if str(x.get("status")) == "unclear" else None,
     })
 
@@ -505,6 +525,9 @@ for p in places:
     p["kinds"] = [k for k, rx in KINDS if re.search(rx, hay)][:2]
     if not p["kinds"]:  # fall back to the description only when the cuisine label says nothing
         p["kinds"] = [k for k, rx in KINDS if re.search(rx, str(p.get("intro", "")).lower())][:1] or ["Other"]
+    if p.get("clubFix"):
+        p["kinds"] = ["Jazz & live music"] if p["clubFix"] == "live" else ["Clubbing"]
+        continue
     if p.get("section") == "Coffee":
         p["kinds"] = ["Coffee"] + (["Dessert & sweets"] if "dessert" in p["category"] else [])
         continue
@@ -611,6 +634,10 @@ for p in places:
     if "drinks" in c and c[0] != "drinks":
         c.remove("drinks")
         p["kinds"] = [k for k in p.get("kinds", []) if k not in BAR_KINDS] or p.get("kinds")
+
+for p in places:
+    if p.get("kinds_override"):
+        p["kinds"] = p.pop("kinds_override")
 
 # hand-checked emoji overrides win over keyword guesses
 for p in places:

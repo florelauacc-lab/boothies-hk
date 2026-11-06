@@ -2177,10 +2177,14 @@ window.HK = {
    "local": false,
    "id": "mius",
    "boothies": true,
+   "topBar": true,
+   "topRank": 4,
+   "award": "Asia's 50 Best Bars 2026 #36 + Best Bar Design; Bartenders' Bartender Award 2026 (Shelley Tai); Tatler Best 20 Bars HK 2026",
+   "tips": "Arrive by 5pm or expect to queue; walk-in friendly, smart-casual.",
+   "addressZh": "香港中環歌賦街29號",
    "kinds": [
     "Cocktails"
    ],
-   "addressZh": "中西區歌賦街29號",
    "emoji": "🍸"
   },
   {
@@ -2309,10 +2313,14 @@ window.HK = {
    "local": false,
    "id": "the-savory-project",
    "boothies": true,
+   "topBar": true,
+   "topRank": 10,
+   "award": "Asia's 50 Best Bars 2026 #60 (51-100); Tatler Best 20 Bars HK 2026",
+   "tips": "Book or go early; right next to the Mid-Levels Escalator.",
+   "addressZh": "香港中環士丹頓街4號",
    "kinds": [
     "Cocktails"
    ],
-   "addressZh": "中西區士丹頓街4號",
    "emoji": "🍸"
   },
   {
@@ -2343,10 +2351,14 @@ window.HK = {
    "id": "quinary",
    "boothies": true,
    "classmateNote": "Long-time top cocktail bar, walk-in only",
+   "topBar": true,
+   "topRank": 11,
+   "award": "Tatler Best 20 Bars HK 2026",
+   "tips": "Walk-ins usually fine early in the evening; book for groups.",
+   "addressZh": "香港中環荷李活道56-58號地下",
    "kinds": [
     "Cocktails"
    ],
-   "addressZh": "中西區荷李活道69號THE SOHO",
    "emoji": "🍸"
   },
   {
@@ -2893,11 +2905,14 @@ window.HK = {
    "id": "the-iron-fairies",
    "boothies": true,
    "classmateNote": "Bar/ dancing",
+   "topBar": true,
+   "topRank": 12,
+   "tips": "Downstairs from Maggie Choo's in the same building, so do both; book a table for groups.",
+   "addressZh": "香港中環荷李活道1-13號華懋荷李活中心地下低層",
    "kinds": [
     "Cocktails",
     "Jazz & live music"
    ],
-   "addressZh": "中西區荷李活道1-13號華懋荷李活中心",
    "emoji": "🍸"
   },
   {
@@ -4793,7 +4808,7 @@ window.HK = {
    "addressZh": "香港上環永和街15號和興商業大廈地下",
    "lat": 22.28519,
    "lng": 114.15367,
-   "emoji": "🎁",
+   "emoji": "🍪",
    "id": "jenny-bakery"
   },
   {
@@ -4818,7 +4833,7 @@ window.HK = {
    "addressZh": "香港銅鑼灣利園山道33號麗園大廈地下",
    "lat": 22.27907,
    "lng": 114.1833,
-   "emoji": "🎁",
+   "emoji": "🥮",
    "id": "kee-wah-bakery"
   },
   {
@@ -4843,7 +4858,7 @@ window.HK = {
    "addressZh": "香港銅鑼灣駱克道478-484號本德大廈地下E號舖",
    "lat": 22.28022,
    "lng": 114.1822,
-   "emoji": "🎁",
+   "emoji": "🥮",
    "id": "wing-wah-cake-shop"
   },
   {
@@ -4893,7 +4908,7 @@ window.HK = {
    "addressZh": "香港銅鑼灣富明街3號寶富大廈地下",
    "lat": 22.27879,
    "lng": 114.18332,
-   "emoji": "🎁",
+   "emoji": "🍬",
    "id": "yiu-fung-store"
   },
   {
@@ -4918,7 +4933,7 @@ window.HK = {
    "addressZh": "香港中環嘉咸街9號地下",
    "lat": 22.28378,
    "lng": 114.15425,
-   "emoji": "🎁",
+   "emoji": "🫙",
    "id": "kowloon-soy-company"
   },
   {
@@ -4954,7 +4969,7 @@ window.HK = {
    "cuisine": "Chinese crafts, silk & jade",
    "category": [
     "gifts",
-    "design"
+    "local"
    ],
    "intro": "Since 1959, Hong Kong's classic one-stop store for Chinese silk, jade, porcelain and handicrafts.",
    "order": [
@@ -4968,7 +4983,7 @@ window.HK = {
    "addressZh": "香港灣仔港灣道28號灣景中心大廈地下2及7號舖",
    "lat": 22.28031,
    "lng": 114.17623,
-   "emoji": "🎁",
+   "emoji": "🏺",
    "id": "chinese-arts-crafts"
   },
   {
@@ -4979,6 +4994,7 @@ window.HK = {
    "cuisine": "Chinese-chic luxury gifts",
    "category": [
     "gifts",
+    "luxury",
     "design"
    ],
    "intro": "Hong Kong's original luxury 'Chinese chic' label, good for upscale gifts for clients or a partner.",
@@ -6828,7 +6844,7 @@ window.HK = {
    "name": "Lee Gardens",
    "zh": "利園（銅鑼灣希慎道）",
    "area": "Causeway Bay",
-   "cuisine": "Luxury",
+   "cuisine": "Luxury mall",
    "category": [
     "luxury",
     "malls"
@@ -6855,7 +6871,7 @@ window.HK = {
    "name": "Times Square",
    "zh": "時代廣場（銅鑼灣勿地臣街1號）",
    "area": "Causeway Bay",
-   "cuisine": "Malls",
+   "cuisine": "Shopping mall",
    "category": [
     "malls"
    ],
@@ -6880,7 +6896,7 @@ window.HK = {
    "name": "Pacific Place",
    "zh": "太古廣場（金鐘道88號）",
    "area": "Admiralty",
-   "cuisine": "Luxury",
+   "cuisine": "Luxury mall",
    "category": [
     "luxury",
     "malls"
@@ -6907,7 +6923,7 @@ window.HK = {
    "name": "IFC Mall",
    "zh": "國際金融中心商場（中環金融街8號）",
    "area": "Central",
-   "cuisine": "Luxury",
+   "cuisine": "Luxury mall",
    "category": [
     "luxury",
     "malls"
@@ -6934,7 +6950,7 @@ window.HK = {
    "name": "Landmark (Central)",
    "zh": "置地廣場（中環皇后大道中15號）",
    "area": "Central",
-   "cuisine": "Luxury",
+   "cuisine": "Luxury mall",
    "category": [
     "luxury",
     "malls"
@@ -6961,7 +6977,7 @@ window.HK = {
    "name": "K11 MUSEA",
    "zh": "K11 MUSEA（尖沙咀梳士巴利道18號）",
    "area": "Tsim Sha Tsui",
-   "cuisine": "Luxury",
+   "cuisine": "Art & design mall",
    "category": [
     "luxury",
     "design",
@@ -6982,14 +6998,14 @@ window.HK = {
    "picked": true,
    "id": "k11-musea",
    "addressZh": "尖沙咀梳士巴利道18號K11 MUSEA",
-   "emoji": "🖼️"
+   "emoji": "🎨"
   },
   {
    "tab": "shop",
    "name": "Harbour City & Canton Road",
    "zh": "海港城／廣東道（尖沙咀廣東道3-27號）",
    "area": "Tsim Sha Tsui",
-   "cuisine": "Luxury",
+   "cuisine": "Mega-mall & luxury street",
    "category": [
     "luxury",
     "malls"
@@ -7016,7 +7032,7 @@ window.HK = {
    "name": "Ying Kee Tea House (Johnston Road)",
    "zh": "英記茶莊（灣仔莊士敦道170號）",
    "area": "Wan Chai",
-   "cuisine": "Local",
+   "cuisine": "Chinese tea shop",
    "category": [
     "gifts",
     "local"
@@ -7042,7 +7058,7 @@ window.HK = {
    "name": "PMQ (with Tai Kwun nearby)",
    "zh": "元創方（中環鴨巴甸街35號）",
    "area": "Central / SoHo",
-   "cuisine": "Design",
+   "cuisine": "Design studios & shops",
    "category": [
     "gifts",
     "design",
@@ -7070,7 +7086,7 @@ window.HK = {
    "name": "Stanley Market",
    "zh": "赤柱市集（赤柱大街）",
    "area": "Stanley, south side",
-   "cuisine": "Local",
+   "cuisine": "Souvenir market",
    "category": [
     "gifts",
     "local"
@@ -7333,12 +7349,19 @@ window.HK = {
    "mapsQuery": "COA Shop A, LG/F Wah Shin House, 6-10 Shin Hing Street, Central, Hong Kong, Central, Hong Kong",
    "addressEn": "Shop A, LG/F Wah Shin House, 6-10 Shin Hing Street, Central, Hong Kong, Central, Hong Kong",
    "boothies": true,
-   "lite": true,
    "id": "coa",
+   "topBar": true,
+   "topRank": 1,
+   "award": "Asia's 50 Best Bars 2026 #24 + Legend of the List Award; World's 50 Best Bars 2025 #38; Tatler Best 20 Bars HK 2026",
+   "order": [
+    "Margarita",
+    "Mezcal-based seasonal signature"
+   ],
+   "tips": "Walk-in focused: go early in the evening or late; casual dress is fine.",
+   "addressZh": "香港中環善慶街6-10號華善樓地下低層A號舖",
    "kinds": [
     "Cocktails"
    ],
-   "addressZh": "中西區善慶街6-10號華善樓",
    "emoji": "🍸"
   },
   {
@@ -7480,12 +7503,18 @@ window.HK = {
    "mapsQuery": "The Old Man Lower G/F, 37-39 Aberdeen Street, Soho, Central, Hong Kong, Hong Kong",
    "addressEn": "Lower G/F, 37-39 Aberdeen Street, Soho, Central, Hong Kong, Hong Kong",
    "boothies": true,
-   "lite": true,
    "id": "the-old-man",
+   "topBar": true,
+   "topRank": 13,
+   "award": "Tatler Best 20 Bars HK 2026",
+   "order": [
+    "Hemingway-inspired signature from the current menu"
+   ],
+   "tips": "Book or go early; low-key dress fine.",
+   "addressZh": "香港中環鴨巴甸街37-39號地下低層",
    "kinds": [
     "Cocktails"
    ],
-   "addressZh": "中西區鴨巴甸街37號",
    "emoji": "🍸"
   },
   {
@@ -7512,6 +7541,252 @@ window.HK = {
    ],
    "addressZh": "灣仔區軒尼詩道288號英皇集團中心",
    "emoji": "🎤"
+  },
+  {
+   "tab": "city",
+   "name": "Bar Leone",
+   "area": "Central",
+   "section": "Top cocktail bars",
+   "cuisine": "Roman-style neighbourhood cocktail bar",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$",
+   "intro": "The World's Best Bar 2025: a warm, candlelit Roman neighbourhood bar with AS Roma and cinema memorabilia, crowd-pleasing 'cocktail popolari' and a buzzing room.",
+   "order": [
+    "Olive Oil Sour",
+    "Filthy Martini"
+   ],
+   "reviews": "Universally loved for the drinks, mortadella focaccia and vibe; the catch is only ~45 seats and no reservations, so queues/WhatsApp waitlists are long after 7pm.",
+   "tips": "No bookings: arrive right at opening (5pm Wed) or join the waitlist first and hop elsewhere while you wait.",
+   "addressEn": "G/F, 11-15 Bridges Street, Central, Hong Kong",
+   "addressZh": "香港中環必列者士街11-15號地下",
+   "lat": 22.28385,
+   "lng": 114.15115,
+   "topBar": true,
+   "topRank": 0,
+   "award": "Asia's 50 Best Bars 2026 #3; World's 50 Best Bars 2025 #1; Tatler Best 20 Bars HK 2026",
+   "emoji": "🍸",
+   "id": "bar-leone",
+   "kinds": [
+    "Cocktails"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Maggie Choo's",
+   "area": "Central",
+   "section": "Top cocktail bars",
+   "cuisine": "Live music & cocktail bar (jazz, soul, funk)",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$",
+   "intro": "Ashley Sutton-designed 1930s-Shanghai speakeasy hidden behind an antique shop, built like an abandoned colonial bank vault, with live jazz/soul bands, DJs and a Thursday cabaret show.",
+   "order": [
+    "House signature cocktail from the seasonal menu"
+   ],
+   "reviews": "Raved about for theatre, design and live music rather than the cocktails; some complaints about door/reception attitude, a bag fee and needing a booking for cabaret seats.",
+   "tips": "Book ahead (+852 6250 6000 or via the website), dress smart; Wed 18 Nov has live music but the full cabaret is Thursdays 9:30pm.",
+   "addressEn": "G/F, Chinachem Hollywood Centre, 1-13 Hollywood Road, Central, Hong Kong",
+   "addressZh": "香港中環荷李活道1-13號華懋荷李活中心地下",
+   "lat": 22.28197,
+   "lng": 114.15441,
+   "topBar": true,
+   "topRank": 2,
+   "emoji": "🎷",
+   "id": "maggie-choo-s",
+   "kinds": [
+    "Jazz & live music",
+    "Cocktails"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Gokan",
+   "area": "Central",
+   "section": "Top cocktail bars",
+   "cuisine": "Japanese-inspired cocktail lounge",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$",
+   "intro": "Sleek Japanese lounge where drinks are ordered by taste (sweet, sour, spicy, bitter, savoury) and served on the rocks, strained or as a highball, plus izakaya bites and kakigori.",
+   "order": [
+    "Mapo Mary",
+    "Yuan Yang Vesper"
+   ],
+   "reviews": "Inventive, high-precision drinks and Hong Kong's fastest climber on the list; some reviews mention slow or rushed service when busy.",
+   "tips": "Book ahead for seats; standing tables available for a quick round.",
+   "addressEn": "G/F, 30 Ice House Street, Central, Hong Kong",
+   "addressZh": "香港中環雪廠街30號地下",
+   "lat": 22.28033,
+   "lng": 114.1564,
+   "topBar": true,
+   "topRank": 3,
+   "award": "Asia's 50 Best Bars 2026 #22; Tatler Best 20 Bars HK 2026",
+   "emoji": "🍸",
+   "id": "gokan",
+   "kinds": [
+    "Cocktails"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Argo",
+   "area": "Central",
+   "section": "Top cocktail bars",
+   "cuisine": "Hotel cocktail bar, botanical design",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$$",
+   "intro": "Four Seasons' plush, botanical-themed bar with harbour views and a globe-trotting menu; the 2026 'Argo Exploration' menu was built with Hong Kong craftsmen.",
+   "order": [
+    "Argo Martini",
+    "Rooty Slushy"
+   ],
+   "reviews": "Polished service and inventive drinks in a calm, glamorous room; pricier (HK$175-200) and more hotel-lounge than bar-hop buzz.",
+   "tips": "Bookable via OpenTable; closed Sundays, open 5pm-1am Wed; smart-casual.",
+   "addressEn": "Four Seasons Hotel Hong Kong, 8 Finance Street, Central, Hong Kong",
+   "addressZh": "香港中環金融街8號香港四季酒店",
+   "lat": 22.28662,
+   "lng": 114.15665,
+   "topBar": true,
+   "topRank": 5,
+   "award": "Asia's 50 Best Bars 2026 #37; World's 50 Best Bars 2025 #56; Tatler Best 20 Bars HK 2026",
+   "emoji": "🍸",
+   "id": "argo",
+   "kinds": [
+    "Cocktails"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Montana",
+   "area": "Central/Sheung Wan",
+   "section": "Top cocktail bars",
+   "cuisine": "Cuban/Miami-disco cocktail bar",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$",
+   "intro": "Bar Leone's Lorenzo Antinori and Sips' Simone Caporale's two-floor, neon-pink homage to Cuban cantinas and 1970s Miami disco, with a party soundtrack.",
+   "order": [
+    "El Presidente",
+    "Santa Marta Daiquiri"
+   ],
+   "reviews": "A debut Asia's 50 Best entry and the liveliest of the top bars; can get loud and crowded.",
+   "tips": "Open Tue-Sat from 6pm, so Wednesday works; pairs naturally with Bar Leone a block away.",
+   "addressEn": "108 Hollywood Road, Central, Hong Kong",
+   "addressZh": "香港中環荷李活道108號",
+   "lat": 22.28383,
+   "lng": 114.15087,
+   "topBar": true,
+   "topRank": 6,
+   "award": "Asia's 50 Best Bars 2026 #47; Tatler Best 20 Bars HK 2026",
+   "emoji": "🍸",
+   "id": "montana",
+   "kinds": [
+    "Cocktails"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Kinsman",
+   "area": "Soho",
+   "section": "Top cocktail bars",
+   "cuisine": "Cantonese-inspired cocktail bar",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$",
+   "intro": "Retro Cantonese cocktail bar reviving local liqueurs and rice wines; its 'A Tale of Chinatowns' menu won Asia's Best Cocktail Menu 2026.",
+   "order": [
+    "Any drink from 'A Tale of Chinatowns' menu"
+   ],
+   "reviews": "Praised for storytelling, local flavours and nostalgic HK decor; a compact room that fills on weekends.",
+   "tips": "Book ahead for a table; right in the Soho bar-hop zone.",
+   "addressEn": "G/F, 65 Peel Street, Central, Hong Kong",
+   "addressZh": "香港中環卑利街65號地下",
+   "lat": 22.28227,
+   "lng": 114.15216,
+   "topBar": true,
+   "topRank": 7,
+   "award": "Asia's 50 Best Bars 2026 Best Cocktail Menu Award; Tatler Best 20 Bars HK 2026",
+   "emoji": "🍸",
+   "id": "kinsman",
+   "kinds": [
+    "Cocktails"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Penicillin",
+   "area": "Central",
+   "section": "Top cocktail bars",
+   "cuisine": "Sustainable closed-loop cocktail bar",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$",
+   "intro": "Hong Kong's first closed-loop bar, with a fermentation 'Stinky Room' turning surplus ingredients into inventive ferment-driven cocktails in a lab-like basement.",
+   "order": [
+    "One Penicillin, One Tree",
+    "Seasonal ferment signature"
+   ],
+   "reviews": "Fun, inventive and on Asia's 50 Best every year since 2021; walk-in only, with ~15-minute queues on busy nights.",
+   "tips": "Walk-in only; open till 2am Mon-Sat, so good as a late stop.",
+   "addressEn": "LG/F, Amber Lodge, 23 Hollywood Road, Central, Hong Kong",
+   "addressZh": "香港中環荷李活道23號金珀苑地下低層",
+   "lat": 22.2821,
+   "lng": 114.15394,
+   "topBar": true,
+   "topRank": 8,
+   "award": "Asia's 50 Best Bars 2026 #49; Tatler Best 20 Bars HK 2026",
+   "emoji": "🍸",
+   "id": "penicillin",
+   "kinds": [
+    "Cocktails"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "The Opposites",
+   "area": "Central",
+   "section": "Top cocktail bars",
+   "cuisine": "Two-style cocktail bar (classic vs theatrical)",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$",
+   "intro": "Quinary founder Antonio Lai and Samuel Kwok split the menu into 'Balanced' and 'Theatrical', so you can taste two takes on the same drink.",
+   "order": [
+    "Scoop Me Up",
+    "Floating Taro"
+   ],
+   "reviews": "Biggest climber on the 51-100 list; playful and photogenic, walk-in only and fills fast.",
+   "tips": "Walk-in only; go early. Open to 1am Sun-Thu.",
+   "addressEn": "LG/F, Hilltop Plaza, 49 Hollywood Road, Central, Hong Kong",
+   "addressZh": "香港中環荷李活道49號鴻豐商業中心地下低層",
+   "lat": 22.28278,
+   "lng": 114.1531,
+   "topBar": true,
+   "topRank": 9,
+   "award": "Asia's 50 Best Bars 2026 #54 (51-100); Tatler Best 20 Bars HK 2026",
+   "emoji": "🍸",
+   "id": "the-opposites",
+   "kinds": [
+    "Cocktails"
+   ]
   },
   {
    "tab": "city",
