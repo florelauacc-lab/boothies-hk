@@ -9369,11 +9369,12 @@ window.HK = {
   {
    "title": "Did you know?",
    "items": [
+    "🇬🇧 Hong Kong was a British colony from 1842 until it was handed back to China on 1 July 1997. Today it's a Special Administrative Region under \"one country, two systems\".",
+    "🚗 That's why cars drive on the left, English is an official language, and Hong Kong has its own currency, passport and legal system.",
+    "💵 Three banks issue Hong Kong's banknotes (HSBC, Standard Chartered and Bank of China), so the same HK$100 note comes in three designs.",
     "🌸 Hong Kong (香港) means \"Fragrant Harbour\".",
     "🏙️ It has more skyscrapers than any other city, yet about 40% of its land is country park.",
-    "🚋 The ding ding trams have run since 1904 and are the world's largest double-decker tram fleet.",
-    "⛴️ The Star Ferry has crossed the harbour since 1888.",
-    "🐙 The Octopus card launched in 1997, years before tap-to-pay reached most countries."
+    "🚋 The ding ding trams have run since 1904 and are the world's largest double-decker tram fleet."
    ]
   }
  ]
