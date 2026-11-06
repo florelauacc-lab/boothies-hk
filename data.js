@@ -9370,7 +9370,7 @@ window.HK = {
   {
    "title": "Did you know?",
    "items": [
-    "🇬🇧 A British colony until 1997, which is why cars drive on the left and English signs are everywhere.",
+    "🇬🇧 A British colony until 1997, now part of China under \"one country, two systems\". It keeps its own currency, passport and laws, and cars still drive on the left.",
     "🌸 \"Hong Kong\" means \"Fragrant Harbour\".",
     "💵 Three different banks print the money, so your HK$100 notes won't all look the same.",
     "🏙️ More skyscrapers than any other city, yet 40% of the land is country park.",
