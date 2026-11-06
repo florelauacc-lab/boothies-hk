@@ -9374,7 +9374,6 @@ window.HK = {
     "🏙️ More skyscrapers than any other city on Earth, yet about 40% of the land is country park.",
     "🛗 The Central–Mid-Levels escalator is the world's longest outdoor covered escalator, about 800 m uphill.",
     "🚋 The ding ding trams are the world's largest double-decker tram fleet, running since 1904.",
-    "❤️ Hong Kongers have one of the longest life expectancies in the world.",
     "🌸 \"Hong Kong\" means \"Fragrant Harbour\"."
    ]
   }
