@@ -9372,8 +9372,10 @@ window.HK = {
    "items": [
     "🇬🇧 A British colony until 1997, which is why cars drive on the left and English signs are everywhere.",
     "🌸 \"Hong Kong\" means \"Fragrant Harbour\".",
+    "💵 Three different banks print the money, so your HK$100 notes won't all look the same.",
     "🏙️ More skyscrapers than any other city, yet 40% of the land is country park.",
-    "🚋 The ding ding trams have run since 1904. Sit upstairs at the front."
+    "🚋 The ding ding trams have run since 1904. Sit upstairs at the front.",
+    "⛴️ The Star Ferry has crossed the harbour since 1888, and it's still the cheapest great view in town."
    ]
   }
  ]
