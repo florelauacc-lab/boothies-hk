@@ -1,0 +1,5 @@
+# Only the site itself is published; research files and tooling stay private
+tools/
+.claude/
+README.md
+.env*
