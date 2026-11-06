@@ -2878,7 +2878,7 @@ window.HK = {
    "tips": "Tue–Thu to about 1am, Fri–Sat to 2–4am; check @yume.hkg before going; good pre-club stop on the Soho leg.",
    "addressZh": "中環荷李活道39-43號安樂樓地庫",
    "clubFix": true,
-   "emoji": "🍸",
+   "emoji": "🪩",
    "kinds": [
     "Clubbing"
    ]
