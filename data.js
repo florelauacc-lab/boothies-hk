@@ -854,28 +854,30 @@ window.HK = {
    "category": [
     "drinks"
    ],
-   "intro": "A Japanese-style 'jazz kissa' – a listening café by day and jazz bar by night, playing vinyl on a high-end sound system, with weekly live sets by local and international musicians. Run by musicians.",
+   "intro": "Hong Kong's only jazz kissa, with Tokyo-sourced jazz LPs on a superb hi-fi; renamed from Kind of Brew in Jan 2025.",
    "order": [
     "Coffee (咖啡) by day",
     "Whisky (威士忌) at night"
    ],
-   "reviews": "Reviewers love the music-first atmosphere, record collection and album requests; it's a quiet listening space rather than a party bar.",
+   "reviews": "Reviewers love the hi-fi and record selection; it is a quiet listening bar, not a party, and live sets are only occasional.",
    "group": "Listening-focused room – better for small groups; check the website for ticketed live shows.",
    "hours": "Tue–Sun 12pm–11:30pm, closed Monday (official site).",
    "status": "open",
    "phone": "6751 3493 (WhatsApp)",
    "openrice": "https://www.openrice.com/en/hongkong/r-coda-jazz-kissa-western-district-western-r894243",
-   "addressZh": "西營盤第一街112號地舖",
+   "addressZh": "西營盤第一街112號地下",
    "addressEn": "G/F, 106-112 First Street, Sai Ying Pun",
    "priceNote": "unknown; ticketed live shows listed on its website",
    "lat": 22.28651,
    "lng": 114.14049,
    "local": false,
    "id": "coda-jazz-kissa",
+   "tips": "Roughly noon–11:30pm, closed Mondays (check @kindofbrewhk / CODA's Facebook); a calm early-evening or wind-down stop.",
+   "clubFix": "live",
+   "emoji": "🎷",
    "kinds": [
     "Jazz & live music"
-   ],
-   "emoji": "🎷"
+   ]
   },
   {
    "tab": "saiwan",
@@ -2825,12 +2827,12 @@ window.HK = {
     "late-night"
    ],
    "price": "$$$$",
-   "intro": "An upscale rooftop club in the former CÉ LA VI space, with skyline views.",
+   "intro": "Space-themed rooftop club on the old CÉ LA VI site, with a sky deck over LKF and the Central skyline.",
    "order": [
     "Table/bottle service",
     "Rooftop views"
    ],
-   "reviews": "Few recent reviews (latest Trip.com review 2022).",
+   "reviews": "The view and setting are the draw; reviewers complain about pricey drinks (cocktails from about HK$100+) and uneven, commercial music.",
    "group": "Table bookings via Clubbable suit 10+. Opens 8pm. Recent operating status was not confirmed beyond listings, so check before going.",
    "status": "open",
    "phone": "+852 3619 4282",
@@ -2841,12 +2843,13 @@ window.HK = {
    "local": false,
    "id": "fayy",
    "boothies": true,
+   "tips": "Smart casual; weekend cover may apply and tables are advised on Fri/Sat; open Mon–Sat until about 4am; check Instagram for the current name/spelling (also listed as Faye).",
+   "addressZh": "中環德己立街30-32號加州大廈25-26樓",
+   "clubFix": true,
+   "emoji": "🪩",
    "kinds": [
-    "Rooftops & views",
     "Clubbing"
-   ],
-   "addressZh": "中西區德己立街32號加州大廈",
-   "emoji": "🪩"
+   ]
   },
   {
    "tab": "city",
@@ -2859,11 +2862,11 @@ window.HK = {
     "late-night"
    ],
    "price": "$$$",
-   "intro": "Opened October 2025 in the old Drop / Quality Goods Club basement: cocktails first, then DJs late at weekends.",
+   "intro": "The old Drop and Quality Goods club basement reborn in Oct 2025 as a moody cocktail lounge with late weekend parties.",
    "order": [
     "'Dream Is Destiny' origami fortune-teller cocktail menu"
    ],
-   "reviews": "New; reviewers like the neon décor and concept.",
+   "reviews": "Praised for its cocktails and booths; more a lounge than a dance club on weeknights, and hours vary between sources.",
    "group": "Booth seating; book. Tue–Thu 7pm–1am, Fri–Sat until about 4am.",
    "status": "open",
    "addressEn": "Central (Basement, On Lok House, 39–43 Hollywood Road)",
@@ -2872,11 +2875,13 @@ window.HK = {
    "mapsQuery": "Yume On Lok House 39 Hollywood Road Central",
    "local": false,
    "id": "yume",
+   "tips": "Tue–Thu to about 1am, Fri–Sat to 2–4am; check @yume.hkg before going; good pre-club stop on the Soho leg.",
+   "addressZh": "中環荷李活道39-43號安樂樓地庫",
+   "clubFix": true,
+   "emoji": "🍸",
    "kinds": [
-    "Cocktails"
-   ],
-   "addressZh": "中西區荷李活道41號安樂樓",
-   "emoji": "🍸"
+    "Clubbing"
+   ]
   },
   {
    "tab": "city",
@@ -2926,12 +2931,12 @@ window.HK = {
     "late-night"
    ],
    "price": "$$$",
-   "intro": "A lounge on weekdays and a club at weekends, from the team behind the former Padre, with a tequila bar.",
+   "intro": "From the team behind the late Padre, a lounge by early evening and a club later, hosting labels like Defected in 2026.",
    "order": [
     "Table service",
     "Tequila bar"
    ],
-   "reviews": "Limited reviews; listings are inconsistent.",
+   "reviews": "Recent 2026 reviews call it lively and easy to find; some say the music and vibe are uneven on quieter nights.",
    "group": "Tables via Clubbable suit 10+. Wed–Thu 9pm–2am, Fri–Sat 9pm–4am; closed Sun–Tue.",
    "status": "open",
    "phone": "+852 2838 3301",
@@ -2941,12 +2946,13 @@ window.HK = {
    "mapsQuery": "The 33 Lounge Club 33 Wyndham Street Central",
    "local": false,
    "id": "the-33-thirty-three",
+   "tips": "Smart casual; book tables or guest list via Clubbable; same building as Cassio and Boomerang, so easy to combine.",
+   "addressZh": "中環雲咸街33號LKF TOWER 5樓",
+   "clubFix": true,
+   "emoji": "🪩",
    "kinds": [
-    "Cocktails",
     "Clubbing"
-   ],
-   "addressZh": "中西區雲咸街33號LKF TOWER",
-   "emoji": "🪩"
+   ]
   },
   {
    "tab": "saiwan",
@@ -8098,6 +8104,335 @@ window.HK = {
   },
   {
    "tab": "city",
+   "name": "Dragon-i",
+   "area": "Central",
+   "section": "Clubbing",
+   "cuisine": "Iconic Asian-styled club, hip-hop/R&B/EDM plus guest house DJs",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$$",
+   "intro": "Hong Kong's most famous celebrity-and-models club since 2002, still booking international DJs in 2026.",
+   "order": [
+    "Midweek guest-DJ nights (several 2026 bookings fell on Wednesdays, e.g. 2 and 9 Sep)",
+    "Friday/Saturday main-room hip-hop and R&B"
+   ],
+   "reviews": "Loved for the glamour and the bird-cage room; complaints are strict, sometimes arbitrary door policy, pricey drinks and a crowd that can feel model-and-promoter heavy.",
+   "tips": "Strict dress code (collared shirt, smart shoes, no sportswear); book a table or guest list via Clubbable/Discotech; closed Tuesdays; check @dragonihk for the Wed 18 Nov line-up.",
+   "addressEn": "UG/F, The Centrium, 60 Wyndham Street, Central",
+   "addressZh": "中環雲咸街60號中央廣場UG樓",
+   "lat": 22.28056,
+   "lng": 114.15464,
+   "emoji": "🪩",
+   "clubFix": true,
+   "id": "dragon-i",
+   "kinds": [
+    "Clubbing"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Cassio",
+   "area": "Central",
+   "section": "Clubbing",
+   "cuisine": "Supper club and dance bar, soulful house, disco and Latin",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$",
+   "intro": "A grown-up Wyndham Street supper club that turns into a disco-and-house dance floor with a big terrace.",
+   "order": [
+    "Late-night soulful house and disco DJ sets",
+    "Terrace drinks (happy hour HK$60, 5–8pm Tue–Sat)"
+   ],
+   "reviews": "Praised as one of the most adult-friendly dance floors in Central; complaints are crowding after midnight and expensive cocktails outside happy hour.",
+   "tips": "Smart, elegant dress expected; dinner booking secures entry before the late rush; open Tue–Sat, so a natural stop on the Wed 18 Nov LKF crawl.",
+   "addressEn": "2/F, LKF Tower, 33 Wyndham Street, Central",
+   "addressZh": "中環雲咸街33號LKF TOWER 2樓",
+   "lat": 22.28042,
+   "lng": 114.15512,
+   "emoji": "🪩",
+   "clubFix": true,
+   "id": "cassio",
+   "kinds": [
+    "Clubbing"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "GOSSiP Cocktail Club",
+   "zh": "GOSSiP",
+   "area": "Central",
+   "section": "Clubbing",
+   "cuisine": "Cocktail bar-club hybrid, live music then R&B and hip-hop",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$",
+   "intro": "The Socio founders' Asian-mask-themed cocktail club, opened 2025, where serious drinks give way to a late dance floor.",
+   "order": [
+    "Tue/Wed live-music nights (good fit for Wed 18 Nov)",
+    "Thu–Sat DJ after midnight, R&B and hip-hop"
+   ],
+   "reviews": "Cocktails (e.g. Himalayan Tiger, Hannya, about HK$140) win praise; it is small, so it gets cramped and loud late on weekends.",
+   "tips": "Open Tue–Sat (to 2am Tue/Wed, 4:30am Fri/Sat), closed Sun–Mon; no published cover or dress code, so smart casual and book for groups.",
+   "addressEn": "3/F, FOCO, 48 Cochrane Street, Central",
+   "addressZh": "中環閣麟街48號FOCO 3樓",
+   "lat": 22.28226,
+   "lng": 114.154,
+   "emoji": "🪩",
+   "clubFix": true,
+   "id": "gossip-cocktail-club",
+   "kinds": [
+    "Clubbing"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "The Aubrey After Dark",
+   "zh": "The Aubrey（文華東方酒店）",
+   "area": "Central",
+   "section": "Clubbing",
+   "cuisine": "Hotel-bar dance night, soulful house and disco",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$$",
+   "intro": "Every Friday the Mandarin Oriental's glamorous 25th-floor izakaya bar becomes the city's chicest dance party.",
+   "order": [
+    "Friday After Dark from 10pm with resident and guest DJs",
+    "Japanese-style cocktails with harbour views"
+   ],
+   "reviews": "Widely rated the most sophisticated night out in town and spot-on for a 35–45 crowd; limited capacity and a strict door mean it sells out.",
+   "tips": "Fridays only (so Fri 20 Nov); tickets about HK$180 incl. a welcome drink via SevenRooms, book ahead; no shorts, torn jeans, singlets, flip-flops or sportswear.",
+   "addressEn": "25/F, Mandarin Oriental Hong Kong, 5 Connaught Road Central, Central",
+   "addressZh": "中環干諾道中5號文華東方酒店25樓",
+   "lat": 22.28174,
+   "lng": 114.15932,
+   "emoji": "🪩",
+   "clubFix": true,
+   "id": "the-aubrey-after-dark",
+   "kinds": [
+    "Clubbing"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "BOOMERANG • The Illusionist",
+   "area": "Lan Kwai Fong",
+   "section": "Clubbing",
+   "cuisine": "Magic-themed big-room club, EDM and hip-hop",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$$$",
+   "intro": "Hong Kong's first club on DJ Mag's Top 100 (#40 in 2025), mixing a magic-show theme with EDM.",
+   "order": [
+    "Weekend EDM headliners",
+    "VIP booth or bottle package for a group"
+   ],
+   "reviews": "High energy and often packed; it skews younger and louder than our group, and a 2023 brawl at the venue made the news.",
+   "tips": "On weekends entry may be limited to bottle/booth bookings or invitation; dress smart; best as a late add-on rather than the main stop for a 35–45 crowd.",
+   "addressEn": "LG/F, LKF Tower, 55 D'Aguilar Street, Central",
+   "addressZh": "中環德己立街55號LKF TOWER地下低層",
+   "lat": 22.28042,
+   "lng": 114.15512,
+   "emoji": "🪩",
+   "clubFix": true,
+   "id": "boomerang-the-illusionist",
+   "kinds": [
+    "Clubbing"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Oma",
+   "area": "Central",
+   "section": "Clubbing",
+   "cuisine": "Intimate underground club, house and techno",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$",
+   "intro": "A petite basement club with a Funktion-One rig for people who care more about the DJ than the bottle service.",
+   "order": [
+    "Friday/Saturday house and techno nights (run until 7am)",
+    "Sunday sessions, often busy"
+   ],
+   "reviews": "Music fans rate the sound highly; it is small, dark and very late, so not for anyone wanting a glamorous scene.",
+   "tips": "Open roughly Wed–Sun; buy tickets on RA; casual-smart dress is fine; check the line-up at omahongkong.com.",
+   "addressEn": "LB/F, Harilela House, 79 Wyndham Street, Central",
+   "addressZh": "中環雲咸街79號夏利里拉行地庫低層",
+   "lat": 22.28187,
+   "lng": 114.15465,
+   "emoji": "🪩",
+   "clubFix": true,
+   "id": "oma",
+   "kinds": [
+    "Clubbing"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "宀 Club (Mihn)",
+   "zh": "宀 Club",
+   "area": "Sheung Wan",
+   "section": "Clubbing",
+   "cuisine": "Underground electronic deep-listening room",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$",
+   "intro": "A cult, roughly 100-capacity electronic club with a Funktion-One system and a strict no-photo policy.",
+   "order": [
+    "Curated guest-DJ nights (check RA)",
+    "Deep house/techno listening sessions"
+   ],
+   "reviews": "Electronic music fans call it the best sound in town; it is tiny, has a slow lift, and doesn't open every night.",
+   "tips": "Only open on curated event nights, so check RA first; no photos; a short taxi from Central, best for the music lovers in the group.",
+   "addressEn": "4/F, Fung Woo Building, 279-281 Des Voeux Road Central, Sheung Wan",
+   "addressZh": "上環德輔道中279-281號豐和商業大廈4樓",
+   "lat": 22.28684,
+   "lng": 114.15154,
+   "emoji": "🪩",
+   "clubFix": true,
+   "id": "club-mihn",
+   "kinds": [
+    "Clubbing"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Joe Bananas",
+   "area": "Wan Chai",
+   "section": "Clubbing",
+   "cuisine": "Iconic late-night pub-club, party hits",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$",
+   "intro": "A Wan Chai institution for decades, the classic last stop when everything in Central has closed.",
+   "order": [
+    "Weekend dance floor running to 5–6am",
+    "Cheap-ish beers after 2am"
+   ],
+   "reviews": "Loved as a fun, unpretentious last stop; it gets sweaty, rowdy and touristy late at night.",
+   "tips": "Smart casual enforced at club hours; best Fri/Sat after 1am; 10 minutes by taxi back to Causeway Bay.",
+   "addressEn": "The Phoenix, 23 Luard Road, Wan Chai",
+   "addressZh": "灣仔盧押道23號THE PHOENIX",
+   "lat": 22.27873,
+   "lng": 114.1716,
+   "emoji": "🪩",
+   "clubFix": true,
+   "id": "joe-bananas",
+   "kinds": [
+    "Clubbing"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Carnegies",
+   "area": "Wan Chai",
+   "section": "Clubbing",
+   "cuisine": "Rock bar with bar-top dancing and live bands",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$",
+   "intro": "Lockhart Road's famous rock bar, where dancing on the bar is part of the tradition.",
+   "order": [
+    "Thu–Sat live cover bands",
+    "Sunday disco party"
+   ],
+   "reviews": "A riot with a group and full of nostalgia; it is loud, crowded and unrefined, which is the point.",
+   "tips": "No cover on most nights; casual dress is fine; best Thu–Sat after 11pm; close to Causeway Bay.",
+   "addressEn": "G/F, 53-55 Lockhart Road, Wan Chai",
+   "addressZh": "灣仔駱克道53-55號恆澤商業大廈地下",
+   "lat": 22.27833,
+   "lng": 114.17079,
+   "emoji": "🪩",
+   "clubFix": true,
+   "flags": [
+    "Check it's open first"
+   ],
+   "id": "carnegies",
+   "kinds": [
+    "Clubbing"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Chez Trente",
+   "zh": "卅間",
+   "area": "SoHo",
+   "section": "Clubbing",
+   "cuisine": "Live music, jazz club and art space in a 1950s tong lau",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$$",
+   "intro": "A hidden, living-room-style jazz bar where local musicians jam among art you can buy.",
+   "order": [
+    "Wednesday jazz jam (fits Wed 18 Nov)",
+    "Fri/Sat Living Room Concert, doors 8pm"
+   ],
+   "reviews": "Warm, unpretentious and full of locals; hard to find and tiny, with sources disagreeing on the exact schedule.",
+   "tips": "DM @chez.trente on Instagram before coming to reserve and confirm the night's programme; casual dress.",
+   "addressEn": "G/F, 6 Chung Wo Lane, Central",
+   "addressZh": "中環中和里6號地下",
+   "lat": 22.28285,
+   "lng": 114.15147,
+   "emoji": "🎷",
+   "clubFix": "live",
+   "id": "chez-trente",
+   "kinds": [
+    "Jazz & live music"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Visage One",
+   "area": "Central/Sheung Wan",
+   "section": "Clubbing",
+   "cuisine": "Live music, Saturday-night jazz in a hair salon",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "price": "$",
+   "intro": "A barber-owner's salon by day that hosts a cult, intimate jazz session on Saturday nights.",
+   "order": [
+    "Saturday jam about 8:30–11:30pm",
+    "A drink from the minibar (your ticket in)"
+   ],
+   "reviews": "A charming, very Hong Kong experience; the room is tiny and the owner will eject people who talk over the music.",
+   "tips": "Saturdays only (so Sat 21 Nov); arrive early for a seat; buy a drink or leave a donation; stay quiet during sets.",
+   "addressEn": "LG/F, Po Lung Building, 93 Hollywood Road, Central",
+   "addressZh": "中環荷李活道93號寶龍樓地下低層",
+   "lat": 22.28378,
+   "lng": 114.15221,
+   "emoji": "🎷",
+   "clubFix": "live",
+   "flags": [
+    "Check it's open first"
+   ],
+   "id": "visage-one",
+   "kinds": [
+    "Jazz & live music"
+   ]
+  },
+  {
+   "tab": "city",
    "name": "Afternoon tea at The Peninsula",
    "zh": "半島酒店大堂茶座",
    "area": "Tsim Sha Tsui",
@@ -8247,7 +8582,7 @@ window.HK = {
     [
      "5:30–6:30",
      "Statistics review",
-     "school"
+     "optional"
     ],
     [
      "6:30",
@@ -8280,7 +8615,7 @@ window.HK = {
     [
      "12:30–1:30",
      "Microeconomics review",
-     "school"
+     "optional"
     ],
     [
      "2:00–5:00",
@@ -8409,7 +8744,7 @@ window.HK = {
     [
      "12:30–1:30",
      "Microeconomics review",
-     "school"
+     "optional"
     ],
     [
      "2:00–5:00",
@@ -8419,7 +8754,7 @@ window.HK = {
     [
      "5:30–6:30",
      "Statistics review",
-     "school"
+     "optional"
     ],
     [
      "7:30–9:30",

@@ -436,11 +436,13 @@ for bi, x in enumerate(load("bars.json") or []):
 for x in load("clubs.json") or []:
     if x.get("lat") is None or str(x.get("status", "")).lower().startswith("closed"):
         continue
-    hit = next((p for p in places if p["tab"] in ("city", "saiwan") and norm(p["name"])[:6] == norm(x["name"])[:6]), None)
+    key = norm(x["name"].split("(")[0])
+    hit = next((p for p in places if p["tab"] in ("city", "saiwan") and key and (norm(p["name"]) == key or norm(p["name"].split("(")[0]) == key)), None)
     if hit:
         for k, v in (("intro", x.get("intro")), ("tips", x.get("tips")), ("reviews", x.get("reviews")), ("addressZh", x.get("address_zh"))):
             if clean(v): hit[k] = v
-        hit["kinds"] = ["Clubbing"]; hit["emoji"] = "🪩"
+        live = (x.get("cuisine") or "").lower().startswith("live music")
+        hit["clubFix"] = "live" if live else True; hit["emoji"] = "🎷" if live else "🪩"
         continue
     add({
         "tab": "city", "name": x["name"], "zh": x.get("name_zh") if x.get("name_zh") != x["name"] else None,
@@ -578,7 +580,7 @@ for p in places:
     if p["tab"] not in ("saiwan", "city") or p.get("emoji") in (None, "🥬") and p.get("veg"):
         if p["tab"] not in ("saiwan", "city"):
             continue
-    if p.get("section") in ("Coffee", "Sour fish"):
+    if p.get("section") in ("Coffee", "Sour fish") or p.get("clubFix"):
         continue  # these carry their own icon (☕ / 🐟)
     hay = f'{p.get("cuisine", "")} {p.get("section", "")} {p["name"]}'.lower()
     for rx, em in EMOJI:
