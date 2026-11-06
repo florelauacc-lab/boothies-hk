@@ -1,0 +1,575 @@
+{
+  "home": {
+    "campus": {
+      "lat": 22.2797,
+      "lng": 114.1259,
+      "address": "UChicago Francis and Rose Yuen Campus, Mount Davis, Kennedy Town"
+    },
+    "parklane": {
+      "lat": 22.2805,
+      "lng": 114.1868,
+      "address": "The Park Lane Hong Kong, 310 Gloucester Road, Causeway Bay"
+    }
+  },
+  "plan": [
+    {
+      "day": "Sat",
+      "date": "14 Nov",
+      "iso": "2026-11-14",
+      "slots": [
+        [
+          "3pm",
+          "Hotel check-in from 3pm",
+          "school"
+        ]
+      ]
+    },
+    {
+      "day": "Sun",
+      "date": "15 Nov",
+      "iso": "2026-11-15",
+      "slots": [
+        [
+          "All day",
+          "Meals on your own",
+          "school"
+        ],
+        [
+          "Lunch",
+          "Dim sum at Dim Sum Library (Pacific Place)",
+          "ours"
+        ]
+      ],
+      "go": {
+        "label": "Dim Sum Library",
+        "tab": "city",
+        "q": "Dim Sum Library"
+      }
+    },
+    {
+      "day": "Mon",
+      "date": "16 Nov",
+      "iso": "2026-11-16",
+      "slots": [
+        [
+          "8:00",
+          "Breakfast, Student Lounge",
+          "school"
+        ],
+        [
+          "9:30–11:00",
+          "Microeconomics midterm",
+          "school"
+        ],
+        [
+          "11:30–1:00",
+          "Welcome speech, orientation & lunch (Grand Hall)",
+          "school"
+        ],
+        [
+          "2:00–4:00",
+          "Becker Week Activity: dragon boating, Stanley",
+          "school"
+        ],
+        [
+          "Evening",
+          "A Smoking Affair: hotpot + karaoke",
+          "ours"
+        ]
+      ],
+      "go": {
+        "label": "Stanley",
+        "tab": "sights",
+        "where": "south"
+      },
+      "go2": {
+        "label": "A Smoking Affair",
+        "tab": "city",
+        "q": "Smoking Affair"
+      }
+    },
+    {
+      "day": "Tue",
+      "date": "17 Nov",
+      "iso": "2026-11-17",
+      "slots": [
+        [
+          "9:00–12:00",
+          "Microeconomics",
+          "school"
+        ],
+        [
+          "12:30–1:30",
+          "Heritage Tour (G/F Reception)",
+          "school"
+        ],
+        [
+          "2:00–5:00",
+          "Statistics",
+          "school"
+        ],
+        [
+          "5:30–6:30",
+          "Statistics review",
+          "school"
+        ],
+        [
+          "6:30",
+          "Boxed dinner, Student Lounge",
+          "school"
+        ]
+      ]
+    },
+    {
+      "day": "Wed",
+      "date": "18 Nov",
+      "iso": "2026-11-18",
+      "slots": [
+        [
+          "9:00–12:00",
+          "Microeconomics",
+          "school"
+        ],
+        [
+          "12:30–1:30",
+          "Microeconomics review",
+          "school"
+        ],
+        [
+          "2:00–5:00",
+          "Statistics",
+          "school"
+        ],
+        [
+          "6:00",
+          "Boxed dinner, Student Lounge",
+          "school"
+        ],
+        [
+          "Evening",
+          "Tram party, then bar hopping",
+          "ours"
+        ]
+      ],
+      "go": {
+        "label": "Bars",
+        "tab": "city",
+        "mood": "drinks"
+      }
+    },
+    {
+      "day": "Thu",
+      "date": "19 Nov",
+      "iso": "2026-11-19",
+      "slots": [
+        [
+          "Morning",
+          "Breakfast on your own",
+          "school"
+        ],
+        [
+          "10:00–11:30",
+          "AIHK talk (Grand Hall)",
+          "school"
+        ],
+        [
+          "12:00–2:00",
+          "Lunch (Grand Hall)",
+          "school"
+        ],
+        [
+          "2:00–5:00",
+          "Statistics",
+          "school"
+        ],
+        [
+          "Evening",
+          "Dinner: Peng Leng Jeng (Soho) or Peking Garden",
+          "ours"
+        ]
+      ],
+      "go": {
+        "label": "Dinner options",
+        "tab": "city",
+        "q": "Peng Leng"
+      }
+    },
+    {
+      "day": "Fri",
+      "date": "20 Nov",
+      "iso": "2026-11-20",
+      "slots": [
+        [
+          "9:00–12:00",
+          "Microeconomics",
+          "school"
+        ],
+        [
+          "12:00–2:00",
+          "HK theme lunch (Grand Hall)",
+          "school"
+        ],
+        [
+          "2:00–5:00",
+          "Statistics",
+          "school"
+        ],
+        [
+          "5:00",
+          "Linda Ginzel's Tropical Fruit Fair (Grand Hall)",
+          "school"
+        ],
+        [
+          "6:00",
+          "Boxed dinner, Student Lounge",
+          "school"
+        ]
+      ]
+    },
+    {
+      "day": "Sat",
+      "date": "21 Nov",
+      "iso": "2026-11-21",
+      "slots": [
+        [
+          "9:00–12:00",
+          "Microeconomics",
+          "school"
+        ],
+        [
+          "12:30–1:30",
+          "Microeconomics review",
+          "school"
+        ],
+        [
+          "2:00–5:00",
+          "Statistics",
+          "school"
+        ],
+        [
+          "5:30–6:30",
+          "Statistics review",
+          "school"
+        ],
+        [
+          "7:30–9:30",
+          "Closing dinner, Nanhai No. 2 (Causeway Bay)",
+          "school"
+        ]
+      ],
+      "go": {
+        "label": "Nanhai No. 2",
+        "tab": "city",
+        "q": "Nanhai"
+      }
+    },
+    {
+      "day": "Sun",
+      "date": "22 Nov",
+      "iso": "2026-11-22",
+      "slots": [
+        [
+          "All day",
+          "Free day",
+          "school"
+        ],
+        [
+          "Next day",
+          "Hotel check-out by 12pm on 23 Nov",
+          "school"
+        ]
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "title": "Survival kit",
+      "items": [
+        "💳 Contactless Visa or Mastercard works in most places, including the MTR, buses, the tram and most shops and restaurants.",
+        "🐙 An Octopus card (or Octopus in Apple Wallet) covers the rest: taxis, minibuses and small local spots.",
+        "🚕 Taking a taxi? Open any place and tap \"Show the driver\". It shows the name and address in Chinese, so just hand them your phone.",
+        "💵 Keep a little cash for cha chaan tengs and dai pai dongs.",
+        "🧭 Citymapper is the best app for getting around."
+      ]
+    }
+  ],
+  "add": [
+    {
+      "tab": "city",
+      "name": "Afternoon tea at The Peninsula",
+      "zh": "半島酒店大堂茶座",
+      "area": "Tsim Sha Tsui",
+      "cuisine": "Classic afternoon tea",
+      "category": [
+        "dessert",
+        "lunch"
+      ],
+      "emoji": "🫖",
+      "intro": "Tiered scones, finger sandwiches and a string quartet in the gilded lobby of Hong Kong's oldest hotel, opened in 1928. It's a quintessential colonial-era Hong Kong ritual.",
+      "funFact": "During the Second World War, the British governor surrendered Hong Kong to Japan at The Peninsula on Christmas Day 1941, in a room on the hotel's third floor.",
+      "tips": "Go mid-afternoon on a weekday and expect a queue. Check The Peninsula's website for current booking rules. Afterwards, walk five minutes to the Tsim Sha Tsui promenade for the skyline, and stay for the 8pm Symphony of Lights.",
+      "getting": "From the Park Lane: MTR from Causeway Bay to Tsim Sha Tsui (about 20 min), or take the Star Ferry from Wan Chai.",
+      "facts": [
+        [
+          "Where",
+          "The Lobby, The Peninsula"
+        ],
+        [
+          "Time",
+          "1.5–2 hrs"
+        ],
+        [
+          "Dress",
+          "Smart casual"
+        ]
+      ],
+      "lat": 22.2951,
+      "lng": 114.1718,
+      "mapsQuery": "The Lobby The Peninsula Hong Kong",
+      "url": "https://www.peninsula.com/en/hong-kong/hotel-fine-dining/the-lobby-afternoon-tea",
+      "picked": true,
+      "section": "HK classics"
+    }
+  ],
+  "patch": {
+    "Star Ferry": {
+      "essential": 1,
+      "essentialTitle": "Ride the Star Ferry",
+      "essentialWhy": "The best harbour view for a few dollars.",
+      "area": "Central or Wan Chai ↔ Tsim Sha Tsui",
+      "getting": "Two piers, both going to Tsim Sha Tsui. Central Pier 7 is easiest from Booth (taxi or MTR to Central, then a 10 min walk). Wan Chai Pier is easiest from the Park Lane (about 10 min by taxi).",
+      "tips": "Sit on the upper deck at dusk. Go over from Central or Wan Chai, walk the Tsim Sha Tsui promenade, then ride back after dark for the lit-up skyline.",
+      "addressZh": "中環天星碼頭（7號碼頭）／ 灣仔天星碼頭 ／ 尖沙咀天星碼頭",
+      "pins": [
+        {
+          "label": "Central Pier 7",
+          "zh": "中環天星碼頭（7號碼頭）",
+          "lat": 22.28704,
+          "lng": 114.16119
+        },
+        {
+          "label": "Wan Chai Pier",
+          "zh": "灣仔天星碼頭",
+          "lat": 22.2821,
+          "lng": 114.17603
+        },
+        {
+          "label": "Tsim Sha Tsui Pier (landing)",
+          "zh": "尖沙咀天星碼頭",
+          "lat": 22.29354,
+          "lng": 114.16799
+        }
+      ],
+      "routes": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "Victoria Peak & the Peak Tram": {
+      "essential": 2,
+      "essentialTitle": "See the skyline from the Peak",
+      "essentialWhy": "Go at sunset and stay for the lights."
+    },
+    "Ding Ding tram (Kennedy Town to Shau Kei Wan)": {
+      "essential": 3,
+      "essentialTitle": "Ride a ding ding tram",
+      "essentialWhy": "Top deck, front seat, from Kennedy Town."
+    },
+    "Maxim's Palace (City Hall)": {
+      "essential": 4,
+      "essentialTitle": "Yum cha (dim sum)",
+      "essentialWhy": "Pick dumplings off the trolleys."
+    },
+    "Kwan Kee Clay Pot Rice": {
+      "essential": 5,
+      "essentialTitle": "Claypot rice near Booth",
+      "essentialWhy": "Crispy-bottomed rice, a Michelin pick."
+    },
+    "Shun Kee Typhoon Shelter Seafood": {
+      "essential": 6,
+      "essentialTitle": "Dinner on a sampan",
+      "essentialWhy": "Garlic chilli crab on a boat."
+    },
+    "Lan Kwai Fong (LKF)": {
+      "essential": 7,
+      "essentialTitle": "A night out in LKF & Soho",
+      "essentialWhy": "Bar-hop up the hill."
+    },
+    "Afternoon tea at The Peninsula": {
+      "essential": 8,
+      "essentialTitle": "Afternoon tea at The Peninsula",
+      "essentialWhy": "Scones and a string quartet since 1928."
+    },
+    "Cha chaan teng breakfast (Mountain Road Cafe)": {
+      "tab": "saiwan",
+      "name_override": "Mountain Road Cafe",
+      "section": "HK classics",
+      "cuisine": "Cha chaan teng breakfast",
+      "category": [
+        "lunch"
+      ]
+    },
+    "Landmark (Central)": {
+      "category": [
+        "luxury",
+        "malls"
+      ]
+    },
+    "Pacific Place": {
+      "category": [
+        "luxury",
+        "malls"
+      ]
+    },
+    "IFC Mall": {
+      "category": [
+        "luxury",
+        "malls"
+      ]
+    },
+    "Lee Gardens": {
+      "category": [
+        "luxury",
+        "malls"
+      ]
+    },
+    "K11 MUSEA": {
+      "category": [
+        "luxury",
+        "design",
+        "malls"
+      ]
+    },
+    "Harbour City & Canton Road": {
+      "category": [
+        "luxury",
+        "malls"
+      ]
+    },
+    "Ying Kee Tea House (Johnston Road)": {
+      "category": [
+        "gifts",
+        "local"
+      ]
+    },
+    "PMQ (with Tai Kwun nearby)": {
+      "category": [
+        "gifts",
+        "design",
+        "local"
+      ]
+    },
+    "Stanley Market": {
+      "category": [
+        "gifts",
+        "local"
+      ]
+    },
+    "英皇 CEO Neway Karaoke": {
+      "name_override": "Neway CEO Karaoke"
+    },
+    "DarkSide": {
+      "section": "Jazz bar"
+    },
+    "Stanley & Repulse Bay": {
+      "category": [
+        "beach",
+        "views",
+        "walk",
+        "free"
+      ]
+    },
+    "Dragon's Back": {
+      "category": [
+        "moderate",
+        "views"
+      ]
+    },
+    "Violet Hill & The Twins (Wilson Trail Stage 1)": {
+      "category": [
+        "views",
+        "south"
+      ]
+    },
+    "Tai Tam Waterworks Heritage Trail": {
+      "category": [
+        "easy",
+        "south"
+      ]
+    }
+  },
+  "drop": [
+    "Central–Mid-Levels Escalator",
+    "Chow Sang Sang & the big HK jewellery chains (Hennessy Road)",
+    "Chow Sang Sang (Hennessy Road, Causeway Bay)",
+    "Chow Tai Fook Global Flagship (Canton Road)",
+    "Cooked-food-centre dinner: Smithfield, Kennedy Town",
+    "Fortress & Broadway (electronics)",
+    "Kau Kee",
+    "King Fook Jewellery (Central)",
+    "Lukfook Jewellery (Causeway Bay, 499 Hennessy Road)",
+    "Ronald Abram (Mandarin Oriental)",
+    "SOGO Causeway Bay",
+    "Sam's Tailor",
+    "Sasa & Mannings (beauty and pharmacy)",
+    "TSL Jewellery (Yee Wo Street, Causeway Bay)",
+    "The Twins (Wilson Trail Section 1)",
+    "Watches: brand boutiques & authorised dealers",
+    "Yuen Kee Dessert"
+  ],
+  "emoji": {
+    "Joy Tonight Grill": "🍢",
+    "Café Malacca": "🍛",
+    "Ping Pong 129 Gintonería": "🍸",
+    "CODA Jazz Kissa": "🎷",
+    "La Cave": "🍷",
+    "ThinkWine": "🍷",
+    "Terroirs by LQV": "🍷",
+    "CORKS Wine & Bar": "🍷",
+    "Samsen (Sheung Wan)": "🍜",
+    "Ăn Chơi": "🍲",
+    "Gold Star": "🍜",
+    "The Diplomat": "🍸",
+    "Ciclo": "🍸",
+    "Lounge Hakuba": "💨",
+    "SKYE Roofbar & Grill": "🌃",
+    "Terrace Boulud by Mandarin Oriental": "🌃",
+    "Felix (The Peninsula)": "🍸",
+    "Yume": "🍸",
+    "The Iron Fairies": "🍸",
+    "Aqua": "🌃",
+    "Hutong": "🌶️",
+    "Ozone (The Ritz-Carlton)": "🌃",
+    "Harbourside (Regent Hong Kong)": "🍽️",
+    "Madame Fù – Grand Café Chinois": "🥟",
+    "Sing Heung Yuen": "🍜",
+    "Kam Wah Cafe": "🍍",
+    "Magistracy Dining Room": "🍽️",
+    "Lock Cha Tea House (Hong Kong Park)": "🥟",
+    "Lock Cha Tea House (Tai Kwun)": "🥟",
+    "TREEHOUSE (Causeway Bay)": "🥗",
+    "TREEHOUSE (H Code, Central)": "🥗",
+    "Woodlands Indian Vegetarian Restaurant (Wan Chai)": "🍛",
+    "New Dim Siu Yi": "🥢",
+    "Sing Kee": "🥢",
+    "Tung Po Kitchen": "🥢",
+    "Nanhai No. 2": "🥢",
+    "Australia Dairy Company": "🍳",
+    "Goshaku": "🏮",
+    "Thai Zab Verr": "🌶️",
+    "Yeon Nam Dong": "🥘",
+    "Jeonpo Meat Shop": "🥩",
+    "Porterhouse": "🥩",
+    "Cardinal Point": "🌃",
+    "Salisterra": "🌃",
+    "Migas": "🌃",
+    "Chicken Pot (Smithfield Cooked Food Centre)": "🍲",
+    "Stanley Waterfront Promenade (Stanley Main Street)": "🌊"
+  }
+}

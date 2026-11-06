@@ -1,0 +1,380 @@
+[
+  {
+    "name": "Dim sum (yum cha)",
+    "zh": "點心（飲茶）",
+    "emoji": "🥟",
+    "what": "Small plates of steamed and fried dumplings, buns and rice rolls, shared over pots of tea, traditionally in the morning.",
+    "fun_fact": "When someone pours your tea, tap the table with two fingers to say thanks; legend says it began when the Qianlong Emperor's companions, travelling incognito, tapped fingers instead of bowing. Leave the teapot lid ajar to ask for a refill.",
+    "where": [
+      {
+        "place": "Sun Hing Restaurant",
+        "zh": "新興食家",
+        "address": "Shop C, G/F, Markfield Building, 8 Smithfield Road",
+        "area": "Kennedy Town",
+        "note": "Opens around 3am, closes around 4pm; go early. Trolley service and shared tables. Famous for the molten salted-egg custard bun (lau sa bao). Bring cash.",
+        "lat": 22.28296,
+        "lng": 114.12827
+      },
+      {
+        "place": "Luk Yu Tea House",
+        "zh": "陸羽茶室",
+        "address": "24-26 Stanley Street",
+        "area": "Central",
+        "note": "Historic old-school teahouse with white-jacketed waiters; listed in the 2026 Michelin Guide. Pricier than Sun Hing; cards accepted; 7am-10pm.",
+        "lat": 22.28248,
+        "lng": 114.1554
+      }
+    ],
+    "sources": [
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-sun-hing-restaurant.html",
+      "https://www.openrice.com/en/hongkong/r-sun-hing-restaurant-western-district-guangdong-dim-sum-r125594",
+      "https://www.atlasobscura.com/places/sun-hing-restaurant",
+      "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/luk-yu-tea-house",
+      "https://en.wikipedia.org/wiki/Yum_cha"
+    ]
+  },
+  {
+    "name": "Roast goose & char siu",
+    "zh": "燒鵝・叉燒",
+    "emoji": "🍖",
+    "what": "Cantonese roast meats: lacquered roast goose with crackly skin and sweet, sticky barbecued pork, served over rice or noodles.",
+    "fun_fact": "Char siu literally means 'fork roast', and its red colour traditionally came from fermented red bean curd and red yeast rice (many shops now use food colouring).",
+    "where": [
+      {
+        "place": "Kam's Roast Goose",
+        "zh": "甘牌燒鵝",
+        "address": "G/F, Po Wah Commercial Centre, 226 Hennessy Road",
+        "area": "Wan Chai",
+        "note": "One Michelin star (2026). Order roast goose (quarter or half) with rice or lai fun noodles. Only 30 seats, so expect a queue. Cards accepted; 11:30am-9:30pm.",
+        "lat": 22.2778,
+        "lng": 114.17556
+      },
+      {
+        "place": "Joy Hing Roasted Meat",
+        "zh": "再興燒臘飯店",
+        "address": "Block C, G/F, Chong Hing Building, 265-267 Hennessy Road",
+        "area": "Wan Chai",
+        "note": "Century-old shop famous for lean, sweet char siu; get char siu rice. Hours vary by source (OpenRice says Mon-Sat 10:30am-9pm, closed Sunday). Popular items sell out, so go early.",
+        "lat": 22.2782,
+        "lng": 114.17666
+      }
+    ],
+    "sources": [
+      "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/kam-s-roast-goose",
+      "https://www.timeout.com/hong-kong/restaurants/joy-hing-roasted-meat",
+      "https://www.openrice.com/en/hongkong/r-joy-hing-roasted-meat-wan-chai-guangdong-chinese-bbq-r1491",
+      "https://en.wikipedia.org/wiki/Joy_Hing's_Roasted_Meat",
+      "https://en.wikipedia.org/wiki/Char_siu"
+    ]
+  },
+  {
+    "name": "Egg tart",
+    "zh": "蛋撻",
+    "emoji": "🥧",
+    "what": "A small tart filled with warm, wobbly egg custard, in either a crumbly shortcrust or a flaky puff-pastry shell.",
+    "fun_fact": "Tai Cheong's tarts became famous after Chris Patten, Hong Kong's last British governor, called them the best egg tarts in the world; locals nicknamed them 'Fat Patten' egg tarts.",
+    "where": [
+      {
+        "place": "St. Lolan Bakery",
+        "zh": "聖羅蘭餅屋",
+        "address": "G/F, 118 Belcher's Street",
+        "area": "Kennedy Town",
+        "note": "Neighbourhood bakery near campus known for extra-flaky puff-pastry tarts; a pastry chef named it their favourite (Tatler). Buy them warm. Reportedly cash only and closed Sundays (unverified).",
+        "lat": 22.28237,
+        "lng": 114.12755
+      },
+      {
+        "place": "Tai Cheong Bakery",
+        "zh": "泰昌餅家",
+        "address": "G/F, 35 Lyndhurst Terrace",
+        "area": "Central",
+        "note": "The famous shortcrust 'Fat Patten' tart. Flagship since 1954; about 9:30am-7:30pm (2024 report).",
+        "lat": 22.28261,
+        "lng": 114.15362
+      }
+    ],
+    "sources": [
+      "https://www.tatlerasia.com/dining/st-lolan-bakery-hong-kong",
+      "https://www.tatlerasia.com/dining/food/best-egg-tarts-in-hong-kong-according-to-pastry-chefs",
+      "https://en.wikipedia.org/wiki/Lyndhurst_Terrace",
+      "https://www.openrice.com/en/hongkong/r-tai-cheong-bakery-central-hong-kong-style-bakery-r5522",
+      "https://www.hk01.com/18%E5%8D%80%E6%96%B0%E8%81%9E/1078197/"
+    ]
+  },
+  {
+    "name": "Pineapple bun with butter (bo lo yau)",
+    "zh": "菠蘿油",
+    "emoji": "🍍",
+    "what": "A soft, sweet bun with a crackly sugar-cookie crust, served warm and split open around a thick slab of cold butter.",
+    "fun_fact": "It contains no pineapple; the name comes from the checkered golden crust, which looks like pineapple skin. Hong Kong listed the pineapple bun as intangible cultural heritage in 2014.",
+    "where": [
+      {
+        "place": "Mountain Road Cafe",
+        "zh": "山道冰室",
+        "address": "Shops C & D, G/F, Sun On Building, 25 Hill Road",
+        "area": "Shek Tong Tsui",
+        "note": "Near HKU MTR exit B2, a short hop from campus. Buns are baked in-house; order the bo lo yau with an iced lemon tea. About 7am-9:30pm (sources differ).",
+        "lat": 22.28582,
+        "lng": 114.13542
+      },
+      {
+        "place": "Kam Fung Cafe",
+        "zh": "金鳳茶餐廳",
+        "address": "G/F, Spring Garden Mansion, 41 Spring Garden Lane",
+        "area": "Wan Chai",
+        "note": "Cha chaan teng opened in 1956. Warm bun with cold butter, plus its chicken pie and iced milk tea. Minimum order of one drink per person; about 7am-6:45pm.",
+        "lat": 22.27548,
+        "lng": 114.17259
+      }
+    ],
+    "sources": [
+      "https://aandmdiary.com/hk-eat-and-play/%E9%A6%99%E6%B8%AF%E7%BE%8E%E9%A3%9F%E6%83%85%E5%A0%B1-hk-restaurants/%E8%87%AA%E5%AE%B6%E7%83%98%E7%84%99%E6%96%B0%E9%AE%AE%E5%87%BA%E7%88%90-%E8%A5%BF%E7%92%B0%E5%B1%B1%E9%81%93%E5%86%B0%E5%AE%A4",
+      "https://www.tripadvisor.com/Restaurant_Review-g294217-d33233743-Reviews-Mountain_Road_Cafe-Hong_Kong.html",
+      "https://www.timeout.com/hong-kong/restaurants/kam-fung-cafe",
+      "https://wandou.tw/tea-restaurant/",
+      "https://en.wikipedia.org/wiki/Pineapple_bun"
+    ]
+  },
+  {
+    "name": "Hong Kong milk tea",
+    "zh": "港式奶茶",
+    "emoji": "🧋",
+    "what": "Strong black tea strained many times through a cloth bag and mixed with evaporated milk, so it's silky, rich and slightly bitter; order it hot or iced.",
+    "fun_fact": "It's nicknamed 'silk stocking' milk tea because the tea-stained cloth strainer looks like a woman's stocking. Hong Kong drinks an estimated 2.5 million cups a day, and the brewing technique was listed as intangible cultural heritage in 2017.",
+    "where": [
+      {
+        "place": "Lan Fong Yuen",
+        "zh": "蘭芳園",
+        "address": "2 Gage Street",
+        "area": "Central",
+        "note": "Credited with inventing silk-stocking milk tea; pair it with a pork chop bun. About 7:30am-6pm, closed Sundays. Its Sheung Wan branch has closed; this original shop is still open.",
+        "lat": 22.28261,
+        "lng": 114.15362
+      },
+      {
+        "place": "Kam Fung Cafe",
+        "zh": "金鳳茶餐廳",
+        "address": "G/F, Spring Garden Mansion, 41 Spring Garden Lane",
+        "area": "Wan Chai",
+        "note": "Order the iced milk tea, which is chilled without ice so it doesn't get watered down. Pair it with a pineapple bun.",
+        "lat": 22.27548,
+        "lng": 114.17259
+      }
+    ],
+    "sources": [
+      "https://hkexpatclub.com/lan-fong-yuen-hong-kong/",
+      "https://rosaroundtheworld.com/lan-fong-yuen/",
+      "https://www.xtremefoodies.com/asia-pacific/Hong%20Kong/review/Kam-Fung-Cafe/Kam-Fung-Cafe/8842_9101",
+      "https://en.wikipedia.org/wiki/Hong_Kong-style_milk_tea"
+    ]
+  },
+  {
+    "name": "Wonton noodles",
+    "zh": "雲吞麵",
+    "emoji": "🍜",
+    "what": "Springy thin egg noodles and plump shrimp-and-pork wontons in a clear, savoury broth; a small bowl is a classic snack.",
+    "fun_fact": "Good wonton makers wrap a little air into each dumpling so the thin wrapper trails behind it like a 'goldfish tail'.",
+    "where": [
+      {
+        "place": "Tsim Chai Kee Noodle",
+        "zh": "沾仔記",
+        "address": "98 Wellington Street",
+        "area": "Central",
+        "note": "Michelin Bib Gourmand (2026). Only three toppings (wontons, dace fish balls, sliced beef); get two or all three. Cash only; 11am-9:30pm; avoid the lunch rush.",
+        "lat": 22.28303,
+        "lng": 114.15447
+      },
+      {
+        "place": "Ho Hung Kee",
+        "zh": "何洪記",
+        "address": "Shops 1204-1205, 12/F, Hysan Place, 500 Hennessy Road",
+        "area": "Causeway Bay",
+        "note": "One Michelin star (2026). Founded in Wan Chai in the 1940s; now a smarter mall setting near the hotel. Cards accepted; 11am-10pm.",
+        "lat": 22.27979,
+        "lng": 114.18382
+      }
+    ],
+    "sources": [
+      "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/tsim-chai-kee-wellington-street",
+      "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/ho-hung-kee",
+      "https://guide.michelin.com/en/article/dining-in/recipe-wonton-noodle-mak-man-kee"
+    ]
+  },
+  {
+    "name": "Beef brisket noodles",
+    "zh": "牛腩麵",
+    "emoji": "🐄",
+    "what": "Slow-braised beef brisket and tendon over noodles, either in a clear beefy broth or a spiced curry sauce.",
+    "fun_fact": "Kau Kee on Gough Street has been serving brisket since the 1930s, and the queue is part of the experience.",
+    "where": [
+      {
+        "place": "Kau Kee Restaurant",
+        "zh": "九記牛腩",
+        "address": "21 Gough Street",
+        "area": "Central",
+        "note": "Michelin Bib Gourmand (2026). Brisket in clear broth, or the curry brisket; try the milk tea too. Cash only; 12:30-10:30pm, closed Sunday; shared tables.",
+        "lat": 22.28427,
+        "lng": 114.15251
+      },
+      {
+        "place": "Sister Wah",
+        "zh": "華姐清湯腩",
+        "address": "Shop A1, 13 Electric Road",
+        "area": "Tin Hau",
+        "note": "Michelin Bib Gourmand (2026), one MTR stop from Causeway Bay. Clear broth braised with over 10 herbs; get the noodle soup with brisket, tendon and tripe. No cards; 11am-10:45pm; only six tables.",
+        "lat": 22.28336,
+        "lng": 114.1916
+      }
+    ],
+    "sources": [
+      "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/kau-kee",
+      "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/sister-wah-tin-hau",
+      "https://guide.michelin.com/hk/en/best-of/best-beef-brisket-noodles-hong-kong"
+    ]
+  },
+  {
+    "name": "Claypot rice",
+    "zh": "煲仔飯",
+    "emoji": "🍲",
+    "what": "Rice cooked to order in an individual clay pot over a flame, topped with things like Chinese sausage or eel, finished with sweet soy sauce, and prized for its crispy bottom crust.",
+    "fun_fact": "The best part is the scorched rice crust at the bottom of the pot. Kwan Kee blends three types of rice for chew and fragrance and makes sure that crust is always perfectly scorched.",
+    "where": [
+      {
+        "place": "Kwan Kee Clay Pot Rice",
+        "zh": "坤記煲仔小菜",
+        "address": "Shop 1, G/F, Wo Yick Mansion, 263 Queen's Road West",
+        "area": "Sai Ying Pun",
+        "note": "Michelin Bib Gourmand (2026). Dinner only, 5-10pm; claypot rice takes time, so order it as soon as you sit down. The white eel pot is the favourite. Cash only, walk-in only, queues before opening.",
+        "lat": 22.28704,
+        "lng": 114.14301
+      }
+    ],
+    "sources": [
+      "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/kwan-kee-clay-pot-rice-queen-s-road-west",
+      "https://www.hellohongkong.com.hk/blog/kwan-kee-clay-pot-rice-queens-road-west"
+    ]
+  },
+  {
+    "name": "Egg waffle (gai daan jai)",
+    "zh": "雞蛋仔",
+    "emoji": "🧇",
+    "what": "A bubble-shaped waffle sheet, crisp outside and custardy-soft inside, made to order and eaten hot from a paper bag.",
+    "fun_fact": "Its origins are unknown. One story says post-war street hawkers bought cheap cracked eggs for the batter; the snack became a street staple from the 1950s, cooked over coal fires.",
+    "where": [
+      {
+        "place": "Master Low-key Food Shop",
+        "zh": "低調高手",
+        "address": "Shop A, G/F, Mayland Court, 1-7 Shelter Street",
+        "area": "Causeway Bay",
+        "note": "Causeway Bay branch (opened 2024) of the Shau Kei Wan favourite, a short walk from the hotel. Try the original first. Hours in 2024 were 11am-7pm, closed Monday; may have changed.",
+        "lat": 22.27937,
+        "lng": 114.18848
+      },
+      {
+        "place": "Lee Keung Kee North Point Egg Waffles",
+        "zh": "利強記北角雞蛋仔",
+        "address": "G/F, 492 King's Road",
+        "area": "North Point",
+        "note": "The original shop, opened in 1991 and named in Michelin's street-food picks (2015-2017). Original flavour only; about 7am-11pm. Near North Point MTR exit B3; expect a short queue.",
+        "lat": 22.29121,
+        "lng": 114.20162
+      }
+    ],
+    "sources": [
+      "https://www.afoodieworld.com/blog/2024/04/16/master-low-key-causeway-bay/",
+      "https://www.afoodieworld.com/blog/2026/09/16/best-egg-waffles-hong-kong/",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-lee-keung-kee.html",
+      "https://www.timeout.com/hong-kong/restaurants/lee-keung-kee-north-point-egg-waffles",
+      "https://en.wikipedia.org/wiki/Egg_waffle"
+    ]
+  },
+  {
+    "name": "Curry fish balls",
+    "zh": "咖喱魚蛋",
+    "emoji": "🍢",
+    "what": "Bouncy fried fish balls simmered in a mildly spicy yellow curry sauce, sold on skewers or in a cup as the classic street snack.",
+    "fun_fact": "Fish balls come from Chiu Chow cooking, where they were boiled white. In the 1950s-60s Hong Kong hawkers began frying them and dunking them in curry, a spice brought by Indian traders in colonial times.",
+    "where": [
+      {
+        "place": "Fishball Man (Sai Wan Ho)",
+        "zh": "魚蛋佬",
+        "address": "G/F, Tai On Building, 57-87 Shau Kei Wan Road",
+        "area": "Sai Wan Ho",
+        "note": "Island Line, about 4 stops east of Causeway Bay, in the Tai On Building snack arcade. Curry or the famous satay sauce. Evening to late night with irregular days off; the shop reportedly moved a couple of units along within the building in 2026 (possibly Shop A29B). Cash.",
+        "lat": 22.28279,
+        "lng": 114.22202
+      },
+      {
+        "place": "Fishball Man (To Kwa Wan)",
+        "zh": "魚蛋佬",
+        "address": "Shop B, G/F, 183 Ma Tau Wai Road",
+        "area": "To Kwa Wan",
+        "note": "Listed in the 2026 Michelin Guide (street food); the owner makes every sauce from scratch. Cash only; 2:30pm-2am. In Kowloon, so it's a trek.",
+        "lat": 22.31966,
+        "lng": 114.18771
+      }
+    ],
+    "sources": [
+      "https://guide.michelin.com/hk/en/article/features/bouncing-through-time-the-journey-iconic-fish-ball-hong-kong",
+      "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/fishball-man-to-kwa-wan",
+      "https://www.hk01.com/%E9%A3%9F%E7%8E%A9%E8%B2%B7/60254245/",
+      "https://www.openrice.com/en/hongkong/r-fishball-man-sai-wan-ho-hong-kong-style-r1148209"
+    ]
+  },
+  {
+    "name": "Typhoon-shelter crab",
+    "zh": "避風塘炒蟹",
+    "emoji": "🦀",
+    "what": "Whole crab wok-fried under a mountain of crispy golden garlic, chilli and black beans; messy, spicy and best shared.",
+    "fun_fact": "It was born in the 1960s-70s on boats in the Causeway Bay typhoon shelter. When the boat eateries lost their licences, the cooks moved ashore under the Canal Road Flyover, which is how it got the nickname 'under-the-bridge spicy crab'.",
+    "where": [
+      {
+        "place": "Under Bridge Spicy Crab",
+        "zh": "橋底辣蟹",
+        "address": "G/F & 1/F, Golden Jubilee House, 391 Lockhart Road",
+        "area": "Causeway Bay",
+        "note": "The namesake, open late. Crab is market price and expensive (HK$300-480+ reported), so confirm the price before ordering; ask for mild spice. Reviews mixed; hours unconfirmed.",
+        "lat": 22.27975,
+        "lng": 114.18
+      },
+      {
+        "place": "Tai Woo",
+        "zh": "太湖海鮮城",
+        "address": "9/F, Causeway Bay Plaza 2, 463-483 Lockhart Road",
+        "area": "Causeway Bay",
+        "note": "Michelin Bib Gourmand (2026); Michelin names its under-the-bridge spicy crab. Also known for salt-baked chicken. 8am-2am; cards accepted; takes bookings.",
+        "lat": 22.28052,
+        "lng": 114.1822
+      }
+    ],
+    "sources": [
+      "https://guide.michelin.com/hk/en/article/features/typhoon-shelter-crab-hong-kong-iconic-dish",
+      "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/tai-woo-causeway-bay",
+      "https://www.timeout.com/hong-kong/restaurants/under-bridge-spicy-crab",
+      "https://bobbytravel.tw/under-bridge-spicy-crab/"
+    ]
+  },
+  {
+    "name": "Mango pomelo sago",
+    "zh": "楊枝甘露",
+    "emoji": "🥭",
+    "what": "A chilled dessert soup of blended mango, coconut and evaporated milk, with tapioca pearls and bursts of pomelo.",
+    "fun_fact": "It's said to have been invented by Lei Garden in 1984 for its first Singapore branch. The Chinese name means 'willow branch manna', after the sweet dew the goddess Guanyin sprinkles from a willow branch.",
+    "where": [
+      {
+        "place": "Lei Garden (Wan Chai)",
+        "zh": "利苑酒家（灣仔）",
+        "address": "1/F, CNT Tower, 338 Hennessy Road",
+        "area": "Wan Chai",
+        "note": "Listed in the 2026 Michelin Guide; the group credited with creating the dessert. Have it for dessert after lunch or dinner. 11:30am-4pm and 6-10:30pm; bookings and cards accepted. Check it's on the menu that day.",
+        "lat": 22.27844,
+        "lng": 114.17876
+      }
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mango_pomelo_sago",
+      "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/lei-garden-wan-chai",
+      "https://www.localiiz.com/post/food-drink-best-mango-pomelo-sago-hong-kong"
+    ]
+  }
+]

@@ -1,0 +1,500 @@
+[
+  {
+    "name": "Australia Dairy Company",
+    "name_zh": "澳洲牛奶公司",
+    "area": "Jordan",
+    "cuisine": "Cha chaan teng (HK-style cafe)",
+    "category": [
+      "lunch"
+    ],
+    "price": "$",
+    "intro": "Hong Kong's most famous cha chaan teng, where locals and tourists queue on the pavement for silky scrambled eggs and steamed milk pudding. It is fast, loud and very Hong Kong.",
+    "fun_fact": "Its service is famously brisk. Staff seat you at shared tables, take your order within seconds and expect you to eat and leave quickly, and regulars treat that as part of the experience.",
+    "must_order": [
+      "Scrambled egg toast (炒蛋多士)",
+      "Steamed milk pudding, hot or cold (燉奶)",
+      "Macaroni soup with ham (火腿通粉)"
+    ],
+    "reviews": "Reviewers love the eggs and milk pudding but warn of long queues, gruff and rushed service, shared tables and cash-only payment.",
+    "tips": "Go before 9am or mid-afternoon to cut the queue. Know your order before you sit down (the breakfast set is the easy choice), bring cash and expect to be in and out within 20 minutes. Closed Thursdays.",
+    "hours": "About 7:30am-10pm (some listings say until 11pm); closed Thursdays",
+    "address_en": "G/F, 47-49 Parkes Street, Jordan, Kowloon",
+    "address_zh": "九龍佐敦白加士街47-49號地下",
+    "lat": 22.3048,
+    "lng": 114.1712,
+    "maps_query": "Australia Dairy Company 47 Parkes Street Jordan Hong Kong",
+    "status": "open"
+  },
+  {
+    "name": "Kam Wah Cafe",
+    "name_zh": "金華冰廳",
+    "area": "Prince Edward / Mong Kok",
+    "cuisine": "Cha chaan teng and bakery",
+    "category": [
+      "lunch"
+    ],
+    "price": "$",
+    "intro": "A Bute Street institution since 1973, widely named as one of the best places in the city for a pineapple bun with butter. The buns come out of the oven hot all day.",
+    "fun_fact": "A pineapple bun has no pineapple in it. The name comes from the crackled, golden sugar crust, which looks like pineapple skin.",
+    "must_order": [
+      "Pineapple bun with butter (菠蘿油)",
+      "HK-style milk tea (港式奶茶)",
+      "Egg tart (蛋撻)"
+    ],
+    "reviews": "Most reviewers rave about the hot bun and cold slab of butter, a few call it overhyped, and weekend mornings bring 10-30 minute queues.",
+    "tips": "Use the takeaway counter to skip the dine-in queue. Weekday mornings before 9am are quietest. Pay with cash or Octopus.",
+    "hours": "Daily from about 6:30am to 9pm-11pm (sources vary)",
+    "address_en": "G/F, 45-47 Bute Street, Prince Edward, Kowloon",
+    "address_zh": "九龍太子弼街45-47號地下",
+    "lat": 22.3229,
+    "lng": 114.1706,
+    "maps_query": "Kam Wah Cafe 47 Bute Street Prince Edward Hong Kong",
+    "status": "open"
+  },
+  {
+    "name": "Tai Cheong Bakery",
+    "name_zh": "泰昌餅家",
+    "area": "Central",
+    "cuisine": "Traditional Chinese bakery",
+    "category": [
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "A Central bakery dating to 1954 and the city's best-known name for egg tarts. They have a buttery, cookie-like shortcrust and wobbly custard, and you eat them warm on the pavement.",
+    "fun_fact": "Hong Kong's last British governor, Chris Patten, was photographed eating its egg tarts so often that locals nicknamed them 'Fat Patten' egg tarts (肥彭蛋撻).",
+    "must_order": [
+      "Egg tart (蛋撻)",
+      "Sugar puff / sa yung doughnut (沙翁)"
+    ],
+    "reviews": "Fans love the smooth, not-too-sweet custard and shortcrust, while some find it bland or pricey, and queues form for much of the day.",
+    "tips": "Takeaway only, so grab a warm tart and walk on to Lan Fong Yuen or the Mid-Levels Escalator nearby. Tarts are baked fresh until about 7pm.",
+    "hours": "Roughly 8am-8pm daily (check before going)",
+    "address_en": "G/F, 35 Lyndhurst Terrace, Central, Hong Kong",
+    "address_zh": "香港中環擺花街35號地下",
+    "lat": 22.2833,
+    "lng": 114.1543,
+    "maps_query": "Tai Cheong Bakery 35 Lyndhurst Terrace Central Hong Kong",
+    "status": "open"
+  },
+  {
+    "name": "Lan Fong Yuen",
+    "name_zh": "蘭芳園",
+    "area": "Central",
+    "cuisine": "Cha chaan teng (dai pai dong roots)",
+    "category": [
+      "lunch"
+    ],
+    "price": "$",
+    "intro": "It began as a street stall on steep Gage Street in the early 1950s and claims to have invented 'silk stocking' milk tea, the strong, smooth brew that is now a symbol of Hong Kong. Locals still squeeze into the tiny shop for tea and pork chop buns.",
+    "fun_fact": "The 'silk stocking' name comes from the long cloth tea strainer, which turns brown from years of use and looks like a pair of tights.",
+    "must_order": [
+      "Silk-stocking milk tea (絲襪奶茶)",
+      "Pork chop bun (豬扒包)",
+      "Instant noodles with chicken and scallion (葱油雞扒撈丁)"
+    ],
+    "reviews": "Reviewers call it a must for the milk tea and atmosphere, though some find the tea unremarkable, and it is cramped and rushed with long queues at peak times.",
+    "tips": "Go mid-morning or around 3pm, after the lunch crowd. Order milk tea plus one pork chop bun. Closed Sundays.",
+    "hours": "About 7:30am-6pm Mon-Sat; closed Sundays",
+    "address_en": "2 Gage Street, Central, Hong Kong",
+    "address_zh": "香港中環結志街2號",
+    "lat": 22.2832,
+    "lng": 114.1546,
+    "maps_query": "Lan Fong Yuen 2 Gage Street Central Hong Kong",
+    "status": "open"
+  },
+  {
+    "name": "Mido Café",
+    "name_zh": "美都餐室",
+    "area": "Yau Ma Tei",
+    "cuisine": "Bing sutt / cha chaan teng",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "intro": "A 1950 corner cafe beside Temple Street, preserved almost unchanged with mosaic tiles, wooden booths and green window frames. It is one of the last original 'bing sutt' (ice room) cafes, and a favourite with filmmakers.",
+    "fun_fact": "It shut suddenly in July 2022 with only a note on the door, which caused a public outcry, and then reopened that October.",
+    "must_order": [
+      "Baked pork chop rice (焗豬扒飯)",
+      "French toast (西多士)",
+      "Red bean ice (紅豆冰)"
+    ],
+    "reviews": "People come for the 1950s interior and milk tea. Recent reviews say the food and service are only average, with some saying it is not as good as before.",
+    "tips": "Ask for a table upstairs by the windows overlooking the Tin Hau Temple. Combine it with the Temple Street night market, but arrive before about 7pm. Closed Wednesdays.",
+    "hours": "About 11am-7:30pm or 8pm; closed Wednesdays (sources vary)",
+    "address_en": "63 Temple Street, Yau Ma Tei, Kowloon (corner of Public Square Street)",
+    "address_zh": "九龍油麻地廟街63號",
+    "lat": 22.311,
+    "lng": 114.1703,
+    "maps_query": "Mido Cafe 63 Temple Street Yau Ma Tei Hong Kong",
+    "status": "open"
+  },
+  {
+    "name": "Kam's Roast Goose",
+    "name_zh": "甘牌燒鵝",
+    "area": "Wan Chai",
+    "cuisine": "Cantonese roast meats (siu mei)",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$$",
+    "intro": "A small, 30-seat Michelin-starred shop serving some of the city's most celebrated roast goose, with crisp skin and juicy meat. It is one of the cheapest Michelin-star meals anywhere.",
+    "fun_fact": "It was opened by the grandson of the founder of Yung Kee, the legendary roast goose restaurant in Central, and has held one Michelin star every year since 2015, including in 2026.",
+    "must_order": [
+      "Roast goose, ask for the leg/lower quarter (燒鵝髀)",
+      "Roast goose with lai fun rice noodles (燒鵝瀨粉)",
+      "Char siu (叉燒)"
+    ],
+    "reviews": "Most say the goose lives up to the star, a minority call it overrated for the price, and queues of 15-60+ minutes and quick turnover are the norm.",
+    "tips": "Arrive at opening (about 10:30am) or after 2pm on a weekday. Put your name down at the door; there is no booking. Order the goose quarter plus a rice or noodle plate. It is a short tram or taxi ride from Causeway Bay.",
+    "hours": "About 10:30am-9:30pm daily",
+    "address_en": "G/F, Po Wah Commercial Centre, 226 Hennessy Road, Wan Chai, Hong Kong",
+    "address_zh": "香港灣仔軒尼詩道226號寶華商業中心地下",
+    "lat": 22.2778,
+    "lng": 114.1745,
+    "maps_query": "Kam's Roast Goose 226 Hennessy Road Wan Chai",
+    "status": "open"
+  },
+  {
+    "name": "Yat Lok",
+    "name_zh": "一樂燒鵝",
+    "area": "Central",
+    "cuisine": "Cantonese roast meats (siu mei)",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$$",
+    "intro": "A cramped family shop running since the 1950s whose roast goose is often ranked the best in Hong Kong. The classic way to eat it is over silky lai fun rice noodles in broth.",
+    "fun_fact": "Each goose goes through more than 20 preparation steps with a secret marinade before it is roasted over charcoal.",
+    "must_order": [
+      "Roast goose leg with lai fun (燒鵝髀瀨粉)",
+      "Roast goose on rice (燒鵝飯)",
+      "Char siu (叉燒)"
+    ],
+    "reviews": "Reviewers often rate it slightly above Kam's for flavour (if a little greasy), but it is tiny and brusque, with shared tables, and the goose can sell out by mid-afternoon.",
+    "tips": "Go before 11am or after 2pm. Bring cash. Point at the goose leg with lai fun if in doubt. It is easy to pair with Tai Cheong egg tarts and Lan Fong Yuen nearby.",
+    "hours": "About 10am-9pm Mon-Sat; 10am-5:30pm Sun",
+    "address_en": "G/F, 34-38 Stanley Street, Central, Hong Kong",
+    "address_zh": "香港中環士丹利街34-38號地下",
+    "lat": 22.2826,
+    "lng": 114.1555,
+    "maps_query": "Yat Lok Restaurant 34-38 Stanley Street Central Hong Kong",
+    "status": "open"
+  },
+  {
+    "name": "Capital Café",
+    "name_zh": "華星冰室",
+    "area": "Wan Chai",
+    "cuisine": "Cha chaan teng (bing sutt revival)",
+    "category": [
+      "lunch"
+    ],
+    "price": "$",
+    "intro": "A modern retro cafe dedicated to the golden age of Cantopop, beloved for some of the creamiest scrambled eggs in the city. Its walls are lined with old record sleeves and celebrity photos.",
+    "fun_fact": "One of its co-owners is singer and actor Eddie Pang of the Cantopop group EO2, and the cafe's whole look is a tribute to 1980s-90s Hong Kong music.",
+    "must_order": [
+      "Scrambled egg sandwich or egg toast (炒蛋多士)",
+      "Pineapple bun with butter (菠蘿油)",
+      "Iced milk tea (凍奶茶)"
+    ],
+    "reviews": "Diners praise the scrambled eggs and milk tea, though overall ratings are middling and there are waits at peak meal times and on weekends.",
+    "tips": "It is an easy breakfast one MTR stop or a short tram ride from Causeway Bay. Go before 9am on weekdays. Order the breakfast set with eggs and toast.",
+    "hours": "About 7am-10pm (Sun to about 9pm); sources vary",
+    "address_en": "Shop B1, G/F, Kwong Sang Hong Building, 6 Heard Street, Wan Chai, Hong Kong",
+    "address_zh": "香港灣仔克街6號廣生行大廈地下B1號舖",
+    "lat": 22.277,
+    "lng": 114.1781,
+    "maps_query": "Capital Cafe 6 Heard Street Wan Chai",
+    "status": "open"
+  },
+  {
+    "name": "Joy Hing Roasted Meat",
+    "name_zh": "再興燒臘飯店",
+    "area": "Wan Chai",
+    "cuisine": "Cantonese roast meats (siu mei)",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "intro": "Claimed to be one of Hong Kong's oldest roast meat shops, with roots in late-Qing-dynasty Guangdong. It is a no-frills, shared-table local favourite for char siu.",
+    "fun_fact": "The business traces back to the late Qing dynasty in Guangdong and moved to Hong Kong in the early 1900s. It paused only during World War II.",
+    "must_order": [
+      "Char siu (barbecue pork) on rice (叉燒飯)",
+      "Crispy roast pork (燒肉)",
+      "Roast goose (燒鵝)"
+    ],
+    "reviews": "Reviewers say the char siu is among the best in town and great value (around HK$50 a plate), but expect shared tables, brusque service and a queue at lunch.",
+    "tips": "Point at the meats hanging in the window, or ask for a two-meat combo on rice (雙拼飯). Avoid the 12:30-1:30pm office rush. It is a 10-minute walk from Causeway Bay.",
+    "hours": "About 9:30am-10pm; some listings say closed Sundays (check)",
+    "address_en": "Flat C, G/F, Cheung Hing Building, 265-267 Hennessy Road, Wan Chai, Hong Kong",
+    "address_zh": "香港灣仔軒尼詩道265-267號祥興大廈地下C舖",
+    "lat": 22.2783,
+    "lng": 114.1758,
+    "maps_query": "Joy Hing Roasted Meat 265 Hennessy Road Wan Chai",
+    "status": "open"
+  },
+  {
+    "name": "Kai Kai Dessert",
+    "name_zh": "佳佳甜品",
+    "area": "Jordan (also Causeway Bay)",
+    "cuisine": "Traditional Cantonese desserts (tong sui)",
+    "category": [
+      "dessert",
+      "late-night"
+    ],
+    "price": "$",
+    "intro": "A 40-plus-year-old, Michelin-recommended sweet-soup shop where locals come late at night for hot black sesame soup and ginger soup with glutinous rice balls.",
+    "fun_fact": "Hong Kong newspapers describe it as the favourite dessert shop of film star Chow Yun-fat.",
+    "must_order": [
+      "Black sesame soup (芝麻糊)",
+      "Ginger soup with glutinous rice balls (薑汁湯丸)",
+      "Walnut soup (合桃露)"
+    ],
+    "reviews": "Reviewers love the stone-ground sesame and walnut soups, but there are queues at the Jordan shop, a small minimum charge (about HK$25 a person) and fast turnover.",
+    "tips": "It moved in September 2025 from Ning Po Street to a new main shop on Parkes Street, so ignore old addresses. The Causeway Bay branch (472 Lockhart Road) is close to The Park Lane and usually has a shorter queue. Great after dinner.",
+    "hours": "About 12pm-1am daily (check)",
+    "address_en": "G/F, 113-115 Parkes Street, Jordan, Kowloon (branch: G/F, 472 Lockhart Road, Causeway Bay)",
+    "address_zh": "九龍佐敦白加士街113-115號地舖（分店：銅鑼灣駱克道472號地下）",
+    "lat": 22.3064,
+    "lng": 114.171,
+    "maps_query": "Kai Kai Dessert 113 Parkes Street Jordan Hong Kong",
+    "status": "open"
+  },
+  {
+    "name": "Mak's Noodle",
+    "name_zh": "麥奀雲吞麵世家",
+    "area": "Central",
+    "cuisine": "Cantonese wonton noodles",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "intro": "A family wonton noodle dynasty serving small bowls of springy egg noodles and plump shrimp wontons in clear broth. It is the benchmark for this classic Hong Kong dish.",
+    "fun_fact": "The bowls are deliberately small, a tradition from its street-stall days, and a spoon sits under the noodles to keep them from going soggy in the broth.",
+    "must_order": [
+      "Wonton noodle soup (鮮蝦雲吞麵)",
+      "Beef brisket noodles (牛腩麵)",
+      "Blanched Chinese vegetables with oyster sauce (蠔油菜心)"
+    ],
+    "reviews": "People praise the delicate wontons and light broth but grumble that portions are tiny for the price, service is rushed and lunch queues are long.",
+    "tips": "Treat one bowl as a snack and order two or add brisket. Go before 12pm or after 2pm. Walk-ins only, with shared tables.",
+    "hours": "About 11am-9pm daily",
+    "address_en": "G/F, 77 Wellington Street, Central, Hong Kong",
+    "address_zh": "香港中環威靈頓街77號地下",
+    "lat": 22.2837,
+    "lng": 114.1546,
+    "maps_query": "Mak's Noodle 77 Wellington Street Central Hong Kong",
+    "status": "open"
+  },
+  {
+    "name": "Kung Lee Sugar Cane Juice",
+    "name_zh": "公利真料竹蔗水",
+    "area": "Central (SoHo)",
+    "cuisine": "Sugar cane juice and herbal tea",
+    "category": [
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "A 1948 shopfront on Hollywood Road that still presses chilled sugar cane juice the old way. It is a perfect cheap pick-me-up while exploring SoHo and the Escalator.",
+    "fun_fact": "The cane is peeled and steamed before being pressed in an antique juicer, and the shop has barely changed since the 1940s.",
+    "must_order": [
+      "Sugar cane juice (竹蔗水)",
+      "Sugar cane jelly/pudding (蔗汁糕)",
+      "Herbal tea (涼茶)"
+    ],
+    "reviews": "Most find it refreshing and nostalgic, some say it is too sweet or weak, and it is cash only.",
+    "tips": "Ask for it ice-cold. Drink a cup at the counter or buy a bottle to go. Closed Mondays. It is a 5-minute walk from Tai Cheong and Lan Fong Yuen.",
+    "hours": "About 11am-9pm Tue-Sun; closed Mondays",
+    "address_en": "G/F, 60 Hollywood Road, Central, Hong Kong",
+    "address_zh": "香港中環荷李活道60號地下",
+    "lat": 22.2829,
+    "lng": 114.1527,
+    "maps_query": "Kung Lee Sugar Cane Juice 60 Hollywood Road Central",
+    "status": "open"
+  },
+  {
+    "name": "Lee Keung Kee North Point Egg Waffles",
+    "name_zh": "利強記北角雞蛋仔",
+    "area": "North Point (also Tsim Sha Tsui)",
+    "cuisine": "Street snack: egg waffles",
+    "category": [
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "A hole-in-the-wall stall famous for egg waffles (gai daan jai), Hong Kong's bubble-shaped street snack, crisp outside and soft inside. It is a Michelin street-food pick.",
+    "fun_fact": "It refuses to do trendy flavours. It sells only the original egg waffle, which earned it a mention in the 2017 Michelin Guide Hong Kong & Macau.",
+    "must_order": [
+      "Original egg waffle (原味雞蛋仔)"
+    ],
+    "reviews": "Reviewers call it the textbook crisp-and-fluffy egg waffle, though queues of up to 20 minutes are common at peak times.",
+    "tips": "Eat it hot within minutes, standing on the street. Waffles start around 11am. North Point is a short MTR or tram ride east of Causeway Bay, and there is also a branch at 178 Nathan Road, Tsim Sha Tsui.",
+    "hours": "About 11am-11pm (not verified for 2026)",
+    "address_en": "G/F, 492 King's Road, North Point, Hong Kong (branch: G/F, 178 Nathan Road, Tsim Sha Tsui)",
+    "address_zh": "香港北角英皇道492號地下（分店：尖沙咀彌敦道178號地下）",
+    "lat": 22.2911,
+    "lng": 114.2003,
+    "maps_query": "Lee Keung Kee North Point Egg Waffles King's Road North Point",
+    "status": "open"
+  },
+  {
+    "name": "Sun Hing Restaurant",
+    "name_zh": "新興食家",
+    "area": "Kennedy Town",
+    "cuisine": "Old-school dim sum",
+    "category": [
+      "lunch",
+      "late-night"
+    ],
+    "price": "$",
+    "intro": "A no-frills Kennedy Town dim sum hall that opens at 3am for night-shift workers, clubbers and early risers. It is famous for oozing salted egg custard buns and is a few minutes' walk from class.",
+    "fun_fact": "It opens at 3am and closes mid-afternoon, so you will find taxi drivers, students coming off a night out and morning-walk retirees sharing tables.",
+    "must_order": [
+      "Molten salted egg custard bun (流沙包)",
+      "Char siu bao (叉燒包)",
+      "Shrimp dumplings (蝦餃)"
+    ],
+    "reviews": "Loved for its cheap, authentic dim sum and lava buns, but it is cramped and chaotic, there is no English service and it is cash only, with queues by late morning.",
+    "tips": "There is no menu to read. Grab what you want as staff call out fresh batches, then hand over your card to be stamped. Arrive before 11:30am, or go at dawn for the full experience.",
+    "hours": "About 3am-4pm daily",
+    "address_en": "Shop C, G/F, Markfield Building, 8 Smithfield Road, Kennedy Town, Hong Kong",
+    "address_zh": "香港堅尼地城士美菲路8號地下C舖",
+    "lat": 22.2823,
+    "lng": 114.129,
+    "maps_query": "Sun Hing Restaurant 8 Smithfield Road Kennedy Town",
+    "status": "open"
+  },
+  {
+    "name": "Kwan Kee Claypot Rice",
+    "name_zh": "坤記煲仔小菜",
+    "area": "Sai Ying Pun / Sai Wan",
+    "cuisine": "Cantonese claypot rice",
+    "category": [
+      "dinner"
+    ],
+    "price": "$$",
+    "intro": "A Michelin Bib Gourmand neighbourhood spot near class, serving rice cooked to order in claypots over a flame so the bottom becomes a crunchy crust. It is the definitive Hong Kong winter dinner.",
+    "fun_fact": "Claypot rice is a cold-weather tradition in Hong Kong, so a mid-November visit falls in claypot season. Here it is cooked only at dinner, and each pot takes about 20 minutes.",
+    "must_order": [
+      "White eel claypot rice (白鱔煲仔飯)",
+      "Chinese sausage and cured meat claypot rice (臘味煲仔飯)",
+      "Pan-fried oyster cakes (蠔餅)"
+    ],
+    "reviews": "Reviewers rave about the eel claypot and the crispy rice crust but report long waits (up to an hour), few seats, a minimum spend per person and cash only.",
+    "tips": "Order the claypot rice as soon as you sit down, since it takes 20+ minutes. Drizzle the sweet soy sauce over it, then scrape up the crust. Book by phone if you can, or arrive around 5:30pm. It is near Sai Ying Pun MTR Exit B1.",
+    "hours": "Claypot rice served at dinner, about 5pm-10pm (lunch hours unclear)",
+    "address_en": "Shop 1, G/F, Wo Yick Mansion, 263 Queen's Road West, Sai Ying Pun, Hong Kong",
+    "address_zh": "香港西營盤皇后大道西263號和益大廈地下1號舖",
+    "lat": 22.2864,
+    "lng": 114.1433,
+    "maps_query": "Kwan Kee Claypot Rice 263 Queen's Road West",
+    "status": "open"
+  },
+  {
+    "name": "Bakehouse",
+    "name_zh": "Bakehouse（銅鑼灣啟超道）",
+    "area": "Causeway Bay (flagship in Wan Chai)",
+    "cuisine": "Bakery: sourdough egg tarts",
+    "category": [
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "A modern bakery whose flaky sourdough egg tart has become Hong Kong's most-queued-for pastry of the past decade. It is a new-school answer to Tai Cheong's classic tart.",
+    "fun_fact": "It was founded by Swiss pastry chef Grégoire Michaud, formerly the executive pastry chef of the Four Seasons Hotel Hong Kong.",
+    "must_order": [
+      "Sourdough egg tart (酸種蛋撻)",
+      "Cinnamon or cardamom bun",
+      "Sourdough doughnut"
+    ],
+    "reviews": "Reviewers call the sourdough egg tart worth the hype, buttery and flaky, but warn of queues (shortest at the takeaway branches) and occasional sell-outs.",
+    "tips": "The Causeway Bay branch (16 Kai Chiu Road, takeaway only) is a short walk from The Park Lane, so buy a box for the morning. The Wan Chai flagship (14 Tai Wong Street East) is the only city branch with a dine-in menu (until 6pm). Other branches: SoHo (5 Staunton Street, Central, often the shortest queue), Tsim Sha Tsui (44 Hankow Road), Stanley and The Peak Tower.",
+    "hours": "Causeway Bay: 8am-9pm daily (Wan Chai: 8am-9pm, dine-in until 6pm)",
+    "address_en": "16 Kai Chiu Road, Causeway Bay, Hong Kong",
+    "address_zh": "香港銅鑼灣啟超道16號",
+    "lat": 22.2786,
+    "lng": 114.1845,
+    "maps_query": "Bakehouse 16 Kai Chiu Road Causeway Bay",
+    "status": "open"
+  },
+  {
+    "name": "Yuen Kee Dessert",
+    "name_zh": "源記甜品",
+    "area": "Sai Ying Pun / Sai Wan",
+    "cuisine": "Traditional Cantonese desserts (tong sui)",
+    "category": [
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "A family-run sweet-soup shop on steep Centre Street, a few minutes' walk from class. It serves old-fashioned hot dessert soups the way grandmothers made them.",
+    "fun_fact": "The family traces the business back to 1885 in Guangzhou. Its signature is an unusual herbal 'mulberry mistletoe tea' with lotus seeds and a whole boiled egg, a traditional health tonic.",
+    "must_order": [
+      "Mulberry mistletoe tea with lotus seeds and egg (桑寄生蓮子蛋茶)",
+      "Black sesame paste (芝麻糊)",
+      "Walnut paste (核桃露)"
+    ],
+    "reviews": "Locals love its old-school, not-too-sweet soups, though the shop is plain and small, staff speak little English and it is usually cash only.",
+    "tips": "Go after class or dinner in Sai Ying Pun. A half-and-half bowl of sesame and walnut (芝麻糊撈核桃露) lets you try both. It is near Sai Ying Pun MTR Exit A2.",
+    "hours": "Roughly midday to late evening (not verified for 2026, check before going)",
+    "address_en": "G/F, 32 Centre Street, Sai Ying Pun, Hong Kong",
+    "address_zh": "香港西營盤正街32號地下",
+    "lat": 22.2861,
+    "lng": 114.1425,
+    "maps_query": "Yuen Kee Dessert 32 Centre Street Sai Ying Pun",
+    "status": "unclear"
+  },
+  {
+    "name": "Yee Shun Milk Company",
+    "name_zh": "義順牛奶公司",
+    "area": "Causeway Bay (also Jordan, Mong Kok)",
+    "cuisine": "Milk puddings",
+    "category": [
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "A Macau-born milk pudding parlour famous for 'double-skin milk', a silky steamed milk custard with a skin on top. The Causeway Bay shop is a short walk from The Park Lane.",
+    "fun_fact": "Double-skin milk comes from Shunde in Guangdong. It is made by letting a skin form on boiled milk, pouring the milk off, mixing it with egg white and sugar, pouring it back under the first skin and steaming it, which forms a second skin.",
+    "must_order": [
+      "Double-skin milk, hot or cold (雙皮燉奶)",
+      "Ginger milk curd (薑汁撞奶)",
+      "Steamed egg custard (燉蛋)"
+    ],
+    "reviews": "Reviewers praise the smooth, not-too-sweet puddings, but it is a basic, cramped cafe with brusque service, shared tables and usually cash only.",
+    "tips": "An easy late-evening dessert near the hotel. Order cold double-skin milk if you want the classic version, or ginger milk curd for something unusual. The Jordan branch on Nathan Road is a few blocks from Australia Dairy Company.",
+    "hours": "Roughly midday to late night (not verified for 2026, check before going)",
+    "address_en": "G/F, 506 Lockhart Road, Causeway Bay, Hong Kong",
+    "address_zh": "香港銅鑼灣駱克道506號地下",
+    "lat": 22.2799,
+    "lng": 114.1827,
+    "maps_query": "Yee Shun Milk Company 506 Lockhart Road Causeway Bay",
+    "status": "unclear"
+  },
+  {
+    "name": "Kung Wo Beancurd Factory",
+    "name_zh": "公和荳品廠",
+    "area": "Sham Shui Po",
+    "cuisine": "Tofu pudding and soy milk",
+    "category": [
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "A decades-old tofu maker in working-class Sham Shui Po, with a preserved mid-century interior. Locals stop for warm tofu pudding, soy milk and fried tofu stuffed with fish paste.",
+    "fun_fact": "The classic way to eat its warm tofu pudding (dau fu fa) is with a spoonful of slab brown sugar (片糖) sprinkled on top, a combination Hong Kong families have eaten for generations.",
+    "must_order": [
+      "Tofu pudding with brown sugar (豆腐花)",
+      "Pan-fried tofu stuffed with fish paste (煎釀豆腐)",
+      "Soy milk (豆漿)"
+    ],
+    "reviews": "Reviewers call the tofu pudding silky and cheap, though the shop is crowded, the seating basic and it is usually cash only.",
+    "tips": "Pair it with a walk round Sham Shui Po's street markets. Order at the counter and pay first. It is 2-3 minutes from Sham Shui Po MTR. Go in daylight, since it closes in the evening.",
+    "hours": "Roughly early morning to evening (not verified for 2026, check before going)",
+    "address_en": "G/F, 118 Pei Ho Street, Sham Shui Po, Kowloon",
+    "address_zh": "九龍深水埗北河街118號地下",
+    "lat": 22.3277,
+    "lng": 114.1626,
+    "maps_query": "Kung Wo Beancurd Factory 118 Pei Ho Street Sham Shui Po",
+    "status": "unclear"
+  }
+]

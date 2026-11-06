@@ -1,0 +1,88 @@
+[
+  {
+    "name": "Twelve Flavors (Kennedy Town)",
+    "name_zh": "十二味 (堅尼地城)",
+    "area": "Kennedy Town (Sai Wan)",
+    "cuisine": "Sichuan sour fish (酸菜魚)",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$$",
+    "intro": "Sour fish is tender fish fillets simmered in a tangy, chilli-and-peppercorn broth with pickled mustard greens, and this local Sichuan chain is the closest well-reviewed option to the Booth campus.",
+    "must_order": [
+      "Sour fish with pickled cabbage (酸菜魚)",
+      "Classic spicy dry pot (經典香辣鍋)",
+      "Mapo tofu (麻婆豆腐)"
+    ],
+    "reviews": "Rated 4/5 on OpenRice, with praise for tender, mostly boneless fish and good-value lunch sets (about HK$80–100), though some reviewers found the odd bone, thin slices or over-salty dishes.",
+    "tips": "Choose your spice level when you order: 'mild' (小辣) still has a kick, and the lunch sets (sour fish about HK$78, with rice and a drink) are the cheapest way to try it.",
+    "address_en": "Shop 2-4, G/F, Pearl Court, 13 Belcher's Street, Kennedy Town",
+    "address_zh": "堅尼地城卑路乍街13號珍珠閣地下2-4號舖",
+    "lat": 22.28449,
+    "lng": 114.13107,
+    "status": "open",
+    "sources": [
+      "https://www.12flavors.com/hongkongislandbranches",
+      "https://www.openrice.com/zh/hongkong/r-%E5%8D%81%E4%BA%8C%E5%91%B3-%E8%A5%BF%E7%92%B0-%E5%B7%9D%E8%8F%9C-%E5%9B%9B%E5%B7%9D-r740313/reviews",
+      "https://www.hk01.com/%E6%95%99%E7%85%AE/189149/"
+    ]
+  },
+  {
+    "name": "Twelve Flavors (D'Aguilar Street, Central)",
+    "name_zh": "十二味 (中環德己立街)",
+    "area": "Central (Lan Kwai Fong)",
+    "cuisine": "Sichuan sour fish (酸菜魚)",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$$",
+    "intro": "The same chain's Lan Kwai Fong branch serves its signature sour fish, made with three kinds of pickled cabbage (Yunnan, Sichuan and Cantonese), so it is an easy stop before drinks in LKF.",
+    "must_order": [
+      "Sour fish with pickled cabbage (酸菜魚)",
+      "Mala spicy dry pot (麻辣香鍋)",
+      "Sichuan boiled beef (水煮牛肉)"
+    ],
+    "reviews": "OpenRice lists the sour fish and dry pot as this branch's most popular dishes (HK$101–200 a head), but its recent reviews could not be checked, and chain-wide complaints are about thin fish slices and saltiness.",
+    "tips": "Opening hours differ between sources (the official site says 11:00–22:00 daily), so call 6366 0242 before a late visit.",
+    "address_en": "G/F, The Plaza, 21 D'Aguilar Street, Central",
+    "address_zh": "中環德己立街21號地舖",
+    "lat": 22.28119,
+    "lng": 114.15546,
+    "status": "open",
+    "sources": [
+      "https://www.12flavors.com/hongkongislandbranches",
+      "https://www.openrice.com/en/hongkong/r-twelve-flavors-central-sichuan-r684588",
+      "https://lankwaifong.com/zh-hant/products/twelve-flavours"
+    ]
+  },
+  {
+    "name": "Bu Er Jiang Hu Cuisine",
+    "name_zh": "不二江湖菜",
+    "area": "Causeway Bay",
+    "cuisine": "Sichuan sour fish (酸菜魚)",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "intro": "A small, good-value Sichuan spot a five-minute walk from The Park Lane whose big pot of sour fish (about 25 fillets in a sour-spicy broth) is the house signature.",
+    "must_order": [
+      "Bu Er signature sour fish (不二酸菜魚)",
+      "Freshly fried crispy pork (現炸小酥肉)",
+      "Mapo tofu (麻婆豆腐)"
+    ],
+    "reviews": "Rated 4.5/5 on OpenRice with recent reviews (Oct 2026) praising generous portions and a balanced sour-spicy broth, though a few found the sour-fish rice set bland and note a 10% service charge.",
+    "tips": "The spice builds as the pot simmers, so pick 'mild' (微辣) or 'no spice' (唔辣) when ordering by QR code; lunch sets start around HK$48 with unlimited rice, and there is an upstairs room for groups of up to about 20.",
+    "address_en": "Shop 2, G/F, Giok San Building, 31-35 Tang Lung Street, Causeway Bay",
+    "address_zh": "銅鑼灣登龍街31-35號玉山大廈地下2號舖",
+    "lat": 22.27914,
+    "lng": 114.18228,
+    "status": "open",
+    "sources": [
+      "https://www.openrice.com/zh/hongkong/r-%E4%B8%8D%E4%BA%8C%E6%B1%9F%E6%B9%96%E8%8F%9C-%E9%8A%85%E9%91%BC%E7%81%A3-%E5%B7%9D%E8%8F%9C-%E5%9B%9B%E5%B7%9D-r851209/reviews",
+      "https://ufood.com.hk/restaurant/news/detail/20074760/"
+    ]
+  }
+]

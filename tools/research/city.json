@@ -1,0 +1,1431 @@
+[
+ {
+  "name": "Shun Kee Typhoon Shelter Seafood",
+  "name_zh": "順記避風塘海鮮",
+  "section": "EAT – Seafood / Tai Pai Dong",
+  "area": "Causeway Bay (typhoon shelter, ~10 min walk from MTR Exit D4)",
+  "cuisine": "Cantonese typhoon-shelter seafood on a sampan",
+  "category": [
+   "dinner"
+  ],
+  "price": "$$$",
+  "intro": "You are taken out to an old fishing boat moored in the Causeway Bay typhoon shelter and fed wok-fried seafood on board, a rare surviving piece of old Hong Kong.",
+  "must_order": [
+   "Typhoon shelter crab (deep-fried garlic and chilli)",
+   "Razor clams",
+   "Fried noodles"
+  ],
+  "reviews": "Reviewers love the setting and the garlic crab; common complaints are high prices (one diner paid ~HK$1,600 for 4), plastic cups and limited boats.",
+  "group_friendly": "Booking essential (call or WhatsApp; some guides say pre-order days ahead). There are few boats and they fill up. Seating per boat is unknown (a 2011 blog said about 2–10), so 12 on one boat is unconfirmed: ask whether they can do 12 or split you across two boats. BYO wine; Time Out says closed Wednesdays.",
+  "status": "open",
+  "maps_query": "Shun Kee Typhoon Shelter Seafood Causeway Bay",
+  "phone": "+852 8112 0075",
+  "lat": 22.28506,
+  "lng": 114.18608,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Tung Po Kitchen",
+  "name_zh": "東寶小館",
+  "section": "EAT – Seafood / Tai Pai Dong",
+  "area": "Wan Chai (2/F KONNECT, 303 Jaffe Road)",
+  "cuisine": "Rowdy Cantonese dai pai dong / seafood",
+  "category": [
+   "dinner",
+   "late-night"
+  ],
+  "price": "$$",
+  "intro": "A loud, famously fun Cantonese canteen where Cantopop blares and beer comes in bowls; it moved from North Point to Wan Chai in 2022.",
+  "must_order": [
+   "Squid-ink pasta",
+   "Beer drunk from bowls",
+   "Wok-fried seafood"
+  ],
+  "reviews": "Loved for its party atmosphere and showy service; some say the food matters less than the vibe and that it is very loud.",
+  "group_friendly": "Very good for 10+ with big round tables, but book ahead. The booking policy could not be confirmed.",
+  "status": "open",
+  "maps_query": "Tung Po Kitchen 303 Jaffe Road Wan Chai",
+  "lat": 22.28065,
+  "lng": 114.18157,
+  "coord_note": "approx"
+ },
+ {
+  "name": "New Dim Siu Yi",
+  "name_zh": "店小二",
+  "section": "EAT – Seafood / Tai Pai Dong",
+  "area": "North Point (G/F, 14 Tsat Tsz Mui Road; ~1 min from North Point MTR Exit B4)",
+  "cuisine": "Cantonese dai pai dong / private-kitchen stir-fries",
+  "category": [
+   "dinner",
+   "late-night"
+  ],
+  "price": "$$",
+  "intro": "A neighbourhood Cantonese spot in North Point for local-style seafood and stir-fries, away from the tourist circuit.",
+  "must_order": [
+   "Lotus-leaf steamed mussels",
+   "Pepper shrimp pot",
+   "Mandarin fish with udon"
+  ],
+  "reviews": "Praised for fresh seafood and generous dishes; some note inconsistent seasoning and oiliness.",
+  "group_friendly": "Open 17:30–23:30, cash only. Booking advised; capacity for 10+ unknown. (A separate 店小二(東寶) is in the Java Road cooked-food centre.)",
+  "status": "open",
+  "maps_query": "New Dim Siu Yi 14 Tsat Tsz Mui Road North Point",
+  "phone": "+852 2893 9393",
+  "lat": 22.29073,
+  "lng": 114.20114,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Sing Kee",
+  "name_zh": "盛記",
+  "section": "EAT – Seafood / Tai Pai Dong",
+  "area": "Central (Stanley Street)",
+  "cuisine": "Outdoor Cantonese dai pai dong",
+  "category": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "intro": "One of Central's last licensed open-air street-food stalls, serving wok-fried Cantonese dishes on folding tables in the street.",
+  "must_order": [
+   "Salt-and-pepper squid",
+   "Spare ribs",
+   "Stir-fried crab or clams"
+  ],
+  "reviews": "Fans praise the wok hei and the atmosphere; critics call it a tourist trap with hygiene issues and seafood that is not always fresh for the price.",
+  "group_friendly": "Outdoor tables can be pushed together for groups. Cash only. Open Mon–Sat 11:00–15:00 and 18:00–23:00.",
+  "status": "open",
+  "maps_query": "Sing Kee Dai Pai Dong Stanley Street Central",
+  "lat": 22.28354,
+  "lng": 114.15441
+ },
+ {
+  "name": "Lin Heung Lau",
+  "name_zh": "蓮香樓",
+  "section": "EAT – Dim Sum",
+  "area": "Sheung Wan (G/F–2/F Tung Ning Building, 249–253 Des Voeux Road Central)",
+  "cuisine": "Old-school trolley dim sum",
+  "category": [
+   "lunch",
+   "brunch"
+  ],
+  "price": "$",
+  "intro": "A 100-year-old teahouse where dim sum still comes round on trolleys and you grab what you want.",
+  "must_order": [
+   "Lotus-seed paste buns",
+   "Siu mai",
+   "Steamed chicken with rice in lotus leaf"
+  ],
+  "reviews": "Valued for authenticity and history; expect chaos, sharing tables and gruff service.",
+  "group_friendly": "Hectic at peak times; groups should arrive early or ask about bookings. It moved from Wellington Street, Central, in April–May 2026.",
+  "status": "open",
+  "maps_query": "Lin Heung Lau 249 Des Voeux Road Central Sheung Wan",
+  "lat": 22.28635,
+  "lng": 114.1524,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Luk Yu Tea House",
+  "name_zh": "陸羽茶室",
+  "section": "EAT – Dim Sum",
+  "area": "Central (24 Stanley Street)",
+  "cuisine": "Classic Cantonese dim sum teahouse",
+  "category": [
+   "lunch",
+   "brunch"
+  ],
+  "price": "$$$",
+  "intro": "Hong Kong's grand 1933 teahouse with ceiling fans, wood panels and waiters in white jackets, listed in the 2026 Michelin Guide.",
+  "must_order": [
+   "Crispy prawn toast",
+   "Steamed chicken bun",
+   "Almond soup with pork lung"
+  ],
+  "reviews": "Admired for its atmosphere and classic dim sum; frequent complaints are high prices and cold service toward non-regulars.",
+  "group_friendly": "Booking strongly recommended; there are large tables over several floors. Open from 07:00.",
+  "status": "open",
+  "maps_query": "Luk Yu Tea House 24 Stanley Street Central",
+  "lat": 22.28225,
+  "lng": 114.15558
+ },
+ {
+  "name": "Tim Ho Wan (Central)",
+  "name_zh": "添好運",
+  "section": "EAT – Dim Sum",
+  "area": "Central (Shop 12A, Level 1, Hong Kong Station / IFC Mall)",
+  "cuisine": "Budget dim sum",
+  "category": [
+   "lunch",
+   "brunch",
+   "dinner"
+  ],
+  "price": "$",
+  "intro": "The famous 'cheapest Michelin-starred dim sum' chain, a quick and inexpensive way to try classics.",
+  "must_order": [
+   "Baked BBQ pork buns",
+   "Steamed rice rolls",
+   "Har gow"
+  ],
+  "reviews": "Great value and reliable; complaints are queues (15+ min), rushed service and a shop that is hard to find inside the station.",
+  "group_friendly": "No bookings and a queue system. 10+ will likely be split across tables.",
+  "status": "open",
+  "maps_query": "Tim Ho Wan Hong Kong Station IFC Mall",
+  "lat": 22.2841,
+  "lng": 114.15892,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Maxim's Palace (City Hall)",
+  "name_zh": "美心皇宮 (大會堂)",
+  "section": "EAT – Dim Sum",
+  "area": "Central (2/F Low Block, City Hall, 5 Edinburgh Place)",
+  "cuisine": "Cantonese banquet-hall dim sum with trolleys",
+  "category": [
+   "lunch",
+   "brunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "intro": "A huge chandeliered banquet hall with harbour views, one of the last places with traditional dim sum trolleys.",
+  "must_order": [
+   "Har gow",
+   "Char siu bao",
+   "Egg tarts"
+  ],
+  "reviews": "Loved for the trolley experience and buzz; expect long waits at weekends and brusque service.",
+  "group_friendly": "Very good for 10+ with round tables. Queue numbers are issued from opening; reservations are possible (OpenTable lists it). No closure or renovation news found.",
+  "status": "open",
+  "maps_query": "Maxim's Palace City Hall Central",
+  "lat": 22.2819,
+  "lng": 114.1613,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Dim Sum Library",
+  "name_zh": "",
+  "section": "EAT – Dim Sum",
+  "area": "Admiralty (Shop 124, 1/F Pacific Place)",
+  "cuisine": "Modern dim sum and cocktails",
+  "category": [
+   "lunch",
+   "dinner",
+   "brunch",
+   "drinks"
+  ],
+  "price": "$$$",
+  "intro": "A stylish, modern take on dim sum with truffle twists and tea-based cocktails, in a mall right above Admiralty MTR.",
+  "must_order": [
+   "Black truffle har gow",
+   "Wagyu beef puffs",
+   "Tea-inspired cocktails"
+  ],
+  "reviews": "Reviews are mixed: some praise the creative dim sum and staff, others call it average for the price with slow service. It reopened after a renovation in spring 2026.",
+  "group_friendly": "Book ahead (SevenRooms or OpenTable); it is busy at peak times. Workable for groups.",
+  "status": "open",
+  "maps_query": "Dim Sum Library Pacific Place Admiralty",
+  "phone": "+852 3643 0088",
+  "lat": 22.278,
+  "lng": 114.16528,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Madame Fù – Grand Café Chinois",
+  "name_zh": "",
+  "section": "EAT – Dim Sum",
+  "area": "Central (Block 3, Tai Kwun, 10 Hollywood Road)",
+  "cuisine": "Modern Cantonese / dim sum / afternoon tea",
+  "category": [
+   "lunch",
+   "dinner",
+   "brunch",
+   "drinks"
+  ],
+  "price": "$$$",
+  "intro": "A glamorous Chinese café inside the restored Tai Kwun police compound, known for dim sum, afternoon tea and its veranda bar.",
+  "must_order": [
+   "Dim sum platter",
+   "Afternoon tea set",
+   "Cocktails on the veranda"
+  ],
+  "reviews": "Admired for its beautiful rooms; some say the food is pricey for what it is.",
+  "group_friendly": "Has private rooms and handles big groups well; booking needed.",
+  "status": "open",
+  "maps_query": "Madame Fu Grand Cafe Chinois Tai Kwun",
+  "phone": "+852 2114 2118",
+  "lat": 22.28116,
+  "lng": 114.15401,
+  "coord_note": "approx"
+ },
+ {
+  "name": "A Smoking Affair",
+  "name_zh": "去滾",
+  "section": "EAT – Hotpot",
+  "area": "Causeway Bay (27/F Soundwill Plaza II – Midtown)",
+  "cuisine": "Hong Kong hotpot with private karaoke rooms",
+  "category": [
+   "dinner",
+   "late-night"
+  ],
+  "price": "$$$",
+  "intro": "Hotpot in neon-lit, 1970s Nathan Road-style rooms where you can sing karaoke privately while you eat, plus an outdoor terrace.",
+  "must_order": [
+   "Signature chicken & fish maw broth",
+   "Hand-made meatballs",
+   "Karaoke room session"
+  ],
+  "reviews": "High ratings (4.8 on Tripadvisor) for the fun concept and broths; budget around HK$500–700 per person.",
+  "group_friendly": "Excellent for 10+: 5–7 karaoke VIP rooms. Book ahead. Open until 2am.",
+  "status": "open",
+  "maps_query": "A Smoking Affair Soundwill Plaza II Causeway Bay",
+  "phone": "+852 2543 8222",
+  "lat": 22.2792,
+  "lng": 114.1828,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Lau Haa Hot Pot Restaurant",
+  "name_zh": "樓下火鍋飯店",
+  "section": "EAT – Hotpot",
+  "area": "Causeway Bay (B/F & G/F, Block A, Lockhart House, 441 Lockhart Road)",
+  "cuisine": "Retro Hong Kong hotpot",
+  "category": [
+   "dinner",
+   "late-night"
+  ],
+  "price": "$$$",
+  "intro": "A basement hotpot joint dressed as a 1970s Hong Kong street, with neon signs and Cantopop.",
+  "must_order": [
+   "Chicken & fish maw soup base",
+   "Seafood platter",
+   "Hand-beaten meatballs"
+  ],
+  "reviews": "Big portions and great nostalgic décor; common complaints are steep prices and limited English.",
+  "group_friendly": "Gets crowded, so book (phone/WhatsApp) or arrive before 6pm. Open roughly 18:00–02:00.",
+  "status": "open",
+  "maps_query": "Lau Haa Hot Pot Lockhart House 441 Lockhart Road",
+  "phone": "+852 2214 9388",
+  "lat": 22.28033,
+  "lng": 114.18115
+ },
+ {
+  "name": "Kau Kee Restaurant",
+  "name_zh": "九記牛腩",
+  "section": "EAT – Local eats",
+  "area": "Central (21 Gough Street)",
+  "cuisine": "Beef brisket noodles",
+  "category": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$",
+  "intro": "A Michelin Bib Gourmand noodle shop famous for its beef brisket in clear or curry broth.",
+  "must_order": [
+   "Beef brisket e-fu noodles in clear broth",
+   "Curry beef tendon",
+   "Lemon tea"
+  ],
+  "reviews": "Outstanding brisket; complaints are 20–45 min queues, rushed and surly service, and cash only.",
+  "group_friendly": "Not for groups: shared tables and a 15-minute turnover. Go in 2–4s. Closed Sundays.",
+  "status": "open",
+  "maps_query": "Kau Kee Restaurant Gough Street Central",
+  "lat": 22.28423,
+  "lng": 114.15254
+ },
+ {
+  "name": "Mak An Kee Noodle (Chung Kee)",
+  "name_zh": "麥奀記(忠記)麵家",
+  "section": "EAT – Local eats",
+  "area": "Central/Sheung Wan border (G/F, 37 Wing Kut Street; ~2 min from Sheung Wan MTR Exit E1)",
+  "cuisine": "Wonton noodles",
+  "category": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$",
+  "intro": "A family branch of the famous Mak wonton dynasty, serving small bowls of springy noodles and shrimp wontons.",
+  "must_order": [
+   "Wonton noodle soup (細蓉)",
+   "Beef brisket noodles",
+   "Wontons"
+  ],
+  "reviews": "Liked for classic wonton noodles; portions are small and service is basic.",
+  "group_friendly": "Small and quick; not suitable for 10+. Open 10:30–20:00 (Sun to 19:00). Note: the Wellington Street shop is the separate Mak's Noodle (麥奀雲吞麵世家, 77 Wellington St).",
+  "status": "open",
+  "maps_query": "Mak An Kee Noodle 37 Wing Kut Street Central",
+  "lat": 22.28533,
+  "lng": 114.15425
+ },
+ {
+  "name": "Sing Heung Yuen",
+  "name_zh": "勝香園",
+  "section": "EAT – Local eats",
+  "area": "Central/Sheung Wan (2 Mee Lun Street, off Gough Street)",
+  "cuisine": "Outdoor dai pai dong cha chaan teng",
+  "category": [
+   "lunch",
+   "brunch"
+  ],
+  "price": "$",
+  "intro": "An open-air street stall famous for tomato-broth noodles and crispy buns with condensed milk or honey-lemon.",
+  "must_order": [
+   "Tomato soup macaroni/noodles with beef",
+   "Crispy bun with lemon & honey",
+   "Milk tea"
+  ],
+  "reviews": "Iconic atmosphere and tomato soup; some say the food has declined and that the appeal is mostly the setting.",
+  "group_friendly": "Lunch queues and shared stools, so 10+ will be split. Daytime only (about 8am–3:30pm), closed Sundays and public holidays.",
+  "status": "open",
+  "maps_query": "Sing Heung Yuen 2 Mee Lun Street Central",
+  "lat": 22.28412,
+  "lng": 114.15254
+ },
+ {
+  "name": "Yuk Kin Fast Food",
+  "name_zh": "郁鍵快餐",
+  "section": "EAT – Local eats",
+  "area": "Sheung Wan (G/F, Po Wan Building, 6 Tai Ping Shan Street)",
+  "cuisine": "Hong Kong-style fried rice / rice plates",
+  "category": [
+   "lunch"
+  ],
+  "price": "$",
+  "intro": "A no-frills, mostly outdoor neighbourhood stall known for huge plates of curry fried rice.",
+  "must_order": [
+   "Curry fried rice",
+   "Curry chicken wings",
+   "Pork chop with fried egg"
+  ],
+  "reviews": "Generous and cheap; no air-con and ratings are mixed (2.8–3.5 on aggregators).",
+  "group_friendly": "Small and casual; walk-in only. Roughly Mon–Sat 8am–4pm, closed Sundays.",
+  "status": "open",
+  "maps_query": "Yuk Kin Fast Food 6 Tai Ping Shan Street Sheung Wan",
+  "phone": "+852 2549 2505",
+  "lat": 22.28506,
+  "lng": 114.14803,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Tak Yu Restaurant",
+  "name_zh": "德如茶餐廳",
+  "section": "EAT – Local eats",
+  "area": "Wan Chai (G/F, 17–18 St Francis Yard)",
+  "cuisine": "Cha chaan teng (Hong Kong café)",
+  "category": [
+   "lunch",
+   "brunch"
+  ],
+  "price": "$",
+  "intro": "An old-school 30-year-old Hong Kong café on trendy St Francis Yard, good for milk tea and sandwiches.",
+  "must_order": [
+   "Hokkaido milk toast with scrambled eggs",
+   "Satay beef bun",
+   "Hong Kong milk tea"
+  ],
+  "reviews": "Cheap, nostalgic and tasty; occasional hygiene and service complaints.",
+  "group_friendly": "Small; groups will be split. Mon–Sat 8:00–18:00, closed Sundays.",
+  "status": "open",
+  "maps_query": "Tak Yu Restaurant St Francis Yard Wan Chai",
+  "phone": "+852 2528 0713",
+  "lat": 22.27618,
+  "lng": 114.16905,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Samsen (Sheung Wan)",
+  "name_zh": "泰館",
+  "section": "EAT – Thai",
+  "area": "Sheung Wan (G/F, 23 Jervois Street)",
+  "cuisine": "Thai street food",
+  "category": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "intro": "A buzzy Thai noodle shop famous for khao soi and wagyu boat noodles.",
+  "must_order": [
+   "Khao soi",
+   "Wagyu beef flat noodles / holy basil wagyu",
+   "Crab fried rice"
+  ],
+  "reviews": "Consistently great food; frequent complaint is 30+ minute waits.",
+  "group_friendly": "Reservations only for 6+ people, so book for a group; small parties must walk in.",
+  "status": "open",
+  "maps_query": "Samsen 23 Jervois Street Sheung Wan",
+  "lat": 22.28508,
+  "lng": 114.1523
+ },
+ {
+  "name": "Ăn Chơi",
+  "name_zh": "",
+  "section": "EAT – Vietnamese",
+  "area": "Sheung Wan (15–17 Mercer Street)",
+  "cuisine": "Vietnamese street food",
+  "category": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "intro": "A Michelin Bib Gourmand Saigonese café doing pho, bún bò Huế, bánh mì and egg coffee.",
+  "must_order": [
+   "Bún bò Huế",
+   "Chả cá Lã Vọng",
+   "Egg coffee"
+  ],
+  "reviews": "Strong reviews (4.3 on Tripadvisor); some say the bánh mì and pork quality are uneven.",
+  "group_friendly": "Lunch is walk-in only; dinner bookings are for 2–6 people, so 10+ would need to ask.",
+  "status": "open",
+  "maps_query": "An Choi 15 Mercer Street Sheung Wan",
+  "phone": "+852 5286 1517",
+  "lat": 22.28556,
+  "lng": 114.1519,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Jeonpo Meat Shop",
+  "name_zh": "",
+  "section": "EAT – Korean",
+  "area": "Central (G/F, Wellington Plaza, 56–58 Wellington St) and Wan Chai (Johnston Rd / Lun Fat St)",
+  "cuisine": "Korean BBQ",
+  "category": [
+   "dinner",
+   "lunch"
+  ],
+  "price": "$$",
+  "intro": "A lively Korean barbecue chain where staff grill pork belly and beef at your table.",
+  "must_order": [
+   "Pork belly",
+   "Marinated beef short rib",
+   "Steamed egg"
+  ],
+  "reviews": "Popular for good-value BBQ; expect smoke and noise. The Wan Chai address is listed inconsistently.",
+  "group_friendly": "Good for groups on multiple grills; book ahead.",
+  "status": "open",
+  "maps_query": "Jeonpo Meat Shop Wellington Street Central",
+  "lat": 22.28191,
+  "lng": 114.15525
+ },
+ {
+  "name": "Gold Star",
+  "name_zh": "金星",
+  "section": "EAT – Korean",
+  "area": "Sheung Wan (G/F, Cheong Sun Tower, 118 Wing Lok St) and Central (G/F, 50–52 Queen's Road Central)",
+  "cuisine": "Korean comfort food / naengmyeon",
+  "category": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "intro": "A newer Korean spot known for house-made Hamhung cold noodles and slow-cooked soups.",
+  "must_order": [
+   "Hamhung cold noodles",
+   "Short rib soup (galbitang)",
+   "Abalone samgyetang"
+  ],
+  "reviews": "Praised for fresh noodles and rich soups; queues at peak times.",
+  "group_friendly": "Booking recommended; Central branch is open 11:30–21:30 (+852 5664 7214). Capacity for 10+ unknown. Coordinates are for the Sheung Wan branch.",
+  "status": "open",
+  "maps_query": "Gold Star Korean 118 Wing Lok Street Sheung Wan",
+  "phone": "+852 9487 6737",
+  "lat": 22.28603,
+  "lng": 114.15234,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Sakaba Masaka",
+  "name_zh": "",
+  "section": "EAT – Japanese",
+  "area": "Central/Sheung Wan (G/F, 2 Shin Hing Street)",
+  "cuisine": "Hakata-style izakaya (sushi and kushiyaki)",
+  "category": [
+   "dinner",
+   "drinks"
+  ],
+  "price": "$$",
+  "intro": "A small, lively izakaya run by a Fukuoka-born owner, doing sushi, skewers and sake.",
+  "must_order": [
+   "Octopus with wasabi",
+   "Yakitori skewers",
+   "Sesame yellowtail (goma buri)"
+  ],
+  "reviews": "About 4.7 on Google, praised for value and friendly staff; queues are common.",
+  "group_friendly": "Small venue, so 10+ is unlikely without booking it out. Opens 3pm on weekdays, 1pm at weekends.",
+  "status": "open",
+  "maps_query": "Sakaba Masaka 2 Shin Hing Street Central",
+  "phone": "+852 6704 2570",
+  "lat": 22.28413,
+  "lng": 114.15211
+ },
+ {
+  "name": "Ichiran (Causeway Bay)",
+  "name_zh": "一蘭",
+  "section": "EAT – Japanese",
+  "area": "Causeway Bay (Shop F–G, G/F, Lockhart House Block A, 440 Jaffe Road)",
+  "cuisine": "Tonkotsu ramen",
+  "category": [
+   "late-night",
+   "dinner",
+   "lunch"
+  ],
+  "price": "$$",
+  "intro": "The Japanese chain where you eat tonkotsu ramen in a private booth and customise it on a paper form.",
+  "must_order": [
+   "Classic tonkotsu ramen",
+   "Extra noodles (kaedama)",
+   "Soft-boiled egg"
+  ],
+  "reviews": "Consistent and comforting; complaints are queues and that it is pricey for a chain.",
+  "group_friendly": "Solo booths, so groups sit apart. It is widely listed as 24 hours, but one source shows a gap overnight, so check.",
+  "status": "open",
+  "maps_query": "Ichiran Causeway Bay 440 Jaffe Road",
+  "phone": "+852 2152 4040",
+  "lat": 22.28048,
+  "lng": 114.18136
+ },
+ {
+  "name": "Pici",
+  "name_zh": "",
+  "section": "EAT – Italian",
+  "area": "Wan Chai (16 St Francis Yard) and Central/Soho (24–26 Aberdeen Street); 9 branches citywide",
+  "cuisine": "Fresh pasta bar",
+  "category": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "intro": "A casual, very popular fresh-pasta bar with handmade pasta at friendly prices.",
+  "must_order": [
+   "Pappardelle beef cheek ragù",
+   "Pici cacio e pepe",
+   "Tiramisu"
+  ],
+  "reviews": "Reliable and good value; small, cramped rooms and walk-in waits.",
+  "group_friendly": "Small rooms (Wan Chai has 56 seats); book for 10+. Coordinates are for the Wan Chai branch.",
+  "status": "open",
+  "maps_query": "Pici St Francis Yard Wan Chai",
+  "lat": 22.27617,
+  "lng": 114.16897
+ },
+ {
+  "name": "Trattoria Felino",
+  "name_zh": "",
+  "section": "EAT – Italian",
+  "area": "Wan Chai (Shops 3–4, G/F, Pao Yip Building, 1–7 Ship Street)",
+  "cuisine": "Italian trattoria",
+  "category": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$$",
+  "intro": "An independent, Michelin-listed trattoria run by an Italian–Spanish couple, cosy and personal.",
+  "must_order": [
+   "Handmade pasta of the day",
+   "Vitello tonnato",
+   "Tiramisu"
+  ],
+  "reviews": "Michelin-listed and well liked for warmth and cooking; dish details unknown.",
+  "group_friendly": "Small; book via SevenRooms or WhatsApp.",
+  "status": "open",
+  "maps_query": "Trattoria Felino Ship Street Wan Chai",
+  "phone": "+852 5697 4477",
+  "lat": 22.27635,
+  "lng": 114.17088
+ },
+ {
+  "name": "DIECI",
+  "name_zh": "",
+  "section": "EAT – Italian",
+  "area": "Central (Basement, 29–31 Gough Street)",
+  "cuisine": "Seasonal Italian osteria",
+  "category": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$$",
+  "intro": "A cosy new (2026) osteria with a rotating 10-dish monthly menu, praised by Bloomberg and Time Out.",
+  "must_order": [
+   "Sourdough with butter",
+   "Handmade pasta (e.g. tagliolini with clams and bottarga)",
+   "Roast chicken"
+  ],
+  "reviews": "Called a cosy gem by critics; hard to book, and one reviewer found no standout dish.",
+  "group_friendly": "Small basement; book well ahead via WhatsApp. Closed Mondays.",
+  "status": "open",
+  "maps_query": "DIECI 29 Gough Street Central",
+  "phone": "+852 9077 2629",
+  "lat": 22.28438,
+  "lng": 114.15237
+ },
+ {
+  "name": "Tabià",
+  "name_zh": "",
+  "section": "EAT – Italian",
+  "area": "Mid-Levels/Central (G/F, 55 Caine Road)",
+  "cuisine": "Northern Italian (Dolomites)",
+  "category": [
+   "lunch",
+   "dinner"
+  ],
+  "price": "$$",
+  "intro": "A rustic neighbourhood bistro by two brothers cooking mountain dishes from the Dolomites.",
+  "must_order": [
+   "Casunziei pasta with wild boar ragù",
+   "Braised beef cheek",
+   "Tiramisu"
+  ],
+  "reviews": "4.6/5, praised for warmth, value and desserts.",
+  "group_friendly": "Small; book via SevenRooms or phone. Closed Mondays.",
+  "status": "open",
+  "maps_query": "Tabia 55 Caine Road Hong Kong",
+  "phone": "+852 5596 9596",
+  "lat": 22.28098,
+  "lng": 114.1526
+ },
+ {
+  "name": "Pica Pica",
+  "name_zh": "",
+  "section": "EAT – Spanish",
+  "area": "Sheung Wan (G/F, Kai Tak Commercial Building, 317–321 Des Voeux Road Central)",
+  "cuisine": "Spanish tapas",
+  "category": [
+   "lunch",
+   "dinner",
+   "drinks"
+  ],
+  "price": "$$$",
+  "intro": "A lively tapas bar from an ex-BCN chef, best for sharing plates and paella.",
+  "must_order": [
+   "Black paella",
+   "Wagyu tartare on bone marrow",
+   "Sherry-barrel sangria"
+  ],
+  "reviews": "Consistently praised for tapas and value lunches; can be noisy.",
+  "group_friendly": "Takes bookings and suits family-style sharing for groups.",
+  "status": "open",
+  "maps_query": "Pica Pica 317 Des Voeux Road Central Sheung Wan",
+  "phone": "+852 2810 9880",
+  "lat": 22.28645,
+  "lng": 114.15269,
+  "coord_note": "approx"
+ },
+ {
+  "name": "La Paloma",
+  "name_zh": "",
+  "section": "EAT – Spanish",
+  "area": "Sai Ying Pun (1/F, SOHO 189, 189 Queen's Road West)",
+  "cuisine": "Spanish tapas, paella and wood-oven meats",
+  "category": [
+   "lunch",
+   "dinner",
+   "brunch"
+  ],
+  "price": "$$$",
+  "intro": "A long-running, spacious tapas restaurant known for paella and its weekend brunch.",
+  "must_order": [
+   "Paella",
+   "Suckling pig / oven-roasted meats",
+   "Churros"
+  ],
+  "reviews": "Said to have 'stood the test of time' for quality tapas; no 2026 closure found.",
+  "group_friendly": "Large space, good for 10+; book ahead.",
+  "status": "open",
+  "maps_query": "La Paloma 189 Queen's Road West Sai Ying Pun",
+  "phone": "+852 2291 6161",
+  "lat": 22.28807,
+  "lng": 114.14298,
+  "coord_note": "approx"
+ },
+ {
+  "name": "El Taquero",
+  "name_zh": "",
+  "section": "EAT – Mexican",
+  "area": "Wan Chai (Shops B–F, G/F, Yan King Court, 119 Queen's Road East)",
+  "cuisine": "Mexican tacos",
+  "category": [
+   "lunch",
+   "dinner",
+   "drinks"
+  ],
+  "price": "$$",
+  "intro": "A casual taqueria with al pastor carved off a trompo, house salsas and margaritas.",
+  "must_order": [
+   "Tacos al pastor",
+   "Guacamole",
+   "Chicken enchiladas"
+  ],
+  "reviews": "Fun and flavourful for most; some found it uninspired, and the toilet is outside the venue.",
+  "group_friendly": "Bookable online (Bistrochat) or by phone; casual and group-friendly. Look out for free-flow taco Mondays.",
+  "status": "open",
+  "maps_query": "El Taquero 119 Queen's Road East Wan Chai",
+  "phone": "+852 2811 1998",
+  "lat": 22.27563,
+  "lng": 114.17076,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Nanhai No. 2",
+  "name_zh": "南海二號",
+  "section": "EAT – Closing dinner venue",
+  "area": "Causeway Bay (12/F, World Trade Centre, 280 Gloucester Road)",
+  "cuisine": "Cantonese fine dining / dim sum",
+  "category": [
+   "dinner",
+   "lunch"
+  ],
+  "price": "$$$",
+  "intro": "An elegant Cantonese restaurant with Victoria Harbour views and décor themed on Admiral Zheng He's voyages.",
+  "must_order": [
+   "Jasmine-tea-smoked chicken",
+   "Crispy rice in lobster soup",
+   "Dim sum (lunch)"
+  ],
+  "reviews": "Rated about 4.2–4.6 on a small number of reviews, praised for views and food; little negative feedback found.",
+  "group_friendly": "Ideal for a closing dinner: banquet hall for about 150 and 4 private rooms. WhatsApp +852 6388 3631. Not to be confused with sister venue Nanhai No.1 (南海一號) at 30/F iSQUARE, Tsim Sha Tsui.",
+  "status": "open",
+  "maps_query": "Nanhai No. 2 World Trade Centre Causeway Bay",
+  "phone": "+852 2435 3088",
+  "lat": 22.28176,
+  "lng": 114.18406
+ },
+ {
+  "name": "001",
+  "name_zh": "",
+  "section": "DRINK – LKF/Soho bar hopping",
+  "area": "Central (Shop 101, 1/F, Block 10 & 13, Tai Kwun)",
+  "cuisine": "Speakeasy cocktail bar",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$$",
+  "intro": "Hong Kong's original hidden speakeasy, which moved from Graham Street into the Tai Kwun heritage compound in 2023.",
+  "must_order": [
+   "Classic cocktails (their motto is 'make the classics great again')",
+   "Blue Room vs Green Room vibe"
+  ],
+  "reviews": "Stylish rooms and well-made classics; the main complaint is that it is hard to find inside Tai Kwun.",
+  "group_friendly": "Book for groups; capacity for 10+ unknown.",
+  "status": "open",
+  "maps_query": "001 bar Tai Kwun Central",
+  "lat": 22.28116,
+  "lng": 114.15401,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Peel Street",
+  "name_zh": "卑利街",
+  "section": "DRINK – LKF/Soho bar hopping",
+  "area": "Central/Soho (between Hollywood Road and Caine Road, by the Mid-Levels escalator)",
+  "cuisine": "Street of bars",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$",
+  "intro": "A steep Soho street lined with small bars, ideal for walking from one bar to the next.",
+  "must_order": [
+   "Kinsman (Cantonese-spirit cocktails)",
+   "Bella Lee (Aperol Spritz)",
+   "Chi Chi Cham, Bourke's, Bambino, Paragon, Not 2 Sweet"
+  ],
+  "reviews": "Fun crawl with street-drinking spillover; weekends get crowded and the hill is steep, so wear comfortable shoes.",
+  "group_friendly": "Great for a large group roaming; individual bars are small.",
+  "status": "open",
+  "maps_query": "Peel Street Soho Central Hong Kong",
+  "lat": 22.28312,
+  "lng": 114.15311,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Mius",
+  "name_zh": "",
+  "section": "DRINK – LKF/Soho bar hopping",
+  "area": "Central/NoHo (29 Gough Street)",
+  "cuisine": "Neighbourhood cocktail bar",
+  "category": [
+   "drinks"
+  ],
+  "price": "$$$",
+  "intro": "Bartender Shelley Tai's bar, which entered Asia's 50 Best Bars 2026 at No. 36.",
+  "must_order": [
+   "Seasonal signature cocktails",
+   "Neighbourhood-bar vibe"
+  ],
+  "reviews": "Hugely popular; queues of 40+ before the 5pm opening on Saturdays.",
+  "group_friendly": "Queue or virtual contact-queue only; 10+ together is unrealistic, so go early in small groups.",
+  "status": "open",
+  "maps_query": "Mius bar 29 Gough Street Central",
+  "lat": 22.28438,
+  "lng": 114.15237
+ },
+ {
+  "name": "Draft Land HK",
+  "name_zh": "",
+  "section": "DRINK – LKF/Soho bar hopping",
+  "area": "Central (G/F, Parekh House, 63 Wyndham Street)",
+  "cuisine": "Cocktails on tap",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$",
+  "intro": "A Taiwanese bar pouring 40+ rotating cocktails from taps, quick and casual like a beer bar.",
+  "must_order": [
+   "Guk Bou",
+   "Oolong Tea Collins",
+   "Sample tasters"
+  ],
+  "reviews": "Fun, fast and well-priced cocktails; standing-room crowds at weekends.",
+  "group_friendly": "Casual and walk-in, OK for a big group to stand. Hours listed as 5pm to midnight or 2am.",
+  "status": "open",
+  "maps_query": "Draft Land 63 Wyndham Street Central",
+  "lat": 22.28137,
+  "lng": 114.15497
+ },
+ {
+  "name": "Fello",
+  "name_zh": "",
+  "section": "DRINK – LKF/Soho bar hopping",
+  "area": "Central (G/F & 1/F, Yu Yuet Lai Building, 43–55 Wyndham Street)",
+  "cuisine": "Self-serve cocktail bar",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$",
+  "intro": "Shelley Tai's (Mius) 2026 second bar, where you order at the counter and sit anywhere.",
+  "must_order": [
+   "Pineapple basil smash",
+   "Gyokuro melon punch",
+   "Sansho popcorn chicken"
+  ],
+  "reviews": "New and buzzy (Bloomberg, Time Out); cocktails at HK$100–130 are good value.",
+  "group_friendly": "Walk-in only, no reservations; free seating over two floors helps groups. Possibly closed Mon/Sun, so check.",
+  "status": "open",
+  "maps_query": "Fello bar 43 Wyndham Street Central",
+  "lat": 22.28094,
+  "lng": 114.15491
+ },
+ {
+  "name": "The Diplomat",
+  "name_zh": "",
+  "section": "DRINK – LKF/Soho bar hopping",
+  "area": "Central (LG/F, High Block, H Code, 45 Pottinger Street)",
+  "cuisine": "American cocktail bar",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$$",
+  "intro": "An American-style cocktail bar in the Tatler Best 20 Bars 2026, with a back room that has resident DJs.",
+  "must_order": [
+   "Irish coffee",
+   "The Diplomat burger",
+   "Midnight cookies"
+  ],
+  "reviews": "Praised for classics and the burger; can get packed.",
+  "group_friendly": "Book for groups. The back Social Club area suits a crowd.",
+  "status": "open",
+  "maps_query": "The Diplomat H Code 45 Pottinger Street Central",
+  "phone": "+852 3619 0302",
+  "lat": 22.28335,
+  "lng": 114.15596,
+  "coord_note": "approx"
+ },
+ {
+  "name": "The Savory Project",
+  "name_zh": "",
+  "section": "DRINK – LKF/Soho bar hopping",
+  "area": "Central/Soho (4 Staunton Street)",
+  "cuisine": "Savoury/umami cocktail bar",
+  "category": [
+   "drinks"
+  ],
+  "price": "$$$",
+  "intro": "An award-winning bar (Asia's 50 Best) from the COA team, making savoury cocktails such as a 'Thai Beef Salad'.",
+  "must_order": [
+   "Thai Beef Salad",
+   "Mala Punch"
+  ],
+  "reviews": "Inventive and highly ranked; small room fills fast.",
+  "group_friendly": "Small; 10+ is unlikely together. Closed Mondays per OpenRice.",
+  "status": "open",
+  "maps_query": "The Savory Project 4 Staunton Street Central",
+  "phone": "+852 2318 1588",
+  "lat": 22.28156,
+  "lng": 114.15319
+ },
+ {
+  "name": "Quinary",
+  "name_zh": "",
+  "section": "DRINK – LKF/Soho bar hopping",
+  "area": "Central/Soho (56–58 Hollywood Road)",
+  "cuisine": "Molecular cocktail bar",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$$",
+  "intro": "Hong Kong's pioneering molecular-mixology bar since 2012, still in the Tatler Best 20 Bars 2026.",
+  "must_order": [
+   "Earl Grey Caviar Martini",
+   "Multisensory theatrical cocktails"
+  ],
+  "reviews": "Iconic and creative; pricey, and crowded at peak times.",
+  "group_friendly": "Walk-ins only (Mon–Sat 5pm–1am, Sun to midnight), so it is hard for 10+.",
+  "status": "open",
+  "maps_query": "Quinary 56 Hollywood Road Central",
+  "phone": "+852 2851 3223",
+  "lat": 22.28273,
+  "lng": 114.15285
+ },
+ {
+  "name": "Ping Pong 129 Gintonería",
+  "name_zh": "",
+  "section": "DRINK – Sai Ying Pun",
+  "area": "Sai Ying Pun (LG/F, Nam Cheong House, 129 Second Street)",
+  "cuisine": "Spanish gin & tonic bar",
+  "category": [
+   "drinks"
+  ],
+  "price": "$$",
+  "intro": "A cavernous former ping-pong hall turned Spanish-style G&T bar behind an unmarked red door.",
+  "must_order": [
+   "Signature gin & tonics (HK$130–180)",
+   "Spanish snacks"
+  ],
+  "reviews": "Loved for its atmosphere and huge G&T menu; no closure reported.",
+  "group_friendly": "Big hall that can take parties of 10+. Closed Mondays.",
+  "status": "open",
+  "maps_query": "Ping Pong 129 Gintoneria Second Street Sai Ying Pun",
+  "phone": "+852 9835 5061",
+  "lat": 22.28628,
+  "lng": 114.13973
+ },
+ {
+  "name": "Salon de Ning (The Peninsula)",
+  "name_zh": "",
+  "section": "DRINK – TST",
+  "area": "Tsim Sha Tsui (lower level, The Peninsula, Salisbury Road)",
+  "cuisine": "1930s Shanghai-themed lounge",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$$$",
+  "intro": "A former Art Deco basement lounge themed on a fictional 1930s Shanghai socialite; treat as closed and go to Felix (28/F, same hotel) instead.",
+  "must_order": [
+   "Ning Sling",
+   "unknown"
+  ],
+  "reviews": "OpenRice marks it closed and Time Out's listing URL says closed; no recent (2025–26) reviews found.",
+  "group_friendly": "Not available; use Felix at The Peninsula instead.",
+  "status": "closed",
+  "maps_query": "Salon de Ning The Peninsula Hong Kong",
+  "phone": "+852 2696 6705",
+  "lat": 22.29507,
+  "lng": 114.17179,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Ciclo",
+  "name_zh": "",
+  "section": "DRINK – Causeway Bay",
+  "area": "Causeway Bay (4/F, Oliv, 15–21 Sharp Street East)",
+  "cuisine": "Japanese-Italian restobar with shisha",
+  "category": [
+   "drinks",
+   "dinner",
+   "late-night"
+  ],
+  "price": "$$$",
+  "intro": "A dark, sleek restobar where you can smoke shisha all evening over cocktails and fusion bites.",
+  "must_order": [
+   "Shisha",
+   "Signature cocktails",
+   "Japanese-Italian small plates"
+  ],
+  "reviews": "4.5 on OpenRice from 300+ reviews; spend about HK$200–400 per person.",
+  "group_friendly": "Bookable; open until 3am Fri/Sat.",
+  "status": "open",
+  "maps_query": "Ciclo Oliv Sharp Street East Causeway Bay",
+  "phone": "+852 5501 0697",
+  "lat": 22.278,
+  "lng": 114.18225,
+  "coord_note": "approx"
+ },
+ {
+  "name": "Lounge Hakuba",
+  "name_zh": "",
+  "section": "DRINK – Causeway Bay",
+  "area": "Causeway Bay (Shop 302, 3/F, Tower 535, 535 Jaffe Road)",
+  "cuisine": "Japanese alpine lounge with shisha and terrace",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$",
+  "intro": "A ski-lodge-themed lounge with a campsite-style outdoor terrace: coffee by day, cocktails and shisha by night.",
+  "must_order": [
+   "Shisha on the terrace",
+   "Cocktails"
+  ],
+  "reviews": "Liked for its quirky décor and terrace; detailed reviews limited.",
+  "group_friendly": "Bookable on Bistrochat; indoor shisha only from 9:30pm.",
+  "status": "open",
+  "maps_query": "Lounge Hakuba Tower 535 Jaffe Road Causeway Bay",
+  "lat": 22.28133,
+  "lng": 114.18393
+ },
+ {
+  "name": "Migas",
+  "name_zh": "",
+  "section": "DRINK – Rooftop",
+  "area": "Central (3/F, H Queen's, 80 Queen's Road Central)",
+  "cuisine": "Spanish-Mediterranean bar-restaurant with terrace",
+  "category": [
+   "drinks",
+   "dinner",
+   "lunch"
+  ],
+  "price": "$$$",
+  "intro": "A Spanish-Mediterranean venue with a vermouth bar, DJs and live music, on an oversized outdoor terrace.",
+  "must_order": [
+   "Vermouth",
+   "Smoked paprika octopus brochette",
+   "Happy hour (Mon–Fri 5–9pm)"
+  ],
+  "reviews": "New (2026), praised for terrace and buzz; limited reviews.",
+  "group_friendly": "Large terrace suits groups; book via foodcloud. Open until 1am Fri/Sat. Note: it is a 3rd-floor terrace, not a true rooftop.",
+  "status": "open",
+  "maps_query": "Migas H Queen's 80 Queen's Road Central",
+  "lat": 22.28297,
+  "lng": 114.15524
+ },
+ {
+  "name": "Cardinal Point",
+  "name_zh": "",
+  "section": "DRINK – Rooftop",
+  "area": "Central (43–45/F, Gloucester Tower, The Landmark, 15 Queen's Road Central)",
+  "cuisine": "Rooftop restaurant, lounge and sky terrace",
+  "category": [
+   "drinks",
+   "dinner"
+  ],
+  "price": "$$$$",
+  "intro": "Billed as the highest rooftop bar on Hong Kong Island, with 180° harbour and skyline views; reopened after a makeover.",
+  "must_order": [
+   "Sunset cocktails on the terrace"
+  ],
+  "reviews": "Views are superb; reviews call food and drinks overpriced (3.6 on Tripadvisor). About HK$700–1,000 for two.",
+  "group_friendly": "Book ahead; go before sunset. Closes 10pm Sundays.",
+  "status": "open",
+  "maps_query": "Cardinal Point Gloucester Tower Landmark Central",
+  "phone": "+852 3501 8560",
+  "lat": 22.28151,
+  "lng": 114.15777
+ },
+ {
+  "name": "SKYE Roofbar & Grill",
+  "name_zh": "",
+  "section": "DRINK – Rooftop",
+  "area": "Causeway Bay (27/F, The Park Lane Hong Kong, 310 Gloucester Road)",
+  "cuisine": "Rooftop bar and grill",
+  "category": [
+   "drinks",
+   "dinner",
+   "brunch"
+  ],
+  "price": "$$$",
+  "intro": "An open-air hotel roof bar overlooking Victoria Harbour and Victoria Park.",
+  "must_order": [
+   "'Gloucester Road' cocktail (house PL50 gin)",
+   "Weekend semi-buffet brunch"
+  ],
+  "reviews": "Good views and DJs Thu–Sat; prices are hotel-level.",
+  "group_friendly": "Walk-ins for drinks. Outdoor sofa tables have minimum spends of HK$3,000 (Sun–Thu) or HK$6,000 (Fri–Sat), workable for a group of 10. Open daily noon–1am.",
+  "status": "open",
+  "maps_query": "SKYE Roofbar Park Lane Hong Kong Causeway Bay",
+  "lat": 22.28123,
+  "lng": 114.18639
+ },
+ {
+  "name": "Terrace Boulud by Mandarin Oriental",
+  "name_zh": "",
+  "section": "DRINK – Rooftop",
+  "area": "Central (25/F, Landmark Prince's Building, 10 Chater Road)",
+  "cuisine": "French rooftop brasserie and bar",
+  "category": [
+   "drinks",
+   "dinner",
+   "lunch"
+  ],
+  "price": "$$$$",
+  "intro": "Daniel Boulud's new rooftop brasserie in the former Sevva space, with views over Central, opened March 2026.",
+  "must_order": [
+   "Cocktails on the terrace",
+   "French brasserie classics"
+  ],
+  "reviews": "New and buzzy; few reviews yet.",
+  "group_friendly": "Booking needed via Mandarin Oriental.",
+  "status": "open",
+  "maps_query": "Terrace Boulud Prince's Building Central",
+  "lat": 22.28122,
+  "lng": 114.15917
+ },
+ {
+  "name": "Salisterra",
+  "name_zh": "",
+  "section": "DRINK – Bar with a view",
+  "area": "Admiralty (Level 49, The Upper House, Pacific Place, 88 Queensway)",
+  "cuisine": "Mediterranean restaurant and bar",
+  "category": [
+   "drinks",
+   "dinner",
+   "brunch"
+  ],
+  "price": "$$$$",
+  "intro": "An elegant 49th-floor bar and restaurant in a boutique hotel, with sweeping harbour views.",
+  "must_order": [
+   "House cocktails at the bar",
+   "Afternoon tea"
+  ],
+  "reviews": "Praised for views and polish; expensive.",
+  "group_friendly": "Book; the Chef's Room handles private groups.",
+  "status": "open",
+  "maps_query": "Salisterra Upper House Admiralty",
+  "lat": 22.27749,
+  "lng": 114.16639
+ },
+ {
+  "name": "DarkSide",
+  "name_zh": "",
+  "section": "DRINK – Bar with a view",
+  "area": "Tsim Sha Tsui (2/F, Rosewood Hong Kong, 18 Salisbury Road)",
+  "cuisine": "Jazz and aged-spirits bar",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$$$",
+  "intro": "Rosewood's moody jazz bar (Asia's 50 Best regular) with live music, rare aged spirits and cigars.",
+  "must_order": [
+   "'Echoes' cocktail menu (July 2026, HK$180–190)",
+   "Aged spirits"
+  ],
+  "reviews": "Superb cocktails and service; complaints are high prices and loud music.",
+  "group_friendly": "Book for groups. Note: it is in TST, not Central, and has no view.",
+  "status": "open",
+  "maps_query": "DarkSide Rosewood Hong Kong",
+  "lat": 22.2947,
+  "lng": 114.17581
+ },
+ {
+  "name": "Porterhouse",
+  "name_zh": "",
+  "section": "DRINK – Bar with a view",
+  "area": "Central/LKF (24/F, California Tower, 30–32 D'Aguilar Street)",
+  "cuisine": "Steakhouse with bar and terrace",
+  "category": [
+   "dinner",
+   "drinks"
+  ],
+  "price": "$$$$",
+  "intro": "An LKF steakhouse with floor-to-ceiling city views and an alfresco balcony for after-dinner drinks.",
+  "must_order": [
+   "Dry-aged steaks",
+   "Drinks on the terrace"
+  ],
+  "reviews": "Good views and terrace; steakhouse prices.",
+  "group_friendly": "Event space (80 seated / 150 standing) and a semi-private room, so good for 10+.",
+  "status": "open",
+  "maps_query": "Porterhouse California Tower Lan Kwai Fong",
+  "lat": 22.28084,
+  "lng": 114.15548
+ },
+ {
+  "name": "Felix (The Peninsula)",
+  "name_zh": "",
+  "section": "DRINK – Bar with a view",
+  "area": "Tsim Sha Tsui (28/F, The Peninsula, Salisbury Road)",
+  "cuisine": "Rooftop restaurant and cocktail bar",
+  "category": [
+   "drinks",
+   "dinner",
+   "late-night"
+  ],
+  "price": "$$$$",
+  "intro": "The Peninsula's top-floor Philippe Starck-designed bar and restaurant with harbour views; replaces Salon de Ning as the Peninsula pick.",
+  "must_order": [
+   "Signature cocktails at the bar",
+   "Thursday vinyl DJ nights (8–11pm, 'Analogue Record Series' from April 2026)"
+  ],
+  "reviews": "Known for the Starck interiors and views; detailed 2026 reviews not checked.",
+  "group_friendly": "Booking recommended; group capacity unknown.",
+  "status": "open",
+  "maps_query": "Felix The Peninsula Hong Kong",
+  "lat": 22.29507,
+  "lng": 114.17179,
+  "coord_note": "approx"
+ },
+ {
+  "name": "ThinkWine",
+  "name_zh": "",
+  "section": "DRINK – Wine bars",
+  "area": "Central/Soho (2/F, LL Tower, 2–4 Shelley Street)",
+  "cuisine": "French-led wine bar",
+  "category": [
+   "drinks"
+  ],
+  "price": "$$$",
+  "intro": "A sommelier-run wine bar with 500–600 labels, a balcony and a private room.",
+  "must_order": [
+   "Sommelier-picked French wines by the glass"
+  ],
+  "reviews": "Well regarded for its list and staff; detailed complaints not found.",
+  "group_friendly": "Has a private room and event space; book. Closed Sundays.",
+  "status": "open",
+  "maps_query": "ThinkWine LL Tower Shelley Street Central",
+  "phone": "+852 2886 3121",
+  "lat": 22.28192,
+  "lng": 114.15336
+ },
+ {
+  "name": "Terroirs by LQV",
+  "name_zh": "",
+  "section": "DRINK – Wine bars",
+  "area": "Central (3/F, 1 Lyndhurst Terrace)",
+  "cuisine": "French wine bar and bistro",
+  "category": [
+   "drinks",
+   "dinner"
+  ],
+  "price": "$$$",
+  "intro": "A French wine bar with 2,000+ references, many natural/biodynamic, plus bistro food and a small terrace.",
+  "must_order": [
+   "Natural/biodynamic wines",
+   "Duck confit parmentier"
+  ],
+  "reviews": "Praised for the list and guidance from staff.",
+  "group_friendly": "Bookable; terrace tables are limited. Opens 3pm–midnight.",
+  "status": "open",
+  "maps_query": "Terroirs by LQV 1 Lyndhurst Terrace Central",
+  "lat": 22.28251,
+  "lng": 114.15415,
+  "coord_note": "approx"
+ },
+ {
+  "name": "CORKS Wine & Bar",
+  "name_zh": "",
+  "section": "DRINK – Wine bars",
+  "area": "Sheung Wan (G/F, 205C Hollywood Road), Wan Chai (Shop G10, Hopewell Food Street, 183 Queen's Road East), plus Causeway Bay",
+  "cuisine": "Casual French wine bar",
+  "category": [
+   "drinks"
+  ],
+  "price": "$$",
+  "intro": "A tiny, friendly wine bar where the crowd spills onto the street, with disco nights and events.",
+  "must_order": [
+   "French wines by the glass",
+   "Fries / French snacks"
+  ],
+  "reviews": "Relaxed, good value; very small space.",
+  "group_friendly": "Sheung Wan is tiny with outdoor overflow, so Wan Chai is better for a group. Bookable via inline. Coordinates are for the Sheung Wan branch.",
+  "status": "open",
+  "maps_query": "CORKS Wine & Bar 205C Hollywood Road Sheung Wan",
+  "lat": 22.28515,
+  "lng": 114.14904
+ },
+ {
+  "name": "FAYY",
+  "name_zh": "",
+  "section": "DRINK – Clubbing/Dancing",
+  "area": "Central/LKF (25–26/F, California Tower, 30–32 D'Aguilar Street)",
+  "cuisine": "Rooftop nightclub",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$$$",
+  "intro": "An upscale rooftop club in the former CÉ LA VI space, with skyline views.",
+  "must_order": [
+   "Table/bottle service",
+   "Rooftop views"
+  ],
+  "reviews": "Few recent reviews (latest Trip.com review 2022).",
+  "group_friendly": "Table bookings via Clubbable suit 10+. Opens 8pm. Recent operating status was not confirmed beyond listings, so check before going.",
+  "status": "open",
+  "maps_query": "FAYY California Tower Lan Kwai Fong",
+  "phone": "+852 3619 4282",
+  "lat": 22.28084,
+  "lng": 114.15548
+ },
+ {
+  "name": "Yume",
+  "name_zh": "",
+  "section": "DRINK – Clubbing/Dancing",
+  "area": "Central (Basement, On Lok House, 39–43 Hollywood Road)",
+  "cuisine": "Japanese-inspired cocktail lounge / late club",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$$",
+  "intro": "Opened October 2025 in the old Drop / Quality Goods Club basement: cocktails first, then DJs late at weekends.",
+  "must_order": [
+   "'Dream Is Destiny' origami fortune-teller cocktail menu"
+  ],
+  "reviews": "New; reviewers like the neon décor and concept.",
+  "group_friendly": "Booth seating; book. Tue–Thu 7pm–1am, Fri–Sat until about 4am.",
+  "status": "open",
+  "maps_query": "Yume On Lok House 39 Hollywood Road Central",
+  "lat": 22.2823,
+  "lng": 114.15349
+ },
+ {
+  "name": "The Iron Fairies",
+  "name_zh": "",
+  "section": "DRINK – Clubbing/Dancing",
+  "area": "Central (LG/F, Chinachem Hollywood Centre, 1–13 Hollywood Road)",
+  "cuisine": "Themed cocktail bar with live band",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$$",
+  "intro": "An Ashley Sutton-designed fantasy bar with 10,000 butterflies on the ceiling and a live band from 10pm.",
+  "must_order": [
+   "Signature cocktails",
+   "Live band after 10pm"
+  ],
+  "reviews": "Stunning décor and fun music; crowded and pricey later at night.",
+  "group_friendly": "Reservations accepted, good for groups early evening. Open about 6pm–2/3am.",
+  "status": "open",
+  "maps_query": "The Iron Fairies Hollywood Road Central",
+  "lat": 22.28202,
+  "lng": 114.15436
+ },
+ {
+  "name": "The 33 (Thirty Three)",
+  "name_zh": "",
+  "section": "DRINK – Clubbing/Dancing",
+  "area": "Central (5/F, 33 Wyndham Street)",
+  "cuisine": "Lounge and nightclub",
+  "category": [
+   "drinks",
+   "late-night"
+  ],
+  "price": "$$$",
+  "intro": "A lounge on weekdays and a club at weekends, from the team behind the former Padre, with a tequila bar.",
+  "must_order": [
+   "Table service",
+   "Tequila bar"
+  ],
+  "reviews": "Limited reviews; listings are inconsistent.",
+  "group_friendly": "Tables via Clubbable suit 10+. Wed–Thu 9pm–2am, Fri–Sat 9pm–4am; closed Sun–Tue.",
+  "status": "open",
+  "maps_query": "The 33 Lounge Club 33 Wyndham Street Central",
+  "phone": "+852 2838 3301",
+  "lat": 22.28044,
+  "lng": 114.15512
+ }
+]

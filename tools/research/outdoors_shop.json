@@ -1,0 +1,785 @@
+{
+  "campus": {
+    "lat": 22.2736427,
+    "lng": 114.1187266,
+    "address": "The University of Chicago Francis and Rose Yuen Campus in Hong Kong, 168 Victoria Road, Mount Davis, Hong Kong",
+    "zh": "芝加哥大學袁天凡、慧敏校園, 域多利道168號, 摩星嶺",
+    "note": "lat/lng is the OpenStreetMap node tagged entrance=main (gated, private access). The campus centre is about 22.27515, 114.11744. Only UChicago students, faculty and staff may enter."
+  },
+  "parklane": {
+    "lat": 22.2812255,
+    "lng": 114.1863914,
+    "address": "The Park Lane Hong Kong, 310 Gloucester Road, Causeway Bay, Hong Kong",
+    "zh": "香港柏寧酒店, 銅鑼灣告士打道310號",
+    "note": "lat/lng is the hotel's position in OpenStreetMap."
+  },
+  "hikes": [
+    {
+      "name": "Red Incense Burner Summit (Braemar Hill)",
+      "zh": "紅香爐峰（寶馬山巴士總站上山）",
+      "area": "Braemar Hill, North Point",
+      "picked": true,
+      "category": [
+        "easy",
+        "views",
+        "sunset"
+      ],
+      "distance_km": 1,
+      "duration": "30–60 mins incl. time at the top",
+      "difficulty": "Easy",
+      "intro": "A very short climb from the Braemar Hill bus terminus to a rocky summit that looks over Victoria Harbour, Causeway Bay and Kowloon. It is the closest good viewpoint to the Park Lane.",
+      "highlights": [
+        "Panoramic harbour and skyline views",
+        "One of the best sunset and night-view spots on the Island",
+        "About 10–15 minutes' walk from the terminus"
+      ],
+      "getting_there": "From Park Lane: green minibus 25 from Causeway Bay MTR (opposite H&M) to the Braemar Hill bus terminus. You can also take a taxi (about 10 mins, our estimate). The trailhead is a small set of stairs just past the Chinese International School. From campus: taxi, roughly 25–30 mins (our estimate).",
+      "tips": "The path is short but uneven and steep at the top, so wear trainers. Bring water and a torch or phone light if you stay after sunset. Sunset is around 5:40pm in mid-November; aim to arrive about 20 minutes before. There are no shops at the top. Afterwards, eat in Causeway Bay or North Point.",
+      "lat": 22.2836238,
+      "lng": 114.1988988,
+      "maps_query": "Braemar Hill Bus Terminus, Hong Kong",
+      "sources": [
+        "https://droneandslr.com/travel-blog/hong-kong/red-incense-burner-summit-braemar-hill/",
+        "https://hikerhero.com/red-incense-burner-summit/",
+        "https://www.mstravelsolo.com/red-incense-burner-summit-braemar-hill-hike/"
+      ],
+      "notes": "The distance is approximate (a round trip from the terminus). Sources describe the walk in minutes, not kilometres."
+    },
+    {
+      "name": "Siu Ma Shan",
+      "zh": "小馬山（起點：渣甸山花園巴士站）",
+      "area": "Jardine's Lookout to Quarry Bay",
+      "picked": true,
+      "category": [
+        "moderate",
+        "views"
+      ],
+      "distance_km": 5,
+      "duration": "2–2.5 hrs",
+      "difficulty": "Moderate",
+      "intro": "An urban ridge hike from Jardine's Lookout over Siu Ma Shan (424 m) that ends on the east side of the Island. Many hikers rate its city and harbour views above the Peak's.",
+      "highlights": [
+        "Wide views over Causeway Bay, North Point and East Kowloon",
+        "Former Mount Butler quarry and the Jardine's North Catchwater",
+        "A short, gentle final climb to the flat summit trig station"
+      ],
+      "getting_there": "From Park Lane: taxi to the Jardine's Lookout Garden bus stop on Moorsom Road (about 10–15 mins, our estimate). Alternatively take bus 11 from Central Ferry Piers to that stop, or minibus 14M to Ville de Jardine. From the stop, walk uphill on Moorsom Road to the steps up to Clementi Road, just before the bend.",
+      "tips": "There are several flights of narrow, steep steps, and the second climb has no shade. Bring 1 litre of water. The descent from Siu Ma Shan is confusing, so follow the signs carefully: Sir Cecil's Ride, then Mount Parker Road. The walk finishes at the bottom of Mount Parker Road in Quarry Bay, near the Monster Building, a few minutes from Quarry Bay and Tai Koo MTR. Eat afterwards in Quarry Bay or Taikoo Shing. Ride the MTR back to Causeway Bay (Island Line).",
+      "lat": 22.27089,
+      "lng": 114.19419,
+      "maps_query": "Jardine's Lookout Garden bus stop, Moorsom Road, Hong Kong",
+      "sources": [
+        "https://droneandslr.com/travel-blog/hong-kong/siu-ma-shan-hike/",
+        "https://www.hongkonghike.com/siu-ma-shan-hike-arguably-a-better-city-view-than-victoria-peak/",
+        "https://www.alltrails.com/trail/hong-kong/southern/jardine-s-lookout-siu-ma-shan-quarry-bay"
+      ],
+      "notes": "The Drone & DSLR page returned HTTP 403, so its details come from search snippets. Its distance is unknown. 5 km is the AllTrails figure (3.1 mi). Drone & DSLR says the walk ends in North Point; other sources end it at Quarry Bay. The Hong Kong Hike variant, which starts at Hong Kong Parkview via Jardine's Lookout, is 6–7 km."
+    },
+    {
+      "name": "Wan Chai to the Peak (Wan Chai Green Trail)",
+      "zh": "灣仔峽道（皇后大道東交界）上山頂",
+      "area": "Wan Chai to Victoria Peak",
+      "picked": true,
+      "category": [
+        "moderate",
+        "views",
+        "sunset"
+      ],
+      "distance_km": 5.4,
+      "duration": "about 1 hr 45 mins (to Peak Tower)",
+      "difficulty": "Moderate",
+      "intro": "The classic way to walk up to Victoria Peak from the city, starting close to the hotel. A steep, shaded climb up Wan Chai Gap Road continues by paths and roads to the Peak.",
+      "highlights": [
+        "Wan Chai Green Trail climb with Bowen Road Park and Wan Chai Gap Park on the way",
+        "Finish at The Peak with Lugard Road lookout views",
+        "Ends in a place with plenty of food and easy transport down"
+      ],
+      "getting_there": "From Park Lane: MTR from Causeway Bay to Wan Chai (1 stop), then walk to the corner of Queen's Road East and Wan Chai Gap Road. Alternatively take a taxi to that corner (about 10 mins, our estimate). The trail starts there.",
+      "tips": "Most of the climb is at the start, so take it slowly. You can refill water at Wan Chai Gap Park, but bring your own as well. Finish at Peak Tower, or at Peak Galleria (about 1 km and 15 mins shorter). Go back down by Peak Tram, bus 15 or minibus 1 to Central. Queues at the Peak can be long. For sunset, time your arrival so you can walk on to the Lugard Road lookout (10–15 mins from Peak Tower).",
+      "lat": 22.2744439,
+      "lng": 114.1733952,
+      "maps_query": "Queen's Road East and Wan Chai Gap Road junction, Wan Chai",
+      "sources": [
+        "https://droneandslr.com/travel-blog/hong-kong/wan-chai-to-the-peak-hike/",
+        "https://www.metrotrekker.com/china-hong-kong-hiking-wan-chai-to-the-peak-via-hong-kong-trail",
+        "https://www.discoverhongkong.com/eng/explore/great-outdoor/wan-chai-gap-road.html"
+      ],
+      "notes": "The 5.4 km and 1h45 figures come from Drone & DSLR (via search snippet; the page itself returned 403). The lat/lng is the OpenStreetMap junction of Queen's Road East and Wan Chai Gap Road."
+    },
+    {
+      "name": "HKU to Victoria Peak (via Lung Fu Shan)",
+      "zh": "薄扶林道中國石化油站（港大站附近）上山頂",
+      "area": "Sai Ying Pun / Pok Fu Lam to Victoria Peak",
+      "picked": true,
+      "category": [
+        "moderate",
+        "views",
+        "near-campus",
+        "sunset"
+      ],
+      "distance_km": null,
+      "duration": "1–1.5 hrs (one way)",
+      "difficulty": "Moderate",
+      "intro": "A steady climb on steps and paths from HKU through Lung Fu Shan and Pok Fu Lam Country Parks, mostly away from roads, to the Peak. It is the best Peak hike from the Booth campus.",
+      "highlights": [
+        "Wooded country-park steps above HKU",
+        "Harbour views where you rejoin Hatton Road and Harlech Road",
+        "Optional side trips: Pinewood Battery (WWII ruins) or the steep climb to High West"
+      ],
+      "getting_there": "From campus: taxi to HKU MTR or the Pok Fu Lam Road petrol station (about 10 mins, our estimate), or go to Kennedy Town and ride the MTR 1 stop to HKU. From Park Lane: Island Line direct from Causeway Bay to HKU (about 20 mins, our estimate). Take the Pok Fu Lam Road exit and walk to the Sinopec petrol station; the steps up start right beside it.",
+      "tips": "Wear trainers with grip, because the steps can be slippery. Bring water; there is nowhere to buy any until the Peak. The steps rejoin Hatton Road just before Harlech Road; follow Harlech Road to Peak Tower. Eat at the Peak, then go back down by Peak Tram, bus 15 or minibus 1. Start about 2 hrs before sunset if you want the Lugard Road view at dusk.",
+      "lat": 22.2819463,
+      "lng": 114.1326009,
+      "maps_query": "Sinopec petrol station, Pok Fu Lam Road, near HKU MTR",
+      "sources": [
+        "https://droneandslr.com/travel-blog/hong-kong/victoria-peak-hike/",
+        "https://hjkhiking.wordpress.com/2016/08/06/the-stress-reliever-peak-morning-trail/",
+        "https://www.afcd.gov.hk/english/country/cou_vis/cou_vis_cou/cou_vis_cou_lfs/cou_vis_cou_lfs.html"
+      ],
+      "notes": "Distance unknown: Drone & DSLR gives none, and its page returned 403. A comparable AllTrails 'Lung Fu Shan Trail' is about 4.7 km one way. The duration comes from the HJK Hiking blog, which uses a similar start at HKU."
+    },
+    {
+      "name": "Dragon's Back",
+      "zh": "龍脊（起點：石澳道土地灣巴士站）",
+      "area": "Shek O Country Park, south-east Hong Kong Island",
+      "picked": false,
+      "category": [
+        "moderate",
+        "views"
+      ],
+      "distance_km": 8.5,
+      "duration": "3–4 hrs",
+      "difficulty": "Moderate",
+      "intro": "Hong Kong's most famous ridge walk, with sea views over Shek O and Tai Long Wan. It finishes at a beach.",
+      "highlights": [
+        "Undulating ridge past Shek O Peak with views on both sides",
+        "Downhill finish to Big Wave Bay beach",
+        "Optional 20-minute flat walk to Shek O village"
+      ],
+      "getting_there": "From Park Lane: Island Line MTR from Causeway Bay to Shau Kei Wan (about 15 mins, our estimate). From Exit A3, take bus 9 towards Shek O and get off at To Tei Wan (15–20 mins). From campus: about 1 hr+ by MTR plus bus.",
+      "tips": "Weekend queues for bus 9 can be long, so go on a weekday morning if you can. Bring 1–1.5 litres of water; the ridge has little shade. At the fork about 2.4 km in, keep right on Hong Kong Trail Section 8 to reach Big Wave Bay. Afterwards, take the red minibus from Big Wave Bay to Shau Kei Wan MTR, or walk to Shek O for food and take bus 9 from there.",
+      "lat": 22.2268265,
+      "lng": 114.2398399,
+      "maps_query": "To Tei Wan bus stop, Shek O Road, Hong Kong",
+      "sources": [
+        "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-dragon-s-back.html",
+        "https://www.lcsd.gov.hk/en/healthy/hiking/road_sky/road_sky1.html",
+        "https://www.hongkonghike.com/how-to-hike-dragons-back-hong-kong-most-famous-easy-trail/"
+      ],
+      "notes": "Sources give 8–8.5 km and 2.5–4 hrs. Fares and whether Octopus is accepted vary between sources."
+    },
+    {
+      "name": "Peak Circle Walk (Lugard Road & Harlech Road)",
+      "zh": "山頂盧吉道及夏力道環迴步行徑（起點：山頂凌霄閣）",
+      "area": "Victoria Peak",
+      "picked": false,
+      "category": [
+        "easy",
+        "views",
+        "sunset"
+      ],
+      "distance_km": 3.5,
+      "duration": "1–1.5 hrs",
+      "difficulty": "Easy",
+      "intro": "A flat, paved loop around the Peak that gives the classic postcard view of the Victoria Harbour skyline for free.",
+      "highlights": [
+        "Lugard Road lookout over Central and the harbour",
+        "Shaded, car-free path",
+        "Excellent at golden hour and after dark"
+      ],
+      "getting_there": "From Park Lane: taxi to Peak Tower (about 20–25 mins, our estimate). Alternatively go to Central, then take the Peak Tram or bus 15 / minibus 1 up. From campus: taxi (about 20 mins, our estimate). The loop starts beside Peak Tower and Peak Galleria.",
+      "tips": "There are no water stops on the loop, so buy water at Peak Galleria or Peak Tower first. Start about 90 minutes before sunset, which is around 5:40pm in mid-November. One guide suggests walking Harlech Road first so you reach Lugard Road as the lights come on. Eat at the Peak, then go down by Peak Tram, bus 15 or minibus 1. Hong Kong Trail Section 1 (7 km, about 2 hrs, down to Pok Fu Lam Reservoir) starts here if you want a longer walk towards the campus side.",
+      "lat": 22.2712551,
+      "lng": 114.1499858,
+      "maps_query": "The Peak Tower, Hong Kong",
+      "sources": [
+        "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-peak-circle-walk.html",
+        "https://www.hellohongkong.com.hk/blog/peak-circle-walk",
+        "https://www.afcd.gov.hk/english/country/cou_vis/cou_vis_cou/cou_vis_cou_pfl/cou_vis_cou_pfl.html"
+      ],
+      "notes": "This route overlaps the end of the Wan Chai and HKU Peak hikes, so it combines well with either."
+    },
+    {
+      "name": "Mount Davis Path & Jubilee Battery",
+      "zh": "摩星嶺徑（域多利道，近芝加哥大學校園）",
+      "area": "Mount Davis, next to the Booth campus",
+      "picked": false,
+      "category": [
+        "easy",
+        "near-campus",
+        "views",
+        "sunset"
+      ],
+      "distance_km": 4,
+      "duration": "about 2 hrs (round trip)",
+      "difficulty": "Easy",
+      "intro": "A gentle paved climb that starts right beside the Booth campus and leads to WWII gun batteries and military ruins on the summit of Mount Davis.",
+      "highlights": [
+        "WWII-era batteries and bunkers, including Jubilee Battery at the foot of the hill",
+        "Views west over Lamma Channel and the harbour",
+        "Literally on the campus doorstep"
+      ],
+      "getting_there": "From campus: walk out to Victoria Road; Mount Davis Path begins next to the campus (2–5 mins). From Park Lane: Island Line to Kennedy Town, then about 20 mins on foot or a short taxi ride to the Mount Davis Path bus stop on Victoria Road.",
+      "tips": "The path is a constant-incline paved road, so ordinary trainers are fine. Bring water. The rougher descent towards Kennedy Town is rubbly and partly a scramble; if unsure, go back the way you came. Kennedy Town has plenty of restaurants and bars for after. The Jubilee Battery area is known for sunsets.",
+      "lat": 22.2752367,
+      "lng": 114.1176878,
+      "maps_query": "Mount Davis Path, Victoria Road, Hong Kong",
+      "sources": [
+        "https://www.localiiz.com/post/living-hiking-mount-davis-path",
+        "https://www.hongkonghike.com/mount-davis-hike-explore-hk-islands-bombed-world-war-2-battlements/",
+        "https://www.roundislandtrail.gov.hk/en/exploring-the-trail/route-suggestions/mount-davis-historic-walk"
+      ],
+      "notes": "Sources give 2 to 7 km depending on the start (Victoria Road or Kennedy Town MTR). The lat/lng is the OpenStreetMap junction of Victoria Road and Mount Davis Path."
+    },
+    {
+      "name": "Violet Hill & The Twins (Wilson Trail Stage 1)",
+      "zh": "紫羅蘭山及孖崗山（起點：黃泥涌水塘公園巴士站）",
+      "area": "Wong Nai Chung Gap to Stanley",
+      "picked": false,
+      "category": [
+        "views"
+      ],
+      "distance_km": 5,
+      "duration": "2–3 hrs",
+      "difficulty": "Hard",
+      "intro": "Hong Kong Island's most notorious stair workout: over Violet Hill and the Twins with sea views towards Repulse Bay and Stanley.",
+      "highlights": [
+        "Views over Tai Tam, Repulse Bay and Stanley",
+        "About 1,000–1,200 steps on the Twins",
+        "Finish near Stanley for food and the market"
+      ],
+      "getting_there": "From Park Lane: taxi to Wong Nai Chung Reservoir Park (about 15 mins, our estimate). Alternatively take Citybus 76 (via Causeway Bay) or 6, 63 or 66 to the Wong Nai Chung Reservoir Park stop on Wong Nai Chung Gap Road. From campus: taxi (about 25–30 mins, our estimate).",
+      "tips": "Only for fit hikers. The route is exposed for most of the way, so go in the morning and carry 1.5 litres of water. It finishes at Stanley Gap Road, where you can catch a bus or taxi to Stanley (Stanley Market and waterfront restaurants) or back to town. Avoid it in heat or after rain.",
+      "lat": 22.2574713,
+      "lng": 114.1932227,
+      "maps_query": "Wong Nai Chung Reservoir Park bus stop, Wong Nai Chung Gap Road",
+      "sources": [
+        "https://www.discoverhongkong.com/eng/explore/great-outdoor/wilson-trail-wong-nai-chung-reservoir-to-stanley-gap-road.html",
+        "https://www.beckyexploring.com/the-twins-hike-wong-nai-chung-stanley/",
+        "https://droneandslr.com/travel-blog/hong-kong/the-twin-peaks-violet-hill-hike/"
+      ],
+      "notes": "Rated Hard: include only for the keen. Sources give 4.8–5 km."
+    },
+    {
+      "name": "Tai Tam Waterworks Heritage Trail",
+      "zh": "大潭水務文物徑（起點：黃泥涌峽陽明山莊附近大潭水塘道）",
+      "area": "Tai Tam Country Park",
+      "picked": false,
+      "category": [
+        "easy"
+      ],
+      "distance_km": 5,
+      "duration": "about 2 hrs",
+      "difficulty": "Easy",
+      "intro": "A mostly downhill, shaded walk past Tai Tam's reservoirs and their historic dams, bridges and other waterworks structures.",
+      "highlights": [
+        "Historic waterworks structures (declared monuments)",
+        "Reservoir and forest scenery",
+        "Gentle gradient, suitable for everyone"
+      ],
+      "getting_there": "From Park Lane: taxi to the top of Tai Tam Reservoir Road near Hong Kong Parkview, Wong Nai Chung Gap (about 15 mins, our estimate). Alternatively take bus 6, 41A, 63, 66 or 76, or green minibus 5, to Wong Nai Chung Gap and walk up. From campus: taxi (about 25–30 mins, our estimate).",
+      "tips": "Wear normal trainers and bring water; there are toilets near the Parkview start. The trail ends at the junction of Tai Tam Road and Tai Tam Reservoir Road; catch a bus or taxi on Tai Tam Road towards Stanley or back to town. It works well as a morning walk.",
+      "lat": 22.2578583,
+      "lng": 114.1961124,
+      "maps_query": "Tai Tam Reservoir Road, Hong Kong Parkview, Wong Nai Chung Gap",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tai_Tam_Waterworks_Heritage_Trail",
+        "https://www.wsd.gov.hk/filemanager/common/pdf/monuments/tai_tam.pdf",
+        "https://www.trailwatch.hk/zh/?t=activities&rid=10353692"
+      ],
+      "notes": "TrailWatch gives about 6 km and 2.5 hrs. The end point is at about 22.23996, 114.22139."
+    },
+    {
+      "name": "Bowen Road Fitness Trail & Lovers' Rock",
+      "zh": "寶雲道（司徒拔道交界起步）",
+      "area": "Mid-Levels above Wan Chai / Happy Valley",
+      "picked": false,
+      "category": [
+        "easy",
+        "views"
+      ],
+      "distance_km": 4,
+      "duration": "about 1–1.5 hrs",
+      "difficulty": "Easy",
+      "intro": "A flat, car-free path along the hillside above Wan Chai, popular with joggers and close to the hotel. It suits a quick morning walk or run.",
+      "highlights": [
+        "Level, shaded path with city glimpses",
+        "Lovers' Rock (Yan Yuen Sek) shrine",
+        "Easily combined with the Wan Chai Gap Road climb to the Peak"
+      ],
+      "getting_there": "From Park Lane: taxi to the Bowen Road entrance on Stubbs Road (about 10 mins, our estimate); bus 15 from Central also stops on Stubbs Road. The other end is at Magazine Gap Road, above Admiralty.",
+      "tips": "Easy footing, so running shoes are fine. Bring a little water. Walk west towards Magazine Gap Road, then come down to Admiralty or Wan Chai for food. Lovers' Rock is up a short flight of steps off Bowen Road, near the Wan Chai Gap Road junction.",
+      "lat": 22.2641417,
+      "lng": 114.1848122,
+      "maps_query": "Bowen Road at Stubbs Road, Hong Kong",
+      "sources": [
+        "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-bowen-road.html",
+        "https://droneandslr.com/travel-blog/hong-kong/lovers-rock-hike/"
+      ],
+      "notes": "Sources give 2.6–4 km depending on the entry point. Lovers' Rock is at about 22.27088, 114.17653. The lat/lng is the OpenStreetMap junction of Bowen Road and Stubbs Road."
+    }
+  ],
+  "shopping": [
+    {
+      "name": "Lee Gardens",
+      "zh": "利園（銅鑼灣希慎道）",
+      "area": "Causeway Bay",
+      "picked": false,
+      "category": [
+        "luxury",
+        "malls"
+      ],
+      "intro": "Causeway Bay's luxury cluster of linked buildings (Lee Garden One, Two and others). It is the nearest high-end shopping to the Park Lane.",
+      "highlights": [
+        "Hermès (Lee Garden One)",
+        "Chanel, Louis Vuitton, Cartier, Bulgari, Valentino, Tod's and Miu Miu are listed in guides",
+        "Hysan Place, SOGO and Times Square are all a few minutes' walk away"
+      ],
+      "getting_there": "From Park Lane: about 5–10 mins on foot (our estimate).",
+      "tips": "Quieter than Central's malls. Brand line-ups change, so check each brand's store locator before going for a specific item.",
+      "hours": "Mall: unknown. Hermès Lee Garden One: Mon–Sat 11am–7:30pm, Sun and public holidays 11am–7pm.",
+      "lat": 22.2784671,
+      "lng": 114.1847025,
+      "maps_query": "Lee Garden One, 33 Hysan Avenue, Causeway Bay",
+      "sources": [
+        "https://www.leegardens.com.hk/",
+        "https://www.hermes.com/us/en/find-store/hong-kong-sar/causeway-bay/hermes-lee-garden-Z1OTUAON/"
+      ]
+    },
+    {
+      "name": "Times Square",
+      "zh": "時代廣場（銅鑼灣勿地臣街1號）",
+      "area": "Causeway Bay",
+      "picked": false,
+      "category": [
+        "malls"
+      ],
+      "intro": "Causeway Bay's landmark mall, directly linked to Causeway Bay MTR (Exit A). Its upper floors hold the big electronics chains.",
+      "highlights": [
+        "Fortress and Broadway electronics on 8/F–9/F",
+        "A Chow Sang Sang branch on B2",
+        "Restaurant floors"
+      ],
+      "getting_there": "From Park Lane: about 10–15 mins on foot, or 1 MTR stop (our estimate).",
+      "tips": "It gets very busy at weekends. Combine it with Lee Gardens and SOGO.",
+      "hours": "unknown",
+      "lat": 22.2783587,
+      "lng": 114.1821064,
+      "maps_query": "Times Square, 1 Matheson Street, Causeway Bay",
+      "sources": [
+        "https://www.fortress.com.hk/en/store/ftrhk_2130_ZT"
+      ]
+    },
+    {
+      "name": "SOGO Causeway Bay",
+      "zh": "崇光百貨（銅鑼灣軒尼詩道555號）",
+      "area": "Causeway Bay",
+      "picked": false,
+      "category": [
+        "malls"
+      ],
+      "intro": "A big Japanese department store with cosmetics, fashion, home goods and a basement food hall.",
+      "highlights": [
+        "Cosmetics counters on one floor",
+        "Japanese food hall in the basement",
+        "Next to Causeway Bay MTR"
+      ],
+      "getting_there": "From Park Lane: about 5 mins on foot (our estimate).",
+      "tips": "Easy rainy-evening option close to the hotel.",
+      "hours": "10am–10pm daily. The official site lists 10am–10:30pm on 13–14 and 20–21 Nov.",
+      "lat": 22.2803898,
+      "lng": 114.184284,
+      "maps_query": "SOGO Causeway Bay, 555 Hennessy Road",
+      "sources": [
+        "https://www.sogo.com.hk/en/support/contact-us"
+      ]
+    },
+    {
+      "name": "Pacific Place",
+      "zh": "太古廣場（金鐘道88號）",
+      "area": "Admiralty",
+      "picked": false,
+      "category": [
+        "luxury",
+        "malls"
+      ],
+      "intro": "An airy, upscale mall above Admiralty MTR with a strong line-up of luxury and designer brands.",
+      "highlights": [
+        "Luxury brands such as Dior, Gucci and Hermès are named in guides",
+        "Lane Crawford department store",
+        "Linked hotels and restaurants"
+      ],
+      "getting_there": "From Park Lane: MTR from Causeway Bay to Admiralty (2 stops, about 10 mins door to door, our estimate) or taxi (about 10–15 mins).",
+      "tips": "Covered walkways connect it towards Central, so you can mall-hop to the Landmark and IFC.",
+      "hours": "About 10am–9pm daily (sources vary between 10am and 10:30am opening).",
+      "lat": 22.2780004,
+      "lng": 114.1652918,
+      "maps_query": "Pacific Place, 88 Queensway, Admiralty",
+      "sources": [
+        "https://www.staycationhk.co/shopping-destinations/pacific-place-hong-kong/",
+        "https://www.hongkongmadeeasy.com/hong-kong-shopping-malls/"
+      ]
+    },
+    {
+      "name": "IFC Mall",
+      "zh": "國際金融中心商場（中環金融街8號）",
+      "area": "Central",
+      "picked": true,
+      "category": [
+        "luxury",
+        "malls"
+      ],
+      "intro": "A premier harbourfront mall at the foot of Two IFC, with 200+ international brands and harbour-view dining.",
+      "highlights": [
+        "Luxury fashion on Level 2 and parts of Level 3",
+        "Rooftop terrace and harbour-view restaurants",
+        "Direct link to Hong Kong MTR station (Airport Express) and the Star Ferry"
+      ],
+      "getting_there": "From Park Lane: MTR from Causeway Bay to Central (about 15 mins door to door, our estimate) and walk through the footbridges, or take a taxi (about 15–20 mins).",
+      "tips": "Pair it with the Landmark (5–10 mins on foot via footbridges) and an evening Star Ferry ride to Tsim Sha Tsui.",
+      "hours": "10am–10pm daily (shops and restaurants vary).",
+      "lat": 22.2850934,
+      "lng": 114.1586008,
+      "maps_query": "IFC Mall, 8 Finance Street, Central",
+      "sources": [
+        "https://www.nextstophongkong.com/ifc-mall/",
+        "https://www.nomadotravel.app/en/attractions/ifc-mall"
+      ]
+    },
+    {
+      "name": "Landmark (Central)",
+      "zh": "置地廣場（中環皇后大道中15號）",
+      "area": "Central",
+      "picked": false,
+      "category": [
+        "luxury",
+        "jewellery",
+        "malls"
+      ],
+      "intro": "Central's most exclusive shopping complex: four connected buildings (Atrium, Alexandra, Chater, Prince's) with flagship boutiques and Michelin-starred restaurants.",
+      "highlights": [
+        "Louis Vuitton, Chanel and Harvey Nichols",
+        "Cartier, Van Cleef & Arpels and Chopard (Prince's and others)",
+        "Michelin-starred dining such as Amber and 8½ Otto e Mezzo Bombana"
+      ],
+      "getting_there": "From Park Lane: MTR from Causeway Bay to Central (about 15 mins, our estimate); the Landmark sits above Central station.",
+      "tips": "The best single stop for high jewellery and watch maisons. The Mandarin Oriental (Ronald Abram) is across the footbridge.",
+      "hours": "Mostly about 10am–8pm; some shops stay open later (sources vary).",
+      "lat": 22.2811091,
+      "lng": 114.1578922,
+      "maps_query": "LANDMARK ATRIUM, 15 Queen's Road Central",
+      "sources": [
+        "https://www.landmark.hk/en/visit/location",
+        "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-landmark.html"
+      ]
+    },
+    {
+      "name": "Ronald Abram (Mandarin Oriental)",
+      "zh": "文華東方酒店 閣樓 Ronald Abram（中環干諾道中5號）",
+      "area": "Central",
+      "picked": false,
+      "category": [
+        "jewellery",
+        "luxury"
+      ],
+      "intro": "A long-established high-jewellery house selling rare diamonds and gemstones from a single salon at the Mandarin Oriental, open since 1988.",
+      "highlights": [
+        "Rare white and fancy-coloured diamonds",
+        "Burmese rubies and Colombian emeralds",
+        "Private-salon service"
+      ],
+      "getting_there": "From Park Lane: MTR to Central (about 15 mins, our estimate); the salon is on the Mezzanine Level (Shop M1–M2) of the Mandarin Oriental, 5 Connaught Road Central.",
+      "tips": "A destination for serious collectors. Book ahead (+852 2525 1234, sales@ronaldabram.com) and ask for lab reports on any stone.",
+      "hours": "unknown (contact the salon to book an appointment)",
+      "lat": 22.2818858,
+      "lng": 114.1593965,
+      "maps_query": "Ronald Abram, Mandarin Oriental Hong Kong",
+      "sources": [
+        "https://www.ronaldabram.com/pages/contact-us",
+        "https://www.ronaldabram.com/pages/faq"
+      ]
+    },
+    {
+      "name": "K11 MUSEA",
+      "zh": "K11 MUSEA（尖沙咀梳士巴利道18號）",
+      "area": "Tsim Sha Tsui (Victoria Dockside)",
+      "picked": true,
+      "category": [
+        "luxury",
+        "design",
+        "malls"
+      ],
+      "intro": "An art-filled 'cultural retail' mall on the Tsim Sha Tsui waterfront. It mixes luxury and designer brands with dramatic architecture and harbour views.",
+      "highlights": [
+        "Cartier, Chloé, Maison Margiela and other designer brands",
+        "Art installations and design concept stores",
+        "On the Avenue of Stars harbourfront"
+      ],
+      "getting_there": "From Park Lane: MTR (change at Admiralty for Tsim Sha Tsui / East Tsim Sha Tsui, about 25 mins, our estimate). Alternatively take the Star Ferry from Central or Wan Chai, or a taxi through the Cross-Harbour Tunnel (about 15–20 mins, traffic dependent).",
+      "tips": "Combine with Harbour City and Canton Road and the 8pm 'Symphony of Lights' on the harbourfront.",
+      "hours": "10am–10pm daily (individual shops vary).",
+      "lat": 22.2945938,
+      "lng": 114.1749471,
+      "maps_query": "K11 MUSEA, 18 Salisbury Road, Tsim Sha Tsui",
+      "sources": [
+        "https://www.k11musea.com/",
+        "https://stores.cartier.com/en_us/hong-kong-sar-china/kowloon/shop-g12,-g/f,-k11-musea"
+      ]
+    },
+    {
+      "name": "Harbour City & Canton Road",
+      "zh": "海港城／廣東道（尖沙咀廣東道3-27號）",
+      "area": "Tsim Sha Tsui",
+      "picked": false,
+      "category": [
+        "luxury",
+        "jewellery",
+        "malls"
+      ],
+      "intro": "Hong Kong's largest mall, plus the Canton Road strip of luxury flagships beside it. Worth the harbour crossing for the sheer range.",
+      "highlights": [
+        "Hermès, Lane Crawford, Piaget and Delvaux in Harbour City",
+        "Canton Road luxury flagships",
+        "Chow Tai Fook's first global flagship (opened May 2026, about 10,000 sq ft) on Canton Road"
+      ],
+      "getting_there": "From Park Lane: MTR to Tsim Sha Tsui (change at Admiralty, about 25 mins, our estimate), or the Star Ferry from Central to TST pier, which leads straight into Harbour City.",
+      "tips": "Big flagships often open from about 11am. Use the Star Ferry for a scenic trip. The exact street number of the Chow Tai Fook flagship is unknown, so check their store locator.",
+      "hours": "Mall about 10am–10pm. Hermès Harbour City: Mon–Thu and Sun 10am–9pm, Fri–Sat 10am–10pm. Lane Crawford: 10am–9pm.",
+      "lat": 22.2970015,
+      "lng": 114.1684199,
+      "maps_query": "Harbour City, 3-27 Canton Road, Tsim Sha Tsui",
+      "sources": [
+        "https://www.harbourcity.com.hk/en/explore-hc/about/our-story/",
+        "https://www.hermes.com/us/en/find-store/hong-kong/tsim-sha-tsui/hermes-harbour-city-3WA4Y8WC/",
+        "https://www.prnewswire.co.uk/news-releases/chow-tai-fook-unveils-its-first-global-flagship-store-in-hong-kong-302773814.html"
+      ]
+    },
+    {
+      "name": "Chow Sang Sang & the big HK jewellery chains (Hennessy Road)",
+      "zh": "周生生（銅鑼灣軒尼詩道）",
+      "area": "Causeway Bay",
+      "picked": false,
+      "category": [
+        "jewellery",
+        "local",
+        "tax-free"
+      ],
+      "intro": "Hong Kong's household-name jewellers (Chow Sang Sang, Chow Tai Fook, Lukfook, Tse Sui Luen) line Causeway Bay's main streets. Locals shop here for gold, diamonds and jade.",
+      "highlights": [
+        "Gold sold by weight at the day's price",
+        "Diamond pieces (Chow Sang Sang's 525 Hennessy Road branch is listed as a Forevermark retailer)",
+        "Jade and traditional pieces"
+      ],
+      "getting_there": "From Park Lane: about 10 mins on foot along Hennessy Road (our estimate). Another Chow Sang Sang is in Times Square (B2).",
+      "tips": "Ask for the gold fineness and weight to be stated on the receipt, and for a lab report (GIA or equivalent) on diamonds. Compare prices between the chains. Look for the QTS sign.",
+      "hours": "525 Hennessy Road branch: 10:30am–10pm daily (Forevermark listing). Other branches vary.",
+      "lat": 22.2802587,
+      "lng": 114.1831633,
+      "maps_query": "Chow Sang Sang, Hennessy Road, Causeway Bay",
+      "sources": [
+        "https://www.forevermark.com/en/stores/chow-sang-sang-causeway-bay-525-hennessy-road-branch-1073752040/",
+        "https://www.discoverhongkong.com/jp/plan/qts/shops-results/shops-details.id2198.chow-sang-sang-jewellery-co-ltd.html"
+      ],
+      "notes": "Sources give the Chow Sang Sang address as both 501 and 525 Hennessy Road. The lat/lng is the OpenStreetMap Chow Sang Sang on Hennessy Road."
+    },
+    {
+      "name": "Watches: brand boutiques & authorised dealers",
+      "zh": "銅鑼灣廣場一期（軒尼詩道489號）",
+      "area": "Causeway Bay / Central / TST",
+      "picked": false,
+      "category": [
+        "luxury",
+        "tax-free"
+      ],
+      "intro": "Hong Kong is a major watch market. Buy new pieces at brand boutiques (Landmark, IFC, Pacific Place, Harbour City) or at authorised dealers listed on each brand's website. Causeway Bay has many authorised dealers, and Causeway Bay Plaza 1 is the hub for vintage dealers.",
+      "highlights": [
+        "Brand boutiques in Central and TST malls",
+        "Many authorised dealers in Causeway Bay",
+        "Vintage dealers in Causeway Bay Plaza 1 (489 Hennessy Road)"
+      ],
+      "getting_there": "From Park Lane: Causeway Bay Plaza 1 is about 10 mins on foot (our estimate).",
+      "tips": "Confirm the dealer on the brand's official website. Make sure the warranty card serial matches the case and the serial is on your invoice. Grey-market dealers may only offer an in-house warranty. Dealers may add a surcharge for cards. Many Causeway Bay shops only open around noon.",
+      "hours": "Varies; many shops open around 12pm.",
+      "lat": 22.2802983,
+      "lng": 114.1828031,
+      "maps_query": "Causeway Bay Plaza 1, 489 Hennessy Road",
+      "sources": [
+        "https://www.spacious.hk/en/blog/ultimate-guide-to-buying-hong-kong-watches",
+        "https://www.finnies.com/pages/authorised-dealers-vs-grey-market-securing-watch-warranties-authenticity-and-care"
+      ],
+      "notes": "We have not checked which specific dealers are authorised for which brand. Use the brand's own store locator."
+    },
+    {
+      "name": "Sam's Tailor",
+      "zh": "華敦大廈 Sam's Tailor（尖沙咀彌敦道90-94C號 Burlington Arcade 地下K舖）",
+      "area": "Tsim Sha Tsui",
+      "picked": false,
+      "category": [
+        "local",
+        "tax-free"
+      ],
+      "intro": "A famous bespoke tailor, in business since 1957, that has dressed many visiting celebrities and dignitaries. It is known for fast turnaround.",
+      "highlights": [
+        "Bespoke suits and shirts",
+        "A 24-hour suit service is offered",
+        "Multiple fittings for a better fit; delivery abroad for an extra cost"
+      ],
+      "getting_there": "From Park Lane: MTR to Tsim Sha Tsui (change at Admiralty, about 25 mins, our estimate). The shop is in the Burlington Arcade on Nathan Road.",
+      "tips": "Go in early in the week so there is time for 2+ fittings before you leave on 22 Nov. Bring a favourite garment as a reference and agree fabric, price and delivery date in writing. Guides say Hong Kong bespoke usually needs several fittings; full bespoke takes weeks, which is why rush services and shipping exist.",
+      "hours": "Mon–Sat 9:40am–7pm; Sun by appointment (Time Out).",
+      "lat": 22.2992544,
+      "lng": 114.1723284,
+      "maps_query": "Sam's Tailor, Burlington Arcade, 94 Nathan Road, Tsim Sha Tsui",
+      "sources": [
+        "https://samstailor.com/tsim-sha-tsui-atelier-address-six-decades/",
+        "https://www.timeout.com/hong-kong/shopping/sams-tailor",
+        "https://www.discoverhongkong.com/eng/travel-guide/qts/shops-results/shops-details.id2115.sam-s-tailor.html"
+      ],
+      "notes": "There is no confirmed standard turnaround time for regular (non-24-hour) orders. We did not verify an equally reputable Hong Kong Island tailor; W.W. Chan is well regarded (Time Out), but its address is unconfirmed."
+    },
+    {
+      "name": "Fortress & Broadway (electronics)",
+      "zh": "時代廣場 豐澤／百老滙（銅鑼灣勿地臣街1號 8-9樓）",
+      "area": "Causeway Bay",
+      "picked": false,
+      "category": [
+        "tax-free",
+        "malls"
+      ],
+      "intro": "Hong Kong's two big fixed-price electronics chains, both inside Times Square. They sell cameras, phones, laptops and appliances at marked prices.",
+      "highlights": [
+        "Fortress: Shops 818–821 (8/F) and 914–915 (9/F), Times Square",
+        "Broadway: Shop 814 (8/F), Times Square",
+        "Brand-official stock with receipts"
+      ],
+      "getting_there": "From Park Lane: about 10–15 mins on foot (our estimate) to Times Square.",
+      "tips": "Avoid the small camera and electronics shops in arcades and side streets off Nathan Road (TST) and in Mong Kok, which are known for bait-and-switch tactics. Know the exact model and price before you shop. Check that warranties are international and that the plug (HK uses UK-style 3-pin) and voltage suit you.",
+      "hours": "Broadway: 11am–10pm daily (2023 directory). Fortress: unknown.",
+      "lat": 22.2783587,
+      "lng": 114.1821064,
+      "maps_query": "Fortress, Times Square, Causeway Bay",
+      "sources": [
+        "https://www.fortress.com.hk/en/store/ftrhk_2130_ZT",
+        "https://www.openrice.com/en/hongkong/r-broadway-causeway-bay-r905314",
+        "https://www.hongkong-trip.com/guides/hong-kong-scams-to-avoid/"
+      ]
+    },
+    {
+      "name": "Ying Kee Tea House (Johnston Road)",
+      "zh": "英記茶莊（灣仔莊士敦道170號）",
+      "area": "Wan Chai",
+      "picked": false,
+      "category": [
+        "local",
+        "tax-free"
+      ],
+      "intro": "A traditional Hong Kong tea merchant with about nine shops across the city. A good place to buy Chinese tea (pu'er, oolong, jasmine) to take home.",
+      "highlights": [
+        "Loose-leaf Chinese teas",
+        "Gift tins and boxes",
+        "Listed under HKTB's Quality Tourism Services scheme"
+      ],
+      "getting_there": "From Park Lane: about 15–20 mins on foot or a short tram ride west along Hennessy Road and Johnston Road (our estimate).",
+      "tips": "Ask to taste before buying. Tea is light to pack and a good gift.",
+      "hours": "9am–8pm (CitySeeker; check before going).",
+      "lat": 22.2766026,
+      "lng": 114.1746412,
+      "maps_query": "Ying Kee Tea House, 170 Johnston Road, Wan Chai",
+      "sources": [
+        "https://www.discoverhongkong.com/eng/travel-guide/qts/shops-results/shops-details.id3150.ying-kee-tea-house.html",
+        "https://cityseeker.com/hong-kong/745333-ying-kee-tea-house"
+      ]
+    },
+    {
+      "name": "Sasa & Mannings (beauty and pharmacy)",
+      "zh": "莎莎（銅鑼灣羅素街）／萬寧",
+      "area": "Causeway Bay (branches everywhere)",
+      "picked": false,
+      "category": [
+        "local",
+        "tax-free"
+      ],
+      "intro": "Hong Kong's ubiquitous beauty and pharmacy chains. Sasa is best for perfume, cosmetics and K-beauty; Mannings is best for pharmacy items, supplements and drugstore skincare.",
+      "highlights": [
+        "Sasa: travel-size and miniature perfumes, sets and promotions",
+        "Sasa: Korean and Japanese skincare, sheet masks",
+        "Mannings: supplements and Japanese drugstore brands (e.g. Biore, Rohto Melano)"
+      ],
+      "getting_there": "From Park Lane: several Sasa and Mannings branches are within a 5–10 min walk around Causeway Bay (our estimate).",
+      "tips": "Prices vary between branches and chains (including Watsons), so compare. Check your home country's rules on bringing in medicines.",
+      "hours": "unknown (varies by branch)",
+      "lat": 22.2787271,
+      "lng": 114.1820358,
+      "maps_query": "Sasa, Russell Street, Causeway Bay",
+      "sources": [
+        "https://www.trvlogue.com/en/hong-kong-sasa-shopping-guide",
+        "https://www.watercolourmarks.com/korean-skincare-in-hong-kong/"
+      ],
+      "notes": "The lat/lng is the OpenStreetMap Sasa on Russell Street. The nearest Mannings to Park Lane in OpenStreetMap is at about 22.28013, 114.18602."
+    },
+    {
+      "name": "PMQ (with Tai Kwun nearby)",
+      "zh": "元創方（中環鴨巴甸街35號）",
+      "area": "Central / SoHo",
+      "picked": false,
+      "category": [
+        "design",
+        "local"
+      ],
+      "intro": "A former police married quarters turned into studios for local designers, a fun place to find original Hong Kong-made gifts. Tai Kwun, the restored Central Police Station heritage and arts compound, is a short walk away.",
+      "highlights": [
+        "Independent Hong Kong designers: jewellery, fashion, homeware",
+        "Cafés and restaurants on site",
+        "Tai Kwun: free heritage compound with galleries, bars and restaurants"
+      ],
+      "getting_there": "From Park Lane: MTR to Central (about 15 mins), then 10–15 mins on foot uphill or via the Mid-Levels Escalator (our estimate). Taxi about 15–20 mins.",
+      "tips": "Pair it with Tai Kwun, Hollywood Road antiques and SoHo dinner.",
+      "hours": "PMQ studios and shops about 11am–8pm daily (2018 info; individual shops vary). Tai Kwun compound 8am–11pm daily.",
+      "lat": 22.283325,
+      "lng": 114.1518365,
+      "maps_query": "PMQ, 35 Aberdeen Street, Central",
+      "sources": [
+        "https://www.pmq.org.hk/",
+        "https://www.citybreakgeek.com/hong-kong/tai-kwun-and-pmq-guide/"
+      ],
+      "notes": "Tai Kwun is at about 22.28116, 114.15401 (10 Hollywood Road)."
+    },
+    {
+      "name": "Stanley Market",
+      "zh": "赤柱市集（赤柱大街）",
+      "area": "Stanley, south side",
+      "picked": false,
+      "category": [
+        "local"
+      ],
+      "intro": "A relaxed seaside street market for souvenirs, silk, linens and casual clothing, with waterfront restaurants. It is a natural end point after the Twins hike.",
+      "highlights": [
+        "Souvenirs, Chinese-style gifts and art",
+        "Stanley waterfront and Murray House",
+        "Beachside cafés"
+      ],
+      "getting_there": "From Park Lane: taxi (about 25–30 mins, our estimate) or bus from Causeway Bay / Central towards Stanley.",
+      "tips": "It is a souvenir market, not for luxury or jewellery. Bargain politely. Most stalls trade from about 10am to 6–6:30pm.",
+      "hours": "About 10am–6:30pm daily (each stall sets its own hours).",
+      "lat": 22.2181952,
+      "lng": 114.2125152,
+      "maps_query": "Stanley Market, Stanley Main Street",
+      "sources": [
+        "https://www.hk-stanley-market.com/when-to-go.htm"
+      ]
+    }
+  ],
+  "jewellery_tips": [
+    "Buy from established jewellers and look for the Hong Kong Tourism Board's gold-and-black QTS (Quality Tourism Services) sign. QTS shops must display prices clearly and pass an annual assessment. QTS covers pricing and service, not the quality of the stone or metal. (HKTB QTS; Portal Hong Kong)",
+    "For gold, the Hong Kong Jewellers' and Goldsmiths' Association runs a Quality Gold Mark for member shops, which are sample-tested yearly. Gold must be marked with its fineness, and your receipt should state fineness (and weight for pure gold). (hkjga.hk/quality-mark)",
+    "For diamonds, ask for an independent lab report, ideally GIA (IGI and HRD also issue them). Check that the laser inscription on the stone matches the report number, because counterfeit reports exist. (diamonds.pro; Portal Hong Kong)",
+    "Get an itemised receipt (carat, colour, clarity, report number, metal fineness) and keep it for warranty and your home-country customs. Hong Kong has no sales tax, so there is no refund to claim. Be wary of high-pressure sales and compare prices across the big chains before committing. (Portal Hong Kong; CBP)"
+  ],
+  "tax_free_tips": [
+    "Hong Kong has no sales tax, VAT or GST: the price on the tag is the price you pay. There is no tourist tax-refund scheme or airport refund counter, so treat anyone offering a 'tax refund' with suspicion.",
+    "Your home customs still apply. US residents usually have an $800 duty-free personal exemption (CBP), and purchases made in duty-free shops are not automatically duty-free on return. Declare what you bought and keep the receipts.",
+    "For electronics and cameras, use fixed-price chains (Fortress, Broadway, Apple and brand stores). Avoid small shops in arcades and side streets off Nathan Road (TST) and in Mong Kok, which are known for bait-and-switch tactics. Know the exact model and price before you go.",
+    "For watches, buy from brand boutiques or dealers listed on the brand's official site. Check that the warranty card serial matches the case and is printed on your invoice. Grey-market pieces may carry only a shop warranty, and some dealers prefer cash or add a card surcharge for visitors.",
+    "Tailoring: order in your first days (14–16 Nov) to allow 2+ fittings before departure on 22 Nov. Agree price, fabric and delivery in writing; reputable tailors such as Sam's can ship finished pieces home for an extra cost."
+  ]
+}

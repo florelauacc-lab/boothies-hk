@@ -1,0 +1,505 @@
+[
+  {
+    "food": "egg tart",
+    "name": "St. Lolan Bakery",
+    "name_zh": "聖羅蘭餅屋",
+    "area": "Sai Ying Pun",
+    "cuisine": "Hong Kong-style bakery",
+    "category": [
+      "lunch",
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "An old neighbourhood bakery near HKU, popular with students for its cheap puff-pastry egg tarts.",
+    "must_order": [
+      "Puff-pastry egg tart (酥皮蛋撻)",
+      "Cocktail bun (雞尾包)"
+    ],
+    "reviews": "A pastry chef named it their favourite egg tart in Tatler and reviewers say the crust is very flaky and not too sweet, but overall ratings are mediocre and some say the cashier is rude.",
+    "tips": "Cash only; listed hours are 6:30am to 9:30pm daily, and tarts are best warm in the morning.",
+    "address_en": "G/F, 293 Queen's Road West, Sai Ying Pun",
+    "address_zh": "香港西營盤皇后大道西293號地舖",
+    "lat": 22.287,
+    "lng": 114.14246,
+    "status": "open",
+    "sources": [
+      "https://www.tatlerasia.com/dining/food/best-egg-tarts-in-hong-kong-according-to-pastry-chefs",
+      "https://www.chefdenise.com/all/best-egg-tarts-in-hong-kong",
+      "https://www.openrice.com/en/hongkong/r-st-lolan-bakery-western-district-hong-kong-style-bakery-r12615",
+      "https://ufood.com.hk/restaurant/detail/%E8%A5%BF%E7%92%B0/%E8%81%96%E7%BE%85%E8%98%AD%E9%A4%85%E5%B1%8B/10101000081"
+    ]
+  },
+  {
+    "food": "egg tart",
+    "name": "Bernice Bakery",
+    "name_zh": "Bernice Bakery",
+    "area": "Kennedy Town",
+    "cuisine": "Modern bakery",
+    "category": [
+      "lunch",
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "A small modern bakery a few minutes from campus that makes flower-shaped egg tarts in classic and new flavours.",
+    "must_order": [
+      "Classic egg tart (蛋撻)",
+      "Pistachio egg tart (開心果蛋撻)"
+    ],
+    "reviews": "Dessert Correspondents found the tarts not too sweet with a firm but bouncy custard, though the crust is less flaky than the best traditional ones.",
+    "tips": "Instagram lists 10am to 8:30pm, but the website's hours disagree and say no pick-ups on Sundays or Mondays, so check Instagram before going.",
+    "address_en": "G/F, Luen Wai Apartments, 136-142 Belcher's Street, Kennedy Town",
+    "address_zh": "香港堅尼地城卑路乍街136-142號聯威新樓地下",
+    "lat": 22.28229,
+    "lng": 114.12705,
+    "status": "open",
+    "sources": [
+      "https://dessertcorrespondents.com/2025/11/14/the-ultimate-guide-hong-kong-best-modern-most-viral-egg-tarts/",
+      "https://www.openrice.com/en/hongkong/r-bernice-bakery-western-district-french-bakery-r991038",
+      "https://www.instagram.com/bernice__bakery/"
+    ]
+  },
+  {
+    "food": "pineapple bun (bo lo bao)",
+    "name": "Pineapple Bakery",
+    "name_zh": "鳳梨餅家",
+    "area": "Sheung Wan",
+    "cuisine": "Hong Kong bakery",
+    "category": [
+      "lunch",
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "A small bakery whose crisp, buttery pineapple buns went viral; they are baked in a few small batches a day and sell out fast.",
+    "must_order": [
+      "Pineapple bun (菠蘿包)",
+      "Pandan cocktail bun (班蘭雞尾包)",
+      "Nitro milk tea (氮氣奶茶)"
+    ],
+    "reviews": "Food writers rank it among Hong Kong's best pineapple buns, but you have to queue, there is a limit of 3 per person, and batches sell out within minutes.",
+    "tips": "Cash only; closed Mondays, listed hours are roughly 8:30am to 3pm on weekdays and 10am to 3pm at weekends, and the day's baking times are posted on Instagram (@pineapplebakeryhk); arrive 20 minutes before a batch.",
+    "address_en": "Shop 2, G/F, Teda Building, 87 Wing Lok Street, Sheung Wan",
+    "address_zh": "香港上環永樂街87號泰達大廈地下2號舖",
+    "lat": 22.28593,
+    "lng": 114.15199,
+    "status": "open",
+    "sources": [
+      "https://www.afoodieworld.com/blog/2026/06/19/best-pineapple-buns-hk/",
+      "https://www.timeout.com/hong-kong/shopping/pineapple-bakery",
+      "https://indulgenteats.com/2025/03/13/where-to-eat-best-pineapple-buns-in-hong-kong/",
+      "https://www.openrice.com/en/hongkong/r-pineapple-bakery-sheung-wan-hong-kong-style-bakery-r998564"
+    ]
+  },
+  {
+    "food": "HK milk tea / cha chaan teng breakfast",
+    "name": "Cheung Hong Yuen",
+    "name_zh": "祥香園餐廳",
+    "area": "Kennedy Town",
+    "cuisine": "Cha chaan teng",
+    "category": [
+      "lunch"
+    ],
+    "price": "$",
+    "intro": "A busy cha chaan teng next to Kennedy Town MTR serving classic breakfast and tea sets, and the closest one to campus.",
+    "must_order": [
+      "Pineapple bun with butter (菠蘿油)",
+      "Milk tea (奶茶)",
+      "Egg tart (蛋撻)"
+    ],
+    "reviews": "Recent 2026 OpenRice reviews praise the crisp pineapple bun with butter, smooth milk tea and generous portions, while older reviews call the breakfast sets ordinary.",
+    "tips": "Open 7am to 6pm daily; takes cash, Octopus and AlipayHK; it gets packed around 3pm tea time.",
+    "address_en": "Shop 6, G/F, Mei Fai Court, 41A-43 Smithfield Road, Kennedy Town",
+    "address_zh": "香港堅尼地城士美菲路41A-43號美菲閣地下6號舖",
+    "lat": 22.28244,
+    "lng": 114.1281,
+    "status": "open",
+    "sources": [
+      "https://www.openrice.com/zh/hongkong/r-%E7%A5%A5%E9%A6%99%E5%9C%92%E9%A4%90%E5%BB%B3-%E8%A5%BF%E7%92%B0-%E6%B8%AF%E5%BC%8F-r879653",
+      "https://foursquare.com/v/cheung-hong-yuen-tea-restaurant/4b59359ff964a5207b8128e3"
+    ]
+  },
+  {
+    "food": "HK milk tea / cha chaan teng breakfast",
+    "name": "Luen Wah Cafe",
+    "name_zh": "聯華茶餐廳",
+    "area": "Sai Ying Pun",
+    "cuisine": "Cha chaan teng",
+    "category": [
+      "lunch"
+    ],
+    "price": "$",
+    "intro": "A cha chaan teng open since the 1960s, with an old tiled interior and a small mezzanine.",
+    "must_order": [
+      "Thick egg sandwich (蛋治)",
+      "Baked pork chop rice (焗豬扒飯)",
+      "Milk tea (奶茶)"
+    ],
+    "reviews": "Locals call its made-to-order baked pork chop rice the best in Sai Ying Pun and Mirror Media (2024) praised the 3cm-thick egg sandwich, though reviews call service ordinary and some dishes a little oily.",
+    "tips": "Likely cash only and opens about 6–7am; the baked pork chop rice takes about 20 minutes, so order it first.",
+    "address_en": "G/F, 28 Centre Street, Sai Ying Pun",
+    "address_zh": "香港西營盤正街28號地下",
+    "lat": 22.2874,
+    "lng": 114.14224,
+    "status": "unclear",
+    "sources": [
+      "https://www.mirrormedia.mg/story/20241014food011",
+      "https://ufood.com.hk/restaurant/review/%E8%A5%BF%E7%87%9F%E7%9B%A4/%E8%81%AF%E8%8F%AF%E8%8C%B6%E9%A4%90%E5%BB%B3/10100300006",
+      "https://thehoneycombers.com/hong-kong/sai-ying-pun-lunch-spots-restaurants/"
+    ]
+  },
+  {
+    "food": "wonton noodles",
+    "name": "Mak Ming Kee Wonton Noodles",
+    "name_zh": "麥明記",
+    "area": "Sai Ying Pun",
+    "cuisine": "Cantonese noodles",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "intro": "A wonton noodle shop that claims descent from the famous Mak family of wonton makers, serving springy egg noodles and shrimp wontons in a seafood broth.",
+    "must_order": [
+      "Wonton noodles (雲吞麵)",
+      "Fried dace fish balls (炸鯪魚球)",
+      "Oyster-sauce Chinese broccoli (蠔油芥蘭)"
+    ],
+    "reviews": "Diners praise the silky wonton skins and clear broth, but the bowls are small for the price, which is typical of Mak-style shops.",
+    "tips": "Two minutes from Sai Ying Pun MTR exit B1 and open daily from about 10:30am to 10:30pm; bring cash.",
+    "address_en": "G/F, 309 Queen's Road West, Sai Ying Pun",
+    "address_zh": "香港西營盤皇后大道西309號地下",
+    "lat": 22.28702,
+    "lng": 114.14198,
+    "status": "unclear",
+    "sources": [
+      "https://www.trip.com/moments/detail/hong-kong-38-143225245/",
+      "https://ufood.com.hk/restaurant/detail/%E8%A5%BF%E7%87%9F%E7%9B%A4/%E9%BA%A5%E6%98%8E%E8%A8%98%E5%AB%A1%E5%85%A8%E9%9B%B2%E5%90%9E%E9%BA%B5/10300006409",
+      "https://www.openrice.com/zh/hongkong/r-%E9%BA%A5%E6%98%8E%E8%A8%98-%E8%A5%BF%E7%92%B0-%E6%B8%AF%E5%BC%8F-%E7%B2%A5%E5%93%81-r170756/reviews"
+    ]
+  },
+  {
+    "food": "beef brisket noodles",
+    "name": "Eng Kee Noodle Shop",
+    "name_zh": "英記麵家",
+    "area": "Sai Ying Pun",
+    "cuisine": "Cantonese noodles",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "intro": "A family-run noodle shop listed in the Michelin Guide, where the beef brisket is braised a day ahead and marinated overnight.",
+    "must_order": [
+      "Beef brisket noodles (牛腩麵)",
+      "Char siu noodles (叉燒麵)",
+      "Fried wontons (炸雲吞)"
+    ],
+    "reviews": "There are long lunch and dinner queues and the brisket is praised as very tender, but some find the soup salty, and popular items sell out by late afternoon.",
+    "tips": "Cash only and no bookings; open 9:30am to 7pm daily, so go early.",
+    "address_en": "G/F, Cheong King Court, 32 High Street, Sai Ying Pun",
+    "address_zh": "香港西營盤高街32號昌景閣地下",
+    "lat": 22.28505,
+    "lng": 114.14237,
+    "status": "open",
+    "sources": [
+      "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/eng-kee-noodle-shop",
+      "https://www.malaysianflavours.com/2016/12/ying-kee-beef-brisket-noodles-sai-ying-pun-hong-kong.html",
+      "https://www.hellohongkong.com.hk/blog/eng-kee-noodle-shop"
+    ]
+  },
+  {
+    "food": "beef brisket noodles",
+    "name": "Kau Kee",
+    "name_zh": "九記牛腩",
+    "area": "Sheung Wan",
+    "cuisine": "Cantonese noodles",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "intro": "Hong Kong's most famous beef brisket shop, a Michelin-listed institution on Gough Street with a clear, rich broth.",
+    "must_order": [
+      "Clear-broth beef brisket with e-fu noodles (上湯牛腩伊麵)",
+      "Curry beef brisket and tendon (咖喱牛筋腩)"
+    ],
+    "reviews": "Most reviewers love the broth and tender beef, but expect a 20–40 minute queue, shared tables and brusque service, and some say it is not as good as it used to be.",
+    "tips": "Cash (or WeChat Pay HK) only; closed Sundays, open about 12:30pm to 10:30pm, and weekday afternoons have the shortest queues.",
+    "address_en": "G/F, 21 Gough Street, Sheung Wan (Central)",
+    "address_zh": "香港上環歌賦街21號地下",
+    "lat": 22.28425,
+    "lng": 114.15251,
+    "status": "open",
+    "sources": [
+      "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/kau-kee",
+      "https://hkexpatclub.com/kau-kee-beef-brisket-noodles-central-guide/",
+      "https://www.tripadvisor.ca/Restaurant_Review-g294217-d795044-Reviews-Kau_Kee_Restaurant-Hong_Kong.html"
+    ]
+  },
+  {
+    "food": "roast goose / char siu (siu mei)",
+    "name": "Po Kee",
+    "name_zh": "波記燒臘粉麵店",
+    "area": "Shek Tong Tsui",
+    "cuisine": "Cantonese roast meats",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "intro": "A small Bib Gourmand roast-meat shop (2026 Michelin Guide) one minute from HKU MTR, known for its roast goose with rice noodles.",
+    "must_order": [
+      "Roast goose leg with rice noodles (燒鵝髀瀨粉)",
+      "Roast duck with rice noodles (燒鴨瀨粉)",
+      "Char siu (叉燒)"
+    ],
+    "reviews": "The goose and duck skin are praised as crisp and juicy, but the shop is tiny so you share tables at peak times, and the goose leg sells out.",
+    "tips": "Cash only; closed Sundays, open about 11:30am to 7–8pm, and best visited before noon or after 1:30pm.",
+    "address_en": "Shop P, G/F, 423-425 Queen's Road West, Shek Tong Tsui",
+    "address_zh": "香港西環石塘咀皇后大道西425號P舖地下",
+    "lat": 22.28635,
+    "lng": 114.13681,
+    "status": "open",
+    "sources": [
+      "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/po-kee",
+      "https://www.hk01.com/%E9%A3%9F%E7%8E%A9%E8%B2%B7/740300/",
+      "https://ufood.com.hk/restaurant/detail/%E8%A5%BF%E7%92%B0/%E6%B3%A2%E8%A8%98%E7%87%92%E8%87%98%E7%B2%89%E9%BA%B5%E5%BA%97/10101000288"
+    ]
+  },
+  {
+    "food": "roast goose / char siu (siu mei)",
+    "name": "Dragon State Kitchen",
+    "name_zh": "龍邦燒味小廚茶餐廳",
+    "area": "Sheung Wan",
+    "cuisine": "Cantonese roast meats",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "intro": "A small Sheung Wan roast-meat shop known for juicy, less-sweet char siu.",
+    "must_order": [
+      "Char siu rice (叉燒飯)",
+      "Char siu and roast pork on rice (叉燒燒肉飯)",
+      "Roast goose (燒鵝)"
+    ],
+    "reviews": "Food bloggers rate the char siu among the city's best, but there are complaints about salty duck, slow dine-in service and one burnt takeaway order in September 2026.",
+    "tips": "Cash only; open about 7am to 11pm and busiest at lunch, so go after 2pm.",
+    "address_en": "Shop B, G/F, 38 Bonham Strand, Sheung Wan",
+    "address_zh": "香港上環文咸東街38號地下B舖",
+    "lat": 22.28575,
+    "lng": 114.15164,
+    "status": "open",
+    "sources": [
+      "https://palealetravel.com/dragon-state-kitchen/",
+      "https://www.openrice.com/en/hongkong/r-dragon-state-kitchen-restaurant-sheung-wan-hong-kong-style-r186947",
+      "https://wanderlog.com/place/details/4975785/dragon-state-kitchen-restaurant"
+    ]
+  },
+  {
+    "food": "congee",
+    "name": "Sang Kee Congee Shop",
+    "name_zh": "生記粥品專家",
+    "area": "Sheung Wan",
+    "cuisine": "Cantonese congee",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "intro": "A Sheung Wan congee shop open for more than 40 years, famous for silky congee with fresh fish.",
+    "must_order": [
+      "Fish belly congee (魚腩粥)",
+      "Dace fish ball congee (鯪魚球粥)",
+      "Fried fish cake (煎魚餅)"
+    ],
+    "reviews": "Regulars praise the smooth congee and very fresh fish, but expect shared tables, little English and limited choice once items sell out.",
+    "tips": "Cash only; opens about 6:30am and closes early evening, closed Sundays (hours vary by source), near Sheung Wan MTR exit A2.",
+    "address_en": "G/F, 7-9 Burd Street, Sheung Wan",
+    "address_zh": "香港上環畢街7-9號地下",
+    "lat": 22.28527,
+    "lng": 114.15166,
+    "status": "open",
+    "sources": [
+      "https://www.timeout.com/hong-kong/restaurants/sang-kee-congee-shop",
+      "https://www.openrice.com/en/hongkong/r-sang-kee-congee-shop-sheung-wan-guangdong-congee-r3023",
+      "https://www.yelp.com/biz/%E7%94%9F%E8%A8%98%E7%B2%A5%E5%93%81%E5%B0%88%E5%AE%B6-%E9%A6%99%E6%B8%AF",
+      "https://danielfooddiary.com/2017/12/09/sangkee/"
+    ]
+  },
+  {
+    "food": "dim sum (morning)",
+    "name": "Luk On Kui (formerly Lin Heung Kui)",
+    "name_zh": "六安居（前身蓮香居）",
+    "area": "Sheung Wan",
+    "cuisine": "Cantonese dim sum (cart service)",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "intro": "One of the last old-style tea houses where dim sum is pushed around on trolleys and you grab what you want; formerly called Lin Heung Kui, same kitchen.",
+    "must_order": [
+      "Shrimp dumplings (蝦餃)",
+      "Siu mai (燒賣)",
+      "Char siu pineapple pastry (菠蘿叉燒酥)"
+    ],
+    "reviews": "Loved for its noisy, old-school atmosphere and its carts, but you will share tables with strangers, and by 8am at weekends the queue can reach the stairwell.",
+    "tips": "Cash only (no Octopus or cards); open 6am to 10pm but carts run only until 4pm, and weekday mornings from 6:30 to 8am are best.",
+    "address_en": "2/F-3/F, Western Centre, 40-50 Des Voeux Road West, Sheung Wan",
+    "address_zh": "香港上環德輔道西40-50號西區中心2樓至3樓",
+    "lat": 22.28756,
+    "lng": 114.14693,
+    "status": "open",
+    "sources": [
+      "https://hkexpatclub.com/luk-on-kui-sheung-wan-dim-sum-cart-guide/",
+      "https://www.openrice.com/en/hongkong/r-lin-heung-kui-sheung-wan-guangdong-congee-r31507"
+    ]
+  },
+  {
+    "food": "dim sum (morning)",
+    "name": "Lin Heung Lau (Lin Heung Tea House)",
+    "name_zh": "蓮香樓",
+    "area": "Sheung Wan",
+    "cuisine": "Cantonese dim sum",
+    "category": [
+      "lunch"
+    ],
+    "price": "$",
+    "intro": "A historic tea house, nearly 100 years old, that left Wellington Street in Central in May 2026 and reopened next to Sheung Wan MTR exit B.",
+    "must_order": [
+      "Lotus seed paste bun with egg yolk (蓮蓉包)",
+      "Steamed pork dumplings (燒賣)",
+      "Big chicken bun (大包)"
+    ],
+    "reviews": "Fans of the old Central site welcomed the move, but few reviews of the new site exist yet and the old one was known for chaos and brusque service.",
+    "tips": "Open from early morning; check whether carts and the self-serve style survived the move, and bring cash.",
+    "address_en": "G/F Shops 9-10, 1/F & 2/F, Tung Ning Building, 249-253 Des Voeux Road Central, Sheung Wan",
+    "address_zh": "香港上環德輔道中249-253號東寧大廈地下9及10號舖、1樓及2樓",
+    "lat": 22.28683,
+    "lng": 114.15225,
+    "status": "open",
+    "sources": [
+      "https://www.timeout.com/hong-kong/news/historic-tea-house-lin-heung-lau-has-relocated-to-sheung-wan-051326",
+      "https://thebeat.asia/hong-kong/delish/happenings/lin-heung-lau-relocation",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-lin-heung-tea-house.html",
+      "https://jp.openrice.com/en/hongkong/r-lin-heung-lau-sheung-wan-guangdong-dim-sum-r1128979"
+    ]
+  },
+  {
+    "food": "egg waffle (gai daan jai)",
+    "name": "Chicken Egg Boy",
+    "name_zh": "Chicken Egg Boy（菠蘿包雞蛋仔）",
+    "area": "Sheung Wan",
+    "cuisine": "Egg waffles",
+    "category": [
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "A newer charity-run egg waffle shop whose viral egg waffle has a crackly pineapple-bun crust on its bubbles.",
+    "must_order": [
+      "Original pineapple bun egg waffle (菠蘿包雞蛋仔)",
+      "Char siu pineapple bun egg waffle (叉燒菠蘿包雞蛋仔)"
+    ],
+    "reviews": "Food guides call it the most exciting new egg waffle in town, but it costs more than a street stall and can sell out early.",
+    "tips": "Check Instagram for hours and sell-outs; all profits go to local charity.",
+    "address_en": "Shop 2, G/F, Nam Wo Hong Building, 148 Wing Lok Street, Sheung Wan",
+    "address_zh": "香港上環永樂街148號南和行大廈地下2號舖",
+    "lat": 22.28708,
+    "lng": 114.14928,
+    "status": "open",
+    "sources": [
+      "https://www.afoodieworld.com/blog/2026/09/16/best-egg-waffles-hong-kong/",
+      "https://indulgenteats.com/2025/03/13/where-to-eat-best-pineapple-buns-in-hong-kong/",
+      "https://dessertcorrespondents.com/2026/03/16/hong-kong-best-modern-viral-bubble-egg-waffles/"
+    ]
+  },
+  {
+    "food": "egg waffle (gai daan jai)",
+    "name": "NOOK.",
+    "name_zh": "NOOK.（雪糕雞蛋仔）",
+    "area": "Kennedy Town",
+    "cuisine": "Gelato and egg waffles",
+    "category": [
+      "dessert"
+    ],
+    "price": "$",
+    "intro": "A gelato shop near the Kennedy Town waterfront that serves bubble waffles with gelato, an easy walk from campus.",
+    "must_order": [
+      "Bubble waffle with pandan coconut gelato (班蘭椰子雪糕雞蛋仔)",
+      "Bubble waffle with Sicilian pistachio gelato (開心果雪糕雞蛋仔)"
+    ],
+    "reviews": "Foodie's 2026 egg waffle list includes it for its gelato combinations, but this is a modern dessert version, not the plain street-style waffle.",
+    "tips": "Good after dinner with a walk along the promenade; hours not confirmed.",
+    "address_en": "G/F, Timley Court, 99 Catchick Street, Kennedy Town",
+    "address_zh": "香港堅尼地城吉席街99號添利閣地下",
+    "lat": 22.2832,
+    "lng": 114.12679,
+    "status": "open",
+    "sources": [
+      "https://www.afoodieworld.com/blog/2026/09/16/best-egg-waffles-hong-kong/"
+    ]
+  },
+  {
+    "food": "mango pomelo sago / tong sui",
+    "name": "Soon",
+    "name_zh": "Soon（糖水舖）",
+    "area": "Sheung Wan",
+    "cuisine": "Hong Kong tong sui (sweet soups)",
+    "category": [
+      "dessert",
+      "late-night"
+    ],
+    "price": "$$",
+    "intro": "A cosy tong sui shop that opened in April 2026, serving about 20 classic Hong Kong desserts, less sweet than usual.",
+    "must_order": [
+      "Mango pomelo sago (楊枝甘露)",
+      "Almond tea with egg white (蛋白杏仁茶)",
+      "Black sesame rice balls in ginger soup (薑汁芝麻湯丸)"
+    ],
+    "reviews": "Time Out liked it as a nostalgic but polished spot, but at HK$35–58 it costs more than old-school shops and some reviewers say the portions are small.",
+    "tips": "Evening sessions fill up fast, so arrive early; it is on quiet Lok Ku Road just below Hollywood Road.",
+    "address_en": "Shop 2, G/F, 27 Lok Ku Road, Sheung Wan",
+    "address_zh": "香港上環樂古道27號地下2號舖",
+    "lat": 22.2853,
+    "lng": 114.1495,
+    "status": "open",
+    "sources": [
+      "https://www.timeout.com/hong-kong/news/a-chinese-dessert-shop-called-soon-has-opened-in-sheung-wan-042126",
+      "https://hktipster.com/soon-en/",
+      "https://www.corner.inc/place/pRG4sJXT5gVW",
+      "https://www.foodpanda.hk/restaurant/nbjx/soon"
+    ]
+  },
+  {
+    "food": "claypot rice",
+    "name": "Sheung Hei Claypot Rice",
+    "name_zh": "嚐囍煲仔小菜",
+    "area": "Kennedy Town",
+    "cuisine": "Cantonese claypot rice & dim sum",
+    "category": [
+      "lunch",
+      "dinner",
+      "late-night"
+    ],
+    "price": "$$",
+    "intro": "A Michelin Bib Gourmand spot a short walk from campus, known for claypot rice with a crispy crust and very large dim sum.",
+    "must_order": [
+      "Cured meat claypot rice (臘味煲仔飯)",
+      "Steamed eel claypot rice (白鱔煲仔飯)",
+      "Giant shrimp dumplings (大蝦餃)"
+    ],
+    "reviews": "Many diners praise the crispy rice and the dim sum, but some Tripadvisor reviewers found the claypot rice bland and complained about long waits and service.",
+    "tips": "Walk-in only; OpenRice lists very long (possibly 24-hour) hours, so confirm before a late-night visit; dinner queues are common and claypots take about 20 minutes.",
+    "address_en": "G/F, Fook On Mansion, 25 North Street, Kennedy Town",
+    "address_zh": "香港堅尼地城北街25號福安大廈地下",
+    "lat": 22.28308,
+    "lng": 114.12908,
+    "status": "open",
+    "sources": [
+      "https://www.timeout.com/hong-kong/restaurants/sheung-hei-claypot-rice",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-sheung-hei.html",
+      "https://guide.michelin.com/hk/en/article/dining-in/hong-kong-michelin-starred-claypot-rice",
+      "https://www.openrice.com/en/hongkong/r-sheung-hei-western-district-hong-kong-style-dim-sum-r39874"
+    ]
+  }
+]

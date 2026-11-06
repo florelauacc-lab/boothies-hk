@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Boothies in HK · Becker Section guide</title>
+  <meta name="description" content="An interactive map of classmate-picked places to eat and drink near HKU: Kennedy Town, Sai Ying Pun and beyond." />
+  <meta name="theme-color" content="#800000" />
+  <meta property="og:title" content="Boothies in HK · Becker Section guide" />
+  <meta property="og:description" content="Pick tonight's dinner, dessert or bar on the map." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥢</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="minibar" id="minibar" aria-hidden="true">
+    <span class="mb-title">Where to<span class="q">?</span></span>
+    <span class="mb-sum" id="mb-sum"></span>
+    <button type="button" class="mb-change" id="mb-change">Change</button>
+  </div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-top">
+        <div class="title-wrap">
+          <h1 class="neon">Where to<span class="q">?</span></h1>
+          <p class="crest"><b>Boothies in HK</b> · Becker Section · 14–22 Nov</p>
+        </div>
+        <div class="neon-sign" aria-hidden="true">
+          <span class="bracket"></span><span class="chain l"></span><span class="chain r"></span>
+          <div class="board">
+            <span class="ch">香</span><span class="ch flick">港</span>
+            <span class="tag">HONG<i></i>KONG</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button id="go-count" class="b-go" type="button" data-go-list="1">→ See places</button>
+          <button id="pick" class="pick-btn" type="button" aria-label="Pick for me"><span class="dice">🎲</span><span class="btn-lbl"> Pick for me</span></button>
+          <button id="shortlist-btn" class="ghost-btn" type="button" aria-label="Shortlist">♥<span class="btn-lbl"> Shortlist</span> <b id="sl-count">0</b></button>
+        </div>
+      </div>
+      <div class="moods" id="moods" role="group" aria-label="What are you looking for"></div>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" class="tab active" data-tab="city" aria-selected="true"><span class="ti">🍜</span><span class="tl">Eat &amp; drink</span></button>
+    <button role="tab" class="tab" data-tab="sights" data-group="explore" aria-selected="false"><span class="ti">🧭</span><span class="tl">Explore</span></button>
+    <button role="tab" class="tab" data-tab="start" aria-selected="false"><span class="ti">✨</span><span class="tl">First time</span></button>
+    <button role="tab" class="tab" data-tab="week" aria-selected="false"><span class="ti">🗓</span><span class="tl">This week</span></button>
+  </nav>
+
+  <main id="finder" class="explore">
+    <aside class="list-pane">
+      <div class="seg" id="seg" role="tablist" aria-label="Explore" hidden>
+        <button data-tab="sights" class="on">📸 Sights</button>
+        <button data-tab="hikes">🥾 Hikes</button>
+        <button data-tab="shop">🛍️ Shopping</button>
+      </div>
+      <div class="filters">
+        <input id="search" type="search" placeholder="Search places" autocomplete="off" />
+        <div class="chip-row" id="kinds" aria-label="What are you looking for"></div>
+        <div class="chip-row" id="quick" aria-label="Quick filters"></div>
+        <div class="more-panel" id="more-panel" hidden>
+          <div class="chip-row" id="areas" aria-label="Area"></div>
+          <div class="chip-row" id="sections" aria-label="Type"></div>
+        </div>
+      </div>
+      <p id="count" class="count"></p>
+      <div id="grid" class="cards"></div>
+    </aside>
+    <div class="map-pane">
+      <div id="map" aria-label="Map of places"></div>
+      <div class="map-lock" aria-hidden="true"><span>👆 Tap map to zoom</span></div>
+      <div class="legend" id="legend"></div>
+    </div>
+  </main>
+
+  <section id="start" class="week" hidden>
+    <div class="week-inner">
+      <div class="canto-card">
+        <h3>🗣 Cantonese 101 <small>Hong Kong speaks Cantonese, not Mandarin</small></h3>
+        <div class="canto-list">
+          <span><b>"Mm-goi"</b> thanks</span>
+          <span><b>"Yum sing!"</b> cheers</span>
+          <span><b>"Ho sik!"</b> delicious</span>
+          <span><b>"My-dan"</b> the bill, please</span>
+          <span><b>"Yau lok!"</b> stop the minibus</span>
+          <span><b>"Leng lui / leng jai"</b> pretty / handsome</span>
+        </div>
+        <p class="joke">🎵 Cantonese has 6 tones, so "si" can mean poem, history, time, try, market, a thing… or poo 💩. Choose wisely.</p>
+      </div>
+
+      <h2>Your Hong Kong bucket list</h2>
+      <div id="essentials" class="ess-grid"></div>
+
+      <h2 style="margin-top:30px">Taste of Hong Kong <small class="score"><b id="taste-score">0</b> tried</small></h2>
+      <p class="muted">Tap a dish to see what it is and where to try it.</p>
+      <div class="meter"><i id="taste-bar"></i></div>
+      <div id="taste" class="taste-grid"></div>
+
+      <div id="tips" class="tips"></div>
+    </div>
+  </section>
+
+  <section id="week" class="week" hidden>
+    <div class="week-inner">
+      <p class="eyebrow">The Becker allocation of time</p>
+      <h2>The week at a glance</h2>
+      <p class="muted">🎓 Becker schedule · 🎉 our plans</p>
+      <div class="plandays" id="plandays"></div>
+      <ol id="plan" class="plan"></ol>
+    </div>
+  </section>
+
+  <dialog id="picked">
+    <div class="dialog-body">
+      <p class="eyebrow glow">The dice have spoken</p>
+      <div class="slot" id="slot"><span id="slot-text">…</span></div>
+      <div id="picked-card"></div>
+      <div class="dialog-actions">
+        <button id="reroll" type="button">🎲 Roll again</button>
+        <button id="goto" type="button" class="alt">Show on map</button>
+        <button id="close" type="button" class="ghost">✕</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="driver" class="driver">
+    <div class="dialog-body">
+      <p class="eyebrow">Hand your phone to the driver 🚕</p>
+      <div id="driver-body"></div>
+      <div class="dialog-actions"><button id="driver-close" type="button" class="ghost" style="flex:1">Done</button></div>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <p>📈 Gary Becker approved: minimise the opportunity cost of a bad dinner.</p>
+    <p>Summaries are a quick guide drawn from public reviews (OpenRice, Google, TimeOut HK, blogs), not live ratings. Check hours and book ahead for big groups. Map © OpenFreeMap, OpenMapTiles, OpenStreetMap contributors.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

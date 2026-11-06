@@ -1,0 +1,540 @@
+{
+ "shun-kee-typhoon-shelter-seafood": {
+  "zh": "銅鑼灣避風塘（告士打道）",
+  "manual": true
+ },
+ "tung-po-kitchen": {
+  "zh": "灣仔謝斐道303號KONNECT 2樓",
+  "manual": true
+ },
+ "new-dim-siu-yi": {
+  "zh": "東區七姊妺道14-16號兆景大廈",
+  "dist_m": 20,
+  "q": "North Point ( 14 Tsat Tsz Mui Road; ~1 min from North Point MTR Exit B4)"
+ },
+ "sing-kee": {
+  "zh": "中環士丹利街（盛記大排檔）",
+  "manual": true
+ },
+ "lin-heung-lau": {
+  "zh": "中西區德輔道中249-251號東寧大廈",
+  "dist_m": 55,
+  "q": "Sheung Wan (– Tung Ning Building, 249–253 Des Voeux Road Central)"
+ },
+ "luk-yu-tea-house": {
+  "zh": "中西區士丹利街24-26號陸羽大廈",
+  "dist_m": 1,
+  "q": "Central (24 Stanley Street)"
+ },
+ "tim-ho-wan-central": {
+  "zh": "中西區港景街1號國際金融中心國際金融中心商場",
+  "dist_m": 117,
+  "q": "Central (Shop 12A,  Hong Kong Station / IFC Mall)"
+ },
+ "maxim-s-palace-city-hall": {
+  "zh": "中西區愛丁堡廣場大會堂",
+  "dist_m": 56,
+  "q": "Central ( Low Block, City Hall, 5 Edinburgh Place)"
+ },
+ "dim-sum-library": {
+  "zh": "中西區金鐘道88號太古廣場港麗酒店",
+  "dist_m": 127,
+  "q": "Admiralty (Shop 124,  Pacific Place)"
+ },
+ "madame-f-grand-caf-chinois": {
+  "zh": "中西區荷李活道10號大館古蹟及藝術館3座",
+  "dist_m": 19,
+  "q": "Central (Block 3, Tai Kwun, 10 Hollywood Road)"
+ },
+ "a-smoking-affair": {
+  "zh": "灣仔區羅素街38號金朝陽中心",
+  "dist_m": 52,
+  "q": "Causeway Bay ( Soundwill Plaza II – Midtown)"
+ },
+ "lau-haa-hot-pot-restaurant": {
+  "zh": "灣仔區駱克道441號駱克大廈A座",
+  "dist_m": 11,
+  "q": "Causeway Bay ( &  Block A, Lockhart House, 441 Lockhart Road)"
+ },
+ "kau-kee-restaurant": {
+  "zh": "中西區歌賦街21號",
+  "dist_m": 4,
+  "q": "Central (21 Gough Street)"
+ },
+ "mak-an-kee-noodle-chung-kee": {
+  "zh": "中西區永吉街29-37號恒豐大廈",
+  "dist_m": 8,
+  "q": "Central/Sheung Wan border ( 37 Wing Kut Street; ~2 min from Sheung Wan MTR Exit E1)"
+ },
+ "sing-heung-yuen": {
+  "zh": "中西區美輪街2A號美輪樓",
+  "dist_m": 35,
+  "q": "Central/Sheung Wan (2 Mee Lun Street, off Gough Street)"
+ },
+ "yuk-kin-fast-food": {
+  "zh": "中西區太平山街6號寶雲樓",
+  "dist_m": 116,
+  "q": "Sheung Wan ( Po Wan Building, 6 Tai Ping Shan Street)"
+ },
+ "tak-yu-restaurant": {
+  "zh": "灣仔區進教圍17-18號澤堂樓",
+  "dist_m": 9,
+  "q": "Wan Chai ( 17–18 St Francis Yard)"
+ },
+ "samsen-sheung-wan": {
+  "zh": "中西區蘇杭街23號永昌商業大廈",
+  "dist_m": 6,
+  "q": "Sheung Wan ( 23 Jervois Street)"
+ },
+ "n-ch-i": {
+  "zh": "中西區孖沙街7號MERCER 9",
+  "dist_m": 12,
+  "q": "Sheung Wan (15–17 Mercer Street)"
+ },
+ "jeonpo-meat-shop": {
+  "zh": "中西區威靈頓街56-58號威寧大廈",
+  "dist_m": 7,
+  "q": "Central ( Wellington Plaza, 56–58 Wellington St) and Wan Chai (Johnston Rd / Lun Fat St)"
+ },
+ "gold-star": {
+  "zh": "上環永樂街118號",
+  "manual": true
+ },
+ "sakaba-masaka": {
+  "zh": "中西區善慶街2號",
+  "dist_m": 2,
+  "q": "Central/Sheung Wan ( 2 Shin Hing Street)"
+ },
+ "ichiran-causeway-bay": {
+  "zh": "灣仔區謝斐道440號駱克大廈Ｂ座",
+  "dist_m": 15,
+  "q": "Causeway Bay (Shop F–G,  Lockhart House Block A, 440 Jaffe Road)"
+ },
+ "pici-2": {
+  "none": true
+ },
+ "trattoria-felino": {
+  "zh": "灣仔區船街1-7號寶業大廈",
+  "dist_m": 3,
+  "q": "Wan Chai (Shops 3–4,  Pao Yip Building, 1–7 Ship Street)"
+ },
+ "dieci": {
+  "zh": "中西區歌賦街33號經富中心",
+  "dist_m": 14,
+  "q": "Central ( 29–31 Gough Street)"
+ },
+ "tabi": {
+  "zh": "中西區堅道55號",
+  "dist_m": 5,
+  "q": "Mid-Levels/Central ( 55 Caine Road)"
+ },
+ "pica-pica": {
+  "zh": "上環德輔道中317-321號",
+  "manual": true
+ },
+ "la-paloma": {
+  "zh": "西營盤皇后大道西189號",
+  "manual": true
+ },
+ "el-taquero": {
+  "zh": "灣仔區皇后大道東119號欣景閣",
+  "dist_m": 15,
+  "q": "Wan Chai (Shops B–F,  Yan King Court, 119 Queen's Road East)"
+ },
+ "nanhai-no-2": {
+  "zh": "灣仔區告士打道280號世貿中心",
+  "dist_m": 40,
+  "q": "Causeway Bay ( World Trade Centre, 280 Gloucester Road)"
+ },
+ "001": {
+  "zh": "中環荷李活道10號大館",
+  "manual": true
+ },
+ "peel-street": {
+  "zh": "中西區荷李活道69號THE SOHO",
+  "dist_m": 42,
+  "q": "Central/Soho (between Hollywood Road and Caine Road, by the Mid-Levels escalator)"
+ },
+ "mius": {
+  "zh": "中西區歌賦街29號",
+  "dist_m": 11,
+  "q": "Central/NoHo (29 Gough Street)"
+ },
+ "draft-land-hk": {
+  "zh": "中西區雲咸街63號巴力大廈",
+  "dist_m": 4,
+  "q": "Central ( Parekh House, 63 Wyndham Street)"
+ },
+ "fello": {
+  "zh": "中西區雲咸街43-55號余悅禮行",
+  "dist_m": 8,
+  "q": "Central ( &  Yu Yuet Lai Building, 43–55 Wyndham Street)"
+ },
+ "the-diplomat": {
+  "zh": "中環砵典乍街45號H Code",
+  "manual": true
+ },
+ "the-savory-project": {
+  "zh": "中西區士丹頓街4號",
+  "dist_m": 2,
+  "q": "Central/Soho (4 Staunton Street)"
+ },
+ "quinary": {
+  "zh": "中西區荷李活道69號THE SOHO",
+  "dist_m": 59,
+  "q": "Central/Soho (56–58 Hollywood Road)"
+ },
+ "salon-de-ning-the-peninsula": {
+  "zh": "油尖旺區梳士巴利道半島酒店",
+  "dist_m": 21,
+  "q": "Tsim Sha Tsui (lower level, The Peninsula, Salisbury Road)"
+ },
+ "ciclo": {
+  "zh": "灣仔區霎東街15號OLIV",
+  "dist_m": 14,
+  "q": "Causeway Bay ( Oliv, 15–21 Sharp Street East)"
+ },
+ "lounge-hakuba": {
+  "zh": "灣仔區謝斐道535號TOWER 535",
+  "dist_m": 5,
+  "q": "Causeway Bay (Shop 302,  Tower 535, 535 Jaffe Road)"
+ },
+ "migas": {
+  "zh": "中西區皇后大道中80號H QUEEN'S",
+  "dist_m": 9,
+  "q": "Central ( H Queen's, 80 Queen's Road Central)"
+ },
+ "cardinal-point": {
+  "zh": "中西區皇后大道中15號置地廣塲告羅士打大廈",
+  "dist_m": 5,
+  "q": "Central (43– Gloucester Tower, The Landmark, 15 Queen's Road Central)"
+ },
+ "skye-roofbar-grill": {
+  "zh": "灣仔區告士打道310號柏寧酒店",
+  "dist_m": 10,
+  "q": "Causeway Bay ( The Park Lane Hong Kong, 310 Gloucester Road)"
+ },
+ "terrace-boulud-by-mandarin-oriental": {
+  "zh": "中西區遮打道10號太子大廈",
+  "dist_m": 24,
+  "q": "Central ( Landmark Prince's Building, 10 Chater Road)"
+ },
+ "salisterra": {
+  "zh": "中西區金鐘道88號太古廣場奕居",
+  "dist_m": 111,
+  "q": "Admiralty ( The Upper House, Pacific Place, 88 Queensway)"
+ },
+ "darkside": {
+  "zh": "油尖旺區梳士巴利道18號VICTORIA DOCKSIDE香港瑰麗酒店",
+  "dist_m": 22,
+  "q": "Tsim Sha Tsui ( Rosewood Hong Kong, 18 Salisbury Road)"
+ },
+ "porterhouse": {
+  "zh": "中西區德己立街32號加州大廈",
+  "dist_m": 3,
+  "q": "Central/LKF ( California Tower, 30–32 D'Aguilar Street)"
+ },
+ "felix-the-peninsula": {
+  "zh": "油尖旺區梳士巴利道半島酒店",
+  "dist_m": 21,
+  "q": "Tsim Sha Tsui ( The Peninsula, Salisbury Road)"
+ },
+ "thinkwine": {
+  "zh": "中西區些利街2號LL TOWER",
+  "dist_m": 5,
+  "q": "Central/Soho ( LL Tower, 2–4 Shelley Street)"
+ },
+ "terroirs-by-lqv": {
+  "zh": "中西區擺花街1號一號廣場",
+  "dist_m": 54,
+  "q": "Central ( 1 Lyndhurst Terrace)"
+ },
+ "corks-wine-bar": {
+  "zh": "中西區荷李活道183號華冠大廈",
+  "dist_m": 59,
+  "q": "Sheung Wan ( 205C Hollywood Road), Wan Chai (Shop G10, Hopewell Food Street, 183 Queen's Road East), plus Causeway Bay"
+ },
+ "fayy": {
+  "zh": "中西區德己立街32號加州大廈",
+  "dist_m": 3,
+  "q": "Central/LKF (25– California Tower, 30–32 D'Aguilar Street)"
+ },
+ "yume": {
+  "zh": "中西區荷李活道41號安樂樓",
+  "dist_m": 4,
+  "q": "Central ( On Lok House, 39–43 Hollywood Road)"
+ },
+ "the-iron-fairies": {
+  "zh": "中西區荷李活道1-13號華懋荷李活中心",
+  "dist_m": 8,
+  "q": "Central ( Chinachem Hollywood Centre, 1–13 Hollywood Road)"
+ },
+ "the-33-thirty-three": {
+  "zh": "中西區雲咸街33號LKF TOWER",
+  "dist_m": 2,
+  "q": "Central ( 33 Wyndham Street)"
+ },
+ "lee-gardens": {
+  "zh": "銅鑼灣希慎道33號利園一期",
+  "manual": true
+ },
+ "times-square": {
+  "zh": "灣仔區勿地臣街1號時代廣場",
+  "dist_m": 17,
+  "q": "Times Square Causeway Bay"
+ },
+ "sogo-causeway-bay": {
+  "zh": "銅鑼灣軒尼詩道555號崇光百貨",
+  "manual": true
+ },
+ "pacific-place": {
+  "zh": "中西區金鐘道88號太古廣場港麗酒店",
+  "dist_m": 127,
+  "q": "Pacific Place Admiralty"
+ },
+ "ifc-mall": {
+  "zh": "中西區港景街1號國際金融中心國際金融中心商場",
+  "dist_m": 71,
+  "q": "IFC Mall Central"
+ },
+ "landmark-central": {
+  "zh": "中環皇后大道中15號置地廣場",
+  "manual": true
+ },
+ "ronald-abram-mandarin-oriental": {
+  "zh": "中環干諾道中5號文華東方酒店",
+  "manual": true
+ },
+ "k11-musea": {
+  "zh": "尖沙咀梳士巴利道18號K11 MUSEA",
+  "manual": true
+ },
+ "harbour-city-canton-road": {
+  "zh": "油尖旺區廣東道7號海港城九倉電訊中心",
+  "dist_m": 32,
+  "q": "Harbour City & Canton Road Tsim Sha Tsui"
+ },
+ "chow-sang-sang-the-big-hk-jewellery-chai": {
+  "none": true
+ },
+ "watches-brand-boutiques-authorised-deale": {
+  "none": true
+ },
+ "sam-s-tailor": {
+  "zh": "油尖旺區加拿分道18號恒生尖沙咀大廈",
+  "dist_m": 102,
+  "q": "Sam's Tailor Tsim Sha Tsui"
+ },
+ "fortress-broadway-electronics": {
+  "none": true
+ },
+ "ying-kee-tea-house-johnston-road": {
+  "none": true,
+  "rejected": {
+   "zh": "灣仔區莊士敦道194-196號灣仔商業中心",
+   "dist_m": 151,
+   "q": "Ying Kee Tea House (Johnston Road) Wan Chai"
+  }
+ },
+ "sasa-mannings-beauty-and-pharmacy": {
+  "none": true
+ },
+ "pmq-with-tai-kwun-nearby": {
+  "zh": "中環鴨巴甸街35號元創方",
+  "manual": true
+ },
+ "stanley-market": {
+  "zh": "南區赤柱市場道20號赤柱海濱小賣亭",
+  "dist_m": 53,
+  "q": "Stanley Market Stanley, south side"
+ },
+ "orchard": {
+  "zh": "中西區結志街28號",
+  "dist_m": 8,
+  "q": "28 Gage St, Central"
+ },
+ "magistracy-dining-room": {
+  "zh": "中西區荷李活道10號中央裁判司署",
+  "dist_m": 44,
+  "q": "Magistracy Dining Room Central"
+ },
+ "knutsford-terrace": {
+  "zh": "尖沙咀諾士佛臺",
+  "manual": true
+ },
+ "ned-kelly-s-last-stand": {
+  "zh": "油尖旺區亞士厘道9-11號順豐大廈",
+  "dist_m": 2,
+  "q": "11A Ashley Rd, Tsim Sha Tsui, Hong Kong"
+ },
+ "s-psip-rooftop-shisha-bar": {
+  "zh": "灣仔區電氣道108號冠貿商業大廈",
+  "dist_m": 13,
+  "q": " Morecrown Commercial Building, 108 Electric Rd, Causeway Bay, Hong Kong"
+ },
+ "the-globe": {
+  "zh": "中西區嘉咸街45-53A號嘉利大廈",
+  "dist_m": 11,
+  "q": "Garley Building, 45-53A Graham St, Central, Hong Kong"
+ },
+ "craftissimo-sheung-wan": {
+  "zh": "中西區太平山街22A號太平樓",
+  "dist_m": 5,
+  "q": "Tai Ping Building, Shop D,  22-24A Tai Ping Shan St, Sheung Wan, Hong Kong"
+ },
+ "goshaku": {
+  "zh": "油尖旺區諾士佛臺1號ONE KNUTSFORD",
+  "dist_m": 8,
+  "q": " One Knutsford Terrace, Knutsford Terrace, Tsim Sha Tsui, Hong Kong"
+ },
+ "dead-poets-hk": {
+  "zh": "中西區鴨巴甸街41-49號金豪大廈",
+  "dist_m": 4,
+  "q": "41-49 Aberdeen St, Central, Hong Kong"
+ },
+ "coa": {
+  "zh": "中西區善慶街6-10號華善樓",
+  "dist_m": 1,
+  "q": " Wah Shin House, 6-10 Shin Hing Street, Central, Hong Kong, Central, Hong Kong"
+ },
+ "peel-st": {
+  "zh": "中環卑利街",
+  "manual": true
+ },
+ "alto": {
+  "zh": "灣仔區登龍街18號",
+  "dist_m": 10,
+  "q": " V Point, 18 Tang Lung St, Causeway Bay, Hong Kong"
+ },
+ "popinjays": {
+  "zh": "中西區紅棉路22號香港美利酒店",
+  "dist_m": 18,
+  "q": "Rooftop, 22 Cotton Tree Dr, Central, Hong Kong"
+ },
+ "second-draft": {
+  "zh": "灣仔區京士頓街9號嘉賓大廈",
+  "dist_m": 8,
+  "q": "H01, Fashion Walk, 9 Kingston St, Causeway Bay, Hong Kong"
+ },
+ "blue-supreme": {
+  "zh": "中西區東街21號",
+  "dist_m": 3,
+  "q": "21 Tung St, Sheung Wan, Hong Kong"
+ },
+ "the-old-man": {
+  "zh": "中西區鴨巴甸街37號",
+  "dist_m": 10,
+  "q": "Lower  37-39 Aberdeen Street, Soho, Central, Hong Kong, Hong Kong"
+ },
+ "ceo-neway-karaoke": {
+  "zh": "灣仔區軒尼詩道288號英皇集團中心",
+  "dist_m": 11,
+  "q": "Emperor Group Centre, 3-, 288 Hennessy Rd, Wan Chai, Hong Kong"
+ },
+ "afternoon-tea-at-the-peninsula": {
+  "zh": "尖沙咀梳士巴利道22號半島酒店",
+  "manual": true
+ },
+ "central-mid-levels-escalator": {
+  "zh": "中環至半山自動扶梯（中環街市入口）",
+  "manual": true
+ },
+ "victoria-peak-the-peak-tram": {
+  "zh": "中西區山頂道128號凌霄閣",
+  "dist_m": 11,
+  "q": "Victoria Peak & the Peak Tram The Peak"
+ },
+ "star-ferry": {
+  "zh": "中環天星碼頭（7號碼頭）",
+  "manual": true
+ },
+ "ding-ding-tram-kennedy-town-to-shau-kei-": {
+  "zh": "堅尼地城電車總站",
+  "manual": true
+ },
+ "tai-kwun": {
+  "zh": "中環荷李活道10號大館",
+  "manual": true
+ },
+ "pmq-a-mahjong-lesson": {
+  "zh": "中西區鴨巴甸街35號元創方",
+  "dist_m": 20,
+  "q": "PMQ & a Mahjong lesson Central / SoHo"
+ },
+ "man-mo-temple-hollywood-road-cat-street": {
+  "zh": "中西區荷李活道124-126號文武廟",
+  "dist_m": 11,
+  "q": "Man Mo Temple, Hollywood Road & Cat Street Sheung Wan"
+ },
+ "lan-kwai-fong-lkf": {
+  "zh": "中西區蘭桂坊2號蘭芳樓",
+  "dist_m": 33,
+  "q": "Lan Kwai Fong (LKF) Central"
+ },
+ "happy-valley-racecourse-wednesday-night-": {
+  "zh": "跑馬地馬場",
+  "manual": true
+ },
+ "temple-street-night-market": {
+  "zh": "油麻地廟街夜市",
+  "manual": true
+ },
+ "m-museum-west-kowloon-waterfront": {
+  "zh": "西九文化區M+博物館",
+  "manual": true
+ },
+ "stanley-repulse-bay": {
+  "zh": "赤柱市集",
+  "manual": true
+ },
+ "kennedy-town-waterfront-sunset": {
+  "zh": "中西區堅彌地城海旁38號堅城中心",
+  "dist_m": 37,
+  "q": "Kennedy Town waterfront & sunset Kennedy Town"
+ },
+ "central-western-district-promenade-sun-y": {
+  "zh": "中西區東邊街北16號中山紀念公園游泳池",
+  "dist_m": 72,
+  "q": "Central & Western District Promenade (Sun Yat Sen Memorial Park) Sai Ying Pun"
+ },
+ "dried-seafood-street-des-voeux-road-west": {
+  "zh": "中西區德輔道西28號宜必思香港中上環酒店",
+  "dist_m": 81,
+  "q": "Dried Seafood Street (Des Voeux Road West) Sheung Wan / Sai Ying Pun"
+ },
+ "possession-street-tai-ping-shan-pak-sing": {
+  "zh": "中西區水坑口街9號寶泰大廈",
+  "dist_m": 117,
+  "q": "Possession Street & Tai Ping Shan (Pak Sing Ancestral Hall) Sheung Wan"
+ },
+ "wet-market-walk-sai-ying-pun-market-cent": {
+  "zh": "中西區正街45號西營盤街市",
+  "dist_m": 12,
+  "q": "Wet market walk: Sai Ying Pun Market & Centre Street Sai Ying Pun"
+ },
+ "tram-through-chun-yeung-street-market": {
+  "zh": "東區春秧街112號北角M1酒店",
+  "dist_m": 30,
+  "q": "Tram through Chun Yeung Street market North Point"
+ },
+ "cooked-food-centre-dinner-smithfield-ken": {
+  "zh": "堅尼地城士美菲路12K號士美菲路市政大廈2樓熟食中心",
+  "manual": true
+ },
+ "yuen-po-street-bird-garden-flower-market": {
+  "zh": "油尖旺區園圃街8號園圃街雀鳥花園",
+  "dist_m": 53,
+  "q": "Yuen Po Street Bird Garden & Flower Market Prince Edward / Mong Kok, Kowloon"
+ },
+ "cha-chaan-teng-breakfast-mountain-road-c": {
+  "none": true
+ },
+ "central-harbourfront-tamar-park-observat": {
+  "zh": "中環海濱長廊（香港摩天輪）",
+  "manual": true
+ },
+ "tsim-sha-tsui-promenade-avenue-of-stars-": {
+  "zh": "尖沙咀海濱長廊（星光大道）",
+  "manual": true
+ }
+}

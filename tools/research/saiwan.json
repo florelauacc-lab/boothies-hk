@@ -1,0 +1,1027 @@
+[
+  {
+    "name_zh": "坤記煲仔小菜",
+    "name_en": "Kwan Kee Clay Pot Rice",
+    "area": "Sai Ying Pun",
+    "cuisine": "Cantonese claypot rice & stir-fries",
+    "category": [
+      "dinner"
+    ],
+    "price": "$",
+    "price_note": "OpenRice range HK$51–100 per person; Michelin lists it as $",
+    "intro": "A no-frills neighbourhood Cantonese spot famous for claypot rice cooked to order over the flame, with a crispy scorched rice crust at the bottom. Listed in the Michelin Guide Hong Kong.",
+    "must_order": [
+      "Eel & chicken claypot rice (白鱔滑雞煲仔飯)",
+      "Beef with egg claypot rice (窩蛋牛肉煲仔飯)",
+      "Salt & pepper Bombay duck (椒鹽九肚魚)",
+      "Salt & pepper squid (椒鹽鮮魷)"
+    ],
+    "reviews": "Reviewers rave about the claypot rice and its crust, and it is consistently tipped as worth queueing for; common complaints are long evening queues (some bloggers report up to two hours), basic surroundings and cash only.",
+    "group_friendly": "Takes phone reservations (Michelin: manages its own bookings) – book ahead for a group and order the claypot rice first since it takes time. Expect a queue without a booking.",
+    "hours_note": "Claypot rice is dinner only; Michelin lists 5pm–10pm daily (older sources list a lunch session too).",
+    "status": "open",
+    "local": true,
+    "address": "Shop 1, G/F, Wo Yick Mansion, 263 Queen's Road West, Sai Ying Pun (西營盤皇后大道西263號和益大廈地下1號舖)",
+    "phone": "2803 7209",
+    "openrice_url": "https://s.openrice.com/QrbS0B3G000~uqPfQAw",
+    "lat": 22.28704,
+    "lng": 114.14313,
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-%E5%9D%A4%E8%A8%98%E7%85%B2%E4%BB%94%E5%B0%8F%E8%8F%9C-western-district-guangdong-r13356",
+      "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/kwan-kee-clay-pot-rice-queen-s-road-west",
+      "https://sypss91026.pixnet.net/blog/posts/12226376227",
+      "https://www.weekendhk.com/restaurant/%E5%9D%A4%E8%A8%98%E7%85%B2%E4%BB%94%E5%B0%8F%E8%8F%9C-%E8%A5%BF%E7%92%B0-%E4%B8%AD%E8%8F%9C-%E7%B2%B5%E8%8F%9C-2897884/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "雞煲",
+    "name_en": "Chicken Pot (Smithfield Cooked Food Centre)",
+    "area": "Kennedy Town",
+    "cuisine": "Hong Kong-style chicken hotpot (cooked food centre)",
+    "category": [
+      "dinner"
+    ],
+    "price": "$$",
+    "price_note": "OpenRice range HK$101–200 per person; one blog notes a chicken pot (~HK$168, 2016) feeds about three",
+    "intro": "A stall in the Smithfield municipal cooked food centre (a government-run hawker hall above the wet market) serving spicy Hong Kong-style chicken pot – a sizzling pot of chicken in a spiced sauce that, once eaten, is topped up with broth to become hotpot. The OpenRice listing name is simply '雞煲' (Chicken Pot); no other stall name could be confirmed.",
+    "must_order": [
+      "Dai Tat Dei chicken pot (大笪地雞煲)",
+      "Beer flambé chicken pot (啤酒火焰雞煲)",
+      "Sweet potato glass noodles for the hotpot (紅薯粉)",
+      "Sliced beef for hotpot (肥牛)"
+    ],
+    "reviews": "Reviews are mostly positive: tender chicken, a fun beer-flambé at the table and friendly staff; some found the chicken tough or the beef served half-frozen. Plastic stools, shared hall atmosphere.",
+    "group_friendly": "Very group-friendly in the cooked-food-centre style (big round tables), but no online booking shown – call ahead. Cash/AlipayHK only per OpenRice.",
+    "hours_note": "OpenRice: 5pm–11pm, closed Wednesdays, last order 9:30pm (a video lists 5pm–10:30pm).",
+    "status": "open",
+    "local": true,
+    "address": "Cooked Food Centre, 2/F, Smithfield Municipal Services Building, 12K Smithfield, Kennedy Town (堅尼地城士美菲路12K號士美菲路市政大廈2樓熟食中心)",
+    "phone": "2816 2098",
+    "openrice_url": "https://s.openrice.com/QrbS0OTG000~uqPfQAw",
+    "lat": 22.28194,
+    "lng": 114.12864,
+    "coord_note": "building centroid; stall is on 2/F",
+    "sources": [
+      "https://www.openrice.com/zh/hongkong/r-%E9%9B%9E%E7%85%B2-%E8%A5%BF%E7%92%B0-%E6%B8%AF%E5%BC%8F-%E9%9B%9E%E7%85%B2-r54369",
+      "https://www.youtube.com/watch?v=Ta09uHqCWyE",
+      "https://pigsdrinkwine.wordpress.com/2016/05/17/korean-hot-pot-chicken-pot-kennedy-town/",
+      "https://blacksheeprestaurants.com/blog/ultimate-hong-kong-hot-pot/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "泰誇張",
+    "name_en": "Thai Zab Verr",
+    "area": "Shek Tong Tsui",
+    "cuisine": "Thai (spicy, Thai-chef run)",
+    "category": [
+      "dinner"
+    ],
+    "price": "$$",
+    "price_note": "OpenRice range HK$101–200; reviews cite ~HK$150 per person",
+    "intro": "A colourful, Thai-chef-run restaurant serving punchy, authentically spicy Thai dishes; staff ask how hot you want things.",
+    "must_order": [
+      "Tom yum soup (冬蔭公)",
+      "Deep-fried soft-shell crab (爆炸軟殼蟹)",
+      "Salted egg yolk squid (鹹蛋魷魚)",
+      "Thai fried rice noodles (泰式炒金邊粉)"
+    ],
+    "reviews": "Highly rated on OpenRice (very few negative reviews); diners praise authentic flavours, salted-egg dishes and friendly service. Expect real chilli heat; 10% service charge.",
+    "group_friendly": "Online reservation available via OpenRice; has a bar counter and long tables. Booking recommended for groups.",
+    "hours_note": "unknown",
+    "status": "open",
+    "local": false,
+    "address": "G/F, 390A Des Voeux Road West, Shek Tong Tsui (石塘咀德輔道西390A號地舖)",
+    "phone": "3568 2081",
+    "openrice_url": "https://www.openrice.com/zh/hongkong/r-%E6%B3%B0%E8%AA%87%E5%BC%B5-%E8%A5%BF%E7%92%B0-%E6%B3%B0%E5%9C%8B%E8%8F%9C-%E5%92%96%E5%96%B1-r769482",
+    "lat": 22.28683,
+    "lng": 114.13704,
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-thai-zab-verr-western-district-thai-curry-r769482/reviews",
+      "https://www.tripadvisor.com/Restaurant_Review-g294217-d32986195-Reviews-Thai_Zab_Verr-Hong_Kong.html",
+      "https://ugo-hk.com/restaurant/11048/%E6%B3%B0%E8%AA%87%E5%BC%B5",
+      "https://hk.trip.com/travel-guide/foods/hong-kong-38-restaurant/thai-zab-verr-140032184",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "Yeon Nam Dong",
+    "name_en": "Yeon Nam Dong",
+    "area": "Sai Ying Pun",
+    "cuisine": "Korean (home-style, Korean-run)",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$$",
+    "price_note": "Reviews cite cheese kimchi pancake HK$138, pork belly BBQ HK$220, bossam set HK$240 (sharing dishes); roughly HK$200–300 per person",
+    "intro": "A bright green-and-white Korean restaurant run by Korean staff, serving home-style sharing plates, banchan and a wide makgeolli (rice wine) list.",
+    "must_order": [
+      "Bossam – boiled pork wraps (菜包肉)",
+      "Seafood pancake (海鮮煎餅)",
+      "Cheese potato pancake (芝士薯餅)",
+      "Pork belly BBQ (烤五花腩)"
+    ],
+    "reviews": "Reviewers praise generous portions, good banchan, tender bossam and cold buckwheat noodles at fair prices; it gets fully booked, even on rainy days.",
+    "group_friendly": "Spacious open-plan room; online booking via OpenRice and Bistrochat – book ahead for groups. Pet-friendly.",
+    "hours_note": "Instagram: 12pm–11pm.",
+    "status": "open",
+    "local": false,
+    "address": "G/F, 46C High Street, Sai Ying Pun (西營盤高街46C號地舖)",
+    "phone": "6175 9330",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-yeon-nam-dong-western-district-korean-r876201",
+    "lat": 22.28507,
+    "lng": 114.14205,
+    "coord_note": "approx (geocoded to 46 High Street next door)",
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-yeon-nam-dong-western-district-korean-r876201",
+      "https://www.openrice.com/en/hongkong/r-yeon-nam-dong-western-district-korean-r876201/reviews",
+      "https://hk.trip.com/moments/detail/sai-wan-and-sheung-wan-2036411-123619799/",
+      "https://www.instagram.com/yeonnamdonghk/",
+      "https://book.bistrochat.com/yeonnamdong-korean",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "バカ麵",
+    "name_en": "Baka Ramen",
+    "area": "Kennedy Town",
+    "cuisine": "Japanese chicken-broth ramen",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "price_note": "Ramen ~HK$88–118 per bowl per reviews",
+    "intro": "A newer, viral ramen shop specialising in chicken broths – both a clear chicken-clam broth and a rich creamy chicken paitan.",
+    "must_order": [
+      "Clear chicken broth & clam ramen (雞清湯貝汁蜆拉麵)",
+      "Rich chicken paitan truffle ramen (濃厚雞白湯松露拉麵)",
+      "Chicken skin gyoza (雞皮餃子)",
+      "Nagoya chicken wings (名古屋雞翼)"
+    ],
+    "reviews": "Opinion is split: some love the thick, creamy broth, others find it less rich than the hype or the noodles too soft. Queues are long – reports of ~1 to 1.5 hours.",
+    "group_friendly": "Small ramen shop with a long queue; not suited to large groups – go in twos or threes, off-peak.",
+    "hours_note": "unknown – check Instagram @baka.rmn",
+    "status": "open",
+    "local": false,
+    "address": "Shop E, G/F, Full Harvest Building, 6-18 Hau Wo Street, Kennedy Town (堅尼地城厚和街6-18號滿發大廈地下E號舖)",
+    "phone": "unknown",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-%E3%83%90%E3%82%AB%E9%BA%B5-western-district-japanese-ramen-r1137178",
+    "lat": 22.28282,
+    "lng": 114.12777,
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-%E3%83%90%E3%82%AB%E9%BA%B5-western-district-japanese-ramen-r1137178",
+      "https://www.dimsumdaily.hk/new-kennedy-town-baka-ramen-criticised-despite-long-queues/",
+      "https://www.threads.com/@ytloveschill/post/Db0AYSeESFP/",
+      "https://www.instagram.com/baka.rmn/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "歡樂今燒",
+    "name_en": "Joy Tonight Grill",
+    "area": "Sai Ying Pun",
+    "cuisine": "Hong Kong-style skewers / izakaya",
+    "category": [
+      "dinner",
+      "drinks"
+    ],
+    "price": "$$",
+    "price_note": "unknown overall range; individual items in reviews run ~HK$10 (zucchini) to HK$88 (garlic razor clams), fried pigeon HK$58; 10% service charge",
+    "intro": "A neon-signed, izakaya-style grill bar (formerly 'BBQ') doing made-to-order skewers and Hong Kong snacks with beer – a fun, casual night out.",
+    "must_order": [
+      "Leek & chicken skewer (大蔥雞肉串)",
+      "Crispy chicken skin skewer (雞皮串)",
+      "Whole deep-fried pigeon (炸乳鴿)",
+      "Grilled garlic razor clams (蒜蓉燒蟶子)"
+    ],
+    "reviews": "Reviewers praise well-grilled skewers (chicken skin 'crispier than chips') at fair prices and cheap beer deals; a few note some items are small or bony.",
+    "group_friendly": "Reviewers say to book in advance; call for group tables.",
+    "hours_note": "unknown (promoted as a late-night spot on Instagram)",
+    "status": "open",
+    "local": false,
+    "address": "G/F, 129 Third Street, Sai Ying Pun (西營盤第三街129號地舖)",
+    "phone": "9669 2276",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-%E6%AD%A1%E6%A8%82%E4%BB%8A%E7%87%92-western-district-hong-kong-style-skewer-r901068",
+    "lat": 22.2858,
+    "lng": 114.1401,
+    "coord_note": "approx (interpolated between 125 and 137 Third Street)",
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-%E6%AD%A1%E6%A8%82%E4%BB%8A%E7%87%92-western-district-hong-kong-style-skewer-r901068",
+      "https://www.instagram.com/p/DQQwYhUErC8/",
+      "https://www.facebook.com/groups/westerndistrict/posts/10160551272520286/",
+      "https://www.facebook.com/p/%E6%AD%A1%E6%A8%82%E4%BB%8A%E7%87%92Joytonight-61577002202712/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "嘆甜品",
+    "name_en": "Tan's Dessert Cafe",
+    "area": "Kennedy Town",
+    "cuisine": "Hong Kong desserts (tong sui) & snacks",
+    "category": [
+      "dessert"
+    ],
+    "price": "$",
+    "price_note": "exact range unknown; reviews say prices are not expensive",
+    "intro": "A cat-themed dessert café (part of a small local chain) serving traditional Chinese sweet soups alongside waffles and savoury snacks.",
+    "must_order": [
+      "Black sesame soup (芝麻糊)",
+      "Almond tea (杏仁茶)",
+      "Coconut steamed milk with egg white (椰皇燉鮮奶蛋白)",
+      "White peach yakult slush (白桃乳酸沙冰)"
+    ],
+    "reviews": "Reviews are positive about smooth sesame soup and almond tea, generous portions and good value; the cat décor is a draw.",
+    "group_friendly": "unknown – small café; fine for small groups.",
+    "hours_note": "unknown",
+    "status": "open",
+    "local": true,
+    "address": "Shop E, G/F, Smithfield Walk / Luen Fat Apartments, 45-51 Smithfield, Kennedy Town (堅尼地城士美菲路45-51號 地下E號舖; also listed as 士美菲路49號聯發新樓地下E舖)",
+    "phone": "2633 8991",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-tans-dessert-cafe-western-district-hong-kong-style-dessert-r1002561",
+    "lat": 22.2817,
+    "lng": 114.12762,
+    "sources": [
+      "https://ugo-hk.com/restaurant/16544/%E5%98%86%E7%94%9C%E5%93%81-Tan's-Dessert-Cafe-%E5%A0%85%E5%B0%BC%E5%9C%B0%E5%9F%8E",
+      "https://ufood.com.hk/restaurant/news/detail/20038276/",
+      "https://www.ulifestyle.com.hk/community/detailpost/69af5ae6-fe7f-45be-a3d4-5a6b549c09b6/",
+      "https://www.foodpanda.hk/restaurant/zj4o/tans-dessert-cafe-kennedy-town",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "信州日本料理",
+    "name_en": "Shin Shu Japanese",
+    "area": "Kennedy Town",
+    "cuisine": "Japanese (sushi, set lunches, omakase)",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$$–$$$",
+    "price_note": "Set lunches ~HK$200 per person (2026 reviews); dinner omakase price unknown (a 2016 review paid ~HK$1,060)",
+    "intro": "A long-running neighbourhood Japanese restaurant known for good-value lunch sets (donburi, grilled steak, sushi) and chef's-choice omakase at dinner.",
+    "must_order": [
+      "Scallop, salmon & sea urchin donburi set (帆立貝三文魚海膽丼定食)",
+      "Grilled steak set (網燒牛扒定食)",
+      "Sushi set (壽司定食)",
+      "Monkfish liver (鮟鱇魚肝)"
+    ],
+    "reviews": "Recent reviews like the generous lunch sets (starter, salad, miso soup, main, dessert) and long track record; an older review found dinner omakase good but only average value.",
+    "group_friendly": "unknown – call to book.",
+    "hours_note": "12pm–3pm and 6pm–11pm daily (last orders 2:30pm / 10pm per iFoodcourt).",
+    "status": "open",
+    "local": false,
+    "address": "Shop 5, G/F, Grand Fortune Mansion, 1 Davis Street, Kennedy Town (堅尼地城爹核士街1號裕福大廈地下5號舖)",
+    "phone": "2872 0522",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-shin-shu-japanese-western-district-japanese-r169804",
+    "lat": 22.28359,
+    "lng": 114.12678,
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-shin-shu-japanese-western-district-japanese-r169804/reviews",
+      "https://ifoodcourt.com.hk/shinshu-japanese",
+      "https://www.yelp.com/biz/%E4%BF%A1%E5%B7%9E%E6%97%A5%E6%9C%AC%E6%96%99%E7%90%86-%E9%A6%99%E6%B8%AF",
+      "http://vcyblog.blogspot.com/2016/04/omakase-shin-shu-japanese.html",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "新興食家",
+    "name_en": "Sun Hing Restaurant",
+    "area": "Kennedy Town",
+    "cuisine": "Old-school Cantonese dim sum",
+    "category": [
+      "late-night",
+      "lunch"
+    ],
+    "price": "$",
+    "price_note": "exact range unknown; reviews call it cheap",
+    "intro": "A cult old-school dim sum house that opens at 3am, serving night owls, taxi drivers and early risers with classic dim sum, some still on trolleys.",
+    "must_order": [
+      "Salted egg custard lava buns (流沙包)",
+      "Siu mai (燒賣)",
+      "Har gow shrimp dumplings (蝦餃)",
+      "Crispy fried milk (炸鮮奶)"
+    ],
+    "reviews": "Loved for authentic, cheap dim sum and atmosphere; complaints are long queues at peak times, no proper queue system (you hunt for seats and share tables), no English menu and limited English. Bring cash (payment reports conflict; OpenRice lists Octopus/Alipay too).",
+    "group_friendly": "Not bookable; small groups only and expect shared tables. Best for a 3–6am post-drinks visit or early morning.",
+    "hours_note": "Opens 3am, closes 4pm daily.",
+    "status": "open",
+    "local": true,
+    "address": "Shop C, G/F, 8 Smithfield, Kennedy Town (堅尼地城士美菲路8號地下C號舖)",
+    "phone": "2816 0616",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-sun-hing-restaurant-western-district-guangdong-dim-sum-r125594",
+    "lat": 22.28296,
+    "lng": 114.12827,
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-sun-hing-restaurant-western-district-guangdong-dim-sum-r125594",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-sun-hing-restaurant.html",
+      "https://www.timeout.com/hong-kong/restaurants/sun-hing-restaurant",
+      "https://www.tripadvisor.com/Restaurant_Review-g294217-d3163990-Reviews-Sun_Hing_Restaurant-Hong_Kong.html",
+      "https://www.afoodieworld.com/blog/2021/09/06/very-early-or-extremely-late-dim-sum-at-sun-hing-restaurant/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "串到爆",
+    "name_en": "Boom Grill",
+    "area": "Shek Tong Tsui",
+    "cuisine": "Sichuan-style skewers (chuan'r)",
+    "category": [
+      "dinner"
+    ],
+    "price": "$",
+    "price_note": "~HK$100 per person per a 2024 review",
+    "intro": "A bright, clean Sichuan-style skewer shop: grilled meat, seafood and veg skewers with numbing-spicy seasoning, kept warm over a candle at the table.",
+    "must_order": [
+      "Garlic grilled oysters (蒜蓉生蠔)",
+      "Small squid skewers (魷魚小串)",
+      "Grilled aubergine (烤茄瓜)",
+      "Small beef skewers (牛肉小串)"
+    ],
+    "reviews": "Diners like the variety and adjustable spice (non-spicy cumin or hot chilli rub); delivery reviewers complain skewers are small.",
+    "group_friendly": "unknown – call ahead for groups.",
+    "hours_note": "unknown",
+    "status": "open",
+    "local": false,
+    "address": "Shop 6, G/F, Fung Yu Building, 182-190 Third Street, Shek Tong Tsui (石塘咀第三街182-190號豐裕大廈地下6號舖)",
+    "phone": "5293 5066",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-boom-grill-western-district-sichuan-skewer-r868823",
+    "lat": 22.2858,
+    "lng": 114.13849,
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-boom-grill-western-district-sichuan-skewer-r868823",
+      "https://hk.trip.com/moments/detail/hong-kong-38-126293379/",
+      "https://www.foodpanda.hk/zh/restaurant/q266/boom-grill-extended-delivery",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "阿元來了",
+    "name_en": "Yuan Is Here",
+    "area": "Kennedy Town",
+    "cuisine": "Taiwanese comfort food",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "price_note": "Braised pork rice ~HK$42–46; meals roughly under HK$100",
+    "intro": "A small, popular Taiwanese eatery (with branches elsewhere in HK) known for braised pork rice and oyster vermicelli; listed in the Michelin Guide Hong Kong.",
+    "must_order": [
+      "Braised pork rice (阿元魯肉飯)",
+      "Oyster & intestine vermicelli (蚵仔大腸麵線)",
+      "Chicken rice with egg (爆蛋雞肉飯)",
+      "Pork floss cheese egg crepe (肉鬆起司蛋餅)"
+    ],
+    "reviews": "Diners praise the braised pork rice and value; some say portions are small. Queues at peak times – reports of 20–45 minutes at dinner.",
+    "group_friendly": "Small shop with queues; not ideal for big groups – split up or go off-peak.",
+    "hours_note": "Sources conflict: 11am–10pm closed Monday (Time Out) vs 11am–9pm closed Tuesday (review) – check.",
+    "status": "open",
+    "local": false,
+    "address": "G/F, 31 North Street, Kennedy Town (堅尼地城北街31號地舖)",
+    "phone": "3579 2460",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-yuan-is-here-western-district-taiwan-taiwanese-drink-r600121",
+    "lat": 22.2825,
+    "lng": 114.1292,
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-yuan-is-here-western-district-taiwan-taiwanese-drink-r600121",
+      "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/yuan-is-here-western-district",
+      "https://www.timeout.com.hk/hong-kong/hk/%E9%A4%90%E5%BB%B3/%E9%98%BF%E5%85%83%E4%BE%86%E4%BA%86",
+      "https://www.weekendhk.com/restaurant/%E9%98%BF%E5%85%83%E4%BE%86%E4%BA%86%E5%8C%97%E8%A1%97-%E8%A5%BF%E7%92%B0-%E5%8F%B0%E7%81%A3%E8%8F%9C-2897905/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "Pici",
+    "name_en": "Pici",
+    "area": "Kennedy Town",
+    "cuisine": "Italian fresh pasta bar",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$$",
+    "price_note": "OpenRice range HK$201–400 per person; 10% service charge",
+    "intro": "The Kennedy Town branch of a popular Hong Kong fresh-pasta chain, with big open windows onto the street and pasta made daily.",
+    "must_order": [
+      "Truffle tagliolini (黑松露幼麵)",
+      "Orecchiette with spicy sausage (辣肉腸貓耳朵粉)",
+      "Pappardelle with beef cheek or lamb ragù (寬條麵)",
+      "Tiramisu (提拉米蘇)"
+    ],
+    "reviews": "Generally well rated on OpenRice; fans like the fresh pasta, burrata and tiramisu, while some find portions small or the food inconsistent.",
+    "group_friendly": "Online booking on OpenRice/Pici site; good for medium groups – book ahead. Outdoor seating.",
+    "hours_note": "Sun–Thu 11am–9:30pm, Fri–Sat 11am–10pm (Pici website).",
+    "status": "open",
+    "local": false,
+    "address": "G/F, Hang Yu Building, 45-55 Cadogan Street, Kennedy Town (堅尼地城加多近街45-55號恆裕大廈地舖)",
+    "phone": "2699 1033",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-pici-western-district-italian-r709928",
+    "lat": 22.28179,
+    "lng": 114.12638,
+    "sources": [
+      "https://pici.hk/venues/kennedy-town/",
+      "https://www.openrice.com/en/hongkong/r-pici-western-district-italian-r709928",
+      "https://hivelife.com/pici-davide-borin/",
+      "https://en.tripadvisor.com.hk/Restaurant_Review-g294217-d23382996-Reviews-Pici_Pasta_Bar_Kennedy_Town-Hong_Kong.html",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "芋圓一",
+    "name_en": "Tarone",
+    "area": "Sai Ying Pun",
+    "cuisine": "Taiwanese taro-ball desserts",
+    "category": [
+      "dessert"
+    ],
+    "price": "$",
+    "price_note": "From ~HK$40 per bowl (2022 report)",
+    "intro": "A Taiwanese dessert shop making chewy taro, sweet potato and purple yam balls by hand daily, served with grass jelly, mango or shaved ice.",
+    "must_order": [
+      "Traditional grass jelly with taro balls (傳統仙草芋圓)",
+      "Taro grass jelly with taro balls (芋香仙草芋圓)",
+      "Irwin mango sago with taro balls (愛文芒甘露芋圓)",
+      "Mango milk snow ice (芒果牛奶棉花冰)"
+    ],
+    "reviews": "Reviewers like the generous, chewy handmade taro balls and mango desserts; there is upstairs booth seating.",
+    "group_friendly": "unknown – small dessert shop; fine for small groups.",
+    "hours_note": "3pm–11pm daily (OpenRice/HolidaySmart).",
+    "status": "open",
+    "local": false,
+    "address": "G/F, 27 Water Street, Sai Ying Pun (西營盤水街27號地舖)",
+    "phone": "5744 1744",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-%E8%8A%8B%E5%9C%93%E4%B8%80-western-district-taiwan-dessert-r767433",
+    "lat": 22.28549,
+    "lng": 114.13896,
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-%E8%8A%8B%E5%9C%93%E4%B8%80-western-district-taiwan-dessert-r767433",
+      "https://holidaysmart.io/hk/article/342759/",
+      "https://hk.trip.com/moments/detail/sai-wan-and-sheung-wan-2036411-132352999/",
+      "https://tarone.oddle.me/en_HK",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "周記點心",
+    "name_en": "Chau Kee",
+    "area": "Sai Ying Pun",
+    "cuisine": "Dim sum & cha chaan teng (HK café)",
+    "category": [
+      "lunch"
+    ],
+    "price": "$",
+    "price_note": "OpenRice range HK$51–100 per person",
+    "intro": "A casual dim sum and cha chaan teng (Hong Kong diner) famous for creative twists like oozing 'lava' French toast and extra-thick sesame shrimp toast.",
+    "must_order": [
+      "Salted egg yolk lava French toast (流沙西多士)",
+      "Sesame prawn toast (芝麻蝦多士)",
+      "Two-way siu mai (鴛鴦燒賣)",
+      "Prawn roll with ginger & century egg (子薑皮蛋蝦卷)"
+    ],
+    "reviews": "Popular with locals and visitors for its Instagrammable toasts; some find the lava filling watery or flavours inconsistent.",
+    "group_friendly": "unknown – casual seating; Klook sells priority-pass sets, suggesting queues at peak times.",
+    "hours_note": "Reported 8am–6pm, closed Monday (Yelp, Dec 2025) – other sources differ; check.",
+    "status": "open",
+    "local": true,
+    "address": "Shop H1, G/F, Tung Lee Mansion, 1C-1K Water Street, Sai Ying Pun (西營盤水街1C-1K號東利大廈地下H1號舖)",
+    "phone": "2559 2389",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-chau-kee-western-district-hong-kong-style-dim-sum-r440685",
+    "lat": 22.28706,
+    "lng": 114.13873,
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-chau-kee-western-district-hong-kong-style-dim-sum-r440685",
+      "https://www.yelp.com/biz/%E5%91%A8%E8%A8%98%E9%BB%9E%E5%BF%83-%E9%A6%99%E6%B8%AF",
+      "https://www.dimsumlau.com/en/restaurants",
+      "https://curiousspoon.app/spot/hong-kong/chau-kee",
+      "https://www.misstamchiak.com/chau-kee-hong-kong/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "彩aya",
+    "name_en": "Aya (Tsukemen & Ramen)",
+    "area": "Shek Tong Tsui",
+    "cuisine": "Japanese tsukemen (dipping ramen), house-made noodles",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "unknown",
+    "price_note": "unknown",
+    "intro": "A tiny ramen shop tucked in a side lane, run by a Hokkaido-born Japanese chef who makes his own noodles; best known for tsukemen (noodles dipped into a thick broth).",
+    "must_order": [
+      "Black garlic oil tsukemen (黑蒜油湯沾麵)",
+      "Shrimp miso tsukemen (蝦味噌湯沾麵)",
+      "Tonkotsu chashu tsukemen (豚骨湯叉燒沾麵)"
+    ],
+    "reviews": "Noodles are widely praised, but some reviewers find the broth too salty/MSG-heavy or the dipping sauce too thin; service reviews are mixed. Cash payment noted.",
+    "group_friendly": "Only ~20 seats; queues at noon – small groups only.",
+    "hours_note": "Lunch 11:30am–3pm and dinner 6pm–9pm, closed Sunday (sources vary).",
+    "status": "open",
+    "local": false,
+    "address": "G/F, Kam Ling Court, 16 Whitty Street, Shek Tong Tsui (石塘咀屈地街16號金陵大廈地舖)",
+    "phone": "2440 0900",
+    "openrice_url": "https://www.openrice.com/zh/hongkong/r-%E5%BD%A9aya-%E8%A5%BF%E7%92%B0-%E6%97%A5%E6%9C%AC%E8%8F%9C-%E6%8B%89%E9%BA%B5-r545090",
+    "lat": 22.28636,
+    "lng": 114.13598,
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-%E5%BD%A9aya-western-district-japanese-ramen-r545090/reviews",
+      "https://www.nipponsensor.net/travel/hongkong/6720/",
+      "https://kenshin.hk/2024/06/19/",
+      "https://www.weekendhk.com/restaurant/%E5%BD%A9aya-%E8%A5%BF%E7%92%B0-%E6%97%A5%E6%9C%AC%E8%8F%9C-%E5%8D%88%E9%A4%90-%E6%99%9A%E9%A4%90-%E4%B8%8B%E5%8D%88%E8%8C%B6-3309678/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "馬來一菜館",
+    "name_en": "Café Malacca",
+    "area": "Shek Tong Tsui",
+    "cuisine": "Malaysian & Singaporean (hotel restaurant)",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$$",
+    "price_note": "A lunch set was reported at HK$158 (older review); exact current range unknown",
+    "intro": "A Malaysian/Singaporean hawker-style restaurant on Level 2 of JEN Hong Kong by Shangri-La, a 2-minute walk from HKU MTR, cooking dishes from Penang, Ipoh and Kuala Lumpur. It received a Michelin 'recommended' mention in 2014–2015.",
+    "must_order": [
+      "Nasi lemak (椰漿飯)",
+      "Laksa (喇沙)",
+      "Fried chicken (炸雞)"
+    ],
+    "reviews": "Reviews are mixed but generally positive: nasi lemak rice, sambal and crispy anchovies are praised; laksa ranges from 'close to authentic' to 'average'. Most reviews online are older.",
+    "group_friendly": "Hotel restaurant – easiest place on this list for a large group; book online (inline) or by phone.",
+    "hours_note": "7am–10pm daily (official site / Shangri-La).",
+    "status": "open",
+    "local": false,
+    "address": "2/F, JEN Hong Kong by Shangri-La, 508 Queen's Road West, Shek Tong Tsui (石塘咀皇后大道西508號香港JEN酒店2樓)",
+    "phone": "2213 6613",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-cafe-malacca-western-district-malaysian-r112143",
+    "lat": 22.28595,
+    "lng": 114.13487,
+    "sources": [
+      "https://cafemalacca.hk/",
+      "https://www.shangri-la.com/restaurants-bars/hongkong/westerndistrict/cafe-malacca/",
+      "https://www.openrice.com/en/hongkong/r-cafe-malacca-western-district-malaysian-r112143",
+      "https://www.tripadvisor.com/Restaurant_Review-g294217-d3835899-Reviews-Cafe_Malacca-Hong_Kong.html",
+      "https://www.mehongkong.com/tc/home/planning/venue-and-hotel-search/detail/hotel/JEN-Hong-Kong-by-Shangri-La.html",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "永年士多",
+    "name_en": "Wing Nin Noodle",
+    "area": "Kennedy Town",
+    "cuisine": "Hong Kong cart noodles (車仔麵)",
+    "category": [
+      "lunch"
+    ],
+    "price": "$",
+    "price_note": "OpenRice range HK$51–100; add-on snacks HK$16–28",
+    "intro": "The new (May 2026) Kennedy Town branch of a Yuen Long cart-noodle brand founded in 1962: pick your noodles, broth and toppings from a long list – a classic Hong Kong street-food format, here with retro décor and booths.",
+    "must_order": [
+      "Cart noodles with your choice of toppings (自選車仔麵)",
+      "Crispy shrimp-paste siu mai (熟蝦醬脆燒賣)",
+      "Deep-fried whole-prawn wontons (炸原隻鮮蝦雲吞)",
+      "Crispy chicken wings (香脆雞翼)"
+    ],
+    "reviews": "Too new for many reviews of this branch; the chain is generally liked for affordable, customisable cart noodles.",
+    "group_friendly": "Lots of booth seating per HK01 – fine for small-to-medium groups; no booking info.",
+    "hours_note": "unknown",
+    "status": "open",
+    "local": true,
+    "address": "Shop 6, G/F, Imperial Kennedy, 68 Belcher's Street, Kennedy Town (堅尼地城卑路乍街68號Imperial Kennedy地下6號舖; HK01 gives No. 80)",
+    "phone": "5208 1444",
+    "openrice_url": "unknown",
+    "lat": 22.28255,
+    "lng": 114.12867,
+    "coord_note": "building-level; same building as TamJai",
+    "sources": [
+      "https://www.hk01.com/%E9%A3%9F%E7%8E%A9%E8%B2%B7/60345378/",
+      "https://www.openrice.com/en/hongkong/review/--e6602121",
+      "https://www.facebook.com/wingninyl/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "阿一豬扒酸辣米綫",
+    "name_en": "A One Pork Chop Spicy Rice Noodles",
+    "area": "Kennedy Town",
+    "cuisine": "Yunnan-style sour-spicy rice noodles",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "price_note": "Under ~HK$50; pork chop noodles ~HK$41–44",
+    "intro": "A local favourite for sour-and-spicy rice noodle soup topped with a fried, overnight-marinated pork chop; you choose your spice level.",
+    "must_order": [
+      "Pork chop sour & spicy rice noodles (豬扒酸辣米綫)",
+      "Pork chop on its own (單點豬扒)"
+    ],
+    "reviews": "Reviewers praise the fresh-fried, well-marinated pork chop and chewy thick noodles; this branch is often called better than other branches. Can have queues.",
+    "group_friendly": "Small, quick noodle shop – fine for small groups, not for bookings.",
+    "hours_note": "11am–11pm (HK01, Feb 2025).",
+    "status": "open",
+    "local": true,
+    "address": "Shop C1, G/F, Hoi To Court, 7-11 Belcher's Street, Kennedy Town (堅尼地城卑路乍街7-11號海都樓地下C1號舖)",
+    "phone": "2884 1090",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-%E9%98%BF%E4%B8%80%E8%B1%AC%E6%89%92%E9%85%B8%E8%BE%A3%E7%B1%B3%E7%B6%AB-western-district-yunnan-noodles-rice-noodles-r48517",
+    "lat": 22.28458,
+    "lng": 114.13161,
+    "sources": [
+      "https://www.discoverhongkong.com/hk-tc/interactive-map/a-one.html",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-a-one.html",
+      "https://www.openrice.com/en/hongkong/r-%E9%98%BF%E4%B8%80%E8%B1%AC%E6%89%92%E9%85%B8%E8%BE%A3%E7%B1%B3%E7%B6%AB-western-district-yunnan-noodles-rice-noodles-r48517/reviews",
+      "https://www.hk01.com/%E9%96%8B%E7%BD%90/350656/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "乒乓城",
+    "name_en": "Ping Pong 129 Gintonería",
+    "area": "Sai Ying Pun",
+    "cuisine": "Spanish gin & tonic bar with tapas",
+    "category": [
+      "drinks",
+      "late-night"
+    ],
+    "price": "$$",
+    "price_note": "G&Ts ~HK$120–160 (premium up to ~HK$240); minimum spend for reservations after 7:30pm",
+    "intro": "A hidden basement bar in a former ping-pong hall behind a pink door – Spanish-style gin & tonics, tapas, and rotating Hong Kong art exhibitions.",
+    "must_order": [
+      "Spanish-style gin & tonic (西班牙式金湯力)",
+      "Tapas (西班牙小食)"
+    ],
+    "reviews": "Reviewers love the cavernous space and the 40+ gin selection with careful tonic pairing; complaints are high prices, uneven service and ordinary tapas. Entrance easy to miss.",
+    "group_friendly": "Takes table and event reservations (email info@pingpong129.com or phone); group minimum spend after 7:30pm. Big space – good for a class gathering.",
+    "hours_note": "Tue–Sun 5pm–midnight (1am Fri–Sat), closed Monday (official site).",
+    "status": "open",
+    "local": false,
+    "address": "L/G, Nam Cheong House, 129-135 Second Street, Sai Ying Pun (西營盤第二街129-135號南昌樓地舖)",
+    "phone": "9158 1584 / 9835 5061",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-ping-pong-129-gintoneria-western-district-spanish-wine-r174968",
+    "lat": 22.28631,
+    "lng": 114.13967,
+    "sources": [
+      "https://pingpong129.com/",
+      "https://www.openrice.com/en/hongkong/r-ping-pong-129-gintoneria-western-district-spanish-wine-r174968",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-ping-pong-gintoneria.html",
+      "https://www.tripadvisor.com/Restaurant_Review-g294217-d6880830-Reviews-Ping_Pong_129_Gintoneria-Hong_Kong.html",
+      "https://www.tatlerasia.com/dining/ping-pong-129-gintoneria",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "譚仔雲南米線",
+    "name_en": "TamJai Yunnan Mixian",
+    "area": "Kennedy Town",
+    "cuisine": "Yunnan-style rice noodles (chain)",
+    "category": [
+      "lunch",
+      "dinner"
+    ],
+    "price": "$",
+    "price_note": "Under ~HK$50 per person (feehk, 2022)",
+    "intro": "A branch of one of Hong Kong's best-known noodle chains: build your own bowl of rice noodles in sour-spicy or mala broth, choosing toppings and spice level.",
+    "must_order": [
+      "Sour & spicy rice noodles with your choice of toppings (酸辣米線)",
+      "Mala rice noodles (麻辣米線)"
+    ],
+    "reviews": "A dependable, cheap chain staple; few branch-specific reviews (about 19 on OpenRice).",
+    "group_friendly": "Fast-casual; fine for small groups, no booking needed.",
+    "hours_note": "unknown",
+    "status": "open",
+    "local": true,
+    "address": "Shop 8, G/F, Imperial Kennedy, 68 Belcher's Street, Kennedy Town (堅尼地城卑路乍街68號Imperial Kennedy地下8號舖)",
+    "phone": "2267 1119",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-tamjai-yunnan-mixian-western-district-yunnan-noodles-rice-noodles-r649213",
+    "lat": 22.28255,
+    "lng": 114.12867,
+    "coord_note": "building-level; same building as Wing Nin Noodle",
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-tamjai-yunnan-mixian-western-district-yunnan-noodles-rice-noodles-r649213",
+      "https://tamjaimixian.com/en/stores/kennedy-town/",
+      "https://www.feehk.com/%E8%A5%BF%E7%92%B0%E9%A4%90%E5%BB%B3/%E8%AD%9A%E4%BB%94%E9%9B%B2%E5%8D%97%E7%B1%B3%E7%B7%9A-809.html",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "甜家",
+    "name_en": "Sweet Home Dessert",
+    "area": "Sai Ying Pun",
+    "cuisine": "Hong Kong desserts (tong sui)",
+    "category": [
+      "dessert",
+      "late-night"
+    ],
+    "price": "$",
+    "price_note": "Under ~HK$50 per person; mango desserts ~HK$38–48",
+    "intro": "A neighbourhood sweet-soup shop (moved here from Water Street) serving traditional Chinese desserts and newer mango creations until late.",
+    "must_order": [
+      "Mango pomelo sago (楊枝甘露)",
+      "Silky tofu pudding (豆花)",
+      "Mango with glutinous balls (多芒丸圓)"
+    ],
+    "reviews": "Mixed: fans like the generous, cheap mango desserts and smooth tofu pudding; others find quality inconsistent (Tripadvisor 3.0/5).",
+    "group_friendly": "About 20 seats – OK for small groups.",
+    "hours_note": "2pm–1am daily; dine-in may stop at midnight with takeaway till 1am.",
+    "status": "open",
+    "local": true,
+    "address": "G/F, 208 Des Voeux Road West, Sai Ying Pun (西營盤德輔道西208號地舖)",
+    "phone": "6225 1198",
+    "openrice_url": "https://www.openrice.com/zh/hongkong/r-%E7%94%9C%E5%AE%B6-%E8%A5%BF%E7%92%B0-%E6%B8%AF%E5%BC%8F-%E7%94%9C%E5%93%81-%E7%B3%96%E6%B0%B4-r663716",
+    "lat": 22.28779,
+    "lng": 114.14281,
+    "sources": [
+      "https://www.openrice.com/zh/hongkong/r-%E7%94%9C%E5%AE%B6-%E8%A5%BF%E7%92%B0-%E6%B8%AF%E5%BC%8F-%E7%94%9C%E5%93%81-%E7%B3%96%E6%B0%B4-r663716",
+      "https://dessert852.com/shop/view.php?sid=375",
+      "https://www.instagram.com/sweethome.dessert/",
+      "https://www.tripadvisor.com/Restaurant_Review-g294217-d14982565-Reviews-Sweet_Home_Dessert-Hong_Kong.html",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "TEQUILA ON DAVIS",
+    "name_en": "Tequila on Davis",
+    "area": "Kennedy Town",
+    "cuisine": "Mexican restaurant & tequila bar",
+    "category": [
+      "dinner",
+      "drinks",
+      "late-night"
+    ],
+    "price": "unknown",
+    "price_note": "unknown; happy hour 4pm–7pm",
+    "intro": "A long-running, casual Mexican bar-restaurant with a big tequila list, plus an upstairs room ('Tequila Upstairs') for private parties.",
+    "must_order": [
+      "Tacos (墨西哥夾餅)",
+      "Nachos (墨西哥粟米片)",
+      "Fajitas (法士達)",
+      "Frozen or jalapeño margarita (瑪格麗特)"
+    ],
+    "reviews": "Tripadvisor 4.3/5 – generous portions and consistent food; margaritas divide opinion (some too sweet/artificial); can be dark inside; book at weekends.",
+    "group_friendly": "Good for groups – upstairs private-party space; book ahead for weekends.",
+    "hours_note": "Mon–Sat 4pm–1am, Sun 12pm–1am (Instagram; may be outdated).",
+    "status": "open",
+    "local": false,
+    "address": "G/F, 1 Davis Street, Kennedy Town (堅尼地城爹核士街1號地舖)",
+    "phone": "2818 1766",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-tequila-on-davis-western-district-mexican-wine-r156402",
+    "lat": 22.28359,
+    "lng": 114.12678,
+    "coord_note": "building-level (same building as Shin Shu)",
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-tequila-on-davis-western-district-mexican-wine-r156402",
+      "https://en.tripadvisor.com.hk/Restaurant_Review-g294217-d5992889-Reviews-Tequila_On_Davis-Hong_Kong.html",
+      "https://www.instagram.com/tequilaondavishk/",
+      "https://www.timeout.com/hong-kong/bars-and-pubs/tequila-on-davis",
+      "https://wanderlog.com/place/details/3975066/tequila-on-davis",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "宜記甜品",
+    "name_en": "Yee Kee Dessert",
+    "area": "Kennedy Town",
+    "cuisine": "Hong Kong late-night desserts & snacks",
+    "category": [
+      "dessert",
+      "late-night"
+    ],
+    "price": "$",
+    "price_note": "Roughly under HK$50 per person (estimate on feehk); cash/FPS",
+    "intro": "An old-school late-night dessert-and-snack shop open into the small hours, known for its 'five-colour' cold noodles alongside sweet soups.",
+    "must_order": [
+      "Five-colour cold noodles (五色冷麵)"
+    ],
+    "reviews": "unknown – few recent reviews found (latest OpenRice review seen March 2025).",
+    "group_friendly": "unknown",
+    "hours_note": "6pm–3am, closed Saturday (OpenRice/Facebook); another listing says 5pm–2am daily.",
+    "status": "unclear",
+    "local": true,
+    "address": "G/F, Sun Fat Building, 12S-12T Smithfield, Kennedy Town (堅尼地城士美菲路12S-12T號新發大廈地舖)",
+    "phone": "2974 1333",
+    "openrice_url": "https://www.openrice.com/zh/hongkong/r-%E5%AE%9C%E8%A8%98%E7%94%9C%E5%93%81-%E8%A5%BF%E7%92%B0-%E6%B8%AF%E5%BC%8F-%E7%94%9C%E5%93%81-%E7%B3%96%E6%B0%B4-r46267",
+    "lat": 22.28046,
+    "lng": 114.12924,
+    "sources": [
+      "https://www.openrice.com/zh/hongkong/r-%E5%AE%9C%E8%A8%98%E7%94%9C%E5%93%81-%E8%A5%BF%E7%92%B0-%E6%B8%AF%E5%BC%8F-%E7%94%9C%E5%93%81-%E7%B3%96%E6%B0%B4-r46267",
+      "https://www.facebook.com/p/%E5%AE%9C%E8%A8%98%E7%94%9C%E5%93%81-100057177890766/",
+      "https://www.leungsum.com/food/%E8%A5%BF%E7%92%B0%E5%AE%9C%E8%A8%98%E7%94%9C%E5%93%81",
+      "https://www.instagram.com/yeekeedessert/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "CODA 爵士喫茶",
+    "name_en": "CODA Jazz Kissa",
+    "area": "Sai Ying Pun",
+    "cuisine": "Jazz listening café & bar",
+    "category": [
+      "drinks"
+    ],
+    "price": "unknown",
+    "price_note": "unknown; ticketed live shows listed on its website",
+    "intro": "A Japanese-style 'jazz kissa' – a listening café by day and jazz bar by night, playing vinyl on a high-end sound system, with weekly live sets by local and international musicians. Run by musicians.",
+    "must_order": [
+      "Coffee (咖啡) by day",
+      "Whisky (威士忌) at night"
+    ],
+    "reviews": "Reviewers love the music-first atmosphere, record collection and album requests; it's a quiet listening space rather than a party bar.",
+    "group_friendly": "Listening-focused room – better for small groups; check the website for ticketed live shows.",
+    "hours_note": "Tue–Sun 12pm–11:30pm, closed Monday (official site).",
+    "status": "open",
+    "local": false,
+    "address": "G/F, 106-112 First Street, Sai Ying Pun (西營盤第一街112號地舖)",
+    "phone": "6751 3493 (WhatsApp)",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-coda-jazz-kissa-western-district-western-r894243",
+    "lat": 22.28651,
+    "lng": 114.14049,
+    "sources": [
+      "https://codajazzkissa.com/",
+      "https://codajazzkissa.com/pages/about-us",
+      "https://www.openrice.com/en/hongkong/r-coda-jazz-kissa-western-district-western-r894243",
+      "https://www.andthen.hk/learn/108128_coda-jazz-kissa-%E7%88%B5%E5%A3%AB%E5%96%AB%E8%8C%B6%E5%BA%97-%E8%A5%BF%E7%87%9F%E7%9B%A4/",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "Crushed Wine Bar",
+    "name_en": "Crushed Wine Bar",
+    "area": "Sai Ying Pun",
+    "cuisine": "Natural / small-batch wine bar with small plates",
+    "category": [
+      "drinks"
+    ],
+    "price": "$$",
+    "price_note": "2024: wines ~HK$120–150/glass, flights HK$180 (3) / HK$280 (5); plates ~HK$55–138",
+    "intro": "A wine bar and bottle shop focused on small-batch, sustainable and natural wines, with a casual ground-floor bar and an upstairs room for sharing plates of French-American comfort food.",
+    "must_order": [
+      "Wine flight (品酒套餐)",
+      "Smoked eggplant dip (煙燻茄子醬)",
+      "Aubergine with whipped roast chilli (茄子配烤辣椒醬)"
+    ],
+    "reviews": "Reviewers call it one of the most interesting wine bars in town with knowledgeable staff; complaints are a small bar counter, loud music and acoustics that make conversation hard.",
+    "group_friendly": "Upstairs dining room and weekly events; book ahead for groups.",
+    "hours_note": "Mon–Fri 4pm–11pm, Sat–Sun 12pm–11pm (official site); Star Wine List shows closed Mondays.",
+    "status": "open",
+    "local": false,
+    "address": "Shop A, G/F, 6-8 Second Street, Sai Ying Pun (西營盤第二街6-8號地下A號舖)",
+    "phone": "5597 8774",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-crushed-wine-bar-western-district-western-wine-r852503",
+    "lat": 22.28606,
+    "lng": 114.14318,
+    "sources": [
+      "https://crushedwines.com/pages/crushed-wine-bar",
+      "https://www.timeout.com/hong-kong/bars-and-pubs/crushed-wine-bar",
+      "https://www.afoodieworld.com/blog/2024/04/08/crushed-wine-bar-reveiew/",
+      "https://starwinelist.com/wine-place/crushed-wine-bar-retail",
+      "https://www.tripadvisor.com/Restaurant_Review-g294217-d28261972-Reviews-Crushed_Wine_Bar_Retail-Hong_Kong.html",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "西園里",
+    "name_en": "West Garden Lane",
+    "area": "Sai Ying Pun",
+    "cuisine": "Cocktail bar (vinyl records)",
+    "category": [
+      "drinks",
+      "late-night"
+    ],
+    "price": "$$",
+    "price_note": "OpenRice range HK$101–200; cocktails ~HK$130; 10% service charge",
+    "intro": "A cosy cocktail bar with a wall of vinyl records where guests can pick and play albums; inventive cocktails using tea and local flavours. [Resolved from Google Maps link maps.app.goo.gl/9DruodWWAmWK5vA99]",
+    "must_order": [
+      "Pricky Lychee – gin, elderflower, lychee, Sichuan pepper",
+      "28th Street Manhattan – pu'er tea base",
+      "Banana Cold Brew"
+    ],
+    "reviews": "Reviewers like the stylish, cosy space, the record wall and staff recommendations; some note it is small and not every drink lands.",
+    "group_friendly": "Small space – best for small groups.",
+    "hours_note": "Mon 7pm–12am, Tue–Thu & Sun 6pm–12am, Fri–Sat 6pm–2am (OpenRice).",
+    "status": "open",
+    "local": false,
+    "address": "G/F, 61 High Street, Sai Ying Pun (西營盤高街61號地舖)",
+    "phone": "unknown",
+    "openrice_url": "https://www.openrice.com/zh/hongkong/r-%E8%A5%BF%E5%9C%92%E9%87%8C-%E8%A5%BF%E7%92%B0-%E8%A5%BF%E5%BC%8F-%E9%85%92-r860362",
+    "lat": 22.28527,
+    "lng": 114.142,
+    "sources": [
+      "https://maps.app.goo.gl/9DruodWWAmWK5vA99",
+      "https://www.openrice.com/zh/hongkong/r-%E8%A5%BF%E5%9C%92%E9%87%8C-%E8%A5%BF%E7%92%B0-%E8%A5%BF%E5%BC%8F-%E9%85%92-r860362",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "隱里",
+    "name_en": "Don'tail Cocktail Bar",
+    "area": "Sai Ying Pun",
+    "cuisine": "Tea-infused cocktail bar",
+    "category": [
+      "drinks",
+      "late-night"
+    ],
+    "price": "unknown",
+    "price_note": "unknown",
+    "intro": "A small hidden bar off Water Street pairing Chinese teas with spirits, led by a mixologist who says he previously worked at a Michelin two-star restaurant. [Resolved from Google Maps link maps.app.goo.gl/URmsAjJC1piUYSYc8]",
+    "must_order": [
+      "Ginseng Oolong (人參烏龍)",
+      "Jasmine Golden Chrysanthemum (gin) (茉莉金菊)",
+      "White Peony (tequila, grapefruit, pineapple) (白牡丹)"
+    ],
+    "reviews": "Very few reviews online yet; one Tripadvisor reviewer called the tea cocktails delicious.",
+    "group_friendly": "unknown – likely small; contact via Threads/Instagram @dontail.bar.",
+    "hours_note": "Mon–Sat 6pm–2am (Tripadvisor).",
+    "status": "open",
+    "local": false,
+    "address": "Shop D, G/F, Sam To Lane, 4 Water Street, Sai Ying Pun (西營盤水街4號三多里地下D舖)",
+    "phone": "unknown",
+    "openrice_url": "unknown",
+    "lat": 22.28648,
+    "lng": 114.13919,
+    "sources": [
+      "https://maps.app.goo.gl/URmsAjJC1piUYSYc8",
+      "https://www.threads.com/@dontail.bar",
+      "https://www.tripadvisor.in/Restaurant_Review-g294217-d33218034-Reviews-Don_tail_Cocktail_Bar-Hong_Kong.html",
+      "https://hkclubbing.com/component/mtree/bars/don-tail-cocktail-bar?Itemid=",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "La Cave",
+    "name_en": "La Cave",
+    "area": "Sai Ying Pun",
+    "cuisine": "French wine shop & bar",
+    "category": [
+      "drinks"
+    ],
+    "price": "$$",
+    "price_note": "Wines sold at retail price to drink in or take away; croque raclette ~HK$100",
+    "intro": "A tiny French wine shop-cum-bar (self-styled 'grumpiest wine pub') where you drink French bottles at retail prices with cheese, cold cuts and oysters. [Resolved from Google Maps link maps.app.goo.gl/pMTv9GjtLzrKx4Qv7]",
+    "must_order": [
+      "Croque raclette (芝士火腿多士)",
+      "Cheese & charcuterie board (芝士凍肉拼盤)",
+      "Oysters (生蠔)"
+    ],
+    "reviews": "Highly rated (Restaurant Guru 4.8/5 from 138 reviews); people praise reasonable prices, cheese and oysters. Seats only about a dozen inside, with some outdoor seating.",
+    "group_friendly": "Seats ~12 inside – small groups only; phone reservations listed on OpenRice.",
+    "hours_note": "unknown",
+    "status": "open",
+    "local": false,
+    "address": "Shop E, G/F, Fook Moon Building, 56-72 Third Street, Sai Ying Pun (西營盤第三街56-72號福滿大廈地下E號舖)",
+    "phone": "unknown",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-la-cave-western-district-western-wine-r859224",
+    "lat": 22.28554,
+    "lng": 114.14196,
+    "sources": [
+      "https://maps.app.goo.gl/pMTv9GjtLzrKx4Qv7",
+      "https://www.lacavehk.com/",
+      "https://www.openrice.com/en/hongkong/r-la-cave-western-district-western-wine-r859224",
+      "https://en.tripadvisor.com.hk/Restaurant_Review-g294217-d27421327-Reviews-La_Cave-Hong_Kong.html",
+      "https://restaurantguru.com/La-Cave-Hong-Kong",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  },
+  {
+    "name_zh": "House of Culture",
+    "name_en": "House of Culture",
+    "area": "Sai Ying Pun",
+    "cuisine": "Malaysian-Chinese-Australian tasting menu",
+    "category": [
+      "dinner"
+    ],
+    "price": "$$$$",
+    "price_note": "'Chaos Menu' ~HK$598 (5 courses) / HK$728 (7 courses) per Time Out Sept 2026 (other listings HK$628–758); drinks pairing extra (~HK$258)",
+    "intro": "A terracotta-toned chef's-table restaurant run by Malaysian-Australian chef Gavin Chin, whose omakase-style 'Chaos Menu' uses local wet-market produce with Malay, Chinese and Australian flavours. [Resolved from Google Maps link maps.app.goo.gl/RgKN9LuYtrYZNgUv9]",
+    "must_order": [
+      "Chaos Menu (chef's choice tasting menu)",
+      "14-hour beef short rib rendang (14小時仁當牛肋骨)",
+      "Onion tart (洋蔥撻)"
+    ],
+    "reviews": "OpenRice diners are largely enthusiastic about the inventive dishes; critics say the concept feels unfocused and service uneven (Tripadvisor 3.0/5 from few reviews).",
+    "group_friendly": "Tasting-menu format – book ahead; call/WhatsApp to arrange a group.",
+    "hours_note": "Mon–Thu 6pm–11pm, Fri–Sat 6pm–12am (Time Out).",
+    "status": "open",
+    "local": false,
+    "address": "Shop B, G/F, Kenbo Commercial Building, 335-339 Queen's Road West, Sai Ying Pun (西營盤皇后大道西335-339號)",
+    "phone": "2886 9689 (Time Out) / 4418 2265 WhatsApp (Taste HK)",
+    "openrice_url": "https://www.openrice.com/en/hongkong/r-house-of-culture-western-district-international-r834498",
+    "lat": 22.28712,
+    "lng": 114.14133,
+    "sources": [
+      "https://maps.app.goo.gl/RgKN9LuYtrYZNgUv9",
+      "https://www.timeout.com/hong-kong/restaurants/house-of-culture",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-house-of-culture.html",
+      "https://www.openrice.com/en/hongkong/r-house-of-culture-western-district-international-r834498/reviews",
+      "https://www.afoodieworld.com/blog/2024/05/27/house-of-culture-review/",
+      "https://www.tatlerasia.com/dining/house-of-culture-hk",
+      "https://www.als.gov.hk (HK Gov Address Lookup Service, building-level geocode)"
+    ]
+  }
+]

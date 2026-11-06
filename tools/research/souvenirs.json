@@ -1,0 +1,251 @@
+[
+  {
+    "name": "Jenny Bakery",
+    "name_zh": "珍妮曲奇",
+    "area": "Sheung Wan",
+    "cuisine": "Butter cookies",
+    "category": [
+      "gifts",
+      "local"
+    ],
+    "intro": "Hong Kong's cult butter cookies, sold in the teddy-bear tins every visitor is asked to bring home.",
+    "must_order": [
+      "4-mix butter cookies (large tin)",
+      "8-mix nuts cookies",
+      "Coffee & butter cookies"
+    ],
+    "tips": "Cash only, curt service and popular flavours can sell out by early afternoon, so go before lunch; avoid the look-alike resellers next door. If you can't make Sheung Wan, Cookies Quartet (opposite Causeway Bay MTR Exit F1, card-friendly, also at the airport) is the easy alternative.",
+    "address_en": "G/F, Wo Hing Commercial Building, 15 Wing Wo Street, Sheung Wan, Hong Kong",
+    "address_zh": "香港上環永和街15號和興商業大廈地下",
+    "lat": 22.28519,
+    "lng": 114.15367,
+    "hours": "Daily 10:00–19:00",
+    "status": "open",
+    "sources": [
+      "https://www.openrice.com/en/hongkong/r-jenny-bakery-sheung-wan-western-bakery-r144746",
+      "https://www.tripadvisor.com/Attraction_Review-g294217-d6912320-Reviews-Jenny_Bakery_Sheung_Wan-Hong_Kong.html",
+      "https://jennybakery.com/hongkong/",
+      "https://cookies-quartet.com/store-location"
+    ]
+  },
+  {
+    "name": "Kee Wah Bakery",
+    "name_zh": "奇華餅家",
+    "area": "Causeway Bay",
+    "cuisine": "Chinese pastries & gift boxes",
+    "category": [
+      "gifts",
+      "local"
+    ],
+    "intro": "Since 1938, Hong Kong's go-to bakery for beautifully boxed traditional Chinese pastries.",
+    "must_order": [
+      "Wife cakes (lou po beng)",
+      "Pineapple cakes",
+      "Egg rolls in a gift tin"
+    ],
+    "tips": "A 5-minute walk from The Park Lane; also at Central MTR, ifc mall and several airport shops (incl. airside T1), so you can buy last-minute.",
+    "address_en": "G/F, Lai Yuen Apartments, 33 Lee Garden Road, Causeway Bay, Hong Kong",
+    "address_zh": "香港銅鑼灣利園山道33號麗園大廈地下",
+    "lat": 22.27907,
+    "lng": 114.1833,
+    "hours": "Daily 09:30–20:30",
+    "status": "open",
+    "sources": [
+      "https://keewah.com/en/location",
+      "https://www.openrice.com.cn/en/hongkong/r-kee-wah-bakery-causeway-bay-hong-kong-style-chinese-cake-r724977"
+    ]
+  },
+  {
+    "name": "Wing Wah Cake Shop",
+    "name_zh": "榮華餅家",
+    "area": "Causeway Bay",
+    "cuisine": "Wife cakes & mooncakes",
+    "category": [
+      "gifts",
+      "local"
+    ],
+    "intro": "Yuen Long bakery founded in 1950, famous for its flaky wife cakes and egg rolls.",
+    "must_order": [
+      "Wife cakes (gift box)",
+      "Egg rolls",
+      "Mini egg-yolk lotus-seed cakes"
+    ],
+    "tips": "Plain no-frills shop; there is also a branch near campus at 532–534 Queen's Road West, Sai Wan (09:30–19:30).",
+    "address_en": "Shop E, G/F, Pun Tak Building, 478–484 Lockhart Road, Causeway Bay, Hong Kong",
+    "address_zh": "香港銅鑼灣駱克道478-484號本德大廈地下E號舖",
+    "lat": 22.28022,
+    "lng": 114.1822,
+    "hours": "Daily 10:30–20:30",
+    "status": "open",
+    "sources": [
+      "https://www.wingwah.com/en/stores/?r=hk",
+      "https://www.discoverhongkong.com/seasia/plan/qts/shops-results/shops-details.id10413.wing-wah.html"
+    ]
+  },
+  {
+    "name": "G.O.D. (Goods of Desire)",
+    "name_zh": "住好啲",
+    "area": "Central",
+    "cuisine": "Hong Kong design gifts",
+    "category": [
+      "gifts",
+      "design"
+    ],
+    "intro": "Witty homegrown lifestyle brand that turns Hong Kong street culture into well-made gifts.",
+    "must_order": [
+      "Tote or pouch with old-HK print",
+      "Mahjong or Hong Kong-themed homeware",
+      "Red 'double happiness' or minibus-sign souvenirs"
+    ],
+    "tips": "This Lan Kwai Fong store is the flagship; there is a second shop at 48 Hollywood Road and one at the airport. Cards accepted.",
+    "address_en": "G/F & M/F, Yip Fung Building, 6 D'Aguilar Street, Central, Hong Kong",
+    "address_zh": "香港中環德己立街6號業豐大廈地下及閣樓",
+    "lat": 22.28137,
+    "lng": 114.15606,
+    "hours": "Daily 10:00–20:00",
+    "status": "open",
+    "sources": [
+      "https://god.com.hk/pages/retail-store-locations",
+      "https://god.com.hk/blogs/everything/new-lkf-store-at-6-d-aguilar-st",
+      "https://www.hongkongairport.com/en/shop-dine/shopping/god"
+    ]
+  },
+  {
+    "name": "Yiu Fung Store",
+    "name_zh": "么鳳",
+    "area": "Causeway Bay",
+    "cuisine": "Preserved fruit & candied snacks",
+    "category": [
+      "gifts",
+      "local"
+    ],
+    "intro": "Tiny 1960s-era Causeway Bay shop piled high with preserved plums, ginger and tangerine peel.",
+    "must_order": [
+      "King-size preserved plums",
+      "Preserved ginger",
+      "Aged tangerine peel (chenpi)"
+    ],
+    "tips": "Crowded and Cantonese-speaking; point at what you want and ask for it boxed as a gift. Also has an airport branch.",
+    "address_en": "G/F, Po Foo Building, 3 Foo Ming Street, Causeway Bay, Hong Kong",
+    "address_zh": "香港銅鑼灣富明街3號寶富大廈地下",
+    "lat": 22.27879,
+    "lng": 114.18332,
+    "hours": "Daily 10:00–21:00",
+    "status": "open",
+    "sources": [
+      "https://yiufungstore.hk/stores/%E4%B9%88%E9%B3%B3%E8%80%81%E5%BA%97/",
+      "https://www.openrice.com/en/hongkong/r-yiu-fung-store-causeway-bay-shanghai-r31582",
+      "https://www.tatlerasia.com/dining/food/best-candy-store-hong-kong",
+      "https://www.hongkongairport.com/en/shop-dine/shopping/yiu-fung"
+    ]
+  },
+  {
+    "name": "Kowloon Soy Company",
+    "name_zh": "九龍醬園",
+    "area": "Central",
+    "cuisine": "Soy sauce & preserved foods",
+    "category": [
+      "gifts",
+      "local"
+    ],
+    "intro": "Family soy-sauce maker since 1917, selling from a heritage shopfront on Graham Street.",
+    "must_order": [
+      "Premium aged soy sauce",
+      "Chu hau sauce",
+      "Preserved eggs or fermented bean curd"
+    ],
+    "tips": "Closed Sundays; glass bottles go in checked luggage, wrapped well.",
+    "address_en": "G/F, 9 Graham Street, Central, Hong Kong",
+    "address_zh": "香港中環嘉咸街9號地下",
+    "lat": 22.28378,
+    "lng": 114.15425,
+    "hours": "Mon–Sat about 08:30–18:00; closed Sun",
+    "status": "open",
+    "sources": [
+      "https://www.timeout.com/hong-kong/shopping/kowloon-soy-company",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-kowloon-soy-co-ltd.html",
+      "https://www.atlasobscura.com/places/kowloon-soy-co-ltd"
+    ]
+  },
+  {
+    "name": "Lam Kie Yuen Tea Co.",
+    "name_zh": "林奇苑茶行",
+    "area": "Sheung Wan",
+    "cuisine": "Chinese tea",
+    "category": [
+      "gifts",
+      "local"
+    ],
+    "intro": "Old-school Sheung Wan tea merchant selling loose-leaf Chinese teas and ready-made gift tins.",
+    "must_order": [
+      "Tieguanyin oolong gift tin",
+      "Aged pu'er",
+      "Jasmine or Dragon Well green tea"
+    ],
+    "tips": "Closed Sundays and public holidays; ask for teas to be packed in gift tins.",
+    "address_en": "G/F, Lee Man Commercial Building, 105–107 Bonham Strand, Sheung Wan, Hong Kong",
+    "address_zh": "香港上環文咸東街105-107號利文商業大廈地下",
+    "lat": 22.2861,
+    "lng": 114.15086,
+    "hours": "Mon–Sat 09:30–18:00; closed Sun & public holidays",
+    "status": "open",
+    "sources": [
+      "https://lkytea.com/?lang=en-HK",
+      "https://www.discoverhongkong.com/us/plan/qts/shops-results/shops-details.id4355.lam-kie-yuen-tea-company-limited.html"
+    ]
+  },
+  {
+    "name": "Chinese Arts & Crafts",
+    "name_zh": "中藝",
+    "area": "Wan Chai",
+    "cuisine": "Chinese crafts, silk & jade",
+    "category": [
+      "gifts",
+      "design"
+    ],
+    "intro": "Since 1959, Hong Kong's classic one-stop store for Chinese silk, jade, porcelain and handicrafts.",
+    "must_order": [
+      "Silk scarf or tie",
+      "Cloisonné or porcelain tea set",
+      "Jade pendant"
+    ],
+    "tips": "Prices are high but quality is reliable, which matters for jade; a short taxi ride from the hotel.",
+    "address_en": "Shops 2 & 7, G/F, Causeway Centre, 28 Harbour Road, Wan Chai, Hong Kong",
+    "address_zh": "香港灣仔港灣道28號灣景中心大廈地下2及7號舖",
+    "lat": 22.28031,
+    "lng": 114.17623,
+    "hours": "Daily 10:30–19:30",
+    "status": "open",
+    "sources": [
+      "https://www.cachk.com/",
+      "https://www.crproperty.com.hk/en/OfflineStores1/2025-01-15/1596716.html",
+      "https://www.discoverhongkong.com/eng/travel-guide/qts/shops-results/shops-details.id2030.chinese-arts-crafts-hk-ltd.html"
+    ]
+  },
+  {
+    "name": "Shanghai Tang",
+    "name_zh": "上海灘",
+    "area": "Admiralty",
+    "cuisine": "Chinese-chic luxury gifts",
+    "category": [
+      "gifts",
+      "design"
+    ],
+    "intro": "Hong Kong's original luxury 'Chinese chic' label, good for upscale gifts for clients or a partner.",
+    "must_order": [
+      "Silk scarf",
+      "Silk tie or cufflinks",
+      "Lacquer or porcelain home pieces"
+    ],
+    "tips": "The old Duddell Street 'Mansion' flagship is no longer listed; the main city store is now in Pacific Place, with another at the airport (T1 East Hall).",
+    "address_en": "Shop 105B, Level 1, Pacific Place One, 88 Queensway, Admiralty, Hong Kong",
+    "address_zh": "香港金鐘道88號太古廣場一期1樓105B號舖",
+    "lat": 22.27686,
+    "lng": 114.16528,
+    "hours": "Daily 10:30–20:00",
+    "status": "open",
+    "sources": [
+      "https://www.shanghaitang.com/find-a-store"
+    ]
+  }
+]

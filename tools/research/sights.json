@@ -1,0 +1,619 @@
+[
+  {
+    "name": "Central–Mid-Levels Escalator",
+    "zh": "中環至半山自動扶梯",
+    "area": "Central / SoHo",
+    "category": [
+      "iconic",
+      "free",
+      "walk"
+    ],
+    "local": false,
+    "intro": "A chain of covered outdoor escalators and walkways that carries commuters about 800 m up the hillside from Central to the Mid-Levels. Riding it is the easiest way into SoHo's bars, cafes and backstreets.",
+    "fun_fact": "It cost HK$240 million, more than double its budget, and in 1996 the government auditor called it a 'white elephant'. It still carries tens of thousands of people a day and appears in Wong Kar-wai's Chungking Express and The Dark Knight.",
+    "tip": "Ride up after 10am, when it runs uphill. Hop off at Lyndhurst Terrace for a warm egg tart at Tai Cheong Bakery, then at Hollywood Road for Tai Kwun and PMQ. Walk back down through the side streets.",
+    "getting_there": "From campus: MTR Kennedy Town to Central (about 10 min), then a 5–10 min walk to Queen's Road Central. From Park Lane: MTR Causeway Bay to Central (about 10 min) or tram (about 30 min).",
+    "cost": "Free",
+    "hours": "Downhill 6am–10am; uphill 10am–midnight (daily)",
+    "time_needed": "20 min to ride; 1–2 hrs with stops",
+    "lat": 22.2822,
+    "lng": 114.1538,
+    "maps_query": "Central-Mid-Levels Escalator Hong Kong",
+    "sources": [
+      "https://www.td.gov.hk/en/transport_in_hong_kong/pedestrians/hillside_escalator/index.html",
+      "https://en.wikipedia.org/wiki/Central%E2%80%93Mid-Levels_escalator",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-central-mid-levels-escalator.html"
+    ]
+  },
+  {
+    "name": "Victoria Peak & the Peak Tram",
+    "zh": "山頂纜車（花園道總站）／ 太平山頂凌霄閣",
+    "area": "The Peak",
+    "category": [
+      "iconic",
+      "views",
+      "night"
+    ],
+    "local": false,
+    "intro": "A steep funicular ride up to the city's highest viewpoints, with the full skyline and harbour spread below. It is the classic first-night view of Hong Kong.",
+    "fun_fact": "The tram opened in 1888 as Asia's first cable funicular. On the steep ride up, the skyscrapers outside appear to lean toward the Peak, an optical illusion studied by University of Hong Kong researchers.",
+    "tip": "Go up about an hour before sunset (around 5:40pm in late November) and stay for the lights. For a free view without the crowds, walk the flat, paved Lugard Road path around the Peak instead of paying for the Sky Terrace.",
+    "getting_there": "Lower terminus on Garden Road, Central. From Park Lane: MTR to Admiralty or Central, then about a 10–15 min walk, or a taxi (about 15 min). From campus: taxi to Garden Road (about 15–20 min). A taxi straight up to the Peak is an alternative when the tram queue is long.",
+    "cost": "Peak Tram adult HK$116 return / HK$82 single (fares raised Jan 2026); Sky Terrace 428 about HK$80 extra (check the official site)",
+    "hours": "Peak Tram 7:30am–11pm daily",
+    "time_needed": "2–3 hrs",
+    "lat": 22.27126,
+    "lng": 114.14999,
+    "maps_query": "Peak Tram Garden Road Lower Terminus Hong Kong",
+    "sources": [
+      "https://www.thepeak.com.hk/en/heritage/history-of-the-peak-tram",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-peak-tram.html",
+      "https://www.timeout.com/hong-kong/news/hong-kongs-peak-tram-has-hiked-its-ticket-prices-by-up-to-49-percent-010526",
+      "https://en.wikipedia.org/wiki/Peak_Tram"
+    ]
+  },
+  {
+    "name": "Star Ferry",
+    "zh": "天星小輪（中環天星碼頭）",
+    "area": "Central ↔ Tsim Sha Tsui",
+    "category": [
+      "iconic",
+      "views",
+      "night"
+    ],
+    "local": false,
+    "intro": "Green-and-white ferries that have shuttled across Victoria Harbour since the 1880s. It is one of the cheapest and best skyline views in the world.",
+    "fun_fact": "It was founded in 1888 by Parsee merchant Dorabjee Naorojee Mithaiwala, and the boats are all named 'Star'. In 2009 the Society of American Travel Writers ranked it the world's most exciting ferry ride.",
+    "tip": "Take the upper deck at dusk from Central to Tsim Sha Tsui, walk the promenade, then ride back after dark for the lit-up Hong Kong Island skyline.",
+    "getting_there": "Central Pier 7. From campus: MTR to Central or Hong Kong Station, then a 10 min walk. From Park Lane: MTR to Central (about 10 min) plus a 10 min walk. There is also a Wan Chai–Tsim Sha Tsui route.",
+    "cost": "Upper deck HK$5 (Mon–Fri) / HK$6.50 (weekends and holidays); Octopus or self-service machines",
+    "hours": "About 6:30am–11:30pm",
+    "time_needed": "About 30 min including the wait",
+    "lat": 22.28704,
+    "lng": 114.16119,
+    "maps_query": "Central Star Ferry Pier 7 Hong Kong",
+    "sources": [
+      "https://www.starferry.com.hk/en/service",
+      "https://en.wikipedia.org/wiki/Star_Ferry",
+      "https://www.staycationhk.co/getting-around-hong-kong/star-ferry-price-hong-kong/"
+    ]
+  },
+  {
+    "name": "Ding Ding tram (Kennedy Town to Shau Kei Wan)",
+    "zh": "香港電車（堅尼地城電車總站）",
+    "area": "Kennedy Town → Causeway Bay → Shau Kei Wan",
+    "category": [
+      "iconic",
+      "near-campus",
+      "local"
+    ],
+    "local": true,
+    "intro": "Narrow double-decker trams that have rattled along Hong Kong Island's north shore since 1904, nicknamed 'ding ding' after their bell. The line starts in Kennedy Town, right by campus, and passes The Park Lane.",
+    "fun_fact": "In 2021 Guinness World Records recognised Hong Kong Tramways as the largest double-decker tram fleet still in service.",
+    "tip": "Board at the Kennedy Town terminus to get the front seat upstairs, and ride home to Causeway Bay through Sheung Wan, Central and Wan Chai. For a class party, Hong Kong Tramways charters trams for private evening events (7:30pm–midnight, minimum 2 hours; ask for a quote).",
+    "getting_there": "Kennedy Town terminus (Catchick Street) is about a 5 min taxi or minibus ride, or roughly a 20 min walk, from campus. Causeway Bay stops are a few minutes' walk from Park Lane. Kennedy Town to Causeway Bay takes roughly an hour.",
+    "cost": "HK$3.30 flat fare (adult); pay on exit by Octopus, contactless card, phone or exact coins",
+    "hours": "Through route Kennedy Town→Shau Kei Wan about 5:30am–7pm; shorter routes on the same line run later (check hktramways.com)",
+    "time_needed": "30 min–1.5 hrs",
+    "lat": 22.28335,
+    "lng": 114.12836,
+    "maps_query": "Kennedy Town Tram Terminus Hong Kong",
+    "sources": [
+      "https://www.hktramways.com/en/schedules-fares",
+      "https://www.hktramways.com/en/fares-faq",
+      "https://en.wikipedia.org/wiki/Hong_Kong_Tramways"
+    ]
+  },
+  {
+    "name": "Tai Kwun",
+    "zh": "大館（荷李活道10號）",
+    "area": "Central / SoHo",
+    "category": [
+      "culture",
+      "free",
+      "walk"
+    ],
+    "local": false,
+    "intro": "The beautifully restored colonial Central Police Station compound, now a free heritage and contemporary art centre with courtyards, bars and restaurants.",
+    "fun_fact": "It combines three declared monuments: the former Central Police Station, the Central Magistracy and Victoria Prison. You can walk through the old prison cell blocks.",
+    "tip": "Come off the Mid-Levels Escalator at Hollywood Road, see the free heritage galleries, then have a drink in the Prison Yard. PMQ is a 5 min walk west.",
+    "getting_there": "From campus: MTR to Central (about 10 min) plus a 10 min walk uphill, or the escalator. From Park Lane: MTR to Central (about 10 min) plus a 10 min walk.",
+    "cost": "Free (some exhibitions charge)",
+    "hours": "Site 8am–11pm; heritage galleries 11am–7pm; JC Contemporary 11am–7pm, Tue–Sun",
+    "time_needed": "1–1.5 hrs",
+    "lat": 22.28194,
+    "lng": 114.15426,
+    "maps_query": "Tai Kwun 10 Hollywood Road Central Hong Kong",
+    "sources": [
+      "https://www.taikwun.hk/en/visit/visiting_information"
+    ]
+  },
+  {
+    "name": "PMQ & a Mahjong lesson",
+    "zh": "元創方（鴨巴甸街35號）",
+    "area": "Central / SoHo",
+    "category": [
+      "culture",
+      "free",
+      "local"
+    ],
+    "local": true,
+    "intro": "A former police married quarters turned into a hub of local design shops and studios. It is also one of the easiest places for visitors to learn mahjong, Hong Kong's favourite tile game, in English.",
+    "fun_fact": "The site was once the Central School (later Queen's College), where Sun Yat-sen studied. Two future Hong Kong Chief Executives, C.Y. Leung and Donald Tsang, later lived in the police quarters here.",
+    "tip": "Book a 2-hour 'Mahjong 101' class at Glocal Mahjong (Shop S405, 4/F, PMQ). It runs for small groups of 2–4 in English (check the price on glocalmahjong.com), so it suits a group of classmates. Then browse the local-designer shops for gifts.",
+    "getting_there": "From campus: MTR to Sheung Wan or Central (about 10 min) plus a 10 min uphill walk. From Park Lane: MTR to Central (about 10 min) plus about 12 min on foot or by the escalator.",
+    "cost": "Free to enter; mahjong class priced on booking (unknown)",
+    "hours": "Building 7am–11pm; shops and studios about 12pm–7pm",
+    "time_needed": "1 hr (plus 2 hrs for mahjong)",
+    "lat": 22.28333,
+    "lng": 114.15184,
+    "maps_query": "PMQ 35 Aberdeen Street Central Hong Kong",
+    "sources": [
+      "https://www.pmq.org.hk/tourist-information/explore-pmq/",
+      "https://en.wikipedia.org/wiki/PMQ_(Hong_Kong)",
+      "https://www.pmq.org.hk/shop/glocal-mahjong-by-the-hk-room-s405/",
+      "https://www.glocalmahjong.com/products/mahjong-101-class-for-beginners"
+    ]
+  },
+  {
+    "name": "Man Mo Temple, Hollywood Road & Cat Street",
+    "zh": "文武廟（荷李活道）／ 摩囉上街",
+    "area": "Sheung Wan",
+    "category": [
+      "iconic",
+      "culture",
+      "free",
+      "walk"
+    ],
+    "local": false,
+    "intro": "A smoky 1840s temple to the gods of literature and war, hung with giant spiralling incense coils. Next door, Hollywood Road's antique shops and the Upper Lascar Row ('Cat Street') flea market sell curios old and new.",
+    "fun_fact": "In early colonial days, a dispute between Chinese residents was settled here by an oath sworn while burning yellow paper and beheading a rooster, and it was treated as binding. 'Cat Street' comes from old slang: thieves were 'rats' and the buyers of stolen goods were 'cats'.",
+    "tip": "Look up at the incense coils, which burn for days. Then browse Cat Street, bargain politely, and assume most 'antiques' are reproductions. Walk on to Possession Street and Tai Ping Shan, 5 minutes away.",
+    "getting_there": "From campus: MTR to Sheung Wan (about 8 min) plus a 10 min uphill walk, or a taxi (about 10–15 min). From Park Lane: MTR to Sheung Wan (about 15 min) plus 10 min on foot.",
+    "cost": "Free",
+    "hours": "Temple 8am–6pm daily (opens at 7am on lunar 1st and 15th days); stall hours vary",
+    "time_needed": "1–1.5 hrs",
+    "lat": 22.28387,
+    "lng": 114.15016,
+    "maps_query": "Man Mo Temple 124 Hollywood Road Sheung Wan Hong Kong",
+    "sources": [
+      "https://www.tungwah.org.hk/en/heritage/historical-architecture/man-mo-temple/opening-and-address/",
+      "https://www.man-mo-temple.hk/history/",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-man-mo-temple.html",
+      "https://en.wikipedia.org/wiki/Lascar_Row"
+    ]
+  },
+  {
+    "name": "Lan Kwai Fong (LKF)",
+    "zh": "蘭桂坊（中環德己立街）",
+    "area": "Central",
+    "category": [
+      "iconic",
+      "night"
+    ],
+    "local": false,
+    "intro": "A steep L-shaped tangle of bars, clubs and restaurants that is Central's best-known nightlife district. It is loud, crowded and fun, especially late in the week.",
+    "fun_fact": "In the 19th century the lane was home to traditional Chinese matchmakers and was known as 'Matchmaker Lane'. Today's party scene took off in the 1980s.",
+    "tip": "Start with dinner or drinks in SoHo or on Wyndham Street, then drift into LKF after about 10pm, when it gets lively. Taxis are hard to find at closing time, so it is easier to walk down to Central MTR or catch a tram on Des Voeux Road.",
+    "getting_there": "From campus: MTR to Central (about 10 min) plus a 5 min walk up D'Aguilar Street. From Park Lane: MTR to Central (about 10 min), or a taxi (about 15 min).",
+    "cost": "Free to wander; drinks at bar prices",
+    "hours": "Bars open into the early hours; individual venues vary (unknown)",
+    "time_needed": "An evening",
+    "lat": 22.28084,
+    "lng": 114.15538,
+    "maps_query": "Lan Kwai Fong Central Hong Kong",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lan_Kwai_Fong",
+      "https://en.wikipedia.org/wiki/D'Aguilar_Street"
+    ]
+  },
+  {
+    "name": "Happy Valley Racecourse – Wednesday night races",
+    "zh": "跑馬地馬場",
+    "area": "Happy Valley (next to Causeway Bay)",
+    "category": [
+      "iconic",
+      "night",
+      "local"
+    ],
+    "local": true,
+    "intro": "Floodlit horse racing in a ring of skyscrapers, with beer, music and a mostly local crowd cheering every race. Wednesday 18 November 2026 is a race night during your stay.",
+    "fun_fact": "The first race here was run in December 1846. The course was built on swampland, the only flat ground on Hong Kong Island suitable for racing, and the government banned nearby villages from growing rice to make way for it.",
+    "tip": "The 18 November meeting is listed as the debut of the 'Music & Dine Festival' theme on HKJC's Happy Wednesday calendar. Arrive before the first race, take your passport for tourist entry, and put a HK$10 bet on a horse with a fun name.",
+    "getting_there": "From Park Lane: walk about 15–20 min (HKJC suggests Causeway Bay MTR Exit A), or take a Happy Valley tram. From campus: MTR Kennedy Town to Causeway Bay (about 20–25 min) then walk, or a taxi (about 25–30 min).",
+    "cost": "Public enclosure HK$10 by Octopus; free for tourists 18+ showing a passport (HKJC page; confirm on the night). A Tourist Badge for members' areas is extra (price unknown).",
+    "hours": "Gates open 2 hrs before the first race. First race 6:40pm or 7:10pm depending on the card.",
+    "time_needed": "2–3 hrs",
+    "lat": 22.2726,
+    "lng": 114.18064,
+    "maps_query": "Happy Valley Racecourse Hong Kong",
+    "sources": [
+      "https://racingnews.hkjc.com/english/2026/09/08/2026-2027-season-programme-amendment-no-1/",
+      "https://happywednesday.hkjc.com/en-US/schedule/",
+      "https://happywednesday.hkjc.com/en-US/plan-your-visit/",
+      "https://en.wikipedia.org/wiki/Happy_Valley_Racecourse"
+    ]
+  },
+  {
+    "name": "Temple Street Night Market",
+    "zh": "廟街夜市（油麻地）",
+    "area": "Yau Ma Tei / Jordan, Kowloon",
+    "category": [
+      "iconic",
+      "night",
+      "culture",
+      "free"
+    ],
+    "local": false,
+    "intro": "Kowloon's most famous night market: rows of stalls under red lights selling knick-knacks, with fortune tellers, street-side seafood and, on some nights, amateur Cantonese opera singers.",
+    "fun_fact": "The street is named after the Tin Hau Temple that sits in the middle of it. It was once nicknamed 'Men's Street' because most of the stalls catered to men.",
+    "tip": "Go after 7pm. Have a palm or face reading near the temple end (many readers speak some English), eat dinner at the street tables, and look up for Yau Ma Tei's remaining neon signs. Haggle at the stalls.",
+    "getting_there": "MTR Jordan or Yau Ma Tei. From Park Lane: about 25–30 min (change at Admiralty). From campus: about 30–35 min (change at Admiralty), or a taxi through the Western Harbour Tunnel.",
+    "cost": "Free",
+    "hours": "Stalls roughly 4pm–midnight, busiest 7–10pm (sources vary)",
+    "time_needed": "1.5–2 hrs",
+    "lat": 22.3062,
+    "lng": 114.1699,
+    "maps_query": "Temple Street Night Market Yau Ma Tei Hong Kong",
+    "sources": [
+      "https://www.gohk.gov.hk/en/spots/spot_detail.php?spot=Temple+Street+Night+Market",
+      "https://www.klook.com/en-HK/blog/hk-temple-street-night-market/",
+      "https://baike.baidu.com/en/item/Temple%20Street/43103"
+    ]
+  },
+  {
+    "name": "M+ museum & West Kowloon waterfront",
+    "zh": "M+博物館（西九文化區）",
+    "area": "West Kowloon",
+    "category": [
+      "culture",
+      "views"
+    ],
+    "local": false,
+    "intro": "Asia's big new museum of visual culture, covering design, architecture, art and film, set in a harbourside park with some of the best skyline views across to Hong Kong Island.",
+    "fun_fact": "You don't need a ticket for the Roof Garden, Grand Stair, Found Space or basement levels, so you can enjoy the building and views for free.",
+    "tip": "Use the late opening on Friday (until 10pm), then watch the skyline from the Art Park lawns. During your visit the Cathay WestK Jazz Fest runs across West Kowloon (13–24 November 2026) with free and ticketed shows.",
+    "getting_there": "MTR Kowloon Station (Tung Chung or Airport Express) or Austin Station, then a 10–15 min walk. From campus: MTR to Hong Kong Station, then 1 stop to Kowloon (about 25–30 min). From Park Lane: about 30 min.",
+    "cost": "M+ Ticket HK$190 (concessions HK$100); free areas listed above",
+    "hours": "Tue–Thu and weekends 10am–6pm; Fri 10am–10pm; closed Mondays",
+    "time_needed": "2–3 hrs",
+    "lat": 22.301,
+    "lng": 114.15914,
+    "maps_query": "M+ museum West Kowloon Hong Kong",
+    "sources": [
+      "https://www.mplus.org.hk/en/plan-your-visit/",
+      "https://www.westk.hk/en/event/cathay-westk-jazz-fest",
+      "https://eventist.com/happening/cathay-westk-jazz-fest-hong-kong-2026/"
+    ]
+  },
+  {
+    "name": "Stanley & Repulse Bay",
+    "zh": "赤柱 ／ 淺水灣",
+    "area": "Southern District",
+    "category": [
+      "views",
+      "walk",
+      "free"
+    ],
+    "local": false,
+    "intro": "Hong Kong's south-side seaside: a sandy beach at Repulse Bay, then Stanley's waterfront market, promenade and pubs. It shows you a greener, slower side of the island.",
+    "fun_fact": "Stanley's colonnaded Murray House was built in Central in the 1840s, taken apart stone by stone in 1982 to make way for the Bank of China Tower, and rebuilt in Stanley.",
+    "tip": "Sit upstairs at the front of bus 6, which takes the winding route over the hills, and come back on the faster 6X or 260. Stop at Repulse Bay beach on the way, then end with a drink on the Stanley waterfront at sunset.",
+    "getting_there": "Buses 6, 6X and 260 from Central (Exchange Square), about 40–60 min. From Park Lane: a taxi takes about 25–30 min.",
+    "cost": "Free (bus about HK$11–12)",
+    "hours": "Open area; Stanley Market stall hours vary (unknown)",
+    "time_needed": "Half day",
+    "lat": 22.21793,
+    "lng": 114.20974,
+    "maps_query": "Murray House Stanley Hong Kong",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Murray_House",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-murray-house.html",
+      "https://www.hk-stanley-market.com/how-to-get-to-stanley-market-from-central"
+    ]
+  },
+  {
+    "name": "Kennedy Town waterfront & sunset",
+    "zh": "堅尼地城海旁（堅彌地城海旁）",
+    "area": "Kennedy Town (Sai Wan)",
+    "category": [
+      "views",
+      "free",
+      "near-campus",
+      "walk",
+      "local"
+    ],
+    "local": true,
+    "intro": "A west-facing harbourfront strip of bars, cafes and benches at the end of the tram line. It is a few minutes from class and one of the best sunset spots on the island.",
+    "fun_fact": "Kennedy Town is named after Sir Arthur Kennedy, Hong Kong's seventh governor (1872–1877). Trams have terminated here since 1904.",
+    "tip": "Sunset is around 5:40pm in late November, so walk down straight after class with a takeaway drink. Skip the famous 'Instagram Pier' (Western District Public Cargo Working Area): it is a working cargo area that has been closed to non-workers since 2021. Watch from the Praya or the Belcher Bay promenade instead.",
+    "getting_there": "From campus: about a 5 min taxi or minibus ride, or roughly a 20 min walk downhill. From Park Lane: MTR to Kennedy Town (about 20–25 min) or tram (about 1 hr).",
+    "cost": "Free",
+    "hours": "Open 24 hrs (public waterfront)",
+    "time_needed": "1 hr",
+    "lat": 22.28457,
+    "lng": 114.13051,
+    "maps_query": "Praya Kennedy Town Hong Kong",
+    "sources": [
+      "https://en.wikipedia.org/wiki/New_Praya,_Kennedy_Town",
+      "https://expats.hk/hong-kong/hong-kong-island/kennedy-town/",
+      "https://hongkongfp.com/2021/03/02/hong-kongs-popular-instagram-pier-closes-to-the-public-without-notice/",
+      "https://en.wikipedia.org/wiki/Western_District_Public_Cargo_Working_Area"
+    ]
+  },
+  {
+    "name": "Central & Western District Promenade (Sun Yat Sen Memorial Park)",
+    "zh": "中山紀念公園 ／ 中西區海濱長廊（西營盤）",
+    "area": "Sai Ying Pun",
+    "category": [
+      "views",
+      "free",
+      "near-campus",
+      "walk",
+      "local"
+    ],
+    "local": true,
+    "intro": "A harbourside walkway and park in Sai Ying Pun, where locals jog, fish and walk dogs, with open views over Victoria Harbour to Kowloon.",
+    "fun_fact": "Sun Yat Sen Memorial Park is the only park in Hong Kong named after a Chinese historical figure.",
+    "tip": "Do it as an after-class sunset walk east from Kennedy Town along the water to the park, then go up the hill to Sai Ying Pun for dinner (Kwan Kee claypot rice is nearby).",
+    "getting_there": "Sai Ying Pun MTR is about 300 m away, and the tram stops about 160 m away. From campus: MTR 2 stops, or a taxi (about 10 min). From Park Lane: MTR to Sai Ying Pun (about 20 min).",
+    "cost": "Free",
+    "hours": "Park open daily; exact promenade hours unknown (check LCSD)",
+    "time_needed": "45 min–1 hr",
+    "lat": 22.28974,
+    "lng": 114.14508,
+    "maps_query": "Sun Yat Sen Memorial Park Sai Ying Pun Hong Kong",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sun_Yat_Sen_Memorial_Park",
+      "https://www.lcsd.gov.hk/en/parks/cwdpc/index.html"
+    ]
+  },
+  {
+    "name": "Dried Seafood Street (Des Voeux Road West)",
+    "zh": "德輔道西海味街（上環／西營盤）",
+    "area": "Sheung Wan / Sai Ying Pun",
+    "category": [
+      "culture",
+      "free",
+      "walk",
+      "local",
+      "near-campus"
+    ],
+    "local": true,
+    "intro": "Block after block of old shops piled high with dried abalone, scallops, fish maw, shrimp, mushrooms and herbs. It is the pantry of Cantonese cooking and smells like the sea.",
+    "fun_fact": "Until about 50 years ago the street was known for workshops making salted fish from local catches. The luxury dried-seafood trade took over during the 1980s boom.",
+    "tip": "Go on a weekday morning, when the shops are busy. Ask what the most expensive item in the window is (usually abalone or fish maw). Pair it with nearby Wing Lok Street and Bonham Strand West, then Possession Street.",
+    "getting_there": "From campus: MTR to Sai Ying Pun or Sheung Wan (about 5–8 min), or tram along Des Voeux Road West. From Park Lane: MTR to Sheung Wan (about 15 min) or tram.",
+    "cost": "Free",
+    "hours": "Daytime shop hours; exact hours vary (unknown)",
+    "time_needed": "45 min",
+    "lat": 22.2876,
+    "lng": 114.1468,
+    "maps_query": "Dried Seafood Street Des Voeux Road West Sheung Wan Hong Kong",
+    "sources": [
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-dried-seafood-street-and-tonic-food-street.html",
+      "https://www.scmp.com/lifestyle/food-drink/article/2088882/hong-kongs-dried-seafood-street-demystified-smells-what-sells",
+      "https://zolimacitymag.com/a-sea-change-in-flavours-the-history-of-hong-kongs-dried-seafood-trade-part-1/"
+    ]
+  },
+  {
+    "name": "Possession Street & Tai Ping Shan (Pak Sing Ancestral Hall)",
+    "zh": "水坑口街 ／ 太平山街廣福義祠（百姓廟）",
+    "area": "Sheung Wan",
+    "category": [
+      "culture",
+      "free",
+      "walk",
+      "local"
+    ],
+    "local": true,
+    "intro": "A small, quiet corner of old Sheung Wan where colonial Hong Kong began, with a tiny 19th-century temple and lanes now full of indie cafes.",
+    "fun_fact": "The British took formal possession of Hong Kong at Possession Point here on 26 January 1841. Land reclamation means the old shoreline is now inland, under Hollywood Road Park. Nearby, the Kwong Fook Tsz (Pak Sing) hall, first built in 1856, held the memorial tablets of migrants who died far from home and became a last refuge for dying patients, which led to the founding of Tung Wah Hospital.",
+    "tip": "Combine it with Man Mo Temple (5 min away). Walk Possession Street down to Hollywood Road Park, then wander up Tai Ping Shan Street for coffee. Blake Garden, laid out after the 1894 plague clearances, is just above.",
+    "getting_there": "From campus: MTR to Sheung Wan (about 8 min) plus a 10 min walk uphill, or a taxi (about 10 min). From Park Lane: MTR to Sheung Wan (about 15 min) plus 10 min on foot.",
+    "cost": "Free",
+    "hours": "Streets always open; temple hours unknown",
+    "time_needed": "45 min–1 hr",
+    "lat": 22.28502,
+    "lng": 114.14755,
+    "maps_query": "Kwong Fook I Tsz Tai Ping Shan Street Sheung Wan Hong Kong",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Possession_Street",
+      "https://www.aab.gov.hk/filemanager/aab/common/historicbuilding/en/1092_Appraisal_En.pdf",
+      "https://rho.tungwah.org.hk/en/built-heritage/8",
+      "https://en.wikipedia.org/wiki/Tai_Ping_Shan_Street"
+    ]
+  },
+  {
+    "name": "Wet market walk: Sai Ying Pun Market & Centre Street",
+    "zh": "西營盤街市（正街45號）",
+    "area": "Sai Ying Pun",
+    "category": [
+      "local",
+      "culture",
+      "free",
+      "walk",
+      "near-campus"
+    ],
+    "local": true,
+    "intro": "A real neighbourhood wet market where locals buy live fish, fresh meat, tofu and greens, plus the steep street stalls around it. It is the everyday Hong Kong most visitors never see.",
+    "fun_fact": "Centre Street, which the market sits on, is one of Hong Kong's four steepest streets, with a gradient of up to 1 in 4.",
+    "tip": "Go between about 8am and 10am, when it is busiest. Watch the fishmongers, but ask before taking close-up photos of stallholders. Follow it with a cha chaan teng breakfast nearby.",
+    "getting_there": "Next to Sai Ying Pun MTR. From campus: MTR 2 stops or a taxi (about 10 min). From Park Lane: MTR to Sai Ying Pun (about 20 min).",
+    "cost": "Free",
+    "hours": "Open daily, busiest in the morning (exact hours unknown)",
+    "time_needed": "45 min",
+    "lat": 22.2859,
+    "lng": 114.14244,
+    "maps_query": "Sai Ying Pun Market 45 Centre Street Hong Kong",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sai_Ying_Pun_Market",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-sai-ying-pun-market.html",
+      "https://cache.org.hk/blog/heritage100_004/",
+      "https://www.localhood.org/single-post/dropping-in-a-local-kai-si-wet-market-of-sai-ying-pun"
+    ]
+  },
+  {
+    "name": "Tram through Chun Yeung Street market",
+    "zh": "北角春秧街街市",
+    "area": "North Point",
+    "category": [
+      "local",
+      "walk",
+      "free"
+    ],
+    "local": true,
+    "intro": "A crowded street market where trams squeeze between the fruit, fish and clothing stalls with shoppers stepping aside at the last second. It is one of Hong Kong's most surreal everyday sights.",
+    "fun_fact": "The street is named after Kwok Chun-yeung, a Fujianese businessman who invested heavily in developing the area in the 1920s.",
+    "tip": "From Causeway Bay, catch an eastbound tram that says 'North Point' on the front, because only North Point-bound trams turn into the market. Sit upstairs at the front, get off at the North Point terminus, and walk back through the stalls. Lee Keung Kee egg waffles (492 King's Road) are nearby.",
+    "getting_there": "From Park Lane: tram to North Point (about 15–20 min) or MTR to North Point (about 5 min). From campus: MTR to North Point (about 30 min).",
+    "cost": "HK$3.30 tram fare",
+    "hours": "Market busiest mid-morning to mid-afternoon",
+    "time_needed": "45 min",
+    "lat": 22.29129,
+    "lng": 114.19784,
+    "maps_query": "Chun Yeung Street Market North Point Hong Kong",
+    "sources": [
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-chun-yeung-street-wet-market.html",
+      "https://www.patnotebook.com/a-tram-ride-through-chun-yeung-street-in-hong-kong/",
+      "https://hongkongcheapo.com/place/chun-yeung-street-market/",
+      "https://www.lonelyplanet.com/points-of-interest/chun-yeung-street-market/1336417"
+    ]
+  },
+  {
+    "name": "Cooked-food-centre dinner: Smithfield, Kennedy Town",
+    "zh": "士美非路街市熟食中心（士美非路市政大廈2樓）",
+    "area": "Kennedy Town (Sai Wan)",
+    "category": [
+      "local",
+      "near-campus",
+      "night"
+    ],
+    "local": true,
+    "intro": "A council-run food hall above Kennedy Town's wet market, with plastic stools, shared tables and cheap Cantonese stir-fries. It is a no-frills local group dinner a few minutes from campus.",
+    "fun_fact": "Hong Kong stacks its everyday food in one building: the wet market is downstairs and the cooked food centre is upstairs, in the same Smithfield Municipal Services Building.",
+    "tip": "Bring a group, grab a big round table and order to share: stir-fries, sizzling pots, satay beef. Point at photos or other tables' dishes and bring cash. For breakfast, Sun Hing dim sum (opens about 3am) is across the road at 8 Smithfield.",
+    "getting_there": "2/F, Smithfield Municipal Services Building, 12K Smithfield. From campus: about a 5 min taxi or minibus ride, or roughly a 20 min walk. From Park Lane: MTR to Kennedy Town (about 20–25 min).",
+    "cost": "Budget (exact prices unknown)",
+    "hours": "Reported early morning until about 2am (one blog; unverified); individual stalls vary",
+    "time_needed": "1.5 hrs",
+    "lat": 22.28178,
+    "lng": 114.12864,
+    "maps_query": "Smithfield Market Cooked Food Centre Kennedy Town Hong Kong",
+    "sources": [
+      "https://www.daydreamer.hk/en/media-hk-location/smithfield-market/",
+      "https://en.wikipedia.org/wiki/Smithfield,_Hong_Kong",
+      "https://www.fehd.gov.hk/english/map/market/market_pt.html?mapID=518&type=market"
+    ]
+  },
+  {
+    "name": "Yuen Po Street Bird Garden & Flower Market",
+    "zh": "園圃街雀鳥花園 ／ 花墟道",
+    "area": "Prince Edward / Mong Kok, Kowloon",
+    "category": [
+      "local",
+      "culture",
+      "free",
+      "walk"
+    ],
+    "local": true,
+    "intro": "A Chinese-style garden where mostly older men bring their songbirds in bamboo cages to sing and socialise, right next to a street of flower and plant shops.",
+    "fun_fact": "It replaced the old Hong Lok Street bird market, which was demolished in the early 1990s. The Langham Place mall now stands on that site.",
+    "tip": "Go in the morning, when the bird owners gather. Walk the garden, then stroll Flower Market Road next door and continue on to the Goldfish Market on Tung Choi Street.",
+    "getting_there": "MTR Prince Edward, then about a 10 min walk. From Park Lane: about 30–35 min (change at Admiralty). From campus: about 40 min.",
+    "cost": "Free",
+    "hours": "Garden 7am–8pm daily; most shops close around 5–6pm",
+    "time_needed": "1–1.5 hrs",
+    "lat": 22.32589,
+    "lng": 114.17381,
+    "maps_query": "Yuen Po Street Bird Garden Mong Kok Hong Kong",
+    "sources": [
+      "https://www.lcsd.gov.hk/en/parks/ypsbg/index.html",
+      "https://en.wikipedia.org/wiki/Yuen_Po_Street_Bird_Garden",
+      "https://www.nextstophongkong.com/bird-garden/"
+    ]
+  },
+  {
+    "name": "Cha chaan teng breakfast (Mountain Road Cafe)",
+    "zh": "山道冰室（石塘咀山道25號）",
+    "area": "Shek Tong Tsui (Sai Wan)",
+    "category": [
+      "local",
+      "near-campus"
+    ],
+    "local": true,
+    "intro": "The cha chaan teng is Hong Kong's no-frills diner, serving milk tea, pineapple buns with butter, macaroni soup and eggs at speed. Mountain Road Cafe is a neighbourhood one near campus that bakes its own buns.",
+    "fun_fact": "In 2014, HK milk tea, yuenyeung (tea mixed with coffee), the pineapple bun and the egg tart were all listed in Hong Kong's first Intangible Cultural Heritage Inventory.",
+    "tip": "Order a breakfast set, a warm bo lo yau (pineapple bun with butter) and an iced milk tea or lemon tea. Share tables and pay at the till. If you're in Central or near the hotel instead, try Lan Fong Yuen (2 Gage St, closed Sundays) or Kam Fung Cafe in Wan Chai.",
+    "getting_there": "Near HKU MTR (Exit B2). From campus: a taxi takes about 10 min, or MTR Kennedy Town to HKU is 1 stop. From Park Lane: MTR to HKU (about 20 min).",
+    "cost": "Budget (exact prices unknown)",
+    "hours": "About 7am–9:30pm (sources differ)",
+    "time_needed": "45 min",
+    "lat": 22.28582,
+    "lng": 114.13542,
+    "maps_query": "Mountain Road Cafe 25 Hill Road Shek Tong Tsui Hong Kong",
+    "sources": [
+      "https://www.tripadvisor.com/Restaurant_Review-g294217-d33233743-Reviews-Mountain_Road_Cafe-Hong_Kong.html",
+      "https://en.wikipedia.org/wiki/Cha_chaan_teng",
+      "https://guide.michelin.com/my/en/article/features/evolution-of-cha-chaan-teng-hong-kong-s-iconic-dishes-and-local-dining-culture"
+    ]
+  },
+  {
+    "name": "Central Harbourfront: Tamar Park & Observation Wheel (to Wan Chai)",
+    "zh": "中環海濱 ／ 添馬公園 ／ 香港摩天輪",
+    "area": "Central / Admiralty / Wan Chai",
+    "category": [
+      "views",
+      "free",
+      "walk",
+      "night"
+    ],
+    "local": false,
+    "intro": "A wide, open harbourfront walk from the Central Ferry Piers past the giant Ferris wheel and the lawns of Tamar Park toward Wan Chai. It has big views of Kowloon and plenty of room to breathe.",
+    "fun_fact": "Tamar Park opened in 2011 beside the government headquarters and the Legislative Council. The 60 m Observation Wheel next to it has 42 gondolas.",
+    "tip": "Walk it at dusk from the Star Ferry pier east through Tamar Park, and take a quick 15 min ride on the wheel for the lit-up skyline. The AIA Carnival here only starts on 22 December 2026, after your trip.",
+    "getting_there": "From campus: MTR to Central or Hong Kong Station plus a 10 min walk. From Park Lane: MTR to Admiralty (about 5 min) plus a 10 min walk to Tamar Park.",
+    "cost": "Free; Observation Wheel about HK$20 adult (third-party sources; check hkow.hk)",
+    "hours": "Promenade open; wheel about 11am–11pm (sources vary)",
+    "time_needed": "1 hr",
+    "lat": 22.28532,
+    "lng": 114.16177,
+    "maps_query": "Hong Kong Observation Wheel Central Harbourfront",
+    "sources": [
+      "https://www.lcsd.gov.hk/en/parks/cwdpc/index.html",
+      "https://www.gohk.gov.hk/en/spots/spot_detail.php?spot=Hong+Kong+Observation+Wheel",
+      "https://www.hkow.hk/",
+      "https://thebettervacation.com/hong-kong/hong-kong-observation-wheel/"
+    ]
+  },
+  {
+    "name": "Tsim Sha Tsui Promenade, Avenue of Stars & Symphony of Lights",
+    "zh": "尖沙咀海濱長廊 ／ 星光大道 ／ 尖沙咀鐘樓",
+    "area": "Tsim Sha Tsui, Kowloon",
+    "category": [
+      "iconic",
+      "views",
+      "night",
+      "free",
+      "walk"
+    ],
+    "local": false,
+    "intro": "Kowloon's waterfront walk, facing the full Hong Kong Island skyline, with the old Clock Tower, the Bruce Lee statue and Hong Kong film-star handprints along the Avenue of Stars.",
+    "fun_fact": "The 44 m red-brick Clock Tower (1915) is all that remains of the old Kowloon–Canton Railway terminus, which was demolished in 1978.",
+    "tip": "Cross on the Star Ferry at dusk, walk from the Clock Tower to the Bruce Lee statue, and stay for the skyline. The 8pm Symphony of Lights show is due to be retired in the second half of 2026, so check the Tourism Commission site to see whether it is still running.",
+    "getting_there": "Star Ferry from Central or Wan Chai, or MTR to Tsim Sha Tsui / East Tsim Sha Tsui. From Park Lane: about 20–25 min. From campus: about 30 min (MTR to Central, then the Star Ferry).",
+    "cost": "Free",
+    "hours": "Promenade open; Symphony of Lights historically 8pm nightly (2026 status uncertain)",
+    "time_needed": "1–1.5 hrs",
+    "lat": 22.29415,
+    "lng": 114.17579,
+    "maps_query": "Avenue of Stars Tsim Sha Tsui Hong Kong",
+    "sources": [
+      "https://www.amo.gov.hk/en/historic-buildings/monuments/kowloon/monuments_43/index.html",
+      "https://www.info.gov.hk/gia/general/201901/30/P2019012900565.htm",
+      "https://www.avenueofstars.com.hk/en/a-symphony-of-lights/",
+      "https://hongkongfp.com/2026/02/27/budget-2026-symphony-of-lights-to-be-retired-in-2nd-half-of-year-replaced-by-light-shows-at-tourist-spots/",
+      "https://www.travelerstoday.com/articles/61021/20260921/hong-kongs-symphony-lights-resumes-after-weather-halt-its-end-near.htm"
+    ]
+  }
+]

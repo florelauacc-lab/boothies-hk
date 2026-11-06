@@ -1,0 +1,481 @@
+[
+  {
+    "kind": "sight",
+    "name": "Stanley Main Beach (dragon boat venue)",
+    "name_zh": "赤柱正灘",
+    "cuisine": "Beach / dragon boat venue",
+    "category": [
+      "iconic",
+      "free",
+      "local"
+    ],
+    "intro": "The sandy beach where the annual Stanley International Dragon Boat Championships are raced, and where most Stanley dragon boat sessions launch.",
+    "fun_fact": "Stanley's races began as local fishermen's prayer rituals in the bay facing Tin Hau Temple; by 2023 they drew 168 teams and 5,000+ paddlers, and the Dragon Boat (Tuen Ng) Festival, which honours the poet Qu Yuan, was UNESCO's first Chinese festival on its intangible heritage list (2009).",
+    "tips": "Lifeguards are still on duty here 8am-5pm through November, so a post-paddle dip is possible; showers and changing rooms are at the beach.",
+    "address_en": "Stanley Main Beach Water Sports Centre, 1 Stanley Link Road, Stanley",
+    "address_zh": "赤柱連合道1號 赤柱正灘水上活動中心",
+    "lat": 22.22032,
+    "lng": 114.21414,
+    "status": "open",
+    "sources": [
+      "https://www.dragonboat.org.hk/aboutus",
+      "https://www.dragonboat.org.hk/en/post/40-years-of-dragon-boat-racing-at-stanley",
+      "https://ich.unesco.org/en/RL/dragon-boat-festival-00225",
+      "https://www.lcsd.gov.hk/en/beach/index.html"
+    ]
+  },
+  {
+    "kind": "sight",
+    "name": "Murray House & Stanley Plaza",
+    "name_zh": "美利樓及赤柱廣場",
+    "cuisine": "Heritage building",
+    "category": [
+      "iconic",
+      "culture",
+      "free",
+      "views"
+    ],
+    "intro": "An 1846 Victorian colonnaded barracks moved stone-by-stone from Central and rebuilt on the Stanley waterfront in 1998.",
+    "fun_fact": "It originally stood where the Bank of China Tower is now; over 3,000 components were numbered during dismantling so it could be reassembled in Stanley.",
+    "tips": "Treat it as a photo stop: the interior has had no commercial tenants since April 2024, but the colonnades and the Stanley Plaza shops behind it are open.",
+    "address_en": "Murray House, Stanley Plaza, 23 Carmel Road, Stanley",
+    "address_zh": "赤柱佳美道23號 赤柱廣場 美利樓",
+    "lat": 22.21813,
+    "lng": 114.20973,
+    "status": "open",
+    "sources": [
+      "https://www.gohk.gov.hk/en/spots/spot_detail.php?spot=Stanley+Plaza+and+Murray+House",
+      "https://www.scmp.com/photos/hong-kong/3267047/hong-kongs-murray-house-stanley-lies-empty-tenants-exit-historic-landmark"
+    ]
+  },
+  {
+    "kind": "sight",
+    "name": "Blake Pier at Stanley (sunset spot)",
+    "name_zh": "赤柱卜公碼頭",
+    "cuisine": "Historic pier / sunset viewpoint",
+    "category": [
+      "iconic",
+      "views",
+      "free",
+      "night"
+    ],
+    "intro": "A pier topped with the ornate steel roof of Central's old Blake Pier, and the best sunset spot in Stanley.",
+    "fun_fact": "The roof was saved when the original Central pier was demolished in 1993, spent years in a Wong Tai Sin park, and was reinstated here in 2005.",
+    "tips": "Sunset is around 5:40pm in mid-November, so walk over straight after dragon boating; kaito ferries to Po Toi island also leave from here.",
+    "address_en": "Blake Pier, Stanley Main Street (next to Murray House), Stanley",
+    "address_zh": "赤柱大街 卜公碼頭（美利樓旁）",
+    "lat": 22.21742,
+    "lng": 114.21014,
+    "status": "open",
+    "sources": [
+      "https://www.gohk.gov.hk/en/spots/spot_detail.php?spot=Blake+Pier+at+Stanley"
+    ]
+  },
+  {
+    "kind": "sight",
+    "name": "Stanley Waterfront Promenade (Stanley Main Street)",
+    "name_zh": "赤柱大街海濱長廊",
+    "cuisine": "Waterfront promenade",
+    "category": [
+      "views",
+      "free",
+      "night",
+      "local"
+    ],
+    "intro": "A flat seafront strip of bars and restaurants linking Stanley Market, Murray House and Blake Pier.",
+    "fun_fact": "Stanley Bay in front of this promenade was the original dragon boat race course before the event outgrew it and moved to Stanley Main Beach.",
+    "tips": "The whole stretch is a 10-minute stroll, so it is the natural place to pick a terrace for post-paddle drinks.",
+    "address_en": "Stanley Main Street, Stanley",
+    "address_zh": "赤柱大街",
+    "lat": 22.21866,
+    "lng": 114.21152,
+    "status": "open",
+    "sources": [
+      "https://www.dragonboat.org.hk/en/post/40-years-of-dragon-boat-racing-at-stanley",
+      "https://www.gohk.gov.hk/en/spots/spot_detail.php?spot=Blake+Pier+at+Stanley"
+    ]
+  },
+  {
+    "kind": "sight",
+    "name": "Tin Hau Temple, Stanley",
+    "name_zh": "赤柱天后古廟",
+    "cuisine": "Taoist temple",
+    "category": [
+      "culture",
+      "free",
+      "local"
+    ],
+    "intro": "A small, incense-filled 1767 temple to Tin Hau, goddess of the sea and patron of fishermen, right behind Stanley Plaza.",
+    "fun_fact": "Built in 1767 and last restored in 2002, it is one of the oldest buildings in Stanley and is honoured by seafarers, the same community that started the local dragon boat races.",
+    "tips": "Free entry; be quiet inside, do not touch the offerings, and ask before photographing worshippers.",
+    "address_en": "Stanley Main Street (by Stanley Plaza), Stanley",
+    "address_zh": "赤柱大街 天后古廟（赤柱廣場旁）",
+    "lat": 22.21905,
+    "lng": 114.20926,
+    "status": "open",
+    "sources": [
+      "https://www.gohk.gov.hk/en/spots/spot_detail.php?spot=Tin+Hau+Temple,+Stanley"
+    ]
+  },
+  {
+    "kind": "sight",
+    "name": "Stanley Ma Hang Park & Pak Tai Temple",
+    "name_zh": "赤柱馬坑公園及北帝廟",
+    "cuisine": "Coastal park / temple",
+    "category": [
+      "views",
+      "culture",
+      "free"
+    ],
+    "intro": "A boardwalk park climbing the headland behind Murray House to a tiny cliffside temple with sea views.",
+    "fun_fact": "The Pak Tai Temple on its cliff edge was built by local fishermen in 1805.",
+    "tips": "Free; allow 30-45 minutes, wear grippy shoes for the stairs, and go before dark (published hours vary between 7am-8pm and 6am-10pm).",
+    "address_en": "Stanley Ma Hang Park, behind Murray House / Blake Pier, Stanley",
+    "address_zh": "赤柱馬坑公園（美利樓及卜公碼頭後方）",
+    "lat": 22.21795,
+    "lng": 114.20819,
+    "status": "open",
+    "sources": [
+      "https://www.timeout.com/hong-kong/things-to-do/stanley-ma-hang-park",
+      "https://www.hk-stanley-market.com/stanley-ma-hang-park-activities"
+    ]
+  },
+  {
+    "kind": "sight",
+    "name": "Stanley Military Cemetery",
+    "name_zh": "赤柱軍人墳場",
+    "cuisine": "War cemetery (CWGC)",
+    "category": [
+      "culture",
+      "free"
+    ],
+    "intro": "A peaceful hillside Commonwealth war cemetery with graves of soldiers and civilians from the 1941 Battle of Hong Kong and the Stanley internment camp.",
+    "fun_fact": "It is one of Hong Kong's oldest cemeteries, with early-colonial graves from the 1840s alongside its Second World War burials.",
+    "tips": "Open 8am-5pm daily (so go before or right after the paddle); access is via steps that are slippery when wet.",
+    "address_en": "Wong Ma Kok Road, Stanley",
+    "address_zh": "赤柱黃麻角道 赤柱軍人墳場",
+    "lat": 22.21329,
+    "lng": 114.21628,
+    "status": "open",
+    "sources": [
+      "https://www.cwgc.org/visit-us/find-cemeteries-memorials/cemetery-details/49428/stanley%20military%20cemetery/",
+      "https://www.gohk.gov.hk/en/spots/spot_detail.php?spot=Stanley+Military+Cemetery"
+    ]
+  },
+  {
+    "kind": "food",
+    "name": "Beesy Bay",
+    "name_zh": "Beesy Bay",
+    "cuisine": "Waterfront bar & restaurant",
+    "category": [
+      "drinks",
+      "dinner",
+      "lunch"
+    ],
+    "price": "$$",
+    "intro": "A three-floor waterfront spot (the former Boathouse) with a balcony and rooftop terrace overlooking Stanley Bay.",
+    "must_order": [
+      "Fish and chips",
+      "Beesy at Bay cocktail",
+      "Eggs Benedict (daytime)"
+    ],
+    "tips": "Ask for the rooftop or 2/F balcony for sunset; service can be slow upstairs when busy.",
+    "address_en": "86-88 Stanley Main Street, Stanley",
+    "address_zh": "赤柱大街86-88號",
+    "lat": 22.21866,
+    "lng": 114.21152,
+    "status": "open",
+    "sources": [
+      "https://www.hk-stanley-market.com/restaurant/beesy-bay",
+      "https://www.openrice.com/en/hongkong/r-beesy-bay-stanley-international-all-day-breakfast-r742025",
+      "https://en.tripadvisor.com.hk/Restaurant_Review-g294217-d24036739-Reviews-Beesy_Bay-Hong_Kong.html"
+    ]
+  },
+  {
+    "kind": "food",
+    "name": "Pane e Latte",
+    "name_zh": "Pane e Latte",
+    "cuisine": "Italian bakery & all-day café",
+    "category": [
+      "lunch",
+      "dessert",
+      "dinner"
+    ],
+    "price": "$$",
+    "intro": "A Pirata Group Italian seaside-style bakery and café near the waterfront, open roughly 8am-9pm.",
+    "must_order": [
+      "Truffle croissant (HKD158)",
+      "Bomboloni (try the milk tea flavour)",
+      "Weekday set lunch (HKD168)"
+    ],
+    "tips": "Good for a pre-paddle lunch or post-paddle gelato and coffee; it gets busy at weekends but a Monday should be calm.",
+    "address_en": "G/F, U-C Court, 25 Stanley Market Road, Stanley",
+    "address_zh": "赤柱市場道25號啟厚閣地下",
+    "lat": 22.21862,
+    "lng": 114.21171,
+    "status": "open",
+    "sources": [
+      "https://www.afoodieworld.com/blog/2026/05/20/best-restaurants-stanley-hk/",
+      "https://piratagroup.hk/venues/pane-e-latte/"
+    ]
+  },
+  {
+    "kind": "food",
+    "name": "Si Yik",
+    "name_zh": "泗益",
+    "cuisine": "Local dai pai dong (HK café)",
+    "category": [
+      "lunch"
+    ],
+    "price": "$",
+    "intro": "A 60-plus-year-old open-air dai pai dong in Stanley Market and the most authentic local bite in town.",
+    "must_order": [
+      "HK-style French toast with kaya and butter (HKD30)",
+      "Pork chop bun",
+      "HK milk tea"
+    ],
+    "tips": "Go in the morning or by lunchtime (it opens around 6:30am, may close as early as 12:30pm on weekdays, and is closed Tuesdays); bring cash or Octopus.",
+    "address_en": "G/F, 2 Stanley Market Road, Stanley",
+    "address_zh": "赤柱市場道2號地下",
+    "lat": 22.21895,
+    "lng": 114.2118,
+    "status": "open",
+    "sources": [
+      "https://www.afoodieworld.com/blog/2026/05/20/best-restaurants-stanley-hk/",
+      "https://www.openrice.com/en/hongkong/r-%E6%B3%97%E7%9B%8A-stanley-hong-kong-style-r6625"
+    ]
+  },
+  {
+    "kind": "food",
+    "name": "Surf & Turf Grill and Bar",
+    "name_zh": "Surf & Turf Grill and Bar",
+    "cuisine": "Seafood grill & bar",
+    "category": [
+      "dinner",
+      "drinks"
+    ],
+    "price": "$$",
+    "intro": "A Stanley Plaza grill and bar with an outdoor terrace, pool table and live music, good for a big group dinner.",
+    "must_order": [
+      "Seafood paella (HKD178)",
+      "Butter chicken (HKD158)",
+      "Surf & turf lobster and rib-eye (HKD498)"
+    ],
+    "tips": "Book ahead for a group and request the terrace; it is a 2-minute walk from Murray House.",
+    "address_en": "Shop 302, 3/F, Stanley Plaza, 23 Carmel Road, Stanley",
+    "address_zh": "赤柱佳美道23號赤柱廣場3樓302號舖",
+    "lat": 22.21969,
+    "lng": 114.20962,
+    "status": "open",
+    "sources": [
+      "https://www.afoodieworld.com/blog/2026/05/20/best-restaurants-stanley-hk/"
+    ]
+  },
+  {
+    "kind": "food",
+    "name": "Pickled Pelican",
+    "name_zh": "Pickled Pelican",
+    "cuisine": "British gastropub",
+    "category": [
+      "drinks",
+      "dinner"
+    ],
+    "price": "$$",
+    "intro": "A long-running British-style pub on the waterfront strip with sea-facing seating.",
+    "must_order": [
+      "Fish and chips",
+      "Draught beer or cider"
+    ],
+    "tips": "Call +852 2813 4313 before going, as recent listings conflict on its status and hours.",
+    "address_en": "G/F & 1/F, 90 Stanley Main Street, Stanley",
+    "address_zh": "赤柱大街90號地下及1樓",
+    "lat": 22.21872,
+    "lng": 114.21137,
+    "status": "unclear",
+    "sources": [
+      "https://www.hk-stanley-market.com/restaurant/pickled-pelican",
+      "https://www.yelp.com/biz/pickled-pelican-%E9%A6%99%E6%B8%AF"
+    ]
+  },
+  {
+    "kind": "hike",
+    "name": "Ma Hang Park to Chung Hom Kok coastal walk",
+    "name_zh": "赤柱馬坑公園至舂坎角",
+    "cuisine": "Coastal walk",
+    "category": [
+      "views",
+      "free"
+    ],
+    "intro": "An easy headland walk from Murray House past the Pak Tai Temple and sea-view rocks to a quiet cove at Chung Hom Kok.",
+    "fun_fact": "The route passes the 1805 fishermen's Pak Tai Temple perched on the cliff.",
+    "tips": "This is the only realistic hike after a 4pm finish: start by 4:30pm to be back on the promenade for the ~5:40pm sunset, and leave wild boars alone.",
+    "distance_km": 3,
+    "duration": "About 1 hour return",
+    "difficulty": "Easy",
+    "getting_there": "From Stanley: walk 5 minutes past Murray House to the park entrance by Blake Pier. From Causeway Bay: green minibus 40 (Jardine's Bazaar) to Stanley, about 30-40 minutes, or a ~25-minute taxi.",
+    "address_en": "Start: Stanley Ma Hang Park (by Blake Pier), Stanley",
+    "address_zh": "起點：赤柱馬坑公園（卜公碼頭旁）",
+    "lat": 22.21795,
+    "lng": 114.20819,
+    "status": "open",
+    "sources": [
+      "https://hikinglover.wordpress.com/2019/04/17/stanley-ma-hang-park-to-chung-hom-kok-trail/",
+      "https://www.timeout.com/hong-kong/things-to-do/stanley-ma-hang-park"
+    ]
+  },
+  {
+    "kind": "hike",
+    "name": "Tai Tam Waterworks Heritage Trail",
+    "name_zh": "大潭水務文物徑",
+    "cuisine": "Reservoir heritage trail",
+    "category": [
+      "views",
+      "culture",
+      "free"
+    ],
+    "intro": "A mostly paved trail past Victorian-era reservoirs, granite dams and bridges, a short ride from Stanley.",
+    "fun_fact": "Its 21 historic waterworks structures, built 1883-1936 and now declared monuments, include granite dams, valve houses and masonry bridges.",
+    "tips": "Walk it north to south (downhill) if doing the full trail; after a 4pm finish, do a short out-and-back from Tai Tam Tuk dam instead and be off the trail by dark.",
+    "distance_km": 5,
+    "duration": "About 2 hours (full trail)",
+    "difficulty": "Easy",
+    "getting_there": "From Stanley: taxi about 10 minutes to Tai Tam Tuk Reservoir dam, or bus 14 towards Sai Wan Ho. From Causeway Bay: taxi about 20 minutes to Wong Nai Chung Gap (Parkview) for the north start.",
+    "address_en": "Tai Tam Reservoir Road / Tai Tam Road junction (south end); Wong Nai Chung Gap (north end)",
+    "address_zh": "大潭水塘道與大潭道交界（南端）；黃泥涌峽（北端）",
+    "lat": 22.24537,
+    "lng": 114.21863,
+    "status": "open",
+    "sources": [
+      "https://www.wsd.gov.hk/filemanager/common/pdf/monuments/tai_tam.pdf",
+      "https://en.wikipedia.org/wiki/Tai_Tam_Waterworks_Heritage_Trail"
+    ]
+  },
+  {
+    "kind": "hike",
+    "name": "The Twins (Wilson Trail Section 1)",
+    "name_zh": "孖崗山（衞奕信徑第一段）",
+    "cuisine": "Ridge hike",
+    "category": [
+      "views",
+      "free"
+    ],
+    "intro": "A tough ridge hike over two peaks with sweeping views of Stanley, Repulse Bay and the South China Sea, ending at Stanley Gap Road.",
+    "fun_fact": "The climb to the first peak is a flight of roughly 1,200 steps.",
+    "tips": "Not doable after a 4pm finish: do it as a morning hike ending in Stanley before dragon boating, and carry plenty of water.",
+    "distance_km": 4.8,
+    "duration": "2.5-3 hours",
+    "difficulty": "Hard",
+    "getting_there": "From Causeway Bay: taxi about 15 minutes to Hong Kong Parkview / Wong Nai Chung Reservoir to start, then finish at Stanley Gap Road and take a 5-minute taxi down to Stanley. From Stanley (reverse): taxi about 5 minutes to the Wilson Trail start on Stanley Gap Road.",
+    "address_en": "Wong Nai Chung Reservoir (start) to Stanley Gap Road (end)",
+    "address_zh": "黃泥涌水塘（起點）至赤柱峽道（終點）",
+    "lat": 22.22489,
+    "lng": 114.20935,
+    "status": "open",
+    "sources": [
+      "https://www.hellohongkong.com.hk/blog/wilson-trail",
+      "https://www.beckyexploring.com/the-twins-hike-wong-nai-chung-stanley/",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-wilson-trail.html"
+    ]
+  },
+  {
+    "kind": "beach",
+    "name": "Repulse Bay Beach",
+    "name_zh": "淺水灣泳灘",
+    "cuisine": "Beach",
+    "category": [
+      "iconic",
+      "views",
+      "free"
+    ],
+    "intro": "Hong Kong Island's best-known wide, sheltered crescent of sand, with cafés and a colourful Tin Hau/Kwun Yam shrine at its eastern end.",
+    "fun_fact": "It is one of only five Southern District beaches the LCSD keeps staffed with lifeguards in November 2026.",
+    "tips": "Easiest beach for first-timers; stop at Stanley on the same bus route.",
+    "getting_there": "Green minibus 40 from Jardine's Bazaar, Causeway Bay (~25 min), or bus 6X/260 from Exchange Square, Central (~30 min); taxi from Causeway Bay ~20 min.",
+    "facilities": "Lifeguards 8am-5pm in November (none Dec-Feb); showers, changing rooms and toilets; cafés and restaurants at The Pulse beachfront mall.",
+    "address_en": "Beach Road, Repulse Bay",
+    "address_zh": "淺水灣海灘道 淺水灣泳灘",
+    "lat": 22.23655,
+    "lng": 114.19654,
+    "status": "open",
+    "sources": [
+      "https://www.lcsd.gov.hk/en/beach/index.html",
+      "https://www.16seats.net/eng/gmb/gh_40.html"
+    ]
+  },
+  {
+    "kind": "beach",
+    "name": "Deep Water Bay Beach",
+    "name_zh": "深水灣泳灘",
+    "cuisine": "Beach",
+    "category": [
+      "local",
+      "free"
+    ],
+    "intro": "A small, calm, local favourite beach just west of Repulse Bay, popular with year-round swimmers.",
+    "fun_fact": "It is the only Southern District beach that keeps lifeguards all winter, December to February included.",
+    "tips": "Quietest and safest option for a winter swim; bring snacks, as food options are limited.",
+    "getting_there": "Green minibus 40 from Causeway Bay (~20 min) or bus 260 from Exchange Square, Central (~25 min); taxi from Causeway Bay ~15 min.",
+    "facilities": "Lifeguards 8am-5pm all year; showers, changing rooms and toilets; BBQ pits and a small snack kiosk.",
+    "address_en": "Island Road, Deep Water Bay",
+    "address_zh": "香島道 深水灣泳灘",
+    "lat": 22.24452,
+    "lng": 114.18762,
+    "status": "open",
+    "sources": [
+      "https://www.lcsd.gov.hk/en/beach/index.html",
+      "https://www.hk-cityguide.com/expat-guide/guide-to-reaching-hong-kongs-most-popular-beaches-from-central"
+    ]
+  },
+  {
+    "kind": "beach",
+    "name": "Big Wave Bay Beach",
+    "name_zh": "大浪灣泳灘",
+    "cuisine": "Beach / surf spot",
+    "category": [
+      "views",
+      "local",
+      "free"
+    ],
+    "intro": "A wave-swept beach on the island's east coast with surfboard rentals, beach cafés and the end of the famous Dragon's Back hike.",
+    "fun_fact": "It is one of Hong Kong Island's few surf beaches; boards rent for about HK$40-50 a day and surfing must stay outside the shark net.",
+    "tips": "Pair it with the Dragon's Back trail, which finishes here; check flags, as waves can be big.",
+    "getting_there": "MTR to Shau Kei Wan (~15 min from Causeway Bay), then red minibus to Big Wave Bay or bus 9 (~30 min); taxi from Causeway Bay ~30 min.",
+    "facilities": "Lifeguards 8am-5pm in November; showers, changing rooms and toilets; beach cafés, a convenience store, BBQ pits and surf rentals.",
+    "address_en": "Big Wave Bay Road, Shek O",
+    "address_zh": "石澳大浪灣道 大浪灣泳灘",
+    "lat": 22.24645,
+    "lng": 114.24682,
+    "status": "open",
+    "sources": [
+      "https://www.lcsd.gov.hk/en/beach/index.html",
+      "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-big-wave-bay-beach.html",
+      "https://droneandslr.com/travel-blog/hong-kong/big-wave-bay-beach/"
+    ]
+  },
+  {
+    "kind": "beach",
+    "name": "Shek O Beach",
+    "name_zh": "石澳泳灘",
+    "cuisine": "Beach / village",
+    "category": [
+      "local",
+      "views",
+      "free"
+    ],
+    "intro": "A laid-back village beach with a seaside headland walk and casual Thai and seafood restaurants in Shek O village.",
+    "fun_fact": "A short walk from the beach, the blue 'Lovers' Bridge' crosses to Tai Tau Chau, a rocky islet with sea views and weekend rock climbers.",
+    "tips": "Lovely for a walk and late lunch, but lifeguards are off for the winter, so do not swim.",
+    "getting_there": "MTR to Shau Kei Wan (~15 min from Causeway Bay), then bus 9 to the Shek O terminus (~30 min); taxi from Causeway Bay ~30 min.",
+    "facilities": "Lifeguards suspended from 1 November to 31 March; toilets, changing rooms and showers on site; village cafés and restaurants nearby.",
+    "address_en": "Shek O Village, Shek O",
+    "address_zh": "石澳村 石澳泳灘",
+    "lat": 22.22863,
+    "lng": 114.25063,
+    "status": "open",
+    "sources": [
+      "https://www.lcsd.gov.hk/en/beach/index.html",
+      "https://www.localiiz.com/post/living-hiking-tai-tau-chau-hike-shek-o",
+      "https://droneandslr.com/travel-blog/hong-kong/shek-o-beach/"
+    ]
+  }
+]
