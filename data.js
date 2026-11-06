@@ -5486,6 +5486,349 @@ window.HK = {
   },
   {
    "tab": "sights",
+   "name": "Temple Street & Yau Ma Tei neon walk (incl. Mido Café)",
+   "zh": "廟街夜市 / 美都餐室",
+   "area": "Yau Ma Tei / Jordan, Kowloon",
+   "cuisine": "Neon spot",
+   "category": [
+    "neon",
+    "night",
+    "free",
+    "local",
+    "culture",
+    "iconic"
+   ],
+   "intro": "Old-Kowloon night market streets with the best surviving cluster of vintage signs, plus neon-style art from the 2023 market revamp.",
+   "funFact": "Mido Café (63 Temple St) has been a cha chaan teng since 1950, and its corner sign is one of the most-photographed vintage signs in town.",
+   "tips": "Go after 8pm: walk Temple St from Jordan Rd up to Mido, then detour to Woosung St and Saigon St, where most of the old signs are. Mido shuts by early evening and usually on Wednesdays, so photograph the outside at night and eat there at lunch.",
+   "getting": "From Park Lane: MTR Causeway Bay to Admiralty, then the Tsuen Wan Line to Jordan (Exit A) or Yau Ma Tei (Exit C), about 25 min. From Booth (Kennedy Town): MTR via Admiralty, about 35 min. Taxi via the Cross-Harbour Tunnel takes about 20 min and costs about HK$120-150.",
+   "facts": [
+    [
+     "Cost",
+     "Free"
+    ],
+    [
+     "Time",
+     "1.5-2 hours (evening)"
+    ]
+   ],
+   "addressEn": "Temple Street, Yau Ma Tei (Mido Café: 63 Temple Street)",
+   "addressZh": "九龍油麻地廟街（美都餐室：廟街63號）",
+   "lat": 22.31022,
+   "lng": 114.17027,
+   "emoji": "🌈",
+   "local": true,
+   "id": "temple-street-yau-ma-tei-neon-walk-incl-"
+  },
+  {
+   "tab": "sights",
+   "name": "Mong Kok neon streets (Portland St & Tung Choi St)",
+   "zh": "旺角砵蘭街 / 通菜街",
+   "area": "Mong Kok, Kowloon",
+   "cuisine": "Neon spot",
+   "category": [
+    "neon",
+    "night",
+    "free",
+    "local"
+   ],
+   "intro": "The densest, loudest mix of neon and LED signs left in the city, stacked above packed streets and the Ladies' Market.",
+   "funFact": "Hong Kong once had tens of thousands of neon signs; a July 2026 count puts the city's total at under 400.",
+   "tips": "Portland St near Shantung/Changsha St has the most neon. For the classic overhead shot, use the footbridges around Tung Choi St. Many big signs here are now LED rather than true neon.",
+   "getting": "From Park Lane: MTR to Admiralty, then the Tsuen Wan Line to Mong Kok, about 25-30 min. From Booth: about 35-40 min by MTR. It's a 15-min walk north from Temple Street, so combine the two.",
+   "facts": [
+    [
+     "Cost",
+     "Free"
+    ],
+    [
+     "Time",
+     "1 hour (evening)"
+    ]
+   ],
+   "addressEn": "Portland Street & Tung Choi Street, Mong Kok",
+   "addressZh": "九龍旺角砵蘭街及通菜街",
+   "lat": 22.31705,
+   "lng": 114.17104,
+   "emoji": "🌈",
+   "local": true,
+   "id": "mong-kok-neon-streets-portland-st-tung-c"
+  },
+  {
+   "tab": "sights",
+   "name": "Wan Chai neon & bar strip (Lockhart Road)",
+   "zh": "灣仔駱克道",
+   "area": "Wan Chai, Hong Kong Island",
+   "cuisine": "Neon spot",
+   "category": [
+    "neon",
+    "night",
+    "free",
+    "local"
+   ],
+   "intro": "Hong Kong Island's last real neon strip, along the old Suzie Wong-era bar district, 15 minutes' walk from the hotel.",
+   "funFact": "The Suzie Wong nightclub's neon lit this strip until the club closed in the 1980s; the novel and film made Wan Chai's bars world-famous.",
+   "tips": "Walk Lockhart Rd between Fleming Rd and Luard Rd after 9pm. Some venues are hostess bars with touts, so a quick look-and-photo stroll is the move. Nearby Spring Garden Lane has the c.1970 Golden Dragon Mahjong sign.",
+   "getting": "From Park Lane: about 15 min walk west along Hennessy/Lockhart Rd, a 5-min tram ride, or one MTR stop to Wan Chai (Exit C). From Booth: MTR Island Line to Wan Chai, about 20 min.",
+   "facts": [
+    [
+     "Cost",
+     "Free"
+    ],
+    [
+     "Time",
+     "30-45 min"
+    ]
+   ],
+   "addressEn": "Lockhart Road (around No. 147), Wan Chai",
+   "addressZh": "香港灣仔駱克道147號一帶",
+   "lat": 22.2783,
+   "lng": 114.17292,
+   "emoji": "🌈",
+   "local": true,
+   "id": "wan-chai-neon-bar-strip-lockhart-road"
+  },
+  {
+   "tab": "sights",
+   "name": "Monster Building (Yick Cheong / Montane Mansion)",
+   "zh": "鰂魚涌益昌大廈 / 海山樓（怪獸大廈）",
+   "area": "Quarry Bay, Hong Kong Island",
+   "cuisine": "Architecture",
+   "category": [
+    "architecture",
+    "iconic",
+    "free",
+    "local"
+   ],
+   "intro": "A dizzying E-shaped wall of 1960s-70s flats wrapped around a tiny courtyard; Hong Kong density in a single frame.",
+   "funFact": "The five linked blocks house about 10,000 people and were filming locations for 'Transformers: Age of Extinction' and 'Ghost in the Shell' (2017).",
+   "tips": "This is a private residential estate, not an attraction. Keep your voice down, don't block the courtyard or the shops, no tripods, drones or flash, and don't photograph residents. A residents' 'no photography' sign has been reported since 2018, so obey any posted notice and shoot from King's Road if asked.",
+   "getting": "From Park Lane: MTR Island Line east to Tai Koo (Exit B) or Quarry Bay (Exit A), about 10 min plus a 5-min walk; the tram along King's Road also works (about 25 min). From Booth: MTR about 30 min.",
+   "facts": [
+    [
+     "Cost",
+     "Free"
+    ],
+    [
+     "Time",
+     "20-30 min"
+    ]
+   ],
+   "addressEn": "Montane Mansion, 1028 King's Road, Quarry Bay",
+   "addressZh": "香港鰂魚涌英皇道1028號海山樓",
+   "lat": 22.28419,
+   "lng": 114.21195,
+   "emoji": "🏢",
+   "local": true,
+   "id": "monster-building-yick-cheong-montane-man"
+  },
+  {
+   "tab": "sights",
+   "name": "HSBC Main Building",
+   "zh": "滙豐總行大廈",
+   "area": "Central, Hong Kong Island",
+   "cuisine": "Architecture",
+   "category": [
+    "architecture",
+    "iconic",
+    "free"
+   ],
+   "intro": "Norman Foster's 1986 high-tech 'inside-out' tower, hung from giant steel masts above a public plaza you can walk right under.",
+   "funFact": "2026 marks the building's 40th anniversary, and the two bronze lions out front, Stephen and Stitt, still carry shell scars from the Second World War.",
+   "tips": "Stand in the open plaza and look straight up through the glass belly into the atrium. On weekdays, ride the escalator up into the banking hall (an ordinary branch) for the cathedral-like view. Best photographed from Statue Square.",
+   "getting": "From Park Lane: MTR Island Line to Central (Exit K), 3 stops, about 10 min; or the tram to Des Voeux Rd Central (about 25 min). From Booth: MTR about 12 min.",
+   "facts": [
+    [
+     "Cost",
+     "Free"
+    ],
+    [
+     "Time",
+     "20-30 min (combine with Bank of China Tower and Lippo)"
+    ]
+   ],
+   "addressEn": "HSBC Main Building, 1 Queen's Road Central, Central",
+   "addressZh": "香港中環皇后大道中1號滙豐總行大廈",
+   "lat": 22.28009,
+   "lng": 114.15948,
+   "emoji": "🏢",
+   "local": false,
+   "id": "hsbc-main-building"
+  },
+  {
+   "tab": "sights",
+   "name": "Bank of China Tower",
+   "zh": "中銀大廈",
+   "area": "Central / Admiralty, Hong Kong Island",
+   "cuisine": "Architecture",
+   "category": [
+    "architecture",
+    "iconic",
+    "night",
+    "neon",
+    "free"
+   ],
+   "intro": "I. M. Pei's 1990 glass-and-triangles tower, the sharpest silhouette on the Hong Kong skyline.",
+   "funFact": "The white lines tracing its triangles at night are neon tubes; NEONSIGNS.HK lists the tower as one of the city's featured neon landmarks.",
+   "tips": "View it from outside: the 43/F observation deck is reported closed to the public. The best close-up angle is from Cheung Kong Park or Garden Road, and the best skyline shot is from the Star Ferry or the Tsim Sha Tsui waterfront after dark.",
+   "getting": "From Park Lane: MTR to Admiralty (Exit B, via Lippo Centre) or Central (Exit K), about 10 min plus a 5-10 min walk. From Booth: MTR to Central, about 15 min. It's a 5-min walk from HSBC.",
+   "facts": [
+    [
+     "Cost",
+     "Free (exterior)"
+    ],
+    [
+     "Time",
+     "15-20 min"
+    ]
+   ],
+   "addressEn": "Bank of China Tower, 1 Garden Road, Central",
+   "addressZh": "香港中環花園道1號中銀大廈",
+   "lat": 22.27906,
+   "lng": 114.16149,
+   "emoji": "🏢",
+   "local": false,
+   "id": "bank-of-china-tower"
+  },
+  {
+   "tab": "sights",
+   "name": "Lippo Centre ('Koala Tree')",
+   "zh": "力寶中心",
+   "area": "Admiralty, Hong Kong Island",
+   "cuisine": "Architecture",
+   "category": [
+    "architecture",
+    "iconic",
+    "free"
+   ],
+   "intro": "Paul Rudolph's twin blue-glass towers whose bulging, stacked floors look like koalas hugging a tree.",
+   "funFact": "This 1988 complex is Rudolph's only completed project in Hong Kong, and it was called the Bond Centre (after Australian tycoon Alan Bond) while it was being built.",
+   "tips": "The best angle is from the Admiralty footbridges or Hong Kong Park, looking up. It's a 2-min add-on between Admiralty MTR and the Bank of China Tower.",
+   "getting": "From Park Lane: MTR to Admiralty (Exit B, linked by footbridge), 2 stops, about 5 min. From Booth: MTR about 15 min.",
+   "facts": [
+    [
+     "Cost",
+     "Free (exterior)"
+    ],
+    [
+     "Time",
+     "10-15 min"
+    ]
+   ],
+   "addressEn": "Lippo Centre, 89 Queensway, Admiralty",
+   "addressZh": "香港金鐘道89號力寶中心",
+   "lat": 22.27947,
+   "lng": 114.16356,
+   "emoji": "🏢",
+   "local": false,
+   "id": "lippo-centre-koala-tree"
+  },
+  {
+   "tab": "sights",
+   "name": "The Blue House",
+   "zh": "灣仔藍屋",
+   "area": "Wan Chai, Hong Kong Island",
+   "cuisine": "Architecture",
+   "category": [
+    "architecture",
+    "culture",
+    "local",
+    "free"
+   ],
+   "intro": "A Grade I listed 1920s balcony-style tenement (tong lau), painted bright blue and still lived in, in a lane of old Wan Chai.",
+   "funFact": "It's blue reportedly because the government only had surplus Water Supplies Department paint when it repainted the building around 1990.",
+   "tips": "The ground-floor Hong Kong House of Stories is free, roughly 10am-6pm, and closed Wednesdays. Upper floors are private homes. Pair it with the nearby Yellow House and Orange House on Stone Nullah Lane.",
+   "getting": "From Park Lane: about 20 min walk or a 5-min taxi; or MTR to Wan Chai (Exit A3) plus a 10-min walk. From Booth: MTR to Wan Chai, about 20 min, plus a 10-min walk.",
+   "facts": [
+    [
+     "Cost",
+     "Free"
+    ],
+    [
+     "Time",
+     "30-45 min"
+    ]
+   ],
+   "addressEn": "72A Stone Nullah Lane, Wan Chai",
+   "addressZh": "香港灣仔石水渠街72A號",
+   "lat": 22.27392,
+   "lng": 114.17411,
+   "emoji": "🏢",
+   "local": true,
+   "id": "the-blue-house"
+  },
+  {
+   "tab": "sights",
+   "name": "Choi Hung Estate (rainbow estate & rooftop court)",
+   "zh": "彩虹邨",
+   "area": "Ngau Chi Wan / Wong Tai Sin, Kowloon",
+   "cuisine": "Architecture",
+   "category": [
+    "architecture",
+    "iconic",
+    "local",
+    "free"
+   ],
+   "intro": "A 1960s public housing estate painted in rainbow stripes, with a pastel-painted basketball court on top of the car park.",
+   "funFact": "Redevelopment starts in 2028, with first-phase residents due out by April 2029, so this is one of the last chances to see it intact.",
+   "tips": "Take the lift or stairs in the multi-storey car park next to MTR Exit C3 up to the rooftop court. Locals play there, so stay off the court while games are on. Don't photograph residents without asking, and avoid weekend afternoons when it's crowded.",
+   "getting": "From Park Lane: MTR via Admiralty to Prince Edward, then the Kwun Tong Line to Choi Hung (Exit C3), about 40 min. A taxi via the Eastern Harbour Crossing takes about 20-25 min (about HK$150-180). From Booth: about 50 min by MTR.",
+   "facts": [
+    [
+     "Cost",
+     "Free"
+    ],
+    [
+     "Time",
+     "30-45 min"
+    ]
+   ],
+   "addressEn": "Multi-storey Car Park, Choi Hung Estate, 2 Tse Wai Avenue, Ngau Chi Wan",
+   "addressZh": "九龍牛池灣紫葳路2號彩虹邨多層停車場",
+   "lat": 22.33458,
+   "lng": 114.20724,
+   "emoji": "🏢",
+   "local": true,
+   "id": "choi-hung-estate-rainbow-estate-rooftop-"
+  },
+  {
+   "tab": "sights",
+   "name": "Lai Tak Tsuen (round towers)",
+   "zh": "勵德邨",
+   "area": "Tai Hang",
+   "cuisine": "Architecture",
+   "category": [
+    "architecture",
+    "local",
+    "free"
+   ],
+   "intro": "Rare cylindrical 1970s housing towers whose hollow cores make a perfect concentric-circles photo looking up.",
+   "funFact": "Built by the Hong Kong Housing Society in 1975-76, the estate is named after government officer Michael Wright; '勵德' is a transliteration of 'Wright'.",
+   "tips": "Treat this as a look-from-outside stop. Reports say security has asked photographers to leave the inner atriums and that photography inside is discouraged. Admire the towers from Lai Tak Tsuen Road and don't go into the residential blocks.",
+   "getting": "From Park Lane: about 15-20 min uphill walk via Tai Hang Road, or a 5-min taxi (about HK$30). From Booth: MTR to Causeway Bay (about 20 min), then a taxi or the walk.",
+   "facts": [
+    [
+     "Cost",
+     "Free"
+    ],
+    [
+     "Time",
+     "15-20 min"
+    ]
+   ],
+   "addressEn": "Lai Tak Tsuen, 2-38 Lai Tak Tsuen Road, Tai Hang",
+   "addressZh": "香港大坑勵德邨道2-38號勵德邨",
+   "lat": 22.27934,
+   "lng": 114.19376,
+   "emoji": "🏢",
+   "local": true,
+   "flags": [
+    "Check it's open first"
+   ],
+   "id": "lai-tak-tsuen-round-towers"
+  },
+  {
+   "tab": "sights",
    "name": "Victoria Peak & the Peak Tram",
    "zh": "山頂纜車（花園道總站）／ 太平山頂凌霄閣",
    "area": "The Peak",
@@ -5643,7 +5986,8 @@ window.HK = {
    "category": [
     "culture",
     "free",
-    "walk"
+    "walk",
+    "architecture"
    ],
    "intro": "The beautifully restored colonial Central Police Station compound, now a free heritage and contemporary art centre with courtyards, bars and restaurants.",
    "funFact": "It combines three declared monuments: the former Central Police Station, the Central Magistracy and Victoria Prison. You can walk through the old prison cell blocks.",
@@ -5824,51 +6168,15 @@ window.HK = {
   },
   {
    "tab": "sights",
-   "name": "Temple Street Night Market",
-   "zh": "廟街夜市（油麻地）",
-   "area": "Yau Ma Tei / Jordan, Kowloon",
-   "cuisine": "Night market",
-   "category": [
-    "iconic",
-    "night",
-    "culture",
-    "free"
-   ],
-   "intro": "Kowloon's most famous night market: rows of stalls under red lights selling knick-knacks, with fortune tellers, street-side seafood and, on some nights, amateur Cantonese opera singers.",
-   "funFact": "The street is named after the Tin Hau Temple that sits in the middle of it. It was once nicknamed 'Men's Street' because most of the stalls catered to men.",
-   "tips": "Go after 7pm. Have a palm or face reading near the temple end (many readers speak some English), eat dinner at the street tables, and look up for Yau Ma Tei's remaining neon signs. Haggle at the stalls.",
-   "getting": "MTR Jordan or Yau Ma Tei. From Park Lane: about 25–30 min (change at Admiralty). From campus: about 30–35 min (change at Admiralty), or a taxi through the Western Harbour Tunnel.",
-   "facts": [
-    [
-     "Cost",
-     "Free"
-    ],
-    [
-     "Time",
-     "1.5–2 hrs"
-    ],
-    [
-     "Hours",
-     "Stalls roughly 4pm–midnight, busiest 7–10pm (sources vary)"
-    ]
-   ],
-   "lat": 22.3062,
-   "lng": 114.1699,
-   "mapsQuery": "Temple Street Night Market Yau Ma Tei Hong Kong",
-   "local": false,
-   "id": "temple-street-night-market",
-   "addressZh": "油麻地廟街夜市",
-   "emoji": "🏮"
-  },
-  {
-   "tab": "sights",
    "name": "M+ museum & West Kowloon waterfront",
    "zh": "M+博物館（西九文化區）",
    "area": "West Kowloon",
    "cuisine": "Museum & waterfront",
    "category": [
     "culture",
-    "views"
+    "views",
+    "neon",
+    "architecture"
    ],
    "intro": "Asia's big new museum of visual culture, covering design, architecture, art and film, set in a harbourside park with some of the best skyline views across to Hong Kong Island.",
    "funFact": "You don't need a ticket for the Roof Garden, Grand Stair, Found Space or basement levels, so you can enjoy the building and views for free.",

@@ -573,6 +573,32 @@
         "Cocktails"
       ],
       "cuisine": "Live music & cocktail bar (jazz, soul, funk)"
+    },
+    "Tai Kwun": {
+      "category": [
+        "culture",
+        "free",
+        "walk",
+        "architecture"
+      ]
+    },
+    "M+ museum & West Kowloon waterfront": {
+      "category": [
+        "culture",
+        "views",
+        "neon",
+        "architecture"
+      ]
+    },
+    "Temple Street & Yau Ma Tei neon walk (incl. Mido Café)": {
+      "category": [
+        "neon",
+        "night",
+        "free",
+        "local",
+        "culture",
+        "iconic"
+      ]
     }
   },
   "drop": [
@@ -585,11 +611,14 @@
     "Kau Kee",
     "King Fook Jewellery (Central)",
     "Lukfook Jewellery (Causeway Bay, 499 Hennessy Road)",
+    "M+ Museum (neon collection & building)",
     "Ronald Abram (Mandarin Oriental)",
     "SOGO Causeway Bay",
     "Sam's Tailor",
     "Sasa & Mannings (beauty and pharmacy)",
     "TSL Jewellery (Yee Wo Street, Causeway Bay)",
+    "Tai Kwun (Centre for Heritage & Arts)",
+    "Temple Street Night Market",
     "The Twins (Wilson Trail Section 1)",
     "Watches: brand boutiques & authorised dealers",
     "Yuen Kee Dessert"
