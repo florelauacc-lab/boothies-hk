@@ -11153,17 +11153,6 @@ window.HK = {
      "school"
     ],
     [
-     "08:30",
-     "Dim Sum Breakfast at Luk On Kui, then the shuttle from Sai Ying Pun Exit B3",
-     "ours",
-     "x-c20ba28bd4",
-     {
-      "label": "Luk On Kui",
-      "tab": "city",
-      "q": "Luk On Kui"
-     }
-    ],
-    [
      "10:00–11:30",
      "AIHK talk (Grand Hall)",
      "optional"
