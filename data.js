@@ -10852,22 +10852,15 @@ window.HK = {
      "school"
     ],
     [
-     "Lunch",
+     "13:00",
      "Dim Sum Lunch",
      "ours",
      "sun-dimsum",
-     [
-      {
-       "label": "Dim Sum Library",
-       "note": "contemporary dim sum",
-       "q": "Dim Sum Library"
-      },
-      {
-       "label": "Lin Heung Lau",
-       "note": "traditional dim sum",
-       "q": "Lin Heung Lau"
-      }
-     ]
+     {
+      "label": "Dim Sum Library",
+      "note": "booked for 14",
+      "q": "Dim Sum Library"
+     }
     ],
     [
      "20:00",
