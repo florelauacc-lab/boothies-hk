@@ -1240,3 +1240,25 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
 .pd.today b { color: #3ee8b5; }
 .pd.today.on b { color: #fff; }
 #tips li a { color: #2ee6ff; font-weight: 800; text-decoration: underline; text-underline-offset: 2px; padding: 4px 2px; }
+/* drag & drop planning */
+.picks { max-width: 760px; margin: 0 auto 10px; border-radius: 16px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); }
+.picks > summary { cursor: pointer; padding: 12px 14px; font-weight: 800; list-style: none; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; min-height: 44px; }
+.picks > summary::-webkit-details-marker { display: none; }
+.picks > summary small { color: var(--muted); font-weight: 600; }
+#picks-body { padding: 0 14px 12px; }
+.picks-h { margin: 6px 0 6px; font-size: .78rem; font-weight: 800; letter-spacing: .04em; color: var(--gold, #ffc44d); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.dragchip { touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; font: inherit; font-size: .84rem; font-weight: 700; min-height: 40px; padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.06); color: var(--text); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dragchip:active { cursor: grabbing; }
+.dragchip.lifted, .slotrow.personal.lifted { opacity: .35; }
+.drag-ghost { position: fixed; left: 0; top: 0; z-index: 9999; pointer-events: none; padding: 8px 14px; border-radius: 999px; font-weight: 800; font-size: .88rem; background: #ffc44d; color: #2b1600; box-shadow: 0 10px 30px rgba(0,0,0,.5); max-width: 70vw; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.dragging { user-select: none; -webkit-user-select: none; }
+body.dragging .pd { outline: 1px dashed rgba(255,196,77,.5); }
+.drop-ok { outline: 2px solid #ffc44d !important; outline-offset: 2px; background: rgba(255,196,77,.15) !important; }
+#plan .slotrow.personal { touch-action: none; cursor: grab; }
+#plan .slotrow.personal .grip { color: var(--muted); margin-right: 2px; }
+.picks { margin-top: 0; } .plandays { margin-bottom: 8px; }
+/* picks: one row per group, swipe sideways to browse, drag up/down to drop (keeps the tray short) */
+.picks .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.picks .chips .dragchip { flex: none; touch-action: pan-x; max-width: 240px; }
+@media (min-width: 900px) { .picks .chips { flex-wrap: wrap; overflow: visible; } }

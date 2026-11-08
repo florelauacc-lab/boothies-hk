@@ -668,10 +668,7 @@
     const dayCard = (d, i) => `<li class="${i === planDay ? "sel" : ""}" data-iso="${d.iso}">
       <div class="day"><small>${esc(d.date)}</small>${esc(d.day)}</div>
       ${d.slots.map((sl, j) => row(d, sl, j)).join("")}
-      ${myPlans.filter((p) => p.iso === d.iso).map((p) => `<div class="slotrow personal"><span>${esc(p.when || "Anytime")} <em class="mine-tag">Mine</em></span><span class="sv">⭐ ${esc(p.title)}${p.place && byId[p.place] ? ` <button class="rlink" data-jump="${p.place}">Map →</button>` : ""}${p.idea ? ` <button class="rlink" data-idea="${esc(p.idea)}" data-iso="${d.iso}">See plan →</button>` : ""}</span><button class="cc-x" data-delmine="${p.id}" aria-label="Remove from my week">✕</button></div>`).join("")}
-      <details class="ownplan" data-k="own"><summary>➕ Add my own plan</summary>
-        <form class="cc-inline" data-ownplan="${d.iso}"><input name="title" placeholder="e.g. Spa, shopping, dinner with friends" maxlength="60" required aria-label="Your plan"><input name="when" placeholder="Time" maxlength="20" aria-label="Time"><button type="submit">Add</button></form>
-      </details>
+      ${myPlans.filter((p) => p.iso === d.iso).map((p) => `<div class="slotrow personal" data-drag="${esc(JSON.stringify({ move: p.id }))}" title="Drag to another day, or up and down to reorder"><span><span class="grip" aria-hidden="true">⠿</span> ${esc(p.when || "Anytime")} <em class="mine-tag">Mine</em></span><span class="sv">⭐ ${esc(p.title)}${p.place && byId[p.place] ? ` <button class="rlink" data-jump="${p.place}">Map →</button>` : ""}${p.idea ? ` <button class="rlink" data-idea="${esc(p.idea)}" data-iso="${d.iso}">See plan →</button>` : ""}</span><button class="cc-x" data-delmine="${p.id}" aria-label="Remove from my week">✕</button></div>`).join("")}
       ${(() => { const n = onlyMine && !showHidden.has(d.iso) ? d.slots.filter(([, v, k, ev]) => k === "ours" && !mine[slotKey(d.iso, v, ev)]).length : 0;
         return n ? `<button class="hidden-n" data-showhidden="${d.iso}">+ ${n} more you haven't added · show</button>` : ""; })()}
       ${d.note ? `<p class="daynote">${esc(d.note)}</p>` : ""}
@@ -703,6 +700,15 @@
     document.querySelectorAll("#plan details[data-k]").forEach((x) => { if (openK.has(`${x.closest("li[data-iso]")?.dataset.iso}|${x.dataset.k}`)) x.open = true; });
     if (Math.abs(window.scrollY - y) > 2) window.scrollTo(0, y);
     $("#plandays").innerHTML = dayBtns;
+    // picks tray: your ♥ shortlist and the ideas, as chips you drag onto a day (or tap to add to the day you're viewing)
+    const chip = (item, label) => `<button type="button" class="dragchip" data-drag="${esc(JSON.stringify(item))}">${esc(label)}</button>`;
+    const fav = live.filter((p) => loved.has(p.id));
+    $("#picks-body").innerHTML = `
+      <p class="picks-h">♥ Your shortlist</p>
+      <div class="chips">${fav.length ? fav.map((p) => chip({ title: `${emojiOf(p)} ${p.name}`, place: p.id }, `${emojiOf(p)} ${p.name}`)).join("") : `<span class="muted small">Tap ♥ on any place in Eat &amp; drink or Explore and it shows up here.</span>`}</div>
+      <p class="picks-h">🧭 Ideas</p>
+      <div class="chips">${OUTINGS.map((o) => chip({ title: `${o.em || "🗺️"} ${o.short || o.title}`, idea: o.title }, `${o.em || "🗺️"} ${o.short || o.title}`)).join("")}</div>
+      <p class="muted small">Drag onto a day button or the day below · or tap to add to ${esc(dayLabel(PLAN[planDay].iso))}.</p>`;
     const nMine = Object.values(mine).filter(Boolean).length + myPlans.length;
     $("#plan-mode").innerHTML = `<button class="${onlyMine ? "" : "on"}" data-onlymine="0">Everything</button><button class="${onlyMine ? "on" : ""}" data-onlymine="1">⭐ My week${nMine ? ` · ${nMine}` : ""}</button>`;
     // a shortcut to the class corner (who's going, what you owe, paying Rienno), which sits below the day
@@ -751,17 +757,63 @@
     planDay = +b.dataset.planday; renderPlan();
   });
 
+  /* ---------- drag & drop planning (works with touch and mouse) ---------- */
+  let drag = null;
+  const dropTarget = (x, y) => {
+    const el = document.elementFromPoint(x, y);
+    return el?.closest(".pd") || el?.closest("#plan .slotrow.personal") || el?.closest("#plan > li.sel");
+  };
+  const isoOf = (t) => (t.classList.contains("pd") ? PLAN[+t.dataset.planday].iso : t.closest("li[data-iso]")?.dataset.iso);
+  document.addEventListener("pointerdown", (e) => {
+    const el = e.target.closest("[data-drag]");
+    if (!el || e.button > 0 || e.target.closest(".cc-x, .rlink")) return;
+    drag = { el, item: JSON.parse(el.dataset.drag), x: e.clientX, y: e.clientY, on: false, over: null };
+  });
+  document.addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    if (!drag.on) {
+      if (Math.hypot(e.clientX - drag.x, e.clientY - drag.y) < 8) return;
+      drag.on = true;
+      const g = drag.ghost = drag.el.cloneNode(true);
+      g.className = "drag-ghost"; g.removeAttribute("data-drag");
+      document.body.appendChild(g); document.body.classList.add("dragging"); drag.el.classList.add("lifted");
+    }
+    e.preventDefault();
+    drag.ghost.style.transform = `translate(${e.clientX + 8}px, ${e.clientY + 8}px)`;
+    const t = dropTarget(e.clientX, e.clientY);
+    if (t !== drag.over) { drag.over?.classList.remove("drop-ok"); drag.over = t; t?.classList.add("drop-ok"); }
+    // nudge the page when dragging near the top or bottom edge
+    if (e.clientY < 70) window.scrollBy(0, -12); else if (e.clientY > innerHeight - 90) window.scrollBy(0, 12);
+  }, { passive: false });
+  const endDrag = (e, cancel) => {
+    if (!drag) return;
+    const d = drag; drag = null;
+    if (!d.on) { // a tap: add to the day being viewed
+      if (!cancel && !d.item.move) addMyPlan({ ...d.item, iso: PLAN[planDay].iso });
+      return;
+    }
+    d.ghost.remove(); document.body.classList.remove("dragging"); d.el.classList.remove("lifted"); d.over?.classList.remove("drop-ok");
+    const t = !cancel && dropTarget(e.clientX, e.clientY);
+    if (!t) return;
+    const iso = isoOf(t);
+    if (!iso) return;
+    if (d.item.move) { // move an existing plan to another day, or reorder within the day
+      const i = myPlans.findIndex((p) => p.id === d.item.move);
+      if (i < 0) return;
+      const [p] = myPlans.splice(i, 1); p.iso = iso;
+      const before = t.classList.contains("personal") ? myPlans.findIndex((x) => x.id === JSON.parse(t.dataset.drag).move) : -1;
+      myPlans.splice(before >= 0 ? before : myPlans.length, 0, p);
+      saveMyPlans(); renderPlan(); toast(`Moved to ${dayLabel(iso)}`);
+    } else addMyPlan({ ...d.item, iso });
+  };
+  document.addEventListener("pointerup", (e) => endDrag(e, false));
+  document.addEventListener("pointercancel", (e) => endDrag(e, true));
+
   document.addEventListener("change", (e) => {
     const sel = e.target.closest("[data-addweek]");
     if (!sel || !sel.value) return;
     addMyPlan({ ...JSON.parse(sel.dataset.addweek), iso: sel.value });
     sel.value = "";
-  });
-  document.addEventListener("submit", (e) => {
-    const f = e.target.closest("[data-ownplan]");
-    if (!f) return;
-    e.preventDefault();
-    addMyPlan({ iso: f.dataset.ownplan, title: f.elements.title.value.trim(), when: f.elements.when.value.trim() });
   });
 
   /* ---------- start here ---------- */
@@ -886,6 +938,7 @@
       const id = love.dataset.love;
       if (loved.has(id)) { loved.delete(id); toast("Removed from shortlist"); } else { loved.add(id); toast("♥ Added to shortlist"); }
       saveLoved();
+      renderPlan(); // keep the week's picks tray in step with the shortlist
       document.querySelectorAll(`[data-love="${id}"]`).forEach((b) => b.classList.toggle("on", loved.has(id)));
       if (markers[id]) markers[id].setIcon(pinIcon(byId[id]));
       if (state.shortlist) render({ fit: false });
