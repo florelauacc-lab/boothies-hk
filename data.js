@@ -89,7 +89,9 @@ window.HK = {
    "kinds": [
     "Cantonese & seafood"
    ],
-   "emoji": "🍲"
+   "emoji": "🍲",
+   "orScore": 4.0,
+   "orReviews": 65
   },
   {
    "tab": "saiwan",
@@ -787,7 +789,9 @@ window.HK = {
    "kinds": [
     "Roast meats & noodles"
    ],
-   "emoji": "🍜"
+   "emoji": "🍜",
+   "orScore": 3.5,
+   "orReviews": 83
   },
   {
    "tab": "saiwan",
@@ -897,7 +901,15 @@ window.HK = {
    "kinds": [
     "Dessert & sweets"
    ],
-   "emoji": "🍧"
+   "emoji": "🍧",
+   "orSmile": 80,
+   "orFaces": [
+    32,
+    4,
+    4
+   ],
+   "orScore": 4.4,
+   "orReviews": 49
   },
   {
    "tab": "saiwan",
@@ -973,7 +985,9 @@ window.HK = {
    "kinds": [
     "Dessert & sweets"
    ],
-   "emoji": "🍧"
+   "emoji": "🍧",
+   "orScore": 4.0,
+   "orReviews": 38
   },
   {
    "tab": "saiwan",
@@ -1339,7 +1353,16 @@ window.HK = {
    "addressZh": "中環士丹利街（盛記大排檔）",
    "emoji": "🥢",
    "gRating": 3.7,
-   "gReviews": 447
+   "gReviews": 447,
+   "orSmile": 52,
+   "orFaces": [
+    63,
+    29,
+    29
+   ],
+   "orScore": 3.6,
+   "orReviews": 144,
+   "openrice": "https://www.openrice.com/en/hongkong/r-sing-kee-central-hong-kong-style-r10580"
   },
   {
    "tab": "city",
@@ -2280,7 +2303,10 @@ window.HK = {
    "addressZh": "西營盤皇后大道西189號",
    "emoji": "🥘",
    "gRating": 4.3,
-   "gReviews": 2145
+   "gReviews": 2145,
+   "orScore": 4.5,
+   "orReviews": 839,
+   "openrice": "https://www.openrice.com/en/hongkong/r-la-paloma-western-district-mediterranean-brunch-r445172"
   },
   {
    "tab": "city",
@@ -3367,7 +3393,10 @@ window.HK = {
    "id": "twelve-flavors-d-aguilar-street-central",
    "kinds": [
     "Cantonese & seafood"
-   ]
+   ],
+   "orScore": 4.0,
+   "orReviews": 169,
+   "openrice": "https://www.openrice.com/en/hongkong/r-twelve-flavors-central-sichuan-r684588"
   },
   {
    "tab": "city",
@@ -3625,7 +3654,16 @@ window.HK = {
     "Coffee"
    ],
    "gRating": 4.3,
-   "gReviews": 495
+   "gReviews": 495,
+   "orSmile": 66,
+   "orFaces": [
+    27,
+    11,
+    3
+   ],
+   "orScore": 4.2,
+   "orReviews": 46,
+   "openrice": "https://www.openrice.com/zh/hongkong/r-barista-jam-%E4%B8%8A%E7%92%B0-%E6%BE%B3%E6%B4%B2%E8%8F%9C-r600872"
   },
   {
    "tab": "city",
@@ -3784,7 +3822,16 @@ window.HK = {
    ],
    "emoji": "🍞",
    "gRating": 3.7,
-   "gReviews": 4965
+   "gReviews": 4965,
+   "orSmile": 37,
+   "orFaces": [
+    263,
+    258,
+    183
+   ],
+   "orScore": 3.2,
+   "orReviews": 819,
+   "openrice": "https://www.openrice.com/en/hongkong/r-lan-fong-yuen-central-hong-kong-style-noodles-rice-noodles-r1814"
   },
   {
    "tab": "city",
@@ -4179,7 +4226,16 @@ window.HK = {
    ],
    "emoji": "🥧",
    "gRating": 4.5,
-   "gReviews": 1086
+   "gReviews": 1086,
+   "orSmile": 71,
+   "orFaces": [
+    61,
+    22,
+    3
+   ],
+   "orScore": 4.3,
+   "orReviews": 117,
+   "openrice": "https://www.openrice.com/en/hongkong/r-bakehouse-causeway-bay-western-bakery-r749313"
   },
   {
    "tab": "city",
@@ -4290,7 +4346,10 @@ window.HK = {
     "Dim sum"
    ],
    "gRating": 4.3,
-   "gReviews": 540
+   "gReviews": 540,
+   "orScore": 3.5,
+   "orReviews": 106,
+   "openrice": "https://www.openrice.com/en/hongkong/r-lockcha-admiralty-guangdong-vegetarian-r13330"
   },
   {
    "tab": "city",
@@ -4498,7 +4557,10 @@ window.HK = {
    ],
    "emoji": "🌃",
    "gRating": 4.4,
-   "gReviews": 2634
+   "gReviews": 2634,
+   "orScore": 4.5,
+   "orReviews": 224,
+   "openrice": "https://www.openrice.com/en/hongkong/r-aqua-tsim-sha-tsui-japanese-r735703"
   },
   {
    "tab": "city",
@@ -4609,7 +4671,10 @@ window.HK = {
    ],
    "emoji": "🥢",
    "gRating": 4.5,
-   "gReviews": 865
+   "gReviews": 865,
+   "orScore": 4.0,
+   "orReviews": 351,
+   "openrice": "https://www.openrice.com/en/hongkong/r-tin-lung-heen-tsim-sha-tsui-guangdong-dim-sum-r50748"
   },
   {
    "tab": "city",
@@ -4644,7 +4709,10 @@ window.HK = {
    ],
    "emoji": "🍽️",
    "gRating": 4.3,
-   "gReviews": 656
+   "gReviews": 656,
+   "orScore": 4.0,
+   "orReviews": 151,
+   "openrice": "https://www.openrice.com/en/hongkong/r-harbourside-tsim-sha-tsui-international-buffet-r785467"
   },
   {
    "tab": "city",
@@ -4943,7 +5011,16 @@ window.HK = {
    ],
    "emoji": "🍞",
    "gRating": 3.7,
-   "gReviews": 611
+   "gReviews": 611,
+   "orSmile": 64,
+   "orFaces": [
+    63,
+    30,
+    6
+   ],
+   "orScore": 4.2,
+   "orReviews": 123,
+   "openrice": "https://www.openrice.com/en/hongkong/r-luen-wah-cafe-western-district-hong-kong-style-bakery-r1960"
   },
   {
    "tab": "saiwan",
@@ -5015,7 +5092,16 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍜"
+   "emoji": "🍜",
+   "orSmile": 71,
+   "orFaces": [
+    75,
+    28,
+    3
+   ],
+   "orScore": 4.4,
+   "orReviews": 123,
+   "openrice": "https://www.openrice.com/en/hongkong/r-eng-kee-noodle-shop-western-district-hong-kong-style-noodles-rice-noodles-r6742"
   },
   {
    "tab": "saiwan",
@@ -5229,7 +5315,16 @@ window.HK = {
    "kinds": [
     "Dessert & sweets"
    ],
-   "emoji": "🧇"
+   "emoji": "🧇",
+   "orSmile": 100,
+   "orFaces": [
+    75,
+    0,
+    0
+   ],
+   "orScore": 5.0,
+   "orReviews": 79,
+   "openrice": "https://www.openrice.com/en/hongkong/r-nook-eggwaffles-gelato-western-district-western-ice-cream-yogurt-r994756"
   },
   {
    "tab": "saiwan",
@@ -5790,7 +5885,10 @@ window.HK = {
    ],
    "emoji": "🥐",
    "gRating": 4.7,
-   "gReviews": 1518
+   "gReviews": 1518,
+   "orScore": 4.0,
+   "orReviews": 366,
+   "openrice": "https://www.openrice.com/en/hongkong/r-pane-e-latte-stanley-italian-bakery-r717333"
   },
   {
    "tab": "city",
@@ -5820,7 +5918,16 @@ window.HK = {
     "Cha chaan teng & cafés",
     "Cantonese & seafood"
    ],
-   "emoji": "🍞"
+   "emoji": "🍞",
+   "orSmile": 64,
+   "orFaces": [
+    159,
+    62,
+    28
+   ],
+   "orScore": 4.1,
+   "orReviews": 284,
+   "openrice": "https://www.openrice.com/en/hongkong/r-%E6%B3%97%E7%9B%8A-stanley-hong-kong-style-r6625"
   },
   {
    "tab": "city",
@@ -10835,7 +10942,10 @@ window.HK = {
    "id": "yung-kee-restaurant",
    "kinds": [
     "Cantonese"
-   ]
+   ],
+   "orScore": 4.0,
+   "orReviews": 877,
+   "openrice": "https://www.openrice.com/en/hongkong/r-yung-kee-restaurant-central-guangdong-chinese-bbq-r4203"
   },
   {
    "tab": "city",
@@ -10865,7 +10975,10 @@ window.HK = {
    "id": "ki-s-roasted-goose",
    "kinds": [
     "Cantonese"
-   ]
+   ],
+   "orScore": 3.5,
+   "orReviews": 240,
+   "openrice": "https://www.openrice.com/en/hongkong/r-ki-s-roasted-goose-restaurant-causeway-bay-hong-kong-style-chinese-bbq-r602166"
   },
   {
    "tab": "city",
@@ -10896,7 +11009,16 @@ window.HK = {
    "id": "ship-kee",
    "kinds": [
     "Cantonese"
-   ]
+   ],
+   "orSmile": 64,
+   "orFaces": [
+    21,
+    5,
+    7
+   ],
+   "orScore": 3.8,
+   "orReviews": 43,
+   "openrice": "https://www.openrice.com/en/hongkong/r-ship-kee-wan-chai-guangdong-r873327"
   },
   {
    "tab": "city",
@@ -10926,7 +11048,16 @@ window.HK = {
    "id": "fat-j-char-siu",
    "kinds": [
     "Cantonese"
-   ]
+   ],
+   "orSmile": 86,
+   "orFaces": [
+    163,
+    16,
+    11
+   ],
+   "orScore": 4.6,
+   "orReviews": 250,
+   "openrice": "https://www.openrice.com/en/hongkong/r-fat-j-char-siu-wan-chai-guangdong-chinese-bbq-r891297"
   },
   {
    "tab": "city",
@@ -10956,7 +11087,10 @@ window.HK = {
    "id": "kitchen-one-roast-goose",
    "kinds": [
     "Cantonese"
-   ]
+   ],
+   "orScore": 4.0,
+   "orReviews": 238,
+   "openrice": "https://www.openrice.com/en/hongkong/r-kitchen-one-roast-goose-causeway-bay-guangdong-chinese-bbq-r702664"
   },
   {
    "tab": "city",
@@ -10987,7 +11121,10 @@ window.HK = {
    "id": "yue-kee-roast-goose-restaurant",
    "kinds": [
     "Cantonese"
-   ]
+   ],
+   "orScore": 3.5,
+   "orReviews": 495,
+   "openrice": "https://www.openrice.com/en/hongkong/r-yue-kee-restaurant-sham-tseng-guangdong-chinese-bbq-r4171"
   }
  ],
  "OUTINGS": [
