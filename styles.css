@@ -1439,5 +1439,11 @@ button.bl .pw-copy { pointer-events: none; }
 .ics-list li .cc-mini { flex-shrink: 0; min-height: 44px; display: inline-flex; align-items: center; }
 .ics-g[open] > summary { margin-bottom: 6px; } .ics-list { padding-top: 2px; border-top: 1px solid rgba(255,255,255,.08); }
 .count .or-note { display: block; margin-top: 4px; font-size: .82rem; opacity: .7; font-weight: 500; }
-.cc-editev { margin: 10px 0 4px; } .cc-editev > summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
 .cc-editev form { flex-wrap: wrap; } .cc-editev input { flex: 1 1 140px; min-width: 0; }
+/* "Change time or place" matches the card's other buttons (Tick who's going, Remove this event) */
+.cc-editev { margin: 4px 14px 8px; }
+.cc-editev > summary { list-style: none; display: inline-flex; align-items: center; min-height: 44px; font-size: .86rem; font-weight: 700; padding: 8px 12px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.06); cursor: pointer; }
+.cc-editev > summary::-webkit-details-marker { display: none; }
+.cc-editev[open] > summary { margin-bottom: 8px; }
+.cc-editev form { margin: 0; }
