@@ -12352,7 +12352,7 @@ window.HK = {
    "title": "Survival kit",
    "items": [
     "💳 Tap Visa or Mastercard on the MTR, buses, trams and in most shops.",
-    "💵 Carry HK$300–500 cash. Local spots and minibuses are often cash only.",
+    "💵 Carry HK$300–500 in small notes (HK$20–100): many shops and taxis won't take HK$1,000 notes, and some small local spots are cash or Octopus only.",
     "🐙 Octopus is Hong Kong's tap card for the MTR, buses, minibuses, trams, the Star Ferry, 7-Eleven and many cafés. Bank cards work on the MTR and most buses, but minibuses, some ferries and small shops only take Octopus or cash. iPhone: get [Octopus for Tourists](https://apps.apple.com/app/octopus-for-tourists/id1505492952) and top up with Apple Pay. Android: buy a card at the airport, any MTR station or 7-Eleven. [How Octopus works](https://www.octopus.com.hk/en/consumer/tourist/choices/index.html)",
     "🚕 Taxi? Tap \"Show the driver\" on any place and hand over your phone.",
     "🛗 Escalators: stand on the right, walk on the left.",
