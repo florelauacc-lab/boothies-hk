@@ -654,7 +654,7 @@
       const key = slotKey(d.iso, v, ev), pickable = kind === "ours" || kind === "event", on = shared != null ? shared : !!mine[key];
       if (onlyMine && pickable && !on && !showHidden.has(d.iso)) return "";
       return `<div class="slotrow ${kind || "school"}${pickable && !on ? " off" : ""}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : kind === "event" ? ' <em class="evt">On in town</em>' : ""}</span>`
-        + `<span class="sv">${kind === "ours" ? "🎉 " : kind === "event" ? "🎟️ " : ""}${esc(v)}</span>`
+        + `<span class="sv">${kind === "ours" ? "🎉 " : kind === "event" && !/^\p{Extended_Pictographic}/u.test(v) ? "🎟️ " : ""}${esc(v)}</span>`
         + (ev ? `<span class="evinfo" data-evinfo="${ev}"></span>` : "")
         + (go ? `<span class="slotgo">${go.url ? `<a class="go" href="${esc(go.url)}" target="_blank" rel="noopener">${esc(go.label)} ↗</a>` : `<button class="go" data-go='${esc(JSON.stringify(go))}'>${esc(go.label)} →</button>`}</span>` : "")
         + (pickable ? `<button class="mine${on ? " on" : ""}" data-mine="${key}" data-ev="${ev || ""}" data-on="${on ? 1 : 0}" aria-pressed="${on}" aria-label="${on ? "Remove from" : "Add to"} my plan">${on ? "✓ Going" : "+ Me"}</button>` : "")

@@ -6347,7 +6347,7 @@ window.HK = {
    ],
    "intro": "Asia's big new museum of visual culture, covering design, architecture, art and film, set in a harbourside park with some of the best skyline views across to Hong Kong Island.",
    "funFact": "You don't need a ticket for the Roof Garden, Grand Stair, Found Space or basement levels, so you can enjoy the building and views for free.",
-   "tips": "Stay for sunset on the Art Park lawn, one of the best free skyline views. During the trip the Cathay WestK Jazz Fest (13–24 Nov, not 16 or 23) has free and ticketed shows here.",
+   "tips": "Stay for sunset on the Art Park lawn, one of the best free skyline views. During the trip the Cathay WestK Jazz Fest has free live jazz at Lau Bak Livehouse every evening 17–20 Nov (20:15–22:45), and free shows on three lawns on 21–22 Nov, with a food market and picnic sets.",
    "getting": "MTR Kowloon Station (Tung Chung or Airport Express) or Austin Station, then a 10–15 min walk. From campus: MTR to Hong Kong Station, then 1 stop to Kowloon (about 25–30 min). From Park Lane: about 30 min.",
    "facts": [
     [
@@ -6370,8 +6370,8 @@ window.HK = {
    "id": "m-museum-west-kowloon-waterfront",
    "links": [
     {
-     "label": "WestK Jazz Fest",
-     "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
+     "label": "Jazz Fest free shows",
+     "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest#free-music-programmes"
     }
    ],
    "addressZh": "西九文化區M+博物館",
@@ -10774,16 +10774,6 @@ window.HK = {
      "15:00",
      "Hotel check-in from 15:00",
      "school"
-    ],
-    [
-     "20:00",
-     "Jazz Fest: Andy Hui at the Xiqu Centre (reported sold out)",
-     "event",
-     null,
-     {
-      "label": "WestK Jazz Fest",
-      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
-     }
     ]
    ],
    "note": "Arrived early? Here's a suggested plan for the day, with more ideas below.",
@@ -10864,11 +10854,11 @@ window.HK = {
     ],
     [
      "20:00",
-     "Jazz Fest: Cory Wong × Cy Leo at the Xiqu Centre (HK$480–880)",
+     "Jazz Fest: Cory Wong × Cy Leo at the Xiqu Centre (tickets HK$480–880)",
      "event",
      null,
      {
-      "label": "WestK Jazz Fest",
+      "label": "Jazz Fest tickets",
       "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
      }
     ]
@@ -11005,12 +10995,22 @@ window.HK = {
     ],
     [
      "19:30",
-     "Jazz Fest: Stacey Kent at The Box, Freespace (sets at 19:30 and 21:45, HK$580)",
+     "Jazz Fest: Stacey Kent at The Box, Freespace (tickets HK$580; sets 19:30 and 21:45)",
      "event",
      null,
      {
-      "label": "WestK Jazz Fest",
+      "label": "Jazz Fest tickets",
       "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
+     }
+    ],
+    [
+     "20:15–22:45",
+     "🆓 Jazz Fest: free live jazz at Lau Bak Livehouse, West Kowloon",
+     "event",
+     null,
+     {
+      "label": "Jazz Fest free shows",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest#free-music-programmes"
      }
     ]
    ],
@@ -11096,6 +11096,16 @@ window.HK = {
       "tab": "sights",
       "q": "Happy Valley"
      }
+    ],
+    [
+     "20:15–22:45",
+     "🆓 Jazz Fest: free live jazz at Lau Bak Livehouse, West Kowloon",
+     "event",
+     null,
+     {
+      "label": "Jazz Fest free shows",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest#free-music-programmes"
+     }
     ]
    ],
    "bus": [
@@ -11176,12 +11186,22 @@ window.HK = {
     ],
     [
      "20:00",
-     "Jazz Fest: Song Yi Jeon Acoustic Trio × Chi Him Chik at Freespace (HK$400)",
+     "Jazz Fest: Song Yi Jeon Acoustic Trio with Chi Him Chik at Freespace (tickets HK$400)",
      "event",
      null,
      {
-      "label": "WestK Jazz Fest",
+      "label": "Jazz Fest tickets",
       "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
+     }
+    ],
+    [
+     "20:15–22:45",
+     "🆓 Jazz Fest: free live jazz at Lau Bak Livehouse, West Kowloon",
+     "event",
+     null,
+     {
+      "label": "Jazz Fest free shows",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest#free-music-programmes"
      }
     ]
    ],
@@ -11255,6 +11275,16 @@ window.HK = {
       "mood": "dinner",
       "where": "saiwan"
      }
+    ],
+    [
+     "20:15–22:45",
+     "🆓 Jazz Fest: free live jazz at Lau Bak Livehouse, West Kowloon",
+     "event",
+     null,
+     {
+      "label": "Jazz Fest free shows",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest#free-music-programmes"
+     }
     ]
    ],
    "bus": [
@@ -11303,16 +11333,6 @@ window.HK = {
      }
     ],
     [
-     "All day",
-     "Jazz Fest weekend: 30+ free shows around the Art Park; JACE × Teriver at Freespace 15:00 and 20:00 (HK$580)",
-     "event",
-     null,
-     {
-      "label": "WestK Jazz Fest",
-      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
-     }
-    ],
-    [
      "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
@@ -11346,6 +11366,26 @@ window.HK = {
       "label": "Nanhai No. 2",
       "tab": "city",
       "q": "Nanhai"
+     }
+    ],
+    [
+     "13:00–18:00",
+     "🆓 Jazz Fest: Groove Grove on the M+ lawn: a calm space with solo piano, African drumming and a music-theatre session",
+     "event",
+     null,
+     {
+      "label": "Jazz Fest free shows",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest#free-music-programmes"
+     }
+    ],
+    [
+     "14:30–22:30",
+     "🆓 Jazz Fest free weekend: Great Lawn 15:10–22:30, Harbourside West Lawn 14:30–21:50, Lau Bak Livehouse 20:15–22:20. Food market on the Great Lawn 14:00–23:00 and picnic sets with free chairs",
+     "event",
+     null,
+     {
+      "label": "Jazz Fest free shows",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest#free-music-programmes"
      }
     ]
    ],
@@ -11389,16 +11429,6 @@ window.HK = {
    "slots": [
     [
      "All day",
-     "Jazz Fest: free shows around the Art Park; Francesca Tandoi at Freespace 20:00 (HK$400)",
-     "event",
-     null,
-     {
-      "label": "WestK Jazz Fest",
-      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
-     }
-    ],
-    [
-     "All day",
      "Free day",
      "school"
     ],
@@ -11415,6 +11445,26 @@ window.HK = {
      {
       "label": "HKJC race days",
       "url": "https://racing.hkjc.com/en-us/local/information/fixture"
+     }
+    ],
+    [
+     "14:00–22:30",
+     "🆓 Jazz Fest free weekend: Great Lawn 14:00–22:30, Harbourside West Lawn 15:15–21:45, Lau Bak Livehouse 20:15–22:45. Food market on the Great Lawn 14:00–23:00 and picnic sets with free chairs",
+     "event",
+     null,
+     {
+      "label": "Jazz Fest free shows",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest#free-music-programmes"
+     }
+    ],
+    [
+     "20:00",
+     "Jazz Fest: Francesca Tandoi at Freespace (tickets HK$400)",
+     "event",
+     null,
+     {
+      "label": "Jazz Fest tickets",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
      }
     ]
    ],
