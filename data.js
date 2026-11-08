@@ -51,7 +51,9 @@ window.HK = {
    ],
    "emoji": "🍚",
    "gRating": 3.8,
-   "gReviews": 1955
+   "gReviews": 1955,
+   "orScore": 3.5,
+   "orReviews": 0
   },
   {
    "tab": "saiwan",
@@ -707,6 +709,8 @@ window.HK = {
     "Thai & SE Asian"
    ],
    "emoji": "🍛",
+   "gRating": 4.1,
+   "gReviews": 574,
    "orSmile": 75,
    "orFaces": [
     141,
@@ -1040,7 +1044,9 @@ window.HK = {
    "kinds": [
     "Wine bars"
    ],
-   "emoji": "🍷"
+   "emoji": "🍷",
+   "gRating": 4.8,
+   "gReviews": 267
   },
   {
    "tab": "saiwan",
@@ -1140,7 +1146,9 @@ window.HK = {
    "kinds": [
     "Wine bars"
    ],
-   "emoji": "🍷"
+   "emoji": "🍷",
+   "gRating": 4.8,
+   "gReviews": 137
   },
   {
    "tab": "saiwan",
@@ -1175,7 +1183,11 @@ window.HK = {
    "kinds": [
     "Thai & SE Asian"
    ],
-   "emoji": "🍛"
+   "emoji": "🍛",
+   "gRating": 4.6,
+   "gReviews": 380,
+   "orScore": 4.5,
+   "orReviews": 57
   },
   {
    "tab": "city",
@@ -1212,6 +1224,8 @@ window.HK = {
    ],
    "addressZh": "銅鑼灣避風塘（告士打道）",
    "emoji": "🦀",
+   "gRating": 4.1,
+   "gReviews": 108,
    "orScore": 3.5,
    "orReviews": 74,
    "openrice": "https://www.openrice.com/en/hongkong/r-shun-kee-typhoon-shelter-causeway-bay-hong-kong-style-seafood-r50112"
@@ -1250,7 +1264,10 @@ window.HK = {
    "addressZh": "灣仔謝斐道303號KONNECT 2樓",
    "emoji": "🥢",
    "gRating": 3.9,
-   "gReviews": 1935
+   "gReviews": 1935,
+   "orScore": 3.5,
+   "orReviews": 71,
+   "openrice": "https://www.openrice.com/en/hongkong/r-tung-po-wan-chai-guangdong-seafood-r772781"
   },
   {
    "tab": "city",
@@ -1320,7 +1337,9 @@ window.HK = {
     "Cantonese & seafood"
    ],
    "addressZh": "中環士丹利街（盛記大排檔）",
-   "emoji": "🥢"
+   "emoji": "🥢",
+   "gRating": 3.7,
+   "gReviews": 447
   },
   {
    "tab": "city",
@@ -1429,6 +1448,8 @@ window.HK = {
    ],
    "addressZh": "中西區港景街1號國際金融中心國際金融中心商場",
    "emoji": "🥟",
+   "gRating": 4.6,
+   "gReviews": 12604,
    "orScore": 3.5,
    "orReviews": 329,
    "openrice": "https://www.openrice.com/en/hongkong/r-tim-ho-wan-the-dim-sum-specialists-central-hong-kong-style-dim-sum-r61957"
@@ -1469,7 +1490,12 @@ window.HK = {
     "Cantonese & seafood"
    ],
    "addressZh": "中西區愛丁堡廣場大會堂",
-   "emoji": "🥟"
+   "emoji": "🥟",
+   "gRating": 4.0,
+   "gReviews": 2807,
+   "orScore": 3.5,
+   "orReviews": 184,
+   "openrice": "https://www.openrice.com/en/hongkong/r-maxims-palace-central-hong-kong-style-chinese-bbq-r488"
   },
   {
    "tab": "city",
@@ -1503,6 +1529,8 @@ window.HK = {
    ],
    "addressZh": "中西區金鐘道88號太古廣場港麗酒店",
    "emoji": "🥟",
+   "gRating": 4.1,
+   "gReviews": 1189,
    "orScore": 4.0,
    "orReviews": 249,
    "openrice": "https://www.openrice.com/en/hongkong/r-dim-sum-library-admiralty-hong-kong-style-dim-sum-r517915"
@@ -1540,6 +1568,8 @@ window.HK = {
    ],
    "addressZh": "中西區荷李活道10號大館古蹟及藝術館3座",
    "emoji": "🥟",
+   "gRating": 4.2,
+   "gReviews": 647,
    "orScore": 3.5,
    "orReviews": 275,
    "openrice": "https://www.openrice.com/en/hongkong/r-madame-fu-grand-cafe-chinois-central-guangdong-dim-sum-r578998"
@@ -1578,6 +1608,8 @@ window.HK = {
    ],
    "addressZh": "灣仔區羅素街38號金朝陽中心",
    "emoji": "🍲",
+   "gRating": 4.4,
+   "gReviews": 461,
    "orScore": 4.5,
    "orReviews": 526,
    "openrice": "https://www.openrice.com/en/hongkong/r-a-smoking-affair-causeway-bay-hong-kong-style-hot-pot-r637851"
@@ -1616,6 +1648,8 @@ window.HK = {
    ],
    "addressZh": "灣仔區駱克道441號駱克大廈A座",
    "emoji": "🍲",
+   "gRating": 4.1,
+   "gReviews": 300,
    "orScore": 4.5,
    "orReviews": 209,
    "openrice": "https://www.openrice.com/en/hongkong/r-lau-haa-hot-pot-restaurant-causeway-bay-hong-kong-style-hot-pot-r632900"
@@ -1690,6 +1724,8 @@ window.HK = {
    ],
    "addressZh": "中西區永吉街29-37號恒豐大廈",
    "emoji": "🍜",
+   "gRating": 4.0,
+   "gReviews": 686,
    "orScore": 3.5,
    "orReviews": 162,
    "openrice": "https://www.openrice.com/en/hongkong/r-mak-an-kee-noodle-central-guangdong-noodles-rice-noodles-r8842"
@@ -1725,7 +1761,12 @@ window.HK = {
     "Cantonese & seafood"
    ],
    "addressZh": "中西區美輪街2A號美輪樓",
-   "emoji": "🍜"
+   "emoji": "🍜",
+   "gRating": 4.0,
+   "gReviews": 2019,
+   "orScore": 3.5,
+   "orReviews": 1616,
+   "openrice": "https://www.openrice.com/en/hongkong/r-sing-heung-yuen-central-hong-kong-style-r10577"
   },
   {
    "tab": "city",
@@ -1758,7 +1799,12 @@ window.HK = {
     "Roast meats & noodles"
    ],
    "addressZh": "中西區太平山街6號寶雲樓",
-   "emoji": "🍳"
+   "emoji": "🍳",
+   "gRating": 4.2,
+   "gReviews": 285,
+   "orScore": 3.5,
+   "orReviews": 47,
+   "openrice": "https://www.openrice.com/en/hongkong/r-yuk-kin-fast-food-sheung-wan-hong-kong-style-r17050"
   },
   {
    "tab": "city",
@@ -1792,6 +1838,8 @@ window.HK = {
    ],
    "addressZh": "灣仔區進教圍17-18號澤堂樓",
    "emoji": "🍞",
+   "gRating": 3.8,
+   "gReviews": 353,
    "orScore": 3.0,
    "orReviews": 118,
    "openrice": "https://www.openrice.com/en/hongkong/r-tak-yu-restaurant-wan-chai-hong-kong-style-r664131"
@@ -1829,6 +1877,8 @@ window.HK = {
    ],
    "addressZh": "中西區蘇杭街23號永昌商業大廈",
    "emoji": "🍜",
+   "gRating": 4.5,
+   "gReviews": 1404,
    "orScore": 4.0,
    "orReviews": 303,
    "openrice": "https://www.openrice.com/en/hongkong/r-samsen-%E6%B3%B0%E9%A4%A8-sheung-wan-thai-r658685"
@@ -1865,6 +1915,8 @@ window.HK = {
    ],
    "addressZh": "中西區孖沙街7號MERCER 9",
    "emoji": "🍲",
+   "gRating": 4.5,
+   "gReviews": 1046,
    "orScore": 3.5,
    "orReviews": 71,
    "openrice": "https://www.openrice.com/en/hongkong/r-n-ch-i-sheung-wan-vietnamese-r790528"
@@ -1900,6 +1952,8 @@ window.HK = {
    ],
    "addressZh": "中西區威靈頓街56-58號威寧大廈",
    "emoji": "🥩",
+   "gRating": 4.8,
+   "gReviews": 1364,
    "orScore": 4.5,
    "orReviews": 296,
    "openrice": "https://www.openrice.com/en/hongkong/r-jeonpo-meat-shop-central-korean-korean-bbq-r809920"
@@ -2080,6 +2134,8 @@ window.HK = {
    ],
    "addressZh": "灣仔區船街1-7號寶業大廈",
    "emoji": "🍝",
+   "gRating": 4.5,
+   "gReviews": 849,
    "orScore": 4.0,
    "orReviews": 91,
    "openrice": "https://www.openrice.com/en/hongkong/r-trattoria-felino-wan-chai-italian-r842922"
@@ -2185,6 +2241,8 @@ window.HK = {
    ],
    "addressZh": "上環德輔道中317-321號",
    "emoji": "🥘",
+   "gRating": 4.3,
+   "gReviews": 832,
    "orScore": 4.5,
    "orReviews": 337,
    "openrice": "https://www.openrice.com/en/hongkong/r-pica-pica-sheung-wan-spanish-r603861"
@@ -2256,6 +2314,8 @@ window.HK = {
    ],
    "addressZh": "灣仔區皇后大道東119號欣景閣",
    "emoji": "🌮",
+   "gRating": 4.4,
+   "gReviews": 606,
    "orScore": 4.0,
    "orReviews": 38,
    "openrice": "https://www.openrice.com/en/hongkong/r-el-taquero-wan-chai-mexican-r813335"
@@ -2327,7 +2387,9 @@ window.HK = {
     "Cocktails"
    ],
    "addressZh": "中環荷李活道10號大館",
-   "emoji": "🍸"
+   "emoji": "🍸",
+   "gRating": 4.4,
+   "gReviews": 280
   },
   {
    "tab": "city",
@@ -2396,6 +2458,8 @@ window.HK = {
     "Cocktails"
    ],
    "emoji": "🍸",
+   "gRating": 4.5,
+   "gReviews": 153,
    "orScore": 4.5,
    "orReviews": 16,
    "openrice": "https://www.openrice.com/en/hongkong/r-mius-central-western-r1026968"
@@ -2433,6 +2497,8 @@ window.HK = {
    ],
    "addressZh": "中西區雲咸街63號巴力大廈",
    "emoji": "🍸",
+   "gRating": 4.3,
+   "gReviews": 233,
    "orScore": 4.0,
    "orReviews": 21,
    "openrice": "https://www.openrice.com/en/hongkong/r-draft-land-central-international-wine-r610739"
@@ -2502,6 +2568,8 @@ window.HK = {
    ],
    "addressZh": "中環砵典乍街45號H Code",
    "emoji": "🍸",
+   "gRating": 4.5,
+   "gReviews": 198,
    "orScore": 4.5,
    "orReviews": 23,
    "openrice": "https://www.openrice.com/en/hongkong/r-the-diplomat-central-western-wine-r661285"
@@ -2541,6 +2609,8 @@ window.HK = {
     "Cocktails"
    ],
    "emoji": "🍸",
+   "gRating": 4.6,
+   "gReviews": 219,
    "orScore": 4.5,
    "orReviews": 10,
    "openrice": "https://www.openrice.com/en/hongkong/r-the-savory-project-central-international-wine-r799956"
@@ -2582,6 +2652,8 @@ window.HK = {
     "Cocktails"
    ],
    "emoji": "🍸",
+   "gRating": 4.6,
+   "gReviews": 1023,
    "orScore": 4.0,
    "orReviews": 89,
    "openrice": "https://www.openrice.com/en/hongkong/r-quinary-central-western-wine-r133437"
@@ -2649,6 +2721,8 @@ window.HK = {
    ],
    "addressZh": "灣仔區霎東街15號OLIV",
    "emoji": "🍸",
+   "gRating": 4.7,
+   "gReviews": 210,
    "orScore": 4.5,
    "orReviews": 349,
    "openrice": "https://www.openrice.com/en/hongkong/r-ciclo-causeway-bay-international-wine-r823013"
@@ -2683,6 +2757,8 @@ window.HK = {
    ],
    "addressZh": "灣仔區謝斐道535號TOWER 535",
    "emoji": "💨",
+   "gRating": 4.4,
+   "gReviews": 241,
    "orScore": 4.5,
    "orReviews": 245,
    "openrice": "https://www.openrice.com/en/hongkong/r-lounge-hakuba-causeway-bay-japanese-wine-r651414"
@@ -2753,6 +2829,8 @@ window.HK = {
    ],
    "addressZh": "中西區皇后大道中15號置地廣塲告羅士打大廈",
    "emoji": "🌃",
+   "gRating": 3.9,
+   "gReviews": 262,
    "orScore": 3.5,
    "orReviews": 10,
    "openrice": "https://www.openrice.com/en/hongkong/r-cardinal-point-central-western-wine-r791719"
@@ -2787,6 +2865,8 @@ window.HK = {
    ],
    "addressZh": "灣仔區告士打道310號柏寧酒店",
    "emoji": "🌃",
+   "gRating": 4.3,
+   "gReviews": 949,
    "orScore": 4.0,
    "orReviews": 0,
    "openrice": "https://www.openrice.com/en/hongkong/r-skye-roofbar-and-brasserie-causeway-bay-western-wine-r503823"
@@ -2858,7 +2938,9 @@ window.HK = {
     "Rooftops & views"
    ],
    "addressZh": "中西區金鐘道88號太古廣場奕居",
-   "emoji": "🌃"
+   "emoji": "🌃",
+   "gRating": 4.4,
+   "gReviews": 383
   },
   {
    "tab": "city",
@@ -2890,7 +2972,12 @@ window.HK = {
     "Jazz & live music"
    ],
    "addressZh": "油尖旺區梳士巴利道18號VICTORIA DOCKSIDE香港瑰麗酒店",
-   "emoji": "🎷"
+   "emoji": "🎷",
+   "gRating": 4.3,
+   "gReviews": 363,
+   "orScore": 4.0,
+   "orReviews": 50,
+   "openrice": "https://www.openrice.com/en/hongkong/r-darkside-tsim-sha-tsui-western-wine-r614250"
   },
   {
    "tab": "city",
@@ -2959,7 +3046,12 @@ window.HK = {
     "Cocktails",
     "Rooftops & views"
    ],
-   "emoji": "🍸"
+   "emoji": "🍸",
+   "gRating": 4.4,
+   "gReviews": 688,
+   "orScore": 4.0,
+   "orReviews": 235,
+   "openrice": "https://www.openrice.com/en/hongkong/r-felix-tsim-sha-tsui-western-fine-dining-r774"
   },
   {
    "tab": "city",
@@ -2991,6 +3083,8 @@ window.HK = {
    ],
    "addressZh": "中西區些利街2號LL TOWER",
    "emoji": "🍷",
+   "gRating": 4.7,
+   "gReviews": 127,
    "orSmile": 100,
    "orFaces": [
     31,
@@ -3031,7 +3125,9 @@ window.HK = {
     "Wine bars"
    ],
    "addressZh": "中西區擺花街1號一號廣場",
-   "emoji": "🍷"
+   "emoji": "🍷",
+   "gRating": 4.6,
+   "gReviews": 123
   },
   {
    "tab": "city",
@@ -3061,7 +3157,9 @@ window.HK = {
     "Wine bars"
    ],
    "addressZh": "中西區荷李活道183號華冠大廈",
-   "emoji": "🍷"
+   "emoji": "🍷",
+   "gRating": 4.8,
+   "gReviews": 116
   },
   {
    "tab": "city",
@@ -3096,7 +3194,9 @@ window.HK = {
    "emoji": "🪩",
    "kinds": [
     "Clubbing"
-   ]
+   ],
+   "gRating": 3.1,
+   "gReviews": 188
   },
   {
    "tab": "city",
@@ -3165,7 +3265,12 @@ window.HK = {
     "Cocktails",
     "Jazz & live music"
    ],
-   "emoji": "🍸"
+   "emoji": "🍸",
+   "gRating": 4.5,
+   "gReviews": 2077,
+   "orScore": 4.0,
+   "orReviews": 0,
+   "openrice": "https://www.openrice.com/en/hongkong/r-the-iron-fairies-co-central-western-wine-r505821"
   },
   {
    "tab": "city",
@@ -3482,7 +3587,10 @@ window.HK = {
    "id": "blue-bottle-coffee-central",
    "kinds": [
     "Coffee"
-   ]
+   ],
+   "orScore": 4.0,
+   "orReviews": 125,
+   "openrice": "https://www.openrice.com/en/hongkong/r-blue-bottle-coffee-central-western-r666639"
   },
   {
    "tab": "city",
@@ -3636,7 +3744,10 @@ window.HK = {
    ],
    "emoji": "🥧",
    "gRating": 3.9,
-   "gReviews": 2973
+   "gReviews": 2973,
+   "orScore": 3.5,
+   "orReviews": 488,
+   "openrice": "https://www.openrice.com/en/hongkong/r-tai-cheong-bakery-central-hong-kong-style-bakery-r5522"
   },
   {
    "tab": "city",
@@ -3798,7 +3909,10 @@ window.HK = {
    ],
    "emoji": "🍖",
    "gRating": 3.4,
-   "gReviews": 6045
+   "gReviews": 6045,
+   "orScore": 2.5,
+   "orReviews": 446,
+   "openrice": "https://www.openrice.com/en/hongkong/r-yat-lok-restaurant-central-hong-kong-style-chinese-bbq-r78351"
   },
   {
    "tab": "city",
@@ -3916,7 +4030,10 @@ window.HK = {
    ],
    "emoji": "🍧",
    "gRating": 4.2,
-   "gReviews": 5906
+   "gReviews": 5906,
+   "orScore": 4.0,
+   "orReviews": 707,
+   "openrice": "https://www.openrice.com/en/hongkong/r-%E4%BD%B3%E4%BD%B3%E7%94%9C%E5%93%81-jordan-hong-kong-style-dessert-r140761"
   },
   {
    "tab": "city",
@@ -3989,6 +4106,8 @@ window.HK = {
     "Dessert & sweets"
    ],
    "emoji": "🥤",
+   "gRating": 3.6,
+   "gReviews": 3395,
    "orScore": 4.0,
    "orReviews": 463,
    "openrice": "https://www.openrice.com/en/hongkong/r-kung-lee-sugarcane-juice-central-hong-kong-style-herbal-tea-r10072"
@@ -4058,7 +4177,9 @@ window.HK = {
    "kinds": [
     "Dessert & sweets"
    ],
-   "emoji": "🥧"
+   "emoji": "🥧",
+   "gRating": 4.5,
+   "gReviews": 1086
   },
   {
    "tab": "city",
@@ -4167,7 +4288,9 @@ window.HK = {
    "kinds": [
     "Vegan & vegetarian",
     "Dim sum"
-   ]
+   ],
+   "gRating": 4.3,
+   "gReviews": 540
   },
   {
    "tab": "city",
@@ -4197,7 +4320,12 @@ window.HK = {
    "kinds": [
     "Vegan & vegetarian",
     "Dim sum"
-   ]
+   ],
+   "gRating": 4.1,
+   "gReviews": 459,
+   "orScore": 4.5,
+   "orReviews": 243,
+   "openrice": "https://www.openrice.com/en/hongkong/r-lockcha-central-guangdong-vegetarian-r577634"
   },
   {
    "tab": "city",
@@ -4229,6 +4357,8 @@ window.HK = {
     "Vegan & vegetarian",
     "Western & Med"
    ],
+   "gRating": 4.8,
+   "gReviews": 418,
    "orScore": 4.5,
    "orReviews": 60,
    "openrice": "https://www.openrice.com/en/hongkong/r-treehouse-causeway-bay-international-vegetarian-r799415"
@@ -4262,7 +4392,12 @@ window.HK = {
    "kinds": [
     "Vegan & vegetarian",
     "Western & Med"
-   ]
+   ],
+   "gRating": 4.7,
+   "gReviews": 729,
+   "orScore": 4.5,
+   "orReviews": 140,
+   "openrice": "https://www.openrice.com/en/hongkong/r-treehouse-central-international-vegetarian-r637690"
   },
   {
    "tab": "city",
@@ -4293,7 +4428,12 @@ window.HK = {
    "id": "woodlands-indian-vegetarian-restaurant-w",
    "kinds": [
     "Vegan & vegetarian"
-   ]
+   ],
+   "gRating": 4.5,
+   "gReviews": 1715,
+   "orScore": 4.0,
+   "orReviews": 16,
+   "openrice": "https://www.openrice.com/en/hongkong/r-woodlands-indian-vegetarian-restaurant-wan-chai-indian-meatless-menu-r781091"
   },
   {
    "tab": "city",
@@ -4356,7 +4496,9 @@ window.HK = {
     "Japanese",
     "Western & Med"
    ],
-   "emoji": "🌃"
+   "emoji": "🌃",
+   "gRating": 4.4,
+   "gReviews": 2634
   },
   {
    "tab": "city",
@@ -4431,7 +4573,9 @@ window.HK = {
    "kinds": [
     "Rooftops & views"
    ],
-   "emoji": "🌃"
+   "emoji": "🌃",
+   "gRating": 4.3,
+   "gReviews": 1850
   },
   {
    "tab": "city",
@@ -4498,7 +4642,9 @@ window.HK = {
    "kinds": [
     "Western & Med"
    ],
-   "emoji": "🍽️"
+   "emoji": "🍽️",
+   "gRating": 4.3,
+   "gReviews": 656
   },
   {
    "tab": "city",
@@ -4561,7 +4707,9 @@ window.HK = {
    "kinds": [
     "Cantonese & seafood"
    ],
-   "emoji": "🥢"
+   "emoji": "🥢",
+   "gRating": 4.8,
+   "gReviews": 299
   },
   {
    "tab": "city",
@@ -4594,7 +4742,10 @@ window.HK = {
    "kinds": [
     "Cantonese & seafood"
    ],
-   "emoji": "🦆"
+   "emoji": "🦆",
+   "orScore": 4.0,
+   "orReviews": 161,
+   "openrice": "https://www.openrice.com/en/hongkong/r-peking-garden-central-beijing-dim-sum-r2668"
   },
   {
    "tab": "city",
@@ -4627,7 +4778,12 @@ window.HK = {
    "kinds": [
     "Cantonese & seafood"
    ],
-   "emoji": "🦆"
+   "emoji": "🦆",
+   "gRating": 3.8,
+   "gReviews": 574,
+   "orScore": 3.5,
+   "orReviews": 132,
+   "openrice": "https://www.openrice.com/en/hongkong/r-peking-garden-admiralty-beijing-dim-sum-r2666"
   },
   {
    "tab": "saiwan",
@@ -4657,7 +4813,9 @@ window.HK = {
    "kinds": [
     "Dessert & sweets"
    ],
-   "emoji": "🥧"
+   "emoji": "🥧",
+   "gRating": 4.1,
+   "gReviews": 79
   },
   {
    "tab": "saiwan",
@@ -4821,7 +4979,10 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍜"
+   "emoji": "🍜",
+   "orScore": 4.0,
+   "orReviews": 63,
+   "openrice": "https://www.openrice.com/en/hongkong/r-mak-ming-noodles-western-district-hong-kong-style-congee-r170756"
   },
   {
    "tab": "saiwan",
@@ -4887,7 +5048,9 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍖"
+   "emoji": "🍖",
+   "gRating": 4.1,
+   "gReviews": 547
   },
   {
    "tab": "saiwan",
@@ -4920,7 +5083,12 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍖"
+   "emoji": "🍖",
+   "gRating": 3.8,
+   "gReviews": 1452,
+   "orScore": 3.5,
+   "orReviews": 147,
+   "openrice": "https://www.openrice.com/en/hongkong/r-dragon-state-kitchen-restaurant-sheung-wan-hong-kong-style-r186947"
   },
   {
    "tab": "saiwan",
@@ -4953,7 +5121,12 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🥣"
+   "emoji": "🥣",
+   "gRating": 4.2,
+   "gReviews": 1398,
+   "orScore": 3.5,
+   "orReviews": 348,
+   "openrice": "https://www.openrice.com/en/hongkong/r-sang-kee-congee-shop-sheung-wan-guangdong-congee-r3023"
   },
   {
    "tab": "saiwan",
@@ -4986,7 +5159,12 @@ window.HK = {
     "Dim sum",
     "Cantonese & seafood"
    ],
-   "emoji": "🥟"
+   "emoji": "🥟",
+   "gRating": 3.9,
+   "gReviews": 890,
+   "orScore": 4.0,
+   "orReviews": 149,
+   "openrice": "https://www.openrice.com/en/hongkong/r-luk-on-kui-sheung-wan-guangdong-r848035"
   },
   {
    "tab": "saiwan",
@@ -5016,7 +5194,12 @@ window.HK = {
    "kinds": [
     "Dessert & sweets"
    ],
-   "emoji": "🧇"
+   "emoji": "🧇",
+   "gRating": 4.3,
+   "gReviews": 329,
+   "orScore": 4.5,
+   "orReviews": 232,
+   "openrice": "https://www.openrice.com/en/hongkong/r-chicken-egg-boy-sheung-wan-hong-kong-style-r898991"
   },
   {
    "tab": "saiwan",
@@ -5111,7 +5294,18 @@ window.HK = {
    "kinds": [
     "Cantonese & seafood"
    ],
-   "emoji": "🍚"
+   "emoji": "🍚",
+   "gRating": 3.9,
+   "gReviews": 1850,
+   "orSmile": 66,
+   "orFaces": [
+    216,
+    77,
+    32
+   ],
+   "orScore": 4.1,
+   "orReviews": 410,
+   "openrice": "https://www.openrice.com/en/hongkong/r-sheung-hei-western-district-hong-kong-style-dim-sum-r39874"
   },
   {
    "tab": "shop",
@@ -5561,7 +5755,9 @@ window.HK = {
    "kinds": [
     "Rooftops & views"
    ],
-   "emoji": "🍸"
+   "emoji": "🍸",
+   "gRating": 3.7,
+   "gReviews": 195
   },
   {
    "tab": "city",
@@ -5592,7 +5788,9 @@ window.HK = {
     "Western & Med",
     "Dessert & sweets"
    ],
-   "emoji": "🥐"
+   "emoji": "🥐",
+   "gRating": 4.7,
+   "gReviews": 1518
   },
   {
    "tab": "city",
@@ -5651,7 +5849,9 @@ window.HK = {
    "kinds": [
     "Western & Med"
    ],
-   "emoji": "🦀"
+   "emoji": "🦀",
+   "gRating": 4.3,
+   "gReviews": 107
   },
   {
    "tab": "city",
@@ -8264,6 +8464,8 @@ window.HK = {
    ],
    "addressZh": "灣仔區登龍街18號",
    "emoji": "🌃",
+   "gRating": 4.3,
+   "gReviews": 1001,
    "orScore": 4.0,
    "orReviews": 536,
    "openrice": "https://www.openrice.com/en/hongkong/r-alto-bar-grill-causeway-bay-international-wine-r498914"
@@ -8292,6 +8494,8 @@ window.HK = {
    ],
    "addressZh": "中西區紅棉路22號香港美利酒店",
    "emoji": "🌃",
+   "gRating": 4.3,
+   "gReviews": 694,
    "orScore": 4.0,
    "orReviews": 280,
    "openrice": "https://www.openrice.com/en/hongkong/r-popinjays-central-italian-wine-r561140"
@@ -8319,6 +8523,8 @@ window.HK = {
    ],
    "addressZh": "灣仔區京士頓街9號嘉賓大廈",
    "emoji": "🍺",
+   "gRating": 4.4,
+   "gReviews": 726,
    "orScore": 4.5,
    "orReviews": 259,
    "openrice": "https://www.openrice.com/en/hongkong/r-2nd-draft-causeway-bay-western-wine-r764031"
@@ -8382,6 +8588,8 @@ window.HK = {
     "Cocktails"
    ],
    "emoji": "🍸",
+   "gRating": 4.6,
+   "gReviews": 923,
    "orScore": 4.0,
    "orReviews": 34,
    "openrice": "https://www.openrice.com/en/hongkong/r-the-old-man-central-international-wine-r546127"
@@ -8542,6 +8750,8 @@ window.HK = {
    "kinds": [
     "Cocktails"
    ],
+   "gRating": 4.4,
+   "gReviews": 301,
    "orScore": 4.0,
    "orReviews": 90,
    "openrice": "https://www.openrice.com/en/hongkong/r-argo-central-western-wine-r716517"
@@ -8606,6 +8816,8 @@ window.HK = {
    "kinds": [
     "Cocktails"
    ],
+   "gRating": 4.7,
+   "gReviews": 563,
    "orScore": 4.0,
    "orReviews": 25,
    "openrice": "https://www.openrice.com/en/hongkong/r-kinsman-central-hong-kong-style-r811217"
@@ -8676,6 +8888,8 @@ window.HK = {
    "kinds": [
     "Cocktails"
    ],
+   "gRating": 4.4,
+   "gReviews": 97,
    "orScore": 4.5,
    "orReviews": 12,
    "openrice": "https://www.openrice.com/en/hongkong/r-the-opposites-central-international-wine-r872602"
@@ -8741,7 +8955,9 @@ window.HK = {
    "id": "cassio",
    "kinds": [
     "Clubbing"
-   ]
+   ],
+   "gRating": 4.0,
+   "gReviews": 474
   },
   {
    "tab": "city",
@@ -8805,6 +9021,8 @@ window.HK = {
    "kinds": [
     "Clubbing"
    ],
+   "gRating": 4.4,
+   "gReviews": 331,
    "orScore": 4.0,
    "orReviews": 93,
    "openrice": "https://www.openrice.com/en/hongkong/r-the-aubrey-central-japanese-fine-dining-r700848"
@@ -8836,7 +9054,9 @@ window.HK = {
    "id": "boomerang-the-illusionist",
    "kinds": [
     "Clubbing"
-   ]
+   ],
+   "gRating": 3.8,
+   "gReviews": 236
   },
   {
    "tab": "city",
@@ -8865,7 +9085,9 @@ window.HK = {
    "id": "oma",
    "kinds": [
     "Clubbing"
-   ]
+   ],
+   "gRating": 4.2,
+   "gReviews": 115
   },
   {
    "tab": "city",
@@ -8895,7 +9117,9 @@ window.HK = {
    "id": "club-mihn",
    "kinds": [
     "Clubbing"
-   ]
+   ],
+   "gRating": 4.6,
+   "gReviews": 125
   },
   {
    "tab": "city",
@@ -8925,6 +9149,8 @@ window.HK = {
    "kinds": [
     "Clubbing"
    ],
+   "gRating": 3.9,
+   "gReviews": 666,
    "orScore": 3.5,
    "orReviews": 17,
    "openrice": "https://www.openrice.com/en/hongkong/r-joe-bananas-wan-chai-american-wine-r179262"
@@ -8961,6 +9187,8 @@ window.HK = {
     "Clubbing",
     "Jazz & live music"
    ],
+   "gRating": 4.0,
+   "gReviews": 302,
    "orScore": 3.5,
    "orReviews": 24,
    "openrice": "https://www.openrice.com/en/hongkong/r-carnegies-wan-chai-hong-kong-style-wine-r284"
@@ -9025,7 +9253,9 @@ window.HK = {
    "id": "visage-one",
    "kinds": [
     "Jazz & live music"
-   ]
+   ],
+   "gRating": 4.8,
+   "gReviews": 88
   },
   {
    "tab": "city",
@@ -9400,6 +9630,8 @@ window.HK = {
    "kinds": [
     "Cha chaan teng & cafés"
    ],
+   "gRating": 3.2,
+   "gReviews": 148,
    "orScore": 3.5,
    "orReviews": 49,
    "openrice": "https://www.openrice.com/en/hongkong/r-men-wah-bing-teng-the-peak-hong-kong-style-r702242"
@@ -9879,7 +10111,10 @@ window.HK = {
    "kinds": [
     "Regional Chinese"
    ],
-   "addressZh": "油尖旺區梳士巴利道18號VICTORIA DOCKSIDEK11 ATELIER"
+   "addressZh": "油尖旺區梳士巴利道18號VICTORIA DOCKSIDEK11 ATELIER",
+   "orScore": 4.0,
+   "orReviews": 221,
+   "openrice": "https://www.openrice.com/en/hongkong/r-ye-shanghai-tsim-sha-tsui-shanghai-r663490"
   },
   {
    "tab": "city",
@@ -10027,6 +10262,8 @@ window.HK = {
     "Regional Chinese"
    ],
    "addressZh": "油尖旺區樂道48號華源大廈",
+   "gRating": 4.2,
+   "gReviews": 2354,
    "orScore": 3.5,
    "orReviews": 137,
    "openrice": "https://www.openrice.com/en/hongkong/r-cheung-hing-kee-shanghai-pan-fried-buns-tsim-sha-tsui-shanghai-chinese-buns-r483856"
