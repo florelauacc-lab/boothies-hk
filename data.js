@@ -11179,12 +11179,13 @@ window.HK = {
      "school"
     ],
     [
-     "Evening",
+     "20:15",
      "Dai Pai Dong Dinner (Traditional HK diner)",
      "ours",
      "thu-dpd",
      {
       "label": "Peng Leng Jeng",
+      "note": "tables at 20:15 and 20:30",
       "q": "Peng Leng Jeng"
      }
     ],
