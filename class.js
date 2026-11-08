@@ -48,7 +48,7 @@
   /* ---------- state ---------- */
   let data = null, mode = "locked", pass = get("hk-pass-v1") || "", orgPass = get("hk-org-v1") || "";
   let me = get("hk-me-v1") || "", cur = get("hk-cur-v1") || "USD";
-  let editing = null, busy = false;
+  let editing = null, busy = false, newEvKind = null; // newEvKind: which places "Where" suggests when adding an event
   const openEv = new Set();
   const live = () => mode === "live";
 
@@ -177,11 +177,12 @@
       <div class="cc-events">${evs.map((e) => evCard(e, ppl)).join("")}</div>
       ${live() ? `<details class="cc-add"><summary>➕ Add an event for the class</summary>
         <form id="cc-newev" class="cc-grid-form">
-          <input name="title" placeholder="What (e.g. Dragon's Back hike)" required maxlength="70">
+          <input name="title" placeholder="What (e.g. Dragon's Back hike, Lamma day trip, drinks)" required maxlength="70">
           <select name="iso" aria-label="Day">${DAYS.map(([iso, l]) => `<option value="${iso}">${esc(l)}</option>`).join("")}</select>
           <input name="when" placeholder="Time (e.g. 19:00)" maxlength="40">
-          <input name="venue" placeholder="Where (pick a place from the guide or type one)" maxlength="80" list="cc-places">
-          <datalist id="cc-places">${PLACES.filter((p) => ["city", "saiwan", "sights", "hikes", "shop"].includes(p.tab)).map((p) => `<option value="${esc(p.name)}">`).join("")}</datalist>
+          <select name="kind" aria-label="What kind of event" data-evkind="1">${[["hikes", "🥾 Hike"], ["sights", "📸 Sight or outing"], ["city", "🍽️ Food & drink"], ["shop", "🛍️ Shopping"], ["", "Other"]].map(([k, l]) => `<option value="${k}"${(newEvKind ?? "hikes") === k ? " selected" : ""}>${l}</option>`).join("")}</select>
+          <input name="venue" placeholder="Where: pick from the guide or type a place" maxlength="80" list="cc-places-${newEvKind ?? "hikes"}">
+          ${[["hikes", ["hikes"]], ["sights", ["sights"]], ["city", ["city", "saiwan"]], ["shop", ["shop"]]].map(([k, tabs]) => `<datalist id="cc-places-${k}">${PLACES.filter((p) => tabs.includes(p.tab)).map((p) => `<option value="${esc(p.name)}">`).join("")}</datalist>`).join("")}
           <button type="submit">Add event</button>
         </form></details>` : ""}
       ${billsSection()}
@@ -720,6 +721,7 @@
     }
   });
   document.addEventListener("change", (e) => {
+    if (e.target.dataset?.evkind) { newEvKind = e.target.value; const v = e.target.form?.elements.venue; if (v) v.setAttribute("list", `cc-places-${newEvKind || "none"}`); return; }
     if (e.target.id === "cc-me") { me = e.target.value; set("hk-me-v1", me); render(); }
     if (e.target.id === "cc-cur") { cur = e.target.value; set("hk-cur-v1", cur); render(); }
   });

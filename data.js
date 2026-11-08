@@ -9959,7 +9959,7 @@ window.HK = {
    ],
    "emoji": "🌊",
    "intro": "The harbourfront beside the Hong Kong Convention and Exhibition Centre, home of the Golden Bauhinia statue, with a broad view across to Tsim Sha Tsui. Just west is a stretch OSM names Wan Chai Temporary Promenade (灣仔臨時海濱花園); we found no tourism source using that name, so call the whole area Wan Chai harbourfront. It is also the easy first promenade from the hotel.",
-   "tips": "Flag-raising ceremony daily at 08:00 (enhanced version on the 1st of most months). Sunset about 17:40; the skyline light comes on afterwards. About 30-45 min including the statue and a stroll to Wan Chai Temporary Promenade (about 1.5 km west-east, verify). Dragon-class sailing worlds 21-22 Nov have free shoreside events at the Wan Chai waterfront (see events). Wan Chai MTR exit not confirmed by sources (verify; footbridges lead to HKCEC).",
+   "tips": "Flag-raising ceremony daily at 08:00 (enhanced version on the 1st of most months). Sunset about 17:40; the skyline light comes on afterwards. About 30-45 min including the statue and a stroll to Wan Chai Temporary Promenade (about 1.5 km west-east, verify). Wan Chai MTR exit not confirmed by sources (verify; footbridges lead to HKCEC).",
    "getting": "MTR Wan Chai Station then walk or footbridge to HKCEC (about 10 min; exit number unverified). From Causeway Bay, a 15-20 min taxi or the 2-stop MTR.",
    "hours": "Open 24h (flag-raising 08:00 daily)",
    "priceNote": "Free",
@@ -10838,8 +10838,13 @@ window.HK = {
    "slots": [
     [
      "Morning",
-     "Victoria Harbour Race: about 4,000 swimmers cross the harbour; watch from the shore",
-     "event"
+     "Victoria Harbour Race: about 4,000 swimmers cross the harbour from Wan Chai to the Avenue of Stars; watch from either shore",
+     "event",
+     null,
+     {
+      "label": "Victoria Harbour Race",
+      "url": "https://www.hkharbourrace.com/"
+     }
     ],
     [
      "All day",
@@ -10851,11 +10856,18 @@ window.HK = {
      "Dim Sum Lunch",
      "ours",
      "sun-dimsum",
-     {
-      "label": "Dim sum spots",
-      "tab": "city",
-      "q": "dim sum"
-     }
+     [
+      {
+       "label": "Dim Sum Library",
+       "note": "contemporary dim sum",
+       "q": "Dim Sum Library"
+      },
+      {
+       "label": "Lin Heung Lau",
+       "note": "traditional dim sum",
+       "q": "Lin Heung Lau"
+      }
+     ]
     ],
     [
      "20:00",
@@ -10900,17 +10912,17 @@ window.HK = {
       "label": "Stanley",
       "tab": "sights",
       "where": "south"
-     }
+     },
+     "rsvp"
     ],
     [
      "Evening",
-     "Hotpot + Karaoke (A Smoking Affair)",
+     "Hotpot + Karaoke",
      "ours",
      "mon-hotpot",
      {
       "label": "A Smoking Affair",
-      "tab": "city",
-      "q": "Smoking Affair"
+      "q": "A Smoking Affair"
      }
     ]
    ],
@@ -11096,11 +11108,17 @@ window.HK = {
      "Happy Valley night races (same night as the tram party)",
      "event",
      null,
-     {
-      "label": "Happy Valley races",
-      "tab": "sights",
-      "q": "Happy Valley"
-     }
+     [
+      {
+       "label": "Happy Wednesday races",
+       "url": "https://happywednesday.hkjc.com/en-US/schedule/"
+      },
+      {
+       "label": "Happy Valley Racecourse",
+       "tab": "sights",
+       "q": "Happy Valley"
+      }
+     ]
     ],
     [
      "20:15–22:45",
@@ -11169,13 +11187,12 @@ window.HK = {
     ],
     [
      "Evening",
-     "Dai Pai Dong Dinner",
+     "Dai Pai Dong Dinner (Traditional HK diner)",
      "ours",
      "thu-dpd",
      {
       "label": "Peng Leng Jeng",
-      "tab": "city",
-      "q": "Peng Leng"
+      "q": "Peng Leng Jeng"
      }
     ],
     [
@@ -11316,16 +11333,6 @@ window.HK = {
    "iso": "2026-11-21",
    "slots": [
     [
-     "All day",
-     "⛵ Dragon World Championship sailing (21–29 Nov), after the Asia Pacific Championship (17–21 Nov). Racing is out off Clear Water Bay, so it's hard to see from land; free shoreside events are planned on the Wan Chai waterfront. Check the visitor schedule for times",
-     "event",
-     null,
-     {
-      "label": "Dragon World Championship",
-      "url": "https://www.dragonworld2027.com/"
-     }
-    ],
-    [
      "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
@@ -11359,7 +11366,8 @@ window.HK = {
       "label": "Nanhai No. 2",
       "tab": "city",
       "q": "Nanhai"
-     }
+     },
+     "rsvp"
     ],
     [
      "13:00–18:00",
@@ -11420,16 +11428,6 @@ window.HK = {
    "date": "22 Nov",
    "iso": "2026-11-22",
    "slots": [
-    [
-     "All day",
-     "⛵ Dragon World Championship sailing continues (to 29 Nov), out off Clear Water Bay. Check the visitor schedule",
-     "event",
-     null,
-     {
-      "label": "Dragon World Championship",
-      "url": "https://www.dragonworld2027.com/"
-     }
-    ],
     [
      "All day",
      "Free day",

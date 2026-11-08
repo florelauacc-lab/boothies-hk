@@ -690,15 +690,24 @@
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong" }).format(new Date());
     if (planDay == null) planDay = Math.max(0, PLAN.findIndex((d) => d.iso === today));
     const dayBtns = PLAN.map((d, i) => `<button class="pd${i === planDay ? " on" : ""}${d.iso === today ? " today" : ""}" data-planday="${i}" aria-label="${esc(d.day)} ${esc(d.date)}${d.iso === today ? ", today" : ""}"><b>${d.iso === today ? "Today" : esc(d.day)}</b><span>${esc(d.date.split(" ")[0])}</span>${wx[d.iso] ? `<i class="pd-wx" aria-hidden="true">${wx[d.iso].icon}</i>` : ""}</button>`).join("");
-    const row = (d, [t, v, kind, ev, go], j) => {
+    // tags under an item: a place in the guide (📍, opens its card), an event's own site (↗), or a guide search
+    const goTag = (g) => {
+      if (g.url) return `<a class="go" href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.label)} ↗</a>`;
+      const id = g.jump || (g.q && venuePlace(g.q)?.id);
+      const lab = `${esc(g.label)}${g.note ? ` <small>· ${esc(g.note)}</small>` : ""}`;
+      return id ? `<button class="go" data-jump="${esc(id)}">📍 ${lab} →</button>` : `<button class="go" data-go='${esc(JSON.stringify(g))}'>${lab} →</button>`;
+    };
+    const row = (d, [t, v, kind, ev, go, rsvp], j) => {
       // class events follow the shared list once you've picked your name in the class corner
       const shared = ev && window.HK_CLASS?.going(ev);
-      const key = slotKey(d.iso, v, ev), pickable = kind === "ours" || kind === "event", on = shared != null ? shared : !!mine[key];
-      if (onlyMine && pickable && !on && !showHidden.has(d.iso)) return "";
-      return `<div class="slotrow ${kind || "school"}${pickable && !on ? " off" : ""}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : kind === "event" ? ' <em class="evt">On in town</em>' : ""}</span>`
+      const key = slotKey(d.iso, v, ev), pickable = kind === "ours" || kind === "event" || rsvp === "rsvp", on = shared != null ? shared : !!mine[key];
+      // free school items you can say you're going to (closing dinner, dragon boating): only the optional ones fold away in My week
+      const folds = kind === "ours" || kind === "event" || kind === "optional";
+      if (onlyMine && pickable && folds && !on && !showHidden.has(d.iso)) return "";
+      return `<div class="slotrow ${kind || "school"}${pickable && folds && !on ? " off" : ""}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : kind === "event" ? ' <em class="evt">On in town</em>' : ""}</span>`
         + `<span class="sv">${kind === "ours" ? "🎉 " : kind === "event" && !/^\p{Extended_Pictographic}/u.test(v) ? "🎟️ " : ""}${esc(v)}</span>`
         + (ev ? `<span class="evinfo" data-evinfo="${ev}"></span>` : "")
-        + (go ? `<span class="slotgo">${go.url ? `<a class="go" href="${esc(go.url)}" target="_blank" rel="noopener">${esc(go.label)} ↗</a>` : `<button class="go" data-go='${esc(JSON.stringify(go))}'>${esc(go.label)} →</button>`}</span>` : "")
+        + (go ? `<span class="slotgo">${[].concat(go).map(goTag).join("")}</span>` : "")
         + (pickable ? `<button class="mine${on ? " on" : ""}" data-mine="${key}" data-ev="${ev || ""}" data-on="${on ? 1 : 0}" aria-pressed="${on}" aria-label="${on ? "Remove from" : "Add to"} my plan">${on ? "✓ Going" : "+ Me"}</button>` : "")
         + `</div>`;
     };
@@ -714,7 +723,7 @@
       ${wxLine(d.iso)}
       ${d.slots.map((sl, j) => row(d, sl, j)).join("")}
       ${myPlans.filter((p) => p.iso === d.iso).map((p) => `<div class="slotrow personal" data-drag="${esc(JSON.stringify({ move: p.id }))}" title="Drag to another day, or up and down to reorder"><span><span class="grip" aria-hidden="true">⠿</span> ${esc(p.when || "Anytime")} <em class="mine-tag">Mine</em></span><span class="sv">⭐ ${esc(p.title)}${p.place && byId[p.place] ? ` <button class="rlink" data-jump="${p.place}">Map →</button>` : ""}${p.idea ? ` <button class="rlink" data-idea="${esc(p.idea)}" data-iso="${d.iso}">See plan →</button>` : ""}</span><button class="cc-x" data-delmine="${p.id}" aria-label="Remove from my week">✕</button></div>`).join("")}
-      ${(() => { const n = onlyMine && !showHidden.has(d.iso) ? d.slots.filter(([, v, k, ev]) => (k === "ours" || k === "event") && !mine[slotKey(d.iso, v, ev)]).length : 0;
+      ${(() => { const n = onlyMine && !showHidden.has(d.iso) ? d.slots.filter(([, v, k, ev, , r]) => (k === "ours" || k === "event" || (k === "optional" && r === "rsvp")) && !(ev && window.HK_CLASS?.going(ev)) && !mine[slotKey(d.iso, v, ev)]).length : 0;
         return n ? `<button class="hidden-n" data-showhidden="${d.iso}">+ ${n} more you haven't added · show</button>` : ""; })()}
       ${bus(d.bus)}
     </li>`;
@@ -725,7 +734,7 @@
       // events classmates added in the class corner show up on their day too
       // events added in the class corner show on their day too (unless already in the schedule)
       const inPlan = new Set(d.slots.map((x) => x[3]).filter(Boolean));
-      const extra = customEvents.filter((e) => e.iso === d.iso && !inPlan.has(e.id)).map((e) => [e.when || "Anytime", `${e.title}${e.venue ? ` · ${e.venue}` : ""}`, "ours", e.id]);
+      const extra = customEvents.filter((e) => e.iso === d.iso && !inPlan.has(e.id)).map(customSlot);
       if (!extra.length) return d;
       // morning events go near the top of the day, the rest at the end
       const am = extra.filter(([t]) => /morning|breakfast|\bam\b|^0?[5-9](:\d\d)?\s*am|^0?[5-9]:\d\d|^1[01]:\d\d/i.test(t));
@@ -768,6 +777,17 @@
     window.HK_PRIVATE_RENDER?.();
   }
   let customEvents = [];
+  // a class event added in the class corner looks like the built-in ones: "Title (Place)", with a tag that opens the place in the guide
+  const venuePlace = (venue) => {
+    const v = String(venue || "").toLowerCase().trim();
+    if (v.length < 4) return null;
+    return live.find((p) => p.name.toLowerCase() === v) || live.find((p) => { const n = p.name.toLowerCase().replace(/\s*\(.*\)$/, ""); return n.length >= 5 && (v.includes(n) || n.startsWith(v)); });
+  };
+  const customSlot = (e) => {
+    const p = venuePlace(e.venue), short = p ? p.name.replace(/\s*\(.*\)$/, "") : "";
+    // the place tag already says where, so the venue only goes in the text when it isn't a place in the guide
+    return [e.when || "Anytime", `${e.title}${e.venue && !p ? ` · ${e.venue}` : ""}`, "ours", e.id, p ? { label: short, jump: p.id } : null];
+  };
   let replanQueued = false; // the class corner asks for a redraw when the shared list changes
   window.HK_REPLAN = () => { if (replanQueued) return; replanQueued = true; requestAnimationFrame(() => { replanQueued = false; renderPlan(); }); };
   window.HK_CUSTOM_EVENTS = (list) => {
@@ -901,11 +921,11 @@
     };
     PLAN.forEach((d) => {
       const inPlan = new Set(d.slots.map((x) => x[3]).filter(Boolean));
-      const extra = customEvents.filter((e) => e.iso === d.iso && !inPlan.has(e.id)).map((e) => [e.when || "Anytime", `${e.title}${e.venue ? ` · ${e.venue}` : ""}`, "ours", e.id]);
-      [...d.slots, ...extra].forEach(([t, v, kind, ev]) => {
+      const extra = customEvents.filter((e) => e.iso === d.iso && !inPlan.has(e.id)).map(customSlot);
+      [...d.slots, ...extra].forEach(([t, v, kind, ev, , rsvp]) => {
         if (/^(next day|all day)$/i.test(t) && /check-out|free day|meals on your own/i.test(v)) return; // skip filler lines
         const shared = ev && window.HK_CLASS?.going(ev);
-        const picked = kind === "ours" || kind === "event" ? (shared != null ? shared : !!mine[slotKey(d.iso, v, ev)]) : true;
+        const picked = kind === "ours" || kind === "event" || (kind === "optional" && rsvp === "rsvp") ? (shared != null ? shared : !!mine[slotKey(d.iso, v, ev)]) : true;
         if (onlyMineMode && !picked) return;
         const icon = kind === "ours" ? "🎉 " : kind === "event" ? "🎟️ " : kind === "optional" ? "(Optional) " : "";
         add(d.iso, t, `${icon}${v.replace(/^\p{Extended_Pictographic}\s*/u, "")}`, kind === "school" || kind === "optional" ? "Becker schedule" : "", "");
