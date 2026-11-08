@@ -43,7 +43,7 @@
   const total = (e) => (e.expenses || []).reduce((t, x) => t + (+x.hkd || 0), 0);
   // each person's share: the set price per person, or (if a bill was entered instead) the bill split evenly
   const each = (e) => (e.price > 0 ? +e.price : total(e) && e.going.length ? total(e) / e.going.length : null);
-  const PAY_METHODS = ["PayPal / card", "Wise / bank", "FPS", "PayMe", "Cash"];
+  const PAY_METHODS = ["PayPal / card", "Wise / bank", "FPS", "Cash"];
 
   /* ---------- state ---------- */
   let data = null, mode = "locked", pass = get("hk-pass-v1") || "", orgPass = get("hk-org-v1") || "";
@@ -125,6 +125,11 @@
     });
     return b;
   }
+  // which of a person's events are covered by a payment (paying "everything" covers all of them at once)
+  function evPay(n, id) {
+    const ps = payments(n).filter((p) => (p.evs || []).includes(id));
+    return ps.length ? (ps.some((p) => p.confirmed) ? "paid" : "wait") : null;
+  }
   function status(n, bal) {
     const share = Math.max(0, -(bal[n] || 0));
     const ps = payments(n);
@@ -184,6 +189,7 @@
         <p class="muted small">${esc(data.groupsNote || "")}</p>
       </details>`;
     fillPlan();
+    window.HK_REPLAN?.();
     window.HK_CUSTOM_EVENTS?.(evs.filter((e) => e.id.startsWith("x-")));
     if (me) window.HK_AUTO_MINE?.(mine.map((e) => e.id));
   }
@@ -191,13 +197,21 @@
   // "My place": my events, my share of each, and paying it
   function myPlace(mine, st, bal, isPayer) {
     const owedToMe = (bal[me] || 0) > 0.5;
-    const rows = mine.map((e) => `<li><span>${esc(e.title)}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : `<small>price to come</small>`}</b></li>`).join("");
+    const rows = mine.map((e) => { const ps = evPay(me, e.id);
+      return `<li><span>${esc(e.title)}${ps ? ` <em class="${ps === "paid" ? "ok" : "wait"}">${ps === "paid" ? "✓ Paid" : `Waiting for ${esc(data.payTo)}`}</em>` : ""}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : `<small>price to come</small>`}</b></li>`; }).join("");
+    const unpaid = mine.filter((e) => each(e) && !evPay(me, e.id));
     let pay = "";
     if (!owedToMe && st.left > 0) {
       pay = `${payButtons(st.left)}
-        ${live() ? `<form class="cc-inline paid" id="cc-paid"><select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select><button type="submit">✓ I've paid ${hk(st.left)}</button></form>` : ""}`;
+        ${live() && unpaid.length ? `<form class="cc-inline paid" id="cc-paid">
+          <select name="what" aria-label="What you're paying for">
+            <option value="all">Everything · ${hk(Math.min(st.left, unpaid.reduce((t, e) => t + each(e), 0)))}</option>
+            ${unpaid.length > 1 ? unpaid.map((e) => `<option value="${e.id}">${esc(e.title)} · ${hk(each(e))}</option>`).join("") : ""}
+          </select>
+          <select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select>
+          <button type="submit">✓ I've paid</button></form>` : ""}`;
     }
-    const mineP = payments(me).map((p, i) => `<li><span>Paid ${hk(p.hkd)} · ${esc(p.method || "")}</span><b class="${p.confirmed ? "ok" : "wait"}">${p.confirmed ? `✓ ${esc(data.payTo)} confirmed` : `Waiting for ${esc(data.payTo)}`}</b>${!p.confirmed && live() ? `<button type="button" class="cc-x" data-undopaid="${i}" aria-label="Undo">✕</button>` : ""}</li>`).join("");
+    const mineP = payments(me).map((p, i) => `<li><span>Paid ${hk(p.hkd)}${p.method ? ` · ${esc(p.method)}` : ""}${evNames(p)}</span><b class="${p.confirmed ? "ok" : "wait"}">${p.confirmed ? `✓ ${esc(data.payTo)} confirmed` : `Waiting for ${esc(data.payTo)}`}</b>${!p.confirmed && live() ? `<button type="button" class="cc-x" data-undopaid="${i}" aria-label="Undo">✕</button>` : ""}</li>`).join("");
     return `<div class="cc-owe">
       <div class="cc-owe-top"><div><small>${owedToMe ? "You're owed" : st.settled ? "All settled" : st.left ? "You owe" : st.pending ? "Paid" : "Your share so far"}</small>
         <b>${owedToMe ? `${hk(bal[me])} <span>≈ ${fx(bal[me])}</span>` : st.settled ? "✓ Settled" : st.left ? `${hk(st.left)} <span>≈ ${fx(st.left)}</span>` : st.pending ? `Waiting for ${esc(data.payTo)} to confirm` : "HK$0"}</b>
@@ -244,7 +258,6 @@
     const a = Math.round(amt);
     const btns = [
       L.paypal && `<a class="paybtn" href="${esc(L.paypal.replace(/\/$/, ""))}${a ? `/${a}HKD` : ""}" target="_blank" rel="noopener">💳 Pay ${a ? hk(a) : ""} by card / PayPal</a>`,
-      L.payme && `<a class="paybtn" href="${esc(L.payme)}" target="_blank" rel="noopener">📱 PayMe</a>`,
       L.fps && `<button class="paybtn" type="button" data-copy="${esc(L.fps)}">⚡ Copy FPS ID</button>`,
       L.bank && `<button class="paybtn" type="button" data-copy="${esc(L.bank)}">🌍 Copy bank details</button>`,
     ].filter(Boolean);
@@ -252,9 +265,13 @@
   }
 
   // Who still owes what, who says they've paid, and what Rienno has confirmed
+  const evNames = (p) => { const n = (p.evs || []).map((id) => data.events.find((e) => e.id === id)?.title).filter(Boolean); return n.length === 1 ? ` for ${esc(n[0])}` : ""; };
   function settleUp(bal, canConfirm) {
     const L = data.payLinks || {};
-    const rows = people().filter((n) => n !== data.payTo).map((n) => ({ n, ...status(n, bal) })).filter((r) => r.share > 0.5 || r.sent);
+    // people waiting for Rienno to confirm come first, then who still owes, then who's done
+    const rank = (r) => (r.pending ? 0 : r.left ? 1 : 2);
+    const rows = people().filter((n) => n !== data.payTo).map((n) => ({ n, ...status(n, bal) })).filter((r) => r.share > 0.5 || r.sent)
+      .sort((a, b) => rank(a) - rank(b) || a.n.localeCompare(b.n));
     const collector = Object.entries(bal).filter(([, v]) => v > 0.5);
     const done = rows.filter((r) => r.settled).length;
     const list = rows.length ? `<ul class="cc-settle">${rows.map((r) => {
@@ -263,13 +280,13 @@
         + (r.over ? ` <em class="wait">Overpaid ${hk(r.over)}</em>` : "");
       const confirm = canConfirm && live() ? ps.map((p, i) => p.confirmed
         ? `<button type="button" class="cc-mini" data-unconfirm="${esc(r.n)}" data-i="${i}">✓ ${hk(p.hkd)} received · undo</button>`
-        : `<button type="button" class="cc-mini go" data-confirm="${esc(r.n)}" data-i="${i}">Confirm ${hk(p.hkd)} received (${esc(p.method || "")})</button>`).join("")
-        + (r.left ? `<button type="button" class="cc-mini go" data-record="${esc(r.n)}" data-amt="${r.left}">Got ${hk(r.left)} (cash or other)</button>` : "") : "";
+        : `<button type="button" class="cc-mini go" data-confirm="${esc(r.n)}" data-i="${i}">Confirm ${hk(p.hkd)} received${evNames(p)} (${esc(p.method || "")})</button>`).join("")
+        + (r.left ? `<button type="button" class="cc-mini" data-record="${esc(r.n)}" data-amt="${r.left}">Got ${hk(r.left)} in cash / other</button>` : "") : "";
       return `<li class="${r.n === me ? "me" : ""}${r.settled ? " done" : ""}"><span class="nm">${esc(r.n)}</span><span class="amt">${hk(r.share)}</span>${chip}${confirm ? `<div class="cc-confirm">${confirm}</div>` : ""}</li>`;
     }).join("")}</ul>` : `<p class="muted">Nothing to settle yet. Once an event has a price, everyone's share shows here.</p>`;
     return `<div class="cc-pay">
       <h3 class="cc-h">💸 Settle up ${rows.length ? `<small>${done} of ${rows.length} settled</small>` : ""}</h3>
-      ${collector.length ? `<p>${collector.map(([n, v]) => `<b>${esc(n)}</b> paid ${hk(v + Math.max(0, -(bal[n] || 0)))} up front`).join(" · ")}</p>` : ""}
+      ${rows.length ? `<p class="small"><b>${esc(data.payTo)}</b> is collecting ${hk(rows.reduce((t, r) => t + r.share, 0))} in total · ${hk(rows.reduce((t, r) => t + r.ok, 0))} received so far</p>` : ""}
       <p class="muted small">Paid? Tap "I've paid" in your box above. It counts as paid once ${esc(data.payTo)} confirms the money arrived.</p>
       ${canConfirm ? `<p class="cc-orgnote">🔑 You're signed in as organiser: confirm payments below, or tap "Got HK$…" for cash.</p>` : ""}
       ${list}
@@ -278,12 +295,11 @@
         <ul>${(data.methods || []).map(([em, n, d]) => `<li><span>${em}</span><b>${esc(n)}</b> ${esc(d)}</li>`).join("")}</ul>
         <p class="muted small">Other currencies are ${liveRates ? "today's rates" : "approximate"}. ${esc(data.payTo)} receives HKD.</p>
       </details>
-      ${live() ? `<details class="cc-paysetup"><summary>🔑 Organisers (${esc(data.payTo)} &amp; Florence)</summary>
-        ${data.organiser ? `<p class="muted small" style="padding:0 14px">Only organisers can change payment details or confirm payments.</p>
+      ${live() ? `<details class="cc-paysetup"><summary>🔑 Organisers (Rienno, Lisa, Florence &amp; Kejia)</summary>
+        ${data.organiser ? `<p class="muted small" style="padding:0 14px">Only organisers can change payment details. Only Rienno confirms payments (pick Rienno as your name).</p>
         <form id="cc-pay" class="cc-grid-form">
           <input name="paypal" placeholder="PayPal.me link, e.g. https://paypal.me/name" value="${esc(L.paypal || "")}">
           <input name="fps" placeholder="FPS ID or phone number" value="${esc(L.fps || "")}">
-          <input name="payme" placeholder="PayMe link" value="${esc(L.payme || "")}">
           <input name="bank" placeholder="Bank: account name, bank, account no., SWIFT" value="${esc(L.bank || "")}">
           <button type="submit">Save payment details</button>
         </form>
@@ -318,6 +334,12 @@
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;
+  // the week plan's "+ Me" on a class event ticks you on the shared list too
+  window.HK_CLASS = {
+    going: (ev) => { if (!data || !me || !live()) return null; const e = data.events.find((x) => x.id === ev); return e ? e.going.includes(me) : null; },
+    tick: (ev, on) => { const E = data.events.find((x) => x.id === ev); op({ op: "toggle", ev, name: me, on }, () => { E.going = on ? [...new Set([...E.going, me])].sort((a, b) => a.localeCompare(b)) : E.going.filter((n) => n !== me); }).then(() => window.HK_REPLAN?.()); },
+    hint: () => toast(data ? "Pick your name in the class corner so the organisers see you're going" : "Unlock the class corner below so the organisers see you're going"),
+  };
 
   /* ---------- events ---------- */
   root.addEventListener("toggle", (e) => {
@@ -352,7 +374,11 @@
     const cf = t.closest("[data-confirm],[data-unconfirm]");
     if (cf) { const n = cf.dataset.confirm || cf.dataset.unconfirm; op({ op: cf.dataset.confirm ? "confirmPaid" : "unconfirmPaid", name: n, i: +cf.dataset.i }); return; }
     const rec = t.closest("[data-record]");
-    if (rec) { if (confirm(`Record ${hk(+rec.dataset.amt)} received from ${rec.dataset.record}?`)) op({ op: "markPaid", name: rec.dataset.record, hkd: +rec.dataset.amt, method: "Cash / other", confirmed: true }); return; }
+    if (rec) {
+      const n = rec.dataset.record, evs = data.events.filter((e) => e.going.includes(n) && each(e) && !evPay(n, e.id)).map((e) => e.id);
+      if (confirm(`Record ${hk(+rec.dataset.amt)} received from ${n}?`)) op({ op: "markPaid", name: n, hkd: +rec.dataset.amt, evs, method: "Cash / other", confirmed: true });
+      return;
+    }
     if (t.closest("[data-orgout]")) { orgPass = ""; forget("hk-org-v1"); api("GET").then((s) => { data = s; render(); }); return; }
     const up = t.closest("[data-undopaid]");
     if (up) { if (confirm("Undo this payment?")) op({ op: "undoPaid", name: me, i: +up.dataset.undopaid }); return; }
@@ -383,8 +409,12 @@
       orgPass = fd("code").toLowerCase();
       api("GET").then((s) => { if (s.organiser) { set("hk-org-v1", orgPass); data = s; render(); toast("Signed in as organiser"); } else { orgPass = ""; toast("That organiser code isn't right"); } }, () => { orgPass = ""; toast("Couldn't check the code"); });
     }
-    else if (f.id === "cc-pay") { op({ op: "setPay", paypal: fd("paypal"), fps: fd("fps"), payme: fd("payme"), bank: fd("bank") }).then((ok) => ok && toast("Saved")); }
-    else if (f.id === "cc-paid") { const s = status(me, balances()); op({ op: "markPaid", name: me, hkd: s.left, method: fd("method") }).then((ok) => ok && toast(`Thanks! ${data.payTo} will confirm once it arrives`)); }
+    else if (f.id === "cc-pay") { op({ op: "setPay", paypal: fd("paypal"), fps: fd("fps"), bank: fd("bank") }).then((ok) => ok && toast("Saved")); }
+    else if (f.id === "cc-paid") {
+      const unpaid = data.events.filter((e) => e.going.includes(me) && each(e) && !evPay(me, e.id));
+      const pick = fd("what") === "all" ? unpaid : unpaid.filter((e) => e.id === fd("what"));
+      const st = status(me, balances()), sum = Math.round(pick.reduce((t, e) => t + each(e), 0));
+      op({ op: "markPaid", name: me, hkd: fd("what") === "all" ? Math.min(sum, st.left) : sum, evs: pick.map((e) => e.id), method: fd("method") }).then((ok) => ok && toast(`Thanks! ${data.payTo} will confirm once it arrives`)); }
     else if (f.dataset.setprice) { op({ op: "setPrice", ev: f.dataset.setprice, price: fd("price") }).then((ok) => ok && toast("Price saved for everyone")); }
     else if (f.dataset.addperson) { const ev = f.dataset.addperson, name = fd("name"); op({ op: "addPerson", name }).then(() => op({ op: "toggle", ev, name, on: true })); }
   });

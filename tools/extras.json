@@ -23,7 +23,7 @@
      "school"
     ]
    ],
-   "note": "Arrived early? Weekends are for exploring. Here's a harbour plan, with more ideas below.",
+   "note": "Arrived early? Here's a suggested plan for the day, with more ideas below.",
    "go": {
     "label": "Everything across the harbour",
     "tab": "sights",
@@ -35,71 +35,17 @@
     "where": "kowloon"
    },
    "route": {
-    "title": "TST harbourfront, afternoon to night",
-    "steps": [
-     [
-      "⛴️",
-      "Star Ferry from Wan Chai or Central to Tsim Sha Tsui (10 min)",
-      "Star Ferry"
-     ],
-     [
-      "🏛️",
-      "1881 Heritage, the old Marine Police HQ",
-      "1881 Heritage"
-     ],
-     [
-      "🖼️",
-      "K11 Musea, or the HK Museum of Art (free; open late on weekends)",
-      "Hong Kong Museum of Art"
-     ],
-     [
-      "🌃",
-      "TST Promenade for sunset and the 8pm Symphony of Lights",
-      "Tsim Sha Tsui Promenade"
-     ],
-     [
-      "🥢",
-      "Dinner across the harbour: dim sum at Yat Tung Heen or wonton noodles at Mak Man Kee",
-      "Yat Tung Heen"
-     ]
-    ]
-   },
-   "outings": true
-  },
-  {
-   "day": "Sun",
-   "date": "15 Nov",
-   "iso": "2026-11-15",
-   "slots": [
-    [
-     "All day",
-     "Meals on your own",
-     "school"
-    ],
-    [
-     "Lunch",
-     "🥟 Dim sum lunch",
-     "ours",
-     "sun-dimsum"
-    ]
-   ],
-   "go": {
-    "label": "Dim sum spots",
-    "tab": "city",
-    "q": "dim sum"
-   },
-   "route": {
-    "title": "Suggested Sunday: harbour, dim sum & the Peak",
+    "title": "Harbour, the Peak & TST (full day)",
     "steps": [
      [
       "🚋",
-      "Ding ding tram west from Causeway Bay (tap Visa/Mastercard or Octopus)",
+      "Ding ding tram west from Causeway Bay: Admiralty for Dim Sum Library (about 15 min) or Sheung Wan for Lin Heung Lau (about 30 min). Tap Visa/Mastercard or Octopus",
       "Ding Ding tram"
      ],
      [
       "🥟",
-      "Class dim sum lunch",
-      "Dim Sum Library"
+      "Dim sum lunch on the way, e.g. Maxim's Palace at City Hall (no booking, go before noon)",
+      "Maxim's Palace"
      ],
      [
       "🚡",
@@ -129,6 +75,31 @@
     ]
    },
    "outings": true
+  },
+  {
+   "day": "Sun",
+   "date": "15 Nov",
+   "iso": "2026-11-15",
+   "slots": [
+    [
+     "All day",
+     "Meals on your own",
+     "school"
+    ],
+    [
+     "Lunch",
+     "🥟 Dim sum lunch",
+     "ours",
+     "sun-dimsum"
+    ]
+   ],
+   "go": {
+    "label": "Dim sum spots",
+    "tab": "city",
+    "q": "dim sum"
+   },
+   "outings": true,
+   "note": "After dim sum, pick something from the ideas below."
   },
   {
    "day": "Mon",
@@ -317,18 +288,12 @@
     ],
     [
      "Evening",
-     "Tram party, then bar hopping",
+     "🚋 Tram party",
      "ours",
      "wed-tram"
     ]
    ],
    "go": {
-    "label": "LKF & Soho bars",
-    "tab": "city",
-    "mood": "drinks",
-    "where": "central"
-   },
-   "go2": {
     "label": "Dinner near Booth",
     "tab": "city",
     "mood": "dinner",
@@ -370,8 +335,8 @@
    "slots": [
     [
      "Morning",
-     "Breakfast on your own. Idea: early dim sum at Sun Hing or Luk On Kui (see below)",
-     "optional"
+     "Breakfast on your own",
+     "school"
     ],
     [
      "10:00–11:30",
@@ -433,22 +398,7 @@
       ]
      ]
     ]
-   ],
-   "route": {
-    "title": "Early dim sum breakfast: two picks",
-    "steps": [
-     [
-      "🥟",
-      "Sun Hing (新興食家), Kennedy Town: 3am–4pm daily, about 5 min by taxi from Booth. Bring cash",
-      "Sun Hing"
-     ],
-     [
-      "🫖",
-      "Luk On Kui (六安居), Sheung Wan: old-school trolley dim sum from 6am, run by the former Lin Heung Kui team. Bring cash",
-      "Luk On Kui"
-     ]
-    ]
-   }
+   ]
   },
   {
    "day": "Fri",
@@ -616,32 +566,8 @@
     "tab": "sights",
     "mood": "daytrip"
    },
-   "route": {
-    "title": "Free day: pick a day trip",
-    "steps": [
-     [
-      "🚠",
-      "Ngong Ping 360 cable car to the Big Buddha",
-      "Big Buddha"
-     ],
-     [
-      "🐼",
-      "Ocean Park pandas, best in the morning",
-      "Ocean Park"
-     ],
-     [
-      "⛴️",
-      "Ferry from Central Pier 5 (35–55 min)",
-      "Cheung Chau"
-     ],
-     [
-      "🏰",
-      "Full day; MTR to Disneyland Resort",
-      "Disneyland"
-     ]
-    ]
-   },
-   "outings": true
+   "outings": true,
+   "note": "Free day! Pick an idea below, from city walks to day trips."
   }
  ],
  "tips": [
@@ -2233,6 +2159,46 @@
  },
  "outings": [
   {
+   "title": "Harbour, the Peak & TST (full day)",
+   "steps": [
+    [
+     "🚋",
+     "Ding ding tram west from Causeway Bay: Admiralty for Dim Sum Library (about 15 min) or Sheung Wan for Lin Heung Lau (about 30 min). Tap Visa/Mastercard or Octopus",
+     "Ding Ding tram"
+    ],
+    [
+     "🥟",
+     "Dim sum lunch on the way, e.g. Maxim's Palace at City Hall (no booking, go before noon)",
+     "Maxim's Palace"
+    ],
+    [
+     "🚡",
+     "Peak Tram up from Garden Road (10 min walk or a short taxi). HK$82 one way / HK$116 return. Buy e-tickets at thepeak.com.hk to skip the ticket queue",
+     "Victoria Peak"
+    ],
+    [
+     "🍦",
+     "At the Peak: egg tart gelato at Messina, or milk tea at Men Wah Bing Teng",
+     "Men Wah Bing Teng"
+    ],
+    [
+     "🌆",
+     "Walk the flat Peak Circle Walk (about 3.5 km / 2 miles). Lugard Road Lookout has the best view",
+     "Peak Circle Walk"
+    ],
+    [
+     "⛴️",
+     "Back down, then the Star Ferry from Central to Tsim Sha Tsui",
+     "Star Ferry"
+    ],
+    [
+     "🖼️",
+     "K11 Musea or the HK Museum of Art, then the TST Promenade for the 8pm Symphony of Lights",
+     "Tsim Sha Tsui Promenade"
+    ]
+   ]
+  },
+  {
    "title": "TST harbourfront, afternoon to night",
    "steps": [
     [
@@ -2259,46 +2225,6 @@
      "🥢",
      "Dinner across the harbour: dim sum at Yat Tung Heen or wonton noodles at Mak Man Kee",
      "Yat Tung Heen"
-    ]
-   ]
-  },
-  {
-   "title": "Suggested Sunday: harbour, dim sum & the Peak",
-   "steps": [
-    [
-     "🚋",
-     "Ding ding tram west from Causeway Bay: Admiralty for Dim Sum Library (about 15 min) or Sheung Wan for Lin Heung Lau (about 30 min). Tap Visa/Mastercard or Octopus",
-     "Ding Ding tram"
-    ],
-    [
-     "🥟",
-     "Dim sum lunch at your pick (booked)",
-     "Dim Sum Library"
-    ],
-    [
-     "🚡",
-     "Peak Tram up from Garden Road (10 min walk or a short taxi). HK$82 one way / HK$116 return. Buy e-tickets at thepeak.com.hk to skip the ticket queue",
-     "Victoria Peak"
-    ],
-    [
-     "🍦",
-     "At the Peak: egg tart gelato at Messina, or milk tea at Men Wah Bing Teng",
-     "Men Wah Bing Teng"
-    ],
-    [
-     "🌆",
-     "Walk the flat Peak Circle Walk (about 3.5 km / 2 miles). Lugard Road Lookout has the best view",
-     "Peak Circle Walk"
-    ],
-    [
-     "⛴️",
-     "Back down, then the Star Ferry from Central to Tsim Sha Tsui",
-     "Star Ferry"
-    ],
-    [
-     "🖼️",
-     "K11 Musea or the HK Museum of Art, then the TST Promenade for the 8pm Symphony of Lights",
-     "Tsim Sha Tsui Promenade"
     ]
    ]
   },

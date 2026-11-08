@@ -613,42 +613,57 @@
     if (planDay == null) planDay = Math.max(0, PLAN.findIndex((d) => d.iso === today));
     const dayBtns = PLAN.map((d, i) => `<button class="pd${i === planDay ? " on" : ""}" data-planday="${i}"><b>${esc(d.day)}</b><span>${esc(d.date.split(" ")[0])}</span></button>`).join("");
     const row = (d, [t, v, kind, ev], j) => {
-      const key = slotKey(d.iso, v, ev), pickable = kind === "ours", on = !!mine[key];
+      // class events follow the shared list once you've picked your name in the class corner
+      const shared = ev && window.HK_CLASS?.going(ev);
+      const key = slotKey(d.iso, v, ev), pickable = kind === "ours", on = shared != null ? shared : !!mine[key];
       if (onlyMine && pickable && !on && !showHidden.has(d.iso)) return "";
       return `<div class="slotrow ${kind || "school"}${pickable && !on ? " off" : ""}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : ""}</span>`
         + `<span class="sv">${kind === "ours" ? "🎉 " : ""}${esc(v)}</span>`
         + (ev ? `<span class="evinfo" data-evinfo="${ev}"></span>` : "")
-        + (pickable ? `<button class="mine${on ? " on" : ""}" data-mine="${key}" aria-pressed="${on}" aria-label="${on ? "Remove from" : "Add to"} my plan">${on ? "✓ Going" : "+ Me"}</button>` : "")
+        + (pickable ? `<button class="mine${on ? " on" : ""}" data-mine="${key}" data-ev="${ev || ""}" data-on="${on ? 1 : 0}" aria-pressed="${on}" aria-label="${on ? "Remove from" : "Add to"} my plan">${on ? "✓ Going" : "+ Me"}</button>` : "")
         + `</div>`;
     };
-    const route = (r) => r ? `<details class="route"><summary>🗺️ ${esc(r.title)}</summary><ol>${r.steps.map(([em, text, q]) => {
+    const route = (r) => r ? `<details class="route" data-k="r:${esc(r.title)}"><summary>${/^day trip/i.test(r.title) ? "⛴️" : "🗺️"} ${esc(r.title)}</summary><ol>${r.steps.map(([em, text, q]) => {
       const p = q && findPlace(q);
       return `<li><span class="re">${em}</span><span>${esc(text)}${p ? ` <button class="rlink" data-jump="${p.id}">Map →</button>` : ""}</span></li>`;
     }).join("")}</ol></details>` : "";
-    const bus = (b) => b ? `<details class="bus"><summary>🚌 Shuttle bus times</summary>
+    const bus = (b, iso) => b ? `<details class="bus" data-k="bus"><summary>🚌 Shuttle bus times</summary>
       ${b.map(([title, rows]) => `<table class="bt"><caption>${esc(title)}</caption>${rows.map(([stop, time]) => `<tr><th>${esc(stop)}</th><td>${esc(time)}</td></tr>`).join("")}</table>`).join("")}
       <p class="muted small">Morning buses run every ~15 min. Times are for the first stop, and buses don't wait.</p></details>` : "";
-    const dayCard = (d, i) => `<li class="${i === planDay ? "sel" : ""}">
+    const dayCard = (d, i) => `<li class="${i === planDay ? "sel" : ""}" data-iso="${d.iso}">
       <div class="day"><small>${esc(d.date)}</small>${esc(d.day)}</div>
       ${d.slots.map((sl, j) => row(d, sl, j)).join("")}
       ${(() => { const n = onlyMine && !showHidden.has(d.iso) ? d.slots.filter(([, v, k, ev]) => k === "ours" && !mine[slotKey(d.iso, v, ev)]).length : 0;
         return n ? `<button class="hidden-n" data-showhidden="${d.iso}">+ ${n} more you haven't added · show</button>` : ""; })()}
       ${d.note ? `<p class="daynote">${esc(d.note)}</p>` : ""}
       ${bus(d.bus)}${route(d.route)}${(d.routes || []).map(route).join("")}
-      ${d.outings ? `<details class="route more"><summary>🧭 More outings to pick from</summary><div class="outs">${OUTINGS.filter((o) => o.title !== d.route?.title).map(route).join("")}</div></details>` : ""}
+      ${d.outings ? `<div class="ideas"><p class="ideas-h">🧭 ${d.route ? "More ideas" : "Ideas"} to pick from</p><div class="outs">${OUTINGS.filter((o) => o.title !== d.route?.title).map(route).join("")}</div></div>` : ""}
       ${[d.go, d.go2].filter(Boolean).map((g) => `<button class="go" data-go='${esc(JSON.stringify(g))}'>${esc(g.label)} →</button>`).join(" ")}
     </li>`;
+    // keep whatever boxes (shuttle, ideas) were open: the plan redraws when the class list refreshes
+    const openK = new Set([...document.querySelectorAll("#plan details[open][data-k]")].map((x) => `${x.closest("li[data-iso]")?.dataset.iso}|${x.dataset.k}`));
+    const y = window.scrollY;
     $("#plan").innerHTML = PLAN.map((d) => {
       // events classmates added in the class corner show up on their day too
       const extra = customEvents.filter((e) => e.iso === d.iso).map((e) => [e.when || "Anytime", `${e.title}${e.venue ? ` · ${e.venue}` : ""}`, "ours", e.id]);
-      return extra.length ? { ...d, slots: [...d.slots, ...extra] } : d;
+      if (!extra.length) return d;
+      // morning events go near the top of the day, the rest at the end
+      const am = extra.filter(([t]) => /morning|breakfast|\bam\b|^[5-9](:\d\d)?\s*am|^[5-9]:\d\d$/i.test(t));
+      const rest = extra.filter((x) => !am.includes(x));
+      const slots = [...d.slots];
+      slots.splice(Math.min(1, slots.length), 0, ...am);
+      return { ...d, slots: [...slots, ...rest] };
     }).map(dayCard).join("");
+    document.querySelectorAll("#plan details[data-k]").forEach((x) => { if (openK.has(`${x.closest("li[data-iso]")?.dataset.iso}|${x.dataset.k}`)) x.open = true; });
+    if (Math.abs(window.scrollY - y) > 2) window.scrollTo(0, y);
     $("#plandays").innerHTML = dayBtns;
     const nMine = Object.values(mine).filter(Boolean).length;
     $("#plan-mode").innerHTML = `<button class="${onlyMine ? "" : "on"}" data-onlymine="0">Everything</button><button class="${onlyMine ? "on" : ""}" data-onlymine="1">⭐ My week${nMine ? ` · ${nMine}` : ""}</button>`;
     window.HK_PRIVATE_RENDER?.();
   }
   let customEvents = [];
+  let replanQueued = false; // the class corner asks for a redraw when the shared list changes
+  window.HK_REPLAN = () => { if (replanQueued) return; replanQueued = true; requestAnimationFrame(() => { replanQueued = false; renderPlan(); }); };
   window.HK_CUSTOM_EVENTS = (list) => {
     const sig = JSON.stringify(list.map((e) => [e.id, e.iso, e.when, e.title, e.venue]));
     if (sig === window.HK_CUSTOM_EVENTS.sig) return;
@@ -666,7 +681,13 @@
   };
   document.addEventListener("click", (e) => {
     const m = e.target.closest("[data-mine]");
-    if (m) { const k = m.dataset.mine; mine[k] = !mine[k]; store.set(MLS, mine); renderPlan(); return; }
+    if (m) {
+      const k = m.dataset.mine, ev = m.dataset.ev, now = m.dataset.on !== "1";
+      mine[k] = now; store.set(MLS, mine);
+      if (ev && window.HK_CLASS?.going(ev) != null) window.HK_CLASS.tick(ev, now); // also ticks you on the shared list
+      else if (ev && now && window.HK_CLASS?.hint) window.HK_CLASS.hint();
+      renderPlan(); return;
+    }
     const sh = e.target.closest("[data-showhidden]");
     if (sh) { showHidden.add(sh.dataset.showhidden); renderPlan(); return; }
     const om = e.target.closest("[data-onlymine]");

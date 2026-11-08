@@ -147,7 +147,8 @@ export default async function handler(req, res) {
         const prev = cur ? JSON.parse(cur) : { payments: [] };
         // a classmate's "I've paid" is a heads-up; only the organiser (Rienno) can record a payment as received
         const confirmed = !!(org && b.confirmed);
-        prev.payments = [...(prev.payments || []), { hkd, method: clean(b.method, 30), at: Date.now(), confirmed, confirmedBy: confirmed ? by : undefined }];
+        const evs = Array.isArray(b.evs) ? b.evs.slice(0, 20).map((x) => clean(x, 40)).filter(Boolean) : [];
+        prev.payments = [...(prev.payments || []), { hkd, evs, method: clean(b.method, 30), at: Date.now(), confirmed, confirmedBy: confirmed ? by : undefined }];
         await redis([["HSET", `${P}settle`, name, JSON.stringify(prev)]]);
         break;
       }
