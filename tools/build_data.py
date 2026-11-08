@@ -468,6 +468,9 @@ for name, patch in EXTRAS.get("patch", {}).items():
         patch = dict(patch)
         if "name_override" in patch:
             p["name"] = patch.pop("name_override")
+        for c in patch.pop("add_category", []):
+            if c not in p.setdefault("category", []):
+                p["category"].append(c)
         p.update(patch)
     else:
         print("  ! patch target not found:", name)
@@ -654,18 +657,35 @@ for t in taste:
 RATINGS = json.loads((ROOT / "tools" / "research" / "ratings.json").read_text()) if (ROOT / "tools" / "research" / "ratings.json").exists() else {}
 for p in places:
     r = RATINGS.get(p["id"])
-    if r:
-        p["gRating"], p["gReviews"] = r["rating"], r["reviews"]
+    if not r:
+        continue
+    if r.get("rating"):
+        p["gRating"], p["gReviews"] = r["rating"], r.get("reviews") or 0
+    # OpenRice: its 5-point score, or a score from smile / OK / cry votes
+    orv = r.get("or_score")
+    sm, cr = r.get("or_smile") or 0, r.get("or_cry") or 0
+    ok = r.get("or_ok")
+    if ok is None and r.get("or_reviews"):
+        ok = max(0, r["or_reviews"] - sm - cr)  # OK faces = the rest of the reviews
+    ok = ok or 0
+    votes = sm + ok + cr
+    if not orv and votes >= 20:
+        orv = round((5 * sm + 3 * ok + 1 * cr) / votes, 1)
+        p["orSmile"] = round(100 * sm / votes)
+    if orv:
+        p["orScore"], p["orReviews"] = orv, r.get("or_reviews") or votes or 0
+        if r.get("or_url") and not p.get("openrice"):
+            p["openrice"] = r["or_url"]
 
 # Photos for sights, hikes and shopping (freely licensed, from Wikimedia Commons; see tools/photos/fetch_photos.py)
 PHOTOS = json.loads((ROOT / "tools" / "research" / "photos.json").read_text()) if (ROOT / "tools" / "research" / "photos.json").exists() else {}
-BAD_PHOTOS = {"tai-kwun", "hong-kong-museum-of-art", "dried-seafood-street-des-voeux-road-west", "shek-o-beach", "temple-street-yau-ma-tei-neon-walk-incl-"}
+BAD_PHOTOS = {"hong-kong-museum-of-art", "dried-seafood-street-des-voeux-road-west"}
 for p in places:
     ph = PHOTOS.get(p["id"])
     if ph and ph.get("src") and p["id"] not in BAD_PHOTOS:
         p["photo"] = {"src": ph["src"].split("?")[0], "page": (ph.get("page") or "").split("?")[0], "credit": ph.get("credit", ""), "license": ph.get("license", "")}
 
-out = {"HOME": home, "PLACES": places, "PLAN": EXTRAS["plan"], "TASTE": taste, "TIPS": tips}
+out = {"HOME": home, "PLACES": places, "OUTINGS": EXTRAS.get("outings", []), "PLAN": EXTRAS["plan"], "TASTE": taste, "TIPS": tips}
 (ROOT / "data.js").write_text("window.HK = " + json.dumps(out, ensure_ascii=False, indent=1) + ";\n")
 from collections import Counter
 print("wrote data.js:", Counter(p["tab"] for p in places), "taste:", len(taste))

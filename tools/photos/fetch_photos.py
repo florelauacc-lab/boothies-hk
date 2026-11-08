@@ -74,6 +74,35 @@ TITLES = {
     "pacific-place": "Pacific Place (Hong Kong)",
     "times-square": "Times Square (Hong Kong)",
     "harbour-city": "Harbour City (Hong Kong)",
+    "chi-lin-nunnery-nan-lian-garden": "Chi Lin Nunnery",
+    "wong-tai-sin-temple": "Wong Tai Sin Temple (Hong Kong)",
+    "kowloon-walled-city-park": "Kowloon Walled City Park",
+    "1881-heritage": "1881 Heritage",
+    "ping-shek-estate": "Ping Shek Estate",
+    "sham-shui-po-apliu-street-fuk-wing-street": "Apliu Street",
+    "graham-street-mural": "Graham Street",
+}
+
+
+# Hand-picked "postcard" shots where the article's lead image isn't what visitors come for
+OVERRIDE = {
+    "victoria-peak-the-peak-tram": "Hong Kong Skyline view from the peak 2017.jpg",
+    "star-ferry": "Star Ferry (Night Star) 20180409.jpg",
+    "tsim-sha-tsui-promenade-avenue-of-stars-": "Hong Kong Harbour Night 2019-06-11.jpg",
+    "tai-kwun": "Tai Kwun Parade Ground 201806.jpg",
+    "temple-street-yau-ma-tei-neon-walk-incl-": "Temple Street Night Market viewed from above November 2016.jpg",
+    "shek-o-beach": "Playa de Shek o beach.jpg",
+    "tin-hau-temple-stanley": "Stanley Tin Hau Temple.jpg",
+    "stanley-main-beach-dragon-boat-venue": "Stanley Main Beach 201307.jpg",
+    "stanley-waterfront-promenade-stanley-mai": "Stanley Promenade 2.JPG",
+    "stanley-ma-hang-park-pak-tai-temple": "Stanley Plaza Ma Hang Park Entrance 201307.jpg",
+    "repulse-bay-beach": "Repulse Bay Beach.jpeg",
+    "ocean-park-giant-pandas": "Panda Hongkong.jpg",
+    "dragon-s-back": "Dragon's Back Trail.jpg",
+    "peak-circle-walk-lugard-road-harlech-roa": "Lugard panorama cropped.jpg",
+    "m-museum-west-kowloon-waterfront": "M+, West Kowloon (Hong Kong).jpg",
+    "happy-valley-racecourse-wednesday-night-": "Happy Valley Racecourse.jpg",
+    "stanley-repulse-bay": "Stanley Market View1 201007.jpg",
 }
 
 
@@ -117,6 +146,8 @@ for part in chunks(titles):
             lead[pg["title"]] = pg["pageimage"]
     time.sleep(1)
 
+for pid, fn in OVERRIDE.items():
+    lead["__" + pid] = fn
 # 2) licence + author from Commons (non-free images on Wikipedia simply won't be found there, so they're skipped)
 files = sorted(set(lead.values()))
 meta = {}
@@ -138,7 +169,7 @@ for part in chunks(files):
 
 out = {}
 for pid, title in TITLES.items():
-    fn = lead.get(title)
+    fn = OVERRIDE.get(pid) or lead.get(title)
     m = meta.get(fn.replace(" ", "_")) if fn else None
     out[pid] = {**m, "title": title} if m and m.get("src") and m.get("license") else {"none": True, "title": title, "file": fn}
 OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1))

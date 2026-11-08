@@ -536,5 +536,71 @@
  "tsim-sha-tsui-promenade-avenue-of-stars-": {
   "zh": "尖沙咀海濱長廊（星光大道）",
   "manual": true
+ },
+ "t-ang-court": {
+  "zh": "油尖旺區北京道8號香港朗廷酒店",
+  "dist_m": 33,
+  "q": " &  The Langham Hong Kong, 8 Peking Road, Tsim Sha Tsui, Kowloon"
+ },
+ "yat-tung-heen-eaton-hk": {
+  "zh": "油尖旺區彌敦道380號逸東酒店",
+  "dist_m": 2,
+  "q": "B2/F, Eaton HK, 380 Nathan Road, Jordan, Kowloon"
+ },
+ "sun-tung-lok": {
+  "zh": "油尖旺區彌敦道132號美麗華廣場A座",
+  "dist_m": 5,
+  "q": " FoodLoft, Mira Place One, 132 Nathan Road, Tsim Sha Tsui, Kowloon"
+ },
+ "tai-ping-koon-granville-road": {
+  "zh": "油尖旺區加連威老道38-40號華暉大廈",
+  "dist_m": 60,
+  "q": " 40 Granville Road, Tsim Sha Tsui, Kowloon"
+ },
+ "sushi-wadatsumi-k11-musea": {
+  "zh": "油尖旺區梳士巴利道18號VICTORIA DOCKSIDEK11 ATELIER",
+  "dist_m": 65,
+  "q": " K11 Musea, 18 Salisbury Road, Tsim Sha Tsui, Kowloon"
+ },
+ "konjiki-hototogisu-h-zentre": {
+  "zh": "油尖旺區中間道15號H ZENTRE",
+  "dist_m": 15,
+  "q": " H Zentre, 15 Middle Road, Tsim Sha Tsui, Kowloon"
+ },
+ "hancham-korean-meathouse-prat-avenue": {
+  "zh": "油尖旺區寶勒巷6-8號盈豐商業大廈",
+  "dist_m": 14,
+  "q": " Winfield Commercial Building, 6-8A Prat Avenue, Tsim Sha Tsui, Kowloon"
+ },
+ "carna-by-dario-cecchini": {
+  "zh": "油尖旺區赫德道8A號MONDRIAN HONG KONG",
+  "dist_m": 13,
+  "q": " Mondrian Hong Kong, 8A Hart Avenue, Tsim Sha Tsui, Kowloon"
+ },
+ "chesa": {
+  "none": true
+ },
+ "y-shanghai-k11-musea": {
+  "zh": "油尖旺區梳士巴利道18號VICTORIA DOCKSIDEK11 ATELIER",
+  "dist_m": 65,
+  "q": " K11 Musea, 18 Salisbury Road, Tsim Sha Tsui, Kowloon"
+ },
+ "ho-ho-chak": {
+  "zh": "油尖旺區山林道38號銀座38",
+  "dist_m": 1,
+  "q": " Nathan Hill, 38 Hillwood Road, Tsim Sha Tsui, Kowloon"
+ },
+ "thai-pai-dong-jordan": {
+  "none": true
+ },
+ "mak-man-kee-noodle-shop": {
+  "zh": "油尖旺區白加士街51號",
+  "dist_m": 8,
+  "q": " 51 Parkes Street, Jordan, Kowloon"
+ },
+ "cheung-hing-kee-shanghai-pan-fried-buns": {
+  "zh": "油尖旺區樂道48號華源大廈",
+  "dist_m": 16,
+  "q": " 48 Lock Road, Tsim Sha Tsui, Kowloon"
  }
 }

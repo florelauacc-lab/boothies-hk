@@ -1,31 +1,54 @@
 {
 "kwan-kee-clay-pot-rice": {
 "rating": 3.8,
-"reviews": 1955
+"reviews": 1955,
+"or_url": "https://s.openrice.com/QrbS0B3G000~uqPfQAw"
 },
 "sun-hing-restaurant": {
 "rating": 4.1,
-"reviews": 2221
+"reviews": 2221,
+"or_reviews": 212,
+"or_smile": 126,
+"or_ok": 38,
+"or_cry": 14,
+"or_url": "https://www.openrice.com/en/hongkong/r-sun-hing-restaurant-western-district-guangdong-dim-sum-r125594"
 },
 "yuan-is-here": {
 "rating": 4.0,
-"reviews": 1270
+"reviews": 1270,
+"or_reviews": 373,
+"or_smile": 228,
+"or_ok": 57,
+"or_cry": 23,
+"or_url": "https://www.openrice.com/en/hongkong/r-yuan-is-here-western-district-taiwan-taiwanese-drink-r600121"
 },
 "pici": {
 "rating": 4.8,
-"reviews": 2131
+"reviews": 2131,
+"or_reviews": 77,
+"or_smile": 62,
+"or_ok": 6,
+"or_cry": 3,
+"or_url": "https://www.openrice.com/en/hongkong/r-pici-western-district-italian-r709928"
 },
 "chau-kee": {
 "rating": 4.1,
-"reviews": 932
+"reviews": 932,
+"or_reviews": 361,
+"or_smile": 238,
+"or_ok": 58,
+"or_cry": 9,
+"or_url": "https://www.openrice.com/en/hongkong/r-chau-kee-western-district-hong-kong-style-dim-sum-r440685"
 },
 "ping-pong-129-gintoner-a": {
 "rating": 4.3,
-"reviews": 675
+"reviews": 675,
+"or_url": "https://www.openrice.com/en/hongkong/r-ping-pong-129-gintoneria-western-district-spanish-wine-r174968"
 },
 "tequila-on-davis": {
 "rating": 4.2,
-"reviews": 313
+"reviews": 313,
+"or_url": "https://www.openrice.com/en/hongkong/r-tequila-on-davis-western-district-mexican-wine-r156402"
 },
 "tung-po-kitchen": {
 "rating": 3.9,
@@ -69,15 +92,18 @@
 },
 "twelve-flavors-kennedy-town": {
 "rating": 4.8,
-"reviews": 2015
+"reviews": 2015,
+"or_url": "https://www.openrice.com/en/hongkong/r-twelve-flavors-western-district-sichuan-r740313"
 },
 "arabica-kennedy-town": {
 "rating": 4.3,
-"reviews": 1324
+"reviews": 1324,
+"or_url": "https://www.openrice.com/en/hongkong/r-arabica-western-district-western-r611464"
 },
 "noc-coffee-co-sai-ying-pun": {
 "rating": 4.2,
-"reviews": 895
+"reviews": 895,
+"or_url": "https://www.openrice.com/en/hongkong/r-noc-coffee-co-western-district-western-r550233"
 },
 "cupping-room-central": {
 "rating": 4.0,
@@ -85,63 +111,96 @@
 },
 "barista-jam": {
 "rating": 4.3,
-"reviews": 495
+"reviews": 495,
+"or_url": "https://www.openrice.com/en/hongkong/r-barista-jam-sheung-wan-australian-r600872"
 },
 "australia-dairy-company": {
 "rating": 4.0,
-"reviews": 6472
+"reviews": 6472,
+"or_reviews": 3226,
+"or_smile": 1903,
+"or_ok": 570,
+"or_cry": 298,
+"or_url": "https://www.openrice.com/en/hongkong/r-australia-dairy-company-jordan-hong-kong-style-dessert-r90/"
 },
 "kam-wah-cafe": {
 "rating": 3.7,
-"reviews": 6498
+"reviews": 6498,
+"or_score": 3.5,
+"or_reviews": 1297,
+"or_url": "https://www.openrice.com/en/hongkong/r-kam-wah-cafe-prince-edward-hong-kong-style-r11293"
 },
 "tai-cheong-bakery": {
 "rating": 3.9,
-"reviews": 2973
+"reviews": 2973,
+"or_url": "https://www.openrice.com/en/hongkong/r-tai-cheong-bakery-central-hong-kong-style-bakery-r5522"
 },
 "lan-fong-yuen": {
 "rating": 3.7,
-"reviews": 4965
+"reviews": 4965,
+"or_url": "https://www.openrice.com/en/hongkong/r-lan-fong-yuen-central-hong-kong-style-noodles-rice-noodles-r1814"
 },
 "mido-caf": {
 "rating": 3.2,
-"reviews": 837
+"reviews": 837,
+"or_score": 3.0,
+"or_reviews": 559,
+"or_url": "https://www.openrice.com/en/hongkong/r-mido-cafe-yau-ma-tei-hong-kong-style-r2310"
 },
 "kam-s-roast-goose": {
 "rating": 4.1,
-"reviews": 6381
+"reviews": 6381,
+"or_url": "https://www.openrice.com/en/hongkong/r-kams-roast-goose-wan-chai-guangdong-chinese-bbq-r175339"
 },
 "yat-lok": {
 "rating": 3.4,
-"reviews": 6045
+"reviews": 6045,
+"or_url": "https://www.openrice.com/en/hongkong/r-yat-lok-restaurant-central-hong-kong-style-chinese-bbq-r78351"
 },
 "capital-caf": {
 "rating": 3.8,
-"reviews": 2263
+"reviews": 2263,
+"or_score": 3.5,
+"or_reviews": 710,
+"or_url": "https://www.openrice.com/en/hongkong/r-capital-cafe-wan-chai-hong-kong-style-r41467"
 },
 "joy-hing-roasted-meat": {
 "rating": 3.8,
-"reviews": 2870
+"reviews": 2870,
+"or_score": 3.5,
+"or_reviews": 705,
+"or_url": "https://www.openrice.com/en/hongkong/r-joy-hing-roasted-meat-wan-chai-guangdong-chinese-bbq-r1491"
 },
 "kai-kai-dessert": {
 "rating": 4.2,
-"reviews": 5906
+"reviews": 5906,
+"or_url": "https://www.openrice.com/en/hongkong/r-%E4%BD%B3%E4%BD%B3%E7%94%9C%E5%93%81-jordan-hong-kong-style-dessert-r140761"
 },
 "yee-shun-milk-company": {
 "rating": 4.0,
-"reviews": 1587
+"reviews": 1587,
+"or_url": "https://www.openrice.com/en/hongkong/r-yee-shun-dairy-company-causeway-bay-hong-kong-style-dessert-r11167"
 },
 "kung-wo-beancurd-factory": {
 "rating": 4.0,
-"reviews": 2928
+"reviews": 2928,
+"or_score": 3.5,
+"or_reviews": 858,
+"or_url": "https://www.openrice.com/en/hongkong/r-kung-wo-beancurd-factory-sham-shui-po-hong-kong-style-sweet-soup-r1754"
 },
 "hutong": {
 "rating": 4.3,
-"reviews": 1423
+"reviews": 1423,
+"or_reviews": 236,
+"or_smile": 157,
+"or_ok": 34,
+"or_cry": 13,
+"or_url": "https://www.openrice.com/en/hongkong/r-hutong-tsim-sha-tsui-sichuan-dim-sum-r734623"
 },
 "tin-lung-heen-the-ritz-carlton": {
 "rating": 4.5,
-"reviews": 865
+"reviews": 865,
+"or_url": "https://www.openrice.com/en/hongkong/r-tin-lung-heen-tsim-sha-tsui-guangdong-dim-sum-r50748"
 },
 "luen-wah-cafe": {
 "rating": 3.7,
@@ -314,5 +373,196 @@
 "mott-32": {
 "rating": 4.4,
 "reviews": 2489
+},
+"chicken-pot-smithfield-cooked-food-centr": {
+"or_url": "https://s.openrice.com/QrbS0OTG000~uqPfQAw"
+},
+"thai-zab-verr": {
+"or_reviews": 357,
+"or_smile": 333,
+"or_ok": 10,
+"or_cry": 2,
+"or_url": "https://www.openrice.com/zh/hongkong/r-%E6%B3%B0%E8%AA%87%E5%BC%B5-%E8%A5%BF%E7%92%B0-%E6%B3%B0%E5%9C%8B%E8%8F%9C-%E5%92%96%E5%96%B1-r769482"
+},
+"yeon-nam-dong": {
+"or_reviews": 212,
+"or_smile": 192,
+"or_ok": 5,
+"or_cry": 1,
+"or_url": "https://www.openrice.com/en/hongkong/r-yeon-nam-dong-western-district-korean-r876201"
+},
+"baka-ramen": {
+"or_reviews": 93,
+"or_smile": 85,
+"or_ok": 3,
+"or_cry": 1,
+"or_url": "https://www.openrice.com/en/hongkong/r-%E3%83%90%E3%82%AB%E9%BA%B5-western-district-japanese-ramen-r1137178"
+},
+"joy-tonight-grill": {
+"or_reviews": 51,
+"or_smile": 46,
+"or_ok": 0,
+"or_cry": 0,
+"or_url": "https://www.openrice.com/en/hongkong/r-%E6%AD%A1%E6%A8%82%E4%BB%8A%E7%87%92-western-district-hong-kong-style-skewer-r901068"
+},
+"tan-s-dessert-cafe": {
+"or_reviews": 76,
+"or_smile": 71,
+"or_ok": 0,
+"or_cry": 1,
+"or_url": "https://www.openrice.com/en/hongkong/r-tans-dessert-cafe-western-district-hong-kong-style-dessert-r1002561"
+},
+"shin-shu-japanese": {
+"or_reviews": 366,
+"or_smile": 331,
+"or_ok": 13,
+"or_cry": 6,
+"or_url": "https://www.openrice.com/en/hongkong/r-shin-shu-japanese-western-district-japanese-r169804"
+},
+"boom-grill": {
+"or_reviews": 59,
+"or_smile": 56,
+"or_ok": 0,
+"or_cry": 0,
+"or_url": "https://www.openrice.com/en/hongkong/r-boom-grill-western-district-sichuan-skewer-r868823"
+},
+"tarone": {
+"or_reviews": 138,
+"or_smile": 123,
+"or_ok": 3,
+"or_cry": 6,
+"or_url": "https://www.openrice.com/en/hongkong/r-%E8%8A%8B%E5%9C%93%E4%B8%80-western-district-taiwan-dessert-r767433"
+},
+"aya-tsukemen-ramen": {
+"or_reviews": 216,
+"or_smile": 128,
+"or_ok": 34,
+"or_cry": 15,
+"or_url": "https://www.openrice.com/zh/hongkong/r-%E5%BD%A9aya-%E8%A5%BF%E7%92%B0-%E6%97%A5%E6%9C%AC%E8%8F%9C-%E6%8B%89%E9%BA%B5-r545090"
+},
+"caf-malacca": {
+"or_reviews": 261,
+"or_smile": 141,
+"or_ok": 33,
+"or_cry": 14,
+"or_url": "https://www.openrice.com/en/hongkong/r-cafe-malacca-western-district-malaysian-r112143"
+},
+"a-one-pork-chop-spicy-rice-noodles": {
+"or_url": "https://www.openrice.com/en/hongkong/r-%E9%98%BF%E4%B8%80%E8%B1%AC%E6%89%92%E9%85%B8%E8%BE%A3%E7%B1%B3%E7%B6%AB-western-district-yunnan-noodles-rice-noodles-r48517"
+},
+"tamjai-yunnan-mixian": {
+"or_url": "https://www.openrice.com/en/hongkong/r-tamjai-yunnan-mixian-western-district-yunnan-noodles-rice-noodles-r649213"
+},
+"sweet-home-dessert": {
+"or_url": "https://www.openrice.com/zh/hongkong/r-%E7%94%9C%E5%AE%B6-%E8%A5%BF%E7%92%B0-%E6%B8%AF%E5%BC%8F-%E7%94%9C%E5%93%81-%E7%B3%96%E6%B0%B4-r663716"
+},
+"yee-kee-dessert": {
+"or_url": "https://www.openrice.com/zh/hongkong/r-%E5%AE%9C%E8%A8%98%E7%94%9C%E5%93%81-%E8%A5%BF%E7%92%B0-%E6%B8%AF%E5%BC%8F-%E7%94%9C%E5%93%81-%E7%B3%96%E6%B0%B4-r46267"
+},
+"coda-jazz-kissa": {
+"or_url": "https://www.openrice.com/en/hongkong/r-coda-jazz-kissa-western-district-western-r894243"
+},
+"crushed-wine-bar": {
+"or_url": "https://www.openrice.com/en/hongkong/r-crushed-wine-bar-western-district-western-wine-r852503"
+},
+"west-garden-lane": {
+"or_url": "https://www.openrice.com/zh/hongkong/r-%E8%A5%BF%E5%9C%92%E9%87%8C-%E8%A5%BF%E7%92%B0-%E8%A5%BF%E5%BC%8F-%E9%85%92-r860362"
+},
+"la-cave": {
+"or_url": "https://www.openrice.com/en/hongkong/r-la-cave-western-district-western-wine-r859224"
+},
+"house-of-culture": {
+"or_url": "https://www.openrice.com/en/hongkong/r-house-of-culture-western-district-international-r834498"
+},
+"mak-s-noodle": {
+"or_score": 3.5,
+"or_reviews": 245,
+"or_url": "https://www.openrice.com/en/hongkong/r-maks-noodle-central-guangdong-noodles-rice-noodles-r1998"
+},
+"twelve-flavors-d-aguilar-street-central": {
+"or_url": "https://www.openrice.com/en/hongkong/r-twelve-flavors-central-sichuan-r684588"
+},
+"bu-er-jiang-hu-cuisine": {
+"or_url": "https://www.openrice.com/en/hongkong/r-%E4%B8%8D%E4%BA%8C%E6%B1%9F%E6%B9%96%E8%8F%9C-causeway-bay-sichuan-r851209"
+},
+"kung-lee-sugar-cane-juice": {
+"or_score": 4.0,
+"or_reviews": 463,
+"or_url": "https://www.openrice.com/en/hongkong/r-kung-lee-sugarcane-juice-central-hong-kong-style-herbal-tea-r10072"
+},
+"lee-keung-kee-north-point-egg-waffles": {
+"or_url": "https://www.openrice.com/en/hongkong/r-%E5%88%A9%E5%BC%B7%E8%A8%98%E5%8C%97%E8%A7%92%E9%9B%9E%E8%9B%8B%E4%BB%94-north-point-hong-kong-style-r10742"
+},
+"bakehouse": {
+"or_url": "https://www.openrice.com/en/hongkong/r-bakehouse-causeway-bay-western-bakery-r749313"
+},
+"lock-cha-tea-house-hong-kong-park": {
+"or_url": "https://www.openrice.com/en/hongkong/r-lockcha-admiralty-guangdong-vegetarian-r13330"
+},
+"lock-cha-tea-house-tai-kwun": {
+"or_url": "https://www.openrice.com/en/hongkong/r-lockcha-central-guangdong-vegetarian-r577634"
+},
+"treehouse-causeway-bay": {
+"or_score": 4.5,
+"or_reviews": 60,
+"or_url": "https://www.openrice.com/en/hongkong/r-treehouse-causeway-bay-international-vegetarian-r799415"
+},
+"blue-bottle-coffee-central": {
+"or_url": "https://www.openrice.com/en/hongkong/r-blue-bottle-coffee-central-western-r666639"
+},
+"project-c": {
+"or_url": "https://www.openrice.com/en/hongkong/r-project-c-causeway-bay-western-r681254"
+},
+"en-coffee-causeway-bay": {
+"or_url": "https://www.openrice.com/en/hongkong/r-en-causeway-bay-western-r1121030"
+},
+"woodlands-indian-vegetarian-restaurant-w": {
+"or_url": "https://www.openrice.com/en/hongkong/r-woodlands-indian-vegetarian-restaurant-wan-chai-indian-meatless-menu-r781091"
+},
+"the-canton-library": {
+"or_url": "https://www.openrice.com/en/hongkong/r-the-canton-library-tsim-sha-tsui-guangdong-r1139869"
+},
+"aqua": {
+"or_url": "https://www.openrice.com/en/hongkong/r-aqua-tsim-sha-tsui-japanese-r735703"
+},
+"t-ang-court": {
+"rating": 4.2,
+"reviews": 627
+},
+"yat-tung-heen-eaton-hk": {
+"rating": 4.2,
+"reviews": 2193
+},
+"sun-tung-lok": {
+"rating": 4.1,
+"reviews": 479
+},
+"tai-ping-koon-granville-road": {
+"rating": 3.9,
+"reviews": 1389
+},
+"sushi-wadatsumi-k11-musea": {
+"rating": 4.5,
+"reviews": 104
+},
+"hancham-korean-meathouse-prat-avenue": {
+"rating": 4.1,
+"reviews": 551
+},
+"carna-by-dario-cecchini": {
+"rating": 4.7,
+"reviews": 525
+},
+"chesa": {
+"rating": 4.4,
+"reviews": 275
+},
+"thai-pai-dong-jordan": {
+"rating": 4.1,
+"reviews": 373
+},
+"mak-man-kee-noodle-shop": {
+"rating": 4.1,
+"reviews": 4007
 }
 }

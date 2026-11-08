@@ -1,201 +1,380 @@
-// Class corner: who's going, the bill split and study groups. The data ships encrypted (private.enc.js)
-// and is only decrypted in the browser with the class passcode, so names never sit on the open web.
+// Class corner: who's going to what, bills split evenly, extra events, settling up and study groups.
+// Live: a shared list on the server (/api/class) that anyone with the class passcode can edit.
+// Fallback: the encrypted snapshot (private.enc.js), read-only, decrypted in the browser with the passcode.
 (() => {
-  const L = window.HK_LOCKED;
   const root = document.getElementById("cc");
-  if (!L || !root) return;
+  if (!root) return;
   const $ = (s, el = document) => el.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const get = (k) => { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } };
-  const set = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* private mode */ } };
+  // remembered on this phone (localStorage, with a cookie copy in case the browser clears one of them)
+  const get = (k) => {
+    try { const v = localStorage.getItem(k); if (v != null) return JSON.parse(v); } catch (e) { /* private mode */ }
+    const m = document.cookie.match(new RegExp(`(?:^|; )${k}=([^;]*)`));
+    try { return m ? JSON.parse(decodeURIComponent(m[1])) : null; } catch (e) { return null; }
+  };
+  const set = (k, v) => {
+    try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* private mode */ }
+    document.cookie = `${k}=${encodeURIComponent(JSON.stringify(v))}; max-age=${60 * 60 * 24 * 400}; path=/; SameSite=Lax; Secure`;
+  };
+  const forget = (k) => { try { localStorage.removeItem(k); } catch (e) { /* ignore */ } document.cookie = `${k}=; max-age=0; path=/`; };
   const unb64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+  const toast = (m) => { const t = document.getElementById("toast"); if (!t) return; t.textContent = m; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2200); };
+  const DAYS = (window.HK?.PLAN || []).map((d) => [d.iso, `${d.day} ${d.date}`]);
+  // link an event's venue to the matching place in the guide, so one tap opens it on the map
+  const PLACES = (window.HK?.PLACES || []).filter((p) => p.status !== "closed");
+  const placeFor = (venue) => {
+    const v = String(venue || "").toLowerCase();
+    if (v.length < 4) return null;
+    return PLACES.find((p) => p.name.toLowerCase() === v) || PLACES.find((p) => { const n = p.name.toLowerCase().replace(/\s*\(.*\)$/, ""); return n.length >= 5 && v.includes(n); });
+  };
 
-  // Rough fallbacks (HKD is pegged at about 7.8 per USD); live rates replace these when online
+  /* ---------- money ---------- */
   let rates = { USD: 0.128, GBP: 0.099, EUR: 0.111, JPY: 19.6, CNY: 0.92, KRW: 179, SGD: 0.166, TWD: 4.1, CAD: 0.178, AUD: 0.196, INR: 10.9, ILS: 0.47, CHF: 0.103 };
-  let live = false;
-  const CUR = [["USD", "$"], ["GBP", "£"], ["EUR", "€"], ["JPY", "¥"], ["CNY", "CN¥"], ["KRW", "₩"], ["SGD", "S$"], ["TWD", "NT$"], ["CAD", "C$"], ["AUD", "A$"], ["INR", "₹"], ["ILS", "₪"], ["CHF", "CHF "]];
+  let liveRates = false;
+  const CUR = [["USD", "US$"], ["GBP", "£"], ["EUR", "€"], ["JPY", "¥"], ["CNY", "CN¥"], ["KRW", "₩"], ["SGD", "S$"], ["TWD", "NT$"], ["CAD", "C$"], ["AUD", "A$"], ["INR", "₹"], ["ILS", "₪"], ["CHF", "CHF "]];
   const SYM = Object.fromEntries(CUR);
   const cached = get("hk-rates-v1");
-  if (cached && Date.now() - cached.t < 12 * 3600e3) { rates = { ...rates, ...cached.r }; live = true; }
+  if (cached && Date.now() - cached.t < 12 * 3600e3) { rates = { ...rates, ...cached.r }; liveRates = true; }
   else fetch("https://open.er-api.com/v6/latest/HKD").then((r) => r.json()).then((j) => {
-    if (j && j.rates) { const r = Object.fromEntries(CUR.map(([c]) => [c, j.rates[c]]).filter(([, v]) => v)); rates = { ...rates, ...r }; live = true; set("hk-rates-v1", { t: Date.now(), r }); render(); }
+    if (j && j.rates) { const r = Object.fromEntries(CUR.map(([c]) => [c, j.rates[c]]).filter(([, v]) => v)); rates = { ...rates, ...r }; liveRates = true; set("hk-rates-v1", { t: Date.now(), r }); if (data) render(); }
   }).catch(() => {});
-
-  let data = null;
-  let me = get("hk-me-v1") || "";
-  let cur = get("hk-cur-v1") || "USD";
   const hk = (n) => `HK$${Math.round(n).toLocaleString("en")}`;
   const fx = (n, c = cur) => { const v = n * rates[c]; return `${SYM[c]}${v >= 100 ? Math.round(v).toLocaleString("en") : v.toFixed(c === "JPY" || c === "KRW" ? 0 : 2)}`; };
-  // Tricount-style: bills are added after each event and split evenly between the people who went
   const total = (e) => (e.expenses || []).reduce((t, x) => t + (+x.hkd || 0), 0);
   const each = (e) => (total(e) && e.going.length ? total(e) / e.going.length : null);
-  function balances() {
+  const PAY_METHODS = ["PayPal / card", "Wise / bank", "FPS", "PayMe", "Cash"];
+
+  /* ---------- state ---------- */
+  let data = null, mode = "locked", pass = get("hk-pass-v1") || "";
+  let me = get("hk-me-v1") || "", cur = get("hk-cur-v1") || "USD";
+  let editing = null, busy = false;
+  const openEv = new Set();
+  const live = () => mode === "live";
+
+  function fromSnapshot(d) {
+    const ISO = { "sun-dimsum": "2026-11-15", "mon-hotpot": "2026-11-16", "wed-tram": "2026-11-18", "thu-dpd": "2026-11-19", "thu-duck": "2026-11-19" };
+    const time = (w) => String(w || "").replace(/^[A-Za-z]{3} \d{1,2} [A-Za-z]{3},?\s*/, "").replace(/^./, (c) => c.toUpperCase());
+    return { ...d, extra: d.extra || [], settle: {}, events: Object.entries(d.events).map(([id, e], i) => ({ id, iso: ISO[id], order: i, ...e, when: time(e.when), expenses: (e.expenses || []).map((x, j) => ({ id: `s${j}`, ...x })) })) };
+  }
+  async function decryptSnapshot(p) {
+    const L = window.HK_LOCKED; if (!L) throw new Error("no snapshot");
+    const enc = new TextEncoder();
+    const base = await crypto.subtle.importKey("raw", enc.encode(p), "PBKDF2", false, ["deriveKey"]);
+    const key = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: unb64(L.salt), iterations: L.iter, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+    return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: unb64(L.iv) }, key, unb64(L.ct))));
+  }
+  async function api(method, body) {
+    const r = await fetch("/api/class", { method, headers: { "Content-Type": "application/json", "X-Class-Pass": pass }, body: body ? JSON.stringify(body) : undefined, cache: "no-store" });
+    if (r.status === 401) throw Object.assign(new Error("wrong"), { code: 401 });
+    if (!r.ok) throw Object.assign(new Error((await r.json().catch(() => ({}))).error || `HTTP ${r.status}`), { code: r.status });
+    return r.json();
+  }
+  const msg = (t) => { const m = $("#cc-msg"); if (m) m.textContent = t; };
+  const WRONG = "That's not it. The passcode is pinned in the class WhatsApp group.";
+
+  async function unlock(p, quiet) {
+    pass = p.trim().toLowerCase();
+    try {
+      let s = await api("GET");
+      if (!s.seeded) { // first ever unlock: load the poll results into the shared list
+        const snap = fromSnapshot(await decryptSnapshot(pass));
+        try { s = await api("POST", { op: "seed", data: { ...snap, events: Object.fromEntries(snap.events.map((e) => [e.id, e])) } }); }
+        catch (err) { if (err.code === 409) s = await api("GET"); else throw err; } // someone else loaded it a moment ago
+      }
+      data = s; mode = "live";
+    } catch (e) {
+      if (e.code === 401) { if (quiet) forget("hk-pass-v1"); else msg(WRONG); return; }
+      try { data = fromSnapshot(await decryptSnapshot(pass)); mode = "static"; } // offline: read-only copy
+      catch (e2) { if (quiet) forget("hk-pass-v1"); else msg(WRONG); return; }
+    }
+    set("hk-pass-v1", pass);
+    render();
+  }
+
+  async function op(body, optimistic) {
+    if (!live()) { toast("You're offline, so changes can't be saved right now"); return; }
+    if (optimistic) { optimistic(); render(); }
+    busy = true;
+    try { data = await api("POST", { by: me, ...body }); }
+    catch (e) { toast(`Couldn't save: ${e.message}`); try { data = await api("GET"); } catch (e2) { /* keep local */ } }
+    finally { busy = false; render(); }
+  }
+  async function refresh() { if (live() && !busy && !editing && document.visibilityState === "visible" && !root.contains(document.activeElement)) { try { data = await api("GET"); render(); } catch (e) { /* ignore */ } } }
+  setInterval(refresh, 30000); // pick up other people's ticks
+  document.addEventListener("visibilitychange", refresh);
+
+  /* ---------- people & money owed ---------- */
+  // The list to tick against: everyone in the Becker section, plus anyone added
+  function roster() {
+    const out = [], seen = new Set();
+    (data.groups || []).forEach(([, ns]) => ns.forEach((n) => { const away = /\*$/.test(n), name = n.replace(/\*+$/, ""); if (!seen.has(name)) { seen.add(name); out.push({ name, away }); } }));
+    [data.payTo, ...(data.extra || []), ...data.events.flatMap((e) => e.going), ...data.events.flatMap((e) => e.expenses.map((x) => x.paidBy))]
+      .forEach((n) => { if (n && !seen.has(n)) { seen.add(n); out.push({ name: n, guest: true }); } });
+    return out.sort((a, b) => (a.away - b.away) || a.name.localeCompare(b.name));
+  }
+  const people = () => roster().filter((p) => !p.away).map((p) => p.name);
+  const payments = (n) => (data.settle?.[n]?.payments || []);
+  function balances() { // + means owed money, - means owes
     const b = {};
-    Object.values(data.events).forEach((e) => {
+    data.events.forEach((e) => {
       const s = each(e); if (!s) return;
       e.going.forEach((n) => { b[n] = (b[n] || 0) - s; });
       e.expenses.forEach((x) => { b[x.paidBy] = (b[x.paidBy] || 0) + (+x.hkd || 0); });
     });
     return b;
   }
-
-  async function unlock(pass, quiet) {
-    try {
-      const enc = new TextEncoder();
-      const base = await crypto.subtle.importKey("raw", enc.encode(pass.trim().toLowerCase()), "PBKDF2", false, ["deriveKey"]);
-      const key = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: unb64(L.salt), iterations: L.iter, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
-      const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: unb64(L.iv) }, key, unb64(L.ct));
-      data = JSON.parse(new TextDecoder().decode(pt));
-      set("hk-pass-v1", pass.trim().toLowerCase());
-      render();
-    } catch (e) {
-      if (!quiet) { const m = $("#cc-msg"); if (m) m.textContent = "That's not it. The passcode is pinned in the class WhatsApp group."; }
-      else localStorage.removeItem("hk-pass-v1");
-    }
+  function status(n, bal) {
+    const share = Math.max(0, -(bal[n] || 0));
+    const ps = payments(n);
+    const sent = ps.reduce((t, p) => t + p.hkd, 0), ok = ps.filter((p) => p.confirmed).reduce((t, p) => t + p.hkd, 0);
+    const left = Math.max(0, Math.round(share - sent));
+    const over = Math.max(0, Math.round(sent - share));
+    return { share, sent, ok, left, over, pending: ps.some((p) => !p.confirmed), settled: share > 0.5 && left === 0 && !!ps.length && ps.every((p) => p.confirmed) };
   }
 
-  function people() {
-    const s = new Set();
-    Object.values(data.events).forEach((e) => e.going.forEach((n) => s.add(n)));
-    return [...s].sort((a, b) => a.localeCompare(b));
-  }
-
+  /* ---------- render ---------- */
   function render() {
     if (!data) {
       root.innerHTML = `<div class="cc-lock">
         <h2>🔒 Class corner</h2>
-        <p class="muted">Who's coming to what, your share of each bill and the study groups. Enter the class passcode from the WhatsApp group.</p>
+        <p class="muted">Who's coming to what, your share of each bill, settling up and the study groups. Anyone in the class can tick names and add events. Enter the class passcode from the WhatsApp group.</p>
         <form id="cc-form" class="cc-form" autocomplete="off">
-          <input id="cc-pass" type="password" inputmode="text" autocapitalize="none" spellcheck="false" placeholder="Class passcode" aria-label="Class passcode" required>
+          <input id="cc-pass" type="password" autocapitalize="none" spellcheck="false" placeholder="Class passcode" aria-label="Class passcode" required>
           <button type="submit">Unlock</button>
         </form>
         <p id="cc-msg" class="cc-msg" role="status"></p>
       </div>`;
-      $("#cc-form").addEventListener("submit", (e) => { e.preventDefault(); $("#cc-msg").textContent = "Checking…"; unlock($("#cc-pass").value); });
       fillPlan();
       return;
     }
-    const evs = Object.entries(data.events);
-    const mine = evs.filter(([, e]) => e.going.includes(me));
-    // Sunday's dim sum has two venues: only auto-tick it when there's a single row for the event
-    if (me) window.HK_AUTO_MINE?.(mine.map(([id]) => id).filter((id) => id !== "sun-dimsum"));
-    const owed = mine.reduce((t, [, e]) => t + (each(e) || 0), 0);
-    const bal = balances();
-    const tbc = mine.filter(([, e]) => !each(e)).length;
-    const opts = people().map((n) => `<option${n === me ? " selected" : ""}>${esc(n)}</option>`).join("");
+    const evs = data.events, bal = balances(), ppl = roster();
+    const mine = evs.filter((e) => e.going.includes(me));
+    const st = me ? status(me, bal) : null;
+    const isPayer = me && me === data.payTo;
+    const opts = ppl.filter((p) => !p.away).map((p) => `<option${p.name === me ? " selected" : ""}>${esc(p.name)}</option>`).join("");
     const curOpts = CUR.map(([c]) => `<option${c === cur ? " selected" : ""}>${c}</option>`).join("");
     root.innerHTML = `<div class="cc-head">
         <h2>👥 Class corner</h2>
+        <span class="cc-mode ${mode}">${live() ? "● Shared with the class" : "Read-only (offline)"}</span>
         <button class="cc-lockbtn" id="cc-relock" type="button">Lock 🔒</button>
       </div>
       <div class="cc-me">
         <label>I'm <select id="cc-me" aria-label="Your name"><option value="">choose your name</option>${opts}</select></label>
-        <label>Show prices in <select id="cc-cur" aria-label="Currency">${curOpts}</select></label>
+        <label>Prices in <select id="cc-cur" aria-label="Currency">${curOpts}</select></label>
       </div>
-      ${me ? `<div class="cc-owe">
-        <div><small>${(bal[me] || 0) > 0.5 ? "You're owed" : "Your share so far"}</small><b>${(bal[me] || 0) > 0.5 ? `${hk(bal[me])} <span>≈ ${fx(bal[me])}</span>` : owed ? `${hk(owed)} <span>≈ ${fx(owed)}</span>` : "Nothing yet"}</b>
-        <p>${mine.length ? `You're on ${mine.length} event${mine.length > 1 ? "s" : ""}.${tbc ? ` ${tbc === mine.length ? "Bills" : `${tbc} bill${tbc > 1 ? "s" : ""}`} get added after the event and split evenly.` : ""}` : "You're not on any lists yet. Tell Florence in the group chat if that's wrong."}</p></div>
-      </div>` : ""}
-      <div class="cc-events">${evs.map(([id, e]) => {
-        const p = each(e), inIt = e.going.includes(me);
-        return `<details class="cc-ev${inIt ? " mine" : ""}" id="ev-${id}">
-          <summary><span class="t"><b>${esc(e.title)}</b><small>${esc(e.when)} · ${esc(e.venue)}</small></span>
-          <span class="n">${e.going.length} going${inIt ? " · ✓ you" : ""}<br><em>${p ? `${hk(p)} each ≈ ${fx(p)}` : "Split evenly after"}</em></span></summary>
-          ${p ? `<p class="cc-split">${e.expenses.map((x) => `${esc(x.what)} ${hk(+x.hkd)} (paid by ${esc(x.paidBy)})`).join(" + ")} ÷ ${e.going.length} people = <b>${hk(p)}</b> each · ${["USD", "GBP", "EUR", "JPY"].map((c) => fx(p, c)).join(" · ")}</p>` : `<p class="cc-split muted">The bill gets added here after the event, then split evenly between everyone who went.</p>`}
-          <div class="cc-names">${e.going.map((n) => `<span class="${n === me ? "me" : ""}">${esc(n)}</span>`).join("")}</div>
-        </details>`;
-      }).join("")}</div>
+      ${me ? myPlace(mine, st, bal, isPayer) : `<p class="muted">Pick your name to see your own events and what you owe.</p>`}
+      <h3 class="cc-h">🎉 Class events <small>tap one to tick who's going or add the bill</small></h3>
+      <div class="cc-events">${evs.map((e) => evCard(e, ppl)).join("")}</div>
+      ${live() ? `<details class="cc-add"><summary>➕ Add an event for the class</summary>
+        <form id="cc-newev" class="cc-grid-form">
+          <input name="title" placeholder="What (e.g. Dragon's Back hike)" required maxlength="70">
+          <select name="iso" aria-label="Day">${DAYS.map(([iso, l]) => `<option value="${iso}">${esc(l)}</option>`).join("")}</select>
+          <input name="when" placeholder="Time (e.g. 7pm)" maxlength="40">
+          <input name="venue" placeholder="Where (pick a place from the guide or type one)" maxlength="80" list="cc-places">
+          <datalist id="cc-places">${PLACES.filter((p) => ["city", "saiwan", "sights", "hikes", "shop"].includes(p.tab)).map((p) => `<option value="${esc(p.name)}">`).join("")}</datalist>
+          <button type="submit">Add event</button>
+        </form></details>` : ""}
+      ${settleUp(bal, isPayer)}
       ${overview(evs)}
-      <div class="cc-pay">
-        <h3>💸 Settle up</h3>
-        ${settle(bal)}
-        <p class="muted">${esc(data.payNote)}</p>
-        ${payButtons(me ? Math.max(0, -(bal[me] || 0)) : 0)}
-        <ul>${data.methods.map(([em, n, d]) => `<li><span>${em}</span><b>${esc(n)}</b> ${esc(d)}</li>`).join("")}</ul>
-        <p class="muted small">Prices in other currencies are ${live ? "today's rates" : "approximate"}. ${esc(data.payTo)} receives HKD.</p>
-      </div>
       <details class="cc-groups"><summary>📚 Becker study groups</summary>
-        <div class="cc-grid">${data.groups.map(([g, ns]) => `<div><h4>${esc(g)}</h4><ul>${ns.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`).join("")}</div>
-        <p class="muted small">${esc(data.groupsNote)}</p>
+        <div class="cc-grid">${(data.groups || []).map(([g, ns]) => `<div><h4>${esc(g)}</h4><ul>${ns.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`).join("")}</div>
+        <p class="muted small">${esc(data.groupsNote || "")}</p>
       </details>`;
-    $("#cc-me").addEventListener("change", (e) => { me = e.target.value; set("hk-me-v1", me); render(); });
-    $("#cc-cur").addEventListener("change", (e) => { cur = e.target.value; set("hk-cur-v1", cur); render(); });
-    $("#cc-relock").addEventListener("click", () => { data = null; localStorage.removeItem("hk-pass-v1"); render(); });
     fillPlan();
+    window.HK_CUSTOM_EVENTS?.(evs.filter((e) => e.id.startsWith("x-")));
+    if (me) window.HK_AUTO_MINE?.(mine.map((e) => e.id));
   }
 
-  // One-tap ways to pay. Rienno's details live only in the encrypted data; buttons appear once they're added.
+  // "My place": my events, my share of each, and paying it
+  function myPlace(mine, st, bal, isPayer) {
+    const owedToMe = (bal[me] || 0) > 0.5;
+    const rows = mine.map((e) => `<li><span>${esc(e.title)}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : `<small>bill to come</small>`}</b></li>`).join("");
+    let pay = "";
+    if (!owedToMe && st.left > 0) {
+      pay = `${payButtons(st.left)}
+        ${live() ? `<form class="cc-inline paid" id="cc-paid"><select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select><button type="submit">✓ I've paid ${hk(st.left)}</button></form>` : ""}`;
+    }
+    const mineP = payments(me).map((p, i) => `<li><span>Paid ${hk(p.hkd)} · ${esc(p.method || "")}</span><b class="${p.confirmed ? "ok" : "wait"}">${p.confirmed ? `✓ ${esc(data.payTo)} confirmed` : `Waiting for ${esc(data.payTo)}`}</b>${!p.confirmed && live() ? `<button type="button" class="cc-x" data-undopaid="${i}" aria-label="Undo">✕</button>` : ""}</li>`).join("");
+    return `<div class="cc-owe">
+      <div class="cc-owe-top"><div><small>${owedToMe ? "You're owed" : st.settled ? "All settled" : st.left ? "You owe" : st.pending ? "Paid" : "Your share so far"}</small>
+        <b>${owedToMe ? `${hk(bal[me])} <span>≈ ${fx(bal[me])}</span>` : st.settled ? "✓ Settled" : st.left ? `${hk(st.left)} <span>≈ ${fx(st.left)}</span>` : st.pending ? `Waiting for ${esc(data.payTo)} to confirm` : "HK$0"}</b>
+        ${st.over ? `<p class="small">You've paid ${hk(st.over)} more than your share (someone joined after you paid). ${esc(data.payTo)} can refund it or count it towards the next bill.</p>` : ""}
+        ${!owedToMe && st.left && st.left !== Math.round(st.share) ? `<p class="small">Of ${hk(st.share)} in total</p>` : ""}</div></div>
+      ${rows ? `<ul class="cc-mine">${rows}</ul>` : `<p>You're not on any lists yet. Open an event below and tap "I'm going".</p>`}
+      ${mineP ? `<ul class="cc-mine pays">${mineP}</ul>` : ""}
+      ${pay}
+      ${isPayer ? `<p class="small">You're collecting: confirm payments as they arrive in "Settle up" below.</p>` : ""}
+    </div>`;
+  }
+
+  function evCard(e, ppl) {
+    const p = each(e), inIt = e.going.includes(me), ed = editing === e.id;
+    const day = DAYS.find(([iso]) => iso === e.iso)?.[1];
+    const payerOpts = people().map((n) => `<option${n === data.payTo ? " selected" : ""}>${esc(n)}</option>`).join("");
+    return `<details class="cc-ev${inIt ? " mine" : ""}" id="ev-${e.id}" data-ev="${e.id}"${openEv.has(e.id) || ed ? " open" : ""}>
+      <summary><span class="t"><b>${esc(e.title)}</b><small>${esc([day, e.when].filter(Boolean).join(", "))}${e.venue ? ` · ${esc(e.venue)}` : ""}</small></span>
+      <span class="n">${e.going.length} going${inIt ? " · ✓ you" : ""}<br><em>${p ? `${hk(p)} each ≈ ${fx(p)}` : "split evenly after"}</em></span></summary>
+      ${placeFor(e.venue) ? `<button type="button" class="cc-venue" data-jump="${placeFor(e.venue).id}">📍 ${esc(placeFor(e.venue).name)} · map &amp; taxi card →</button>` : ""}
+      ${me && live() ? `<button type="button" class="cc-imin${inIt ? " on" : ""}" data-tick="${e.id}" data-name="${esc(me)}" data-on="${inIt ? 0 : 1}">${inIt ? "✓ I'm going · tap to undo" : "+ I'm going"}</button>` : ""}
+      ${ed
+        ? `<p class="cc-hint">Tap names to tick or untick · ${e.going.length} going</p>
+          <div class="cc-names edit">${ppl.map((x) => `<button type="button" class="${e.going.includes(x.name) ? "on" : ""}${x.away ? " away" : ""}" data-tick="${e.id}" data-name="${esc(x.name)}" data-on="${e.going.includes(x.name) ? 0 : 1}">${e.going.includes(x.name) ? "✓ " : ""}${esc(x.name)}${x.away ? " (not in HK)" : ""}</button>`).join("")}</div>
+          <form class="cc-inline" data-addperson="${e.id}"><input name="name" placeholder="Someone else (e.g. a partner)" maxlength="60" required><button type="submit">Add</button></form>
+          <button type="button" class="cc-done" data-edit="">Done</button>`
+        : `<div class="cc-names">${e.going.map((n) => `<span class="${n === me ? "me" : ""}">${esc(n)}</span>`).join("") || `<em class="muted">Nobody yet</em>`}</div>
+          ${live() ? `<button type="button" class="cc-editbtn" data-edit="${e.id}">✏️ Tick who's going</button>` : ""}`}
+      <div class="cc-bills">
+        <h4>Bill</h4>
+        ${e.expenses.length ? `<ul>${e.expenses.map((x) => `<li><span>${esc(x.what)} · paid by ${esc(x.paidBy)}</span><b>${hk(+x.hkd)}</b>${live() ? `<button type="button" class="cc-x" data-delexp="${e.id}" data-xid="${x.id}" aria-label="Remove bill">✕</button>` : ""}</li>`).join("")}</ul>
+          <p class="cc-split">${hk(total(e))} ÷ ${e.going.length} people = <b>${p ? hk(p) : "–"}</b> each${p ? ` · ${["USD", "GBP", "EUR", "JPY"].map((c) => fx(p, c)).join(" · ")}` : ""}</p>`
+          : `<p class="cc-split muted">Add the bill after the event. It's split evenly between everyone ticked.</p>`}
+        ${live() ? `<form class="cc-inline bill" data-addexp="${e.id}">
+          <input name="what" placeholder="What" maxlength="40" value="${e.expenses.length ? "" : "Dinner"}" aria-label="What">
+          <input name="hkd" type="number" inputmode="decimal" min="1" step="0.01" placeholder="HK$ total" required aria-label="Amount in HK$">
+          <select name="paidBy" aria-label="Paid by">${payerOpts}</select>
+          <button type="submit">Add bill</button></form>` : ""}
+      </div>
+      ${live() ? `<button type="button" class="cc-del" data-delev="${e.id}">🗑 Remove this event</button>` : ""}
+    </details>`;
+  }
+
   function payButtons(amt) {
     const L = data.payLinks || {};
     const a = Math.round(amt);
     const btns = [
-      L.paypal && `<a class="paybtn" href="${esc(L.paypal.replace(/\/$/, ""))}${a ? `/${a}HKD` : ""}" target="_blank" rel="noopener">💳 Pay ${a ? hk(a) : ""} by card or PayPal</a>`,
+      L.paypal && `<a class="paybtn" href="${esc(L.paypal.replace(/\/$/, ""))}${a ? `/${a}HKD` : ""}" target="_blank" rel="noopener">💳 Pay ${a ? hk(a) : ""} by card / PayPal</a>`,
       L.payme && `<a class="paybtn" href="${esc(L.payme)}" target="_blank" rel="noopener">📱 PayMe</a>`,
       L.fps && `<button class="paybtn" type="button" data-copy="${esc(L.fps)}">⚡ Copy FPS ID</button>`,
       L.bank && `<button class="paybtn" type="button" data-copy="${esc(L.bank)}">🌍 Copy bank details</button>`,
     ].filter(Boolean);
-    return btns.length ? `<div class="paybtns">${btns.join("")}</div>`
-      : `<p class="cc-split muted">Payment links coming soon. ${esc(data.payTo)}'s PayPal, FPS and bank details will appear here as one-tap buttons.</p>`;
-  }
-  document.addEventListener("click", (e) => {
-    const b = e.target.closest("[data-copy]");
-    if (!b) return;
-    (navigator.clipboard?.writeText(b.dataset.copy) || Promise.reject()).then(() => { b.textContent = "Copied ✓"; }, () => prompt("Copy this:", b.dataset.copy));
-  });
-
-  function settle(bal) {
-    const owe = Object.entries(bal).filter(([, v]) => v < -0.5).sort((a, b) => a[1] - b[1]);
-    const get = Object.entries(bal).filter(([, v]) => v > 0.5);
-    if (!owe.length) return `<p class="muted">Nothing to settle yet. Once bills are in, this shows exactly who owes what, like Tricount.</p>`;
-    return `<p>${get.map(([n, v]) => `<b>${esc(n)}</b> is owed ${hk(v)}`).join(" · ")}</p>
-      <ul class="cc-owes">${owe.map(([n, v]) => `<li class="${n === me ? "me" : ""}"><span>${esc(n)}</span><b>${hk(-v)}</b></li>`).join("")}</ul>`;
+    return btns.length ? `<div class="paybtns">${btns.join("")}</div>` : `<p class="cc-split muted">${esc(data.payTo)}'s payment details are coming soon.</p>`;
   }
 
-  // Everyone × every event, with each person's total: the "who owes what" sheet
+  // Who still owes what, who says they've paid, and what Rienno has confirmed
+  function settleUp(bal, isPayer) {
+    const L = data.payLinks || {};
+    const rows = people().filter((n) => n !== data.payTo).map((n) => ({ n, ...status(n, bal) })).filter((r) => r.share > 0.5 || r.sent);
+    const collector = Object.entries(bal).filter(([, v]) => v > 0.5);
+    const done = rows.filter((r) => r.settled).length;
+    const list = rows.length ? `<ul class="cc-settle">${rows.map((r) => {
+      const ps = payments(r.n);
+      const chip = (r.left ? `<em class="owe">Owes ${hk(r.left)}</em>` : r.settled ? `<em class="ok">✓ Settled</em>` : r.pending ? `<em class="wait">Paid, waiting for ${esc(data.payTo)}</em>` : "")
+        + (r.over ? ` <em class="wait">Overpaid ${hk(r.over)}</em>` : "");
+      const confirm = isPayer && live() ? ps.map((p, i) => p.confirmed
+        ? `<button type="button" class="cc-mini" data-unconfirm="${esc(r.n)}" data-i="${i}">✓ ${hk(p.hkd)} received · undo</button>`
+        : `<button type="button" class="cc-mini go" data-confirm="${esc(r.n)}" data-i="${i}">Confirm ${hk(p.hkd)} received (${esc(p.method || "")})</button>`).join("") : "";
+      return `<li class="${r.n === me ? "me" : ""}${r.settled ? " done" : ""}"><span class="nm">${esc(r.n)}</span><span class="amt">${hk(r.share)}</span>${chip}${confirm ? `<div class="cc-confirm">${confirm}</div>` : ""}</li>`;
+    }).join("")}</ul>` : `<p class="muted">Nothing to settle yet. Once a bill is added to an event, everyone's share shows here.</p>`;
+    return `<div class="cc-pay">
+      <h3 class="cc-h">💸 Settle up ${rows.length ? `<small>${done} of ${rows.length} settled</small>` : ""}</h3>
+      ${collector.length ? `<p>${collector.map(([n, v]) => `<b>${esc(n)}</b> paid ${hk(v + Math.max(0, -(bal[n] || 0)))} up front`).join(" · ")}</p>` : ""}
+      <p class="muted small">Paid? Tap "I've paid" in your box above. ${esc(data.payTo)} then confirms it here once the money arrives.</p>
+      ${list}
+      <details class="cc-how"><summary>How to pay ${esc(data.payTo)}</summary>
+        <p class="muted">${esc(data.payNote)}</p>
+        <ul>${(data.methods || []).map(([em, n, d]) => `<li><span>${em}</span><b>${esc(n)}</b> ${esc(d)}</li>`).join("")}</ul>
+        <p class="muted small">Other currencies are ${liveRates ? "today's rates" : "approximate"}. ${esc(data.payTo)} receives HKD.</p>
+      </details>
+      ${live() ? `<details class="cc-paysetup"><summary>Payment details (for ${esc(data.payTo)} to fill in)</summary>
+        <form id="cc-pay" class="cc-grid-form">
+          <input name="paypal" placeholder="PayPal.me link, e.g. https://paypal.me/name" value="${esc(L.paypal || "")}">
+          <input name="fps" placeholder="FPS ID or phone number" value="${esc(L.fps || "")}">
+          <input name="payme" placeholder="PayMe link" value="${esc(L.payme || "")}">
+          <input name="bank" placeholder="Bank: account name, bank, account no." value="${esc(L.bank || "")}">
+          <button type="submit">Save</button>
+        </form></details>` : ""}
+    </div>`;
+  }
+
   const SHORT = { "sun-dimsum": "Sun dim sum", "mon-hotpot": "Mon hotpot", "wed-tram": "Wed tram", "thu-dpd": "Thu dai pai dong", "thu-duck": "Thu duck" };
   function overview(evs) {
-    const ppl = people();
-    const tot = (n) => evs.reduce((t, [, e]) => t + (e.going.includes(n) ? each(e) || 0 : 0), 0);
-    const grand = evs.reduce((t, [, e]) => t + total(e), 0);
-    return `<details class="cc-all"><summary>📋 Full list: who's going to what</summary>
+    const ppl = people(), bal = balances();
+    const grand = evs.reduce((t, e) => t + total(e), 0);
+    return `<details class="cc-all"><summary>📋 Full list: everyone × every event</summary>
       <div class="cc-scroll"><table>
-        <thead><tr><th>Name</th>${evs.map(([id, e]) => `<th>${esc(SHORT[id] || e.title)}</th>`).join("")}<th>Share</th></tr></thead>
-        <tbody>${ppl.map((n) => `<tr class="${n === me ? "me" : ""}"><td>${esc(n)}</td>${evs.map(([, e]) => `<td>${e.going.includes(n) ? "✓" : ""}</td>`).join("")}<td>${tot(n) ? hk(tot(n)) : "–"}</td></tr>`).join("")}</tbody>
-        <tfoot><tr><td>${ppl.length} people</td>${evs.map(([, e]) => `<td>${e.going.length}<br><small>${total(e) ? hk(total(e)) : "bill after"}</small></td>`).join("")}<td>${grand ? hk(grand) : "–"}</td></tr></tfoot>
+        <thead><tr><th>Name</th>${evs.map((e) => `<th>${esc(SHORT[e.id] || e.title)}</th>`).join("")}<th>Share</th><th>Paid</th></tr></thead>
+        <tbody>${ppl.map((n) => { const s = status(n, bal); return `<tr class="${n === me ? "me" : ""}"><td>${esc(n)}</td>${evs.map((e) => `<td>${live() ? `<button type="button" class="cc-cell${e.going.includes(n) ? " on" : ""}" data-tick="${e.id}" data-name="${esc(n)}" data-on="${e.going.includes(n) ? 0 : 1}" aria-label="${esc(n)}: ${esc(e.title)}">${e.going.includes(n) ? "✓" : ""}</button>` : e.going.includes(n) ? "✓" : ""}</td>`).join("")}<td>${s.share ? hk(s.share) : "–"}</td><td>${s.settled ? "✓✓" : s.sent ? "✓" : ""}</td></tr>`; }).join("")}</tbody>
+        <tfoot><tr><td>Going</td>${evs.map((e) => `<td>${e.going.length}<br><small>${total(e) ? hk(total(e)) : "bill after"}</small></td>`).join("")}<td>${grand ? hk(grand) : "–"}</td><td></td></tr></tfoot>
       </table></div>
+      <p class="muted small">${live() ? "Tap a box to tick or untick. " : ""}Paid: ✓ = says they've paid, ✓✓ = ${esc(data.payTo)} confirmed.</p>
       <button type="button" class="cc-csv" id="cc-csv">Copy as spreadsheet (CSV)</button>
     </details>`;
   }
-  document.addEventListener("click", (e) => {
-    if (e.target.id !== "cc-csv" || !data) return;
-    const evs = Object.entries(data.events);
-    const rows = [["Name", ...evs.map(([id, ev]) => SHORT[id] || ev.title), "Share (HKD)"]];
-    people().forEach((n) => rows.push([n, ...evs.map(([, ev]) => (ev.going.includes(n) ? "1" : "")), Math.round(evs.reduce((t, [, ev]) => t + (ev.going.includes(n) ? each(ev) || 0 : 0), 0)) || ""]));
-    rows.push(["Bill HKD", ...evs.map(([, ev]) => total(ev) || ""), ""]);
-    const csv = rows.map((r) => r.map((x) => `"${String(x).replace(/"/g, '""')}"`).join(",")).join("\n");
-    (navigator.clipboard?.writeText(csv) || Promise.reject()).then(() => { e.target.textContent = "Copied ✓ Paste into Sheets or Excel"; }, () => prompt("Copy this:", csv));
-  });
 
-  // the week plan shows a one-line summary under each booked event
+  // the week plan shows a one-line summary under each class event
   function fillPlan() {
     document.querySelectorAll("[data-evinfo]").forEach((el) => {
-      const e = data && data.events[el.dataset.evinfo];
+      const e = data && data.events.find((x) => x.id === el.dataset.evinfo);
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
-      el.innerHTML = `<button class="evlock open" data-cclink="${el.dataset.evinfo}">👥 ${e.going.length} going${e.going.includes(me) ? " · ✓ you" : ""} · ${p ? `${hk(p)} each` : "split evenly after"}</button>`;
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${e.going.includes(me) ? " · ✓ you" : ""} · ${p ? `${hk(p)} each` : "split evenly after"}</button>`;
     });
   }
-  document.addEventListener("click", (e) => {
-    const b = e.target.closest("[data-cclink]");
-    if (!b) return;
-    const d = document.getElementById(`ev-${b.dataset.cclink}`);
-    if (d) d.open = true;
-    (d || root).scrollIntoView({ behavior: "smooth", block: "center" });
-    if (!d) setTimeout(() => $("#cc-pass")?.focus(), 400);
-  });
   window.HK_PRIVATE_RENDER = fillPlan;
 
+  /* ---------- events ---------- */
+  root.addEventListener("toggle", (e) => {
+    const d = e.target; if (!d.matches?.("details[data-ev]")) return;
+    if (d.open) openEv.add(d.dataset.ev); else openEv.delete(d.dataset.ev);
+  }, true);
+  document.addEventListener("click", (e) => {
+    const t = e.target;
+    const cl = t.closest("[data-cclink]");
+    if (cl) {
+      if (cl.dataset.cclink !== "1") openEv.add(cl.dataset.cclink);
+      if (data) render();
+      const d = document.getElementById(`ev-${cl.dataset.cclink}`);
+      (d || root).scrollIntoView({ behavior: "smooth", block: "center" });
+      if (!d) setTimeout(() => $("#cc-pass")?.focus(), 400);
+      return;
+    }
+    if (!root.contains(t)) return;
+    const tick = t.closest("[data-tick]");
+    if (tick) {
+      const ev = tick.dataset.tick, name = tick.dataset.name, on = tick.dataset.on === "1";
+      const E = data.events.find((x) => x.id === ev);
+      op({ op: "toggle", ev, name, on }, () => { E.going = on ? [...new Set([...E.going, name])].sort((a, b) => a.localeCompare(b)) : E.going.filter((n) => n !== name); });
+      return;
+    }
+    const ed = t.closest("[data-edit]");
+    if (ed) { editing = ed.dataset.edit || null; if (editing) openEv.add(editing); render(); return; }
+    const dx = t.closest("[data-delexp]");
+    if (dx) { if (confirm("Remove this bill?")) op({ op: "delExpense", ev: dx.dataset.delexp, xid: dx.dataset.xid }); return; }
+    const de = t.closest("[data-delev]");
+    if (de) { const E = data.events.find((x) => x.id === de.dataset.delev); if (confirm(`Remove "${E.title}" for everyone?`)) op({ op: "delEvent", ev: E.id }); return; }
+    const cf = t.closest("[data-confirm],[data-unconfirm]");
+    if (cf) { const n = cf.dataset.confirm || cf.dataset.unconfirm; op({ op: cf.dataset.confirm ? "confirmPaid" : "unconfirmPaid", name: n, i: +cf.dataset.i }); return; }
+    const up = t.closest("[data-undopaid]");
+    if (up) { if (confirm("Undo this payment?")) op({ op: "undoPaid", name: me, i: +up.dataset.undopaid }); return; }
+    if (t.id === "cc-relock") { data = null; mode = "locked"; forget("hk-pass-v1"); render(); return; }
+    const cp = t.closest("[data-copy]");
+    if (cp) { (navigator.clipboard?.writeText(cp.dataset.copy) || Promise.reject()).then(() => { cp.textContent = "Copied ✓"; }, () => prompt("Copy this:", cp.dataset.copy)); return; }
+    if (t.id === "cc-csv" && data) {
+      const evs = data.events, bal = balances();
+      const rows = [["Name", ...evs.map((ev) => SHORT[ev.id] || ev.title), "Share (HKD)", "Paid (HKD)", "Confirmed"]];
+      people().forEach((n) => { const s = status(n, bal); rows.push([n, ...evs.map((ev) => (ev.going.includes(n) ? "1" : "")), Math.round(s.share) || "", s.sent || "", s.settled ? "yes" : ""]); });
+      rows.push(["Bill HKD", ...evs.map((ev) => total(ev) || ""), "", "", ""]);
+      const csv = rows.map((r) => r.map((x) => `"${String(x).replace(/"/g, '""')}"`).join(",")).join("\n");
+      (navigator.clipboard?.writeText(csv) || Promise.reject()).then(() => { t.textContent = "Copied ✓ Paste into Sheets or Excel"; }, () => prompt("Copy this:", csv));
+    }
+  });
+  document.addEventListener("change", (e) => {
+    if (e.target.id === "cc-me") { me = e.target.value; set("hk-me-v1", me); render(); }
+    if (e.target.id === "cc-cur") { cur = e.target.value; set("hk-cur-v1", cur); render(); }
+  });
+  document.addEventListener("submit", (e) => {
+    const f = e.target;
+    if (!root.contains(f)) return;
+    e.preventDefault();
+    const fd = (k) => f.elements[k]?.value?.trim() || "";
+    if (f.id === "cc-form") { msg("Checking…"); unlock(fd("cc-pass") || $("#cc-pass").value); }
+    else if (f.id === "cc-newev") { op({ op: "addEvent", title: fd("title"), iso: fd("iso"), when: fd("when"), venue: fd("venue") }).then(() => toast("Event added for everyone")); }
+    else if (f.id === "cc-pay") { op({ op: "setPay", paypal: fd("paypal"), fps: fd("fps"), payme: fd("payme"), bank: fd("bank") }).then(() => toast("Saved")); }
+    else if (f.id === "cc-paid") { const s = status(me, balances()); op({ op: "markPaid", name: me, hkd: s.left, method: fd("method") }).then(() => toast(`Thanks! ${data.payTo} will confirm once it arrives`)); }
+    else if (f.dataset.addexp) { op({ op: "addExpense", ev: f.dataset.addexp, what: fd("what"), hkd: fd("hkd"), paidBy: fd("paidBy") }); }
+    else if (f.dataset.addperson) { const ev = f.dataset.addperson, name = fd("name"); op({ op: "addPerson", name }).then(() => op({ op: "toggle", ev, name, on: true })); }
+  });
+
   render();
-  const saved = get("hk-pass-v1");
-  if (saved) unlock(saved, true);
+  if (pass) unlock(pass, true);
 })();

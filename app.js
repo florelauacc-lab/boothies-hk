@@ -1,5 +1,5 @@
 (() => {
-  const { HOME, PLACES, PLAN, TASTE = [], TIPS = [] } = window.HK;
+  const { HOME, PLACES, PLAN, TASTE = [], TIPS = [], OUTINGS = [] } = window.HK;
 
   const C = { pink: "#ff3e8a", cyan: "#2ee6ff", gold: "#ffc44d", lime: "#9dff6a", violet: "#a77bff", orange: "#ff8a3d" };
   const FOOD_MOODS = [
@@ -24,6 +24,7 @@
         { k: "architecture", label: "Cool buildings", em: "🏢", c: C.violet },
         { k: "beach", label: "Beaches", em: "🏖️", c: C.cyan },
         { k: "daytrip", label: "Day trips", em: "⛴️", c: C.lime },
+        { k: "photo", label: "Photo spots", em: "📸", c: C.pink },
         { k: "free", label: "Free", em: "🆓", c: C.lime },
         { k: "near-campus", label: "Near Booth", em: "🎓", c: C.orange },
       ],
@@ -56,7 +57,7 @@
   const EXPLORE = new Set(["sights", "hikes", "shop"]);
   const WHERE = [
     ["all", "anywhere"], ["saiwan", "near Booth (Sai Wan)"], ["central", "in Central & Soho"],
-    ["cwb", "near the Park Lane"], ["south", "in Stanley & the south 🛶"], ["kowloon", "across the harbour"],
+    ["cwb", "near the Park Lane"], ["south", "in Stanley & the south 🛶"], ["kowloon", "across the harbour (TST & Kowloon)"],
   ];
   function whereOf(p) {
     const a = `${p.area} ${p.addressEn || ""}`.toLowerCase();
@@ -79,14 +80,14 @@
   const KIND_EMOJI = {
     "Dim sum": "🥟", "Roast meats & noodles": "🍜", "Cha chaan teng & cafés": "🧋", "Cantonese & seafood": "🥢",
     "Dessert & sweets": "🍧", "Japanese": "🍣", "Korean": "🥩", "Thai & SE Asian": "🌶️", "Western & Med": "🍝",
-    "Vegan & vegetarian": "🥬", "Cocktails": "🍸", "Wine bars": "🍷", "Beer & pubs": "🍺", "Jazz & live music": "🎷",
+    "Vegan & vegetarian": "🥬", "Regional Chinese": "🥟", "Cocktails": "🍸", "Wine bars": "🍷", "Beer & pubs": "🍺", "Jazz & live music": "🎷",
     "Rooftops & views": "🌃", "Clubbing": "🪩",
   };
   let lastKinds = { list: [], counts: {} };
   // Six big groups for the map legend (the detailed kinds still power search)
   const GROUP_OF = {
     "Dim sum": "Local HK", "Roast meats & noodles": "Local HK", "Cha chaan teng & cafés": "Local HK", "Cantonese & seafood": "Local HK",
-    "Japanese": "Asian", "Korean": "Asian", "Thai & SE Asian": "Asian", "Taiwanese": "Asian",
+    "Japanese": "Asian", "Korean": "Asian", "Thai & SE Asian": "Asian", "Taiwanese": "Asian", "Regional Chinese": "Asian",
     "Western & Med": "Western",
     "Dessert & sweets": "Dessert",
     "Cocktails": "Bars", "Wine bars": "Bars", "Beer & pubs": "Bars", "Jazz & live music": "Bars", "Rooftops & views": "Bars", "Clubbing": "Bars",
@@ -187,9 +188,18 @@
   // HK locals rate harshly on Google (famous roast-goose shops sit at 3.5–4.0), so review volume counts as much as stars.
   // Places without Google numbers get a middle-of-the-pack score and our own picks decide.
   const PRIOR = 4.1, WEIGHT = 150;
-  const MED = (() => { const v = PLACES.map((p) => p.gReviews).filter(Boolean).sort((a, b) => a - b); return v[v.length >> 1] || 500; })();
+  // Google and OpenRice blended, each weighted by its number of reviews
+  function blend(p) {
+    const g = p.gRating ? [p.gRating, p.gReviews || 0] : null, o = p.orScore ? [p.orScore, p.orReviews || 0] : null;
+    if (!g && !o) return null;
+    const n = (g ? g[1] : 0) + (o ? o[1] : 0);
+    const r = n ? ((g ? g[0] * g[1] : 0) + (o ? o[0] * o[1] : 0)) / n : (g || o)[0];
+    return [r, n];
+  }
+  const MED = (() => { const v = PLACES.map((p) => blend(p)?.[1]).filter(Boolean).sort((a, b) => a - b); return v[v.length >> 1] || 500; })();
   function score(p) {
-    const v = p.gRating ? p.gReviews || 0 : MED, r = p.gRating || PRIOR;
+    const b = blend(p);
+    const v = b ? b[1] : MED, r = b ? b[0] : PRIOR;
     return (v / (v + WEIGHT)) * r + (WEIGHT / (v + WEIGHT)) * PRIOR + 0.3 * Math.log10(v + 1)
       + (p.essential ? 0.3 : 0) + (p.picked ? 0.2 : 0) + (p.classic || p.award ? 0.15 : 0)
       + (state.mood === "drinks" && p.topBar ? 0.4 : 0) - (p.lite ? 0.6 : 0);
@@ -223,7 +233,11 @@
   }
   // Broad picks ("dinner", "drinks", "sights") show the top few of each sub-category, so nobody has to tap "show more";
   // as soon as something narrower is chosen it's one ranked top-10 list.
-  const GROUP_TABS = { sights: ["iconic", "views", "culture", "daytrip", "night", "neon", "architecture", "beach"], hikes: ["easy", "moderate"], shop: ["luxury", "gifts", "malls", "local"] };
+  const GROUP_TABS = { sights: ["iconic", "photo", "views", "culture", "daytrip", "night", "neon", "beach"], hikes: ["easy", "moderate"], shop: ["luxury", "gifts", "malls", "local"] };
+  function groupLabel() {
+    if (FOOD.has(state.tab)) return { all: "eat & drink picks", drinks: "bars", lunch: "lunch picks", dinner: "dinner picks", dessert: "dessert picks", "late-night": "late-night picks" }[state.mood] || "picks";
+    return { sights: "sights", hikes: "hikes", shop: "shopping" }[state.tab] || "picks";
+  }
   function grouped(items) {
     if (state.flat || state.shortlist || state.q.trim() || me || state.kinds.size || state.style !== "any" || state.area !== "all" || state.section !== "all" || state.boothies || state.local) return null;
     let defs;
@@ -341,12 +355,14 @@
       .map(([k, l]) => `<button class="chip sec${state.section === k ? " on" : ""}" data-section="${esc(k)}">${esc(l)}</button>`).join("") : "");
   }
 
+  const kfmt = (n) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}k` : n);
   function card(p, i = 0) {
     const tab = TABS[p.tab];
     const tags = uniq([p.section, ...p.category.map((c) => moodOf(c, p.tab)?.label)]).map((t) => `<span class="tag">${esc(t)}</span>`).join("")
       + (p.veg ? `<span class="tag badge-veg">🥬 ${esc(p.veg)}</span>` : "") + (p.boothies ? `<span class="tag badge-boothies">👥 Boothies map</span>` : "") + (p.local ? `<span class="tag badge-local">🏮 Local favourite</span>` : "") + (p.topBar ? `<span class="tag badge-pick">★ Top bar${p.award ? ` · ${esc(p.award.split(/[;+(]/)[0].trim())}` : ""}</span>` : "") + (p.picked ? `<span class="tag badge-pick">★ Class pick</span>` : "") + (p.flags || []).map((f) => `<span class="tag warn">${esc(f)}</span>`).join("");
     const meta = [
-      p.gRating && `<span class="stars" title="Google rating">★ ${p.gRating.toFixed(1)}${p.gReviews ? ` <small>(${p.gReviews >= 1000 ? `${(p.gReviews / 1000).toFixed(p.gReviews >= 10000 ? 0 : 1)}k` : p.gReviews})</small>` : ""}</span>`,
+      p.gRating && `<span class="stars" title="Google rating">★ ${p.gRating.toFixed(1)}${p.gReviews ? ` <small>(${kfmt(p.gReviews)})</small>` : ""}</span>`,
+      p.orScore && `<span class="stars or" title="OpenRice, Hong Kong's local review site">OpenRice ${p.orSmile != null ? `😊 ${p.orSmile}%` : p.orScore.toFixed(1)}${p.orReviews ? ` <small>(${kfmt(p.orReviews)})</small>` : ""}</span>`,
       p.price && `<span class="price">${esc(p.price)}</span>`,
       `<span>${esc(p.cuisine)}</span>`,
       `<span>${esc(p.area)}</span>`,
@@ -408,12 +424,13 @@
     const groups = grouped(items);
     if (groups) countHtml = `Top picks of each kind · ${countHtml}`;
     else if (items.length && !state.shortlist && !me) countHtml = `Most popular &amp; best rated first · ${countHtml}`;
+    if (backTo && !groups) countHtml = `<button class="back-btn" data-back="1">← Back to all ${esc(backTo.label)}</button> ${countHtml}`;
     $("#count").innerHTML = countHtml;
     const shown = groups ? groups.flatMap((g) => g.top) : items.slice(0, state.limit);
     const rest = items.length - shown.length;
     let i = 0;
     $("#grid").innerHTML = groups
-      ? groups.map((g) => `<div class="grp"><h3><span>${g.em}</span> ${esc(g.label)}</h3>${g.all.length > g.top.length ? `<button class="see-all" data-seeall="${esc(g.key)}">See top ${Math.min(10, g.all.length)} →</button>` : ""}</div>`
+      ? groups.map((g) => `<div class="grp"><h3><span>${g.em}</span> ${esc(g.label)}</h3>${g.all.length > g.top.length ? `<button class="see-all" data-seeall="${esc(g.key)}" data-label="${esc(groupLabel())}">See top ${Math.min(10, g.all.length)} →</button>` : ""}</div>`
         + g.top.map((p) => card(p, i++)).join("")).join("")
       : items.length ? shown.map(card).join("") + (rest > 0 ? `<button class="show-more" data-showmore="1">Show ${Math.min(rest, 10)} more <small>(${rest} more to see)</small></button>` : "")
       : state.shortlist
@@ -550,6 +567,14 @@
     $("#legend").innerHTML = `<span class="lg home">${homeLbl}</span>${chips}`;
   }
 
+  let backTo = null;
+  window.addEventListener("popstate", () => {
+    if (!backTo) return;
+    const b = backTo; backTo = null;
+    setTab(b.tab, { mood: b.mood, where: b.where });
+    state.style = b.style; render({ fit: true });
+    window.scrollTo({ top: contentTop(), behavior: "smooth" });
+  });
   const shownNow = () => { const it = filtered(), g = grouped(it); return g ? g.flatMap((x) => x.top) : it.slice(0, state.limit); };
   function focus(id, { fromMap = false, open = true } = {}) {
     const prev = state.active;
@@ -577,17 +602,19 @@
   /* ---------- week ---------- */
   // Week: official Becker schedule (🎓) + our own plans (🎉). Phones show one day at a time.
   let planDay = null;
-  const MLS = "hk-myplan-v1";
+  const MLS = "hk-myplan-v2"; // keys are day + event id (or the item text), so edits to the schedule don't shift ticks
+  const slotKey = (iso, v, ev) => `${iso}|${ev || v.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 40)}`;
   const mine = store.get(MLS) || {}; // "iso|slot" -> true when someone adds an optional or social item to their own plan
   let onlyMine = !!store.get("hk-onlymine-v1");
+  const showHidden = new Set();
   const findPlace = (q) => { const l = q.toLowerCase(); return live.find((p) => p.name.toLowerCase().includes(l)); };
   function renderPlan() {
     const today = new Date().toISOString().slice(0, 10);
     if (planDay == null) planDay = Math.max(0, PLAN.findIndex((d) => d.iso === today));
     const dayBtns = PLAN.map((d, i) => `<button class="pd${i === planDay ? " on" : ""}" data-planday="${i}"><b>${esc(d.day)}</b><span>${esc(d.date.split(" ")[0])}</span></button>`).join("");
     const row = (d, [t, v, kind, ev], j) => {
-      const key = `${d.iso}|${j}`, pickable = kind === "optional" || kind === "ours", on = !!mine[key];
-      if (onlyMine && pickable && !on) return "";
+      const key = slotKey(d.iso, v, ev), pickable = kind === "ours", on = !!mine[key];
+      if (onlyMine && pickable && !on && !showHidden.has(d.iso)) return "";
       return `<div class="slotrow ${kind || "school"}${pickable && !on ? " off" : ""}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : ""}</span>`
         + `<span class="sv">${kind === "ours" ? "🎉 " : ""}${esc(v)}</span>`
         + (ev ? `<span class="evinfo" data-evinfo="${ev}"></span>` : "")
@@ -598,26 +625,41 @@
       const p = q && findPlace(q);
       return `<li><span class="re">${em}</span><span>${esc(text)}${p ? ` <button class="rlink" data-jump="${p.id}">Map →</button>` : ""}</span></li>`;
     }).join("")}</ol></details>` : "";
-    const bus = (b) => b ? `<details class="bus"><summary>🚌 Shuttle bus</summary><ul>${b.map((x) => `<li>${esc(x)}</li>`).join("")}</ul><p class="muted small">Times are for the first stop. Buses don't wait, so be there on time.</p></details>` : "";
+    const bus = (b) => b ? `<details class="bus"><summary>🚌 Shuttle bus times</summary>
+      ${b.map(([title, rows]) => `<table class="bt"><caption>${esc(title)}</caption>${rows.map(([stop, time]) => `<tr><th>${esc(stop)}</th><td>${esc(time)}</td></tr>`).join("")}</table>`).join("")}
+      <p class="muted small">Morning buses run every ~15 min. Times are for the first stop, and buses don't wait.</p></details>` : "";
     const dayCard = (d, i) => `<li class="${i === planDay ? "sel" : ""}">
       <div class="day"><small>${esc(d.date)}</small>${esc(d.day)}</div>
       ${d.slots.map((sl, j) => row(d, sl, j)).join("")}
+      ${(() => { const n = onlyMine && !showHidden.has(d.iso) ? d.slots.filter(([, v, k, ev]) => k === "ours" && !mine[slotKey(d.iso, v, ev)]).length : 0;
+        return n ? `<button class="hidden-n" data-showhidden="${d.iso}">+ ${n} more you haven't added · show</button>` : ""; })()}
       ${d.note ? `<p class="daynote">${esc(d.note)}</p>` : ""}
-      ${bus(d.bus)}${route(d.route)}
+      ${bus(d.bus)}${route(d.route)}${(d.routes || []).map(route).join("")}
+      ${d.outings ? `<details class="route more"><summary>🧭 More outings to pick from</summary><div class="outs">${OUTINGS.filter((o) => o.title !== d.route?.title).map(route).join("")}</div></details>` : ""}
       ${[d.go, d.go2].filter(Boolean).map((g) => `<button class="go" data-go='${esc(JSON.stringify(g))}'>${esc(g.label)} →</button>`).join(" ")}
     </li>`;
-    $("#plan").innerHTML = PLAN.map(dayCard).join("");
+    $("#plan").innerHTML = PLAN.map((d) => {
+      // events classmates added in the class corner show up on their day too
+      const extra = customEvents.filter((e) => e.iso === d.iso).map((e) => [e.when || "Anytime", `${e.title}${e.venue ? ` · ${e.venue}` : ""}`, "ours", e.id]);
+      return extra.length ? { ...d, slots: [...d.slots, ...extra] } : d;
+    }).map(dayCard).join("");
     $("#plandays").innerHTML = dayBtns;
     const nMine = Object.values(mine).filter(Boolean).length;
     $("#plan-mode").innerHTML = `<button class="${onlyMine ? "" : "on"}" data-onlymine="0">Everything</button><button class="${onlyMine ? "on" : ""}" data-onlymine="1">⭐ My week${nMine ? ` · ${nMine}` : ""}</button>`;
     window.HK_PRIVATE_RENDER?.();
   }
+  let customEvents = [];
+  window.HK_CUSTOM_EVENTS = (list) => {
+    const sig = JSON.stringify(list.map((e) => [e.id, e.iso, e.when, e.title, e.venue]));
+    if (sig === window.HK_CUSTOM_EVENTS.sig) return;
+    window.HK_CUSTOM_EVENTS.sig = sig; customEvents = list; renderPlan();
+  };
   // The class corner knows which booked events you said yes to in the poll: tick those for you
   // (anything you've ticked or unticked yourself stays as you left it)
   window.HK_AUTO_MINE = (evIds) => {
     let changed = false;
-    PLAN.forEach((d) => d.slots.forEach(([, , , ev], j) => {
-      const k = `${d.iso}|${j}`;
+    PLAN.forEach((d) => d.slots.forEach(([, v, , ev]) => {
+      const k = slotKey(d.iso, v, ev);
       if (ev && evIds.includes(ev) && mine[k] === undefined) { mine[k] = true; changed = true; }
     }));
     if (changed) { store.set(MLS, mine); renderPlan(); }
@@ -625,6 +667,8 @@
   document.addEventListener("click", (e) => {
     const m = e.target.closest("[data-mine]");
     if (m) { const k = m.dataset.mine; mine[k] = !mine[k]; store.set(MLS, mine); renderPlan(); return; }
+    const sh = e.target.closest("[data-showhidden]");
+    if (sh) { showHidden.add(sh.dataset.showhidden); renderPlan(); return; }
     const om = e.target.closest("[data-onlymine]");
     if (om) { onlyMine = om.dataset.onlymine === "1"; store.set("hk-onlymine-v1", onlyMine); renderPlan(); return; }
     const b = e.target.closest("[data-planday]");
@@ -758,8 +802,12 @@
       return;
     }
     if (e.target.closest("[data-go-list]")) { window.scrollTo({ top: contentTop(), behavior: "smooth" }); return; }
+    if (e.target.closest("[data-back]")) { history.back(); return; }
     const sa = e.target.closest("[data-seeall]");
     if (sa) {
+      // remember where we came from so "← Back" (and the phone's back gesture) returns to the grouped view
+      backTo = { tab: state.tab, mood: state.mood, where: state.where, style: state.style, label: sa.dataset.label || "" };
+      history.pushState({ seeall: 1 }, "", location.hash);
       const [t, v] = sa.dataset.seeall.split(/:(.*)/);
       if (t === "mood" && FOOD.has(state.tab)) { setTab("city", { mood: v, keepWhere: true }); }
       else if (t === "mood") { state.mood = v; state.limit = 10; render(); }
@@ -787,6 +835,7 @@
       state.limit = startLimit(state.tab); state.flat = false;
       if (t.dataset.tab) {
         if (t.dataset.group === "explore" && EXPLORE.has(state.tab)) return;
+        backTo = null;
         setTab(t.dataset.tab);
         const top = contentTop();
         if (window.scrollY > top + 5 || window.scrollY < top - 5) window.scrollTo({ top, behavior: "smooth" });

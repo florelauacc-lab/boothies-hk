@@ -22,7 +22,49 @@
      "Hotel check-in from 3pm",
      "school"
     ]
-   ]
+   ],
+   "note": "Arrived early? Weekends are for exploring. Here's a harbour plan, with more ideas below.",
+   "go": {
+    "label": "Everything across the harbour",
+    "tab": "sights",
+    "where": "kowloon"
+   },
+   "go2": {
+    "label": "Eat in TST",
+    "tab": "city",
+    "where": "kowloon"
+   },
+   "route": {
+    "title": "TST harbourfront, afternoon to night",
+    "steps": [
+     [
+      "⛴️",
+      "Star Ferry from Wan Chai or Central to Tsim Sha Tsui (10 min)",
+      "Star Ferry"
+     ],
+     [
+      "🏛️",
+      "1881 Heritage, the old Marine Police HQ",
+      "1881 Heritage"
+     ],
+     [
+      "🖼️",
+      "K11 Musea, or the HK Museum of Art (free; open late on weekends)",
+      "Hong Kong Museum of Art"
+     ],
+     [
+      "🌃",
+      "TST Promenade for sunset and the 8pm Symphony of Lights",
+      "Tsim Sha Tsui Promenade"
+     ],
+     [
+      "🥢",
+      "Dinner across the harbour: dim sum at Yat Tung Heen or wonton noodles at Mak Man Kee",
+      "Yat Tung Heen"
+     ]
+    ]
+   },
+   "outings": true
   },
   {
    "day": "Sun",
@@ -36,38 +78,32 @@
     ],
     [
      "Lunch",
-     "Dim sum option A: Dim Sum Library, Pacific Place (modern, polished)",
-     "ours",
-     "sun-dimsum"
-    ],
-    [
-     "Lunch",
-     "Dim sum option B: Lin Heung Lau, Sheung Wan (old-school trolleys, very local)",
+     "🥟 Dim sum lunch",
      "ours",
      "sun-dimsum"
     ]
    ],
    "go": {
-    "label": "Dim Sum Library",
+    "label": "Dim sum spots",
     "tab": "city",
-    "q": "Dim Sum Library"
+    "q": "dim sum"
    },
    "route": {
     "title": "Suggested Sunday: harbour, dim sum & the Peak",
     "steps": [
      [
       "🚋",
-      "Ding ding tram west from Causeway Bay: Admiralty for Dim Sum Library (about 15 min) or Sheung Wan for Lin Heung Lau (about 30 min). Tap Visa/Mastercard or Octopus",
+      "Ding ding tram west from Causeway Bay (tap Visa/Mastercard or Octopus)",
       "Ding Ding tram"
      ],
      [
       "🥟",
-      "Dim sum lunch at your pick (booked)",
+      "Class dim sum lunch",
       "Dim Sum Library"
      ],
      [
       "🚡",
-      "Peak Tram up from Garden Road (10 min walk or short taxi from Admiralty). Buy tickets online to skip the queue",
+      "Peak Tram up from Garden Road (10 min walk or a short taxi). HK$82 one way / HK$116 return. Buy e-tickets at thepeak.com.hk to skip the ticket queue",
       "Victoria Peak"
      ],
      [
@@ -92,12 +128,7 @@
      ]
     ]
    },
-   "go2": {
-    "label": "Lin Heung Lau",
-    "tab": "city",
-    "q": "Lin Heung Lau"
-   },
-   "note": "Pick the one you'd like and tell us in the group chat. We'll book."
+   "outings": true
   },
   {
    "day": "Mon",
@@ -126,7 +157,7 @@
     ],
     [
      "Evening",
-     "A Smoking Affair: hotpot + karaoke",
+     "Hotpot + karaoke (A Smoking Affair)",
      "ours",
      "mon-hotpot"
     ]
@@ -142,9 +173,45 @@
     "q": "Smoking Affair"
    },
    "bus": [
-    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
-    "Back: campus → Sai Ying Pun / HKU / Park Lane 1:30pm",
-    "Dragon boating: campus → Stanley 1:15pm (2 buses) · Stanley → hotel or Admiralty MTR 3:45pm"
+    [
+     "To campus (morning)",
+     [
+      [
+       "🏨 Park Lane",
+       "7:45–8:15"
+      ],
+      [
+       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "8:00–8:15"
+      ]
+     ]
+    ],
+    [
+     "Back (lunchtime)",
+     [
+      [
+       "Campus → HKU → SYP → Park Lane",
+       "1:30pm"
+      ]
+     ]
+    ],
+    [
+     "🛶 Dragon boating",
+     [
+      [
+       "Campus → Stanley",
+       "1:15pm"
+      ],
+      [
+       "Stanley → Park Lane",
+       "3:45pm"
+      ],
+      [
+       "Stanley → Admiralty MTR",
+       "3:45pm"
+      ]
+     ]
+    ]
    ]
   },
   {
@@ -190,8 +257,32 @@
     "where": "saiwan"
    },
    "bus": [
-    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
-    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+    [
+     "To campus (morning)",
+     [
+      [
+       "🏨 Park Lane",
+       "7:45–8:15"
+      ],
+      [
+       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "8:00–8:15"
+      ]
+     ]
+    ],
+    [
+     "Back (evening)",
+     [
+      [
+       "🏨 Campus → Park Lane",
+       "8:30pm · 9:00pm"
+      ],
+      [
+       "🚇 Campus → HKU → Sai Ying Pun",
+       "8:30pm"
+      ]
+     ]
+    ]
    ]
   },
   {
@@ -244,8 +335,32 @@
     "where": "saiwan"
    },
    "bus": [
-    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
-    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+    [
+     "To campus (morning)",
+     [
+      [
+       "🏨 Park Lane",
+       "7:45–8:15"
+      ],
+      [
+       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "8:00–8:15"
+      ]
+     ]
+    ],
+    [
+     "Back (evening)",
+     [
+      [
+       "🏨 Campus → Park Lane",
+       "8:30pm · 9:00pm"
+      ],
+      [
+       "🚇 Campus → HKU → Sai Ying Pun",
+       "8:30pm"
+      ]
+     ]
+    ]
    ]
   },
   {
@@ -255,12 +370,7 @@
    "slots": [
     [
      "Morning",
-     "Breakfast on your own",
-     "school"
-    ],
-    [
-     "7:30–9:00",
-     "Early dim sum (yum cha) breakfast: Sun Hing, Kennedy Town (near Booth, famous custard buns) or Luk On Kui, Sheung Wan",
+     "Breakfast on your own. Idea: early dim sum at Sun Hing or Luk On Kui (see below)",
      "optional"
     ],
     [
@@ -280,13 +390,13 @@
     ],
     [
      "Evening",
-     "Dai pai dong dinner: Peng Leng Jeng (Soho)",
+     "Dai pai dong dinner",
      "ours",
      "thu-dpd"
     ],
     [
      "Evening",
-     "Or Peking duck: Peking Garden",
+     "Or Peking duck dinner",
      "ours",
      "thu-duck"
     ]
@@ -297,20 +407,44 @@
     "q": "Peng Leng"
    },
    "bus": [
-    "To campus: Park Lane 9:15–11:15 · Sai Ying Pun (B3) & HKU (B2) 9:30–11:30",
-    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+    [
+     "To campus (late start)",
+     [
+      [
+       "🏨 Park Lane",
+       "9:15–11:15"
+      ],
+      [
+       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "9:30–11:30"
+      ]
+     ]
+    ],
+    [
+     "Back (evening)",
+     [
+      [
+       "🏨 Campus → Park Lane",
+       "8:30pm · 9:00pm"
+      ],
+      [
+       "🚇 Campus → HKU → Sai Ying Pun",
+       "8:30pm"
+      ]
+     ]
+    ]
    ],
    "route": {
-    "title": "Early dim sum breakfast picks",
+    "title": "Early dim sum breakfast: two picks",
     "steps": [
      [
       "🥟",
-      "Sun Hing (新興食家), Kennedy Town: opens 3am, 5 min by taxi from Booth. Get the molten custard buns (流沙包)",
+      "Sun Hing (新興食家), Kennedy Town: 3am–4pm daily, about 5 min by taxi from Booth. Bring cash",
       "Sun Hing"
      ],
      [
       "🫖",
-      "Luk On Kui (六安居), Sheung Wan: the old Lin Heung Kui team, trolleys and big round tables",
+      "Luk On Kui (六安居), Sheung Wan: old-school trolley dim sum from 6am, run by the former Lin Heung Kui team. Bring cash",
       "Luk On Kui"
      ]
     ]
@@ -359,8 +493,32 @@
     "where": "saiwan"
    },
    "bus": [
-    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
-    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+    [
+     "To campus (morning)",
+     [
+      [
+       "🏨 Park Lane",
+       "7:45–8:15"
+      ],
+      [
+       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "8:00–8:15"
+      ]
+     ]
+    ],
+    [
+     "Back (evening)",
+     [
+      [
+       "🏨 Campus → Park Lane",
+       "8:30pm · 9:00pm"
+      ],
+      [
+       "🚇 Campus → HKU → Sai Ying Pun",
+       "8:30pm"
+      ]
+     ]
+    ]
    ]
   },
   {
@@ -405,8 +563,36 @@
     "q": "Nanhai"
    },
    "bus": [
-    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
-    "Closing dinner: campus → MTR 6:45pm · campus → hotel 6:45pm (2 buses) · campus → restaurant 7:00pm"
+    [
+     "To campus (morning)",
+     [
+      [
+       "🏨 Park Lane",
+       "7:45–8:15"
+      ],
+      [
+       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "8:00–8:15"
+      ]
+     ]
+    ],
+    [
+     "🍽️ Closing dinner",
+     [
+      [
+       "Campus → MTR",
+       "6:45pm"
+      ],
+      [
+       "Campus → Park Lane",
+       "6:45pm"
+      ],
+      [
+       "Campus → restaurant",
+       "7:00pm"
+      ]
+     ]
+    ]
    ]
   },
   {
@@ -425,47 +611,48 @@
      "school"
     ]
    ],
-   "route": {
-    "title": "Free day? Pick a day trip",
-    "steps": [
-     [
-      "🚠",
-      "Big Buddha by cable car, then Tai O fishing village (full day, Lantau)",
-      "Big Buddha"
-     ],
-     [
-      "🐼",
-      "Ocean Park pandas, then a pick-your-own seafood dinner in Ap Lei Chau",
-      "Ocean Park"
-     ],
-     [
-      "⛴️",
-      "Cheung Chau island: car-free, snacks and beaches (ferry from Central Pier 5)",
-      "Cheung Chau"
-     ],
-     [
-      "🏰",
-      "Hong Kong Disneyland (full day)",
-      "Disneyland"
-     ]
-    ]
-   },
    "go": {
     "label": "All day trips",
     "tab": "sights",
     "mood": "daytrip"
-   }
+   },
+   "route": {
+    "title": "Free day: pick a day trip",
+    "steps": [
+     [
+      "🚠",
+      "Ngong Ping 360 cable car to the Big Buddha",
+      "Big Buddha"
+     ],
+     [
+      "🐼",
+      "Ocean Park pandas, best in the morning",
+      "Ocean Park"
+     ],
+     [
+      "⛴️",
+      "Ferry from Central Pier 5 (35–55 min)",
+      "Cheung Chau"
+     ],
+     [
+      "🏰",
+      "Full day; MTR to Disneyland Resort",
+      "Disneyland"
+     ]
+    ]
+   },
+   "outings": true
   }
  ],
  "tips": [
   {
    "title": "Survival kit",
    "items": [
-    "💳 Contactless Visa or Mastercard works on the MTR, buses, the tram and in most chains, but not always in small local shops or taxis.",
-    "💵 Carry some cash (about HK$300–500). The really local spots are often cash only: cha chaan tengs, dai pai dongs, markets and minibuses.",
-    "🐙 Octopus gets you into all the local places cards don't. On iPhone, add an Octopus card in Apple Wallet and top it up with Apple Pay. Or buy a card at any MTR station.",
-    "🚕 Taking a taxi? Open any place and tap \"Show the driver\". It shows the name and address in Chinese, so just hand them your phone.",
-    "🛗 On escalators, stand on the right and walk on the left.",
+    "💳 Tap Visa or Mastercard on the MTR, buses, trams and in most shops.",
+    "💵 Carry HK$300–500 cash. Local spots and minibuses are often cash only.",
+    "🐙 Octopus card for everywhere else. On iPhone, get the \"Octopus for Tourists\" app and pay with Apple Pay. Or buy a card at any MTR station.",
+    "🚕 Taxi? Tap \"Show the driver\" on any place and hand over your phone.",
+    "🛗 Escalators: stand on the right, walk on the left.",
     "🧭 Citymapper is the best app for getting around."
    ]
   },
@@ -558,14 +745,14 @@
    "emoji": "🖼️",
    "intro": "A calm, air-conditioned stop with Chinese painting, calligraphy and Hong Kong art, plus harbour views from the galleries. Easy to pair with a walk along the TST Promenade.",
    "getting": "MTR from Causeway Bay to Tsim Sha Tsui (change at Admiralty or Tsim Sha Tsui via Tsuen Wan line), about 20-25 min, then a 10-min walk. Or Star Ferry from Central, about 10 min.",
-   "tips": "Check the closing day on the museum website before you go (it moved recently). Time it so you walk out onto the Promenade for sunset and the 8pm Symphony of Lights.",
-   "hours": "Mon-Wed, Fri 10:00-18:00; Sat, Sun, public holidays 10:00-21:00; closed Thursdays (official FAQ still says Tuesday, so check)",
+   "tips": "Closed on Thursdays (so not Thu 19 Nov). The permanent collection is free, and special exhibitions are ticketed. Time it so you walk out onto the Promenade for sunset and the 8pm Symphony of Lights.",
+   "hours": "Mon–Wed & Fri 10am–6pm, Sat–Sun 10am–9pm, closed Thursdays",
    "lat": 22.2935,
    "lng": 114.172,
    "addressEn": "10 Salisbury Road, Tsim Sha Tsui, Kowloon",
    "addressZh": "香港九龍尖沙咀梳士巴利道10號",
    "url": "https://hk.art.museum/en/web/ma/home.html",
-   "priceNote": "About HK$30 for the permanent collection; free on Wednesdays per third-party guides; special exhibitions may cost extra",
+   "priceNote": "Free (permanent collection); special exhibitions extra",
    "facts": [
     [
      "Time",
@@ -868,7 +1055,7 @@
    "emoji": "🏯",
    "intro": "Treasures from Beijing's Forbidden City, including imperial paintings, porcelain and jade, in a striking new building on the West Kowloon waterfront. Pair it with M+ next door and a harbour walk.",
    "tips": "Book a timed ticket online, especially for special exhibitions. Allow 2 hours. M+ and the West Kowloon Art Park are a few minutes' walk away for sunset skyline views.",
-   "getting": "MTR to Kowloon station or Austin, then a 10-min walk. A taxi from Central is about 15 min.",
+   "getting": "Ferry: the WestK Ferry from Central Pier 9 to West Kowloon takes about 8 min (HK$20, every 15–30 min). It was licensed on a trial until 9 Nov 2026, so check it's still running. Otherwise MTR to Kowloon or Austin station and a 10-min walk, or a 15-min taxi from Central.",
    "facts": [
     [
      "Time",
@@ -884,6 +1071,603 @@
    "addressEn": "8 Museum Drive, West Kowloon Cultural District",
    "addressZh": "九龍西九文化區博物館道8號香港故宮文化博物館",
    "url": "https://www.hkpm.org.hk/en/"
+  },
+  {
+   "tab": "city",
+   "name": "T'ang Court",
+   "zh": "唐閣",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Michelin 3-star Cantonese",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$$$$",
+   "intro": "One of the world's few three-Michelin-star Cantonese restaurants, in a elegant dining room at the Langham. The place for a celebratory dinner or a polished dim sum lunch.",
+   "order": [
+    "Cantonese-style barbecued pork",
+    "Stir-fried lobster with three kinds of onions",
+    "Baked stuffed crab shell"
+   ],
+   "tips": "Book well ahead (own bookings; call). Smart casual; no shorts at dinner. Dim sum at lunch is the easier, cheaper way in.",
+   "hours": "Mon-Fri 12:00-15:00, 18:00-22:00; Sat-Sun 11:00-15:00, 18:00-22:00",
+   "phone": "+852 2132 7898",
+   "url": "https://www.langhamhotels.com/en/the-langham/hong-kong/dine/tang-court/",
+   "lat": 22.2965,
+   "lng": 114.16989,
+   "addressEn": "1/F & 2/F, The Langham Hong Kong, 8 Peking Road, Tsim Sha Tsui, Kowloon",
+   "kinds_override": [
+    "Dim sum",
+    "Cantonese & seafood"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🥟",
+   "award": "Michelin 3 Stars"
+  },
+  {
+   "tab": "city",
+   "name": "Yat Tung Heen (Eaton HK)",
+   "zh": "逸東軒",
+   "area": "Jordan",
+   "cuisine": "Michelin-starred Cantonese, dim sum",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$$",
+   "intro": "A one-star Cantonese restaurant that has been serving refined traditional food since 1990, with strong dim sum and barbecued meats at far friendlier prices than the Peninsula-style hotels. Good for groups at a round table.",
+   "order": [
+    "Barbecued pork",
+    "Dim sum selection (turnip pudding, shrimp dumplings)",
+    "Soup of the day"
+   ],
+   "tips": "Call to book (own bookings), especially weekends and for 6+. Dim sum served at lunch and weekends from 10:00.",
+   "hours": "Mon-Fri 11:00-16:00, 18:00-22:30; Sat-Sun 10:00-16:00, 18:00-22:30",
+   "phone": "+852 2710 1093",
+   "url": "https://www.yattungheen.com",
+   "lat": 22.30806,
+   "lng": 114.17183,
+   "addressEn": "B2/F, Eaton HK, 380 Nathan Road, Jordan, Kowloon",
+   "kinds_override": [
+    "Dim sum",
+    "Roast meats & noodles",
+    "Cantonese & seafood"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🥟",
+   "award": "Michelin 1 Star",
+   "local": true
+  },
+  {
+   "tab": "city",
+   "name": "Sun Tung Lok",
+   "zh": "新同樂",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Classic Cantonese, dried seafood",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$$$",
+   "intro": "A veteran Hong Kong banquet name, open since 1969, known for premium dried seafood and a show-stopping suckling pig. Comfortable for big groups and business-style dinners.",
+   "order": [
+    "Crispy roast suckling pig stuffed with minced shrimp",
+    "Deep-fried Wagyu beef dumplings",
+    "Steamed seafood dumplings with bamboo pith"
+   ],
+   "tips": "Call to book (own bookings). Set menus are the easy choice for groups. Inside Mira Place mall, 4/F.",
+   "hours": "Mon-Fri 11:30-15:00, 18:00-22:00; Sat-Sun 11:00-15:00, 18:00-22:00",
+   "phone": "+852 2152 1417",
+   "url": "http://www.suntunglok.com.hk/",
+   "lat": 22.3009,
+   "lng": 114.1726,
+   "addressEn": "Shop 401, 4/F, FoodLoft, Mira Place One, 132 Nathan Road, Tsim Sha Tsui, Kowloon",
+   "kinds_override": [
+    "Cantonese & seafood",
+    "Dim sum"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🥢",
+   "award": "Michelin starred"
+  },
+  {
+   "tab": "city",
+   "name": "Tai Ping Koon (Granville Road)",
+   "zh": "太平館餐廳",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Hong Kong 'soy sauce Western' (since 1860)",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$$",
+   "intro": "Hong Kong's oldest Western-style restaurant, a family business dating to 1860 and inventor of the 'Swiss' chicken wing. A nostalgic, uniquely Hong Kong meal that locals still love.",
+   "order": [
+    "Swiss sauce chicken wings",
+    "Roasted young pigeon",
+    "Giant souffle (order at start)"
+   ],
+   "tips": "Walk-ins fine; busy at peak meal times and weekends. Order the souffle when you sit down. Food is nostalgic rather than cutting-edge; some reviewers rate it mixed.",
+   "hours": "Daily 11:00-23:00",
+   "phone": "+852 2721 3559",
+   "url": "https://www.taipingkoon.com.hk",
+   "lat": 22.3,
+   "lng": 114.174,
+   "addressEn": "G/F, 40 Granville Road, Tsim Sha Tsui, Kowloon",
+   "kinds_override": [
+    "Western & Med",
+    "Cantonese & seafood"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🥩",
+   "local": true
+  },
+  {
+   "tab": "city",
+   "name": "Sushi Wadatsumi (K11 Musea)",
+   "zh": "鮨わだつみ",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Michelin-starred omakase sushi",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$$$$",
+   "intro": "An intimate counter serving Edomae-style omakase from a one-star Tokyo-trained team. The lunch omakase is the sweet spot for a first taste of top-tier sushi.",
+   "order": [
+    "Lunch omakase (about HK$1,080)",
+    "Dinner omakase (about HK$2,280)",
+    "Seasonal nigiri flight"
+   ],
+   "tips": "Reservations essential, very few seats (best for 2-6). Service charge extra. Prices from listings, may have changed.",
+   "hours": "Daily 12:00-14:30, 18:30-22:00 (listings vary; confirm)",
+   "phone": "+852 2619 0199",
+   "url": "http://sushi-wadatsumi.com/",
+   "lat": 22.29459,
+   "lng": 114.17495,
+   "addressEn": "Shop 607, 6/F, K11 Musea, 18 Salisbury Road, Tsim Sha Tsui, Kowloon",
+   "kinds_override": [
+    "Japanese"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🍣",
+   "award": "Michelin 1 Star"
+  },
+  {
+   "tab": "city",
+   "name": "Konjiki Hototogisu (H Zentre)",
+   "zh": "金色不如帰",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Tokyo clam-broth ramen",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$",
+   "intro": "Outpost of a Michelin-starred Tokyo ramen shop, famous for a delicate clam-and-pork broth. A quick, affordable Japanese stop near the harbour.",
+   "order": [
+    "Clam shoyu ramen",
+    "Clam shio ramen",
+    "Fried chicken"
+   ],
+   "tips": "Walk-in only; queues at peak times. Reviews mixed on noodle portion size. Michelin status of the HK branch not confirmed (Tokyo shop's stars are cited).",
+   "hours": "Mon-Thu 11:00-22:00; Fri-Sun 11:00-22:30 (last order earlier)",
+   "phone": "+852 2735 8318",
+   "url": "https://www.ajisen.com.hk/en/contact-us/ramen-house-konjiki-hototogisu-tsim-sha-tsui/",
+   "lat": 22.29532,
+   "lng": 114.17342,
+   "addressEn": "G/F, H Zentre, 15 Middle Road, Tsim Sha Tsui, Kowloon",
+   "kinds_override": [
+    "Japanese",
+    "Roast meats & noodles"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🍣"
+  },
+  {
+   "tab": "city",
+   "name": "Hancham Korean Meathouse (Prat Avenue)",
+   "zh": "韓珍",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Korean BBQ, dry-aged beef",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$$$",
+   "intro": "A modern Korean meathouse specialising in dry-aged cuts, with staff who grill at the table. Fun and social for groups. Recommended by Time Out HK.",
+   "order": [
+    "Dry-aged ribeye (80-90 day)",
+    "Honeycomb pork belly",
+    "Fermented ginseng chicken soup"
+   ],
+   "tips": "Book via Resy/OpenRice for groups. Lunch sets are good value. Coordinates and Chinese address approximate; phone not confirmed (sources conflict).",
+   "hours": "Daily 11:00-15:30, 17:30-23:00",
+   "url": "https://www.instagram.com/hancham.official",
+   "lat": 22.29859,
+   "lng": 114.17422,
+   "addressEn": "1/F, Winfield Commercial Building, 6-8A Prat Avenue, Tsim Sha Tsui, Kowloon",
+   "kinds_override": [
+    "Korean"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🥩"
+  },
+  {
+   "tab": "city",
+   "name": "Carna by Dario Cecchini",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Italian steakhouse, nose-to-tail",
+   "category": [
+    "dinner"
+   ],
+   "price": "$$$",
+   "intro": "Tuscan butcher Dario Cecchini's first Asian restaurant, with harbour views and charcoal-grilled cuts. A great splurge steak dinner for a group. Listed in the Michelin Guide and SCMP 100 Top Tables.",
+   "order": [
+    "Bistecca (Tuscan-style T-bone)",
+    "Beef chuck flap",
+    "Tiramisu"
+   ],
+   "tips": "Book on SevenRooms. Dinner nightly; weekend lunch. Weekday lunch not served. Michelin Guide listing (no star/Bib).",
+   "hours": "Mon-Fri 18:00-24:00; Sat-Sun 12:00-15:00, 18:00-24:00",
+   "phone": "+852 3550 0339",
+   "url": "https://mondrianhotels.com/hong-kong/dining/carna/",
+   "lat": 22.29765,
+   "lng": 114.17488,
+   "addressEn": "39/F, Mondrian Hong Kong, 8A Hart Avenue, Tsim Sha Tsui, Kowloon",
+   "kinds_override": [
+    "Western & Med"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🥩",
+   "award": "Michelin Guide"
+  },
+  {
+   "tab": "city",
+   "name": "Chesa",
+   "zh": "瑞樓",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Swiss, fondue and raclette (since 1965)",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$$$",
+   "intro": "A cosy Alpine-chalet dining room with Swiss comfort food, renovated with a new menu in 2026. Fondue is a fun shared meal for a group.",
+   "order": [
+    "Cheese fondue (mushroom and black truffle option)",
+    "Wiener schnitzel",
+    "Raclette"
+   ],
+   "tips": "Book directly with the hotel. No windows, chalet look. Michelin 'Inspectors Favorite' (not starred).",
+   "hours": "Daily 12:00-15:00, 18:00-23:00",
+   "phone": "+852 2696 6769",
+   "url": "https://www.peninsula.com/en/hong-kong/hotel-fine-dining/chesa-swiss-restaurant",
+   "lat": 22.29507,
+   "lng": 114.17179,
+   "addressEn": "1/F, The Peninsula Hong Kong, 22 Salisbury Road, Tsim Sha Tsui, Kowloon",
+   "kinds_override": [
+    "Western & Med"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🥩"
+  },
+  {
+   "tab": "city",
+   "name": "Yè Shanghai (K11 Musea)",
+   "zh": "夜上海",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Michelin-starred Shanghainese",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$$",
+   "intro": "Art Deco, 1930s Shanghai-style dining room over two floors with harbour views. A friendly way to try Shanghainese classics and dim sum with a group.",
+   "order": [
+    "Drunken chicken",
+    "Stir-fried river shrimp",
+    "Crab roe meat bun"
+   ],
+   "tips": "Call to book (own bookings); reserve a day ahead. Mall location, easy for a group.",
+   "hours": "Daily 11:30-23:00",
+   "phone": "+852 2376 3322",
+   "url": "https://www.elite-concepts.com/our-concepts/kowloon/ye-shanghai/",
+   "lat": 22.29459,
+   "lng": 114.17495,
+   "addressEn": "Shop 702, 7/F, K11 Musea, 18 Salisbury Road, Tsim Sha Tsui, Kowloon",
+   "kinds_override": [
+    "Regional Chinese"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🥟",
+   "award": "Michelin 1 Star"
+  },
+  {
+   "tab": "city",
+   "name": "Ho Ho Chak",
+   "zh": "賀賀澤",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Chiu Chow (Teochew) seafood",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$$",
+   "intro": "A new 2026 Bib Gourmand run by three brothers who wholesale seafood, so the ingredients are strong. A fine place to try Chiu Chow cooking.",
+   "order": [
+    "Steamed pork patty with mud crab and roe",
+    "Fried oyster omelette (or dried radish omelette)",
+    "Chiu Chow-style sweet and sour noodles"
+   ],
+   "tips": "Reserve directly. 9th-floor of a building (lift to 9/F). Chinese name per OpenRice; confirm at booking.",
+   "hours": "Daily 12:00-15:00, 18:00-23:00",
+   "phone": "+852 9072 2887",
+   "lat": 22.30263,
+   "lng": 114.17399,
+   "addressEn": "9/F, Nathan Hill, 38 Hillwood Road, Tsim Sha Tsui, Kowloon",
+   "kinds_override": [
+    "Regional Chinese"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🥟",
+   "award": "Michelin Bib Gourmand 2026",
+   "local": true
+  },
+  {
+   "tab": "city",
+   "name": "Thai Pai Dong (Jordan)",
+   "zh": "泰牌檔",
+   "area": "Jordan",
+   "cuisine": "Thai street food",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$$",
+   "intro": "A lively little Thai spot loved for its wagyu boat noodles and punchy street dishes. Michelin recommends expecting a queue.",
+   "order": [
+    "Wagyu boat noodles",
+    "Drunkard fried noodles",
+    "Mango sticky rice"
+   ],
+   "tips": "Small, no bookings via Michelin (contact directly); queues at peak. Coordinates approximate. Michelin award tier: listed as Bib Gourmand on Michelin's TST page, not shown on the restaurant page.",
+   "hours": "Sun-Thu 12:00-17:00, 18:00-22:00; Fri-Sat 12:00-17:00, 18:00-23:00",
+   "phone": "+852 6648 0179",
+   "lat": 22.305,
+   "lng": 114.1708,
+   "addressEn": "G/F, 24 Man Yuen Street, Jordan, Kowloon",
+   "kinds_override": [
+    "Thai & SE Asian"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🌶️",
+   "local": true
+  },
+  {
+   "tab": "city",
+   "name": "Mak Man Kee Noodle Shop",
+   "zh": "麥文記麵家",
+   "area": "Jordan",
+   "cuisine": "Wonton noodles",
+   "category": [
+    "lunch",
+    "dinner",
+    "late-night"
+   ],
+   "price": "$",
+   "intro": "A no-frills noodle shop of about 60 years, famous for thin-skinned shrimp wontons and springy duck-egg noodles in a rich broth. Quintessential Hong Kong.",
+   "order": [
+    "Shrimp wonton noodle soup",
+    "Noodles with shrimp roe",
+    "Noodles tossed with oyster sauce"
+   ],
+   "tips": "Cash only (cards not accepted); shared tables, quick turnover, queues at peak. Hours reported as 12:00-00:30.",
+   "hours": "Daily 12:00-00:30",
+   "phone": "+852 2736 5561",
+   "url": "http://www.mmk.hk/",
+   "lat": 22.30469,
+   "lng": 114.17053,
+   "addressEn": "G/F, 51 Parkes Street, Jordan, Kowloon",
+   "kinds_override": [
+    "Roast meats & noodles",
+    "Cha chaan teng & cafés"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🍜",
+   "award": "Michelin Bib Gourmand",
+   "local": true
+  },
+  {
+   "tab": "city",
+   "name": "Cheung Hing Kee Shanghai Pan-fried Buns",
+   "zh": "祥興記上海生煎包",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Shanghai pan-fried pork buns",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "price": "$",
+   "intro": "A tiny street-food shop with crispy-bottomed, soup-filled shengjian buns. Quick, cheap, and a Bib Gourmand.",
+   "order": [
+    "Classic pork pan-fried buns",
+    "Shrimp pan-fried buns",
+    "Vermicelli soup with fried tofu"
+   ],
+   "tips": "Mostly takeaway with limited counter seating; queues at peak. Payment details conflict between sources; carry some cash.",
+   "hours": "Daily 09:00-21:00 (some listings say 10:00-22:00)",
+   "phone": "+852 9844 2149",
+   "url": "https://chkspb.com",
+   "lat": 22.29778,
+   "lng": 114.17162,
+   "addressEn": "Shop 6A, G/F, 48 Lock Road, Tsim Sha Tsui, Kowloon",
+   "kinds_override": [
+    "Regional Chinese"
+   ],
+   "section": "Across the harbour (TST)",
+   "emoji": "🥟",
+   "award": "Michelin Bib Gourmand 2026",
+   "local": true
+  },
+  {
+   "tab": "sights",
+   "name": "Chi Lin Nunnery & Nan Lian Garden",
+   "zh": "志蓮淨苑及南蓮園池",
+   "area": "Diamond Hill, Kowloon",
+   "cuisine": "Temple & garden",
+   "category": [
+    "photo",
+    "culture",
+    "free"
+   ],
+   "emoji": "🪷",
+   "intro": "A calm Tang-dynasty-style wooden temple complex with a classical Chinese garden of pavilions, lotus ponds and bonsai, tucked among high-rises. Both are free and feel a world away from the city.",
+   "tips": "Go on a weekday morning for soft light and few people; keep voices down and no flash inside the temple halls. Check if the nunnery halls are open (reported 09:00-16:30) since the garden stays open later.",
+   "getting": "From Causeway Bay: Island Line to Quarry Bay, change to Kwun Tong Line to Diamond Hill (Exit C2), about 35 min. Taxi about 25-30 min.",
+   "hours": "Nan Lian Garden daily 07:00-21:00 (per Chi Lin official site via search snippet; one guide says 19:00, confirm); Chi Lin Nunnery halls commonly reported 09:00-16:30. Closed in Typhoon Signal 8.",
+   "lat": 22.34073,
+   "lng": 114.20521,
+   "addressEn": "Chi Lin Nunnery, 5 Chi Lin Drive, Diamond Hill (Nan Lian Garden: 60 Fung Tak Road, opposite)",
+   "addressZh": "九龍鑽石山志蓮道5號(南蓮園池:鳳德道60號)",
+   "url": "https://en.chilin.org/",
+   "priceNote": "Free"
+  },
+  {
+   "tab": "sights",
+   "name": "Wong Tai Sin Temple",
+   "zh": "黃大仙祠",
+   "area": "Wong Tai Sin, Kowloon",
+   "cuisine": "Temple",
+   "category": [
+    "culture",
+    "iconic",
+    "photo"
+   ],
+   "emoji": "🏮",
+   "intro": "Hong Kong's most famous working Taoist temple, with red pillars, golden roofs and clouds of incense, where locals shake fortune sticks (kau chim). Great for seeing real daily religious life.",
+   "tips": "Go 07:30-09:00 before tour buses; photograph architecture and incense, not worshippers' faces, and no flash. Use the free-standing fortune-telling arcade for English-speaking fortune tellers if you want a reading (ask price first).",
+   "getting": "From Causeway Bay: Island Line to Quarry Bay, Kwun Tong Line to Wong Tai Sin (Exit B2), about 35 min. Taxi about 25 min.",
+   "hours": "Daily 07:30-16:30 per official site (Wikipedia says 07:00-17:00; use official). Longer hours on 1st and 15th of lunar month.",
+   "lat": 22.34257,
+   "lng": 114.19365,
+   "addressEn": "2 Chuk Yuen Village, Wong Tai Sin, Kowloon",
+   "addressZh": "九龍黃大仙竹園村2號",
+   "url": "http://www.wongtaisintemple.org.hk/en",
+   "priceNote": "Free (one separate hall charges HK$100)"
+  },
+  {
+   "tab": "sights",
+   "name": "Kowloon Walled City Park",
+   "zh": "九龍寨城公園",
+   "area": "Kowloon City, Kowloon",
+   "cuisine": "History park",
+   "category": [
+    "culture",
+    "free"
+   ],
+   "emoji": "🏯",
+   "intro": "A Jiangnan-style garden on the site of the notorious Kowloon Walled City, with the preserved Yamen building and a small exhibition on the city's history and its film fame.",
+   "tips": "Dawn is quietest. The free film-set exhibition in the Yamen uses first-come tickets collected on site (opens 09:00), so go in the morning; it holds only 60 people.",
+   "getting": "From Causeway Bay: Quarry Bay, Kwun Tong Line to Diamond Hill, Tuen Ma Line to Sung Wong Toi (Exit B3), then 15 min walk; about 45 min. Taxi via Cross-Harbour Tunnel about 25 min.",
+   "hours": "Park daily 06:30-23:00; exhibition daily 09:00-19:00 (hours differ by season per secondary sources)",
+   "lat": 22.33194,
+   "lng": 114.19,
+   "addressEn": "Junction of Tung Tau Tsuen Road and Tung Ching Road, Kowloon City",
+   "addressZh": "九龍城東頭村道與東正道交界",
+   "url": "https://www.lcsd.gov.hk/en/parks/kwcp/index.html",
+   "priceNote": "Free"
+  },
+  {
+   "tab": "sights",
+   "name": "1881 Heritage",
+   "zh": "1881 Heritage(前水警總部)",
+   "area": "Tsim Sha Tsui, Kowloon",
+   "cuisine": "Heritage & lights",
+   "category": [
+    "photo",
+    "architecture",
+    "night",
+    "free"
+   ],
+   "emoji": "🏛️",
+   "intro": "The former Marine Police headquarters (built 1884), now a courtyard of colonnaded colonial buildings, shops and restaurants, lit warmly at night. A short walk from the Star Ferry, Clock Tower and harbour promenade.",
+   "tips": "Come at dusk to catch the courtyard lights, then walk to the waterfront for the 8pm Symphony of Lights. The Clock Tower (1915 railway terminus remnant) is 3 min away.",
+   "getting": "From Causeway Bay: Island Line to Admiralty, Tsuen Wan Line to Tsim Sha Tsui (Exit L5/E), about 20 min; or Star Ferry from Central/Wan Chai.",
+   "hours": "Public courtyard roughly 07:00-00:00 (secondary sources; shops/restaurants vary); free guided tours by phone booking per HKTB",
+   "lat": 22.29548,
+   "lng": 114.16999,
+   "addressEn": "2A Canton Road, Tsim Sha Tsui, Kowloon",
+   "addressZh": "九龍尖沙咀廣東道2A號",
+   "url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-1881-heritage.html",
+   "priceNote": "Free to walk around"
+  },
+  {
+   "tab": "sights",
+   "name": "Sham Shui Po (Apliu Street & Fuk Wing Street)",
+   "zh": "深水埗(鴨寮街及福榮街)",
+   "area": "Sham Shui Po, Kowloon",
+   "cuisine": "Local streets",
+   "category": [
+    "culture",
+    "local"
+   ],
+   "emoji": "🧵",
+   "intro": "Hong Kong's most local, gritty district: electronics and flea-market stalls, fabric lanes, Toy Street and humble noodle shops, including the original Tim Ho Wan at 9-11 Fuk Wing Street. Best for real everyday street life.",
+   "tips": "Bring cash; go late afternoon for markets and food. Ask before photographing stallholders. The Michelin guide suggests Lau Sum Kee noodles on Fuk Wing Street as a first stop.",
+   "getting": "From Causeway Bay: Island Line to Admiralty, Tsuen Wan Line to Sham Shui Po (Exit A2), about 30 min.",
+   "hours": "Markets about 09:00 to late; shops vary",
+   "lat": 22.3307,
+   "lng": 114.1622,
+   "addressEn": "Apliu Street, Sham Shui Po, Kowloon (MTR Sham Shui Po Exit A2)",
+   "addressZh": "九龍深水埗鴨寮街",
+   "url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-apliu-street.html",
+   "priceNote": "Free to wander"
+  },
+  {
+   "tab": "sights",
+   "name": "Ping Shek Estate",
+   "zh": "坪石邨",
+   "area": "Ngau Chi Wan / Choi Hung, Kowloon",
+   "cuisine": "Photo spot",
+   "category": [
+    "photo",
+    "architecture",
+    "free"
+   ],
+   "emoji": "🌈",
+   "intro": "A 1970s public housing estate with seven blocks named after coloured stones, famous for a square courtyard shot looking straight up. It is a 10-min walk from Choi Hung Estate.",
+   "tips": "It is a residential estate: be quiet, don't point cameras into flats, no drones or tripods in corridors. Photographers shoot the courtyard of the 'Lam Shek House' (reported by one Chinese blog) at midday.",
+   "getting": "From Causeway Bay: Quarry Bay, Kwun Tong Line to Choi Hung (Exit A1), then walk about 10 min; about 35 min.",
+   "hours": "Open access estate, no formal hours",
+   "lat": 22.33333,
+   "lng": 114.20917,
+   "addressEn": "2 Clear Water Bay Road, Ngau Chi Wan, Kowloon",
+   "addressZh": "九龍牛池灣清水灣道2號坪石邨",
+   "url": "https://en.wikipedia.org/wiki/Ping_Shek_Estate",
+   "priceNote": "Free"
+  },
+  {
+   "tab": "sights",
+   "name": "Graham Street mural",
+   "zh": "嘉咸街壁畫(Alex Croft)",
+   "area": "Soho, Central",
+   "cuisine": "Street art",
+   "category": [
+    "photo",
+    "free"
+   ],
+   "emoji": "🎨",
+   "intro": "A famous blocky street-art mural of stacked flats, painted in 2012 and inspired by the Kowloon Walled City, on a steep market lane near Tai Kwun and PMQ.",
+   "tips": "Expect a queue to pose on the steps; watch for passing cars and trolleys. Go early morning before crowds.",
+   "getting": "From Causeway Bay: MTR to Central (Exit D2) then 10 min uphill walk, or taxi.",
+   "hours": "Always visible",
+   "lat": 22.2833,
+   "lng": 114.1532,
+   "addressEn": "Graham Street at Hollywood Road, Central (wall facing 45-53 Graham Street)",
+   "addressZh": "中環嘉咸街與荷李活道交界",
+   "url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-alex-croft.html",
+   "priceNote": "Free"
   }
  ],
  "patch": {
@@ -924,12 +1708,19 @@
      1,
      2
     ]
+   ],
+   "add_category": [
+    "photo"
    ]
   },
   "Victoria Peak & the Peak Tram": {
    "essential": 2,
    "essentialTitle": "See the skyline from the Peak",
-   "essentialWhy": "Go at sunset and stay for the lights."
+   "essentialWhy": "Go at sunset and stay for the lights.",
+   "tips": "Peak Tram fares are HK$82 one way and HK$116 return (2026). Buy e-tickets at thepeak.com.hk, and avoid weekend afternoons when the queue is longest. Or take the 15 bus up. For the classic skyline photo, walk 20 minutes along flat Lugard Road to the lookout.",
+   "add_category": [
+    "photo"
+   ]
   },
   "Ding Ding tram (Kennedy Town to Shau Kei Wan)": {
    "essential": 3,
@@ -1120,6 +1911,9 @@
     "local",
     "culture",
     "iconic"
+   ],
+   "add_category": [
+    "photo"
    ]
   },
   "TREEHOUSE (Causeway Bay)": {
@@ -1292,7 +2086,44 @@
   },
   "Peak Circle Walk (Lugard Road & Harlech Road)": {
    "classmateNote": "A Hong Kong friend's favourite view is from Lugard Road Lookout, about 20 minutes' flat walk from the Peak Tower. Go before sunset and bring a phone torch for the walk back."
-  }
+  },
+  "Choi Hung Estate (rainbow estate & rooftop court)": {
+   "add_category": [
+    "photo"
+   ]
+  },
+  "Monster Building (Yick Cheong / Montane Mansion)": {
+   "add_category": [
+    "photo"
+   ],
+   "tips": "It's a real residential estate: keep voices down, stay in the courtyard, and no drones or tripods. Signs now ask visitors not to take photos, so check what's posted and be respectful (or shoot from the street). Go early morning on a weekday."
+  },
+  "Mong Kok neon streets (Portland St & Tung Choi St)": {
+   "add_category": [
+    "photo"
+   ]
+  },
+  "Tsim Sha Tsui Promenade, Avenue of Stars & Symphony of Lights": {
+   "add_category": [
+    "photo"
+   ]
+  },
+  "The Blue House": {
+   "add_category": [
+    "photo"
+   ]
+  },
+  "Tai O Fishing Village": {
+   "add_category": [
+    "photo"
+   ]
+  },
+  "Central Harbourfront: Tamar Park & Observation Wheel (to Wan Chai)": {
+   "add_category": [
+    "photo"
+   ]
+  },
+  "Hong Kong Palace Museum": {}
  },
  "drop": [
   "Central–Mid-Levels Escalator",
@@ -1315,7 +2146,10 @@
   "The Twins (Wilson Trail Section 1)",
   "Watches: brand boutiques & authorised dealers",
   "Yuen Kee Dessert",
-  "Bank of China Tower"
+  "Bank of China Tower",
+  "HSBC Main Building",
+  "Lippo Centre ('Koala Tree')",
+  "Lai Tak Tsuen (round towers)"
  ],
  "emoji": {
   "Joy Tonight Grill": "🍢",
@@ -1396,5 +2230,257 @@
   "Claypot rice": "🍚",
   "Roast goose & char siu": "🍖",
   "Beef brisket noodles": "🍜"
- }
+ },
+ "outings": [
+  {
+   "title": "TST harbourfront, afternoon to night",
+   "steps": [
+    [
+     "⛴️",
+     "Star Ferry from Wan Chai or Central to Tsim Sha Tsui (10 min)",
+     "Star Ferry"
+    ],
+    [
+     "🏛️",
+     "1881 Heritage, the old Marine Police HQ",
+     "1881 Heritage"
+    ],
+    [
+     "🖼️",
+     "K11 Musea, or the HK Museum of Art (free; open late on weekends)",
+     "Hong Kong Museum of Art"
+    ],
+    [
+     "🌃",
+     "TST Promenade for sunset and the 8pm Symphony of Lights",
+     "Tsim Sha Tsui Promenade"
+    ],
+    [
+     "🥢",
+     "Dinner across the harbour: dim sum at Yat Tung Heen or wonton noodles at Mak Man Kee",
+     "Yat Tung Heen"
+    ]
+   ]
+  },
+  {
+   "title": "Suggested Sunday: harbour, dim sum & the Peak",
+   "steps": [
+    [
+     "🚋",
+     "Ding ding tram west from Causeway Bay: Admiralty for Dim Sum Library (about 15 min) or Sheung Wan for Lin Heung Lau (about 30 min). Tap Visa/Mastercard or Octopus",
+     "Ding Ding tram"
+    ],
+    [
+     "🥟",
+     "Dim sum lunch at your pick (booked)",
+     "Dim Sum Library"
+    ],
+    [
+     "🚡",
+     "Peak Tram up from Garden Road (10 min walk or a short taxi). HK$82 one way / HK$116 return. Buy e-tickets at thepeak.com.hk to skip the ticket queue",
+     "Victoria Peak"
+    ],
+    [
+     "🍦",
+     "At the Peak: egg tart gelato at Messina, or milk tea at Men Wah Bing Teng",
+     "Men Wah Bing Teng"
+    ],
+    [
+     "🌆",
+     "Walk the flat Peak Circle Walk (about 3.5 km / 2 miles). Lugard Road Lookout has the best view",
+     "Peak Circle Walk"
+    ],
+    [
+     "⛴️",
+     "Back down, then the Star Ferry from Central to Tsim Sha Tsui",
+     "Star Ferry"
+    ],
+    [
+     "🖼️",
+     "K11 Musea or the HK Museum of Art, then the TST Promenade for the 8pm Symphony of Lights",
+     "Tsim Sha Tsui Promenade"
+    ]
+   ]
+  },
+  {
+   "title": "Kowloon temples & photo spots (half day)",
+   "steps": [
+    [
+     "🪷",
+     "Chi Lin Nunnery & Nan Lian Garden: calm, wooden temple halls and gardens (MTR Diamond Hill)",
+     "Chi Lin Nunnery"
+    ],
+    [
+     "🏮",
+     "Wong Tai Sin Temple, one stop away. Try fortune sticks",
+     "Wong Tai Sin Temple"
+    ],
+    [
+     "🌈",
+     "Choi Hung Estate's rainbow buildings for the famous photo",
+     "Choi Hung Estate"
+    ],
+    [
+     "🏯",
+     "Kowloon Walled City Park, where the world's densest settlement once stood",
+     "Kowloon Walled City Park"
+    ]
+   ]
+  },
+  {
+   "title": "Mong Kok & Temple Street at night",
+   "steps": [
+    [
+     "🛍️",
+     "Ladies' Market (haggle with a smile)",
+     "Ladies' Market"
+    ],
+    [
+     "🌈",
+     "Mong Kok neon streets",
+     "Mong Kok neon streets"
+    ],
+    [
+     "🏮",
+     "Temple Street night market and Mido Café",
+     "Temple Street"
+    ],
+    [
+     "🍜",
+     "Late bite: Mak Man Kee wonton noodles in Jordan",
+     "Mak Man Kee"
+    ]
+   ]
+  },
+  {
+   "title": "West Kowloon art & sunset",
+   "steps": [
+    [
+     "🏯",
+     "Hong Kong Palace Museum (book a timed ticket)",
+     "Hong Kong Palace Museum"
+    ],
+    [
+     "🖼️",
+     "M+ museum next door",
+     "M+ museum"
+    ],
+    [
+     "🌅",
+     "Sunset over the skyline from the West Kowloon Art Park lawn",
+     "M+ museum"
+    ]
+   ]
+  },
+  {
+   "title": "Old Hong Kong walk: Sheung Wan to Soho",
+   "steps": [
+    [
+     "🏮",
+     "Man Mo Temple and the antique stalls of Cat Street",
+     "Man Mo Temple"
+    ],
+    [
+     "🏚️",
+     "Tai Ping Shan and Possession Street, where the British first landed",
+     "Possession Street"
+    ],
+    [
+     "🎨",
+     "PMQ design shops, then the Graham Street mural",
+     "PMQ"
+    ],
+    [
+     "🏛️",
+     "Tai Kwun, the old police station and prison turned arts hub",
+     "Tai Kwun"
+    ],
+    [
+     "🍸",
+     "Sundowners in Soho",
+     "Lan Kwai Fong"
+    ]
+   ]
+  },
+  {
+   "title": "South side: Stanley & beaches",
+   "steps": [
+    [
+     "🚌",
+     "Bus 6 or 260 over the hills to Stanley (about 40 min, great views from the top deck)",
+     "Stanley & Repulse Bay"
+    ],
+    [
+     "🧧",
+     "Stanley Market and the waterfront promenade",
+     "Stanley & Repulse Bay"
+    ],
+    [
+     "🏛️",
+     "Murray House and Blake Pier",
+     "Murray House"
+    ],
+    [
+     "🏖️",
+     "Repulse Bay beach on the way back",
+     "Repulse Bay Beach"
+    ]
+   ]
+  },
+  {
+   "title": "Day trip: Big Buddha & Tai O",
+   "steps": [
+    [
+     "🚠",
+     "Ngong Ping 360 cable car to the Big Buddha",
+     "Big Buddha"
+    ],
+    [
+     "🛖",
+     "Bus 21 to Tai O stilt-house fishing village",
+     "Tai O"
+    ]
+   ]
+  },
+  {
+   "title": "Day trip: Ocean Park & a seafood dinner",
+   "steps": [
+    [
+     "🐼",
+     "Ocean Park pandas, best in the morning",
+     "Ocean Park"
+    ],
+    [
+     "🦐",
+     "Pick-your-own seafood in Ap Lei Chau, two MTR stops away",
+     "Ap Lei Chau seafood"
+    ]
+   ]
+  },
+  {
+   "title": "Day trip: Cheung Chau island",
+   "steps": [
+    [
+     "⛴️",
+     "Ferry from Central Pier 5 (35–55 min)",
+     "Cheung Chau"
+    ],
+    [
+     "🍡",
+     "Snacks, beaches and car-free lanes",
+     "Cheung Chau"
+    ]
+   ]
+  },
+  {
+   "title": "Day trip: Hong Kong Disneyland",
+   "steps": [
+    [
+     "🏰",
+     "Full day; MTR to Disneyland Resort",
+     "Disneyland"
+    ]
+   ]
+  }
+ ]
 }

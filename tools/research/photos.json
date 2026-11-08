@@ -1,9 +1,9 @@
 {
  "stanley-main-beach-dragon-boat-venue": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Stanley_Peninsula.jpg/960px-Stanley_Peninsula.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Stanley_Peninsula.jpg",
-  "credit": "Wikimedia Commons",
-  "license": "CC BY-SA 3.0",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Stanley_Main_Beach_201307.jpg/960px-Stanley_Main_Beach_201307.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Stanley_Main_Beach_201307.jpg",
+  "credit": "Wing1990hk",
+  "license": "CC BY 3.0",
   "title": "Stanley, Hong Kong"
  },
  "murray-house-stanley-plaza": {
@@ -21,9 +21,11 @@
   "title": "Blake Pier at Stanley"
  },
  "tin-hau-temple-stanley": {
-  "none": true,
-  "title": "Stanley Main Street",
-  "file": null
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Stanley_Tin_Hau_Temple.jpg/960px-Stanley_Tin_Hau_Temple.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Stanley_Tin_Hau_Temple.jpg",
+  "credit": "Eternal dragon at English Wikipedia",
+  "license": "CC BY-SA 3.0",
+  "title": "Stanley Main Street"
  },
  "stanley-military-cemetery": {
   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/General_view_of_the_Stanley_Military_Cemetery_January_2026.jpg/960px-General_view_of_the_Stanley_Military_Cemetery_January_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -47,9 +49,9 @@
   "title": "Tai Tam Waterworks Heritage Trail"
  },
  "repulse-bay-beach": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/View_of_Repulse_Bay_from_Sir_Cecil%27s_Ride.jpg/960px-View_of_Repulse_Bay_from_Sir_Cecil%27s_Ride.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:View_of_Repulse_Bay_from_Sir_Cecil%27s_Ride.jpg",
-  "credit": "Shanghai88",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Repulse_Bay_Beach.jpeg/960px-Repulse_Bay_Beach.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Repulse_Bay_Beach.jpeg",
+  "credit": "Colin dm",
   "license": "CC BY-SA 4.0",
   "title": "Repulse Bay"
  },
@@ -66,17 +68,17 @@
   "file": null
  },
  "shek-o-beach": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/DragonBack1.jpg/960px-DragonBack1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:DragonBack1.jpg",
-  "credit": "山民主義",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Playa_de_Shek_o_beach.jpg/960px-Playa_de_Shek_o_beach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Playa_de_Shek_o_beach.jpg",
+  "credit": "ProtoplasmaKid",
   "license": "CC BY-SA 4.0",
   "title": "Shek O"
  },
  "temple-street-yau-ma-tei-neon-walk-incl-": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/GateOfTempleInHongKong.jpg/960px-GateOfTempleInHongKong.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:GateOfTempleInHongKong.jpg",
-  "credit": "hkgalbert",
-  "license": "CC0",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Temple_Street_Night_Market_viewed_from_above_November_2016.jpg/960px-Temple_Street_Night_Market_viewed_from_above_November_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Temple_Street_Night_Market_viewed_from_above_November_2016.jpg",
+  "credit": "Nick-D",
+  "license": "CC BY-SA 4.0",
   "title": "Temple Street, Hong Kong"
  },
  "mong-kok-neon-streets-portland-st-tung-c": {
@@ -143,17 +145,17 @@
   "title": "Lai Tak Tsuen"
  },
  "victoria-peak-the-peak-tram": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/High_West_and_Victoria_Peak_from_Victoria_Gap_%28crop1%29.jpg/960px-High_West_and_Victoria_Peak_from_Victoria_Gap_%28crop1%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:High_West_and_Victoria_Peak_from_Victoria_Gap_(crop1).jpg",
-  "credit": "Daniel Case",
-  "license": "CC BY-SA 3.0",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Hong_Kong_Skyline_view_from_the_peak_2017.jpg/960px-Hong_Kong_Skyline_view_from_the_peak_2017.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Skyline_view_from_the_peak_2017.jpg",
+  "credit": "Simeon W from Wellington, New Zealand",
+  "license": "CC BY 2.0",
   "title": "Victoria Peak"
  },
  "star-ferry": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Tsim_Sha_Tsui_Ferry_Pier.jpg/960px-Tsim_Sha_Tsui_Ferry_Pier.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Tsim_Sha_Tsui_Ferry_Pier.jpg",
-  "credit": "Baycrest",
-  "license": "CC BY-SA 2.5",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Star_Ferry_%28Night_Star%29_20180409.jpg/960px-Star_Ferry_%28Night_Star%29_20180409.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Star_Ferry_(Night_Star)_20180409.jpg",
+  "credit": "SH6188",
+  "license": "CC BY-SA 4.0",
   "title": "Star Ferry"
  },
  "ding-ding-tram-kennedy-town-to-shau-kei-": {
@@ -164,10 +166,10 @@
   "title": "Hong Kong Tramways"
  },
  "tai-kwun": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Tai_Kwun_logo.svg/960px-Tai_Kwun_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Tai_Kwun_logo.svg",
-  "credit": "Tai Kwun (under Jockey Club CPS Limited), Hong Kong Jockey C",
-  "license": "Public domain",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Tai_Kwun_Parade_Ground_201806.jpg/960px-Tai_Kwun_Parade_Ground_201806.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Tai_Kwun_Parade_Ground_201806.jpg",
+  "credit": "Wpcpey",
+  "license": "CC BY-SA 4.0",
   "title": "Tai Kwun"
  },
  "pmq-a-mahjong-lesson": {
@@ -192,17 +194,17 @@
   "title": "Lan Kwai Fong"
  },
  "happy-valley-racecourse-wednesday-night-": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Happy_Valley_Racecourse_1.jpg/960px-Happy_Valley_Racecourse_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Happy_Valley_Racecourse_1.jpg",
-  "credit": "Minghong",
-  "license": "CC BY-SA 4.0",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Happy_Valley_Racecourse.jpg/960px-Happy_Valley_Racecourse.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Happy_Valley_Racecourse.jpg",
+  "credit": "Chinese school",
+  "license": "Public domain",
   "title": "Happy Valley Racecourse"
  },
  "m-museum-west-kowloon-waterfront": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/WKCD_M%2B%2C_2021.11.jpg/960px-WKCD_M%2B%2C_2021.11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:WKCD_M%2B,_2021.11.jpg",
-  "credit": "Lord Jaraxxus",
-  "license": "CC BY-SA 4.0",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/M%2B%2C_West_Kowloon_%28Hong_Kong%29.jpg/960px-M%2B%2C_West_Kowloon_%28Hong_Kong%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:M%2B,_West_Kowloon_(Hong_Kong).jpg",
+  "credit": "Mk2010",
+  "license": "CC BY 4.0",
   "title": "M+"
  },
  "stanley-repulse-bay": {
@@ -267,9 +269,9 @@
   "title": "Hong Kong Observation Wheel"
  },
  "tsim-sha-tsui-promenade-avenue-of-stars-": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Avenue_of_Stars_201901.jpg/960px-Avenue_of_Stars_201901.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Avenue_of_Stars_201901.jpg",
-  "credit": "Wpcpey",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Hong_Kong_Harbour_Night_2019-06-11.jpg/960px-Hong_Kong_Harbour_Night_2019-06-11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Harbour_Night_2019-06-11.jpg",
+  "credit": "Benh LIEU SONG (Flickr)",
   "license": "CC BY-SA 4.0",
   "title": "Avenue of Stars, Hong Kong"
  },
@@ -302,17 +304,17 @@
   "title": "Lung Fu Shan"
  },
  "dragon-s-back": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/%E9%BE%99%E8%84%8A%E5%BE%84%E8%B5%B7%E7%82%B9_-_Starting_Point_of_Dragon%27s_Back_Trail_-_2015.01_-_panoramio.jpg/960px-%E9%BE%99%E8%84%8A%E5%BE%84%E8%B5%B7%E7%82%B9_-_Starting_Point_of_Dragon%27s_Back_Trail_-_2015.01_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:%E9%BE%99%E8%84%8A%E5%BE%84%E8%B5%B7%E7%82%B9_-_Starting_Point_of_Dragon%27s_Back_Trail_-_2015.01_-_panoramio.jpg",
-  "credit": "rheins",
-  "license": "CC BY 3.0",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Dragon%27s_Back_Trail.jpg/960px-Dragon%27s_Back_Trail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Dragon%27s_Back_Trail.jpg",
+  "credit": "Chris Yau Tsz Wai",
+  "license": "CC BY-SA 4.0",
   "title": "Dragon's Back"
  },
  "peak-circle-walk-lugard-road-harlech-roa": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Lugard_road.jpg/960px-Lugard_road.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Lugard_road.jpg",
-  "credit": "Ngchikit at English Wikipedia",
-  "license": "Public domain",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Lugard_panorama_cropped.jpg/960px-Lugard_panorama_cropped.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Lugard_panorama_cropped.jpg",
+  "credit": "Ohconfucius",
+  "license": "CC BY-SA 4.0",
   "title": "Lugard Road"
  },
  "mount-davis-path-jubilee-battery": {
@@ -372,10 +374,10 @@
   "title": "Hong Kong Disneyland"
  },
  "ocean-park-giant-pandas": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Ocean_Park_Hong_Kong.jpg/960px-Ocean_Park_Hong_Kong.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Ocean_Park_Hong_Kong.jpg",
-  "credit": "Exploringlife",
-  "license": "CC BY-SA 4.0",
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Panda_Hongkong.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Panda_Hongkong.jpg",
+  "credit": "J. Patrick Fischer",
+  "license": "CC BY-SA 3.0",
   "title": "Ocean Park Hong Kong"
  },
  "ladies-market-tung-choi-street": {
@@ -393,16 +395,16 @@
   "title": "Hong Kong Palace Museum"
  },
  "stanley-waterfront-promenade-stanley-mai": {
-  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Stanley_Peninsula.jpg/960px-Stanley_Peninsula.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Stanley_Peninsula.jpg",
-  "credit": "Wikimedia Commons",
-  "license": "CC BY-SA 3.0",
-  "title": "Stanley, Hong Kong"
+  "none": true,
+  "title": "Stanley, Hong Kong",
+  "file": "Stanley Promenade 2.JPG"
  },
  "stanley-ma-hang-park-pak-tai-temple": {
-  "none": true,
-  "title": "Ma Hang",
-  "file": null
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Stanley_Plaza_Ma_Hang_Park_Entrance_201307.jpg/960px-Stanley_Plaza_Ma_Hang_Park_Entrance_201307.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Stanley_Plaza_Ma_Hang_Park_Entrance_201307.jpg",
+  "credit": "Wing1990hk",
+  "license": "CC BY 3.0",
+  "title": "Ma Hang"
  },
  "ma-hang-park-to-chung-hom-kok-coastal-wa": {
   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Chung_Hom_Kok_1.jpg/960px-Chung_Hom_Kok_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -445,5 +447,54 @@
   "credit": "WiNG",
   "license": "CC BY-SA 3.0",
   "title": "Harbour City (Hong Kong)"
+ },
+ "chi-lin-nunnery-nan-lian-garden": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Chi_Lin_Nunnery_%282037672635%29.jpg/960px-Chi_Lin_Nunnery_%282037672635%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Chi_Lin_Nunnery_(2037672635).jpg",
+  "credit": "Rob Young from United Kingdom",
+  "license": "CC BY 2.0",
+  "title": "Chi Lin Nunnery"
+ },
+ "wong-tai-sin-temple": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/HK_WongTaiSinTemple.JPG/960px-HK_WongTaiSinTemple.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:HK_WongTaiSinTemple.JPG",
+  "credit": "Chong Fat",
+  "license": "Public domain",
+  "title": "Wong Tai Sin Temple (Hong Kong)"
+ },
+ "kowloon-walled-city-park": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Kowloon_Walled_City_Park_Overview_201807.jpg/960px-Kowloon_Walled_City_Park_Overview_201807.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Kowloon_Walled_City_Park_Overview_201807.jpg",
+  "credit": "Wpcpey",
+  "license": "CC BY-SA 4.0",
+  "title": "Kowloon Walled City Park"
+ },
+ "1881-heritage": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/1881_Heritage_Complex.jpg/960px-1881_Heritage_Complex.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:1881_Heritage_Complex.jpg",
+  "credit": "Nath87",
+  "license": "CC BY-SA 4.0",
+  "title": "1881 Heritage"
+ },
+ "ping-shek-estate": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/HK_PingShekEstate.jpg/960px-HK_PingShekEstate.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:HK_PingShekEstate.jpg",
+  "credit": "Chong Fat",
+  "license": "Public domain",
+  "title": "Ping Shek Estate"
+ },
+ "sham-shui-po-apliu-street-fuk-wing-street": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Apliu_Street_201506.jpg/960px-Apliu_Street_201506.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Apliu_Street_201506.jpg",
+  "credit": "Wing1990hk",
+  "license": "CC BY 3.0",
+  "title": "Apliu Street"
+ },
+ "graham-street-mural": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/HK_Graham_Street_3.jpg/960px-HK_Graham_Street_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:HK_Graham_Street_3.jpg",
+  "credit": "No machine-readable author provided. TangHon~commonswiki ass",
+  "license": "CC BY-SA 3.0",
+  "title": "Graham Street"
  }
 }
