@@ -18,8 +18,8 @@
    "iso": "2026-11-14",
    "slots": [
     [
-     "3pm",
-     "Hotel check-in from 3pm",
+     "15:00",
+     "Hotel check-in from 15:00",
      "school"
     ]
    ],
@@ -69,7 +69,7 @@
      ],
      [
       "🖼️",
-      "K11 Musea or the HK Museum of Art, then the TST Promenade for the 8pm Symphony of Lights",
+      "K11 Musea or the HK Museum of Art, then the TST Promenade for the 20:00 Symphony of Lights",
       "Tsim Sha Tsui Promenade"
      ]
     ],
@@ -92,14 +92,14 @@
      "Lunch",
      "Dim sum lunch",
      "ours",
-     "sun-dimsum"
+     "sun-dimsum",
+     {
+      "label": "Dim sum spots",
+      "tab": "city",
+      "q": "dim sum"
+     }
     ]
    ],
-   "go": {
-    "label": "Dim sum spots",
-    "tab": "city",
-    "q": "dim sum"
-   },
    "outings": true,
    "note": "After dim sum, pick something from the ideas below."
   },
@@ -109,53 +109,54 @@
    "iso": "2026-11-16",
    "slots": [
     [
-     "8:00–9:30",
+     "08:00–09:30",
      "Breakfast, Student Lounge",
      "school"
     ],
     [
-     "9:30–11:00",
+     "09:30–11:00",
      "Microeconomics midterm",
      "school"
     ],
     [
-     "11:30–1:00",
+     "11:30–13:00",
      "Welcome speech, orientation & lunch (Grand Hall)",
      "school"
     ],
     [
-     "2:00–4:00",
+     "14:00–16:00",
      "Becker Week Activity: dragon boating, Stanley",
-     "optional"
+     "optional",
+     null,
+     {
+      "label": "Stanley",
+      "tab": "sights",
+      "where": "south"
+     }
     ],
     [
      "Evening",
      "Hotpot + karaoke (A Smoking Affair)",
      "ours",
-     "mon-hotpot"
+     "mon-hotpot",
+     {
+      "label": "A Smoking Affair",
+      "tab": "city",
+      "q": "Smoking Affair"
+     }
     ]
    ],
-   "go": {
-    "label": "Stanley",
-    "tab": "sights",
-    "where": "south"
-   },
-   "go2": {
-    "label": "A Smoking Affair",
-    "tab": "city",
-    "q": "Smoking Affair"
-   },
    "bus": [
     [
      "To campus · morning",
      [
       [
        "🏨 Park Lane",
-       "7:45–8:15"
+       "07:45–08:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "8:00–8:15"
+       "08:00–08:15"
       ]
      ]
     ],
@@ -164,7 +165,7 @@
      [
       [
        "🏨🚇 To HKU, Sai Ying Pun & Park Lane",
-       "1:30pm"
+       "13:30"
       ]
      ]
     ],
@@ -173,15 +174,15 @@
      [
       [
        "Campus → Stanley",
-       "1:15pm"
+       "13:15"
       ],
       [
        "Stanley → Park Lane",
-       "3:45pm"
+       "15:45"
       ],
       [
        "Stanley → Admiralty MTR",
-       "3:45pm"
+       "15:45"
       ]
      ]
     ]
@@ -193,53 +194,54 @@
    "iso": "2026-11-17",
    "slots": [
     [
-     "8:00–9:00",
+     "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
     ],
     [
-     "9:00–12:00",
+     "09:00–12:00",
      "Microeconomics",
      "school"
     ],
     [
-     "12:30–1:30",
+     "12:30–13:30",
      "Heritage Tour (G/F Reception)",
      "optional"
     ],
     [
-     "2:00–5:00",
+     "14:00–17:00",
      "Statistics",
      "school"
     ],
     [
-     "5:30–6:30",
+     "17:30–18:30",
      "Statistics review",
      "optional"
     ],
     [
-     "6:30",
+     "18:30",
      "Boxed dinner, Student Lounge",
-     "school"
+     "school",
+     null,
+     {
+      "label": "Or eat out near Booth",
+      "tab": "city",
+      "mood": "dinner",
+      "where": "saiwan"
+     }
     ]
    ],
-   "go": {
-    "label": "Dinner near Booth",
-    "tab": "city",
-    "mood": "dinner",
-    "where": "saiwan"
-   },
    "bus": [
     [
      "To campus · morning",
      [
       [
        "🏨 Park Lane",
-       "7:45–8:15"
+       "07:45–08:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "8:00–8:15"
+       "08:00–08:15"
       ]
      ]
     ],
@@ -248,11 +250,11 @@
      [
       [
        "🏨 To Park Lane",
-       "8:30pm, 9:00pm"
+       "20:30, 21:00"
       ],
       [
        "🚇 To HKU & Sai Ying Pun",
-       "8:30pm"
+       "20:30"
       ]
      ]
     ]
@@ -264,29 +266,36 @@
    "iso": "2026-11-18",
    "slots": [
     [
-     "8:00–9:00",
+     "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
     ],
     [
-     "9:00–12:00",
+     "09:00–12:00",
      "Microeconomics",
      "school"
     ],
     [
-     "12:30–1:30",
+     "12:30–13:30",
      "Microeconomics review",
      "optional"
     ],
     [
-     "2:00–5:00",
+     "14:00–17:00",
      "Statistics",
      "school"
     ],
     [
-     "6:00",
+     "18:00",
      "Boxed dinner, Student Lounge",
-     "school"
+     "school",
+     null,
+     {
+      "label": "Or eat out near Booth",
+      "tab": "city",
+      "mood": "dinner",
+      "where": "saiwan"
+     }
     ],
     [
      "Evening",
@@ -295,23 +304,17 @@
      "wed-tram"
     ]
    ],
-   "go": {
-    "label": "Dinner near Booth",
-    "tab": "city",
-    "mood": "dinner",
-    "where": "saiwan"
-   },
    "bus": [
     [
      "To campus · morning",
      [
       [
        "🏨 Park Lane",
-       "7:45–8:15"
+       "07:45–08:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "8:00–8:15"
+       "08:00–08:15"
       ]
      ]
     ],
@@ -320,11 +323,11 @@
      [
       [
        "🏨 To Park Lane",
-       "8:30pm, 9:00pm"
+       "20:30, 21:00"
       ],
       [
        "🚇 To HKU & Sai Ying Pun",
-       "8:30pm"
+       "20:30"
       ]
      ]
     ]
@@ -346,12 +349,12 @@
      "optional"
     ],
     [
-     "12:00–2:00",
+     "12:00–14:00",
      "Lunch (Grand Hall)",
      "school"
     ],
     [
-     "2:00–5:00",
+     "14:00–17:00",
      "Statistics",
      "school"
     ],
@@ -359,31 +362,36 @@
      "Evening",
      "Dai pai dong dinner",
      "ours",
-     "thu-dpd"
+     "thu-dpd",
+     {
+      "label": "Peng Leng Jeng",
+      "tab": "city",
+      "q": "Peng Leng"
+     }
     ],
     [
      "Evening",
      "Or Peking duck dinner",
      "ours",
-     "thu-duck"
+     "thu-duck",
+     {
+      "label": "Peking Garden",
+      "tab": "city",
+      "q": "Peking Garden"
+     }
     ]
    ],
-   "go": {
-    "label": "Dinner options",
-    "tab": "city",
-    "q": "Peng Leng"
-   },
    "bus": [
     [
      "To campus · late start",
      [
       [
        "🏨 Park Lane",
-       "9:15–11:15"
+       "09:15–11:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "9:30–11:30"
+       "09:30–11:30"
       ]
      ]
     ],
@@ -392,11 +400,11 @@
      [
       [
        "🏨 To Park Lane",
-       "8:30pm, 9:00pm"
+       "20:30, 21:00"
       ],
       [
        "🚇 To HKU & Sai Ying Pun",
-       "8:30pm"
+       "20:30"
       ]
      ]
     ]
@@ -408,53 +416,54 @@
    "iso": "2026-11-20",
    "slots": [
     [
-     "8:00–9:00",
+     "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
     ],
     [
-     "9:00–12:00",
+     "09:00–12:00",
      "Microeconomics",
      "school"
     ],
     [
-     "12:00–2:00",
+     "12:00–14:00",
      "HK theme lunch (Grand Hall)",
      "school"
     ],
     [
-     "2:00–5:00",
+     "14:00–17:00",
      "Statistics",
      "school"
     ],
     [
-     "5:00",
+     "17:00",
      "Linda Ginzel's Tropical Fruit Fair (Grand Hall)",
      "optional"
     ],
     [
-     "6:00",
+     "18:00",
      "Boxed dinner, Student Lounge",
-     "school"
+     "school",
+     null,
+     {
+      "label": "Or eat out near Booth",
+      "tab": "city",
+      "mood": "dinner",
+      "where": "saiwan"
+     }
     ]
    ],
-   "go": {
-    "label": "Dinner near Booth",
-    "tab": "city",
-    "mood": "dinner",
-    "where": "saiwan"
-   },
    "bus": [
     [
      "To campus · morning",
      [
       [
        "🏨 Park Lane",
-       "7:45–8:15"
+       "07:45–08:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "8:00–8:15"
+       "08:00–08:15"
       ]
      ]
     ],
@@ -463,11 +472,11 @@
      [
       [
        "🏨 To Park Lane",
-       "8:30pm, 9:00pm"
+       "20:30, 21:00"
       ],
       [
        "🚇 To HKU & Sai Ying Pun",
-       "8:30pm"
+       "20:30"
       ]
      ]
     ]
@@ -479,52 +488,53 @@
    "iso": "2026-11-21",
    "slots": [
     [
-     "8:00–9:00",
+     "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
     ],
     [
-     "9:00–12:00",
+     "09:00–12:00",
      "Microeconomics",
      "school"
     ],
     [
-     "12:30–1:30",
+     "12:30–13:30",
      "Microeconomics review",
      "optional"
     ],
     [
-     "2:00–5:00",
+     "14:00–17:00",
      "Statistics",
      "school"
     ],
     [
-     "5:30–6:30",
+     "17:30–18:30",
      "Statistics review",
      "optional"
     ],
     [
-     "7:30–9:30",
+     "19:30–21:30",
      "Closing dinner, Nanhai No. 2 (Causeway Bay)",
-     "school"
+     "school",
+     null,
+     {
+      "label": "Nanhai No. 2",
+      "tab": "city",
+      "q": "Nanhai"
+     }
     ]
    ],
-   "go": {
-    "label": "Nanhai No. 2",
-    "tab": "city",
-    "q": "Nanhai"
-   },
    "bus": [
     [
      "To campus · morning",
      [
       [
        "🏨 Park Lane",
-       "7:45–8:15"
+       "07:45–08:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "8:00–8:15"
+       "08:00–08:15"
       ]
      ]
     ],
@@ -533,15 +543,15 @@
      [
       [
        "Campus → MTR",
-       "6:45pm"
+       "18:45"
       ],
       [
        "Campus → Park Lane",
-       "6:45pm"
+       "18:45"
       ],
       [
        "Campus → restaurant",
-       "7:00pm"
+       "19:00"
       ]
      ]
     ]
@@ -559,7 +569,7 @@
     ],
     [
      "Next day",
-     "Hotel check-out by 12pm on 23 Nov",
+     "Hotel check-out by 12:00 on 23 Nov",
      "school"
     ]
    ],
@@ -609,7 +619,7 @@
    "emoji": "🫖",
    "intro": "Tiered scones, finger sandwiches and a string quartet in the gilded lobby of Hong Kong's oldest hotel, opened in 1928. It's a quintessential colonial-era Hong Kong ritual.",
    "funFact": "During the Second World War, the British governor surrendered Hong Kong to Japan at The Peninsula on Christmas Day 1941, in a room on the hotel's third floor.",
-   "tips": "Go mid-afternoon on a weekday and expect a queue. Check The Peninsula's website for current booking rules. Afterwards, walk five minutes to the Tsim Sha Tsui promenade for the skyline, and stay for the 8pm Symphony of Lights.",
+   "tips": "Go mid-afternoon on a weekday and expect a queue. Check The Peninsula's website for current booking rules. Afterwards, walk five minutes to the Tsim Sha Tsui promenade for the skyline, and stay for the 20:00 Symphony of Lights.",
    "getting": "From the Park Lane: MTR from Causeway Bay to Tsim Sha Tsui (about 20 min), or take the Star Ferry from Wan Chai.",
    "facts": [
     [
@@ -673,8 +683,8 @@
    "emoji": "🖼️",
    "intro": "A calm, air-conditioned stop with Chinese painting, calligraphy and Hong Kong art, plus harbour views from the galleries. Easy to pair with a walk along the TST Promenade.",
    "getting": "MTR from Causeway Bay to Tsim Sha Tsui (change at Admiralty or Tsim Sha Tsui via Tsuen Wan line), about 20-25 min, then a 10-min walk. Or Star Ferry from Central, about 10 min.",
-   "tips": "Closed on Thursdays (so not Thu 19 Nov). The permanent collection is free, and special exhibitions are ticketed. Time it so you walk out onto the Promenade for sunset and the 8pm Symphony of Lights.",
-   "hours": "Mon–Wed & Fri 10am–6pm, Sat–Sun 10am–9pm, closed Thursdays",
+   "tips": "Closed on Thursdays (so not Thu 19 Nov). The permanent collection is free, and special exhibitions are ticketed. Time it so you walk out onto the Promenade for sunset and the 20:00 Symphony of Lights.",
+   "hours": "Mon–Wed & Fri 10:00–18:00, Sat–Sun 10:00–21:00, closed Thursdays",
    "lat": 22.2935,
    "lng": 114.172,
    "addressEn": "10 Salisbury Road, Tsim Sha Tsui, Kowloon",
@@ -948,7 +958,7 @@
    ],
    "emoji": "🏮",
    "intro": "A kilometre of street stalls under the Mong Kok neon: T-shirts, phone cases, bags, souvenirs and snacks. It's loud, crowded and a great slice of Kowloon street life.",
-   "tips": "Haggle with a smile and start at about half the asking price. Go after dark (stalls run from about noon to 11pm), and then walk the neon streets around Sai Yeung Choi Street. Keep your phone and wallet in a front pocket.",
+   "tips": "Haggle with a smile and start at about half the asking price. Go after dark (stalls run from about noon to 23:00), and then walk the neon streets around Sai Yeung Choi Street. Keep your phone and wallet in a front pocket.",
    "getting": "MTR to Mong Kok (Exit D3), about 25 min from Causeway Bay. Or a taxi, 20–30 min via the Cross-Harbour Tunnel.",
    "facts": [
     [
@@ -1520,7 +1530,7 @@
    ],
    "emoji": "🏛️",
    "intro": "The former Marine Police headquarters (built 1884), now a courtyard of colonnaded colonial buildings, shops and restaurants, lit warmly at night. A short walk from the Star Ferry, Clock Tower and harbour promenade.",
-   "tips": "Come at dusk to catch the courtyard lights, then walk to the waterfront for the 8pm Symphony of Lights. The Clock Tower (1915 railway terminus remnant) is 3 min away.",
+   "tips": "Come at dusk to catch the courtyard lights, then walk to the waterfront for the 20:00 Symphony of Lights. The Clock Tower (1915 railway terminus remnant) is 3 min away.",
    "getting": "From Causeway Bay: Island Line to Admiralty, Tsuen Wan Line to Tsim Sha Tsui (Exit L5/E), about 20 min; or Star Ferry from Central/Wan Chai.",
    "hours": "Public courtyard roughly 07:00-00:00 (secondary sources; shops/restaurants vary); free guided tours by phone booking per HKTB",
    "lat": 22.29548,
@@ -2195,7 +2205,7 @@
     ],
     [
      "🖼️",
-     "K11 Musea or the HK Museum of Art, then the TST Promenade for the 8pm Symphony of Lights",
+     "K11 Musea or the HK Museum of Art, then the TST Promenade for the 20:00 Symphony of Lights",
      "Tsim Sha Tsui Promenade"
     ]
    ],
@@ -2222,7 +2232,7 @@
     ],
     [
      "🌃",
-     "TST Promenade for sunset and the 8pm Symphony of Lights",
+     "TST Promenade for sunset and the 20:00 Symphony of Lights",
      "Tsim Sha Tsui Promenade"
     ],
     [

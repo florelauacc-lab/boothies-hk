@@ -1215,3 +1215,27 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
   .legend { flex-wrap: wrap !important; overflow: visible !important; max-width: calc(100% - 52px); }
 }
 @media (min-width: 601px) and (max-width: 1100px) { .explore-tab .legend { display: flex !important; } }
+/* week: centred column on wide screens */
+#week .week-inner { max-width: 800px; margin-left: auto; margin-right: auto; }
+.plandays, .plan, .plan-mode, #cc { margin-left: auto; margin-right: auto; }
+.plan-mode { display: flex; width: fit-content; }
+#week .eyebrow, #week h2, #week > .week-inner > p.muted { text-align: center; }
+#cc-jump { display: block; margin: 0 auto 12px; }
+/* links sit right under the item they belong to */
+#plan .slotrow span.slotgo { grid-column: 1 / -1; display: block; margin-top: 6px; }
+#plan .slotrow span.slotgo .go { margin: 0; font-size: .84rem; padding: 6px 12px; min-height: 36px; }
+@media (pointer: coarse) { #plan .slotrow span.slotgo .go { min-height: 40px; } }
+/* personal plans */
+#plan .slotrow.personal { color: #fff; }
+#plan .slotrow.personal > span:first-child { color: #3ee8b5; }
+.mine-tag { font-style: normal; font-size: .7rem; font-weight: 800; letter-spacing: .04em; padding: 1px 7px; border-radius: 999px; background: rgba(62,232,181,.15); color: #3ee8b5; margin-left: 4px; text-transform: none; }
+#plan .slotrow.personal .cc-x { grid-column: 2; grid-row: 2; }
+.plan details.ownplan { margin-top: 10px; border-radius: 12px; border: 1px dashed rgba(255,255,255,.18); }
+.plan details.ownplan .cc-inline { margin: 0 12px 12px; }
+.addweek { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 8px 0 0; font-size: .86rem; font-weight: 800; color: #3ee8b5; }
+.addweek select { font: inherit; font-size: 16px; font-weight: 600; min-height: 40px; padding: 6px 10px; border-radius: 10px; border: 1px solid rgba(62,232,181,.45); background: rgba(0,0,0,.3); color: var(--text); max-width: 100%; }
+.plan details.route .addweek { margin: 0 12px 12px; }
+.links .addweek { margin: 0; }
+.pd.today { border-color: #3ee8b5; }
+.pd.today b { color: #3ee8b5; }
+.pd.today.on b { color: #fff; }

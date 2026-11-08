@@ -685,6 +685,43 @@ for p in places:
     if ph and ph.get("src") and p["id"] not in BAD_PHOTOS:
         p["photo"] = {"src": ph["src"].split("?")[0], "page": (ph.get("page") or "").split("?")[0], "credit": ph.get("credit", ""), "license": ph.get("license", "")}
 
+# 24-hour time everywhere (Hong Kong style): "11am–10pm" -> "11:00–22:00"
+AMPM = re.compile(r"\b(\d{1,2})(?:[:.](\d{2}))?\s?(am|pm|a\.m\.|p\.m\.)(?![a-z])", re.I)
+def to24(text):
+    def r(m):
+        h, mi, pm = int(m.group(1)), m.group(2) or "00", m.group(3).lower().startswith("p")
+        h = (0 if not pm else 12) if h == 12 else h + 12 if pm else h
+        return f"{h:02d}:{mi}"
+    return AMPM.sub(r, text) if isinstance(text, str) else text
+SKIP24 = {"name", "zh", "addressEn", "addressZh", "url", "openrice", "mapsQuery", "id", "emoji", "map"}
+for p in places:
+    for k, v in list(p.items()):
+        if k in SKIP24:
+            continue
+        if isinstance(v, str):
+            p[k] = to24(v)
+        elif isinstance(v, list) and all(isinstance(x, str) for x in v):
+            p[k] = [to24(x) for x in v]
+    if p.get("facts"):
+        p["facts"] = [[a, to24(b)] for a, b in p["facts"]]
+    if p.get("order"):
+        p["order"] = [to24(o) for o in p["order"]]
+for t in taste:
+    for k in ("what", "fun_fact"):
+        if isinstance(t.get(k), str):
+            t[k] = to24(t[k])
+
+def walk24(o, key=None):
+    if isinstance(o, str):
+        return o if key in SKIP24 else to24(o)
+    if isinstance(o, list):
+        return [walk24(x, key) for x in o]
+    if isinstance(o, dict):
+        return {k: walk24(v, k) for k, v in o.items()}
+    return o
+places[:] = walk24(places)
+taste[:] = walk24(taste)
+
 out = {"HOME": home, "PLACES": places, "OUTINGS": EXTRAS.get("outings", []), "PLAN": EXTRAS["plan"], "TASTE": taste, "TIPS": tips}
 (ROOT / "data.js").write_text("window.HK = " + json.dumps(out, ensure_ascii=False, indent=1) + ";\n")
 from collections import Counter

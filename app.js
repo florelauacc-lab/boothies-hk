@@ -380,6 +380,7 @@
       ...(p.links || []).map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">📖 ${esc(l.label)}</a>`),
       (p.zh || p.addressZh) && `<button class="drv" data-driver="${p.id}">🚕 Show the driver</button>`,
       p.phone && `<a href="tel:+852${esc(p.phone.replace(/\s/g, ""))}">📞 ${esc(p.phone)}</a>`,
+      window.HK_ADDWEEK && window.HK_ADDWEEK({ title: `${emojiOf(p)} ${p.name}`, place: p.id }, "🗓 Add to my week"),
     ].filter(Boolean).join("");
     return `<article class="card${state.active === p.id ? " active open" : ""}" data-id="${p.id}" style="--c:${colorOf(p)};animation-delay:${Math.min(i, 12) * 30}ms">
       ${p.photo ? `<figure class="ph"><img src="${esc(p.photo.src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('figure').remove()"><figcaption><a href="${esc(p.photo.page)}" target="_blank" rel="noopener">📷 ${esc(p.photo.credit)} · ${esc(p.photo.license)}</a></figcaption></figure>` : ""}
@@ -618,6 +619,20 @@
   // Week: official Becker schedule (🎓) + our own plans (🎉). Phones show one day at a time.
   let planDay = null;
   const ideaOpen = {}; // day -> idea open in its ideas grid
+  // Personal plans: day trips, ideas, places or anything typed in, kept on this phone and shown in "My week"
+  const MYP = "hk-myplans-v1";
+  let myPlans = store.get(MYP) || [];
+  const saveMyPlans = () => store.set(MYP, myPlans);
+  const dayLabel = (iso) => { const d = PLAN.find((x) => x.iso === iso); return d ? `${d.day} ${d.date}` : iso; };
+  function addMyPlan(p) {
+    if (!p.iso || !p.title) return;
+    if (myPlans.some((x) => x.iso === p.iso && x.title === p.title)) { toast(`Already in your week on ${dayLabel(p.iso)}`); return; }
+    myPlans.push({ id: Math.random().toString(36).slice(2, 9), ...p }); saveMyPlans();
+    planDay = Math.max(0, PLAN.findIndex((d) => d.iso === p.iso));
+    renderPlan(); toast(`⭐ Added to your week: ${dayLabel(p.iso)}`);
+  }
+  // a small "Add to my week" day picker that works anywhere (idea plans, place cards)
+  window.HK_ADDWEEK = (item, label = "⭐ Add to my week") => `<label class="addweek"><span>${label}</span><select data-addweek="${esc(JSON.stringify(item))}" aria-label="Pick a day to add it to your week"><option value="">pick a day…</option>${PLAN.map((d) => `<option value="${d.iso}">${esc(d.day)} ${esc(d.date)}</option>`).join("")}</select></label>`;
   const MLS = "hk-myplan-v2"; // keys are day + event id (or the item text), so edits to the schedule don't shift ticks
   const slotKey = (iso, v, ev) => `${iso}|${ev || v.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 40)}`;
   const mine = store.get(MLS) || {}; // "iso|slot" -> true when someone adds an optional or social item to their own plan
@@ -625,10 +640,11 @@
   const showHidden = new Set();
   const findPlace = (q) => { const l = q.toLowerCase(); return live.find((p) => p.name.toLowerCase().includes(l)); };
   function renderPlan() {
-    const today = new Date().toISOString().slice(0, 10);
+    // "today" in Hong Kong time, so the week opens on the right day during the trip
+    const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong" }).format(new Date());
     if (planDay == null) planDay = Math.max(0, PLAN.findIndex((d) => d.iso === today));
-    const dayBtns = PLAN.map((d, i) => `<button class="pd${i === planDay ? " on" : ""}" data-planday="${i}"><b>${esc(d.day)}</b><span>${esc(d.date.split(" ")[0])}</span></button>`).join("");
-    const row = (d, [t, v, kind, ev], j) => {
+    const dayBtns = PLAN.map((d, i) => `<button class="pd${i === planDay ? " on" : ""}${d.iso === today ? " today" : ""}" data-planday="${i}" aria-label="${esc(d.day)} ${esc(d.date)}${d.iso === today ? ", today" : ""}"><b>${d.iso === today ? "Today" : esc(d.day)}</b><span>${esc(d.date.split(" ")[0])}</span></button>`).join("");
+    const row = (d, [t, v, kind, ev, go], j) => {
       // class events follow the shared list once you've picked your name in the class corner
       const shared = ev && window.HK_CLASS?.going(ev);
       const key = slotKey(d.iso, v, ev), pickable = kind === "ours", on = shared != null ? shared : !!mine[key];
@@ -636,19 +652,24 @@
       return `<div class="slotrow ${kind || "school"}${pickable && !on ? " off" : ""}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : ""}</span>`
         + `<span class="sv">${kind === "ours" ? "🎉 " : ""}${esc(v)}</span>`
         + (ev ? `<span class="evinfo" data-evinfo="${ev}"></span>` : "")
+        + (go ? `<span class="slotgo"><button class="go" data-go='${esc(JSON.stringify(go))}'>${esc(go.label)} →</button></span>` : "")
         + (pickable ? `<button class="mine${on ? " on" : ""}" data-mine="${key}" data-ev="${ev || ""}" data-on="${on ? 1 : 0}" aria-pressed="${on}" aria-label="${on ? "Remove from" : "Add to"} my plan">${on ? "✓ Going" : "+ Me"}</button>` : "")
         + `</div>`;
     };
     const route = (r) => r ? `<details class="route" data-k="r:${esc(r.title)}"><summary>${/^day trip/i.test(r.title) ? "⛴️" : "🗺️"} ${esc(r.title)}</summary><ol>${r.steps.map(([em, text, q]) => {
       const p = q && findPlace(q);
       return `<li><span class="re">${em}</span><span>${esc(text)}${p ? ` <button class="rlink" data-jump="${p.id}">Map →</button>` : ""}</span></li>`;
-    }).join("")}</ol></details>` : "";
+    }).join("")}</ol>${window.HK_ADDWEEK({ title: `${r.em || (/^day trip/i.test(r.title) ? "⛴️" : "🗺️")} ${r.short || r.title}`, idea: r.title })}</details>` : "";
     const bus = (b) => b ? `<details class="bus" data-k="bus"><summary>🚌 Shuttle bus times</summary>
       ${b.map(([title, rows]) => `<div class="bt"><p class="bt-h">${esc(title)}</p>${rows.map(([stop, time]) => `<div class="bt-row"><span class="bt-stop">${esc(stop)}</span><span class="bt-time">${time.split(/,\s*/).map(esc).join("<br>")}</span></div>`).join("")}</div>`).join("")}
       <p class="muted small">Morning buses run every ~15 min. Times are for the first stop, and buses don't wait.</p></details>` : "";
     const dayCard = (d, i) => `<li class="${i === planDay ? "sel" : ""}" data-iso="${d.iso}">
       <div class="day"><small>${esc(d.date)}</small>${esc(d.day)}</div>
       ${d.slots.map((sl, j) => row(d, sl, j)).join("")}
+      ${myPlans.filter((p) => p.iso === d.iso).map((p) => `<div class="slotrow personal"><span>${esc(p.when || "Anytime")} <em class="mine-tag">Mine</em></span><span class="sv">⭐ ${esc(p.title)}${p.place && byId[p.place] ? ` <button class="rlink" data-jump="${p.place}">Map →</button>` : ""}${p.idea ? ` <button class="rlink" data-idea="${esc(p.idea)}" data-iso="${d.iso}">See plan →</button>` : ""}</span><button class="cc-x" data-delmine="${p.id}" aria-label="Remove from my week">✕</button></div>`).join("")}
+      <details class="ownplan" data-k="own"><summary>➕ Add my own plan</summary>
+        <form class="cc-inline" data-ownplan="${d.iso}"><input name="title" placeholder="e.g. Spa, shopping, dinner with friends" maxlength="60" required aria-label="Your plan"><input name="when" placeholder="Time" maxlength="20" aria-label="Time"><button type="submit">Add</button></form>
+      </details>
       ${(() => { const n = onlyMine && !showHidden.has(d.iso) ? d.slots.filter(([, v, k, ev]) => k === "ours" && !mine[slotKey(d.iso, v, ev)]).length : 0;
         return n ? `<button class="hidden-n" data-showhidden="${d.iso}">+ ${n} more you haven't added · show</button>` : ""; })()}
       ${d.note ? `<p class="daynote">${esc(d.note)}</p>` : ""}
@@ -680,7 +701,7 @@
     document.querySelectorAll("#plan details[data-k]").forEach((x) => { if (openK.has(`${x.closest("li[data-iso]")?.dataset.iso}|${x.dataset.k}`)) x.open = true; });
     if (Math.abs(window.scrollY - y) > 2) window.scrollTo(0, y);
     $("#plandays").innerHTML = dayBtns;
-    const nMine = Object.values(mine).filter(Boolean).length;
+    const nMine = Object.values(mine).filter(Boolean).length + myPlans.length;
     $("#plan-mode").innerHTML = `<button class="${onlyMine ? "" : "on"}" data-onlymine="0">Everything</button><button class="${onlyMine ? "on" : ""}" data-onlymine="1">⭐ My week${nMine ? ` · ${nMine}` : ""}</button>`;
     // a shortcut to the class corner (who's going, what you owe, paying Rienno), which sits below the day
     if (!$("#cc-jump")) $("#plan-mode").insertAdjacentHTML("afterend", `<button type="button" id="cc-jump" class="cc-jump">💸 Who's going &amp; pay Rienno ↓</button>`);
@@ -713,7 +734,10 @@
       else if (ev && now && window.HK_CLASS?.hint) window.HK_CLASS.hint();
       renderPlan(); return;
     }
+    const dm = e.target.closest("[data-delmine]");
+    if (dm) { myPlans = myPlans.filter((p) => p.id !== dm.dataset.delmine); saveMyPlans(); renderPlan(); toast("Removed from your week"); return; }
     const id = e.target.closest("[data-idea]");
+    if (id && id.classList.contains("rlink")) { planDay = Math.max(0, PLAN.findIndex((d) => d.iso === id.dataset.iso)); ideaOpen[id.dataset.iso] = id.dataset.idea; renderPlan(); return; }
     if (id) { ideaOpen[id.dataset.iso] = ideaOpen[id.dataset.iso] === id.dataset.idea ? null : id.dataset.idea; renderPlan(); return; }
     if (e.target.closest("#cc-jump")) { document.getElementById("cc")?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     const sh = e.target.closest("[data-showhidden]");
@@ -723,6 +747,19 @@
     const b = e.target.closest("[data-planday]");
     if (!b) return;
     planDay = +b.dataset.planday; renderPlan();
+  });
+
+  document.addEventListener("change", (e) => {
+    const sel = e.target.closest("[data-addweek]");
+    if (!sel || !sel.value) return;
+    addMyPlan({ ...JSON.parse(sel.dataset.addweek), iso: sel.value });
+    sel.value = "";
+  });
+  document.addEventListener("submit", (e) => {
+    const f = e.target.closest("[data-ownplan]");
+    if (!f) return;
+    e.preventDefault();
+    addMyPlan({ iso: f.dataset.ownplan, title: f.elements.title.value.trim(), when: f.elements.when.value.trim() });
   });
 
   /* ---------- start here ---------- */
@@ -907,7 +944,7 @@
       return;
     }
     const c = e.target.closest(".cards .card");
-    if (c && !e.target.closest("a")) {
+    if (c && !e.target.closest("a, .addweek, select")) {
       const open = c.classList.contains("open") && state.active === c.dataset.id;
       if (open) { c.classList.remove("open"); return; }
       focus(c.dataset.id);

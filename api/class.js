@@ -97,6 +97,7 @@ export default async function handler(req, res) {
         const e = JSON.parse(cur), price = Math.round(+b.price);
         if (!(price >= 0) || price > 100000) return res.status(400).json({ error: "bad price" });
         e.price = price || null; e.priceBy = by;
+        if (b.total != null) e.total = Math.round(+b.total) || null; // the overall bill, shown for reference
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
       }

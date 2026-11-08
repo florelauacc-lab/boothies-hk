@@ -177,7 +177,7 @@
         <form id="cc-newev" class="cc-grid-form">
           <input name="title" placeholder="What (e.g. Dragon's Back hike)" required maxlength="70">
           <select name="iso" aria-label="Day">${DAYS.map(([iso, l]) => `<option value="${iso}">${esc(l)}</option>`).join("")}</select>
-          <input name="when" placeholder="Time (e.g. 7pm)" maxlength="40">
+          <input name="when" placeholder="Time (e.g. 19:00)" maxlength="40">
           <input name="venue" placeholder="Where (pick a place from the guide or type one)" maxlength="80" list="cc-places">
           <datalist id="cc-places">${PLACES.filter((p) => ["city", "saiwan", "sights", "hikes", "shop"].includes(p.tab)).map((p) => `<option value="${esc(p.name)}">`).join("")}</datalist>
           <button type="submit">Add event</button>
@@ -245,7 +245,7 @@
       <div class="cc-bills">
         <h4>Price per person</h4>
         ${p ? `<p class="cc-price"><b>${hk(p)}</b> each <span>≈ ${["USD", "GBP", "EUR", "JPY"].map((c) => fx(p, c)).join(" · ")}</span></p>
-          <p class="muted small">${e.going.length} going × ${hk(p)} = ${hk(p * e.going.length)} to ${esc(data.payTo)}</p>`
+          <p class="muted small">${e.total ? `Total ${hk(e.total)} ÷ ${Math.round(e.total / p)} people = ${hk(p)} each · ` : ""}${e.going.length} going × ${hk(p)} = ${hk(p * e.going.length)} to ${esc(data.payTo)}</p>`
           : `<p class="cc-split muted">No price yet. Once it's set, everyone ticked owes that amount.</p>`}
         ${e.expenses.length ? `<ul>${e.expenses.map((x) => `<li><span>${esc(x.what)} · paid by ${esc(x.paidBy)}</span><b>${hk(+x.hkd)}</b>${live() ? `<button type="button" class="cc-x" data-delexp="${e.id}" data-xid="${x.id}" aria-label="Remove bill">✕</button>` : ""}</li>`).join("")}</ul>` : ""}
         ${live() ? `<form class="cc-inline bill" data-setprice="${e.id}">

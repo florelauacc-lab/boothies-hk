@@ -32,7 +32,7 @@ window.HK = {
    ],
    "reviews": "Reviewers rave about the claypot rice and its crust, and it is consistently tipped as worth queueing for; common complaints are long evening queues (some bloggers report up to two hours), basic surroundings and cash only.",
    "group": "Takes phone reservations (Michelin: manages its own bookings) – book ahead for a group and order the claypot rice first since it takes time. Expect a queue without a booking.",
-   "hours": "Claypot rice is dinner only; Michelin lists 5pm–10pm daily (older sources list a lunch session too).",
+   "hours": "Claypot rice is dinner only; Michelin lists 17:00–22:00 daily (older sources list a lunch session too).",
    "status": "open",
    "phone": "2803 7209",
    "openrice": "https://s.openrice.com/QrbS0B3G000~uqPfQAw",
@@ -73,7 +73,7 @@ window.HK = {
    ],
    "reviews": "Reviews are mostly positive: tender chicken, a fun beer-flambé at the table and friendly staff; some found the chicken tough or the beef served half-frozen. Plastic stools, shared hall atmosphere.",
    "group": "Very group-friendly in the cooked-food-centre style (big round tables), but no online booking shown – call ahead. Cash/AlipayHK only per OpenRice.",
-   "hours": "OpenRice: 5pm–11pm, closed Wednesdays, last order 9:30pm (a video lists 5pm–10:30pm).",
+   "hours": "OpenRice: 17:00–23:00, closed Wednesdays, last order 21:30 (a video lists 17:00–22:30).",
    "status": "open",
    "phone": "2816 2098",
    "openrice": "https://s.openrice.com/QrbS0OTG000~uqPfQAw",
@@ -148,7 +148,7 @@ window.HK = {
    ],
    "reviews": "Reviewers praise generous portions, good banchan, tender bossam and cold buckwheat noodles at fair prices; it gets fully booked, even on rainy days.",
    "group": "Spacious open-plan room; online booking via OpenRice and Bistrochat – book ahead for groups. Pet-friendly.",
-   "hours": "Instagram: 12pm–11pm.",
+   "hours": "Instagram: 12:00–23:00.",
    "status": "open",
    "phone": "6175 9330",
    "openrice": "https://www.openrice.com/en/hongkong/r-yeon-nam-dong-western-district-korean-r876201",
@@ -305,7 +305,7 @@ window.HK = {
    ],
    "reviews": "Recent reviews like the generous lunch sets (starter, salad, miso soup, main, dessert) and long track record; an older review found dinner omakase good but only average value.",
    "group": "unknown – call to book.",
-   "hours": "12pm–3pm and 6pm–11pm daily (last orders 2:30pm / 10pm per iFoodcourt).",
+   "hours": "12:00–15:00 and 18:00–23:00 daily (last orders 14:30 / 22:00 per iFoodcourt).",
    "status": "open",
    "phone": "2872 0522",
    "openrice": "https://www.openrice.com/en/hongkong/r-shin-shu-japanese-western-district-japanese-r169804",
@@ -336,7 +336,7 @@ window.HK = {
     "lunch"
    ],
    "price": "$",
-   "intro": "A cult old-school dim sum house that opens at 3am, serving night owls, taxi drivers and early risers with classic dim sum, some still on trolleys.",
+   "intro": "A cult old-school dim sum house that opens at 03:00, serving night owls, taxi drivers and early risers with classic dim sum, some still on trolleys.",
    "order": [
     "Salted egg custard lava buns (流沙包)",
     "Siu mai (燒賣)",
@@ -344,8 +344,8 @@ window.HK = {
     "Crispy fried milk (炸鮮奶)"
    ],
    "reviews": "Loved for authentic, cheap dim sum and atmosphere; complaints are long queues at peak times, no proper queue system (you hunt for seats and share tables), no English menu and limited English. Bring cash (payment reports conflict; OpenRice lists Octopus/Alipay too).",
-   "group": "Not bookable; small groups only and expect shared tables. Best for a 3–6am post-drinks visit or early morning.",
-   "hours": "Opens 3am, closes 4pm daily.",
+   "group": "Not bookable; small groups only and expect shared tables. Best for a 3–06:00 post-drinks visit or early morning.",
+   "hours": "Opens 03:00, closes 16:00 daily.",
    "status": "open",
    "phone": "2816 0616",
    "openrice": "https://www.openrice.com/en/hongkong/r-sun-hing-restaurant-western-district-guangdong-dim-sum-r125594",
@@ -426,7 +426,7 @@ window.HK = {
    ],
    "reviews": "Diners praise the braised pork rice and value; some say portions are small. Queues at peak times – reports of 20–45 minutes at dinner.",
    "group": "Small shop with queues; not ideal for big groups – split up or go off-peak.",
-   "hours": "Sources conflict: 11am–10pm closed Monday (Time Out) vs 11am–9pm closed Tuesday (review) – check.",
+   "hours": "Sources conflict: 11:00–22:00 closed Monday (Time Out) vs 11:00–21:00 closed Tuesday (review) – check.",
    "status": "open",
    "phone": "3579 2460",
    "openrice": "https://www.openrice.com/en/hongkong/r-yuan-is-here-western-district-taiwan-taiwanese-drink-r600121",
@@ -468,7 +468,7 @@ window.HK = {
    ],
    "reviews": "Generally well rated on OpenRice; fans like the fresh pasta, burrata and tiramisu, while some find portions small or the food inconsistent.",
    "group": "Online booking on OpenRice/Pici site; good for medium groups – book ahead. Outdoor seating.",
-   "hours": "Sun–Thu 11am–9:30pm, Fri–Sat 11am–10pm (Pici website).",
+   "hours": "Sun–Thu 11:00–21:30, Fri–Sat 11:00–22:00 (Pici website).",
    "status": "open",
    "phone": "2699 1033",
    "openrice": "https://www.openrice.com/en/hongkong/r-pici-western-district-italian-r709928",
@@ -509,7 +509,7 @@ window.HK = {
    ],
    "reviews": "Reviewers like the generous, chewy handmade taro balls and mango desserts; there is upstairs booth seating.",
    "group": "unknown – small dessert shop; fine for small groups.",
-   "hours": "3pm–11pm daily (OpenRice/HolidaySmart).",
+   "hours": "15:00–23:00 daily (OpenRice/HolidaySmart).",
    "status": "open",
    "phone": "5744 1744",
    "openrice": "https://www.openrice.com/en/hongkong/r-%E8%8A%8B%E5%9C%93%E4%B8%80-western-district-taiwan-dessert-r767433",
@@ -548,7 +548,7 @@ window.HK = {
    ],
    "reviews": "Popular with locals and visitors for its Instagrammable toasts; some find the lava filling watery or flavours inconsistent.",
    "group": "unknown – casual seating; Klook sells priority-pass sets, suggesting queues at peak times.",
-   "hours": "Reported 8am–6pm, closed Monday (Yelp, Dec 2025) – other sources differ; check.",
+   "hours": "Reported 08:00–18:00, closed Monday (Yelp, Dec 2025) – other sources differ; check.",
    "status": "open",
    "phone": "2559 2389",
    "openrice": "https://www.openrice.com/en/hongkong/r-chau-kee-western-district-hong-kong-style-dim-sum-r440685",
@@ -589,7 +589,7 @@ window.HK = {
    ],
    "reviews": "Noodles are widely praised, but some reviewers find the broth too salty/MSG-heavy or the dipping sauce too thin; service reviews are mixed. Cash payment noted.",
    "group": "Only ~20 seats; queues at noon – small groups only.",
-   "hours": "Lunch 11:30am–3pm and dinner 6pm–9pm, closed Sunday (sources vary).",
+   "hours": "Lunch 11:30–15:00 and dinner 18:00–21:00, closed Sunday (sources vary).",
    "status": "open",
    "phone": "2440 0900",
    "openrice": "https://www.openrice.com/zh/hongkong/r-%E5%BD%A9aya-%E8%A5%BF%E7%92%B0-%E6%97%A5%E6%9C%AC%E8%8F%9C-%E6%8B%89%E9%BA%B5-r545090",
@@ -627,7 +627,7 @@ window.HK = {
    ],
    "reviews": "Reviews are mixed but generally positive: nasi lemak rice, sambal and crispy anchovies are praised; laksa ranges from 'close to authentic' to 'average'. Most reviews online are older.",
    "group": "Hotel restaurant – easiest place on this list for a large group; book online (inline) or by phone.",
-   "hours": "7am–10pm daily (official site / Shangri-La).",
+   "hours": "07:00–22:00 daily (official site / Shangri-La).",
    "status": "open",
    "phone": "2213 6613",
    "openrice": "https://www.openrice.com/en/hongkong/r-cafe-malacca-western-district-malaysian-r112143",
@@ -699,7 +699,7 @@ window.HK = {
    ],
    "reviews": "Reviewers praise the fresh-fried, well-marinated pork chop and chewy thick noodles; this branch is often called better than other branches. Can have queues.",
    "group": "Small, quick noodle shop – fine for small groups, not for bookings.",
-   "hours": "11am–11pm (HK01, Feb 2025).",
+   "hours": "11:00–23:00 (HK01, Feb 2025).",
    "status": "open",
    "phone": "2884 1090",
    "openrice": "https://www.openrice.com/en/hongkong/r-%E9%98%BF%E4%B8%80%E8%B1%AC%E6%89%92%E9%85%B8%E8%BE%A3%E7%B1%B3%E7%B6%AB-western-district-yunnan-noodles-rice-noodles-r48517",
@@ -733,14 +733,14 @@ window.HK = {
     "Tapas (西班牙小食)"
    ],
    "reviews": "Reviewers love the cavernous space and the 40+ gin selection with careful tonic pairing; complaints are high prices, uneven service and ordinary tapas. Entrance easy to miss.",
-   "group": "Takes table and event reservations (email info@pingpong129.com or phone); group minimum spend after 7:30pm. Big space – good for a class gathering.",
-   "hours": "Tue–Sun 5pm–midnight (1am Fri–Sat), closed Monday (official site).",
+   "group": "Takes table and event reservations (email info@pingpong129.com or phone); group minimum spend after 19:30. Big space – good for a class gathering.",
+   "hours": "Tue–Sun 17:00–midnight (01:00 Fri–Sat), closed Monday (official site).",
    "status": "open",
    "phone": "9158 1584 / 9835 5061",
    "openrice": "https://www.openrice.com/en/hongkong/r-ping-pong-129-gintoneria-western-district-spanish-wine-r174968",
    "addressZh": "西營盤第二街129-135號南昌樓地舖",
    "addressEn": "L/G, Nam Cheong House, 129-135 Second Street, Sai Ying Pun",
-   "priceNote": "G&Ts ~HK$120–160 (premium up to ~HK$240); minimum spend for reservations after 7:30pm",
+   "priceNote": "G&Ts ~HK$120–160 (premium up to ~HK$240); minimum spend for reservations after 19:30",
    "lat": 22.28631,
    "lng": 114.13967,
    "local": false,
@@ -807,7 +807,7 @@ window.HK = {
    ],
    "reviews": "Mixed: fans like the generous, cheap mango desserts and smooth tofu pudding; others find quality inconsistent (Tripadvisor 3.0/5).",
    "group": "About 20 seats – OK for small groups.",
-   "hours": "2pm–1am daily; dine-in may stop at midnight with takeaway till 1am.",
+   "hours": "14:00–01:00 daily; dine-in may stop at midnight with takeaway till 01:00.",
    "status": "open",
    "phone": "6225 1198",
    "openrice": "https://www.openrice.com/zh/hongkong/r-%E7%94%9C%E5%AE%B6-%E8%A5%BF%E7%92%B0-%E6%B8%AF%E5%BC%8F-%E7%94%9C%E5%93%81-%E7%B3%96%E6%B0%B4-r663716",
@@ -843,13 +843,13 @@ window.HK = {
    ],
    "reviews": "Tripadvisor 4.3/5 – generous portions and consistent food; margaritas divide opinion (some too sweet/artificial); can be dark inside; book at weekends.",
    "group": "Good for groups – upstairs private-party space; book ahead for weekends.",
-   "hours": "Mon–Sat 4pm–1am, Sun 12pm–1am (Instagram; may be outdated).",
+   "hours": "Mon–Sat 16:00–01:00, Sun 12:00–01:00 (Instagram; may be outdated).",
    "status": "open",
    "phone": "2818 1766",
    "openrice": "https://www.openrice.com/en/hongkong/r-tequila-on-davis-western-district-mexican-wine-r156402",
    "addressZh": "堅尼地城爹核士街1號地舖",
    "addressEn": "G/F, 1 Davis Street, Kennedy Town",
-   "priceNote": "unknown; happy hour 4pm–7pm",
+   "priceNote": "unknown; happy hour 16:00–19:00",
    "lat": 22.28359,
    "lng": 114.12678,
    "local": false,
@@ -878,7 +878,7 @@ window.HK = {
     "Five-colour cold noodles (五色冷麵)"
    ],
    "reviews": "unknown – few recent reviews found (latest OpenRice review seen March 2025).",
-   "hours": "6pm–3am, closed Saturday (OpenRice/Facebook); another listing says 5pm–2am daily.",
+   "hours": "18:00–03:00, closed Saturday (OpenRice/Facebook); another listing says 17:00–02:00 daily.",
    "status": "unclear",
    "phone": "2974 1333",
    "openrice": "https://www.openrice.com/zh/hongkong/r-%E5%AE%9C%E8%A8%98%E7%94%9C%E5%93%81-%E8%A5%BF%E7%92%B0-%E6%B8%AF%E5%BC%8F-%E7%94%9C%E5%93%81-%E7%B3%96%E6%B0%B4-r46267",
@@ -914,7 +914,7 @@ window.HK = {
    ],
    "reviews": "Reviewers love the hi-fi and record selection; it is a quiet listening bar, not a party, and live sets are only occasional.",
    "group": "Listening-focused room – better for small groups; check the website for ticketed live shows.",
-   "hours": "Tue–Sun 12pm–11:30pm, closed Monday (official site).",
+   "hours": "Tue–Sun 12:00–23:30, closed Monday (official site).",
    "status": "open",
    "phone": "6751 3493 (WhatsApp)",
    "openrice": "https://www.openrice.com/en/hongkong/r-coda-jazz-kissa-western-district-western-r894243",
@@ -925,7 +925,7 @@ window.HK = {
    "lng": 114.14049,
    "local": false,
    "id": "coda-jazz-kissa",
-   "tips": "Roughly noon–11:30pm, closed Mondays (check @kindofbrewhk / CODA's Facebook); a calm early-evening or wind-down stop.",
+   "tips": "Roughly noon–23:30, closed Mondays (check @kindofbrewhk / CODA's Facebook); a calm early-evening or wind-down stop.",
    "clubFix": "live",
    "emoji": "🎷",
    "kinds": [
@@ -951,7 +951,7 @@ window.HK = {
    ],
    "reviews": "Reviewers call it one of the most interesting wine bars in town with knowledgeable staff; complaints are a small bar counter, loud music and acoustics that make conversation hard.",
    "group": "Upstairs dining room and weekly events; book ahead for groups.",
-   "hours": "Mon–Fri 4pm–11pm, Sat–Sun 12pm–11pm (official site); Star Wine List shows closed Mondays.",
+   "hours": "Mon–Fri 16:00–23:00, Sat–Sun 12:00–23:00 (official site); Star Wine List shows closed Mondays.",
    "status": "open",
    "phone": "5597 8774",
    "openrice": "https://www.openrice.com/en/hongkong/r-crushed-wine-bar-western-district-western-wine-r852503",
@@ -988,7 +988,7 @@ window.HK = {
    ],
    "reviews": "Reviewers like the stylish, cosy space, the record wall and staff recommendations; some note it is small and not every drink lands.",
    "group": "Small space – best for small groups.",
-   "hours": "Mon 7pm–12am, Tue–Thu & Sun 6pm–12am, Fri–Sat 6pm–2am (OpenRice).",
+   "hours": "Mon 19:00–00:00, Tue–Thu & Sun 18:00–00:00, Fri–Sat 18:00–02:00 (OpenRice).",
    "status": "open",
    "openrice": "https://www.openrice.com/zh/hongkong/r-%E8%A5%BF%E5%9C%92%E9%87%8C-%E8%A5%BF%E7%92%B0-%E8%A5%BF%E5%BC%8F-%E9%85%92-r860362",
    "addressZh": "西營盤高街61號地舖",
@@ -1022,7 +1022,7 @@ window.HK = {
    ],
    "reviews": "Very few reviews online yet; one Tripadvisor reviewer called the tea cocktails delicious.",
    "group": "unknown – likely small; contact via Threads/Instagram @dontail.bar.",
-   "hours": "Mon–Sat 6pm–2am (Tripadvisor).",
+   "hours": "Mon–Sat 18:00–02:00 (Tripadvisor).",
    "status": "open",
    "addressZh": "西營盤水街4號三多里地下D舖",
    "addressEn": "Shop D, G/F, Sam To Lane, 4 Water Street, Sai Ying Pun",
@@ -1087,7 +1087,7 @@ window.HK = {
    ],
    "reviews": "OpenRice diners are largely enthusiastic about the inventive dishes; critics say the concept feels unfocused and service uneven (Tripadvisor 3.0/5 from few reviews).",
    "group": "Tasting-menu format – book ahead; call/WhatsApp to arrange a group.",
-   "hours": "Mon–Thu 6pm–11pm, Fri–Sat 6pm–12am (Time Out).",
+   "hours": "Mon–Thu 18:00–23:00, Fri–Sat 18:00–00:00 (Time Out).",
    "status": "open",
    "phone": "2886 9689 (Time Out) / 4418 2265 WhatsApp (Taste HK)",
    "openrice": "https://www.openrice.com/en/hongkong/r-house-of-culture-western-district-international-r834498",
@@ -1468,7 +1468,7 @@ window.HK = {
     "Karaoke room session"
    ],
    "reviews": "High ratings (4.8 on Tripadvisor) for the fun concept and broths; budget around HK$500–700 per person.",
-   "group": "Excellent for 10+: 5–7 karaoke VIP rooms. Book ahead. Open until 2am.",
+   "group": "Excellent for 10+: 5–7 karaoke VIP rooms. Book ahead. Open until 02:00.",
    "status": "open",
    "phone": "+852 2543 8222",
    "addressEn": "Causeway Bay (27/F Soundwill Plaza II – Midtown)",
@@ -1503,7 +1503,7 @@ window.HK = {
     "Hand-beaten meatballs"
    ],
    "reviews": "Big portions and great nostalgic décor; common complaints are steep prices and limited English.",
-   "group": "Gets crowded, so book (phone/WhatsApp) or arrive before 6pm. Open roughly 18:00–02:00.",
+   "group": "Gets crowded, so book (phone/WhatsApp) or arrive before 18:00. Open roughly 18:00–02:00.",
    "status": "open",
    "phone": "+852 2214 9388",
    "addressEn": "Causeway Bay (B/F & G/F, Block A, Lockhart House, 441 Lockhart Road)",
@@ -1605,7 +1605,7 @@ window.HK = {
     "Milk tea"
    ],
    "reviews": "Iconic atmosphere and tomato soup; some say the food has declined and that the appeal is mostly the setting.",
-   "group": "Lunch queues and shared stools, so 10+ will be split. Daytime only (about 8am–3:30pm), closed Sundays and public holidays.",
+   "group": "Lunch queues and shared stools, so 10+ will be split. Daytime only (about 08:00–15:30), closed Sundays and public holidays.",
    "status": "open",
    "addressEn": "Central/Sheung Wan (2 Mee Lun Street, off Gough Street)",
    "lat": 22.28412,
@@ -1638,7 +1638,7 @@ window.HK = {
     "Pork chop with fried egg"
    ],
    "reviews": "Generous and cheap; no air-con and ratings are mixed (2.8–3.5 on aggregators).",
-   "group": "Small and casual; walk-in only. Roughly Mon–Sat 8am–4pm, closed Sundays.",
+   "group": "Small and casual; walk-in only. Roughly Mon–Sat 08:00–16:00, closed Sundays.",
    "status": "open",
    "phone": "+852 2549 2505",
    "addressEn": "Sheung Wan (G/F, Po Wan Building, 6 Tai Ping Shan Street)",
@@ -1836,7 +1836,7 @@ window.HK = {
     "Sesame yellowtail (goma buri)"
    ],
    "reviews": "About 4.7 on Google, praised for value and friendly staff; queues are common.",
-   "group": "Small venue, so 10+ is unlikely without booking it out. Opens 3pm on weekdays, 1pm at weekends.",
+   "group": "Small venue, so 10+ is unlikely without booking it out. Opens 15:00 on weekdays, 13:00 at weekends.",
    "status": "open",
    "phone": "+852 6704 2570",
    "addressEn": "Central/Sheung Wan (G/F, 2 Shin Hing Street)",
@@ -2240,7 +2240,7 @@ window.HK = {
     "Seasonal signature cocktails",
     "Neighbourhood-bar vibe"
    ],
-   "reviews": "Hugely popular; queues of 40+ before the 5pm opening on Saturdays.",
+   "reviews": "Hugely popular; queues of 40+ before the 17:00 opening on Saturdays.",
    "group": "Queue or virtual contact-queue only; 10+ together is unrealistic, so go early in small groups.",
    "status": "open",
    "addressEn": "Central/NoHo (29 Gough Street)",
@@ -2253,7 +2253,7 @@ window.HK = {
    "topBar": true,
    "topRank": 4,
    "award": "Asia's 50 Best Bars 2026 #36 + Best Bar Design; Bartenders' Bartender Award 2026 (Shelley Tai); Tatler Best 20 Bars HK 2026",
-   "tips": "Arrive by 5pm or expect to queue; walk-in friendly, smart-casual.",
+   "tips": "Arrive by 17:00 or expect to queue; walk-in friendly, smart-casual.",
    "addressZh": "香港中環歌賦街29號",
    "kinds": [
     "Cocktails"
@@ -2278,7 +2278,7 @@ window.HK = {
     "Sample tasters"
    ],
    "reviews": "Fun, fast and well-priced cocktails; standing-room crowds at weekends.",
-   "group": "Casual and walk-in, OK for a big group to stand. Hours listed as 5pm to midnight or 2am.",
+   "group": "Casual and walk-in, OK for a big group to stand. Hours listed as 17:00 to midnight or 02:00.",
    "status": "open",
    "addressEn": "Central (G/F, Parekh House, 63 Wyndham Street)",
    "lat": 22.28137,
@@ -2413,7 +2413,7 @@ window.HK = {
     "Multisensory theatrical cocktails"
    ],
    "reviews": "Iconic and creative; pricey, and crowded at peak times.",
-   "group": "Walk-ins only (Mon–Sat 5pm–1am, Sun to midnight), so it is hard for 10+.",
+   "group": "Walk-ins only (Mon–Sat 17:00–01:00, Sun to midnight), so it is hard for 10+.",
    "status": "open",
    "phone": "+852 2851 3223",
    "addressEn": "Central/Soho (56–58 Hollywood Road)",
@@ -2483,7 +2483,7 @@ window.HK = {
     "Japanese-Italian small plates"
    ],
    "reviews": "4.5 on OpenRice from 300+ reviews; spend about HK$200–400 per person.",
-   "group": "Bookable; open until 3am Fri/Sat.",
+   "group": "Bookable; open until 03:00 Fri/Sat.",
    "status": "open",
    "phone": "+852 5501 0697",
    "addressEn": "Causeway Bay (4/F, Oliv, 15–21 Sharp Street East)",
@@ -2515,7 +2515,7 @@ window.HK = {
     "Cocktails"
    ],
    "reviews": "Liked for its quirky décor and terrace; detailed reviews limited.",
-   "group": "Bookable on Bistrochat; indoor shisha only from 9:30pm.",
+   "group": "Bookable on Bistrochat; indoor shisha only from 21:30.",
    "status": "open",
    "addressEn": "Causeway Bay (Shop 302, 3/F, Tower 535, 535 Jaffe Road)",
    "lat": 22.28133,
@@ -2544,10 +2544,10 @@ window.HK = {
    "order": [
     "Vermouth",
     "Smoked paprika octopus brochette",
-    "Happy hour (Mon–Fri 5–9pm)"
+    "Happy hour (Mon–Fri 5–21:00)"
    ],
    "reviews": "New (2026), praised for terrace and buzz; limited reviews.",
-   "group": "Large terrace suits groups; book via foodcloud. Open until 1am Fri/Sat. Note: it is a 3rd-floor terrace, not a true rooftop.",
+   "group": "Large terrace suits groups; book via foodcloud. Open until 01:00 Fri/Sat. Note: it is a 3rd-floor terrace, not a true rooftop.",
    "status": "open",
    "addressEn": "Central (3/F, H Queen's, 80 Queen's Road Central)",
    "lat": 22.28297,
@@ -2578,7 +2578,7 @@ window.HK = {
     "Sunset cocktails on the terrace"
    ],
    "reviews": "Views are superb; reviews call food and drinks overpriced (3.6 on Tripadvisor). About HK$700–1,000 for two.",
-   "group": "Book ahead; go before sunset. Closes 10pm Sundays.",
+   "group": "Book ahead; go before sunset. Closes 22:00 Sundays.",
    "status": "open",
    "phone": "+852 3501 8560",
    "addressEn": "Central (43–45/F, Gloucester Tower, The Landmark, 15 Queen's Road Central)",
@@ -2613,7 +2613,7 @@ window.HK = {
     "Weekend semi-buffet brunch"
    ],
    "reviews": "Good views and DJs Thu–Sat; prices are hotel-level.",
-   "group": "Walk-ins for drinks. Outdoor sofa tables have minimum spends of HK$3,000 (Sun–Thu) or HK$6,000 (Fri–Sat), workable for a group of 10. Open daily noon–1am.",
+   "group": "Walk-ins for drinks. Outdoor sofa tables have minimum spends of HK$3,000 (Sun–Thu) or HK$6,000 (Fri–Sat), workable for a group of 10. Open daily noon–01:00.",
    "status": "open",
    "addressEn": "Causeway Bay (27/F, The Park Lane Hong Kong, 310 Gloucester Road)",
    "lat": 22.28123,
@@ -2842,7 +2842,7 @@ window.HK = {
     "Duck confit parmentier"
    ],
    "reviews": "Praised for the list and guidance from staff.",
-   "group": "Bookable; terrace tables are limited. Opens 3pm–midnight.",
+   "group": "Bookable; terrace tables are limited. Opens 15:00–midnight.",
    "status": "open",
    "addressEn": "Central (3/F, 1 Lyndhurst Terrace)",
    "lat": 22.28251,
@@ -2904,7 +2904,7 @@ window.HK = {
     "Rooftop views"
    ],
    "reviews": "The view and setting are the draw; reviewers complain about pricey drinks (cocktails from about HK$100+) and uneven, commercial music.",
-   "group": "Table bookings via Clubbable suit 10+. Opens 8pm. Recent operating status was not confirmed beyond listings, so check before going.",
+   "group": "Table bookings via Clubbable suit 10+. Opens 20:00. Recent operating status was not confirmed beyond listings, so check before going.",
    "status": "open",
    "phone": "+852 3619 4282",
    "addressEn": "Central/LKF (25–26/F, California Tower, 30–32 D'Aguilar Street)",
@@ -2914,7 +2914,7 @@ window.HK = {
    "local": false,
    "id": "fayy",
    "boothies": true,
-   "tips": "Smart casual; weekend cover may apply and tables are advised on Fri/Sat; open Mon–Sat until about 4am; check Instagram for the current name/spelling (also listed as Faye).",
+   "tips": "Smart casual; weekend cover may apply and tables are advised on Fri/Sat; open Mon–Sat until about 04:00; check Instagram for the current name/spelling (also listed as Faye).",
    "addressZh": "中環德己立街30-32號加州大廈25-26樓",
    "clubFix": true,
    "emoji": "🪩",
@@ -2938,7 +2938,7 @@ window.HK = {
     "'Dream Is Destiny' origami fortune-teller cocktail menu"
    ],
    "reviews": "Praised for its cocktails and booths; more a lounge than a dance club on weeknights, and hours vary between sources.",
-   "group": "Booth seating; book. Tue–Thu 7pm–1am, Fri–Sat until about 4am.",
+   "group": "Booth seating; book. Tue–Thu 19:00–01:00, Fri–Sat until about 04:00.",
    "status": "open",
    "addressEn": "Central (Basement, On Lok House, 39–43 Hollywood Road)",
    "lat": 22.2823,
@@ -2946,7 +2946,7 @@ window.HK = {
    "mapsQuery": "Yume On Lok House 39 Hollywood Road Central",
    "local": false,
    "id": "yume",
-   "tips": "Tue–Thu to about 1am, Fri–Sat to 2–4am; check @yume.hkg before going; good pre-club stop on the Soho leg.",
+   "tips": "Tue–Thu to about 01:00, Fri–Sat to 2–04:00; check @yume.hkg before going; good pre-club stop on the Soho leg.",
    "addressZh": "中環荷李活道39-43號安樂樓地庫",
    "clubFix": true,
    "emoji": "🪩",
@@ -2965,13 +2965,13 @@ window.HK = {
     "late-night"
    ],
    "price": "$$$",
-   "intro": "An Ashley Sutton-designed fantasy bar with 10,000 butterflies on the ceiling and a live band from 10pm.",
+   "intro": "An Ashley Sutton-designed fantasy bar with 10,000 butterflies on the ceiling and a live band from 22:00.",
    "order": [
     "Signature cocktails",
-    "Live band after 10pm"
+    "Live band after 22:00"
    ],
    "reviews": "Stunning décor and fun music; crowded and pricey later at night.",
-   "group": "Reservations accepted, good for groups early evening. Open about 6pm–2/3am.",
+   "group": "Reservations accepted, good for groups early evening. Open about 18:00–2/03:00.",
    "status": "open",
    "addressEn": "Central (LG/F, Chinachem Hollywood Centre, 1–13 Hollywood Road)",
    "lat": 22.28202,
@@ -3008,7 +3008,7 @@ window.HK = {
     "Tequila bar"
    ],
    "reviews": "Recent 2026 reviews call it lively and easy to find; some say the music and vibe are uneven on quieter nights.",
-   "group": "Tables via Clubbable suit 10+. Wed–Thu 9pm–2am, Fri–Sat 9pm–4am; closed Sun–Tue.",
+   "group": "Tables via Clubbable suit 10+. Wed–Thu 21:00–02:00, Fri–Sat 21:00–04:00; closed Sun–Tue.",
    "status": "open",
    "phone": "+852 2838 3301",
    "addressEn": "Central (5/F, 33 Wyndham Street)",
@@ -3137,7 +3137,7 @@ window.HK = {
    ],
    "reviews": "Reliably clean, well-made espresso and a great harbour view, but it is mostly takeaway with very little seating and weekend queues are common.",
    "tips": "Ten minutes' walk from the Booth campus; grab a cup and sit on the waterfront promenade across the road.",
-   "hours": "Mon-Fri 8:30am-7pm; Sat, Sun & public holidays 8:30am-8pm",
+   "hours": "Mon-Fri 08:30-19:00; Sat, Sun & public holidays 08:30-20:00",
    "addressEn": "Shop 4, G/F (incl. cockloft), Grand Fortune Mansion, 1 Davis Street, Kennedy Town",
    "addressZh": "堅尼地城爹核士街1號裕福大廈地下4號舖",
    "lat": 22.28359,
@@ -3170,7 +3170,7 @@ window.HK = {
    ],
    "reviews": "Praised for its house roasts, bright space and solid brunch, though it gets busy at meal times, ordering is at the counter and laptop users compete with brunch tables.",
    "tips": "Good for a sit-down group coffee between classes; go mid-morning or mid-afternoon to avoid the brunch rush.",
-   "hours": "Daily 8am-6pm",
+   "hours": "Daily 08:00-18:00",
    "addressEn": "Shop 4, G/F, Bohemian House, 321 Des Voeux Road West, Sai Ying Pun",
    "addressZh": "西營盤德輔道西321號地下4號舖",
    "lat": 22.28773,
@@ -3202,7 +3202,7 @@ window.HK = {
    ],
    "reviews": "Cold brew and espresso tonic get rave reviews, but there are no seats or food, and a few reviewers found pour-overs pricey for a paper cup or staff aloof.",
    "tips": "About 10 minutes' walk from The Park Lane; check Instagram @projectchk for irregular days off.",
-   "hours": "Daily 8am-6pm (irregular holidays)",
+   "hours": "Daily 08:00-18:00 (irregular holidays)",
    "addressEn": "G/F, Phoenix Apartments, 29 Hysan Avenue, Causeway Bay",
    "addressZh": "銅鑼灣希慎道29號鳳鳴大廈地下",
    "lat": 22.27829,
@@ -3232,8 +3232,8 @@ window.HK = {
     "Egg sandwich"
    ],
    "reviews": "Buzzing, with a mezzanine for seating, and the cheesecake is the star, though one 2026 reviewer wanted it cheesier and found it pricey.",
-   "tips": "About 8 minutes' walk from The Park Lane and opens at 8am on weekdays, so it works for a pre-class breakfast.",
-   "hours": "Mon-Fri 8am-8pm; Sat-Sun 9am-8pm (OpenRice lists 7:30pm close)",
+   "tips": "About 8 minutes' walk from The Park Lane and opens at 08:00 on weekdays, so it works for a pre-class breakfast.",
+   "hours": "Mon-Fri 08:00-20:00; Sat-Sun 09:00-20:00 (OpenRice lists 19:30 close)",
    "addressEn": "Shop G06, G/F, Leighton Centre, 77 Leighton Road, Causeway Bay",
    "addressZh": "銅鑼灣禮頓道77號禮頓中心地下G06號舖",
    "lat": 22.2779,
@@ -3265,7 +3265,7 @@ window.HK = {
    ],
    "reviews": "Strong filter bar and a proper brunch menu, but it is crowded at peak meal times, has a 90-minute table limit and mixed wifi.",
    "tips": "It moved to 1/F, 49 Hollywood Road; older maps still show the Cochrane Street address, so follow this one.",
-   "hours": "Mon-Fri 8am-6pm; Sat-Sun 9am-6pm",
+   "hours": "Mon-Fri 08:00-18:00; Sat-Sun 09:00-18:00",
    "addressEn": "1/F, Hilltop Plaza, 49 Hollywood Road, Central",
    "addressZh": "中環荷李活道49號鴻豐商業中心1樓",
    "lat": 22.28278,
@@ -3297,7 +3297,7 @@ window.HK = {
    ],
    "reviews": "The bright two-floor space and New Orleans iced coffee win praise, but several reviewers call the coffee pricey and merely good, not special.",
    "tips": "Order downstairs, then head upstairs for seats; there is also a smaller branch in IFC mall.",
-   "hours": "Daily 8am-7pm",
+   "hours": "Daily 08:00-19:00",
    "addressEn": "G/F & 1/F, The Mood Lyndhurst, 38 Lyndhurst Terrace, Central",
    "addressZh": "中環擺花街38號THE MOOD LYNDHURST地下及1樓",
    "lat": 22.2824,
@@ -3327,7 +3327,7 @@ window.HK = {
    ],
    "reviews": "Coffee fans call it some of the best in the city and quiet for a break, but the space is small, food is limited and some say Sundays are drinks-only.",
    "tips": "Browse the coffee gear shop upstairs; hours vary by source, so check its Facebook page before a weekend visit.",
-   "hours": "Tue-Fri 8am-6pm; Sat-Mon 10/11am-6pm (sources differ)",
+   "hours": "Tue-Fri 08:00-18:00; Sat-Mon 10/11:00-18:00 (sources differ)",
    "addressEn": "Shop 1, G/F, Tung Lee Commercial Building, 97 Jervois Street, Sheung Wan",
    "addressZh": "上環蘇杭街97號東利商業大廈地下1號舖",
    "lat": 22.28556,
@@ -3362,8 +3362,8 @@ window.HK = {
     "Macaroni soup with ham (火腿通粉)"
    ],
    "reviews": "Reviewers love the eggs and milk pudding but warn of long queues, gruff and rushed service, shared tables and cash-only payment.",
-   "tips": "Go before 9am or mid-afternoon to cut the queue. Know your order before you sit down (the breakfast set is the easy choice), bring cash and expect to be in and out within 20 minutes. Closed Thursdays.",
-   "hours": "About 7:30am-10pm (some listings say until 11pm); closed Thursdays",
+   "tips": "Go before 09:00 or mid-afternoon to cut the queue. Know your order before you sit down (the breakfast set is the easy choice), bring cash and expect to be in and out within 20 minutes. Closed Thursdays.",
+   "hours": "About 07:30-22:00 (some listings say until 23:00); closed Thursdays",
    "addressEn": "G/F, 47-49 Parkes Street, Jordan, Kowloon",
    "addressZh": "九龍佐敦白加士街47-49號地下",
    "lat": 22.3048,
@@ -3402,8 +3402,8 @@ window.HK = {
     "Egg tart (蛋撻)"
    ],
    "reviews": "Most reviewers rave about the hot bun and cold slab of butter, a few call it overhyped, and weekend mornings bring 10-30 minute queues.",
-   "tips": "Use the takeaway counter to skip the dine-in queue. Weekday mornings before 9am are quietest. Pay with cash or Octopus.",
-   "hours": "Daily from about 6:30am to 9pm-11pm (sources vary)",
+   "tips": "Use the takeaway counter to skip the dine-in queue. Weekday mornings before 09:00 are quietest. Pay with cash or Octopus.",
+   "hours": "Daily from about 06:30 to 21:00-23:00 (sources vary)",
    "addressEn": "G/F, 45-47 Bute Street, Prince Edward, Kowloon",
    "addressZh": "九龍太子弼街45-47號地下",
    "lat": 22.3229,
@@ -3440,8 +3440,8 @@ window.HK = {
     "Sugar puff / sa yung doughnut (沙翁)"
    ],
    "reviews": "Fans love the smooth, not-too-sweet custard and shortcrust, while some find it bland or pricey, and queues form for much of the day.",
-   "tips": "Takeaway only, so grab a warm tart and walk on to Lan Fong Yuen or the Mid-Levels Escalator nearby. Tarts are baked fresh until about 7pm.",
-   "hours": "Roughly 8am-8pm daily (check before going)",
+   "tips": "Takeaway only, so grab a warm tart and walk on to Lan Fong Yuen or the Mid-Levels Escalator nearby. Tarts are baked fresh until about 19:00.",
+   "hours": "Roughly 08:00-20:00 daily (check before going)",
    "addressEn": "G/F, 35 Lyndhurst Terrace, Central, Hong Kong",
    "addressZh": "香港中環擺花街35號地下",
    "lat": 22.2833,
@@ -3476,8 +3476,8 @@ window.HK = {
     "Instant noodles with chicken and scallion (葱油雞扒撈丁)"
    ],
    "reviews": "Reviewers call it a must for the milk tea and atmosphere, though some find the tea unremarkable, and it is cramped and rushed with long queues at peak times.",
-   "tips": "Go mid-morning or around 3pm, after the lunch crowd. Order milk tea plus one pork chop bun. Closed Sundays.",
-   "hours": "About 7:30am-6pm Mon-Sat; closed Sundays",
+   "tips": "Go mid-morning or around 15:00, after the lunch crowd. Order milk tea plus one pork chop bun. Closed Sundays.",
+   "hours": "About 07:30-18:00 Mon-Sat; closed Sundays",
    "addressEn": "2 Gage Street, Central, Hong Kong",
    "addressZh": "香港中環結志街2號",
    "lat": 22.2832,
@@ -3514,8 +3514,8 @@ window.HK = {
     "Red bean ice (紅豆冰)"
    ],
    "reviews": "People come for the 1950s interior and milk tea. Recent reviews say the food and service are only average, with some saying it is not as good as before.",
-   "tips": "Ask for a table upstairs by the windows overlooking the Tin Hau Temple. Combine it with the Temple Street night market, but arrive before about 7pm. Closed Wednesdays.",
-   "hours": "About 11am-7:30pm or 8pm; closed Wednesdays (sources vary)",
+   "tips": "Ask for a table upstairs by the windows overlooking the Tin Hau Temple. Combine it with the Temple Street night market, but arrive before about 19:00. Closed Wednesdays.",
+   "hours": "About 11:00-19:30 or 20:00; closed Wednesdays (sources vary)",
    "addressEn": "63 Temple Street, Yau Ma Tei, Kowloon (corner of Public Square Street)",
    "addressZh": "九龍油麻地廟街63號",
    "lat": 22.311,
@@ -3554,8 +3554,8 @@ window.HK = {
     "Char siu (叉燒)"
    ],
    "reviews": "Most say the goose lives up to the star, a minority call it overrated for the price, and queues of 15-60+ minutes and quick turnover are the norm.",
-   "tips": "Arrive at opening (about 10:30am) or after 2pm on a weekday. Put your name down at the door; there is no booking. Order the goose quarter plus a rice or noodle plate. It is a short tram or taxi ride from Causeway Bay.",
-   "hours": "About 10:30am-9:30pm daily",
+   "tips": "Arrive at opening (about 10:30) or after 14:00 on a weekday. Put your name down at the door; there is no booking. Order the goose quarter plus a rice or noodle plate. It is a short tram or taxi ride from Causeway Bay.",
+   "hours": "About 10:30-21:30 daily",
    "addressEn": "G/F, Po Wah Commercial Centre, 226 Hennessy Road, Wan Chai, Hong Kong",
    "addressZh": "香港灣仔軒尼詩道226號寶華商業中心地下",
    "lat": 22.2778,
@@ -3592,8 +3592,8 @@ window.HK = {
     "Char siu (叉燒)"
    ],
    "reviews": "Reviewers often rate it slightly above Kam's for flavour (if a little greasy), but it is tiny and brusque, with shared tables, and the goose can sell out by mid-afternoon.",
-   "tips": "Go before 11am or after 2pm. Bring cash. Point at the goose leg with lai fun if in doubt. It is easy to pair with Tai Cheong egg tarts and Lan Fong Yuen nearby.",
-   "hours": "About 10am-9pm Mon-Sat; 10am-5:30pm Sun",
+   "tips": "Go before 11:00 or after 14:00. Bring cash. Point at the goose leg with lai fun if in doubt. It is easy to pair with Tai Cheong egg tarts and Lan Fong Yuen nearby.",
+   "hours": "About 10:00-21:00 Mon-Sat; 10:00-17:30 Sun",
    "addressEn": "G/F, 34-38 Stanley Street, Central, Hong Kong",
    "addressZh": "香港中環士丹利街34-38號地下",
    "lat": 22.2826,
@@ -3629,8 +3629,8 @@ window.HK = {
     "Iced milk tea (凍奶茶)"
    ],
    "reviews": "Diners praise the scrambled eggs and milk tea, though overall ratings are middling and there are waits at peak meal times and on weekends.",
-   "tips": "It is an easy breakfast one MTR stop or a short tram ride from Causeway Bay. Go before 9am on weekdays. Order the breakfast set with eggs and toast.",
-   "hours": "About 7am-10pm (Sun to about 9pm); sources vary",
+   "tips": "It is an easy breakfast one MTR stop or a short tram ride from Causeway Bay. Go before 09:00 on weekdays. Order the breakfast set with eggs and toast.",
+   "hours": "About 07:00-22:00 (Sun to about 21:00); sources vary",
    "addressEn": "Shop B1, G/F, Kwong Sang Hong Building, 6 Heard Street, Wan Chai, Hong Kong",
    "addressZh": "香港灣仔克街6號廣生行大廈地下B1號舖",
    "lat": 22.277,
@@ -3669,8 +3669,8 @@ window.HK = {
     "Roast goose (燒鵝)"
    ],
    "reviews": "Reviewers say the char siu is among the best in town and great value (around HK$50 a plate), but expect shared tables, brusque service and a queue at lunch.",
-   "tips": "Point at the meats hanging in the window, or ask for a two-meat combo on rice (雙拼飯). Avoid the 12:30-1:30pm office rush. It is a 10-minute walk from Causeway Bay.",
-   "hours": "About 9:30am-10pm; some listings say closed Sundays (check)",
+   "tips": "Point at the meats hanging in the window, or ask for a two-meat combo on rice (雙拼飯). Avoid the 12:30-13:30 office rush. It is a 10-minute walk from Causeway Bay.",
+   "hours": "About 09:30-22:00; some listings say closed Sundays (check)",
    "addressEn": "Flat C, G/F, Cheung Hing Building, 265-267 Hennessy Road, Wan Chai, Hong Kong",
    "addressZh": "香港灣仔軒尼詩道265-267號祥興大廈地下C舖",
    "lat": 22.2783,
@@ -3711,7 +3711,7 @@ window.HK = {
    ],
    "reviews": "Reviewers love the stone-ground sesame and walnut soups, but there are queues at the Jordan shop, a small minimum charge (about HK$25 a person) and fast turnover.",
    "tips": "It moved in September 2025 from Ning Po Street to a new main shop on Parkes Street, so ignore old addresses. The Causeway Bay branch (472 Lockhart Road) is close to The Park Lane and usually has a shorter queue. Great after dinner.",
-   "hours": "About 12pm-1am daily (check)",
+   "hours": "About 12:00-01:00 daily (check)",
    "addressEn": "G/F, 113-115 Parkes Street, Jordan, Kowloon (branch: G/F, 472 Lockhart Road, Causeway Bay)",
    "addressZh": "九龍佐敦白加士街113-115號地舖（分店：銅鑼灣駱克道472號地下）",
    "lat": 22.3064,
@@ -3747,8 +3747,8 @@ window.HK = {
     "Blanched Chinese vegetables with oyster sauce (蠔油菜心)"
    ],
    "reviews": "People praise the delicate wontons and light broth but grumble that portions are tiny for the price, service is rushed and lunch queues are long.",
-   "tips": "Treat one bowl as a snack and order two or add brisket. Go before 12pm or after 2pm. Walk-ins only, with shared tables.",
-   "hours": "About 11am-9pm daily",
+   "tips": "Treat one bowl as a snack and order two or add brisket. Go before 12:00 or after 14:00. Walk-ins only, with shared tables.",
+   "hours": "About 11:00-21:00 daily",
    "addressEn": "G/F, 77 Wellington Street, Central, Hong Kong",
    "addressZh": "香港中環威靈頓街77號地下",
    "lat": 22.2837,
@@ -3786,7 +3786,7 @@ window.HK = {
    ],
    "reviews": "Most find it refreshing and nostalgic, some say it is too sweet or weak, and it is cash only.",
    "tips": "Ask for it ice-cold. Drink a cup at the counter or buy a bottle to go. Closed Mondays. It is a 5-minute walk from Tai Cheong and Lan Fong Yuen.",
-   "hours": "About 11am-9pm Tue-Sun; closed Mondays",
+   "hours": "About 11:00-21:00 Tue-Sun; closed Mondays",
    "addressEn": "G/F, 60 Hollywood Road, Central, Hong Kong",
    "addressZh": "香港中環荷李活道60號地下",
    "lat": 22.2829,
@@ -3820,8 +3820,8 @@ window.HK = {
     "Original egg waffle (原味雞蛋仔)"
    ],
    "reviews": "Reviewers call it the textbook crisp-and-fluffy egg waffle, though queues of up to 20 minutes are common at peak times.",
-   "tips": "Eat it hot within minutes, standing on the street. Waffles start around 11am. North Point is a short MTR or tram ride east of Causeway Bay, and there is also a branch at 178 Nathan Road, Tsim Sha Tsui.",
-   "hours": "About 11am-11pm (not verified for 2026)",
+   "tips": "Eat it hot within minutes, standing on the street. Waffles start around 11:00. North Point is a short MTR or tram ride east of Causeway Bay, and there is also a branch at 178 Nathan Road, Tsim Sha Tsui.",
+   "hours": "About 11:00-23:00 (not verified for 2026)",
    "addressEn": "G/F, 492 King's Road, North Point, Hong Kong (branch: G/F, 178 Nathan Road, Tsim Sha Tsui)",
    "addressZh": "香港北角英皇道492號地下（分店：尖沙咀彌敦道178號地下）",
    "lat": 22.2911,
@@ -3854,8 +3854,8 @@ window.HK = {
     "Sourdough doughnut"
    ],
    "reviews": "Reviewers call the sourdough egg tart worth the hype, buttery and flaky, but warn of queues (shortest at the takeaway branches) and occasional sell-outs.",
-   "tips": "The Causeway Bay branch (16 Kai Chiu Road, takeaway only) is a short walk from The Park Lane, so buy a box for the morning. The Wan Chai flagship (14 Tai Wong Street East) is the only city branch with a dine-in menu (until 6pm). Other branches: SoHo (5 Staunton Street, Central, often the shortest queue), Tsim Sha Tsui (44 Hankow Road), Stanley and The Peak Tower.",
-   "hours": "Causeway Bay: 8am-9pm daily (Wan Chai: 8am-9pm, dine-in until 6pm)",
+   "tips": "The Causeway Bay branch (16 Kai Chiu Road, takeaway only) is a short walk from The Park Lane, so buy a box for the morning. The Wan Chai flagship (14 Tai Wong Street East) is the only city branch with a dine-in menu (until 18:00). Other branches: SoHo (5 Staunton Street, Central, often the shortest queue), Tsim Sha Tsui (44 Hankow Road), Stanley and The Peak Tower.",
+   "hours": "Causeway Bay: 08:00-21:00 daily (Wan Chai: 08:00-21:00, dine-in until 18:00)",
    "addressEn": "16 Kai Chiu Road, Causeway Bay, Hong Kong",
    "addressZh": "香港銅鑼灣啟超道16號",
    "lat": 22.2786,
@@ -4026,7 +4026,7 @@ window.HK = {
     "Falafel Box or Fried Cauliflower",
     "Double Chocolate Walnut Brownie"
    ],
-   "reviews": "Independent reviews were not checked in this pass. The official site lists three branches and a $60 Tea Time set from 3:00 to 5:30pm.",
+   "reviews": "Independent reviews were not checked in this pass. The official site lists three branches and a $60 Tea Time set from 3:00 to 17:30.",
    "addressEn": "7 Sharp Street East, Causeway Bay (MTR Causeway Bay Exit A, next to Times Square)",
    "addressZh": "銅鑼灣霎東街7號",
    "lat": 22.2786,
@@ -4186,7 +4186,7 @@ window.HK = {
     "Sunday Feng Wei brunch"
    ],
    "reviews": "Reviews praise the views and signature dishes, though it is expensive and the hours differ between listings.",
-   "tips": "It is opposite TST MTR Exit L1 and a short walk from the Star Ferry; dinner runs daily from 5:30pm.",
+   "tips": "It is opposite TST MTR Exit L1 and a short walk from the Star Ferry; dinner runs daily from 17:30.",
    "phone": "+852 3428 8342",
    "addressEn": "18/F, H Zentre, 15 Middle Road, Tsim Sha Tsui, Kowloon",
    "addressZh": "九龍尖沙咀中間道15號H Zentre 18樓",
@@ -4322,7 +4322,7 @@ window.HK = {
     "Chocolate or matcha egg waffle"
    ],
    "reviews": "A popular quick snack; queues are common and it is takeaway only.",
-   "tips": "Grab one straight off the ferry; the stand is open 11am to 10:30pm daily.",
+   "tips": "Grab one straight off the ferry; the stand is open 11:00 to 22:30 daily.",
    "addressEn": "Shop KP-13, 29 & 30, G/F, Star Ferry Pier, Salisbury Road, Tsim Sha Tsui, Kowloon (MTR TST Exit L6)",
    "addressZh": "香港尖沙咀梳士巴利道天星碼頭地下KP-13, 29&30舖",
    "lat": 22.2938,
@@ -4420,7 +4420,7 @@ window.HK = {
     "Beggar's chicken (pre-order)"
    ],
    "reviews": "Reviewers like the refreshed room, but at least one found the food a notch below the Alexandra House branch.",
-   "tips": "Open daily 11:30am-2:30pm and 5:30-10:30pm; it is the easiest branch to reach by MTR.",
+   "tips": "Open daily 11:30-14:30 and 5:30-22:30; it is the easiest branch to reach by MTR.",
    "phone": "+852 2845 8452",
    "addressEn": "Shop 005, LG1, Pacific Place, 88 Queensway, Admiralty, Hong Kong",
    "addressZh": "香港金鐘金鐘道88號太古廣場LG1樓005號舖",
@@ -4451,7 +4451,7 @@ window.HK = {
     "Cocktail bun (雞尾包)"
    ],
    "reviews": "A pastry chef named it their favourite egg tart in Tatler and reviewers say the crust is very flaky and not too sweet, but overall ratings are mediocre and some say the cashier is rude.",
-   "tips": "Cash only; listed hours are 6:30am to 9:30pm daily, and tarts are best warm in the morning.",
+   "tips": "Cash only; listed hours are 06:30 to 21:30 daily, and tarts are best warm in the morning.",
    "addressEn": "G/F, 293 Queen's Road West, Sai Ying Pun",
    "addressZh": "香港西營盤皇后大道西293號地舖",
    "lat": 22.287,
@@ -4481,7 +4481,7 @@ window.HK = {
     "Pistachio egg tart (開心果蛋撻)"
    ],
    "reviews": "Dessert Correspondents found the tarts not too sweet with a firm but bouncy custard, though the crust is less flaky than the best traditional ones.",
-   "tips": "Instagram lists 10am to 8:30pm, but the website's hours disagree and say no pick-ups on Sundays or Mondays, so check Instagram before going.",
+   "tips": "Instagram lists 10:00 to 20:30, but the website's hours disagree and say no pick-ups on Sundays or Mondays, so check Instagram before going.",
    "addressEn": "G/F, Luen Wai Apartments, 136-142 Belcher's Street, Kennedy Town",
    "addressZh": "香港堅尼地城卑路乍街136-142號聯威新樓地下",
    "lat": 22.28229,
@@ -4512,7 +4512,7 @@ window.HK = {
     "Nitro milk tea (氮氣奶茶)"
    ],
    "reviews": "Food writers rank it among Hong Kong's best pineapple buns, but you have to queue, there is a limit of 3 per person, and batches sell out within minutes.",
-   "tips": "Cash only; closed Mondays, listed hours are roughly 8:30am to 3pm on weekdays and 10am to 3pm at weekends, and the day's baking times are posted on Instagram (@pineapplebakeryhk); arrive 20 minutes before a batch.",
+   "tips": "Cash only; closed Mondays, listed hours are roughly 08:30 to 15:00 on weekdays and 10:00 to 15:00 at weekends, and the day's baking times are posted on Instagram (@pineapplebakeryhk); arrive 20 minutes before a batch.",
    "addressEn": "Shop 2, G/F, Teda Building, 87 Wing Lok Street, Sheung Wan",
    "addressZh": "香港上環永樂街87號泰達大廈地下2號舖",
    "lat": 22.28593,
@@ -4543,7 +4543,7 @@ window.HK = {
     "Egg tart (蛋撻)"
    ],
    "reviews": "Recent 2026 OpenRice reviews praise the crisp pineapple bun with butter, smooth milk tea and generous portions, while older reviews call the breakfast sets ordinary.",
-   "tips": "Open 7am to 6pm daily; takes cash, Octopus and AlipayHK; it gets packed around 3pm tea time.",
+   "tips": "Open 07:00 to 18:00 daily; takes cash, Octopus and AlipayHK; it gets packed around 15:00 tea time.",
    "addressEn": "Shop 6, G/F, Mei Fai Court, 41A-43 Smithfield Road, Kennedy Town",
    "addressZh": "香港堅尼地城士美菲路41A-43號美菲閣地下6號舖",
    "lat": 22.28244,
@@ -4574,7 +4574,7 @@ window.HK = {
     "Milk tea (奶茶)"
    ],
    "reviews": "Locals call its made-to-order baked pork chop rice the best in Sai Ying Pun and Mirror Media (2024) praised the 3cm-thick egg sandwich, though reviews call service ordinary and some dishes a little oily.",
-   "tips": "Likely cash only and opens about 6–7am; the baked pork chop rice takes about 20 minutes, so order it first.",
+   "tips": "Likely cash only and opens about 6–07:00; the baked pork chop rice takes about 20 minutes, so order it first.",
    "addressEn": "G/F, 28 Centre Street, Sai Ying Pun",
    "addressZh": "香港西營盤正街28號地下",
    "lat": 22.2874,
@@ -4611,7 +4611,7 @@ window.HK = {
     "Oyster-sauce Chinese broccoli (蠔油芥蘭)"
    ],
    "reviews": "Diners praise the silky wonton skins and clear broth, but the bowls are small for the price, which is typical of Mak-style shops.",
-   "tips": "Two minutes from Sai Ying Pun MTR exit B1 and open daily from about 10:30am to 10:30pm; bring cash.",
+   "tips": "Two minutes from Sai Ying Pun MTR exit B1 and open daily from about 10:30 to 22:30; bring cash.",
    "addressEn": "G/F, 309 Queen's Road West, Sai Ying Pun",
    "addressZh": "香港西營盤皇后大道西309號地下",
    "lat": 22.28702,
@@ -4647,7 +4647,7 @@ window.HK = {
     "Fried wontons (炸雲吞)"
    ],
    "reviews": "There are long lunch and dinner queues and the brisket is praised as very tender, but some find the soup salty, and popular items sell out by late afternoon.",
-   "tips": "Cash only and no bookings; open 9:30am to 7pm daily, so go early.",
+   "tips": "Cash only and no bookings; open 09:30 to 19:00 daily, so go early.",
    "addressEn": "G/F, Cheong King Court, 32 High Street, Sai Ying Pun",
    "addressZh": "香港西營盤高街32號昌景閣地下",
    "lat": 22.28505,
@@ -4680,7 +4680,7 @@ window.HK = {
     "Char siu (叉燒)"
    ],
    "reviews": "The goose and duck skin are praised as crisp and juicy, but the shop is tiny so you share tables at peak times, and the goose leg sells out.",
-   "tips": "Cash only; closed Sundays, open about 11:30am to 7–8pm, and best visited before noon or after 1:30pm.",
+   "tips": "Cash only; closed Sundays, open about 11:30 to 7–20:00, and best visited before noon or after 13:30.",
    "addressEn": "Shop P, G/F, 423-425 Queen's Road West, Shek Tong Tsui",
    "addressZh": "香港西環石塘咀皇后大道西425號P舖地下",
    "lat": 22.28635,
@@ -4713,7 +4713,7 @@ window.HK = {
     "Roast goose (燒鵝)"
    ],
    "reviews": "Food bloggers rate the char siu among the city's best, but there are complaints about salty duck, slow dine-in service and one burnt takeaway order in September 2026.",
-   "tips": "Cash only; open about 7am to 11pm and busiest at lunch, so go after 2pm.",
+   "tips": "Cash only; open about 07:00 to 23:00 and busiest at lunch, so go after 14:00.",
    "addressEn": "Shop B, G/F, 38 Bonham Strand, Sheung Wan",
    "addressZh": "香港上環文咸東街38號地下B舖",
    "lat": 22.28575,
@@ -4746,7 +4746,7 @@ window.HK = {
     "Fried fish cake (煎魚餅)"
    ],
    "reviews": "Regulars praise the smooth congee and very fresh fish, but expect shared tables, little English and limited choice once items sell out.",
-   "tips": "Cash only; opens about 6:30am and closes early evening, closed Sundays (hours vary by source), near Sheung Wan MTR exit A2.",
+   "tips": "Cash only; opens about 06:30 and closes early evening, closed Sundays (hours vary by source), near Sheung Wan MTR exit A2.",
    "addressEn": "G/F, 7-9 Burd Street, Sheung Wan",
    "addressZh": "香港上環畢街7-9號地下",
    "lat": 22.28527,
@@ -4778,8 +4778,8 @@ window.HK = {
     "Siu mai (燒賣)",
     "Char siu pineapple pastry (菠蘿叉燒酥)"
    ],
-   "reviews": "Loved for its noisy, old-school atmosphere and its carts, but you will share tables with strangers, and by 8am at weekends the queue can reach the stairwell.",
-   "tips": "Cash only (no Octopus or cards); open 6am to 10pm but carts run only until 4pm, and weekday mornings from 6:30 to 8am are best.",
+   "reviews": "Loved for its noisy, old-school atmosphere and its carts, but you will share tables with strangers, and by 08:00 at weekends the queue can reach the stairwell.",
+   "tips": "Cash only (no Octopus or cards); open 06:00 to 22:00 but carts run only until 16:00, and weekday mornings from 6:30 to 08:00 are best.",
    "addressEn": "2/F-3/F, Western Centre, 40-50 Des Voeux Road West, Sheung Wan",
    "addressZh": "香港上環德輔道西40-50號西區中心2樓至3樓",
    "lat": 22.28756,
@@ -5159,7 +5159,7 @@ window.HK = {
    ],
    "intro": "The sandy beach where the annual Stanley International Dragon Boat Championships are raced, and where most Stanley dragon boat sessions launch.",
    "funFact": "Stanley's races began as local fishermen's prayer rituals in the bay facing Tin Hau Temple; by 2023 they drew 168 teams and 5,000+ paddlers, and the Dragon Boat (Tuen Ng) Festival, which honours the poet Qu Yuan, was UNESCO's first Chinese festival on its intangible heritage list (2009).",
-   "tips": "Lifeguards are still on duty here 8am-5pm through November, so a post-paddle dip is possible; showers and changing rooms are at the beach.",
+   "tips": "Lifeguards are still on duty here 08:00-17:00 through November, so a post-paddle dip is possible; showers and changing rooms are at the beach.",
    "addressEn": "Stanley Main Beach Water Sports Centre, 1 Stanley Link Road, Stanley",
    "addressZh": "赤柱連合道1號 赤柱正灘水上活動中心",
    "lat": 22.22032,
@@ -5217,7 +5217,7 @@ window.HK = {
    ],
    "intro": "A pier topped with the ornate steel roof of Central's old Blake Pier, and the best sunset spot in Stanley.",
    "funFact": "The roof was saved when the original Central pier was demolished in 1993, spent years in a Wong Tai Sin park, and was reinstated here in 2005.",
-   "tips": "Sunset is around 5:40pm in mid-November, so walk over straight after dragon boating; kaito ferries to Po Toi island also leave from here.",
+   "tips": "Sunset is around 17:40 in mid-November, so walk over straight after dragon boating; kaito ferries to Po Toi island also leave from here.",
    "addressEn": "Blake Pier, Stanley Main Street (next to Murray House), Stanley",
    "addressZh": "赤柱大街 卜公碼頭（美利樓旁）",
    "lat": 22.21742,
@@ -5296,7 +5296,7 @@ window.HK = {
    ],
    "intro": "A boardwalk park climbing the headland behind Murray House to a tiny cliffside temple with sea views.",
    "funFact": "The Pak Tai Temple on its cliff edge was built by local fishermen in 1805.",
-   "tips": "Free; allow 30-45 minutes, wear grippy shoes for the stairs, and go before dark (published hours vary between 7am-8pm and 6am-10pm).",
+   "tips": "Free; allow 30-45 minutes, wear grippy shoes for the stairs, and go before dark (published hours vary between 07:00-20:00 and 06:00-22:00).",
    "addressEn": "Stanley Ma Hang Park, behind Murray House / Blake Pier, Stanley",
    "addressZh": "赤柱馬坑公園（美利樓及卜公碼頭後方）",
    "lat": 22.21795,
@@ -5323,7 +5323,7 @@ window.HK = {
    ],
    "intro": "A peaceful hillside Commonwealth war cemetery with graves of soldiers and civilians from the 1941 Battle of Hong Kong and the Stanley internment camp.",
    "funFact": "It is one of Hong Kong's oldest cemeteries, with early-colonial graves from the 1840s alongside its Second World War burials.",
-   "tips": "Open 8am-5pm daily (so go before or right after the paddle); access is via steps that are slippery when wet.",
+   "tips": "Open 08:00-17:00 daily (so go before or right after the paddle); access is via steps that are slippery when wet.",
    "addressEn": "Wong Ma Kok Road, Stanley",
    "addressZh": "赤柱黃麻角道 赤柱軍人墳場",
    "lat": 22.21329,
@@ -5380,7 +5380,7 @@ window.HK = {
     "dessert"
    ],
    "price": "$$",
-   "intro": "A Pirata Group Italian seaside-style bakery and café near the waterfront, open roughly 8am-9pm.",
+   "intro": "A Pirata Group Italian seaside-style bakery and café near the waterfront, open roughly 08:00-21:00.",
    "order": [
     "Truffle croissant (HKD158)",
     "Bomboloni (try the milk tea flavour)",
@@ -5416,7 +5416,7 @@ window.HK = {
     "Pork chop bun",
     "HK milk tea"
    ],
-   "tips": "Go in the morning or by lunchtime (it opens around 6:30am, may close as early as 12:30pm on weekdays, and is closed Tuesdays); bring cash or Octopus.",
+   "tips": "Go in the morning or by lunchtime (it opens around 06:30, may close as early as 12:30 on weekdays, and is closed Tuesdays); bring cash or Octopus.",
    "addressEn": "G/F, 2 Stanley Market Road, Stanley",
    "addressZh": "赤柱市場道2號地下",
    "lat": 22.21895,
@@ -5503,7 +5503,7 @@ window.HK = {
    ],
    "intro": "An easy headland walk from Murray House past the Pak Tai Temple and sea-view rocks to a quiet cove at Chung Hom Kok.",
    "getting": "From Stanley: walk 5 minutes past Murray House to the park entrance by Blake Pier. From Causeway Bay: green minibus 40 (Jardine's Bazaar) to Stanley, about 30-40 minutes, or a ~25-minute taxi.",
-   "tips": "This is the only realistic hike after a 4pm finish: start by 4:30pm to be back on the promenade for the ~5:40pm sunset, and leave wild boars alone.",
+   "tips": "This is the only realistic hike after a 16:00 finish: start by 16:30 to be back on the promenade for the ~17:40 sunset, and leave wild boars alone.",
    "facts": [
     [
      "Distance",
@@ -5544,7 +5544,7 @@ window.HK = {
    ],
    "intro": "A mostly paved trail past Victorian-era reservoirs, granite dams and bridges, a short ride from Stanley.",
    "getting": "From Stanley: taxi about 10 minutes to Tai Tam Tuk Reservoir dam, or bus 14 towards Sai Wan Ho. From Causeway Bay: taxi about 20 minutes to Wong Nai Chung Gap (Parkview) for the north start.",
-   "tips": "Walk it north to south (downhill) if doing the full trail; after a 4pm finish, do a short out-and-back from Tai Tam Tuk dam instead and be off the trail by dark.",
+   "tips": "Walk it north to south (downhill) if doing the full trail; after a 16:00 finish, do a short out-and-back from Tai Tam Tuk dam instead and be off the trail by dark.",
    "facts": [
     [
      "Distance",
@@ -5591,7 +5591,7 @@ window.HK = {
    "intro": "Hong Kong Island's best-known wide, sheltered crescent of sand, with cafés and a colourful Tin Hau/Kwun Yam shrine at its eastern end.",
    "funFact": "It is one of only five Southern District beaches the LCSD keeps staffed with lifeguards in November 2026.",
    "getting": "Green minibus 40 from Jardine's Bazaar, Causeway Bay (~25 min), or bus 6X/260 from Exchange Square, Central (~30 min); taxi from Causeway Bay ~20 min.",
-   "tips": "Lifeguards 8am-5pm in November (none Dec-Feb); showers, changing rooms and toilets; cafés and restaurants at The Pulse beachfront mall. Easiest beach for first-timers; stop at Stanley on the same bus route.",
+   "tips": "Lifeguards 08:00-17:00 in November (none Dec-Feb); showers, changing rooms and toilets; cafés and restaurants at The Pulse beachfront mall. Easiest beach for first-timers; stop at Stanley on the same bus route.",
    "addressEn": "Beach Road, Repulse Bay",
    "addressZh": "淺水灣海灘道 淺水灣泳灘",
    "lat": 22.23655,
@@ -5619,7 +5619,7 @@ window.HK = {
    "intro": "A small, calm, local favourite beach just west of Repulse Bay, popular with year-round swimmers.",
    "funFact": "It is the only Southern District beach that keeps lifeguards all winter, December to February included.",
    "getting": "Green minibus 40 from Causeway Bay (~20 min) or bus 260 from Exchange Square, Central (~25 min); taxi from Causeway Bay ~15 min.",
-   "tips": "Lifeguards 8am-5pm all year; showers, changing rooms and toilets; BBQ pits and a small snack kiosk. Quietest and safest option for a winter swim; bring snacks, as food options are limited.",
+   "tips": "Lifeguards 08:00-17:00 all year; showers, changing rooms and toilets; BBQ pits and a small snack kiosk. Quietest and safest option for a winter swim; bring snacks, as food options are limited.",
    "addressEn": "Island Road, Deep Water Bay",
    "addressZh": "香島道 深水灣泳灘",
    "lat": 22.24452,
@@ -5647,7 +5647,7 @@ window.HK = {
    "intro": "A wave-swept beach on the island's east coast with surfboard rentals, beach cafés and the end of the famous Dragon's Back hike.",
    "funFact": "It is one of Hong Kong Island's few surf beaches; boards rent for about HK$40-50 a day and surfing must stay outside the shark net.",
    "getting": "MTR to Shau Kei Wan (~15 min from Causeway Bay), then red minibus to Big Wave Bay or bus 9 (~30 min); taxi from Causeway Bay ~30 min.",
-   "tips": "Lifeguards 8am-5pm in November; showers, changing rooms and toilets; beach cafés, a convenience store, BBQ pits and surf rentals. Pair it with the Dragon's Back trail, which finishes here; check flags, as waves can be big.",
+   "tips": "Lifeguards 08:00-17:00 in November; showers, changing rooms and toilets; beach cafés, a convenience store, BBQ pits and surf rentals. Pair it with the Dragon's Back trail, which finishes here; check flags, as waves can be big.",
    "addressEn": "Big Wave Bay Road, Shek O",
    "addressZh": "石澳大浪灣道 大浪灣泳灘",
    "lat": 22.24645,
@@ -5699,7 +5699,7 @@ window.HK = {
    ],
    "intro": "Old-Kowloon night market streets with the best surviving cluster of vintage signs, plus neon-style art from the 2023 market revamp.",
    "funFact": "Mido Café (63 Temple St) has been a cha chaan teng since 1950, and its corner sign is one of the most-photographed vintage signs in town.",
-   "tips": "Go after 8pm: walk Temple St from Jordan Rd up to Mido, then detour to Woosung St and Saigon St, where most of the old signs are. Mido shuts by early evening and usually on Wednesdays, so photograph the outside at night and eat there at lunch.",
+   "tips": "Go after 20:00: walk Temple St from Jordan Rd up to Mido, then detour to Woosung St and Saigon St, where most of the old signs are. Mido shuts by early evening and usually on Wednesdays, so photograph the outside at night and eat there at lunch.",
    "getting": "From Park Lane: MTR Causeway Bay to Admiralty, then the Tsuen Wan Line to Jordan (Exit A) or Yau Ma Tei (Exit C), about 25 min. From Booth (Kennedy Town): MTR via Admiralty, about 35 min. Taxi via the Cross-Harbour Tunnel takes about 20 min and costs about HK$120-150.",
    "facts": [
     [
@@ -5780,7 +5780,7 @@ window.HK = {
    ],
    "intro": "Hong Kong Island's last real neon strip, along the old Suzie Wong-era bar district, 15 minutes' walk from the hotel.",
    "funFact": "The Suzie Wong nightclub's neon lit this strip until the club closed in the 1980s; the novel and film made Wan Chai's bars world-famous.",
-   "tips": "Walk Lockhart Rd between Fleming Rd and Luard Rd after 9pm. Some venues are hostess bars with touts, so a quick look-and-photo stroll is the move. Nearby Spring Garden Lane has the c.1970 Golden Dragon Mahjong sign.",
+   "tips": "Walk Lockhart Rd between Fleming Rd and Luard Rd after 21:00. Some venues are hostess bars with touts, so a quick look-and-photo stroll is the move. Nearby Spring Garden Lane has the c.1970 Golden Dragon Mahjong sign.",
    "getting": "From Park Lane: about 15 min walk west along Hennessy/Lockhart Rd, a 5-min tram ride, or one MTR stop to Wan Chai (Exit C). From Booth: MTR Island Line to Wan Chai, about 20 min.",
    "facts": [
     [
@@ -5864,7 +5864,7 @@ window.HK = {
    ],
    "intro": "A Grade I listed 1920s balcony-style tenement (tong lau), painted bright blue and still lived in, in a lane of old Wan Chai.",
    "funFact": "It's blue reportedly because the government only had surplus Water Supplies Department paint when it repainted the building around 1990.",
-   "tips": "The ground-floor Hong Kong House of Stories is free, roughly 10am-6pm, and closed Wednesdays. Upper floors are private homes. Pair it with the nearby Yellow House and Orange House on Stone Nullah Lane.",
+   "tips": "The ground-floor Hong Kong House of Stories is free, roughly 10:00-18:00, and closed Wednesdays. Upper floors are private homes. Pair it with the nearby Yellow House and Orange House on Stone Nullah Lane.",
    "getting": "From Park Lane: about 20 min walk or a 5-min taxi; or MTR to Wan Chai (Exit A3) plus a 10-min walk. From Booth: MTR to Wan Chai, about 20 min, plus a 10-min walk.",
    "facts": [
     [
@@ -5958,7 +5958,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "Peak Tram 7:30am–11pm daily"
+     "Peak Tram 07:30–23:00 daily"
     ]
    ],
    "lat": 22.27126,
@@ -6007,7 +6007,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "About 6:30am–11:30pm"
+     "About 06:30–23:30"
     ]
    ],
    "lat": 22.28704,
@@ -6072,7 +6072,7 @@ window.HK = {
    ],
    "intro": "Narrow double-decker trams that have rattled along Hong Kong Island's north shore since 1904, nicknamed 'ding ding' after their bell. The line starts in Kennedy Town, right by campus, and passes The Park Lane.",
    "funFact": "In 2021 Guinness World Records recognised Hong Kong Tramways as the largest double-decker tram fleet still in service.",
-   "tips": "Board at the Kennedy Town terminus to get the front seat upstairs, and ride home to Causeway Bay through Sheung Wan, Central and Wan Chai. For a class party, Hong Kong Tramways charters trams for private evening events (7:30pm–midnight, minimum 2 hours; ask for a quote).",
+   "tips": "Board at the Kennedy Town terminus to get the front seat upstairs, and ride home to Causeway Bay through Sheung Wan, Central and Wan Chai. For a class party, Hong Kong Tramways charters trams for private evening events (19:30–midnight, minimum 2 hours; ask for a quote).",
    "getting": "Kennedy Town terminus (Catchick Street) is about a 5 min taxi or minibus ride, or roughly a 20 min walk, from campus. Causeway Bay stops are a few minutes' walk from Park Lane. Kennedy Town to Causeway Bay takes roughly an hour.",
    "facts": [
     [
@@ -6085,7 +6085,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "Through route Kennedy Town→Shau Kei Wan about 5:30am–7pm; shorter routes on the same line run later (check hktramways.com)"
+     "Through route Kennedy Town→Shau Kei Wan about 05:30–19:00; shorter routes on the same line run later (check hktramways.com)"
     ]
    ],
    "lat": 22.28335,
@@ -6132,7 +6132,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "Site 8am–11pm; heritage galleries 11am–7pm; JC Contemporary 11am–7pm, Tue–Sun"
+     "Site 08:00–23:00; heritage galleries 11:00–19:00; JC Contemporary 11:00–19:00, Tue–Sun"
     ]
    ],
    "lat": 22.28194,
@@ -6177,7 +6177,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "Building 7am–11pm; shops and studios about 12pm–7pm"
+     "Building 07:00–23:00; shops and studios about 12:00–19:00"
     ]
    ],
    "lat": 22.28333,
@@ -6223,7 +6223,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "Temple 8am–6pm daily (opens at 7am on lunar 1st and 15th days); stall hours vary"
+     "Temple 08:00–18:00 daily (opens at 07:00 on lunar 1st and 15th days); stall hours vary"
     ]
    ],
    "lat": 22.28387,
@@ -6252,7 +6252,7 @@ window.HK = {
    ],
    "intro": "A steep L-shaped tangle of bars, clubs and restaurants that is Central's best-known nightlife district. It is loud, crowded and fun, especially late in the week.",
    "funFact": "In the 19th century the lane was home to traditional Chinese matchmakers and was known as 'Matchmaker Lane'. Today's party scene took off in the 1980s.",
-   "tips": "Start with dinner or drinks in SoHo or on Wyndham Street, then drift into LKF after about 10pm, when it gets lively. Taxis are hard to find at closing time, so it is easier to walk down to Central MTR or catch a tram on Des Voeux Road.",
+   "tips": "Start with dinner or drinks in SoHo or on Wyndham Street, then drift into LKF after about 22:00, when it gets lively. Taxis are hard to find at closing time, so it is easier to walk down to Central MTR or catch a tram on Des Voeux Road.",
    "getting": "From campus: MTR to Central (about 10 min) plus a 5 min walk up D'Aguilar Street. From Park Lane: MTR to Central (about 10 min), or a taxi (about 15 min).",
    "facts": [
     [
@@ -6313,7 +6313,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "Gates open 2 hrs before the first race. First race 6:40pm or 7:10pm depending on the card."
+     "Gates open 2 hrs before the first race. First race 18:40 or 19:10 depending on the card."
     ]
    ],
    "lat": 22.2726,
@@ -6346,7 +6346,7 @@ window.HK = {
    ],
    "intro": "Asia's big new museum of visual culture, covering design, architecture, art and film, set in a harbourside park with some of the best skyline views across to Hong Kong Island.",
    "funFact": "You don't need a ticket for the Roof Garden, Grand Stair, Found Space or basement levels, so you can enjoy the building and views for free.",
-   "tips": "Use the late opening on Friday (until 10pm), then watch the skyline from the Art Park lawns. During your visit the Cathay WestK Jazz Fest runs across West Kowloon (13–24 November 2026) with free and ticketed shows.",
+   "tips": "Use the late opening on Friday (until 22:00), then watch the skyline from the Art Park lawns. During your visit the Cathay WestK Jazz Fest runs across West Kowloon (13–24 November 2026) with free and ticketed shows.",
    "getting": "MTR Kowloon Station (Tung Chung or Airport Express) or Austin Station, then a 10–15 min walk. From campus: MTR to Hong Kong Station, then 1 stop to Kowloon (about 25–30 min). From Park Lane: about 30 min.",
    "facts": [
     [
@@ -6359,7 +6359,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "Tue–Thu and weekends 10am–6pm; Fri 10am–10pm; closed Mondays"
+     "Tue–Thu and weekends 10:00–18:00; Fri 10:00–22:00; closed Mondays"
     ]
    ],
    "lat": 22.301,
@@ -6439,7 +6439,7 @@ window.HK = {
    ],
    "intro": "A west-facing harbourfront strip of bars, cafes and benches at the end of the tram line. It is a few minutes from class and one of the best sunset spots on the island.",
    "funFact": "Kennedy Town is named after Sir Arthur Kennedy, Hong Kong's seventh governor (1872–1877). Trams have terminated here since 1904.",
-   "tips": "Sunset is around 5:40pm in late November, so walk down straight after class with a takeaway drink. Skip the famous 'Instagram Pier' (Western District Public Cargo Working Area): it is a working cargo area that has been closed to non-workers since 2021. Watch from the Praya or the Belcher Bay promenade instead.",
+   "tips": "Sunset is around 17:40 in late November, so walk down straight after class with a takeaway drink. Skip the famous 'Instagram Pier' (Western District Public Cargo Working Area): it is a working cargo area that has been closed to non-workers since 2021. Watch from the Praya or the Belcher Bay promenade instead.",
    "getting": "From campus: about a 5 min taxi or minibus ride, or roughly a 20 min walk downhill. From Park Lane: MTR to Kennedy Town (about 20–25 min) or tram (about 1 hr).",
    "facts": [
     [
@@ -6616,7 +6616,7 @@ window.HK = {
    ],
    "intro": "A real neighbourhood wet market where locals buy live fish, fresh meat, tofu and greens, plus the steep street stalls around it. It is the everyday Hong Kong most visitors never see.",
    "funFact": "Centre Street, which the market sits on, is one of Hong Kong's four steepest streets, with a gradient of up to 1 in 4.",
-   "tips": "Go between about 8am and 10am, when it is busiest. Watch the fishmongers, but ask before taking close-up photos of stallholders. Follow it with a cha chaan teng breakfast nearby.",
+   "tips": "Go between about 08:00 and 10:00, when it is busiest. Watch the fishmongers, but ask before taking close-up photos of stallholders. Follow it with a cha chaan teng breakfast nearby.",
    "getting": "Next to Sai Ying Pun MTR. From campus: MTR 2 stops or a taxi (about 10 min). From Park Lane: MTR to Sai Ying Pun (about 20 min).",
    "facts": [
     [
@@ -6712,7 +6712,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "Garden 7am–8pm daily; most shops close around 5–6pm"
+     "Garden 07:00–20:00 daily; most shops close around 5–18:00"
     ]
    ],
    "lat": 22.32589,
@@ -6753,7 +6753,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "About 7am–9:30pm (sources differ)"
+     "About 07:00–21:30 (sources differ)"
     ]
    ],
    "lat": 22.28582,
@@ -6795,7 +6795,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "Promenade open; wheel about 11am–11pm (sources vary)"
+     "Promenade open; wheel about 11:00–23:00 (sources vary)"
     ]
    ],
    "lat": 22.28532,
@@ -6830,7 +6830,7 @@ window.HK = {
    ],
    "intro": "Kowloon's waterfront walk, facing the full Hong Kong Island skyline, with the old Clock Tower, the Bruce Lee statue and Hong Kong film-star handprints along the Avenue of Stars.",
    "funFact": "The 44 m red-brick Clock Tower (1915) is all that remains of the old Kowloon–Canton Railway terminus, which was demolished in 1978.",
-   "tips": "Cross on the Star Ferry at dusk, walk from the Clock Tower to the Bruce Lee statue, and stay for the skyline. The 8pm Symphony of Lights show is due to be retired in the second half of 2026, so check the Tourism Commission site to see whether it is still running.",
+   "tips": "Cross on the Star Ferry at dusk, walk from the Clock Tower to the Bruce Lee statue, and stay for the skyline. The 20:00 Symphony of Lights show is due to be retired in the second half of 2026, so check the Tourism Commission site to see whether it is still running.",
    "getting": "Star Ferry from Central or Wan Chai, or MTR to Tsim Sha Tsui / East Tsim Sha Tsui. From Park Lane: about 20–25 min. From campus: about 30 min (MTR to Central, then the Star Ferry).",
    "facts": [
     [
@@ -6843,7 +6843,7 @@ window.HK = {
     ],
     [
      "Hours",
-     "Promenade open; Symphony of Lights historically 8pm nightly (2026 status uncertain)"
+     "Promenade open; Symphony of Lights historically 20:00 nightly (2026 status uncertain)"
     ]
    ],
    "lat": 22.29415,
@@ -6880,7 +6880,7 @@ window.HK = {
     "About 10–15 minutes' walk from the terminus"
    ],
    "getting": "From Park Lane: green minibus 25 from Causeway Bay MTR (opposite H&M) to the Braemar Hill bus terminus. You can also take a taxi (about 10 mins, our estimate). The trailhead is a small set of stairs just past the Chinese International School. From campus: taxi, roughly 25–30 mins (our estimate).",
-   "tips": "The path is short but uneven and steep at the top, so wear trainers. Bring water and a torch or phone light if you stay after sunset. Sunset is around 5:40pm in mid-November; aim to arrive about 20 minutes before. There are no shops at the top. Afterwards, eat in Causeway Bay or North Point.",
+   "tips": "The path is short but uneven and steep at the top, so wear trainers. Bring water and a torch or phone light if you stay after sunset. Sunset is around 17:40 in mid-November; aim to arrive about 20 minutes before. There are no shops at the top. Afterwards, eat in Causeway Bay or North Point.",
    "facts": [
     [
      "Distance",
@@ -7179,7 +7179,7 @@ window.HK = {
     "Excellent at golden hour and after dark"
    ],
    "getting": "From Park Lane: taxi to Peak Tower (about 20–25 mins, our estimate). Alternatively go to Central, then take the Peak Tram or bus 15 / minibus 1 up. From campus: taxi (about 20 mins, our estimate). The loop starts beside Peak Tower and Peak Galleria.",
-   "tips": "There are no water stops on the loop, so buy water at Peak Galleria or Peak Tower first. Start about 90 minutes before sunset, which is around 5:40pm in mid-November. One guide suggests walking Harlech Road first so you reach Lugard Road as the lights come on. Eat at the Peak, then go down by Peak Tram, bus 15 or minibus 1. Hong Kong Trail Section 1 (7 km, about 2 hrs, down to Pok Fu Lam Reservoir) starts here if you want a longer walk towards the campus side.",
+   "tips": "There are no water stops on the loop, so buy water at Peak Galleria or Peak Tower first. Start about 90 minutes before sunset, which is around 17:40 in mid-November. One guide suggests walking Harlech Road first so you reach Lugard Road as the lights come on. Eat at the Peak, then go down by Peak Tram, bus 15 or minibus 1. Hong Kong Trail Section 1 (7 km, about 2 hrs, down to Pok Fu Lam Reservoir) starts here if you want a longer walk towards the campus side.",
    "facts": [
     [
      "Distance",
@@ -7470,7 +7470,7 @@ window.HK = {
    ],
    "getting": "From Park Lane: about 5–10 mins on foot (our estimate).",
    "tips": "Quieter than Central's malls. Brand line-ups change, so check each brand's store locator before going for a specific item.",
-   "hours": "Mall: unknown. Hermès Lee Garden One: Mon–Sat 11am–7:30pm, Sun and public holidays 11am–7pm.",
+   "hours": "Mall: unknown. Hermès Lee Garden One: Mon–Sat 11:00–19:30, Sun and public holidays 11:00–19:00.",
    "lat": 22.2784671,
    "lng": 114.1847025,
    "mapsQuery": "Lee Garden One, 33 Hysan Avenue, Causeway Bay",
@@ -7530,7 +7530,7 @@ window.HK = {
    ],
    "getting": "From Park Lane: MTR from Causeway Bay to Admiralty (2 stops, about 10 mins door to door, our estimate) or taxi (about 10–15 mins).",
    "tips": "Covered walkways connect it towards Central, so you can mall-hop to the Landmark and IFC.",
-   "hours": "About 10am–9pm daily (sources vary between 10am and 10:30am opening).",
+   "hours": "About 10:00–21:00 daily (sources vary between 10:00 and 10:30 opening).",
    "lat": 22.2780004,
    "lng": 114.1652918,
    "mapsQuery": "Pacific Place, 88 Queensway, Admiralty",
@@ -7565,7 +7565,7 @@ window.HK = {
    ],
    "getting": "From Park Lane: MTR from Causeway Bay to Central (about 15 mins door to door, our estimate) and walk through the footbridges, or take a taxi (about 15–20 mins).",
    "tips": "Pair it with the Landmark (5–10 mins on foot via footbridges) and an evening Star Ferry ride to Tsim Sha Tsui.",
-   "hours": "10am–10pm daily (shops and restaurants vary).",
+   "hours": "10:00–22:00 daily (shops and restaurants vary).",
    "lat": 22.2850934,
    "lng": 114.1586008,
    "mapsQuery": "IFC Mall, 8 Finance Street, Central",
@@ -7600,7 +7600,7 @@ window.HK = {
    ],
    "getting": "From Park Lane: MTR from Causeway Bay to Central (about 15 mins, our estimate); the Landmark sits above Central station.",
    "tips": "The best single stop for high jewellery and watch maisons. The Mandarin Oriental (Ronald Abram) is across the footbridge.",
-   "hours": "Mostly about 10am–8pm; some shops stay open later (sources vary).",
+   "hours": "Mostly about 10:00–20:00; some shops stay open later (sources vary).",
    "lat": 22.2811091,
    "lng": 114.1578922,
    "mapsQuery": "LANDMARK ATRIUM, 15 Queen's Road Central",
@@ -7629,8 +7629,8 @@ window.HK = {
     "On the Avenue of Stars harbourfront"
    ],
    "getting": "From Park Lane: MTR (change at Admiralty for Tsim Sha Tsui / East Tsim Sha Tsui, about 25 mins, our estimate). Alternatively take the Star Ferry from Central or Wan Chai, or a taxi through the Cross-Harbour Tunnel (about 15–20 mins, traffic dependent).",
-   "tips": "Combine with Harbour City and Canton Road and the 8pm 'Symphony of Lights' on the harbourfront.",
-   "hours": "10am–10pm daily (individual shops vary).",
+   "tips": "Combine with Harbour City and Canton Road and the 20:00 'Symphony of Lights' on the harbourfront.",
+   "hours": "10:00–22:00 daily (individual shops vary).",
    "lat": 22.2945938,
    "lng": 114.1749471,
    "mapsQuery": "K11 MUSEA, 18 Salisbury Road, Tsim Sha Tsui",
@@ -7662,8 +7662,8 @@ window.HK = {
     "Chow Tai Fook's first global flagship (opened May 2026, about 10,000 sq ft) on Canton Road"
    ],
    "getting": "From Park Lane: MTR to Tsim Sha Tsui (change at Admiralty, about 25 mins, our estimate), or the Star Ferry from Central to TST pier, which leads straight into Harbour City.",
-   "tips": "Big flagships often open from about 11am. Use the Star Ferry for a scenic trip. The exact street number of the Chow Tai Fook flagship is unknown, so check their store locator.",
-   "hours": "Mall about 10am–10pm. Hermès Harbour City: Mon–Thu and Sun 10am–9pm, Fri–Sat 10am–10pm. Lane Crawford: 10am–9pm.",
+   "tips": "Big flagships often open from about 11:00. Use the Star Ferry for a scenic trip. The exact street number of the Chow Tai Fook flagship is unknown, so check their store locator.",
+   "hours": "Mall about 10:00–22:00. Hermès Harbour City: Mon–Thu and Sun 10:00–21:00, Fri–Sat 10:00–22:00. Lane Crawford: 10:00–21:00.",
    "lat": 22.2970015,
    "lng": 114.1684199,
    "mapsQuery": "Harbour City, 3-27 Canton Road, Tsim Sha Tsui",
@@ -7690,7 +7690,7 @@ window.HK = {
    ],
    "getting": "From Park Lane: about 15–20 mins on foot or a short tram ride west along Hennessy Road and Johnston Road (our estimate).",
    "tips": "Ask to taste before buying. Tea is light to pack and a good gift.",
-   "hours": "9am–8pm (CitySeeker; check before going).",
+   "hours": "09:00–20:00 (CitySeeker; check before going).",
    "lat": 22.2766026,
    "lng": 114.1746412,
    "mapsQuery": "Ying Kee Tea House, 170 Johnston Road, Wan Chai",
@@ -7717,7 +7717,7 @@ window.HK = {
    ],
    "getting": "From Park Lane: MTR to Central (about 15 mins), then 10–15 mins on foot uphill or via the Mid-Levels Escalator (our estimate). Taxi about 15–20 mins.",
    "tips": "Pair it with Tai Kwun, Hollywood Road antiques and SoHo dinner.",
-   "hours": "PMQ studios and shops about 11am–8pm daily (2018 info; individual shops vary). Tai Kwun compound 8am–11pm daily.",
+   "hours": "PMQ studios and shops about 11:00–20:00 daily (2018 info; individual shops vary). Tai Kwun compound 08:00–23:00 daily.",
    "lat": 22.283325,
    "lng": 114.1518365,
    "mapsQuery": "PMQ, 35 Aberdeen Street, Central",
@@ -7745,8 +7745,8 @@ window.HK = {
     "Beachside cafés"
    ],
    "getting": "From Park Lane: taxi (about 25–30 mins, our estimate) or bus from Causeway Bay / Central towards Stanley.",
-   "tips": "It is a souvenir market, not for luxury or jewellery. Bargain politely. Most stalls trade from about 10am to 6–6:30pm.",
-   "hours": "About 10am–6:30pm daily (each stall sets its own hours).",
+   "tips": "It is a souvenir market, not for luxury or jewellery. Bargain politely. Most stalls trade from about 10:00 to 6–18:30.",
+   "hours": "About 10:00–18:30 daily (each stall sets its own hours).",
    "lat": 22.2181952,
    "lng": 114.2125152,
    "mapsQuery": "Stanley Market, Stanley Main Street",
@@ -8223,8 +8223,8 @@ window.HK = {
     "Olive Oil Sour",
     "Filthy Martini"
    ],
-   "reviews": "Universally loved for the drinks, mortadella focaccia and vibe; the catch is only ~45 seats and no reservations, so queues/WhatsApp waitlists are long after 7pm.",
-   "tips": "No bookings: arrive right at opening (5pm Wed) or join the waitlist first and hop elsewhere while you wait.",
+   "reviews": "Universally loved for the drinks, mortadella focaccia and vibe; the catch is only ~45 seats and no reservations, so queues/WhatsApp waitlists are long after 19:00.",
+   "tips": "No bookings: arrive right at opening (17:00 Wed) or join the waitlist first and hop elsewhere while you wait.",
    "addressEn": "G/F, 11-15 Bridges Street, Central, Hong Kong",
    "addressZh": "香港中環必列者士街11-15號地下",
    "lat": 22.28385,
@@ -8256,7 +8256,7 @@ window.HK = {
     "House signature cocktail from the seasonal menu"
    ],
    "reviews": "Raved about for theatre, design and live music rather than the cocktails; some complaints about door/reception attitude, a bag fee and needing a booking for cabaret seats.",
-   "tips": "Book ahead (+852 6250 6000 or via the website), dress smart; Wed 18 Nov has live music but the full cabaret is Thursdays 9:30pm.",
+   "tips": "Book ahead (+852 6250 6000 or via the website), dress smart; Wed 18 Nov has live music but the full cabaret is Thursdays 21:30.",
    "addressEn": "G/F, Chinachem Hollywood Centre, 1-13 Hollywood Road, Central, Hong Kong",
    "addressZh": "香港中環荷李活道1-13號華懋荷李活中心地下",
    "lat": 22.28197,
@@ -8322,7 +8322,7 @@ window.HK = {
     "Rooty Slushy"
    ],
    "reviews": "Polished service and inventive drinks in a calm, glamorous room; pricier (HK$175-200) and more hotel-lounge than bar-hop buzz.",
-   "tips": "Bookable via OpenTable; closed Sundays, open 5pm-1am Wed; smart-casual.",
+   "tips": "Bookable via OpenTable; closed Sundays, open 17:00-01:00 Wed; smart-casual.",
    "addressEn": "Four Seasons Hotel Hong Kong, 8 Finance Street, Central, Hong Kong",
    "addressZh": "香港中環金融街8號香港四季酒店",
    "lat": 22.28662,
@@ -8353,7 +8353,7 @@ window.HK = {
     "Santa Marta Daiquiri"
    ],
    "reviews": "A debut Asia's 50 Best entry and the liveliest of the top bars; can get loud and crowded.",
-   "tips": "Open Tue-Sat from 6pm, so Wednesday works; pairs naturally with Bar Leone a block away.",
+   "tips": "Open Tue-Sat from 18:00, so Wednesday works; pairs naturally with Bar Leone a block away.",
    "addressEn": "108 Hollywood Road, Central, Hong Kong",
    "addressZh": "香港中環荷李活道108號",
    "lat": 22.28383,
@@ -8414,7 +8414,7 @@ window.HK = {
     "Seasonal ferment signature"
    ],
    "reviews": "Fun, inventive and on Asia's 50 Best every year since 2021; walk-in only, with ~15-minute queues on busy nights.",
-   "tips": "Walk-in only; open till 2am Mon-Sat, so good as a late stop.",
+   "tips": "Walk-in only; open till 02:00 Mon-Sat, so good as a late stop.",
    "addressEn": "LG/F, Amber Lodge, 23 Hollywood Road, Central, Hong Kong",
    "addressZh": "香港中環荷李活道23號金珀苑地下低層",
    "lat": 22.2821,
@@ -8447,7 +8447,7 @@ window.HK = {
     "Floating Taro"
    ],
    "reviews": "Biggest climber on the 51-100 list; playful and photogenic, walk-in only and fills fast.",
-   "tips": "Walk-in only; go early. Open to 1am Sun-Thu.",
+   "tips": "Walk-in only; go early. Open to 01:00 Sun-Thu.",
    "addressEn": "LG/F, Hilltop Plaza, 49 Hollywood Road, Central, Hong Kong",
    "addressZh": "香港中環荷李活道49號鴻豐商業中心地下低層",
    "lat": 22.28278,
@@ -8506,7 +8506,7 @@ window.HK = {
    "intro": "A grown-up Wyndham Street supper club that turns into a disco-and-house dance floor with a big terrace.",
    "order": [
     "Late-night soulful house and disco DJ sets",
-    "Terrace drinks (happy hour HK$60, 5–8pm Tue–Sat)"
+    "Terrace drinks (happy hour HK$60, 5–20:00 Tue–Sat)"
    ],
    "reviews": "Praised as one of the most adult-friendly dance floors in Central; complaints are crowding after midnight and expensive cocktails outside happy hour.",
    "tips": "Smart, elegant dress expected; dinner booking secures entry before the late rush; open Tue–Sat, so a natural stop on the Wed 18 Nov LKF crawl.",
@@ -8539,7 +8539,7 @@ window.HK = {
     "Thu–Sat DJ after midnight, R&B and hip-hop"
    ],
    "reviews": "Cocktails (e.g. Himalayan Tiger, Hannya, about HK$140) win praise; it is small, so it gets cramped and loud late on weekends.",
-   "tips": "Open Tue–Sat (to 2am Tue/Wed, 4:30am Fri/Sat), closed Sun–Mon; no published cover or dress code, so smart casual and book for groups.",
+   "tips": "Open Tue–Sat (to 02:00 Tue/Wed, 04:30 Fri/Sat), closed Sun–Mon; no published cover or dress code, so smart casual and book for groups.",
    "addressEn": "3/F, FOCO, 48 Cochrane Street, Central",
    "addressZh": "中環閣麟街48號FOCO 3樓",
    "lat": 22.28226,
@@ -8565,7 +8565,7 @@ window.HK = {
    "price": "$$$$",
    "intro": "Every Friday the Mandarin Oriental's glamorous 25th-floor izakaya bar becomes the city's chicest dance party.",
    "order": [
-    "Friday After Dark from 10pm with resident and guest DJs",
+    "Friday After Dark from 22:00 with resident and guest DJs",
     "Japanese-style cocktails with harbour views"
    ],
    "reviews": "Widely rated the most sophisticated night out in town and spot-on for a 35–45 crowd; limited capacity and a strict door mean it sells out.",
@@ -8623,7 +8623,7 @@ window.HK = {
    "price": "$$",
    "intro": "A petite basement club with a Funktion-One rig for people who care more about the DJ than the bottle service.",
    "order": [
-    "Friday/Saturday house and techno nights (run until 7am)",
+    "Friday/Saturday house and techno nights (run until 07:00)",
     "Sunday sessions, often busy"
    ],
    "reviews": "Music fans rate the sound highly; it is small, dark and very late, so not for anyone wanting a glamorous scene.",
@@ -8682,11 +8682,11 @@ window.HK = {
    "price": "$$",
    "intro": "A Wan Chai institution for decades, the classic last stop when everything in Central has closed.",
    "order": [
-    "Weekend dance floor running to 5–6am",
-    "Cheap-ish beers after 2am"
+    "Weekend dance floor running to 5–06:00",
+    "Cheap-ish beers after 02:00"
    ],
    "reviews": "Loved as a fun, unpretentious last stop; it gets sweaty, rowdy and touristy late at night.",
-   "tips": "Smart casual enforced at club hours; best Fri/Sat after 1am; 10 minutes by taxi back to Causeway Bay.",
+   "tips": "Smart casual enforced at club hours; best Fri/Sat after 01:00; 10 minutes by taxi back to Causeway Bay.",
    "addressEn": "The Phoenix, 23 Luard Road, Wan Chai",
    "addressZh": "灣仔盧押道23號THE PHOENIX",
    "lat": 22.27873,
@@ -8715,7 +8715,7 @@ window.HK = {
     "Sunday disco party"
    ],
    "reviews": "A riot with a group and full of nostalgia; it is loud, crowded and unrefined, which is the point.",
-   "tips": "No cover on most nights; casual dress is fine; best Thu–Sat after 11pm; close to Causeway Bay.",
+   "tips": "No cover on most nights; casual dress is fine; best Thu–Sat after 23:00; close to Causeway Bay.",
    "addressEn": "G/F, 53-55 Lockhart Road, Wan Chai",
    "addressZh": "灣仔駱克道53-55號恆澤商業大廈地下",
    "lat": 22.27833,
@@ -8746,7 +8746,7 @@ window.HK = {
    "intro": "A hidden, living-room-style jazz bar where local musicians jam among art you can buy.",
    "order": [
     "Wednesday jazz jam (fits Wed 18 Nov)",
-    "Fri/Sat Living Room Concert, doors 8pm"
+    "Fri/Sat Living Room Concert, doors 20:00"
    ],
    "reviews": "Warm, unpretentious and full of locals; hard to find and tiny, with sources disagreeing on the exact schedule.",
    "tips": "DM @chez.trente on Instagram before coming to reserve and confirm the night's programme; casual dress.",
@@ -8774,7 +8774,7 @@ window.HK = {
    "price": "$",
    "intro": "A barber-owner's salon by day that hosts a cult, intimate jazz session on Saturday nights.",
    "order": [
-    "Saturday jam about 8:30–11:30pm",
+    "Saturday jam about 8:30–23:30",
     "A drink from the minibar (your ticket in)"
    ],
    "reviews": "A charming, very Hong Kong experience; the room is tiny and the owner will eject people who talk over the music.",
@@ -8806,7 +8806,7 @@ window.HK = {
    "emoji": "🫖",
    "intro": "Tiered scones, finger sandwiches and a string quartet in the gilded lobby of Hong Kong's oldest hotel, opened in 1928. It's a quintessential colonial-era Hong Kong ritual.",
    "funFact": "During the Second World War, the British governor surrendered Hong Kong to Japan at The Peninsula on Christmas Day 1941, in a room on the hotel's third floor.",
-   "tips": "Go mid-afternoon on a weekday and expect a queue. Check The Peninsula's website for current booking rules. Afterwards, walk five minutes to the Tsim Sha Tsui promenade for the skyline, and stay for the 8pm Symphony of Lights.",
+   "tips": "Go mid-afternoon on a weekday and expect a queue. Check The Peninsula's website for current booking rules. Afterwards, walk five minutes to the Tsim Sha Tsui promenade for the skyline, and stay for the 20:00 Symphony of Lights.",
    "getting": "From the Park Lane: MTR from Causeway Bay to Tsim Sha Tsui (about 20 min), or take the Star Ferry from Wan Chai.",
    "facts": [
     [
@@ -8884,8 +8884,8 @@ window.HK = {
    "emoji": "🖼️",
    "intro": "A calm, air-conditioned stop with Chinese painting, calligraphy and Hong Kong art, plus harbour views from the galleries. Easy to pair with a walk along the TST Promenade.",
    "getting": "MTR from Causeway Bay to Tsim Sha Tsui (change at Admiralty or Tsim Sha Tsui via Tsuen Wan line), about 20-25 min, then a 10-min walk. Or Star Ferry from Central, about 10 min.",
-   "tips": "Closed on Thursdays (so not Thu 19 Nov). The permanent collection is free, and special exhibitions are ticketed. Time it so you walk out onto the Promenade for sunset and the 8pm Symphony of Lights.",
-   "hours": "Mon–Wed & Fri 10am–6pm, Sat–Sun 10am–9pm, closed Thursdays",
+   "tips": "Closed on Thursdays (so not Thu 19 Nov). The permanent collection is free, and special exhibitions are ticketed. Time it so you walk out onto the Promenade for sunset and the 20:00 Symphony of Lights.",
+   "hours": "Mon–Wed & Fri 10:00–18:00, Sat–Sun 10:00–21:00, closed Thursdays",
    "lat": 22.2935,
    "lng": 114.172,
    "addressEn": "10 Salisbury Road, Tsim Sha Tsui, Kowloon",
@@ -9199,7 +9199,7 @@ window.HK = {
    ],
    "emoji": "🐟",
    "intro": "A kilometre of street stalls under the Mong Kok neon: T-shirts, phone cases, bags, souvenirs and snacks. It's loud, crowded and a great slice of Kowloon street life.",
-   "tips": "Haggle with a smile and start at about half the asking price. Go after dark (stalls run from about noon to 11pm), and then walk the neon streets around Sai Yeung Choi Street. Keep your phone and wallet in a front pocket.",
+   "tips": "Haggle with a smile and start at about half the asking price. Go after dark (stalls run from about noon to 23:00), and then walk the neon streets around Sai Yeung Choi Street. Keep your phone and wallet in a front pocket.",
    "getting": "MTR to Mong Kok (Exit D3), about 25 min from Causeway Bay. Or a taxi, 20–30 min via the Cross-Harbour Tunnel.",
    "facts": [
     [
@@ -9852,7 +9852,7 @@ window.HK = {
    ],
    "emoji": "🏛️",
    "intro": "The former Marine Police headquarters (built 1884), now a courtyard of colonnaded colonial buildings, shops and restaurants, lit warmly at night. A short walk from the Star Ferry, Clock Tower and harbour promenade.",
-   "tips": "Come at dusk to catch the courtyard lights, then walk to the waterfront for the 8pm Symphony of Lights. The Clock Tower (1915 railway terminus remnant) is 3 min away.",
+   "tips": "Come at dusk to catch the courtyard lights, then walk to the waterfront for the 20:00 Symphony of Lights. The Clock Tower (1915 railway terminus remnant) is 3 min away.",
    "getting": "From Causeway Bay: Island Line to Admiralty, Tsuen Wan Line to Tsim Sha Tsui (Exit L5/E), about 20 min; or Star Ferry from Central/Wan Chai.",
    "hours": "Public courtyard roughly 07:00-00:00 (secondary sources; shops/restaurants vary); free guided tours by phone booking per HKTB",
    "lat": 22.29548,
@@ -9988,7 +9988,7 @@ window.HK = {
     ],
     [
      "🖼️",
-     "K11 Musea or the HK Museum of Art, then the TST Promenade for the 8pm Symphony of Lights",
+     "K11 Musea or the HK Museum of Art, then the TST Promenade for the 20:00 Symphony of Lights",
      "Tsim Sha Tsui Promenade"
     ]
    ],
@@ -10015,7 +10015,7 @@ window.HK = {
     ],
     [
      "🌃",
-     "TST Promenade for sunset and the 8pm Symphony of Lights",
+     "TST Promenade for sunset and the 20:00 Symphony of Lights",
      "Tsim Sha Tsui Promenade"
     ],
     [
@@ -10233,8 +10233,8 @@ window.HK = {
    "iso": "2026-11-14",
    "slots": [
     [
-     "3pm",
-     "Hotel check-in from 3pm",
+     "15:00",
+     "Hotel check-in from 15:00",
      "school"
     ]
    ],
@@ -10284,7 +10284,7 @@ window.HK = {
      ],
      [
       "🖼️",
-      "K11 Musea or the HK Museum of Art, then the TST Promenade for the 8pm Symphony of Lights",
+      "K11 Musea or the HK Museum of Art, then the TST Promenade for the 20:00 Symphony of Lights",
       "Tsim Sha Tsui Promenade"
      ]
     ],
@@ -10307,14 +10307,14 @@ window.HK = {
      "Lunch",
      "Dim sum lunch",
      "ours",
-     "sun-dimsum"
+     "sun-dimsum",
+     {
+      "label": "Dim sum spots",
+      "tab": "city",
+      "q": "dim sum"
+     }
     ]
    ],
-   "go": {
-    "label": "Dim sum spots",
-    "tab": "city",
-    "q": "dim sum"
-   },
    "outings": true,
    "note": "After dim sum, pick something from the ideas below."
   },
@@ -10324,53 +10324,54 @@ window.HK = {
    "iso": "2026-11-16",
    "slots": [
     [
-     "8:00–9:30",
+     "08:00–09:30",
      "Breakfast, Student Lounge",
      "school"
     ],
     [
-     "9:30–11:00",
+     "09:30–11:00",
      "Microeconomics midterm",
      "school"
     ],
     [
-     "11:30–1:00",
+     "11:30–13:00",
      "Welcome speech, orientation & lunch (Grand Hall)",
      "school"
     ],
     [
-     "2:00–4:00",
+     "14:00–16:00",
      "Becker Week Activity: dragon boating, Stanley",
-     "optional"
+     "optional",
+     null,
+     {
+      "label": "Stanley",
+      "tab": "sights",
+      "where": "south"
+     }
     ],
     [
      "Evening",
      "Hotpot + karaoke (A Smoking Affair)",
      "ours",
-     "mon-hotpot"
+     "mon-hotpot",
+     {
+      "label": "A Smoking Affair",
+      "tab": "city",
+      "q": "Smoking Affair"
+     }
     ]
    ],
-   "go": {
-    "label": "Stanley",
-    "tab": "sights",
-    "where": "south"
-   },
-   "go2": {
-    "label": "A Smoking Affair",
-    "tab": "city",
-    "q": "Smoking Affair"
-   },
    "bus": [
     [
      "To campus · morning",
      [
       [
        "🏨 Park Lane",
-       "7:45–8:15"
+       "07:45–08:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "8:00–8:15"
+       "08:00–08:15"
       ]
      ]
     ],
@@ -10379,7 +10380,7 @@ window.HK = {
      [
       [
        "🏨🚇 To HKU, Sai Ying Pun & Park Lane",
-       "1:30pm"
+       "13:30"
       ]
      ]
     ],
@@ -10388,15 +10389,15 @@ window.HK = {
      [
       [
        "Campus → Stanley",
-       "1:15pm"
+       "13:15"
       ],
       [
        "Stanley → Park Lane",
-       "3:45pm"
+       "15:45"
       ],
       [
        "Stanley → Admiralty MTR",
-       "3:45pm"
+       "15:45"
       ]
      ]
     ]
@@ -10408,53 +10409,54 @@ window.HK = {
    "iso": "2026-11-17",
    "slots": [
     [
-     "8:00–9:00",
+     "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
     ],
     [
-     "9:00–12:00",
+     "09:00–12:00",
      "Microeconomics",
      "school"
     ],
     [
-     "12:30–1:30",
+     "12:30–13:30",
      "Heritage Tour (G/F Reception)",
      "optional"
     ],
     [
-     "2:00–5:00",
+     "14:00–17:00",
      "Statistics",
      "school"
     ],
     [
-     "5:30–6:30",
+     "17:30–18:30",
      "Statistics review",
      "optional"
     ],
     [
-     "6:30",
+     "18:30",
      "Boxed dinner, Student Lounge",
-     "school"
+     "school",
+     null,
+     {
+      "label": "Or eat out near Booth",
+      "tab": "city",
+      "mood": "dinner",
+      "where": "saiwan"
+     }
     ]
    ],
-   "go": {
-    "label": "Dinner near Booth",
-    "tab": "city",
-    "mood": "dinner",
-    "where": "saiwan"
-   },
    "bus": [
     [
      "To campus · morning",
      [
       [
        "🏨 Park Lane",
-       "7:45–8:15"
+       "07:45–08:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "8:00–8:15"
+       "08:00–08:15"
       ]
      ]
     ],
@@ -10463,11 +10465,11 @@ window.HK = {
      [
       [
        "🏨 To Park Lane",
-       "8:30pm, 9:00pm"
+       "20:30, 21:00"
       ],
       [
        "🚇 To HKU & Sai Ying Pun",
-       "8:30pm"
+       "20:30"
       ]
      ]
     ]
@@ -10479,29 +10481,36 @@ window.HK = {
    "iso": "2026-11-18",
    "slots": [
     [
-     "8:00–9:00",
+     "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
     ],
     [
-     "9:00–12:00",
+     "09:00–12:00",
      "Microeconomics",
      "school"
     ],
     [
-     "12:30–1:30",
+     "12:30–13:30",
      "Microeconomics review",
      "optional"
     ],
     [
-     "2:00–5:00",
+     "14:00–17:00",
      "Statistics",
      "school"
     ],
     [
-     "6:00",
+     "18:00",
      "Boxed dinner, Student Lounge",
-     "school"
+     "school",
+     null,
+     {
+      "label": "Or eat out near Booth",
+      "tab": "city",
+      "mood": "dinner",
+      "where": "saiwan"
+     }
     ],
     [
      "Evening",
@@ -10510,23 +10519,17 @@ window.HK = {
      "wed-tram"
     ]
    ],
-   "go": {
-    "label": "Dinner near Booth",
-    "tab": "city",
-    "mood": "dinner",
-    "where": "saiwan"
-   },
    "bus": [
     [
      "To campus · morning",
      [
       [
        "🏨 Park Lane",
-       "7:45–8:15"
+       "07:45–08:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "8:00–8:15"
+       "08:00–08:15"
       ]
      ]
     ],
@@ -10535,11 +10538,11 @@ window.HK = {
      [
       [
        "🏨 To Park Lane",
-       "8:30pm, 9:00pm"
+       "20:30, 21:00"
       ],
       [
        "🚇 To HKU & Sai Ying Pun",
-       "8:30pm"
+       "20:30"
       ]
      ]
     ]
@@ -10561,12 +10564,12 @@ window.HK = {
      "optional"
     ],
     [
-     "12:00–2:00",
+     "12:00–14:00",
      "Lunch (Grand Hall)",
      "school"
     ],
     [
-     "2:00–5:00",
+     "14:00–17:00",
      "Statistics",
      "school"
     ],
@@ -10574,31 +10577,36 @@ window.HK = {
      "Evening",
      "Dai pai dong dinner",
      "ours",
-     "thu-dpd"
+     "thu-dpd",
+     {
+      "label": "Peng Leng Jeng",
+      "tab": "city",
+      "q": "Peng Leng"
+     }
     ],
     [
      "Evening",
      "Or Peking duck dinner",
      "ours",
-     "thu-duck"
+     "thu-duck",
+     {
+      "label": "Peking Garden",
+      "tab": "city",
+      "q": "Peking Garden"
+     }
     ]
    ],
-   "go": {
-    "label": "Dinner options",
-    "tab": "city",
-    "q": "Peng Leng"
-   },
    "bus": [
     [
      "To campus · late start",
      [
       [
        "🏨 Park Lane",
-       "9:15–11:15"
+       "09:15–11:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "9:30–11:30"
+       "09:30–11:30"
       ]
      ]
     ],
@@ -10607,11 +10615,11 @@ window.HK = {
      [
       [
        "🏨 To Park Lane",
-       "8:30pm, 9:00pm"
+       "20:30, 21:00"
       ],
       [
        "🚇 To HKU & Sai Ying Pun",
-       "8:30pm"
+       "20:30"
       ]
      ]
     ]
@@ -10623,53 +10631,54 @@ window.HK = {
    "iso": "2026-11-20",
    "slots": [
     [
-     "8:00–9:00",
+     "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
     ],
     [
-     "9:00–12:00",
+     "09:00–12:00",
      "Microeconomics",
      "school"
     ],
     [
-     "12:00–2:00",
+     "12:00–14:00",
      "HK theme lunch (Grand Hall)",
      "school"
     ],
     [
-     "2:00–5:00",
+     "14:00–17:00",
      "Statistics",
      "school"
     ],
     [
-     "5:00",
+     "17:00",
      "Linda Ginzel's Tropical Fruit Fair (Grand Hall)",
      "optional"
     ],
     [
-     "6:00",
+     "18:00",
      "Boxed dinner, Student Lounge",
-     "school"
+     "school",
+     null,
+     {
+      "label": "Or eat out near Booth",
+      "tab": "city",
+      "mood": "dinner",
+      "where": "saiwan"
+     }
     ]
    ],
-   "go": {
-    "label": "Dinner near Booth",
-    "tab": "city",
-    "mood": "dinner",
-    "where": "saiwan"
-   },
    "bus": [
     [
      "To campus · morning",
      [
       [
        "🏨 Park Lane",
-       "7:45–8:15"
+       "07:45–08:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "8:00–8:15"
+       "08:00–08:15"
       ]
      ]
     ],
@@ -10678,11 +10687,11 @@ window.HK = {
      [
       [
        "🏨 To Park Lane",
-       "8:30pm, 9:00pm"
+       "20:30, 21:00"
       ],
       [
        "🚇 To HKU & Sai Ying Pun",
-       "8:30pm"
+       "20:30"
       ]
      ]
     ]
@@ -10694,52 +10703,53 @@ window.HK = {
    "iso": "2026-11-21",
    "slots": [
     [
-     "8:00–9:00",
+     "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
     ],
     [
-     "9:00–12:00",
+     "09:00–12:00",
      "Microeconomics",
      "school"
     ],
     [
-     "12:30–1:30",
+     "12:30–13:30",
      "Microeconomics review",
      "optional"
     ],
     [
-     "2:00–5:00",
+     "14:00–17:00",
      "Statistics",
      "school"
     ],
     [
-     "5:30–6:30",
+     "17:30–18:30",
      "Statistics review",
      "optional"
     ],
     [
-     "7:30–9:30",
+     "19:30–21:30",
      "Closing dinner, Nanhai No. 2 (Causeway Bay)",
-     "school"
+     "school",
+     null,
+     {
+      "label": "Nanhai No. 2",
+      "tab": "city",
+      "q": "Nanhai"
+     }
     ]
    ],
-   "go": {
-    "label": "Nanhai No. 2",
-    "tab": "city",
-    "q": "Nanhai"
-   },
    "bus": [
     [
      "To campus · morning",
      [
       [
        "🏨 Park Lane",
-       "7:45–8:15"
+       "07:45–08:15"
       ],
       [
        "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
-       "8:00–8:15"
+       "08:00–08:15"
       ]
      ]
     ],
@@ -10748,15 +10758,15 @@ window.HK = {
      [
       [
        "Campus → MTR",
-       "6:45pm"
+       "18:45"
       ],
       [
        "Campus → Park Lane",
-       "6:45pm"
+       "18:45"
       ],
       [
        "Campus → restaurant",
-       "7:00pm"
+       "19:00"
       ]
      ]
     ]
@@ -10774,7 +10784,7 @@ window.HK = {
     ],
     [
      "Next day",
-     "Hotel check-out by 12pm on 23 Nov",
+     "Hotel check-out by 12:00 on 23 Nov",
      "school"
     ]
    ],
@@ -10808,7 +10818,7 @@ window.HK = {
      "zh": "新興食家",
      "address": "Shop C, G/F, Markfield Building, 8 Smithfield Road",
      "area": "Kennedy Town",
-     "note": "Opens around 3am, closes around 4pm; go early. Trolley service and shared tables. Famous for the molten salted-egg custard bun (lau sa bao). Bring cash.",
+     "note": "Opens around 03:00, closes around 16:00; go early. Trolley service and shared tables. Famous for the molten salted-egg custard bun (lau sa bao). Bring cash.",
      "lat": 22.28296,
      "lng": 114.12827,
      "famous": true
@@ -10818,7 +10828,7 @@ window.HK = {
      "zh": "陸羽茶室",
      "address": "24-26 Stanley Street",
      "area": "Central",
-     "note": "Historic old-school teahouse with white-jacketed waiters; listed in the 2026 Michelin Guide. Pricier than Sun Hing; cards accepted; 7am-10pm.",
+     "note": "Historic old-school teahouse with white-jacketed waiters; listed in the 2026 Michelin Guide. Pricier than Sun Hing; cards accepted; 07:00-22:00.",
      "lat": 22.28248,
      "lng": 114.1554,
      "famous": true
@@ -10869,7 +10879,7 @@ window.HK = {
      "zh": "甘牌燒鵝",
      "address": "G/F, Po Wah Commercial Centre, 226 Hennessy Road",
      "area": "Wan Chai",
-     "note": "One Michelin star (2026). Order roast goose (quarter or half) with rice or lai fun noodles. Only 30 seats, so expect a queue. Cards accepted; 11:30am-9:30pm.",
+     "note": "One Michelin star (2026). Order roast goose (quarter or half) with rice or lai fun noodles. Only 30 seats, so expect a queue. Cards accepted; 11:30-21:30.",
      "lat": 22.2778,
      "lng": 114.17556,
      "famous": true
@@ -10879,7 +10889,7 @@ window.HK = {
      "zh": "再興燒臘飯店",
      "address": "Block C, G/F, Chong Hing Building, 265-267 Hennessy Road",
      "area": "Wan Chai",
-     "note": "Century-old shop famous for lean, sweet char siu; get char siu rice. Hours vary by source (OpenRice says Mon-Sat 10:30am-9pm, closed Sunday). Popular items sell out, so go early.",
+     "note": "Century-old shop famous for lean, sweet char siu; get char siu rice. Hours vary by source (OpenRice says Mon-Sat 10:30-21:00, closed Sunday). Popular items sell out, so go early.",
      "lat": 22.2782,
      "lng": 114.17666,
      "famous": true
@@ -10923,7 +10933,7 @@ window.HK = {
      "zh": "泰昌餅家",
      "address": "G/F, 35 Lyndhurst Terrace",
      "area": "Central",
-     "note": "The famous shortcrust 'Fat Patten' tart. Flagship since 1954; about 9:30am-7:30pm (2024 report).",
+     "note": "The famous shortcrust 'Fat Patten' tart. Flagship since 1954; about 09:30-19:30 (2024 report).",
      "lat": 22.28261,
      "lng": 114.15362,
      "famous": true
@@ -10966,7 +10976,7 @@ window.HK = {
      "zh": "山道冰室",
      "address": "Shops C & D, G/F, Sun On Building, 25 Hill Road",
      "area": "Shek Tong Tsui",
-     "note": "Near HKU MTR exit B2, a short hop from campus. Buns are baked in-house; order the bo lo yau with an iced lemon tea. About 7am-9:30pm (sources differ).",
+     "note": "Near HKU MTR exit B2, a short hop from campus. Buns are baked in-house; order the bo lo yau with an iced lemon tea. About 07:00-21:30 (sources differ).",
      "lat": 22.28582,
      "lng": 114.13542,
      "famous": true
@@ -10976,7 +10986,7 @@ window.HK = {
      "zh": "金鳳茶餐廳",
      "address": "G/F, Spring Garden Mansion, 41 Spring Garden Lane",
      "area": "Wan Chai",
-     "note": "Cha chaan teng opened in 1956. Warm bun with cold butter, plus its chicken pie and iced milk tea. Minimum order of one drink per person; about 7am-6:45pm.",
+     "note": "Cha chaan teng opened in 1956. Warm bun with cold butter, plus its chicken pie and iced milk tea. Minimum order of one drink per person; about 07:00-18:45.",
      "lat": 22.27548,
      "lng": 114.17259,
      "famous": true
@@ -11027,7 +11037,7 @@ window.HK = {
      "zh": "蘭芳園",
      "address": "2 Gage Street",
      "area": "Central",
-     "note": "Credited with inventing silk-stocking milk tea; pair it with a pork chop bun. About 7:30am-6pm, closed Sundays. Its Sheung Wan branch has closed; this original shop is still open.",
+     "note": "Credited with inventing silk-stocking milk tea; pair it with a pork chop bun. About 07:30-18:00, closed Sundays. Its Sheung Wan branch has closed; this original shop is still open.",
      "lat": 22.28261,
      "lng": 114.15362,
      "famous": true
@@ -11079,7 +11089,7 @@ window.HK = {
      "zh": "沾仔記",
      "address": "98 Wellington Street",
      "area": "Central",
-     "note": "Michelin Bib Gourmand (2026). Only three toppings (wontons, dace fish balls, sliced beef); get two or all three. Cash only; 11am-9:30pm; avoid the lunch rush.",
+     "note": "Michelin Bib Gourmand (2026). Only three toppings (wontons, dace fish balls, sliced beef); get two or all three. Cash only; 11:00-21:30; avoid the lunch rush.",
      "lat": 22.28303,
      "lng": 114.15447,
      "famous": true
@@ -11089,7 +11099,7 @@ window.HK = {
      "zh": "何洪記",
      "address": "Shops 1204-1205, 12/F, Hysan Place, 500 Hennessy Road",
      "area": "Causeway Bay",
-     "note": "One Michelin star (2026). Founded in Wan Chai in the 1940s; now a smarter mall setting near the hotel. Cards accepted; 11am-10pm.",
+     "note": "One Michelin star (2026). Founded in Wan Chai in the 1940s; now a smarter mall setting near the hotel. Cards accepted; 11:00-22:00.",
      "lat": 22.27979,
      "lng": 114.18382,
      "famous": true
@@ -11130,7 +11140,7 @@ window.HK = {
      "zh": "九記牛腩",
      "address": "21 Gough Street",
      "area": "Central",
-     "note": "Michelin Bib Gourmand (2026). Brisket in clear broth, or the curry brisket; try the milk tea too. Cash only; 12:30-10:30pm, closed Sunday; shared tables.",
+     "note": "Michelin Bib Gourmand (2026). Brisket in clear broth, or the curry brisket; try the milk tea too. Cash only; 12:30-22:30, closed Sunday; shared tables.",
      "lat": 22.28427,
      "lng": 114.15251,
      "famous": true
@@ -11140,7 +11150,7 @@ window.HK = {
      "zh": "華姐清湯腩",
      "address": "Shop A1, 13 Electric Road",
      "area": "Tin Hau",
-     "note": "Michelin Bib Gourmand (2026), one MTR stop from Causeway Bay. Clear broth braised with over 10 herbs; get the noodle soup with brisket, tendon and tripe. No cards; 11am-10:45pm; only six tables.",
+     "note": "Michelin Bib Gourmand (2026), one MTR stop from Causeway Bay. Clear broth braised with over 10 herbs; get the noodle soup with brisket, tendon and tripe. No cards; 11:00-22:45; only six tables.",
      "lat": 22.28336,
      "lng": 114.1916,
      "famous": true
@@ -11172,7 +11182,7 @@ window.HK = {
      "zh": "坤記煲仔小菜",
      "address": "Shop 1, G/F, Wo Yick Mansion, 263 Queen's Road West",
      "area": "Sai Ying Pun",
-     "note": "Michelin Bib Gourmand (2026). Dinner only, 5-10pm; claypot rice takes time, so order it as soon as you sit down. The white eel pot is the favourite. Cash only, walk-in only, queues before opening.",
+     "note": "Michelin Bib Gourmand (2026). Dinner only, 5-22:00; claypot rice takes time, so order it as soon as you sit down. The white eel pot is the favourite. Cash only, walk-in only, queues before opening.",
      "lat": 22.28704,
      "lng": 114.14301,
      "famous": true
@@ -11211,7 +11221,7 @@ window.HK = {
      "zh": "低調高手",
      "address": "Shop A, G/F, Mayland Court, 1-7 Shelter Street",
      "area": "Causeway Bay",
-     "note": "Causeway Bay branch (opened 2024) of the Shau Kei Wan favourite, a short walk from the hotel. Try the original first. Hours in 2024 were 11am-7pm, closed Monday; may have changed.",
+     "note": "Causeway Bay branch (opened 2024) of the Shau Kei Wan favourite, a short walk from the hotel. Try the original first. Hours in 2024 were 11:00-19:00, closed Monday; may have changed.",
      "lat": 22.27937,
      "lng": 114.18848,
      "famous": true
@@ -11221,7 +11231,7 @@ window.HK = {
      "zh": "利強記北角雞蛋仔",
      "address": "G/F, 492 King's Road",
      "area": "North Point",
-     "note": "The original shop, opened in 1991 and named in Michelin's street-food picks (2015-2017). Original flavour only; about 7am-11pm. Near North Point MTR exit B3; expect a short queue.",
+     "note": "The original shop, opened in 1991 and named in Michelin's street-food picks (2015-2017). Original flavour only; about 07:00-23:00. Near North Point MTR exit B3; expect a short queue.",
      "lat": 22.29121,
      "lng": 114.20162,
      "famous": true
@@ -11257,7 +11267,7 @@ window.HK = {
      "zh": "魚蛋佬",
      "address": "Shop B, G/F, 183 Ma Tau Wai Road",
      "area": "To Kwa Wan",
-     "note": "Listed in the 2026 Michelin Guide (street food); the owner makes every sauce from scratch. Cash only; 2:30pm-2am. In Kowloon, so it's a trek.",
+     "note": "Listed in the 2026 Michelin Guide (street food); the owner makes every sauce from scratch. Cash only; 14:30-02:00. In Kowloon, so it's a trek.",
      "lat": 22.31966,
      "lng": 114.18771,
      "famous": true
@@ -11292,7 +11302,7 @@ window.HK = {
      "zh": "太湖海鮮城",
      "address": "9/F, Causeway Bay Plaza 2, 463-483 Lockhart Road",
      "area": "Causeway Bay",
-     "note": "Michelin Bib Gourmand (2026); Michelin names its under-the-bridge spicy crab. Also known for salt-baked chicken. 8am-2am; cards accepted; takes bookings.",
+     "note": "Michelin Bib Gourmand (2026); Michelin names its under-the-bridge spicy crab. Also known for salt-baked chicken. 08:00-02:00; cards accepted; takes bookings.",
      "lat": 22.28052,
      "lng": 114.1822,
      "famous": true
@@ -11334,7 +11344,7 @@ window.HK = {
      "zh": "利苑酒家（灣仔）",
      "address": "1/F, CNT Tower, 338 Hennessy Road",
      "area": "Wan Chai",
-     "note": "Listed in the 2026 Michelin Guide; the group credited with creating the dessert. Have it for dessert after lunch or dinner. 11:30am-4pm and 6-10:30pm; bookings and cards accepted. Check it's on the menu that day.",
+     "note": "Listed in the 2026 Michelin Guide; the group credited with creating the dessert. Have it for dessert after lunch or dinner. 11:30-16:00 and 6-22:30; bookings and cards accepted. Check it's on the menu that day.",
      "lat": 22.27844,
      "lng": 114.17876,
      "famous": true
