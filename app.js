@@ -25,6 +25,8 @@
         { k: "beach", label: "Beaches", em: "🏖️", c: C.cyan },
         { k: "daytrip", label: "Day trips", em: "⛴️", c: C.lime },
         { k: "photo", label: "Photo spots", em: "📸", c: C.pink },
+        { k: "harbour", label: "Harbour walks", em: "🌊", c: C.cyan },
+        { k: "hip", label: "Cool neighbourhoods", em: "🎨", c: C.violet },
         { k: "free", label: "Free", em: "🆓", c: C.lime },
         { k: "near-campus", label: "Near Booth", em: "🎓", c: C.orange },
       ],
@@ -235,7 +237,7 @@
   }
   // Broad picks ("dinner", "drinks", "sights") show the top few of each sub-category, so nobody has to tap "show more";
   // as soon as something narrower is chosen it's one ranked top-10 list.
-  const GROUP_TABS = { sights: ["iconic", "photo", "views", "culture", "daytrip", "night", "neon", "beach"], hikes: ["easy", "moderate"], shop: ["luxury", "gifts", "malls", "local"] };
+  const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate"], shop: ["luxury", "gifts", "malls", "local"] };
   function groupLabel() {
     if (FOOD.has(state.tab)) return { all: "eat & drink picks", drinks: "bars", lunch: "lunch picks", dinner: "dinner picks", dessert: "dessert picks", "late-night": "late-night picks" }[state.mood] || "picks";
     return { sights: "sights", hikes: "hikes", shop: "shopping" }[state.tab] || "picks";
@@ -651,10 +653,10 @@
       const shared = ev && window.HK_CLASS?.going(ev);
       const key = slotKey(d.iso, v, ev), pickable = kind === "ours", on = shared != null ? shared : !!mine[key];
       if (onlyMine && pickable && !on && !showHidden.has(d.iso)) return "";
-      return `<div class="slotrow ${kind || "school"}${pickable && !on ? " off" : ""}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : ""}</span>`
-        + `<span class="sv">${kind === "ours" ? "🎉 " : ""}${esc(v)}</span>`
+      return `<div class="slotrow ${kind || "school"}${pickable && !on ? " off" : ""}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : kind === "event" ? ' <em class="evt">On in town</em>' : ""}</span>`
+        + `<span class="sv">${kind === "ours" ? "🎉 " : kind === "event" ? "🎟️ " : ""}${esc(v)}</span>`
         + (ev ? `<span class="evinfo" data-evinfo="${ev}"></span>` : "")
-        + (go ? `<span class="slotgo"><button class="go" data-go='${esc(JSON.stringify(go))}'>${esc(go.label)} →</button></span>` : "")
+        + (go ? `<span class="slotgo">${go.url ? `<a class="go" href="${esc(go.url)}" target="_blank" rel="noopener">${esc(go.label)} ↗</a>` : `<button class="go" data-go='${esc(JSON.stringify(go))}'>${esc(go.label)} →</button>`}</span>` : "")
         + (pickable ? `<button class="mine${on ? " on" : ""}" data-mine="${key}" data-ev="${ev || ""}" data-on="${on ? 1 : 0}" aria-pressed="${on}" aria-label="${on ? "Remove from" : "Add to"} my plan">${on ? "✓ Going" : "+ Me"}</button>` : "")
         + `</div>`;
     };

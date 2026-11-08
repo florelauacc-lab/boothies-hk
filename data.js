@@ -6334,19 +6334,20 @@ window.HK = {
   },
   {
    "tab": "sights",
-   "name": "M+ museum & West Kowloon waterfront",
+   "name": "M+, West Kowloon Art Park & waterfront",
    "zh": "M+博物館（西九文化區）",
    "area": "West Kowloon",
    "cuisine": "Museum & waterfront",
    "category": [
+    "harbour",
     "culture",
     "views",
-    "neon",
-    "architecture"
+    "architecture",
+    "night"
    ],
    "intro": "Asia's big new museum of visual culture, covering design, architecture, art and film, set in a harbourside park with some of the best skyline views across to Hong Kong Island.",
    "funFact": "You don't need a ticket for the Roof Garden, Grand Stair, Found Space or basement levels, so you can enjoy the building and views for free.",
-   "tips": "Use the late opening on Friday (until 22:00), then watch the skyline from the Art Park lawns. During your visit the Cathay WestK Jazz Fest runs across West Kowloon (13–24 November 2026) with free and ticketed shows.",
+   "tips": "Stay for sunset on the Art Park lawn, one of the best free skyline views. During the trip the Cathay WestK Jazz Fest (13–24 Nov, not 16 or 23) has free and ticketed shows here.",
    "getting": "MTR Kowloon Station (Tung Chung or Airport Express) or Austin Station, then a 10–15 min walk. From campus: MTR to Hong Kong Station, then 1 stop to Kowloon (about 25–30 min). From Park Lane: about 30 min.",
    "facts": [
     [
@@ -6367,6 +6368,12 @@ window.HK = {
    "mapsQuery": "M+ museum West Kowloon Hong Kong",
    "local": false,
    "id": "m-museum-west-kowloon-waterfront",
+   "links": [
+    {
+     "label": "WestK Jazz Fest",
+     "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
+    }
+   ],
    "addressZh": "西九文化區M+博物館",
    "emoji": "🖼️",
    "gRating": 4.3,
@@ -6426,20 +6433,21 @@ window.HK = {
   },
   {
    "tab": "sights",
-   "name": "Kennedy Town waterfront & sunset",
+   "name": "Western harbourfront: Kennedy Town to Sai Ying Pun",
    "zh": "堅尼地城海旁（堅彌地城海旁）",
    "area": "Kennedy Town",
-   "cuisine": "Sunset spot",
+   "cuisine": "Harbour walk",
    "category": [
     "views",
     "free",
     "near-campus",
     "walk",
-    "local"
+    "local",
+    "harbour"
    ],
    "intro": "A west-facing harbourfront strip of bars, cafes and benches at the end of the tram line. It is a few minutes from class and one of the best sunset spots on the island.",
    "funFact": "Kennedy Town is named after Sir Arthur Kennedy, Hong Kong's seventh governor (1872–1877). Trams have terminated here since 1904.",
-   "tips": "Sunset is around 17:40 in late November, so walk down straight after class with a takeaway drink. Skip the famous 'Instagram Pier' (Western District Public Cargo Working Area): it is a working cargo area that has been closed to non-workers since 2021. Watch from the Praya or the Belcher Bay promenade instead.",
+   "tips": "Walk the waterfront east from Kennedy Town to Sai Ying Pun (about 2 km, 40 min) and end at Sun Yat Sen Memorial Park. Go for sunset, about 17:40 in mid-November. It's five minutes from Booth.",
    "getting": "From campus: about a 5 min taxi or minibus ride, or roughly a 20 min walk downhill. From Park Lane: MTR to Kennedy Town (about 20–25 min) or tram (about 1 hr).",
    "facts": [
     [
@@ -6461,59 +6469,12 @@ window.HK = {
    "local": true,
    "id": "kennedy-town-waterfront-sunset",
    "addressZh": "中西區堅彌地城海旁38號堅城中心",
-   "emoji": "🌅",
+   "emoji": "🌊",
    "photo": {
     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Kennedy_Town_3.jpg/960px-Kennedy_Town_3.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Kennedy_Town_3.jpg",
     "credit": "Minghong",
     "license": "CC BY-SA 4.0"
-   }
-  },
-  {
-   "tab": "sights",
-   "name": "Central & Western District Promenade (Sun Yat Sen Memorial Park)",
-   "zh": "中山紀念公園 ／ 中西區海濱長廊（西營盤）",
-   "area": "Sai Ying Pun",
-   "cuisine": "Harbour walk",
-   "category": [
-    "views",
-    "free",
-    "near-campus",
-    "walk",
-    "local"
-   ],
-   "intro": "A harbourside walkway and park in Sai Ying Pun, where locals jog, fish and walk dogs, with open views over Victoria Harbour to Kowloon.",
-   "funFact": "Sun Yat Sen Memorial Park is the only park in Hong Kong named after a Chinese historical figure.",
-   "tips": "Do it as an after-class sunset walk east from Kennedy Town along the water to the park, then go up the hill to Sai Ying Pun for dinner (Kwan Kee claypot rice is nearby).",
-   "getting": "Sai Ying Pun MTR is about 300 m away, and the tram stops about 160 m away. From campus: MTR 2 stops, or a taxi (about 10 min). From Park Lane: MTR to Sai Ying Pun (about 20 min).",
-   "facts": [
-    [
-     "Cost",
-     "Free"
-    ],
-    [
-     "Time",
-     "45 min–1 hr"
-    ],
-    [
-     "Hours",
-     "Park open daily; exact promenade hours unknown (check LCSD)"
-    ]
-   ],
-   "lat": 22.28974,
-   "lng": 114.14508,
-   "mapsQuery": "Sun Yat Sen Memorial Park Sai Ying Pun Hong Kong",
-   "local": true,
-   "id": "central-western-district-promenade-sun-y",
-   "addressZh": "中西區東邊街北16號中山紀念公園游泳池",
-   "emoji": "🌊",
-   "gRating": 4.3,
-   "gReviews": 5197,
-   "photo": {
-    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Sun_Yat_Sen_Memorial_Park_Memorial_Lawn_201008.jpg/960px-Sun_Yat_Sen_Memorial_Park_Memorial_Lawn_201008.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Sun_Yat_Sen_Memorial_Park_Memorial_Lawn_201008.jpg",
-    "credit": "WiNG",
-    "license": "CC BY-SA 3.0"
    }
   },
   {
@@ -6559,7 +6520,7 @@ window.HK = {
   },
   {
    "tab": "sights",
-   "name": "Possession Street & Tai Ping Shan (Pak Sing Ancestral Hall)",
+   "name": "Tai Ping Shan, Possession Street & PoHo",
    "zh": "水坑口街 ／ 太平山街廣福義祠（百姓廟）",
    "area": "Sheung Wan",
    "cuisine": "Heritage walk",
@@ -6567,11 +6528,12 @@ window.HK = {
     "culture",
     "free",
     "walk",
-    "local"
+    "local",
+    "hip"
    ],
    "intro": "A small, quiet corner of old Sheung Wan where colonial Hong Kong began, with a tiny 19th-century temple and lanes now full of indie cafes.",
    "funFact": "The British took formal possession of Hong Kong at Possession Point here on 26 January 1841. Land reclamation means the old shoreline is now inland, under Hollywood Road Park. Nearby, the Kwong Fook Tsz (Pak Sing) hall, first built in 1856, held the memorial tablets of migrants who died far from home and became a last refuge for dying patients, which led to the founding of Tung Wah Hospital.",
-   "tips": "Combine it with Man Mo Temple (5 min away). Walk Possession Street down to Hollywood Road Park, then wander up Tai Ping Shan Street for coffee. Blake Garden, laid out after the 1894 plague clearances, is just above.",
+   "tips": "Wander the PoHo lanes (Po Hing Fong and Tai Ping Shan Street) for small cafés, galleries and design shops. Weekday afternoons are calmest.",
    "getting": "From campus: MTR to Sheung Wan (about 8 min) plus a 10 min walk uphill, or a taxi (about 10 min). From Park Lane: MTR to Sheung Wan (about 15 min) plus 10 min on foot.",
    "facts": [
     [
@@ -6592,6 +6554,7 @@ window.HK = {
    "mapsQuery": "Kwong Fook I Tsz Tai Ping Shan Street Sheung Wan Hong Kong",
    "local": true,
    "id": "possession-street-tai-ping-shan-pak-sing",
+   "classmateNote": null,
    "addressZh": "中西區水坑口街9號寶泰大廈",
    "emoji": "🏮",
    "photo": {
@@ -6603,7 +6566,7 @@ window.HK = {
   },
   {
    "tab": "sights",
-   "name": "Wet market walk: Sai Ying Pun Market & Centre Street",
+   "name": "Sai Ying Pun: wet market, cafés & Art Lane",
    "zh": "西營盤街市（正街45號）",
    "area": "Sai Ying Pun",
    "cuisine": "Wet market walk",
@@ -6612,11 +6575,12 @@ window.HK = {
     "culture",
     "free",
     "walk",
-    "near-campus"
+    "near-campus",
+    "hip"
    ],
    "intro": "A real neighbourhood wet market where locals buy live fish, fresh meat, tofu and greens, plus the steep street stalls around it. It is the everyday Hong Kong most visitors never see.",
    "funFact": "Centre Street, which the market sits on, is one of Hong Kong's four steepest streets, with a gradient of up to 1 in 4.",
-   "tips": "Go between about 08:00 and 10:00, when it is busiest. Watch the fishmongers, but ask before taking close-up photos of stallholders. Follow it with a cha chaan teng breakfast nearby.",
+   "tips": "Do the market in the morning, then climb to High Street and First Street for brunch, and Art Lane's painted walls for photos. It's next to Booth.",
    "getting": "Next to Sai Ying Pun MTR. From campus: MTR 2 stops or a taxi (about 10 min). From Park Lane: MTR to Sai Ying Pun (about 20 min).",
    "facts": [
     [
@@ -9874,17 +9838,18 @@ window.HK = {
   },
   {
    "tab": "sights",
-   "name": "Sham Shui Po (Apliu Street & Fuk Wing Street)",
+   "name": "Sham Shui Po: design, fabric & gadget streets",
    "zh": "深水埗(鴨寮街及福榮街)",
    "area": "Sham Shui Po, Kowloon",
    "cuisine": "Local streets",
    "category": [
     "culture",
-    "local"
+    "local",
+    "hip"
    ],
    "emoji": "🧵",
    "intro": "Hong Kong's most local, gritty district: electronics and flea-market stalls, fabric lanes, Toy Street and humble noodle shops, including the original Tim Ho Wan at 9-11 Fuk Wing Street. Best for real everyday street life.",
-   "tips": "Bring cash; go late afternoon for markets and food. Ask before photographing stallholders. The Michelin guide suggests Lau Sum Kee noodles on Fuk Wing Street as a first stop.",
+   "tips": "Tai Nan Street has coffee roasters and leather ateliers; Ki Lung and Yu Chau streets are for fabric, ribbons and beads; Apliu Street sells gadgets. Go on a weekday afternoon, as wholesalers close at weekends.",
    "getting": "From Causeway Bay: Island Line to Admiralty, Tsuen Wan Line to Sham Shui Po (Exit A2), about 30 min.",
    "hours": "Markets about 09:00 to late; shops vary",
    "lat": 22.3307,
@@ -9952,6 +9917,342 @@ window.HK = {
     "page": "https://commons.wikimedia.org/wiki/File:HK_Graham_Street_3.jpg",
     "credit": "No machine-readable author provided. TangHon~commonswiki ass",
     "license": "CC BY-SA 3.0"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "East Coast Boardwalk & Glass Observatory Deck",
+   "zh": "東岸板道",
+   "area": "North Point / Quarry Bay",
+   "cuisine": "Harbour walk",
+   "category": [
+    "harbour",
+    "views",
+    "free",
+    "photo"
+   ],
+   "emoji": "🌊",
+   "intro": "A boardwalk strung under the Island Eastern Corridor that links North Point Promenade to Hoi Yu Street in Quarry Bay. The final 1.1 km opened 29 Dec 2025 and completed the roughly 13 km Kennedy Town to Shau Kei Wan harbourfront route. The headline feature is a glass observatory deck that lets you look down at the water, with shoe covers provided.",
+   "tips": "Go for golden hour and finish before dark: the glass deck is open 10:00-18:00 only and shuts in bad weather; sunset is about 17:40 in mid-November. Expect queues for the deck on weekends. The boardwalk itself is open 24 hours. Eastern section ~1.1 km (about 20-30 min easy walk); add 15 min for the deck queue. Coordinates are the North Point end; the exact deck position is not given in sources.",
+   "getting": "MTR North Point Exit A1 then 4-8 min walk to access points (Shu Kuk Street / Java Road ramp / Man Hong Street bridge); or Quarry Bay Exit C then 5 min via Healthy Street East bridge or Hoi Yu Street. From The Park Lane, take MTR Island line from Causeway Bay to North Point (2 stops).",
+   "hours": "Boardwalk 24h; glass deck 10:00-18:00 daily, closed in bad weather",
+   "priceNote": "Free",
+   "lat": 22.2926,
+   "lng": 114.1945,
+   "addressEn": "East Coast Boardwalk, North Point Promenade to Hoi Yu Street, Quarry Bay",
+   "addressZh": "北角海濱花園至鰂魚涌海裕街東岸板道",
+   "url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-east-coast-boardwalk.html",
+   "id": "east-coast-boardwalk-glass-observatory-d"
+  },
+  {
+   "tab": "sights",
+   "name": "Wan Chai Harbourfront & Golden Bauhinia Square",
+   "zh": "灣仔海濱 / 金紫荊廣場",
+   "area": "Wan Chai North",
+   "cuisine": "Harbour walk",
+   "category": [
+    "harbour",
+    "iconic",
+    "views",
+    "free",
+    "photo"
+   ],
+   "emoji": "🌊",
+   "intro": "The harbourfront beside the Hong Kong Convention and Exhibition Centre, home of the Golden Bauhinia statue, with a broad view across to Tsim Sha Tsui. Just west is a stretch OSM names Wan Chai Temporary Promenade (灣仔臨時海濱花園); we found no tourism source using that name, so call the whole area Wan Chai harbourfront. It is also the easy first promenade from the hotel.",
+   "tips": "Flag-raising ceremony daily at 08:00 (enhanced version on the 1st of most months). Sunset about 17:40; the skyline light comes on afterwards. About 30-45 min including the statue and a stroll to Wan Chai Temporary Promenade (about 1.5 km west-east, verify). Dragon-class sailing worlds 21-22 Nov have free shoreside events at the Wan Chai waterfront (see events). Wan Chai MTR exit not confirmed by sources (verify; footbridges lead to HKCEC).",
+   "getting": "MTR Wan Chai Station then walk or footbridge to HKCEC (about 10 min; exit number unverified). From Causeway Bay, a 15-20 min taxi or the 2-stop MTR.",
+   "hours": "Open 24h (flag-raising 08:00 daily)",
+   "priceNote": "Free",
+   "lat": 22.2842,
+   "lng": 114.1738,
+   "addressEn": "Golden Bauhinia Square, Expo Promenade, 1 Expo Drive, Wan Chai",
+   "addressZh": "灣仔博覽道1號 金紫荊廣場",
+   "url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-golden-bauhinia-square.html",
+   "id": "wan-chai-harbourfront-golden-bauhinia-sq",
+   "photo": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/a/a6/GoldenBauhiniaSquare.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:GoldenBauhiniaSquare.jpg",
+    "credit": "No machine-readable author provided. Ilmari Karonen assumed ",
+    "license": "CC BY 2.5"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "Tsim Sha Tsui East to Hung Hom Promenade",
+   "zh": "尖東至紅磡海濱",
+   "area": "Tsim Sha Tsui East / Hung Hom",
+   "cuisine": "Harbour walk",
+   "category": [
+    "harbour",
+    "views",
+    "free",
+    "photo"
+   ],
+   "emoji": "🌊",
+   "intro": "The extension of the Tsim Sha Tsui promenade east around the bay to Hung Hom Pier, about 1.5-1.6 km, much quieter than the Avenue of Stars and with the best head-on view of the Hong Kong Island skyline, lit by the setting sun from the west. We already have the TST promenade and Avenue of Stars; propose this as a continuation, not a duplicate.",
+   "tips": "Start at 16:30 from East TST and be at the Hung Hom end near 17:40. About 20-30 min. Return by Hung Hom Pier ferry to North Point or Wan Chai if running (verify timetable). Sources vary on the exact end point (Hung Hom Pier / Kin Wan Street).",
+   "getting": "MTR East Tsim Sha Tsui Station (exit not verified; underground passages to the waterfront) or Star Ferry then walk east; finish at Hung Hom Pier (bus/minibus or Hung Hom MTR 10-15 min).",
+   "hours": "Open 24h",
+   "priceNote": "Free",
+   "lat": 22.2995,
+   "lng": 114.1856,
+   "addressEn": "Tsim Sha Tsui East Promenade to Hung Hom Promenade, Kowloon",
+   "addressZh": "九龍尖沙咀東海濱花園至紅磡海濱花園",
+   "url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-tsim-sha-tsui-promenade.html",
+   "id": "tsim-sha-tsui-east-to-hung-hom-promenade",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Vista_del_Puerto_de_Victoria_desde_Sky100%2C_Hong_Kong%2C_2013-08-09%2C_DD_10.JPG/960px-Vista_del_Puerto_de_Victoria_desde_Sky100%2C_Hong_Kong%2C_2013-08-09%2C_DD_10.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Vista_del_Puerto_de_Victoria_desde_Sky100,_Hong_Kong,_2013-08-09,_DD_10.JPG",
+    "credit": "Diego Delso",
+    "license": "CC BY-SA 3.0"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "Tai Hang (cafés & old Hong Kong lanes)",
+   "zh": "大坑",
+   "area": "Causeway Bay / Tai Hang",
+   "cuisine": "Cool neighbourhood",
+   "category": [
+    "hip",
+    "culture",
+    "photo"
+   ],
+   "emoji": "☕",
+   "intro": "A village-like pocket a 10-minute walk from your hotel: indie cafes (Oma, Fineprint), Bing Kee tea stall, the 1863 Lin Fa Temple and the Fire Dragon heritage centre, with low-rise streets between towers. Time Out calls it understatedly hip. It is the most convenient item on this list from The Park Lane.",
+   "tips": "Mid-morning on a weekday avoids the 30-60 min cafe queues; Bing Kee 07:00-15:00 except Mondays; Fineprint opens 06:00. About 1.5-2 h. The Fire Dragon Dance is Mid-Autumn only, so it is not on in November. Coordinates: Wun Sha Street; Lin Fa Temple is 22.2796, 114.1929.",
+   "getting": "Walk from Causeway Bay (about 10-15 min uphill from the hotel) or MTR Tin Hau Station (exit not verified) then 5-10 min; no MTR station of its own.",
+   "hours": "Cafes about 07:00-18:00; temple daytime",
+   "priceNote": "Free to walk; cafes about HK$50-90 (estimate)",
+   "lat": 22.2785,
+   "lng": 114.1928,
+   "addressEn": "Wun Sha Street and Lily Street, Tai Hang",
+   "addressZh": "銅鑼灣大坑浣紗街及蓮花街",
+   "url": "https://www.timeout.com/hong-kong/things-to-do/tai-hang-ultimate-guide",
+   "id": "tai-hang-caf-s-old-hong-kong-lanes",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Tai_Hang.JPG/960px-Tai_Hang.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Tai_Hang.JPG",
+    "credit": "Baycrest",
+    "license": "CC BY-SA 2.5"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "Starstreet Precinct",
+   "zh": "星街小區",
+   "area": "Wan Chai",
+   "cuisine": "Cool neighbourhood",
+   "category": [
+    "hip",
+    "culture",
+    "night"
+   ],
+   "emoji": "✨",
+   "intro": "A small, quietly fashionable enclave of cafes, indie boutiques (Kapok, WOAW Gallery), design stores and bars, such as Moon Street's Ciaco and Blue Bottle. Nice contrast to the Lockhart Road strip; lineups change often, so confirm venues.",
+   "tips": "Late afternoon to evening; Ciaco's free aperitivo is advertised 17:00-20:00. About 1 h. An underground walkway links the precinct to Pacific Place and Admiralty MTR.",
+   "getting": "MTR Admiralty (walkway via Pacific Place) or taxi/tram from Causeway Bay (about 10 min). Exit number not confirmed.",
+   "hours": "Shops about 11:00-19:00, bars to late",
+   "priceNote": "Free to walk",
+   "lat": 22.2766,
+   "lng": 114.1684,
+   "addressEn": "Star Street, Moon Street, Sun Street, Wing Fung Street and St Francis Yard, Wan Chai",
+   "addressZh": "灣仔星街、月街、日街、永豐街及聖佛蘭士街",
+   "url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-starstreet-precinct.html",
+   "id": "starstreet-precinct"
+  },
+  {
+   "tab": "sights",
+   "name": "Wong Chuk Hang Gallery District",
+   "zh": "黃竹坑",
+   "area": "Wong Chuk Hang (Southside)",
+   "cuisine": "Galleries",
+   "category": [
+    "hip",
+    "culture",
+    "photo"
+   ],
+   "emoji": "🖼️",
+   "intro": "Former factory buildings turned art hub with over 20 galleries (2025 count), such as Whitestone, Carl Kostyal and Tang Contemporary at Landmark South, M Place and Coda Designer Centre. Pace and Perrotin closed in Oct 2025. Saturday opening (#SouthsideSaturday).",
+   "tips": "Weekday galleries typically Tue-Sat 11:00-19:00 (Tang's hours; others vary), so Sunday and Monday are mostly closed. Sat 14 and Sat 21 Nov are best. About 2 h; check exhibitions first. Coordinates are Landmark South.",
+   "getting": "MTR South Island line, Wong Chuk Hang Station (about 10 min from Admiralty); stations at 22.2481, 114.1681.",
+   "hours": "Tue-Sat about 11:00-19:00 (varies)",
+   "priceNote": "Free",
+   "lat": 22.2492,
+   "lng": 114.167,
+   "addressEn": "Landmark South, 39 Wong Chuk Hang Road, Wong Chuk Hang",
+   "addressZh": "黃竹坑黃竹坑道39號 Landmark South",
+   "url": "https://www.theartnewspaper.com/2025/03/27/the-latest-hong-kong-art-hot-spot-wong-chuk-hang-on-the-southside",
+   "id": "wong-chuk-hang-gallery-district",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Wong_Chuk_Hang_Aerial_view_2018.jpg/960px-Wong_Chuk_Hang_Aerial_view_2018.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Wong_Chuk_Hang_Aerial_view_2018.jpg",
+    "credit": "Wpcpey",
+    "license": "CC BY-SA 4.0"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "Kowloon City ('Little Thailand')",
+   "zh": "九龍城",
+   "area": "Kowloon City",
+   "cuisine": "Cool neighbourhood",
+   "category": [
+    "hip",
+    "culture"
+   ],
+   "emoji": "🌶️",
+   "intro": "Hong Kong's Thai food district with Teochew and halal old-timers, cafes in converted tenements (Nan Kok, Tai Wo Tang), next to Kowloon Walled City Park (already listed) and the Airside mall. A real local neighbourhood that few first-timers visit.",
+   "tips": "Lunch is the best time. About 2-3 h combined with the Walled City Park. Restaurants: Peelong (southern Thai), Cheong Fat (boat noodles).",
+   "getting": "MTR Sung Wong Toi Station (centre of the district) or Kai Tak Station.",
+   "hours": "Restaurants about 11:00-22:00",
+   "priceNote": "Meals about HK$80-200 (estimate)",
+   "lat": 22.3293,
+   "lng": 114.1904,
+   "addressEn": "Lung Kong Road and Kowloon City Market, Kowloon City",
+   "addressZh": "九龍城龍崗道及九龍城街市",
+   "url": "https://www.discoverhongkong.com/eng/neighbourhoods/kowloon-city/your-guide-to-kowloon-city.html",
+   "id": "kowloon-city-little-thailand",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Kowloon_City_2008.jpg/960px-Kowloon_City_2008.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kowloon_City_2008.jpg",
+    "credit": "WiNG",
+    "license": "CC BY 3.0"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "Sai Kung & the UNESCO Geopark",
+   "zh": "西貢及香港聯合國教科文組織世界地質公園",
+   "area": "Sai Kung",
+   "cuisine": "Day trip",
+   "category": [
+    "daytrip",
+    "views",
+    "beach"
+   ],
+   "emoji": "🪨",
+   "intro": "Seafood waterfront town and the gateway to the hexagonal volcanic columns of the Geopark, with Tai Long Wan beaches. Boat tour from Sai Kung Pier (about 2 h) or bus to High Island Reservoir East Dam, the only part reachable on foot.",
+   "tips": "Weekdays: boat tours only; weekend/holiday Geopark guided tours and bus 96R from Diamond Hill. Bus 94 from Sai Kung town to the East Dam. Allow a full day. Oxfam Trailwalker (20-22 Nov) starts from Sai Kung, so expect crowds on the MacLehose Trail side.",
+   "getting": "Bus to Sai Kung Town from Diamond Hill MTR (route and time not verified); then bus 94 to the East Dam, or boat from the pier.",
+   "hours": "Boat tours daytime",
+   "priceNote": "Boat tour price not verified; confirm at the pier",
+   "lat": 22.3816,
+   "lng": 114.2736,
+   "addressEn": "Sai Kung Pier, Hoi Pong Square, Sai Kung Town",
+   "addressZh": "西貢海傍廣場西貢碼頭",
+   "url": "https://www.geopark.gov.hk/en/discover/attractions/sai-kung-boat-tour",
+   "id": "sai-kung-the-unesco-geopark"
+  },
+  {
+   "tab": "sights",
+   "name": "Aberdeen sampan ride",
+   "zh": "香港仔海濱 / 舢舨",
+   "area": "Aberdeen",
+   "cuisine": "Harbour & boats",
+   "category": [
+    "harbour",
+    "culture",
+    "photo"
+   ],
+   "emoji": "🚣",
+   "intro": "Working fishing harbour with houseboats; 20-30 min sampan ride from the promenade past the boat community. Jumbo Floating Restaurant is gone (closed 2020, sank); Tai Pak still operates. On the same Southside line as Wong Chuk Hang.",
+   "tips": "Negotiate sampan: reported HK$60-100 per person or HK$80, older figures; confirm. Aberdeen 1773 audio tour about HK$175-225. About 1.5 h. Combine with Wong Chuk Hang galleries on a Southside half day.",
+   "getting": "Bus from Central, or MTR South Island line Wong Chuk Hang then taxi (about 5 min).",
+   "hours": "Daytime",
+   "priceNote": "Sampan about HK$60-100 (unverified)",
+   "lat": 22.2473,
+   "lng": 114.1542,
+   "addressEn": "Aberdeen Promenade, Aberdeen",
+   "addressZh": "香港仔海濱公園",
+   "url": "https://www.aberdeen1773.com/en",
+   "id": "aberdeen-sampan-ride",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Ships_in_Port_%2820380479266%29.jpg/960px-Ships_in_Port_%2820380479266%29.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Ships_in_Port_(20380479266).jpg",
+    "credit": "Alan Jamieson from Aberdeen, Scotland",
+    "license": "CC BY 2.0"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "Hong Kong Museum of History",
+   "zh": "香港歷史博物館",
+   "area": "Tsim Sha Tsui East",
+   "cuisine": "Museum & waterfront",
+   "category": [
+    "culture",
+    "free"
+   ],
+   "emoji": "🖼️",
+   "intro": "'The Hong Kong Story' permanent exhibition runs from prehistory to 1997 and gives first-timers real context. Free; improvement works are noted on the museum site.",
+   "tips": "Closed Tuesdays (open on holidays); hours reported as 10:00-18:00 (Sat/Sun/holidays to 19:00) with last entry about 17:30; sources vary, so verify. About 2 h. Pair with the TST East promenade.",
+   "getting": "MTR East Tsim Sha Tsui Exit B2 then about 10 min walk.",
+   "hours": "10:00-18:00 (Sat/Sun to 19:00); closed Tuesday",
+   "priceNote": "Free (permanent exhibition)",
+   "lat": 22.3019,
+   "lng": 114.1773,
+   "addressEn": "100 Chatham Road South, Tsim Sha Tsui",
+   "addressZh": "九龍尖沙咀漆咸道南100號",
+   "url": "https://hk.history.museum/en/web/mh/index.html",
+   "id": "hong-kong-museum-of-history"
+  },
+  {
+   "tab": "sights",
+   "name": "Ten Thousand Buddhas Monastery",
+   "zh": "萬佛寺",
+   "area": "Sha Tin",
+   "cuisine": "Temple",
+   "category": [
+    "culture",
+    "free"
+   ],
+   "emoji": "🙏",
+   "intro": "A hillside monastery reached by about 430 steps lined with golden arhat statues, with thousands of small Buddhas inside. Free; decline anyone asking for entry fees at the foot.",
+   "tips": "09:00-17:00 (some sources say 17:30, last entry 17:00); no lift. Allow 1.5-2.5 h including walking from Sha Tin MTR. Close to the Sha Tin racecourse: Sat 14 and Sun 22 Nov racing at Sha Tin (see events).",
+   "getting": "MTR East Rail Sha Tin Exit B then 10-15 min walk (avoid Po Fook Hill turn).",
+   "hours": "09:00-17:00 daily",
+   "priceNote": "Free",
+   "lat": 22.388,
+   "lng": 114.1849,
+   "addressEn": "Ten Thousand Buddhas Monastery Access Path, Pai Tau, Sha Tin",
+   "addressZh": "沙田排頭萬佛寺",
+   "url": "https://10kbuddhas.org",
+   "id": "ten-thousand-buddhas-monastery",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Pagoda_view.jpg/960px-Pagoda_view.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Pagoda_view.jpg",
+    "credit": "Mitchan14",
+    "license": "CC BY-SA 3.0"
+   }
+  },
+  {
+   "tab": "hikes",
+   "name": "Lion Rock",
+   "zh": "獅子山",
+   "area": "Kowloon / Sha Tin",
+   "cuisine": "Hike",
+   "category": [
+    "moderate",
+    "views"
+   ],
+   "emoji": "🦁",
+   "intro": "495 m granite peak above Kowloon with a harbour-to-Hong Kong-Island view; a symbol of Hong Kong spirit. Moderate-hard, about 400 m of mostly stone stairs; monkeys on the trail. We already have Wong Tai Sin and Chi Lin Nunnery near the start.",
+   "tips": "Direct out and back from Lion Rock Park about 1.5-2 h. Last stretch is narrow and exposed; clear day, water, no shade. Start from Wong Tai Sin or Lok Fu MTR; taxi/green minibus 72 from Kowloon Tong shortens the approach.",
+   "getting": "MTR Wong Tai Sin (then taxi/walk) or Lok Fu.",
+   "hours": "Daylight",
+   "priceNote": "Free",
+   "lat": 22.353,
+   "lng": 114.1872,
+   "addressEn": "Lion Rock Park, Chuk Yuen Road, Wong Tai Sin",
+   "addressZh": "黃大仙竹園道獅子山公園",
+   "url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-lion-rock-country-park.html",
+   "id": "lion-rock",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Lion_Rock_5.jpg/960px-Lion_Rock_5.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lion_Rock_5.jpg",
+    "credit": "Minghong",
+    "license": "CC BY-SA 4.0"
    }
   }
  ],
@@ -10473,6 +10774,21 @@ window.HK = {
      "15:00",
      "Hotel check-in from 15:00",
      "school"
+    ],
+    [
+     "Evening",
+     "WestK Jazz Fest at the Art Park (13–24 Nov; free and ticketed shows)",
+     "event",
+     null,
+     {
+      "label": "WestK Jazz Fest",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
+     }
+    ],
+    [
+     "Evening",
+     "BIGBANG at Kai Tak Stadium (13 or 14 Nov: sources differ, check your ticket)",
+     "event"
     ]
    ],
    "note": "Arrived early? Here's a suggested plan for the day, with more ideas below.",
@@ -10531,6 +10847,11 @@ window.HK = {
    "iso": "2026-11-15",
    "slots": [
     [
+     "Morning",
+     "Victoria Harbour Race: about 4,000 swimmers cross the harbour; watch from the shore",
+     "event"
+    ],
+    [
      "All day",
      "Meals on your own",
      "school"
@@ -10544,6 +10865,16 @@ window.HK = {
       "label": "Dim sum spots",
       "tab": "city",
       "q": "dim sum"
+     }
+    ],
+    [
+     "Evening",
+     "WestK Jazz Fest at the Art Park",
+     "event",
+     null,
+     {
+      "label": "WestK Jazz Fest",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
      }
     ]
    ],
@@ -10749,6 +11080,17 @@ window.HK = {
      "Tram party",
      "ours",
      "wed-tram"
+    ],
+    [
+     "Evening",
+     "Happy Valley night races (same night as the tram party)",
+     "event",
+     null,
+     {
+      "label": "Happy Valley races",
+      "tab": "sights",
+      "q": "Happy Valley"
+     }
     ]
    ],
    "bus": [
@@ -10863,6 +11205,11 @@ window.HK = {
    "iso": "2026-11-20",
    "slots": [
     [
+     "All weekend",
+     "Oxfam Trailwalker: 100 km over the MacLehose Trail (20–22 Nov)",
+     "event"
+    ],
+    [
      "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
@@ -10934,6 +11281,17 @@ window.HK = {
    "date": "21 Nov",
    "iso": "2026-11-21",
    "slots": [
+    [
+     "All day",
+     "Dragon World Championship sailing (21–29 Nov), free events on the Wan Chai waterfront",
+     "event",
+     null,
+     {
+      "label": "Wan Chai harbourfront",
+      "tab": "sights",
+      "q": "Wan Chai Harbourfront"
+     }
+    ],
     [
      "08:00–09:00",
      "Breakfast, Student Lounge",
@@ -11018,6 +11376,21 @@ window.HK = {
      "Next day",
      "Hotel check-out by 12:00 on 23 Nov",
      "school"
+    ],
+    [
+     "Afternoon",
+     "Sha Tin races, with a Group 2 sprint",
+     "event"
+    ],
+    [
+     "Evening",
+     "WestK Jazz Fest at the Art Park",
+     "event",
+     null,
+     {
+      "label": "WestK Jazz Fest",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
+     }
     ]
    ],
    "go": {

@@ -81,6 +81,18 @@ TITLES = {
     "ping-shek-estate": "Ping Shek Estate",
     "sham-shui-po-apliu-street-fuk-wing-street": "Apliu Street",
     "graham-street-mural": "Graham Street",
+    "wan-chai-harbourfront-golden-bauhinia-sq": "Golden Bauhinia Square",
+    "tsim-sha-tsui-east-to-hung-hom-promenade": "Tsim Sha Tsui East",
+    "tai-hang-caf-s-old-hong-kong-lanes": "Tai Hang",
+    "starstreet-precinct": "Star Street, Hong Kong",
+    "wong-chuk-hang-gallery-district": "Wong Chuk Hang",
+    "kowloon-city-little-thailand": "Kowloon City",
+    "sai-kung-the-unesco-geopark": "Hong Kong UNESCO Global Geopark",
+    "aberdeen-sampan-ride": "Aberdeen Harbour",
+    "hong-kong-museum-of-history": "Hong Kong Museum of History",
+    "ten-thousand-buddhas-monastery": "Ten Thousand Buddhas Monastery",
+    "lion-rock": "Lion Rock",
+    "east-coast-boardwalk-glass-observatory-d": "North Point",
 }
 
 
@@ -121,13 +133,17 @@ def strip(html):
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", html or "")).strip()
 
 
-def chunks(xs, n=40):
+def chunks(xs, n=15):
     for i in range(0, len(xs), n):
         yield xs[i:i + n]
 
 
+# only fetch what's missing (Wikipedia rate-limits big batches); keep earlier results
+prev = json.loads(OUT.read_text()) if OUT.exists() else {}
+todo = {k: v for k, v in TITLES.items() if not (prev.get(k) or {}).get("src") or k in OVERRIDE and prev.get(k, {}).get("file") != OVERRIDE[k]}
+todo = {k: v for k, v in todo.items() if not (prev.get(k) or {}).get("src")}
 # 1) lead image of each Wikipedia article, batched (follows redirects)
-titles = sorted(set(TITLES.values()))
+titles = sorted(set(todo.values()))
 lead = {}
 for part in chunks(titles):
     q = get("https://en.wikipedia.org/w/api.php?" + urllib.parse.urlencode({
@@ -167,8 +183,8 @@ for part in chunks(files):
                       "license": strip((md.get("LicenseShortName") or {}).get("value"))}
     time.sleep(1)
 
-out = {}
-for pid, title in TITLES.items():
+out = dict(prev)
+for pid, title in todo.items():
     fn = OVERRIDE.get(pid) or lead.get(title)
     m = meta.get(fn.replace(" ", "_")) if fn else None
     out[pid] = {**m, "title": title} if m and m.get("src") and m.get("license") else {"none": True, "title": title, "file": fn}

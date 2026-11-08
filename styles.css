@@ -1262,3 +1262,6 @@ body.dragging .pd { outline: 1px dashed rgba(255,196,77,.5); }
 .picks .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
 .picks .chips .dragchip { flex: none; touch-action: pan-x; max-width: 240px; }
 @media (min-width: 900px) { .picks .chips { flex-wrap: wrap; overflow: visible; } }
+.plan .slotrow.event > span:first-child { color: #a77bff; }
+.evt { font-style: normal; font-size: .68rem; font-weight: 800; letter-spacing: .04em; padding: 1px 7px; border-radius: 999px; background: rgba(167,123,255,.18); color: #c9b0ff; text-transform: none; margin-left: 4px; }
+#plan .slotrow span.slotgo a.go { display: inline-flex; align-items: center; text-decoration: none; }

@@ -679,7 +679,8 @@ for p in places:
 
 # Photos for sights, hikes and shopping (freely licensed, from Wikimedia Commons; see tools/photos/fetch_photos.py)
 PHOTOS = json.loads((ROOT / "tools" / "research" / "photos.json").read_text()) if (ROOT / "tools" / "research" / "photos.json").exists() else {}
-BAD_PHOTOS = {"hong-kong-museum-of-art", "dried-seafood-street-des-voeux-road-west"}
+BAD_PHOTOS = {"hong-kong-museum-of-art", "dried-seafood-street-des-voeux-road-west", "east-coast-boardwalk-glass-observatory-d",
+              "starstreet-precinct", "sai-kung-the-unesco-geopark", "hong-kong-museum-of-history"}
 for p in places:
     ph = PHOTOS.get(p["id"])
     if ph and ph.get("src") and p["id"] not in BAD_PHOTOS:
