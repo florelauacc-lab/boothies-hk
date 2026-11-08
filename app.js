@@ -651,7 +651,7 @@
     const row = (d, [t, v, kind, ev, go], j) => {
       // class events follow the shared list once you've picked your name in the class corner
       const shared = ev && window.HK_CLASS?.going(ev);
-      const key = slotKey(d.iso, v, ev), pickable = kind === "ours", on = shared != null ? shared : !!mine[key];
+      const key = slotKey(d.iso, v, ev), pickable = kind === "ours" || kind === "event", on = shared != null ? shared : !!mine[key];
       if (onlyMine && pickable && !on && !showHidden.has(d.iso)) return "";
       return `<div class="slotrow ${kind || "school"}${pickable && !on ? " off" : ""}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : kind === "event" ? ' <em class="evt">On in town</em>' : ""}</span>`
         + `<span class="sv">${kind === "ours" ? "🎉 " : kind === "event" ? "🎟️ " : ""}${esc(v)}</span>`
@@ -671,7 +671,7 @@
       <div class="day"><small>${esc(d.date)}</small>${esc(d.day)}</div>
       ${d.slots.map((sl, j) => row(d, sl, j)).join("")}
       ${myPlans.filter((p) => p.iso === d.iso).map((p) => `<div class="slotrow personal" data-drag="${esc(JSON.stringify({ move: p.id }))}" title="Drag to another day, or up and down to reorder"><span><span class="grip" aria-hidden="true">⠿</span> ${esc(p.when || "Anytime")} <em class="mine-tag">Mine</em></span><span class="sv">⭐ ${esc(p.title)}${p.place && byId[p.place] ? ` <button class="rlink" data-jump="${p.place}">Map →</button>` : ""}${p.idea ? ` <button class="rlink" data-idea="${esc(p.idea)}" data-iso="${d.iso}">See plan →</button>` : ""}</span><button class="cc-x" data-delmine="${p.id}" aria-label="Remove from my week">✕</button></div>`).join("")}
-      ${(() => { const n = onlyMine && !showHidden.has(d.iso) ? d.slots.filter(([, v, k, ev]) => k === "ours" && !mine[slotKey(d.iso, v, ev)]).length : 0;
+      ${(() => { const n = onlyMine && !showHidden.has(d.iso) ? d.slots.filter(([, v, k, ev]) => (k === "ours" || k === "event") && !mine[slotKey(d.iso, v, ev)]).length : 0;
         return n ? `<button class="hidden-n" data-showhidden="${d.iso}">+ ${n} more you haven't added · show</button>` : ""; })()}
       ${d.note ? `<p class="daynote">${esc(d.note)}</p>` : ""}
       ${bus(d.bus)}${route(d.route)}${(d.routes || []).map(route).join("")}

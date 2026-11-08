@@ -200,7 +200,8 @@
     if (!me) return `<div class="cc-owe"><h3 class="cc-h">💸 Pay ${esc(data.payTo)}</h3><p class="small">Pick your name above to see what you owe.</p>${payWays(0)}</div>`;
     const owedToMe = (bal[me] || 0) > 0.5;
     const rows = mine.map((e) => { const ps = evPay(me, e.id);
-      return `<li><span>${esc(e.title)}${ps ? ` <em class="${ps === "paid" ? "ok" : "wait"}">${ps === "paid" ? "✓ Paid" : `Waiting for ${esc(data.payTo)}`}</em>` : ""}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : `<small>price to come</small>`}</b></li>`; }).join("");
+      const payOne = !ps && each(e) && live() ? `<button type="button" class="cc-mini go pay1" data-payev="${e.id}">✓ I've paid this</button>` : "";
+      return `<li><span>${esc(e.title)}${ps ? ` <em class="${ps === "paid" ? "ok" : "wait"}">${ps === "paid" ? "✓ Paid" : `Waiting for ${esc(data.payTo)}`}</em>` : ""}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : `<small>price to come</small>`}</b>${payOne}</li>`; }).join("");
     const unpaid = mine.filter((e) => each(e) && !evPay(me, e.id));
     const mineP = payments(me).map((p, i) => `<li><span>Paid ${hk(p.hkd)}${p.method ? ` · ${esc(p.method)}` : ""}${evNames(p)}</span><b class="${p.confirmed ? "ok" : "wait"}">${p.confirmed ? `✓ ${esc(data.payTo)} confirmed` : `Waiting for ${esc(data.payTo)}`}</b>${!p.confirmed && live() ? `<button type="button" class="cc-x" data-undopaid="${i}" aria-label="Undo">✕</button>` : ""}</li>`).join("");
     const head = owedToMe ? ["You're owed", `${hk(bal[me])} <span>≈ ${fx(bal[me])}</span>`]
@@ -213,7 +214,7 @@
         ${st.over ? `<p class="small">You've paid ${hk(st.over)} more than your share. ${esc(data.payTo)} can refund it or count it towards the next event.</p>` : ""}</div></div>
       ${!owedToMe && st.left ? payWays(st.left) : ""}
       ${!owedToMe && st.left && live() && unpaid.length ? `<form class="cc-inline paid" id="cc-paid">
-          <p class="small">Paid? Let ${esc(data.payTo)} know:</p>
+          <p class="small">Paid for everything (or a few)? Let ${esc(data.payTo)} know:</p>
           <select name="what" aria-label="What you're paying for">
             <option value="all">Everything · ${hk(Math.min(st.left, unpaid.reduce((t, e) => t + each(e), 0)))}</option>
             ${unpaid.length > 1 ? unpaid.map((e) => `<option value="${e.id}">${esc(e.title)} · ${hk(each(e))}</option>`).join("") : ""}
@@ -221,7 +222,7 @@
           <select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select>
           <button type="submit">✓ I've paid</button></form>` : ""}
       ${mineP ? `<ul class="cc-mine pays">${mineP}</ul>` : ""}
-      ${rows ? `<details class="cc-break"${st.left ? "" : " open"}><summary>What it's for · ${mine.length} event${mine.length > 1 ? "s" : ""}</summary><ul class="cc-mine">${rows}</ul></details>`
+      ${rows ? `<details class="cc-break" open><summary>Your events · ${mine.length} · pay them all at once or one at a time</summary><ul class="cc-mine">${rows}</ul></details>`
         : `<p class="small">You're not on any lists yet. Open an event below and tap "I'm going".</p>`}
       ${isPayer ? `<p class="small">You're collecting: confirm payments in "Who's paid" below.</p>` : ""}
     </div>`;
@@ -382,6 +383,13 @@
       return;
     }
     if (t.closest("[data-orgout]")) { orgPass = ""; forget("hk-org-v1"); api("GET").then((s) => { data = s; render(); }); return; }
+    const p1 = t.closest("[data-payev]");
+    if (p1) {
+      const E = data.events.find((x) => x.id === p1.dataset.payev);
+      const method = $("#cc-paid select[name=method]")?.value || "";
+      op({ op: "markPaid", name: me, hkd: Math.round(each(E)), evs: [E.id], method }).then((ok) => ok && toast(`Thanks! ${data.payTo} will confirm ${E.title}`));
+      return;
+    }
     const up = t.closest("[data-undopaid]");
     if (up) { if (confirm("Undo this payment?")) op({ op: "undoPaid", name: me, i: +up.dataset.undopaid }); return; }
     if (t.id === "cc-relock") { data = null; mode = "locked"; forget("hk-pass-v1"); render(); return; }

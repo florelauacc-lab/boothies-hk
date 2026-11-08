@@ -10776,19 +10776,14 @@ window.HK = {
      "school"
     ],
     [
-     "Evening",
-     "WestK Jazz Fest at the Art Park (13–24 Nov; free and ticketed shows)",
+     "20:00",
+     "Jazz Fest: Andy Hui at the Xiqu Centre (reported sold out)",
      "event",
      null,
      {
       "label": "WestK Jazz Fest",
       "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
      }
-    ],
-    [
-     "Evening",
-     "BIGBANG at Kai Tak Stadium (13 or 14 Nov: sources differ, check your ticket)",
-     "event"
     ]
    ],
    "note": "Arrived early? Here's a suggested plan for the day, with more ideas below.",
@@ -10868,8 +10863,8 @@ window.HK = {
      }
     ],
     [
-     "Evening",
-     "WestK Jazz Fest at the Art Park",
+     "20:00",
+     "Jazz Fest: Cory Wong × Cy Leo at the Xiqu Centre (HK$480–880)",
      "event",
      null,
      {
@@ -11006,6 +11001,16 @@ window.HK = {
       "tab": "city",
       "mood": "dinner",
       "where": "saiwan"
+     }
+    ],
+    [
+     "19:30",
+     "Jazz Fest: Stacey Kent at The Box, Freespace (sets at 19:30 and 21:45, HK$580)",
+     "event",
+     null,
+     {
+      "label": "WestK Jazz Fest",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
      }
     ]
    ],
@@ -11168,6 +11173,16 @@ window.HK = {
       "tab": "city",
       "q": "Peking Garden"
      }
+    ],
+    [
+     "20:00",
+     "Jazz Fest: Song Yi Jeon Acoustic Trio × Chi Him Chik at Freespace (HK$400)",
+     "event",
+     null,
+     {
+      "label": "WestK Jazz Fest",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
+     }
     ]
    ],
    "bus": [
@@ -11204,11 +11219,6 @@ window.HK = {
    "date": "20 Nov",
    "iso": "2026-11-20",
    "slots": [
-    [
-     "All weekend",
-     "Oxfam Trailwalker: 100 km over the MacLehose Trail (20–22 Nov)",
-     "event"
-    ],
     [
      "08:00–09:00",
      "Breakfast, Student Lounge",
@@ -11293,6 +11303,16 @@ window.HK = {
      }
     ],
     [
+     "All day",
+     "Jazz Fest weekend: 30+ free shows around the Art Park; JACE × Teriver at Freespace 15:00 and 20:00 (HK$580)",
+     "event",
+     null,
+     {
+      "label": "WestK Jazz Fest",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
+     }
+    ],
+    [
      "08:00–09:00",
      "Breakfast, Student Lounge",
      "school"
@@ -11369,6 +11389,16 @@ window.HK = {
    "slots": [
     [
      "All day",
+     "Jazz Fest: free shows around the Art Park; Francesca Tandoi at Freespace 20:00 (HK$400)",
+     "event",
+     null,
+     {
+      "label": "WestK Jazz Fest",
+      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
+     }
+    ],
+    [
+     "All day",
      "Free day",
      "school"
     ],
@@ -11379,17 +11409,12 @@ window.HK = {
     ],
     [
      "Afternoon",
-     "Sha Tin races, with a Group 2 sprint",
-     "event"
-    ],
-    [
-     "Evening",
-     "WestK Jazz Fest at the Art Park",
+     "Sha Tin races: Hong Kong's main racecourse, a Sunday afternoon meeting with a Group 2 sprint. MTR East Rail to Racecourse station (open on race days only)",
      "event",
      null,
      {
-      "label": "WestK Jazz Fest",
-      "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest"
+      "label": "HKJC race days",
+      "url": "https://racing.hkjc.com/en-us/local/information/fixture"
      }
     ]
    ],
