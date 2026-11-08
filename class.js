@@ -238,10 +238,17 @@
 
 
   // table bookings for an event: just the times and sizes (people turn up and get seated as tables free up)
+  // booked seats against everyone who said they're going: how many more to book (0 = enough)
+  const seats = (e) => (e.tables || []).reduce((t, x) => t + (+x.size || 0), 0);
+  const seatsShort = (e) => ((e.tables || []).length ? Math.max(0, e.going.length - seats(e)) : 0);
   function tablesBlock(e) {
     const tables = e.tables || [];
+    const short = seatsShort(e), n = seats(e);
+    const seatLine = tables.length ? (short
+      ? `<p class="tb-gap">⚠️ <b>${e.going.length} going, ${n} seats booked: book ${short} more seat${short > 1 ? "s" : ""}</b></p>`
+      : `<p class="tb-ok">✓ ${n} seats booked for ${e.going.length} going${n > e.going.length ? ` · ${n - e.going.length} spare` : ""}</p>`) : "";
     if (!tables.length && !live()) return "";
-    return `<div class="cc-tables"><h4>🍽️ Table bookings</h4>
+    return `<div class="cc-tables"><h4>🍽️ Table bookings</h4>${seatLine}
       ${tables.length ? `<ul class="tb-list">${tables.map((t) => `<li class="tb"><div class="tb-top"><b>${esc(t.time || "Time TBC")}</b> <span>${t.label ? `${esc(t.label)} · ` : ""}table for ${t.size || "?"}</span>
         ${live() ? `<button type="button" class="cc-mini" data-splittable="${e.id}|${t.id}">🧾 Split this table's bill</button><button type="button" class="cc-x" data-deltable="${e.id}|${t.id}" aria-label="Remove booking">✕</button>` : ""}</div></li>`).join("")}</ul>
         <p class="small">Arrive from ${esc(tables[0].time || "the first booking")} and you'll be seated as tables free up. After dinner, each table splits its own bill.</p>` : `<p class="muted small">No bookings yet.</p>`}
@@ -352,12 +359,15 @@
     return (data.bills || []).filter((b) => b.ev === e.id).reduce((t, b) => t + (billShares(b)[n] || 0), 0);
   }
   // column names: short day + event, e.g. "Thu Dim Sum Breakfast"
-  const colName = (e) => SHORT[e.id] || `${(DAYS.find(([iso]) => iso === e.iso)?.[1] || "").split(" ")[0]} ${e.title}`.trim();
+  // short column titles: day + the event name without any "(…)", "· …" or ": …" description, at most 3 words
+  const colName = (e) => SHORT[e.id] || `${(DAYS.find(([iso]) => iso === e.iso)?.[1] || "").split(" ")[0]} ${e.title.replace(/\s*[(·:–-].*$/, "").split(/\s+/).slice(0, 3).join(" ")}`.trim();
+  // the footer shows each table's (or each) bill rather than one big total
+  const evBills = (e) => (data.bills || []).filter((b) => b.ev === e.id);
+  const billTag = (b, e) => { const t = String(b.what || "").match(/\b(\d{1,2}:\d{2})\b/); if (t) return `${t[1]} table`; const w = String(b.what || "Bill"); return w.includes(",") ? w.split(",").pop().trim() : w.replace(e.title, "").replace(/^[\s,·:-]+/, "") || "Bill"; };
   function overview(evs) {
     const ppl = people(), bal = allBalances();
     const other = (n) => (data.bills || []).filter((b) => !b.ev).reduce((t, b) => t + (billShares(b)[n] || 0), 0);
     const total = (n) => evs.reduce((t, e) => t + shareFor(n, e), 0) + other(n);
-    const evTotal = (e) => ppl.reduce((t, n) => t + shareFor(n, e), 0);
     const cell = (n, e) => {
       const go = e.going.includes(n), amt = shareFor(n, e);
       const inner = `${go ? "✓" : ""}${amt ? `<small>${hk(amt)}</small>` : ""}`;
@@ -368,7 +378,9 @@
         <thead><tr><th>Name</th>${evs.map((e) => `<th>${esc(colName(e))}</th>`).join("")}<th>Total</th><th>Balance</th></tr></thead>
         <tbody>${ppl.map((n) => { const b = Math.round(bal[n] || 0), tt = total(n);
           return `<tr class="${n === me ? "me" : ""}"><td>${esc(n)}</td>${evs.map((e) => cell(n, e)).join("")}<td>${tt ? hk(tt) : "–"}</td><td class="${b < 0 ? "neg" : b > 0 ? "pos" : ""}">${Math.abs(b) < 1 ? "✓" : b < 0 ? `owes ${hk(-b)}` : `owed ${hk(b)}`}</td></tr>`; }).join("")}</tbody>
-        <tfoot><tr><td>Going</td>${evs.map((e) => `<td>${e.going.length}<br><small>${evTotal(e) ? hk(evTotal(e)) : "cost TBC"}</small></td>`).join("")}<td></td><td></td></tr></tfoot>
+        <tfoot><tr><td>Going</td>${evs.map((e) => { const bs = evBills(e);
+          const cost = e.price > 0 ? `${hk(e.price)} each` : bs.length ? bs.map((b) => `${esc(billTag(b, e))}: ${hk(b.hkd)}`).join("<br>") : "cost TBC";
+          return `<td>${e.going.length}<br><small>${cost}</small></td>`; }).join("")}<td></td><td></td></tr></tfoot>
       </table></div>
       <p class="muted small">${live() ? "Tap a box to tick or untick. " : ""}Each box shows that person's cost: the set price, or their share of their table's bill. Balance is after everything that's been paid back.</p>
       <button type="button" class="cc-csv" id="cc-csv">Copy as spreadsheet (CSV)</button>
@@ -595,7 +607,7 @@
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
       const myT = (e.tables || []).find((t) => (t.names || []).includes(me));
-      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${(e.tables || []).length ? ` · 🍽️ tables from ${esc(e.tables[0].time || "")}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>`;
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${(e.tables || []).length ? ` · 🍽️ tables from ${esc(e.tables[0].time || "")}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : ""}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>`;
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;
