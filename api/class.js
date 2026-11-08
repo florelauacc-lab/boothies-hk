@@ -9,7 +9,7 @@ const PASS_HASH = process.env.CLASS_PASS_SHA256;
 // a second, organiser-only code (Florence and Rienno): payment details and confirming money received
 const ORG_HASH = process.env.ORGANISER_PASS_SHA256;
 // key prefix: production has the real list; previews and local testing use their own keys
-const P = process.env.VERCEL_ENV === "production" ? "c1:" : "dev1:";
+const P = process.env.VERCEL_ENV === "production" ? "c1:" : process.env.CLASS_PREFIX || "dev1:";
 
 async function redis(cmds) {
   const r = await fetch(`${URL_}/pipeline`, {

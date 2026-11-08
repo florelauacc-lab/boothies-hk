@@ -760,7 +760,9 @@
     const nMine = Object.values(mine).filter(Boolean).length + myPlans.length;
     $("#plan-mode").innerHTML = `<button class="${onlyMine ? "" : "on"}" data-onlymine="0">Everything</button><button class="${onlyMine ? "on" : ""}" data-onlymine="1">⭐ My week${nMine ? ` · ${nMine}` : ""}</button>`;
     // a shortcut to the class corner (who's going, what you owe, paying Rienno), which sits below the day
-    if (!$("#cc-jump")) $("#plan-mode").insertAdjacentHTML("afterend", `<button type="button" id="cc-jump" class="cc-jump">💸 Who's going &amp; pay Rienno ↓</button>`);
+    if (!$("#cc-jump")) $("#plan-mode").insertAdjacentHTML("afterend", `<div class="wk-tools"><button type="button" id="cc-jump" class="cc-jump">💸 Who's going &amp; settle up ↓</button>
+      <details class="ics-menu"><summary>📅 Add to my calendar</summary><div class="ics-opts"><button type="button" class="cc-mini go" data-ics="mine">⭐ My week</button><button type="button" class="cc-mini" data-ics="all">Everything</button>
+      <p class="muted small">Downloads a calendar file. On iPhone tap it and choose Add All; on Android or a computer open it with Google Calendar or Outlook.</p></div></details></div>`);
     window.HK_PRIVATE_RENDER?.();
   }
   let customEvents = [];
@@ -864,6 +866,64 @@
     if (!sel || !sel.value) return;
     addMyPlan({ ...JSON.parse(sel.dataset.addweek), iso: sel.value });
     sel.value = "";
+  });
+
+
+  /* ---------- add the week to your own calendar (.ics works with iPhone, Android/Google and Outlook) ---------- */
+  const SLOT_TIMES = { morning: ["08:00", "10:00"], lunch: ["12:00", "14:00"], afternoon: ["14:00", "17:00"], evening: ["19:00", "22:00"] };
+  function slotWhen(t) {
+    const m = String(t).match(/(\d{1,2}):(\d{2})(?:\s*[–-]\s*(\d{1,2}):(\d{2}))?/);
+    if (m) {
+      const a = `${m[1].padStart(2, "0")}:${m[2]}`;
+      const b = m[3] ? `${m[3].padStart(2, "0")}:${m[4]}` : `${String(Math.min(23, +m[1] + 1)).padStart(2, "0")}:${m[2]}`;
+      return [a, b];
+    }
+    const k = Object.keys(SLOT_TIMES).find((x) => String(t).toLowerCase().includes(x));
+    return k ? SLOT_TIMES[k] : null; // null = all day
+  }
+  const icsEsc = (x) => String(x || "").replace(/\\/g, "\\\\").replace(/[,;]/g, (c) => `\\${c}`).replace(/\n/g, "\\n");
+  function buildIcs(onlyMineMode) {
+    const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Boothies in HK//Becker week//EN", "CALSCALE:GREGORIAN", "X-WR-CALNAME:Boothies in HK", "X-WR-TIMEZONE:Asia/Hong_Kong",
+      "BEGIN:VTIMEZONE", "TZID:Asia/Hong_Kong", "BEGIN:STANDARD", "DTSTART:19700101T000000", "TZOFFSETFROM:+0800", "TZOFFSETTO:+0800", "TZNAME:HKT", "END:STANDARD", "END:VTIMEZONE"];
+    const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
+    let n = 0;
+    const add = (iso, when, title, desc, loc) => {
+      const d = iso.replace(/-/g, ""), w = slotWhen(when);
+      lines.push("BEGIN:VEVENT", `UID:boothies-${d}-${n++}@boothies-hk.vercel.app`, `DTSTAMP:${stamp}`);
+      if (w) lines.push(`DTSTART;TZID=Asia/Hong_Kong:${d}T${w[0].replace(":", "")}00`, `DTEND;TZID=Asia/Hong_Kong:${d}T${w[1].replace(":", "")}00`);
+      else { const nx = new Date(`${iso}T12:00:00Z`); nx.setUTCDate(nx.getUTCDate() + 1); lines.push(`DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${nx.toISOString().slice(0, 10).replace(/-/g, "")}`); }
+      lines.push(`SUMMARY:${icsEsc(title)}`);
+      if (desc) lines.push(`DESCRIPTION:${icsEsc(desc)}`);
+      if (loc) lines.push(`LOCATION:${icsEsc(loc)}`);
+      lines.push("END:VEVENT");
+    };
+    PLAN.forEach((d) => {
+      const extra = customEvents.filter((e) => e.iso === d.iso).map((e) => [e.when || "Anytime", `${e.title}${e.venue ? ` · ${e.venue}` : ""}`, "ours", e.id]);
+      [...d.slots, ...extra].forEach(([t, v, kind, ev]) => {
+        if (/^(next day|all day)$/i.test(t) && /check-out|free day|meals on your own/i.test(v)) return; // skip filler lines
+        const shared = ev && window.HK_CLASS?.going(ev);
+        const picked = kind === "ours" || kind === "event" ? (shared != null ? shared : !!mine[slotKey(d.iso, v, ev)]) : true;
+        if (onlyMineMode && !picked) return;
+        const icon = kind === "ours" ? "🎉 " : kind === "event" ? "🎟️ " : kind === "optional" ? "(Optional) " : "";
+        add(d.iso, t, `${icon}${v.replace(/^\p{Extended_Pictographic}\s*/u, "")}`, kind === "school" || kind === "optional" ? "Becker schedule" : "", "");
+      });
+      myPlans.filter((p) => p.iso === d.iso).forEach((p) => {
+        const o = p.idea && OUTINGS.find((x) => x.title === p.idea), pl = p.place && byId[p.place];
+        add(d.iso, p.when || "", `⭐ ${p.title.replace(/^\p{Extended_Pictographic}\s*/u, "")}`, o ? o.steps.map(([, x]) => `• ${x}`).join("\n") : pl ? `${pl.intro || ""}\n${mapUrl(pl)}` : "", pl ? `${pl.name}${pl.addressEn ? `, ${pl.addressEn}` : ""}` : "");
+      });
+    });
+    lines.push("END:VCALENDAR");
+    return lines.join("\r\n");
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-ics]");
+    if (!b) return;
+    const blob = new Blob([buildIcs(b.dataset.ics === "mine")], { type: "text/calendar;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = b.dataset.ics === "mine" ? "boothies-my-week.ics" : "boothies-whole-week.ics";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast("Calendar file ready: open it to add the events");
   });
 
   /* ---------- start here ---------- */

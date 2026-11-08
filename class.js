@@ -157,6 +157,7 @@
     }
     const evs = data.events, bal = balances(), ppl = roster();
     const mine = evs.filter((e) => e.going.includes(me));
+    const mineRienno = mine.filter((e) => each(e)); // set-price events Rienno collects; split bills live under "Split a bill"
     const st = me ? status(me, bal) : null;
     const isPayer = me && me === data.payTo;
     const canConfirm = data.organiser && isPayer; // only Rienno (with the organiser code) decides what's been received
@@ -171,7 +172,7 @@
         <label>I'm <select id="cc-me" aria-label="Your name"><option value="">choose your name</option>${opts}</select></label>
         <label>Prices in <select id="cc-cur" aria-label="Currency">${curOpts}</select></label>
       </div>
-      ${me ? myPlace(mine, st, bal, isPayer) : `<p class="muted">Pick your name to see your own events and what you owe.</p>`}
+      ${settleBox()}
       <h3 class="cc-h">🎉 Class events <small>tap one to tick who's going or enter the bill</small></h3>
       <div class="cc-events">${evs.map((e) => evCard(e, ppl)).join("")}</div>
       ${live() ? `<details class="cc-add"><summary>➕ Add an event for the class</summary>
@@ -184,7 +185,7 @@
           <button type="submit">Add event</button>
         </form></details>` : ""}
       ${billsSection()}
-      ${settleUp(bal, canConfirm)}
+      ${everyoneBalances()}
       ${overview(evs)}
       <details class="cc-groups"><summary>📚 Becker study groups</summary>
         <div class="cc-grid">${(data.groups || []).map(([g, ns]) => `<div><h4>${esc(g)}</h4><ul>${ns.filter((n) => !/\*$/.test(n)).map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`).join("")}</div>
@@ -228,8 +229,8 @@
           <select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select>
           <button type="submit">✓ I've paid</button></form>` : ""}
       ${mineP ? `<ul class="cc-mine pays">${mineP}</ul>` : ""}
-      ${rows ? `<details class="cc-break" open><summary>Your events · ${mine.length} · pay them all at once or one at a time</summary><ul class="cc-mine">${rows}</ul></details>`
-        : `<p class="small">You're not on any lists yet. Open an event below and tap "I'm going".</p>`}
+      ${rows ? `<details class="cc-break" open><summary>For ${mine.length} event${mine.length > 1 ? "s" : ""} · pay all at once or one at a time</summary><ul class="cc-mine">${rows}</ul></details>`
+        : `<p class="small">Nothing to pay ${esc(data.payTo)} right now. Dinners someone else paid for show under "Split a bill" below.</p>`}
       ${isPayer ? `<p class="small">You're collecting: confirm payments in "Who's paid" below.</p>` : ""}
     </div>`;
   }
@@ -293,7 +294,9 @@
   function bankLines(o) {
     const lines = [["Account name", o.accName], ["Bank", o.bankName], ["Account number", o.accNo], ["SWIFT / bank code", o.swift]].filter(([, v]) => v);
     if (!lines.length && o.bank) lines.push(["Bank details", o.bank]);
-    return lines.length ? `<div class="bank-lines">${lines.map(([k, v]) => `<div class="bl"><span><small>${k}</small>${esc(v)}</span><button type="button" class="pw-copy" data-copy="${esc(v)}">Copy</button></div>`).join("")}</div>` : "";
+    const all = lines.map(([k, v]) => `${k}: ${v}`).join("\n");
+    return lines.length ? `<div class="bank-lines">${lines.map(([k, v]) => `<button type="button" class="bl" data-copy="${esc(v)}"><span><small>${k}</small>${esc(v)}</span><span class="pw-copy">Copy</span></button>`).join("")}
+      ${lines.length > 1 ? `<button type="button" class="pw-copy all" data-copy="${esc(all)}">📋 Copy all bank details</button>` : ""}</div>` : "";
   }
 
   // Every way to pay, with the actual details, so settling up is one look and one tap
@@ -337,39 +340,37 @@
       <p class="muted small">It counts as paid once ${esc(data.payTo)} confirms the money arrived.</p>
       ${canConfirm ? `<p class="cc-orgnote">🔑 You're signed in as organiser: confirm payments below, or tap "Got HK$…" for cash.</p>` : ""}
       ${list}
-      ${live() ? `<details class="cc-paysetup"><summary>🔑 Organisers (Rienno, Lisa, Florence &amp; Kejia)</summary>
-        ${data.organiser ? `<p class="muted small" style="padding:0 14px">Only organisers can change payment details. Only Rienno confirms payments (pick Rienno as your name).</p>
-        <form id="cc-pay" class="cc-grid-form">
-          <input name="paypal" placeholder="PayPal.me link, e.g. https://paypal.me/name" value="${esc(L.paypal || "")}">
-          <input name="fps" placeholder="FPS ID or phone number" value="${esc(L.fps || "")}">
-          <input name="accName" placeholder="Account name" value="${esc(L.accName || "")}">
-          <input name="bankName" placeholder="Bank (e.g. HSBC Hong Kong)" value="${esc(L.bankName || "")}">
-          <input name="accNo" placeholder="Account number" value="${esc(L.accNo || "")}">
-          <input name="swift" placeholder="SWIFT / bank code (for transfers from abroad)" value="${esc(L.swift || "")}">
-          <input name="wechat" placeholder="WeChat ID (for WeChat Pay)" value="${esc(L.wechat || "")}">
-          <button type="submit">Save payment details</button>
-        </form>
-        <button type="button" class="cc-done" data-orgout="1" style="margin:0 14px 14px">Sign out as organiser</button>`
-        : `<form id="cc-org" class="cc-grid-form" autocomplete="off"><input name="code" type="password" autocapitalize="none" placeholder="Organiser code" required aria-label="Organiser code"><button type="submit">Sign in</button></form>`}
-      </details>` : ""}
+
     </div>`;
   }
 
   const SHORT = { "sun-dimsum": "Sun Dim Sum", "mon-hotpot": "Mon Hotpot", "wed-tram": "Wed Tram", "thu-dpd": "Thu Dai Pai Dong", };
+  // each person's real cost per event: the set price, or their share of whichever table bill they were on
+  function shareFor(n, e) {
+    if (e.price > 0) return e.going.includes(n) ? +e.price : 0;
+    return (data.bills || []).filter((b) => b.ev === e.id).reduce((t, b) => t + (billShares(b)[n] || 0), 0);
+  }
   function overview(evs) {
-    const ppl = people(), bal = balances();
-    const grand = evs.reduce((t, e) => t + (each(e) || 0) * e.going.length, 0);
+    const ppl = people(), bal = allBalances();
+    const other = (n) => (data.bills || []).filter((b) => !b.ev).reduce((t, b) => t + (billShares(b)[n] || 0), 0);
+    const total = (n) => evs.reduce((t, e) => t + shareFor(n, e), 0) + other(n);
+    const evTotal = (e) => ppl.reduce((t, n) => t + shareFor(n, e), 0);
+    const cell = (n, e) => {
+      const go = e.going.includes(n), amt = shareFor(n, e);
+      const inner = `${go ? "✓" : ""}${amt ? `<small>${hk(amt)}</small>` : ""}`;
+      return `<td>${live() ? `<button type="button" class="cc-cell${go ? " on" : ""}" data-tick="${e.id}" data-name="${esc(n)}" data-on="${go ? 0 : 1}" aria-label="${esc(n)}: ${esc(e.title)}">${inner}</button>` : inner}</td>`;
+    };
     return `<details class="cc-all"><summary>📋 Full list: everyone × every event</summary>
       <div class="cc-scroll"><table>
-        <thead><tr><th>Name</th>${evs.map((e) => `<th>${esc(SHORT[e.id] || e.title)}</th>`).join("")}<th>Share</th><th>Paid</th></tr></thead>
-        <tbody>${ppl.map((n) => { const s = status(n, bal); return `<tr class="${n === me ? "me" : ""}"><td>${esc(n)}</td>${evs.map((e) => `<td>${live() ? `<button type="button" class="cc-cell${e.going.includes(n) ? " on" : ""}" data-tick="${e.id}" data-name="${esc(n)}" data-on="${e.going.includes(n) ? 0 : 1}" aria-label="${esc(n)}: ${esc(e.title)}">${e.going.includes(n) ? "✓" : ""}</button>` : e.going.includes(n) ? "✓" : ""}</td>`).join("")}<td>${s.share ? hk(s.share) : "–"}</td><td>${s.settled ? "✓✓" : s.sent ? "✓" : ""}</td></tr>`; }).join("")}</tbody>
-        <tfoot><tr><td>Going</td>${evs.map((e) => `<td>${e.going.length}<br><small>${each(e) ? `${hk(each(e))} each` : "price TBC"}</small></td>`).join("")}<td>${grand ? hk(grand) : "–"}</td><td></td></tr></tfoot>
+        <thead><tr><th>Name</th>${evs.map((e) => `<th>${esc(SHORT[e.id] || e.title)}</th>`).join("")}<th>Total</th><th>Balance</th></tr></thead>
+        <tbody>${ppl.map((n) => { const b = Math.round(bal[n] || 0), tt = total(n);
+          return `<tr class="${n === me ? "me" : ""}"><td>${esc(n)}</td>${evs.map((e) => cell(n, e)).join("")}<td>${tt ? hk(tt) : "–"}</td><td class="${b < 0 ? "neg" : b > 0 ? "pos" : ""}">${Math.abs(b) < 1 ? "✓" : b < 0 ? `owes ${hk(-b)}` : `owed ${hk(b)}`}</td></tr>`; }).join("")}</tbody>
+        <tfoot><tr><td>Going</td>${evs.map((e) => `<td>${e.going.length}<br><small>${evTotal(e) ? hk(evTotal(e)) : "cost TBC"}</small></td>`).join("")}<td></td><td></td></tr></tfoot>
       </table></div>
-      <p class="muted small">${live() ? "Tap a box to tick or untick. " : ""}Paid: ✓ = says they've paid, ✓✓ = ${esc(data.payTo)} confirmed.</p>
+      <p class="muted small">${live() ? "Tap a box to tick or untick. " : ""}Each box shows that person's cost: the set price, or their share of their table's bill. Balance is after everything that's been paid back.</p>
       <button type="button" class="cc-csv" id="cc-csv">Copy as spreadsheet (CSV)</button>
     </details>`;
   }
-
 
   /* ---------- split a bill: dinners by table, people's own events, any payer ---------- */
   // a draft kept outside the DOM, so the form survives the list refreshing every 30 seconds
@@ -404,7 +405,7 @@
     return out;
   }
   function waysToPay(to, amt) {
-    const pr = (data.profiles || {})[to] || {};
+    const pr = { ...(to === data.payTo ? data.payLinks || {} : {}), ...Object.fromEntries(Object.entries((data.profiles || {})[to] || {}).filter(([, v]) => v)) };
     const rows = [
       pr.paypal && `<a class="paybtn" href="${esc(pr.paypal.replace(/\/$/, ""))}${/paypal\.me/i.test(pr.paypal) ? `/${Math.round(amt)}HKD` : ""}" target="_blank" rel="noopener">💳 PayPal / card</a>`,
       pr.fps && `<button class="paybtn" type="button" data-copy="${esc(pr.fps)}">⚡ FPS ${esc(pr.fps)} · copy</button>`,
@@ -416,6 +417,58 @@
     return rows.length || bl ? `${rows.length ? `<div class="paybtns">${rows.join("")}</div>` : ""}${bl ? `<p class="small" style="margin:8px 0 4px"><b>🌍 Bank transfer</b></p>${bl}` : ""}${pr.note ? `<p class="muted small">${esc(pr.note)}</p>` : ""}`
       : `<p class="muted small">${esc(to)} hasn't added payment details yet. Ask in the group chat, or they can add them under "My payment details".</p>`;
   }
+
+  /* ---------- one combined balance: set-price events (Rienno paid), every bill, every payment ---------- */
+    // each payment: who → who and the amount on top; status and buttons on their own line (anyone can mark or confirm)
+  const sRow = (t) => `<li class="sp${t.to === me ? " owed" : t.from === me ? " me" : ""}">
+      <div class="sp-top"><span class="sp-who">${t.to === me ? `<b>${esc(t.from)}</b> owes you` : t.from === me ? `To <b>${esc(t.to)}</b>` : `<b>${esc(t.from)}</b> → <b>${esc(t.to)}</b>`}</span><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
+      ${t.from === me ? `${waysToPay(t.to, t.hkd)}<form class="cc-inline paid" data-xfer="${esc(JSON.stringify(t))}"><select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select><button type="submit">✓ I've paid ${esc(t.to)}</button></form>`
+        : `<button type="button" class="cc-mini go sp-paid" data-xmark="${esc(JSON.stringify(t))}" aria-label="${esc(t.from)} has paid me">✓ Paid me</button>`}</li>`;
+  const pRow = (x) => `<li class="sp pending">
+      <div class="sp-top"><span class="sp-who"><b>${esc(x.from)}</b> paid <b>${esc(x.to)}</b>${x.method ? ` <small>· ${esc(x.method)}</small>` : ""}</span><span class="amt">${hk(x.hkd)}</span></div>
+      <div class="sp-act"><span class="sp-status wait">⏳ Needs confirming</span>
+        <button type="button" class="cc-mini go" data-xconfirm="${x.id}">✓ Confirm received</button>
+        <button type="button" class="cc-mini undo" data-xundo="${x.id}">↩ Undo</button></div></li>`;
+
+  function allBalances() { // + means you're owed, - means you owe
+    const bal = balances(); // set-price events: Rienno paid, everyone ticked owes the set price
+    const add = (n, v) => { bal[n] = (bal[n] || 0) + v; };
+    Object.entries(data.settle || {}).forEach(([n, v]) => (v.payments || []).forEach((p) => { add(n, p.hkd); add(data.payTo, -p.hkd); }));
+    Object.entries(billBalances()).forEach(([n, v]) => add(n, v)); // bills and payments between people
+    return bal;
+  }
+  // the top box: what you owe and what you're owed, after netting everything out
+  function settleBox() {
+    if (!me) return `<div class="cc-owe"><h3 class="cc-h">💸 Settle up</h3><p class="small">Pick your name above to see what you owe and what you're owed.</p></div>`;
+    const bal = allBalances(), sugg = simplify(bal);
+    const owe = sugg.filter((t) => t.from === me), owed = sugg.filter((t) => t.to === me);
+    const pend = (data.xfers || []).filter((x) => !x.confirmed && (x.from === me || x.to === me));
+    const sum = (a) => a.reduce((t, x) => t + x.hkd, 0);
+    const items = [];
+    data.events.forEach((e) => { if (e.price > 0 && e.going.includes(me)) items.push([e.title, -e.price, `paid by ${data.payTo}`]); });
+    (data.bills || []).forEach((b) => { const sh = billShares(b)[me]; if (sh) items.push([b.what, -sh, `paid by ${b.paidBy}`]); if (b.paidBy === me) items.push([`You paid: ${b.what}`, b.hkd, `for ${b.among.length} people`]); });
+    (data.xfers || []).filter((x) => x.confirmed && (x.from === me || x.to === me)).forEach((x) => items.push([x.from === me ? `You paid ${x.to}` : `${x.from} paid you`, x.from === me ? x.hkd : -x.hkd, "settled"]));
+    Object.values(data.settle?.[me]?.payments || []).forEach((p) => items.push([`You paid ${data.payTo}`, p.hkd, p.confirmed ? "confirmed" : "waiting"]));
+    return `<div class="cc-owe">
+      <h3 class="cc-h">💸 Settle up</h3>
+      <p class="muted small">Everything is netted out: who paid for what, your share, and what's already been paid back. So you may pay someone different from whoever covered your meal. "How it adds up" shows the detail.</p>
+      ${!owe.length && !owed.length ? `<p class="small">✓ You're all square right now.</p>` : ""}
+      ${owe.length ? `<p class="sp-h">💸 You owe <b>${hk(sum(owe))}</b> <small>≈ ${fx(sum(owe))}</small></p><ul class="sp-list">${owe.map(sRow).join("")}</ul>` : ""}
+      ${owed.length ? `<p class="sp-h">💰 Owed to you <b>${hk(sum(owed))}</b></p><ul class="sp-list">${owed.map(sRow).join("")}</ul>` : ""}
+      ${pend.length ? `<p class="sp-h">⏳ Waiting to be confirmed</p><ul class="sp-list">${pend.map(pRow).join("")}</ul>` : ""}
+      ${items.length ? `<details class="cc-break"><summary>How it adds up · ${items.length}</summary><ul class="cc-mine">${items.map(([w, v, by]) => `<li class="mi"><div class="mrow"><span>${esc(w)} <small>· ${esc(by)}</small></span><b class="${v < 0 ? "neg" : "pos"}">${v < 0 ? "−" : "+"}${hk(Math.abs(v))}</b></div></li>`).join("")}</ul></details>` : ""}
+    </div>`;
+  }
+  // everyone's net position (useful for organisers), plus the organiser settings
+  function everyoneBalances() {
+    const bal = allBalances();
+    const rows = people().map((n) => [n, Math.round(bal[n] || 0)]).filter(([, v]) => Math.abs(v) >= 1).sort((a, b) => a[1] - b[1]);
+    return `<div class="cc-pay">
+      ${rows.length ? `<details class="cc-sub"><summary>📒 Everyone's balance · ${rows.length}</summary><ul class="cc-settle">${rows.map(([n, v]) => `<li class="${n === me ? "me" : ""}"><span class="nm">${esc(n)}</span><em class="${v < 0 ? "owe" : "ok"}">${v < 0 ? `owes ${hk(-v)}` : `is owed ${hk(v)}`}</em></li>`).join("")}</ul></details>` : ""}
+
+    </div>`;
+  }
+
   function billsSection() {
     if (!live()) return "";
     const bal = billBalances(), sugg = simplify(bal);
@@ -425,16 +478,6 @@
     const evName = (id) => data.events.find((e) => e.id === id)?.title;
     const mineSugg = me ? sugg.filter((t) => t.from === me || t.to === me) : [];
     const others = sugg.filter((t) => !mineSugg.includes(t));
-    // each payment: who → who and the amount on top; status and buttons on their own line (anyone can mark or confirm)
-    const sRow = (t) => `<li class="sp${t.from === me || t.to === me ? " me" : ""}">
-      <div class="sp-top"><span class="sp-who">${t.to === me ? `<b>${esc(t.from)}</b> owes you` : t.from === me ? `To <b>${esc(t.to)}</b>` : `<b>${esc(t.from)}</b> → <b>${esc(t.to)}</b>`}</span><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
-      ${t.from === me ? `${waysToPay(t.to, t.hkd)}<form class="cc-inline paid" data-xfer="${esc(JSON.stringify(t))}"><select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select><button type="submit">✓ I've paid ${esc(t.to)}</button></form>`
-        : `<div class="sp-act"><span class="sp-status owe">Not paid yet</span><button type="button" class="cc-mini go" data-xmark="${esc(JSON.stringify(t))}">✓ They've paid me</button></div>`}</li>`;
-    const pRow = (x) => `<li class="sp pending">
-      <div class="sp-top"><span class="sp-who"><b>${esc(x.from)}</b> paid <b>${esc(x.to)}</b>${x.method ? ` <small>· ${esc(x.method)}</small>` : ""}</span><span class="amt">${hk(x.hkd)}</span></div>
-      <div class="sp-act"><span class="sp-status wait">⏳ Needs confirming</span>
-        <button type="button" class="cc-mini go" data-xconfirm="${x.id}">✓ Confirm received</button>
-        <button type="button" class="cc-mini undo" data-xundo="${x.id}">↩ Undo</button></div></li>`;
     const d = billDraft;
     const form = d ? (() => {
       const total = +d.hkd || 0, among = [...d.among];
@@ -462,14 +505,8 @@
     const bills = (data.bills || []).slice().reverse();
     const pr = me ? (data.profiles || {})[me] || {} : null;
     return `<div class="cc-bills2">
-      <h3 class="cc-h">🧾 Split a bill <small>dinners by table, your own events, whoever paid</small></h3>
-      ${me ? (() => {
-        const owe = mineSugg.filter((x) => x.from === me), owed = mineSugg.filter((x) => x.to === me);
-        if (!owe.length && !owed.length) return `<p class="small">You're all square on bills.</p>`;
-        return `${owe.length ? `<p class="sp-h">💸 You owe <b>${hk(owe.reduce((s2, x) => s2 + x.hkd, 0))}</b></p><ul class="sp-list">${owe.map(sRow).join("")}</ul>` : ""}
-          ${owed.length ? `<p class="sp-h">💰 Owed to you <b>${hk(owed.reduce((s2, x) => s2 + x.hkd, 0))}</b></p><ul class="sp-list">${owed.map(sRow).join("")}</ul>` : ""}`;
-      })() : ""}
-      ${pend.length ? `<ul class="sp-list">${pend.map(pRow).join("")}</ul>` : ""}
+      <h3 class="cc-h">🧾 Add a bill <small>whoever paid; split by table, equally or custom</small></h3>
+
       ${form}
       ${bills.length ? `<details class="cc-sub"><summary>All bills · ${bills.length}</summary><ul class="bill-list">${bills.map((b) => {
         const sh = billShares(b);
@@ -494,7 +531,11 @@
           <details class="fps-box"${pr.fps ? " open" : ""}><summary>🇭🇰 Have a Hong Kong bank account? Add FPS</summary>
             <label>FPS ID or phone<input name="fps" inputmode="numeric" value="${esc(pr.fps || "")}"></label></details>
           <fieldset><legend>🔒 PIN</legend>
-            ${pr.locked ? `<label>Your PIN <small>(needed to change these)</small><input name="pin" type="password" inputmode="numeric" autocomplete="off"></label>`
+            ${pr.locked ? `<label>Your PIN <small>(needed to change these)</small><input name="pin" type="password" inputmode="numeric" autocomplete="off"></label>
+              <details class="fps-box"><summary>Forgot your PIN?</summary>
+                <p class="small muted">Ask an organiser (Florence, Lisa, Kejia or Rienno) to type the organiser code here, then choose a new PIN.</p>
+                <label>Organiser code<input name="orgcode" type="password" autocomplete="off"></label>
+                <label>New PIN<input name="newPin" type="password" inputmode="numeric" maxlength="12" autocomplete="new-password"></label></details>`
               : `<label>Set a PIN <small>(optional, so only you can change these)</small><input name="newPin" type="password" inputmode="numeric" maxlength="12" autocomplete="new-password"></label>`}</fieldset>
           <button type="submit" class="paybtn big">Save my details</button>
         </form></details>` : `<p class="muted small">Pick your name above to add bills and your payment details.</p>`}
@@ -661,12 +702,17 @@
     if (up) { op({ op: "undoPaid", name: me, i: +up.dataset.undopaid }).then((ok) => ok && toast("Undone: marked as not paid")); return; }
     if (t.id === "cc-relock") { data = null; mode = "locked"; forget("hk-pass-v1"); render(); return; }
     const cp = t.closest("[data-copy]");
-    if (cp) { (navigator.clipboard?.writeText(cp.dataset.copy) || Promise.reject()).then(() => { cp.textContent = "Copied ✓"; }, () => prompt("Copy this:", cp.dataset.copy)); return; }
+    if (cp) {
+      (navigator.clipboard?.writeText(cp.dataset.copy) || Promise.reject()).then(() => {
+        const lab = cp.querySelector(".pw-copy") || cp; const was = lab.textContent; lab.textContent = "Copied ✓"; toast("Copied"); setTimeout(() => { lab.textContent = was; }, 1500);
+      }, () => prompt("Copy this:", cp.dataset.copy));
+      return;
+    }
     if (t.id === "cc-csv" && data) {
       const evs = data.events, bal = balances();
-      const rows = [["Name", ...evs.map((ev) => SHORT[ev.id] || ev.title), "Share (HKD)", "Paid (HKD)", "Confirmed"]];
-      people().forEach((n) => { const s = status(n, bal); rows.push([n, ...evs.map((ev) => (ev.going.includes(n) ? "1" : "")), Math.round(s.share) || "", s.sent || "", s.settled ? "yes" : ""]); });
-      rows.push(["Bill HKD", ...evs.map((ev) => total(ev) || ""), "", "", ""]);
+      const ab = allBalances();
+      const rows = [["Name", ...evs.map((ev) => SHORT[ev.id] || ev.title), "Total (HKD)", "Balance (HKD, minus = owes)"]];
+      people().forEach((n) => rows.push([n, ...evs.map((ev) => Math.round(shareFor(n, ev)) || (ev.going.includes(n) ? "going" : "")), Math.round(evs.reduce((t, ev) => t + shareFor(n, ev), 0)) || "", Math.round(ab[n] || 0)]));
       const csv = rows.map((r) => r.map((x) => `"${String(x).replace(/"/g, '""')}"`).join(",")).join("\n");
       (navigator.clipboard?.writeText(csv) || Promise.reject()).then(() => { t.textContent = "Copied ✓ Paste into Sheets or Excel"; }, () => prompt("Copy this:", csv));
     }
@@ -691,6 +737,11 @@
     else if (f.dataset.xfer) {
       const x = JSON.parse(f.dataset.xfer);
       op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: fd("method") }).then((ok) => ok && toast(`Thanks! ${x.to} will confirm when it arrives`));
+    }
+    else if (f.id === "my-pay" && fd("orgcode")) { // organiser resets a forgotten PIN
+      const keep = orgPass; orgPass = fd("orgcode").toLowerCase();
+      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), note: fd("note"), newPin: fd("newPin") })
+        .then((ok) => { orgPass = keep; if (ok) toast(fd("newPin") ? "PIN reset and details saved" : "Details saved"); });
     }
     else if (f.id === "my-pay") {
       op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), note: fd("note"), pin: fd("pin"), newPin: fd("newPin") })

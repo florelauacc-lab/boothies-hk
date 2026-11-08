@@ -1378,3 +1378,26 @@ body.dragging .pd { outline: 1px dashed rgba(255,196,77,.5); }
 .cc-mine li .pay1, .cc-mine li.mi .pay1 { flex: none !important; width: auto; justify-content: center; }
 @media (max-width: 600px) { .cc-mine li .pay1 { flex-basis: auto !important; margin-top: 0; } }
 .sp-h { margin: 12px 0 4px; font-weight: 800; font-size: .95rem; } .sp-h b { margin-left: 4px; }
+button.bl { width: 100%; font: inherit; color: var(--text); border: 0; text-align: left; cursor: pointer; min-height: 48px; }
+button.bl:active { background: rgba(255,196,77,.18); }
+button.bl .pw-copy { pointer-events: none; }
+.pw-copy.all { width: 100%; min-height: 44px; margin-top: 4px; font-weight: 800; border-color: rgba(255,196,77,.5); color: var(--gold, #ffc44d); }
+.cc-mine b.neg { color: #ff9f9f; } .cc-mine b.pos { color: #3ee8b5; } .cc-mine li.mi .mrow small { color: var(--muted); font-weight: 600; }
+.sp-who b { font-size: 1rem; }
+.sp-top .amt { font-size: .95rem; }
+/* "owed to you": one compact line per person */
+.sp.owed { display: flex; align-items: center; gap: 10px; padding: 8px 10px 8px 12px; }
+.sp.owed .sp-top { flex: 1; min-width: 0; flex-wrap: wrap; }
+.sp.owed .sp-top .amt small { display: none; }
+.sp.owed .sp-paid { flex: none; }
+.wk-tools { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 8px; margin: 0 auto 12px; max-width: 760px; }
+.wk-tools #cc-jump { margin: 0; }
+.ics-menu { border-radius: 999px; }
+.ics-menu > summary { list-style: none; cursor: pointer; font-weight: 800; font-size: .88rem; min-height: 44px; display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(46,230,255,.4); background: rgba(46,230,255,.08); color: #2ee6ff; }
+.ics-menu > summary::-webkit-details-marker { display: none; }
+.ics-menu[open] { border-radius: 14px; flex-basis: 100%; }
+.ics-opts { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; padding: 10px 4px 0; }
+.ics-opts p { flex-basis: 100%; text-align: center; margin: 4px 0 0; }
+.cc-cell { width: auto; min-width: 40px; height: auto; min-height: 32px; padding: 3px 6px; display: inline-flex; flex-direction: column; align-items: center; line-height: 1.1; }
+.cc-cell small { font-size: 11px; font-weight: 700; }
+.cc-scroll td.neg { color: #ff9f9f; font-weight: 700; } .cc-scroll td.pos { color: #3ee8b5; font-weight: 700; }

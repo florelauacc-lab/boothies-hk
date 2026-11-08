@@ -11,6 +11,8 @@ for (const line of (existsSync(join(root, ".env.local")) ? readFileSync(join(roo
   if (m && !process.env[m[1]]) process.env[m[1]] = m[2];
 }
 process.env.VERCEL_ENV = "development";
+const PORT = +(process.argv[2] || 4180);
+if (process.argv[3]) process.env.CLASS_PREFIX = `${process.argv[3]}:`; // e.g. a throwaway demo list
 const { default: handler } = await import(pathToFileURL(join(root, "api/class.js")).href);
 const TYPES = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".png": "image/png", ".svg": "image/svg+xml" };
 
@@ -28,4 +30,4 @@ createServer(async (req, res) => {
   if (!p.startsWith(root) || /\/(tools|\.env|\.vercel|api)\b/.test(p.slice(root.length)) || !existsSync(p) || statSync(p).isDirectory()) { res.statusCode = 404; return res.end("not found"); }
   res.setHeader("Content-Type", TYPES[extname(p)] || "application/octet-stream");
   res.end(readFileSync(p));
-}).listen(4180, () => console.log("http://localhost:4180"));
+}).listen(PORT, () => console.log(`http://localhost:${PORT}`));
