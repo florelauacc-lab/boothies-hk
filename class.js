@@ -272,7 +272,8 @@
           : (() => { // no set price: split the bill(s) between whoever was there, whoever paid
               const evBills = (data.bills || []).filter((b) => b.ev === e.id);
               return `${evBills.length ? `<ul class="ev-bills">${evBills.map((b) => `<li><span>🧾 ${esc(b.what)} · paid by ${esc(b.paidBy)} · ${b.among.length} people</span><b>${hk(b.hkd)}</b></li>`).join("")}</ul>` : ""}
-                ${live() ? `<button type="button" class="cc-mini go" data-splitev="${e.id}">🧾 ${evBills.length ? "Add another bill (e.g. another table)" : "Split the bill (whoever paid)"}</button>
+                ${live() ? `<p class="muted small">One bill per table if tables ate different things; each is split only between the people at that table.</p>
+                <button type="button" class="cc-mini go" data-splitev="${e.id}">🧾 ${evBills.length ? "Add another table's bill" : "Add the bill (or the first table's)"}</button>
                 <details class="cc-collect"><summary>Rienno collecting a set price instead?</summary>` : ""}`;
             })()}
         ${e.expenses.length ? `<ul>${e.expenses.map((x) => `<li><span>${esc(x.what)} · paid by ${esc(x.paidBy)}</span><b>${hk(+x.hkd)}</b>${live() ? `<button type="button" class="cc-x" data-delexp="${e.id}" data-xid="${x.id}" aria-label="Remove bill">✕</button>` : ""}</li>`).join("")}</ul>` : ""}
@@ -372,8 +373,9 @@
   /* ---------- split a bill: dinners by table, people's own events, any payer ---------- */
   // a draft kept outside the DOM, so the form survives the list refreshing every 30 seconds
   let billDraft = null;
-  // who paid: Rienno by default, but only for events he's at; otherwise you
-  const defaultPayer = (evId) => { const E = evId && data.events.find((x) => x.id === evId); return E && data.payTo && E.going.includes(data.payTo) ? data.payTo : me || data.payTo; };
+  // who paid: for class events Rienno pays everything up front (even if he isn't there), so he's the default;
+  // anyone else who covers a table just switches "Paid by". Bills not tied to an event default to you.
+  const defaultPayer = (evId) => (evId && data.payTo ? data.payTo : me || data.payTo);
   const newDraft = () => ({ what: "", ev: "", hkd: "", paidBy: me || data.payTo, among: new Set(me ? [me] : []), mode: "equal", shares: {}, q: "" });
   const billShares = (b) => b.shares || Object.fromEntries(b.among.map((n) => [n, b.hkd / b.among.length]));
   function billBalances() { // + means you're owed, - means you owe
