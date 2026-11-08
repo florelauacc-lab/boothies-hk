@@ -94,10 +94,13 @@ export default async function handler(req, res) {
       case "setPrice": { // fixed price per person, so nobody owes more (or gets refunds) when people join or drop
         const [cur] = await redis([["HGET", `${P}events`, ev]]);
         if (!cur) return res.status(404).json({ error: "no event" });
-        const e = JSON.parse(cur), price = Math.round(+b.price);
-        if (!(price >= 0) || price > 100000) return res.status(400).json({ error: "bad price" });
+        const e = JSON.parse(cur);
+        // organisers enter the total bill; it's split by the number ticked and then fixed per person
+        const total = b.total != null ? Math.round(+b.total) : null, count = Math.round(+b.count) || 0;
+        const price = total && count ? Math.round(total / count) : Math.round(+b.price);
+        if (!(price >= 0) || price > 100000 || (total != null && !(total >= 0))) return res.status(400).json({ error: "bad amount" });
         e.price = price || null; e.priceBy = by;
-        if (b.total != null) e.total = Math.round(+b.total) || null; // the overall bill, shown for reference
+        if (total != null) { e.total = total || null; e.priceCount = count || null; }
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
       }
@@ -150,6 +153,20 @@ export default async function handler(req, res) {
         const confirmed = !!(org && b.confirmed);
         const evs = Array.isArray(b.evs) ? b.evs.slice(0, 20).map((x) => clean(x, 40)).filter(Boolean) : [];
         prev.payments = [...(prev.payments || []), { hkd, evs, method: clean(b.method, 30), at: Date.now(), confirmed, confirmedBy: confirmed ? by : undefined }];
+        await redis([["HSET", `${P}settle`, name, JSON.stringify(prev)]]);
+        break;
+      }
+      case "undoPaidEv": { // take one event out of an unconfirmed payment (e.g. "Everything" paid, one by mistake)
+        const name = clean(b.name, 60), evId = clean(b.ev, 40), amt = Math.round(+b.hkd) || 0;
+        const [cur] = await redis([["HGET", `${P}settle`, name]]);
+        if (!cur) return res.status(404).json({ error: "no payment" });
+        const prev = JSON.parse(cur);
+        const i = (prev.payments || []).findIndex((p) => !p.confirmed && (p.evs || []).includes(evId));
+        if (i < 0) return res.status(404).json({ error: "Rienno has already confirmed this one, so ask him to undo it" });
+        const p = prev.payments[i];
+        p.evs = p.evs.filter((x) => x !== evId);
+        p.hkd = Math.max(0, p.hkd - amt);
+        if (!p.evs.length || p.hkd <= 0) prev.payments.splice(i, 1);
         await redis([["HSET", `${P}settle`, name, JSON.stringify(prev)]]);
         break;
       }

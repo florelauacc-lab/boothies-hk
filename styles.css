@@ -1268,3 +1268,5 @@ body.dragging .pd { outline: 1px dashed rgba(255,196,77,.5); }
 .cc-mine li { flex-wrap: wrap; }
 .cc-mine li .pay1 { flex-basis: 100%; margin-top: 4px; justify-content: center; }
 @media (min-width: 601px) { .cc-mine li .pay1 { flex-basis: auto; margin-top: 0; } }
+.cc-mini.undo { border-color: rgba(255,196,77,.5); color: var(--gold, #ffc44d); }
+.cc-recalc { margin: 4px 0 8px; font-size: .86rem; } .cc-inline.bill .muted.small { flex-basis: 100%; }

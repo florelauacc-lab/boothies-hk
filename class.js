@@ -171,7 +171,7 @@
         <label>Prices in <select id="cc-cur" aria-label="Currency">${curOpts}</select></label>
       </div>
       ${me ? myPlace(mine, st, bal, isPayer) : `<p class="muted">Pick your name to see your own events and what you owe.</p>`}
-      <h3 class="cc-h">🎉 Class events <small>tap one to tick who's going or set the price</small></h3>
+      <h3 class="cc-h">🎉 Class events <small>tap one to tick who's going or enter the bill</small></h3>
       <div class="cc-events">${evs.map((e) => evCard(e, ppl)).join("")}</div>
       ${live() ? `<details class="cc-add"><summary>➕ Add an event for the class</summary>
         <form id="cc-newev" class="cc-grid-form">
@@ -201,9 +201,11 @@
     const owedToMe = (bal[me] || 0) > 0.5;
     const rows = mine.map((e) => { const ps = evPay(me, e.id);
       const payOne = !ps && each(e) && live() ? `<button type="button" class="cc-mini go pay1" data-payev="${e.id}">✓ I've paid this</button>` : "";
-      return `<li><span>${esc(e.title)}${ps ? ` <em class="${ps === "paid" ? "ok" : "wait"}">${ps === "paid" ? "✓ Paid" : `Waiting for ${esc(data.payTo)}`}</em>` : ""}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : `<small>price to come</small>`}</b>${payOne}</li>`; }).join("");
+      // tapped "I've paid" by mistake? undo it here until Rienno confirms
+      const undo = ps === "wait" && live() ? `<button type="button" class="cc-mini pay1 undo" data-undoev="${e.id}">↩ Undo "I've paid"</button>` : "";
+      return `<li><span>${esc(e.title)}${ps ? ` <em class="${ps === "paid" ? "ok" : "wait"}">${ps === "paid" ? "✓ Paid" : `Waiting for ${esc(data.payTo)}`}</em>` : ""}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : `<small>price to come</small>`}</b>${payOne}${undo}</li>`; }).join("");
     const unpaid = mine.filter((e) => each(e) && !evPay(me, e.id));
-    const mineP = payments(me).map((p, i) => `<li><span>Paid ${hk(p.hkd)}${p.method ? ` · ${esc(p.method)}` : ""}${evNames(p)}</span><b class="${p.confirmed ? "ok" : "wait"}">${p.confirmed ? `✓ ${esc(data.payTo)} confirmed` : `Waiting for ${esc(data.payTo)}`}</b>${!p.confirmed && live() ? `<button type="button" class="cc-x" data-undopaid="${i}" aria-label="Undo">✕</button>` : ""}</li>`).join("");
+    const mineP = payments(me).map((p, i) => `<li><span>Paid ${hk(p.hkd)}${p.method ? ` · ${esc(p.method)}` : ""}${evNames(p)}</span><b class="${p.confirmed ? "ok" : "wait"}">${p.confirmed ? `✓ ${esc(data.payTo)} confirmed` : `Waiting for ${esc(data.payTo)}`}</b>${!p.confirmed && live() ? `<button type="button" class="cc-mini undo" data-undopaid="${i}">↩ Undo</button>` : ""}</li>`).join("");
     const head = owedToMe ? ["You're owed", `${hk(bal[me])} <span>≈ ${fx(bal[me])}</span>`]
       : st.settled ? ["All settled", "✓ Paid, thank you!"]
       : st.left ? [`You owe ${esc(data.payTo)}`, `${hk(st.left)} <span>≈ ${fx(st.left)}</span>`]
@@ -244,14 +246,17 @@
         : `<div class="cc-names">${e.going.map((n) => `<span class="${n === me ? "me" : ""}">${esc(n)}</span>`).join("") || `<em class="muted">Nobody yet</em>`}</div>
           ${live() ? `<button type="button" class="cc-editbtn" data-edit="${e.id}">✏️ Tick who's going</button>` : ""}`}
       <div class="cc-bills">
-        <h4>Price per person</h4>
+        <h4>Cost</h4>
         ${p ? `<p class="cc-price"><b>${hk(p)}</b> each <span>≈ ${["USD", "GBP", "EUR", "JPY"].map((c) => fx(p, c)).join(" · ")}</span></p>
-          <p class="muted small">${e.total ? `Total ${hk(e.total)} ÷ ${Math.round(e.total / p)} people = ${hk(p)} each · ` : ""}${e.going.length} going × ${hk(p)} = ${hk(p * e.going.length)} to ${esc(data.payTo)}</p>`
-          : `<p class="cc-split muted">No price yet. Once it's set, everyone ticked owes that amount.</p>`}
+          <p class="muted small">${e.total ? `Total ${hk(e.total)} ÷ ${e.priceCount || Math.round(e.total / p)} people = ${hk(p)} each` : `${hk(p)} per person`}</p>
+          ${e.total && e.priceCount && e.priceCount !== e.going.length && e.going.length && live()
+            ? `<p class="cc-recalc">Now ${e.going.length} going. <button type="button" class="cc-mini go" data-recalc="${e.id}">Recalculate: ${hk(e.total / e.going.length)} each</button></p>` : ""}`
+          : `<p class="cc-split muted">No cost yet. Enter the total bill and it's split between everyone ticked.</p>`}
         ${e.expenses.length ? `<ul>${e.expenses.map((x) => `<li><span>${esc(x.what)} · paid by ${esc(x.paidBy)}</span><b>${hk(+x.hkd)}</b>${live() ? `<button type="button" class="cc-x" data-delexp="${e.id}" data-xid="${x.id}" aria-label="Remove bill">✕</button>` : ""}</li>`).join("")}</ul>` : ""}
         ${live() ? `<form class="cc-inline bill" data-setprice="${e.id}">
-          <input name="price" type="number" inputmode="numeric" min="0" step="1" placeholder="HK$ per person" value="${e.price || ""}" aria-label="Price per person in HK$" required>
-          <button type="submit">${e.price ? "Update price" : "Set price"}</button></form>` : ""}
+          <input name="total" type="number" inputmode="numeric" min="0" step="1" placeholder="Total bill HK$" value="${e.total || ""}" aria-label="Total bill in HK$" required>
+          <button type="submit">${e.total || e.price ? "Update total" : "Set total"}</button>
+          <span class="muted small">Split between the ${e.going.length} ticked</span></form>` : ""}
       </div>
       ${live() ? `<button type="button" class="cc-del" data-delev="${e.id}">🗑 Remove this event</button>` : ""}
     </details>`;
@@ -390,8 +395,12 @@
       op({ op: "markPaid", name: me, hkd: Math.round(each(E)), evs: [E.id], method }).then((ok) => ok && toast(`Thanks! ${data.payTo} will confirm ${E.title}`));
       return;
     }
+    const rc = t.closest("[data-recalc]");
+    if (rc) { const E = data.events.find((x) => x.id === rc.dataset.recalc); op({ op: "setPrice", ev: E.id, total: E.total, count: E.going.length }).then((ok) => ok && toast(`Recalculated: ${hk(E.total / E.going.length)} each`)); return; }
+    const ue = t.closest("[data-undoev]");
+    if (ue) { const E = data.events.find((x) => x.id === ue.dataset.undoev); op({ op: "undoPaidEv", name: me, ev: E.id, hkd: Math.round(each(E) || 0) }).then((ok) => ok && toast(`Undone: ${E.title} is back to not paid`)); return; }
     const up = t.closest("[data-undopaid]");
-    if (up) { if (confirm("Undo this payment?")) op({ op: "undoPaid", name: me, i: +up.dataset.undopaid }); return; }
+    if (up) { op({ op: "undoPaid", name: me, i: +up.dataset.undopaid }).then((ok) => ok && toast("Undone: marked as not paid")); return; }
     if (t.id === "cc-relock") { data = null; mode = "locked"; forget("hk-pass-v1"); render(); return; }
     const cp = t.closest("[data-copy]");
     if (cp) { (navigator.clipboard?.writeText(cp.dataset.copy) || Promise.reject()).then(() => { cp.textContent = "Copied ✓"; }, () => prompt("Copy this:", cp.dataset.copy)); return; }
@@ -425,7 +434,11 @@
       const pick = fd("what") === "all" ? unpaid : unpaid.filter((e) => e.id === fd("what"));
       const st = status(me, balances()), sum = Math.round(pick.reduce((t, e) => t + each(e), 0));
       op({ op: "markPaid", name: me, hkd: fd("what") === "all" ? Math.min(sum, st.left) : sum, evs: pick.map((e) => e.id), method: fd("method") }).then((ok) => ok && toast(`Thanks! ${data.payTo} will confirm once it arrives`)); }
-    else if (f.dataset.setprice) { op({ op: "setPrice", ev: f.dataset.setprice, price: fd("price") }).then((ok) => ok && toast("Price saved for everyone")); }
+    else if (f.dataset.setprice) {
+      const E = data.events.find((x) => x.id === f.dataset.setprice);
+      if (!E.going.length) { toast("Tick who's going first, then enter the total"); return; }
+      op({ op: "setPrice", ev: E.id, total: fd("total"), count: E.going.length }).then((ok) => ok && toast(`Saved: ${hk(+fd("total") / E.going.length)} each for ${E.going.length} people`));
+    }
     else if (f.dataset.addperson) { const ev = f.dataset.addperson, name = fd("name"); op({ op: "addPerson", name }).then(() => op({ op: "toggle", ev, name, on: true })); }
   });
 

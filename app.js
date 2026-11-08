@@ -693,7 +693,7 @@
       const extra = customEvents.filter((e) => e.iso === d.iso).map((e) => [e.when || "Anytime", `${e.title}${e.venue ? ` · ${e.venue}` : ""}`, "ours", e.id]);
       if (!extra.length) return d;
       // morning events go near the top of the day, the rest at the end
-      const am = extra.filter(([t]) => /morning|breakfast|\bam\b|^[5-9](:\d\d)?\s*am|^[5-9]:\d\d$/i.test(t));
+      const am = extra.filter(([t]) => /morning|breakfast|\bam\b|^0?[5-9](:\d\d)?\s*am|^0?[5-9]:\d\d|^1[01]:\d\d/i.test(t));
       const rest = extra.filter((x) => !am.includes(x));
       const slots = [...d.slots];
       slots.splice(Math.min(1, slots.length), 0, ...am);
