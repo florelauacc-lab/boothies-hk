@@ -723,7 +723,9 @@
     const y = window.scrollY;
     $("#plan").innerHTML = PLAN.map((d) => {
       // events classmates added in the class corner show up on their day too
-      const extra = customEvents.filter((e) => e.iso === d.iso).map((e) => [e.when || "Anytime", `${e.title}${e.venue ? ` · ${e.venue}` : ""}`, "ours", e.id]);
+      // events added in the class corner show on their day too (unless already in the schedule)
+      const inPlan = new Set(d.slots.map((x) => x[3]).filter(Boolean));
+      const extra = customEvents.filter((e) => e.iso === d.iso && !inPlan.has(e.id)).map((e) => [e.when || "Anytime", `${e.title}${e.venue ? ` · ${e.venue}` : ""}`, "ours", e.id]);
       if (!extra.length) return d;
       // morning events go near the top of the day, the rest at the end
       const am = extra.filter(([t]) => /morning|breakfast|\bam\b|^0?[5-9](:\d\d)?\s*am|^0?[5-9]:\d\d|^1[01]:\d\d/i.test(t));
@@ -898,7 +900,8 @@
       lines.push("END:VEVENT");
     };
     PLAN.forEach((d) => {
-      const extra = customEvents.filter((e) => e.iso === d.iso).map((e) => [e.when || "Anytime", `${e.title}${e.venue ? ` · ${e.venue}` : ""}`, "ours", e.id]);
+      const inPlan = new Set(d.slots.map((x) => x[3]).filter(Boolean));
+      const extra = customEvents.filter((e) => e.iso === d.iso && !inPlan.has(e.id)).map((e) => [e.when || "Anytime", `${e.title}${e.venue ? ` · ${e.venue}` : ""}`, "ours", e.id]);
       [...d.slots, ...extra].forEach(([t, v, kind, ev]) => {
         if (/^(next day|all day)$/i.test(t) && /check-out|free day|meals on your own/i.test(v)) return; // skip filler lines
         const shared = ev && window.HK_CLASS?.going(ev);

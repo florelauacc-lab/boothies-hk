@@ -11153,6 +11153,17 @@ window.HK = {
      "school"
     ],
     [
+     "08:30",
+     "Dim Sum Breakfast at Luk On Kui, then the shuttle from Sai Ying Pun Exit B3",
+     "ours",
+     "x-c20ba28bd4",
+     {
+      "label": "Luk On Kui",
+      "tab": "city",
+      "q": "Luk On Kui"
+     }
+    ],
+    [
      "10:00–11:30",
      "AIHK talk (Grand Hall)",
      "optional"
@@ -11317,13 +11328,12 @@ window.HK = {
    "slots": [
     [
      "All day",
-     "Dragon World Championship sailing (21–29 Nov), free events on the Wan Chai waterfront",
+     "⛵ Dragon World Championship sailing (21–29 Nov), after the Asia Pacific Championship (17–21 Nov). Racing is out off Clear Water Bay, so it's hard to see from land; free shoreside events are planned on the Wan Chai waterfront. Check the visitor schedule for times",
      "event",
      null,
      {
-      "label": "Wan Chai harbourfront",
-      "tab": "sights",
-      "q": "Wan Chai Harbourfront"
+      "label": "Dragon World Championship",
+      "url": "https://www.dragonworld2027.com/"
      }
     ],
     [
@@ -11421,6 +11431,16 @@ window.HK = {
    "date": "22 Nov",
    "iso": "2026-11-22",
    "slots": [
+    [
+     "All day",
+     "⛵ Dragon World Championship sailing continues (to 29 Nov), out off Clear Water Bay. Check the visitor schedule",
+     "event",
+     null,
+     {
+      "label": "Dragon World Championship",
+      "url": "https://www.dragonworld2027.com/"
+     }
+    ],
     [
      "All day",
      "Free day",
