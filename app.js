@@ -365,8 +365,8 @@
     const tags = uniq([p.section, ...p.category.map((c) => moodOf(c, p.tab)?.label)]).map((t) => `<span class="tag">${esc(t)}</span>`).join("")
       + (p.veg ? `<span class="tag badge-veg">🥬 ${esc(p.veg)}</span>` : "") + (p.boothies ? `<span class="tag badge-boothies">👥 Boothies map</span>` : "") + (p.local ? `<span class="tag badge-local">🏮 Local favourite</span>` : "") + (p.topBar ? `<span class="tag badge-pick">★ Top bar${p.award ? ` · ${esc(p.award.split(/[;+(]/)[0].trim())}` : ""}</span>` : "") + (p.picked ? `<span class="tag badge-pick">★ Class pick</span>` : "") + (p.flags || []).map((f) => `<span class="tag warn">${esc(f)}</span>`).join("");
     const meta = [
-      p.gRating && `<span class="stars" title="Google rating">★ ${p.gRating.toFixed(1)}${p.gReviews ? ` <small>(${kfmt(p.gReviews)})</small>` : ""}</span>`,
-      p.orScore && `<span class="stars or" title="OpenRice, Hong Kong's local review site">OpenRice ${p.orFaces ? `😊 ${kfmt(p.orFaces[0])} · 😐 ${kfmt(p.orFaces[1])} · 😢 ${kfmt(p.orFaces[2])}` : `${p.orScore.toFixed(1)}<small>/5</small>${p.orReviews ? ` <small>(${kfmt(p.orReviews)})</small>` : ""}`}</span>`,
+      p.gRating && `<span class="stars" title="Google Maps rating">Google ★ ${p.gRating.toFixed(1)}${p.gReviews ? ` <small>(${kfmt(p.gReviews)})</small>` : ""}</span>`,
+      p.orScore && `<span class="stars or" title="OpenRice, Hong Kong's local review site">OpenRice ${p.orScore.toFixed(1)}${(() => { const n = p.orFaces ? p.orFaces[0] + p.orFaces[1] + p.orFaces[2] : p.orReviews; return n ? ` <small>(${kfmt(n)})</small>` : ""; })()}</span>`,
       p.price && `<span class="price">${esc(p.price)}</span>`,
       `<span>${esc(p.cuisine)}</span>`,
       `<span>${esc(p.area)}</span>`,
@@ -772,8 +772,7 @@
     $("#plan-mode").innerHTML = `<button class="${onlyMine ? "" : "on"}" data-onlymine="0">Everything</button><button class="${onlyMine ? "on" : ""}" data-onlymine="1">⭐ My week${nMine ? ` · ${nMine}` : ""}</button>`;
     // a shortcut to the class corner (who's going, what you owe, paying Rienno), which sits below the day
     if (!$("#cc-jump")) $("#plan-mode").insertAdjacentHTML("afterend", `<div class="wk-tools"><button type="button" id="cc-jump" class="cc-jump">💸 Who's going &amp; settle up ↓</button>
-      <details class="ics-menu"><summary>📅 Add to my calendar</summary><div class="ics-opts"><button type="button" class="cc-mini go" data-ics="mine">⭐ My week</button><button type="button" class="cc-mini" data-ics="all">Everything</button>
-      <p class="muted small">Downloads a calendar file. On iPhone tap it and choose Add All; on Android or a computer open it with Google Calendar or Outlook.</p></div></details></div>`);
+      <button type="button" class="cc-jump ics-open" data-icsopen="1">📅 Add to my calendar</button></div>`);
     window.HK_PRIVATE_RENDER?.();
   }
   let customEvents = [];
@@ -904,49 +903,86 @@
     return k ? SLOT_TIMES[k] : null; // null = all day
   }
   const icsEsc = (x) => String(x || "").replace(/\\/g, "\\\\").replace(/[,;]/g, (c) => `\\${c}`).replace(/\n/g, "\\n");
-  function buildIcs(onlyMineMode) {
-    const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Boothies in HK//Becker week//EN", "CALSCALE:GREGORIAN", "X-WR-CALNAME:Boothies in HK", "X-WR-TIMEZONE:Asia/Hong_Kong",
-      "BEGIN:VTIMEZONE", "TZID:Asia/Hong_Kong", "BEGIN:STANDARD", "DTSTART:19700101T000000", "TZOFFSETFROM:+0800", "TZOFFSETTO:+0800", "TZNAME:HKT", "END:STANDARD", "END:VTIMEZONE"];
-    const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
-    let n = 0;
-    const add = (iso, when, title, desc, loc) => {
-      const d = iso.replace(/-/g, ""), w = slotWhen(when);
-      lines.push("BEGIN:VEVENT", `UID:boothies-${d}-${n++}@boothies-hk.vercel.app`, `DTSTAMP:${stamp}`);
-      if (w) lines.push(`DTSTART;TZID=Asia/Hong_Kong:${d}T${w[0].replace(":", "")}00`, `DTEND;TZID=Asia/Hong_Kong:${d}T${w[1].replace(":", "")}00`);
-      else { const nx = new Date(`${iso}T12:00:00Z`); nx.setUTCDate(nx.getUTCDate() + 1); lines.push(`DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${nx.toISOString().slice(0, 10).replace(/-/g, "")}`); }
-      lines.push(`SUMMARY:${icsEsc(title)}`);
-      if (desc) lines.push(`DESCRIPTION:${icsEsc(desc)}`);
-      if (loc) lines.push(`LOCATION:${icsEsc(loc)}`);
-      lines.push("END:VEVENT");
-    };
+  // every calendar event for "my week" or the whole week: {iso, when, title, desc, loc}
+  function calEvents(onlyMineMode) {
+    const out = [];
+    const placeLoc = (pl) => (pl ? `${pl.name}${pl.addressEn ? `, ${pl.addressEn}` : ""}` : "");
     PLAN.forEach((d) => {
       const inPlan = new Set(d.slots.map((x) => x[3]).filter(Boolean));
       const extra = customEvents.filter((e) => e.iso === d.iso && !inPlan.has(e.id)).map(customSlot);
-      [...d.slots, ...extra].forEach(([t, v, kind, ev, , rsvp]) => {
+      [...d.slots, ...extra].forEach(([t, v, kind, ev, go, rsvp]) => {
         if (/^(next day|all day)$/i.test(t) && /check-out|free day|meals on your own/i.test(v)) return; // skip filler lines
         const shared = ev && window.HK_CLASS?.going(ev);
         const picked = kind === "ours" || kind === "event" || (kind === "optional" && rsvp === "rsvp") ? (shared != null ? shared : !!mine[slotKey(d.iso, v, ev)]) : true;
         if (onlyMineMode && !picked) return;
         const icon = kind === "ours" ? "🎉 " : kind === "event" ? "🎟️ " : kind === "optional" ? "(Optional) " : "";
-        add(d.iso, t, `${icon}${v.replace(/^\p{Extended_Pictographic}\s*/u, "")}`, kind === "school" || kind === "optional" ? "Becker schedule" : "", "");
+        const g = [].concat(go || [])[0], pl = g && (g.jump ? byId[g.jump] : g.q && !g.url ? venuePlace(g.q) : null);
+        out.push({ iso: d.iso, when: t, title: `${icon}${v.replace(/^\p{Extended_Pictographic}\s*/u, "")}`, desc: kind === "school" || kind === "optional" ? "Becker schedule" : g?.url || "", loc: placeLoc(pl) });
       });
       myPlans.filter((p) => p.iso === d.iso).forEach((p) => {
         const o = p.idea && OUTINGS.find((x) => x.title === p.idea), pl = p.place && byId[p.place];
-        add(d.iso, p.when || "", `⭐ ${p.title.replace(/^\p{Extended_Pictographic}\s*/u, "")}`, o ? o.steps.map(([, x]) => `• ${x}`).join("\n") : pl ? `${pl.intro || ""}\n${mapUrl(pl)}` : "", pl ? `${pl.name}${pl.addressEn ? `, ${pl.addressEn}` : ""}` : "");
+        out.push({ iso: d.iso, when: p.when || "", title: `⭐ ${p.title.replace(/^\p{Extended_Pictographic}\s*/u, "")}`, desc: o ? o.steps.map(([, x]) => `• ${x}`).join("\n") : pl ? `${pl.intro || ""}\n${mapUrl(pl)}` : "", loc: placeLoc(pl) });
       });
+    });
+    return out;
+  }
+  const nextDay = (iso) => { const nx = new Date(`${iso}T12:00:00Z`); nx.setUTCDate(nx.getUTCDate() + 1); return nx.toISOString().slice(0, 10).replace(/-/g, ""); };
+  function buildIcs(list) {
+    const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Boothies in HK//Becker week//EN", "CALSCALE:GREGORIAN", "X-WR-CALNAME:Boothies in HK", "X-WR-TIMEZONE:Asia/Hong_Kong",
+      "BEGIN:VTIMEZONE", "TZID:Asia/Hong_Kong", "BEGIN:STANDARD", "DTSTART:19700101T000000", "TZOFFSETFROM:+0800", "TZOFFSETTO:+0800", "TZNAME:HKT", "END:STANDARD", "END:VTIMEZONE"];
+    const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
+    list.forEach((x, n) => {
+      const d = x.iso.replace(/-/g, ""), w = slotWhen(x.when);
+      lines.push("BEGIN:VEVENT", `UID:boothies-${d}-${n}@boothies-hk.vercel.app`, `DTSTAMP:${stamp}`);
+      if (w) lines.push(`DTSTART;TZID=Asia/Hong_Kong:${d}T${w[0].replace(":", "")}00`, `DTEND;TZID=Asia/Hong_Kong:${d}T${w[1].replace(":", "")}00`);
+      else lines.push(`DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${nextDay(x.iso)}`);
+      lines.push(`SUMMARY:${icsEsc(x.title)}`);
+      if (x.desc) lines.push(`DESCRIPTION:${icsEsc(x.desc)}`);
+      if (x.loc) lines.push(`LOCATION:${icsEsc(x.loc)}`);
+      lines.push("END:VEVENT");
     });
     lines.push("END:VCALENDAR");
     return lines.join("\r\n");
   }
+  // one event straight into Google Calendar (the Android Google Calendar app can't open calendar files)
+  const gcalUrl = (x) => {
+    const d = x.iso.replace(/-/g, ""), w = slotWhen(x.when);
+    const dates = w ? `${d}T${w[0].replace(":", "")}00/${d}T${w[1].replace(":", "")}00` : `${d}/${nextDay(x.iso)}`;
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(x.title)}&dates=${dates}&ctz=Asia/Hong_Kong${x.desc ? `&details=${encodeURIComponent(x.desc)}` : ""}${x.loc ? `&location=${encodeURIComponent(x.loc)}` : ""}`;
+  };
+  const device = () => (/iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ? "ios" : /Android/i.test(navigator.userAgent) ? "android" : "desktop");
+  function openCalendar() {
+    let dlg = $("#ics-dlg");
+    if (!dlg) { document.body.insertAdjacentHTML("beforeend", `<dialog id="ics-dlg" class="ics-dlg"></dialog>`); dlg = $("#ics-dlg"); }
+    const mineList = calEvents(true), all = calEvents(false), dev = device();
+    const how = { ios: "Tap one of the buttons, then <b>Add All</b> on the next screen. The events go straight into your iPhone calendar.",
+      android: "Tap one of the buttons, then open the downloaded file with your phone's calendar app (for example Samsung Calendar).",
+      desktop: "Tap one of the buttons to download a calendar file, then open it: Apple Calendar and Outlook add the events. In Google Calendar: Settings → Import." }[dev];
+    const day = (iso) => { const d = PLAN.find((x) => x.iso === iso); return d ? `${d.day} ${d.date}` : iso; };
+    dlg.innerHTML = `<div class="dialog-body ics-body">
+      <h3>📅 Add to your calendar</h3>
+      <p class="small">${how}</p>
+      <div class="ics-choice">
+        <button type="button" class="paybtn big" data-ics="mine">⭐ My plans <small>${mineList.length} events: the Becker schedule plus what you've ticked or added</small></button>
+        <button type="button" class="paybtn alt" data-ics="all">Whole week <small>${all.length} events, including things you haven't picked</small></button>
+      </div>
+      <details class="ics-g"><summary>Only use Google Calendar? Add events one by one</summary>
+        <ul class="ics-list">${mineList.map((x) => `<li><span><small>${esc(day(x.iso))} · ${esc(x.when)}</small>${esc(x.title)}</span><a class="cc-mini" href="${esc(gcalUrl(x))}" target="_blank" rel="noopener">+ Google</a></li>`).join("")}</ul></details>
+      <p class="muted small">Changed your plans later? Add them again. A calendar file doesn't update itself.</p>
+      <div class="dialog-actions"><button type="button" class="ghost" data-icsclose="1">Done</button></div></div>`;
+    if (!dlg.open) dlg.showModal();
+  }
   document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-icsopen]")) { openCalendar(); return; }
+    if (e.target.closest("[data-icsclose]") || e.target.id === "ics-dlg") { $("#ics-dlg")?.close(); return; }
     const b = e.target.closest("[data-ics]");
     if (!b) return;
-    const blob = new Blob([buildIcs(b.dataset.ics === "mine")], { type: "text/calendar;charset=utf-8" });
+    const blob = new Blob([buildIcs(calEvents(b.dataset.ics === "mine"))], { type: "text/calendar;charset=utf-8" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob); a.download = b.dataset.ics === "mine" ? "boothies-my-week.ics" : "boothies-whole-week.ics";
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-    toast("Calendar file ready: open it to add the events");
+    toast(device() === "ios" ? "Tap Add All to put them in your calendar" : device() === "android" ? "Downloaded: open the file with your calendar app" : "Downloaded: open the file to add the events");
   });
 
   /* ---------- start here ---------- */

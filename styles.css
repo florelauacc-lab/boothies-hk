@@ -1425,3 +1425,16 @@ button.bl .pw-copy { pointer-events: none; }
 .cc-note { margin: 6px 0; padding: 8px 10px; border-radius: 10px; background: rgba(120,190,255,.1); font-size: .92rem; }
 .evinfo .evnote { display: block; margin-top: 4px; font-size: .85rem; opacity: .85; }
 .cc-unnamed { margin: 6px 0; padding: 8px 10px; border-radius: 10px; background: rgba(255,170,60,.12); color: #ffd9a0; font-size: .9rem; line-height: 1.4; }
+.nw { white-space: nowrap; } /* keep each chunk of a line together; wrap only between chunks */
+/* calendar panel */
+.ics-dlg { max-width: min(440px, calc(100vw - 24px)); width: 100%; }
+.ics-body h3 { margin: 0 0 8px; }
+.ics-choice { display: grid; gap: 8px; margin: 12px 0; }
+.ics-choice .paybtn { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 2px; width: 100%; }
+.ics-choice .paybtn small { font-weight: 500; opacity: .8; font-size: .82rem; }
+.ics-g > summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
+.ics-list { list-style: none; padding: 0; margin: 6px 0; display: grid; gap: 6px; max-height: 40vh; overflow-y: auto; }
+.ics-list li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 10px; border-radius: 10px; background: rgba(255,255,255,.05); }
+.ics-list li span { min-width: 0; overflow-wrap: anywhere; } .ics-list li small { display: block; opacity: .7; font-size: .78rem; }
+.ics-list li .cc-mini { flex-shrink: 0; min-height: 44px; display: inline-flex; align-items: center; }
+.ics-g[open] > summary { margin-bottom: 6px; } .ics-list { padding-top: 2px; border-top: 1px solid rgba(255,255,255,.08); }
