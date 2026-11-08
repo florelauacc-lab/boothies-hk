@@ -668,6 +668,8 @@ window.HK = {
     "Japanese"
    ],
    "emoji": "🍜",
+   "gRating": 4.2,
+   "gReviews": 493,
    "orSmile": 72,
    "orFaces": [
     128,
@@ -830,7 +832,9 @@ window.HK = {
    ],
    "emoji": "🍸",
    "gRating": 4.3,
-   "gReviews": 675
+   "gReviews": 675,
+   "orScore": 4.0,
+   "orReviews": 30
   },
   {
    "tab": "saiwan",
@@ -1023,7 +1027,9 @@ window.HK = {
    "emoji": "🎷",
    "kinds": [
     "Jazz & live music"
-   ]
+   ],
+   "gRating": 4.7,
+   "gReviews": 147
   },
   {
    "tab": "saiwan",
@@ -1061,7 +1067,9 @@ window.HK = {
    ],
    "emoji": "🍷",
    "gRating": 4.8,
-   "gReviews": 267
+   "gReviews": 267,
+   "orScore": 5.0,
+   "orReviews": 6
   },
   {
    "tab": "saiwan",
@@ -1096,7 +1104,9 @@ window.HK = {
    "kinds": [
     "Cocktails"
    ],
-   "emoji": "🍸"
+   "emoji": "🍸",
+   "orScore": 4.5,
+   "orReviews": 4
   },
   {
    "tab": "saiwan",
@@ -2930,6 +2940,8 @@ window.HK = {
    ],
    "addressZh": "中西區遮打道10號太子大廈",
    "emoji": "🌃",
+   "gRating": 4.4,
+   "gReviews": 180,
    "orScore": 3.5,
    "orReviews": 17,
    "openrice": "https://www.openrice.com/en/hongkong/r-terrace-boulud-by-mandarin-oriental-central-french-r1122948"
@@ -2967,7 +2979,10 @@ window.HK = {
    "addressZh": "中西區金鐘道88號太古廣場奕居",
    "emoji": "🌃",
    "gRating": 4.4,
-   "gReviews": 383
+   "gReviews": 383,
+   "orScore": 4.0,
+   "orReviews": 202,
+   "openrice": "https://www.openrice.com/en/hongkong/r-salisterra-admiralty-mediterranean-brunch-r706487"
   },
   {
    "tab": "city",
@@ -3154,7 +3169,10 @@ window.HK = {
    "addressZh": "中西區擺花街1號一號廣場",
    "emoji": "🍷",
    "gRating": 4.6,
-   "gReviews": 123
+   "gReviews": 123,
+   "orScore": 4.0,
+   "orReviews": 14,
+   "openrice": "https://www.openrice.com/en/hongkong/r-terroirs-by-lqv-central-french-r767862"
   },
   {
    "tab": "city",
@@ -3255,7 +3273,9 @@ window.HK = {
    "emoji": "🪩",
    "kinds": [
     "Clubbing"
-   ]
+   ],
+   "gRating": 4.5,
+   "gReviews": 21
   },
   {
    "tab": "city",
@@ -3427,7 +3447,10 @@ window.HK = {
    "id": "bu-er-jiang-hu-cuisine",
    "kinds": [
     "Cantonese & seafood"
-   ]
+   ],
+   "orScore": 4.5,
+   "orReviews": 66,
+   "openrice": "https://www.openrice.com/en/hongkong/r-%E4%B8%8D%E4%BA%8C%E6%B1%9F%E6%B9%96%E8%8F%9C-causeway-bay-sichuan-r851209"
   },
   {
    "tab": "saiwan",
@@ -3522,7 +3545,9 @@ window.HK = {
    "id": "project-c",
    "kinds": [
     "Coffee"
-   ]
+   ],
+   "gRating": 4.1,
+   "gReviews": 198
   },
   {
    "tab": "city",
@@ -3618,6 +3643,8 @@ window.HK = {
    "kinds": [
     "Coffee"
    ],
+   "gRating": 4.2,
+   "gReviews": 563,
    "orScore": 4.0,
    "orReviews": 125,
    "openrice": "https://www.openrice.com/en/hongkong/r-blue-bottle-coffee-central-western-r666639"
@@ -4122,6 +4149,8 @@ window.HK = {
     "Cantonese & seafood"
    ],
    "emoji": "🍜",
+   "gRating": 4.1,
+   "gReviews": 2307,
    "orScore": 3.5,
    "orReviews": 245,
    "openrice": "https://www.openrice.com/en/hongkong/r-maks-noodle-central-guangdong-noodles-rice-noodles-r1998"
@@ -4644,7 +4673,10 @@ window.HK = {
    ],
    "emoji": "🌃",
    "gRating": 4.3,
-   "gReviews": 1850
+   "gReviews": 1850,
+   "orScore": 4.0,
+   "orReviews": 0,
+   "openrice": "https://www.openrice.com/en/hongkong/r-ozone-tsim-sha-tsui-western-wine-r50837"
   },
   {
    "tab": "city",
@@ -4749,7 +4781,10 @@ window.HK = {
    "kinds": [
     "Dessert & sweets"
    ],
-   "emoji": "🧇"
+   "emoji": "🧇",
+   "orScore": 4.5,
+   "orReviews": 135,
+   "openrice": "https://www.openrice.com/en/hongkong/r-mammy-pancake-tsim-sha-tsui-hong-kong-style-dessert-r804020"
   },
   {
    "tab": "city",
@@ -4891,7 +4926,10 @@ window.HK = {
    ],
    "emoji": "🥧",
    "gRating": 4.1,
-   "gReviews": 79
+   "gReviews": 79,
+   "orScore": 3.5,
+   "orReviews": 42,
+   "openrice": "https://www.openrice.com/en/hongkong/r-st-lolan-bakery-western-district-hong-kong-style-bakery-r12615"
   },
   {
    "tab": "saiwan",
@@ -4921,7 +4959,10 @@ window.HK = {
    "kinds": [
     "Dessert & sweets"
    ],
-   "emoji": "🥧"
+   "emoji": "🥧",
+   "orScore": 4.5,
+   "orReviews": 51,
+   "openrice": "https://www.openrice.com/en/hongkong/r-bernice-bakery-western-district-french-bakery-r991038"
   },
   {
    "tab": "saiwan",
@@ -5147,7 +5188,10 @@ window.HK = {
    ],
    "emoji": "🍖",
    "gRating": 4.1,
-   "gReviews": 547
+   "gReviews": 547,
+   "orScore": 3.5,
+   "orReviews": 262,
+   "openrice": "https://www.openrice.com/en/hongkong/r-po-kee-western-district-hong-kong-style-chinese-bbq-r48199"
   },
   {
    "tab": "saiwan",
@@ -5940,7 +5984,10 @@ window.HK = {
    ],
    "emoji": "🦀",
    "gRating": 4.3,
-   "gReviews": 107
+   "gReviews": 107,
+   "orScore": 4.0,
+   "orReviews": 0,
+   "openrice": "https://www.openrice.com/en/hongkong/r-surf-turf-grill-and-bar-stanley-international-wine-r823575"
   },
   {
    "tab": "city",
@@ -9047,7 +9094,10 @@ window.HK = {
     "Clubbing"
    ],
    "gRating": 4.0,
-   "gReviews": 474
+   "gReviews": 474,
+   "orScore": 4.0,
+   "orReviews": 95,
+   "openrice": "https://www.openrice.com/en/hongkong/r-cassio-central-spanish-wine-r513229"
   },
   {
    "tab": "city",
@@ -10202,6 +10252,8 @@ window.HK = {
     "Regional Chinese"
    ],
    "addressZh": "油尖旺區梳士巴利道18號VICTORIA DOCKSIDEK11 ATELIER",
+   "gRating": 3.9,
+   "gReviews": 618,
    "orScore": 4.0,
    "orReviews": 221,
    "openrice": "https://www.openrice.com/en/hongkong/r-ye-shanghai-tsim-sha-tsui-shanghai-r663490"
@@ -10926,6 +10978,8 @@ window.HK = {
    "kinds": [
     "Roast meats & noodles"
    ],
+   "gRating": 3.8,
+   "gReviews": 3454,
    "orScore": 4.0,
    "orReviews": 877,
    "openrice": "https://www.openrice.com/en/hongkong/r-yung-kee-restaurant-central-guangdong-chinese-bbq-r4203"
@@ -10959,6 +11013,8 @@ window.HK = {
    "kinds": [
     "Roast meats & noodles"
    ],
+   "gRating": 3.7,
+   "gReviews": 921,
    "orScore": 3.5,
    "orReviews": 240,
    "openrice": "https://www.openrice.com/en/hongkong/r-ki-s-roasted-goose-restaurant-causeway-bay-hong-kong-style-chinese-bbq-r602166"
@@ -10993,6 +11049,8 @@ window.HK = {
    "kinds": [
     "Roast meats & noodles"
    ],
+   "gRating": 3.9,
+   "gReviews": 428,
    "orSmile": 64,
    "orFaces": [
     21,
@@ -11032,6 +11090,8 @@ window.HK = {
    "kinds": [
     "Roast meats & noodles"
    ],
+   "gRating": 4.1,
+   "gReviews": 722,
    "orSmile": 86,
    "orFaces": [
     163,
@@ -11105,6 +11165,8 @@ window.HK = {
    "kinds": [
     "Roast meats & noodles"
    ],
+   "gRating": 3.9,
+   "gReviews": 2738,
    "orScore": 3.5,
    "orReviews": 495,
    "openrice": "https://www.openrice.com/en/hongkong/r-yue-kee-restaurant-sham-tseng-guangdong-chinese-bbq-r4171"
@@ -11139,7 +11201,10 @@ window.HK = {
    "id": "tak-tou",
    "kinds": [
     "Cha chaan teng & cafés"
-   ]
+   ],
+   "orScore": 4.5,
+   "orReviews": 17,
+   "openrice": "https://www.openrice.com/en/hongkong/r-tak-tou-tin-hau-hong-kong-style-r809526"
   },
   {
    "tab": "saiwan",
@@ -11169,7 +11234,10 @@ window.HK = {
    "id": "shing-kee",
    "kinds": [
     "Cha chaan teng & cafés"
-   ]
+   ],
+   "orScore": 3.5,
+   "orReviews": 153,
+   "openrice": "https://www.openrice.com/en/hongkong/r-%E8%AA%A0%E8%A8%98-western-district-hong-kong-style-noodles-rice-noodles-r31228"
   },
   {
    "tab": "saiwan",
@@ -11200,7 +11268,10 @@ window.HK = {
    "id": "shui-kee-coffee",
    "kinds": [
     "Cha chaan teng & cafés"
-   ]
+   ],
+   "orScore": 3.5,
+   "orReviews": 630,
+   "openrice": "https://www.openrice.com/en/hongkong/r-shui-kee-coffee-sheung-wan-hong-kong-style-r18167"
   },
   {
    "tab": "city",
@@ -11230,7 +11301,12 @@ window.HK = {
    "id": "tsim-chai-kee-noodle",
    "kinds": [
     "Roast meats & noodles"
-   ]
+   ],
+   "gRating": 3.9,
+   "gReviews": 4372,
+   "orScore": 3.5,
+   "orReviews": 530,
+   "openrice": "https://www.openrice.com/en/hongkong/r-tsim-chai-kee-noodle-central-guangdong-noodles-rice-noodles-r3823"
   },
   {
    "tab": "city",
@@ -11259,7 +11335,16 @@ window.HK = {
    "id": "shui-kee-beef-brisket-dai-pai-dong",
    "kinds": [
     "Roast meats & noodles"
-   ]
+   ],
+   "orSmile": 74,
+   "orFaces": [
+    135,
+    35,
+    13
+   ],
+   "orScore": 4.3,
+   "orReviews": 216,
+   "openrice": "https://www.openrice.com/en/hongkong/r-shui-kee-central-hong-kong-style-noodles-rice-noodles-r3160"
   },
   {
    "tab": "city",
@@ -11289,7 +11374,16 @@ window.HK = {
    "id": "kau-kee-beef-offal-noodles",
    "kinds": [
     "Roast meats & noodles"
-   ]
+   ],
+   "orSmile": 73,
+   "orFaces": [
+    71,
+    23,
+    3
+   ],
+   "orScore": 4.4,
+   "orReviews": 121,
+   "openrice": "https://www.openrice.com/en/hongkong/r-%E4%B9%9D%E8%A8%98%E7%89%9B%E4%BB%80%E7%B2%89%E9%BA%B5-wan-chai-hong-kong-style-food-stall-noodles-r18326"
   },
   {
    "tab": "city",
@@ -11319,7 +11413,10 @@ window.HK = {
    "id": "yuen-kee-dessert-2",
    "kinds": [
     "Dessert & sweets"
-   ]
+   ],
+   "orScore": 4.0,
+   "orReviews": 145,
+   "openrice": "https://www.openrice.com/en/hongkong/r-yuen-kee-dessert-cafe-tin-hau-hong-kong-style-sweet-soup-r887467"
   },
   {
    "tab": "city",
@@ -11341,14 +11438,19 @@ window.HK = {
    ],
    "tips": "About 20 seats; no credit cards. Closed Mondays.",
    "hours": "Tue–Sun 12:00–22:00",
-   "addressEn": "Lockhart Road, Wan Chai (near No. 382)",
+   "addressEn": "G/F, 406 Lockhart Road, Wan Chai",
    "local": true,
    "lat": 22.278217,
    "lng": 114.173766,
    "id": "keung-kee",
    "kinds": [
     "Roast meats & noodles"
-   ]
+   ],
+   "gRating": 3.9,
+   "gReviews": 1002,
+   "orScore": 3.5,
+   "orReviews": 245,
+   "openrice": "https://www.openrice.com/en/hongkong/r-keung-kee-wan-chai-hong-kong-style-r10005"
   },
   {
    "tab": "saiwan",
@@ -11378,7 +11480,10 @@ window.HK = {
    "id": "sang-kee-chiu-chow-braised-goose",
    "kinds": [
     "Roast meats & noodles"
-   ]
+   ],
+   "orScore": 3.5,
+   "orReviews": 75,
+   "openrice": "https://www.openrice.com/en/hongkong/r-%E7%94%9F%E8%A8%98%E6%BB%B7%E5%91%B3-western-district-chiu-chow-chinese-bbq-r6770"
   },
   {
    "tab": "city",
@@ -11409,7 +11514,10 @@ window.HK = {
    "id": "trusty-congee-king",
    "kinds": [
     "Roast meats & noodles"
-   ]
+   ],
+   "orScore": 3.5,
+   "orReviews": 244,
+   "openrice": "https://www.openrice.com/en/hongkong/r-trusty-congee-king-wan-chai-hong-kong-style-congee-r12650"
   }
  ],
  "OUTINGS": [

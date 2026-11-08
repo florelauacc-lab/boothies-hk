@@ -136,6 +136,19 @@
     const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2;
     return 2 * R * Math.asin(Math.sqrt(h));
   }
+  // MTR stations: [name, lat, lng, stops from Causeway Bay, changes needed, where you change] (positions from OpenStreetMap)
+  const MTR = [["Kennedy Town", 22.28122, 114.129, 7, 0, "Admiralty"], ["HKU", 22.28445, 114.13419, 6, 0, "Admiralty"], ["Sai Ying Pun", 22.28543, 114.14264, 5, 0, "Admiralty"], ["Sheung Wan", 22.2859, 114.15371, 4, 0, "Admiralty"], ["Central", 22.28194, 114.15808, 3, 0, "Admiralty"], ["Admiralty", 22.27871, 114.16425, 2, 0, "Admiralty"], ["Wan Chai", 22.27758, 114.17286, 1, 0, "Admiralty"], ["Causeway Bay", 22.2801, 114.184, 0, 0, "Admiralty"], ["Tin Hau", 22.28279, 114.19185, 1, 0, "Admiralty"], ["Fortress Hill", 22.28821, 114.19367, 2, 0, "Admiralty"], ["North Point", 22.29091, 114.20075, 3, 0, "Admiralty"], ["Quarry Bay", 22.28817, 114.20899, 4, 0, "Admiralty"], ["Tai Koo", 22.28515, 114.2165, 5, 0, "Admiralty"], ["Sai Wan Ho", 22.28274, 114.2214, 6, 0, "Admiralty"], ["Shau Kei Wan", 22.27915, 114.2289, 7, 0, "Admiralty"], ["Tsim Sha Tsui", 22.29798, 114.17224, 3, 1, "Admiralty"], ["Jordan", 22.30469, 114.17156, 4, 1, "Admiralty"], ["Yau Ma Tei", 22.31237, 114.17079, 5, 1, "Admiralty"], ["Mong Kok", 22.31966, 114.17076, 6, 1, "Admiralty"], ["Prince Edward", 22.32458, 114.16828, 7, 1, "Admiralty"], ["Sham Shui Po", 22.33014, 114.16325, 8, 1, "Admiralty"], ["Ocean Park", 22.24872, 114.17443, 3, 1, "Admiralty"], ["Wong Chuk Hang", 22.24801, 114.16812, 4, 1, "Admiralty"], ["Lei Tung", 22.24218, 114.15615, 5, 1, "Admiralty"], ["South Horizons", 22.24284, 114.1488, 6, 1, "Admiralty"], ["Hung Hom", 22.30503, 114.18198, 3, 1, "Admiralty"], ["Kowloon", 22.3051, 114.16187, 4, 1, "Central for Hong Kong station"]];
+  // from the Park Lane by public transport: walk if it's close, MTR if there's a station nearby, otherwise a taxi
+  function fromParkLane(p, taxi) {
+    const home = HOME.parklane, dHome = km(home, p);
+    const walkHome = Math.max(3, Math.round(dHome * 1.3 * 1000 / 80));
+    if (walkHome <= 15) return `🚶 ~${walkHome} min walk from Park Lane`;
+    const [st, la, ln, stops, chg, via] = MTR.reduce((best, s) => (km({ lat: s[1], lng: s[2] }, p) < km({ lat: best[1], lng: best[2] }, p) ? s : best));
+    const walkKm = km({ lat: la, lng: ln }, p) * 1.3, walk = Math.round(walkKm * 1000 / 80);
+    if (st === "Causeway Bay" || walk > 15) return `🚕 ~${taxi(dHome) + (whereOf(p) === "kowloon" ? 10 : 0)} min by taxi from Park Lane`;
+    const total = 4 + stops * 2 + chg * 5 + walk;
+    return `🚇 ~${Math.round(total / 5) * 5 || 5} min from Park Lane: MTR to ${st}${chg ? ` (change at ${via})` : ""}, then ${walk < 2 ? "it's by the exit" : `${walk} min walk`}`;
+  }
   function distanceNote(p) {
     if (me && p.lat != null) {
       const d = km(me, p);
@@ -145,11 +158,10 @@
     const fromBooth = whereOf(p) === "saiwan";
     const d = km(HOME[fromBooth ? "campus" : "parklane"], p);
     // rough taxi time: roads wind ~1.4x the straight line, ~22 km/h average in town, plus pick-up
-    const taxi = (km) => Math.max(5, Math.round((km * 1.4 / 22) * 60 + 3));
-    if (fromBooth) return `🚕 ~${taxi(d)} min by taxi from Booth`;
-    // Kowloon means a cross-harbour tunnel, which is often the slow bit
-    if (whereOf(p) === "kowloon") return `🚕 ~${taxi(d) + 10} min by taxi via the tunnel · or ⛴️ Star Ferry`;
-    return `🚕 ~${taxi(d)} min by taxi from Park Lane`;
+    // (longer trips use highways, so they average faster)
+    const taxi = (km) => Math.max(5, Math.round((km * 1.4 / (km > 8 ? 40 : 22)) * 60 + 3));
+    if (fromBooth) return `🚕 ~${taxi(d)} min by taxi from Booth`; // the campus is out of the way, so taxi it is
+    return fromParkLane(p, taxi);
   }
   function colorOf(p) { return moodOf(p.category[0], p.tab)?.c || C.pink; }
   function emojiOf(p) { return p.emoji || moodOf(p.category[0], p.tab)?.em || "📍"; }
@@ -688,6 +700,20 @@
       <small>${w.src === "HKO" ? `Hong Kong Observatory${w.text ? ` · ${esc(w.text.split(". ")[0])}` : ""}` : "Open-Meteo (the HKO forecast covers 9 days ahead)"}</small></p>`;
   };
 
+  // the day in time order: "08:15" and "20:15–22:45" by their start, words like Morning / Lunch / Evening at a typical time;
+  // anything without a time keeps its place after the row before it
+  const WORD_TIME = [[/all day/i, -1], [/early morning|breakfast/i, 420], [/morning/i, 450], [/lunch|midday|noon/i, 720], [/afternoon/i, 840], [/evening|dinner/i, 1140], [/night|late/i, 1320], [/next day/i, 1500], [/anytime/i, 1600]];
+  function startMin(t) {
+    const m = String(t).match(/(\d{1,2}):(\d{2})/);
+    if (m) return +m[1] * 60 + +m[2];
+    const w = WORD_TIME.find(([re]) => re.test(t));
+    return w ? w[1] : null;
+  }
+  function byTime(slots) {
+    let last = -2;
+    return slots.map((s, i) => { const k = startMin(s[0]); if (k != null) last = k; return { s, k: k ?? last, i }; })
+      .sort((a, b) => a.k - b.k || a.i - b.i).map((x) => x.s);
+  }
   function renderPlan() {
     // "today" in Hong Kong time, so the week opens on the right day during the trip
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong" }).format(new Date());
@@ -738,13 +764,7 @@
       // events added in the class corner show on their day too (unless already in the schedule)
       const inPlan = new Set(d.slots.map((x) => x[3]).filter(Boolean));
       const extra = customEvents.filter((e) => e.iso === d.iso && !inPlan.has(e.id)).map(customSlot);
-      if (!extra.length) return d;
-      // morning events go near the top of the day, the rest at the end
-      const am = extra.filter(([t]) => /morning|breakfast|\bam\b|^0?[5-9](:\d\d)?\s*am|^0?[5-9]:\d\d|^1[01]:\d\d/i.test(t));
-      const rest = extra.filter((x) => !am.includes(x));
-      const slots = [...d.slots];
-      slots.splice(Math.min(1, slots.length), 0, ...am);
-      return { ...d, slots: [...slots, ...rest] };
+      return { ...d, slots: byTime([...d.slots, ...extra]) };
     }).map(dayCard).join("");
     document.querySelectorAll("#plan details[data-k]").forEach((x) => { if (openK.has(`${x.closest("li[data-iso]")?.dataset.iso}|${x.dataset.k}`)) x.open = true; });
     if (Math.abs(window.scrollY - y) > 2) window.scrollTo(0, y);
