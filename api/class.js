@@ -79,6 +79,14 @@ export default async function handler(req, res) {
         await redis([[b.on ? "SADD" : "SREM", `${P}going:${ev}`, name]]);
         break;
       }
+      case "setGuests": { // people who said yes but aren't named yet (a +1 in the chat): counted for bookings, not charged
+        const [cur] = await redis([["HGET", `${P}events`, ev]]);
+        if (!cur) return res.status(404).json({ error: "no event" });
+        const e = JSON.parse(cur);
+        e.guests = Math.max(0, Math.min(40, Math.round(+b.n) || 0));
+        await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
+        break;
+      }
       case "addEvent": {
         const title = clean(b.title, 70);
         if (!title) return res.status(400).json({ error: "missing title" });

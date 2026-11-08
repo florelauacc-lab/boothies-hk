@@ -25,8 +25,18 @@
   const placeFor = (venue) => {
     const v = String(venue || "").toLowerCase();
     if (v.length < 4) return null;
-    return PLACES.find((p) => p.name.toLowerCase() === v) || PLACES.find((p) => { const n = p.name.toLowerCase().replace(/\s*\(.*\)$/, ""); return n.length >= 5 && v.includes(n); });
+    return placesFor(venue)[0] || null;
   };
+  // every guide place a venue names, in the order written ("Dim Sum Library or Lin Heung Lau" gives both)
+  function placesFor(venue) {
+    const v = String(venue || "").toLowerCase();
+    if (v.length < 4) return [];
+    const exact = PLACES.find((p) => p.name.toLowerCase() === v);
+    if (exact) return [exact];
+    const seen = new Set();
+    return PLACES.map((p) => { const n = p.name.toLowerCase().replace(/\s*\(.*\)$/, ""); return [p, n.length >= 5 ? v.indexOf(n) : -1]; })
+      .filter(([p, i]) => i >= 0 && !seen.has(p.name) && seen.add(p.name)).sort((a, b) => a[1] - b[1]).map(([p]) => p);
+  }
 
   /* ---------- money ---------- */
   let rates = { USD: 0.128, GBP: 0.099, EUR: 0.111, JPY: 19.6, CNY: 0.92, KRW: 179, SGD: 0.166, TWD: 4.1, CAD: 0.178, AUD: 0.196, INR: 10.9, ILS: 0.47, CHF: 0.103 };
@@ -240,13 +250,16 @@
   // table bookings for an event: just the times and sizes (people turn up and get seated as tables free up)
   // booked seats against everyone who said they're going: how many more to book (0 = enough)
   const seats = (e) => (e.tables || []).reduce((t, x) => t + (+x.size || 0), 0);
-  const seatsShort = (e) => ((e.tables || []).length ? Math.max(0, e.going.length - seats(e)) : 0);
+  const unnamed = (e) => +e.guests || 0; // said yes but not named yet
+  const headcount = (e) => e.going.length + unnamed(e);
+  const goingTxt = (e) => `${headcount(e)} going${unnamed(e) ? ` (${unnamed(e)} not named yet)` : ""}`;
+  const seatsShort = (e) => ((e.tables || []).length ? Math.max(0, headcount(e) - seats(e)) : 0);
   function tablesBlock(e) {
     const tables = e.tables || [];
     const short = seatsShort(e), n = seats(e);
     const seatLine = tables.length ? (short
-      ? `<p class="tb-gap">⚠️ <b>${e.going.length} going, ${n} seats booked: book ${short} more seat${short > 1 ? "s" : ""}</b></p>`
-      : `<p class="tb-ok">✓ ${n} seats booked for ${e.going.length} going${n > e.going.length ? ` · ${n - e.going.length} spare` : ""}</p>`) : "";
+      ? `<p class="tb-gap">⚠️ <b>${headcount(e)} going, ${n} seats booked: book ${short} more seat${short > 1 ? "s" : ""}</b>${unnamed(e) ? `<br><small>Includes ${unnamed(e)} not named yet</small>` : ""}</p>`
+      : `<p class="tb-ok">✓ ${n} seats booked for ${headcount(e)} going${n > headcount(e) ? ` · ${n - headcount(e)} spare` : ""}</p>`) : "";
     if (!tables.length && !live()) return "";
     return `<div class="cc-tables"><h4>🍽️ Table bookings</h4>${seatLine}
       ${tables.length ? `<ul class="tb-list">${tables.map((t) => `<li class="tb"><div class="tb-top"><b>${esc(t.time || "Time TBC")}</b> <span>${t.label ? `${esc(t.label)} · ` : ""}table for ${t.size || "?"}</span>
@@ -262,8 +275,8 @@
     const day = DAYS.find(([iso]) => iso === e.iso)?.[1];
     return `<details class="cc-ev${inIt ? " mine" : ""}" id="ev-${e.id}" data-ev="${e.id}"${openEv.has(e.id) || ed ? " open" : ""}>
       <summary><span class="t"><b>${esc(e.title)}</b><small>${esc([day, e.when].filter(Boolean).join(", "))}${e.venue ? ` · ${esc(e.venue)}` : ""}</small></span>
-      <span class="n">${e.going.length} going${inIt ? " · ✓ you" : ""}<br><em>${p ? `${hk(p)} each ≈ ${fx(p)}` : "price to come"}</em></span></summary>
-      ${placeFor(e.venue) ? `<button type="button" class="cc-venue" data-jump="${placeFor(e.venue).id}">📍 ${esc(placeFor(e.venue).name)} · map &amp; taxi card →</button>` : ""}
+      <span class="n">${e.going.length}${unnamed(e) ? ` +${unnamed(e)}` : ""} going${inIt ? " · ✓ you" : ""}<br><em>${p ? `${hk(p)} each ≈ ${fx(p)}` : "price to come"}</em></span></summary>
+      ${placesFor(e.venue).map((pl) => `<button type="button" class="cc-venue" data-jump="${pl.id}">📍 ${esc(pl.name)} · map &amp; taxi card →</button>`).join("")}
       ${me && live() ? `<button type="button" class="cc-imin${inIt ? " on" : ""}" data-tick="${e.id}" data-name="${esc(me)}" data-on="${inIt ? 0 : 1}">${inIt ? "✓ I'm going · tap to undo" : "+ I'm going"}</button>` : ""}
       ${ed
         ? `<p class="cc-hint">Tap names to tick or untick · ${e.going.length} going</p>
@@ -273,6 +286,9 @@
           <button type="button" class="cc-done" data-edit="">Done</button>`
         : `<div class="cc-names">${e.going.map((n) => `<span class="${n === me ? "me" : ""}">${esc(n)}</span>`).join("") || `<em class="muted">Nobody yet</em>`}</div>
           ${live() ? `<button type="button" class="cc-editbtn" data-edit="${e.id}">✏️ Tick who's going</button>` : ""}`}
+      ${live() || unnamed(e) ? `<div class="cc-guests"><span>👤 Not named yet <small>e.g. a +1 in the chat</small></span>
+        ${live() ? `<span class="gq"><button type="button" data-guests="${e.id}|-1" aria-label="One fewer"${unnamed(e) ? "" : " disabled"}>−</button><b>${unnamed(e)}</b><button type="button" data-guests="${e.id}|1" aria-label="One more">+</button></span>` : `<b>${unnamed(e)}</b>`}</div>
+        ${unnamed(e) ? `<p class="muted small cc-gnote">Counted for table bookings, not charged. When you know who it is, tick their name and tap −.</p>` : ""}` : ""}
       ${tablesBlock(e)}
       <div class="cc-bills">
         <h4>Cost</h4>
@@ -380,7 +396,7 @@
           return `<tr class="${n === me ? "me" : ""}"><td>${esc(n)}</td>${evs.map((e) => cell(n, e)).join("")}<td>${tt ? hk(tt) : "–"}</td><td class="${b < 0 ? "neg" : b > 0 ? "pos" : ""}">${Math.abs(b) < 1 ? "✓" : b < 0 ? `owes ${hk(-b)}` : `owed ${hk(b)}`}</td></tr>`; }).join("")}</tbody>
         <tfoot><tr><td>Going</td>${evs.map((e) => { const bs = evBills(e);
           const cost = e.price > 0 ? `${hk(e.price)} each` : bs.length ? bs.map((b) => `${esc(billTag(b, e))}: ${hk(b.hkd)}`).join("<br>") : "cost TBC";
-          return `<td>${e.going.length}<br><small>${cost}</small></td>`; }).join("")}<td></td><td></td></tr></tfoot>
+          return `<td>${e.going.length}${unnamed(e) ? ` +${unnamed(e)}` : ""}<br><small>${cost}</small></td>`; }).join("")}<td></td><td></td></tr></tfoot>
       </table></div>
       <p class="muted small">${live() ? "Tap a box to tick or untick. " : ""}Each box shows that person's cost: the set price, or their share of their table's bill. Balance is after everything that's been paid back.</p>
       <button type="button" class="cc-csv" id="cc-csv">Copy as spreadsheet (CSV)</button>
@@ -607,7 +623,7 @@
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
       const myT = (e.tables || []).find((t) => (t.names || []).includes(me));
-      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${(e.tables || []).length ? ` · 🍽️ tables from ${esc(e.tables[0].time || "")}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : ""}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>`;
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${goingTxt(e)}${(e.tables || []).length ? ` · 🍽️ tables from ${esc(e.tables[0].time || "")}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : ""}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>`;
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;
@@ -666,6 +682,9 @@
     }
     const sedit = t.closest("[data-seatedit]");
     if (sedit) { seatEditing = sedit.dataset.seatedit || null; if (seatEditing) openEv.add(seatEditing.split("|")[0]); render(); return; }
+    const gq = t.closest("[data-guests]");
+    if (gq) { const [ev, d] = gq.dataset.guests.split("|"); const E = data.events.find((x) => x.id === ev); const n = Math.max(0, unnamed(E) + +d);
+      op({ op: "setGuests", ev, n }, () => { E.guests = n; }); return; }
     const dt = t.closest("[data-deltable]");
     if (dt) { const [ev, table] = dt.dataset.deltable.split("|"); if (confirm("Remove this booking? People at it go back to 'not seated'.")) op({ op: "delTable", ev, table }); return; }
     const sp = t.closest("[data-splittable]");
