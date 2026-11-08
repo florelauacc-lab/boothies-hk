@@ -12041,7 +12041,8 @@ window.HK = {
     "🐙 Octopus is Hong Kong's tap card for the MTR, buses, minibuses, trams, the Star Ferry, 7-Eleven and many cafés. Bank cards work on the MTR and most buses, but minibuses, some ferries and small shops only take Octopus or cash. iPhone: get [Octopus for Tourists](https://apps.apple.com/app/octopus-for-tourists/id1505492952) and top up with Apple Pay. Android: buy a card at the airport, any MTR station or 7-Eleven. [How Octopus works](https://www.octopus.com.hk/en/consumer/tourist/choices/index.html)",
     "🚕 Taxi? Tap \"Show the driver\" on any place and hand over your phone.",
     "🛗 Escalators: stand on the right, walk on the left.",
-    "🧭 Citymapper is the best app for getting around · [iPhone](https://apps.apple.com/app/id469463298) · [Android](https://play.google.com/store/apps/details?id=com.citymapper.app.release)"
+    "🧭 Citymapper is the best app for getting around · [iPhone](https://apps.apple.com/app/id469463298) · [Android](https://play.google.com/store/apps/details?id=com.citymapper.app.release)",
+    "🆘 999 for emergencies · 🔌 UK 3-pin plugs (Type G), so bring an adapter"
    ]
   },
   {

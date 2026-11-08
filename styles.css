@@ -1422,3 +1422,6 @@ button.bl .pw-copy { pointer-events: none; }
 .cc-either { margin: 6px 0; padding: 8px 10px; border-radius: 10px; background: rgba(255,214,102,.1); font-size: .92rem; }
 .cc-tables h4 small { font-weight: 500; opacity: .75; }
 .pay-wc { margin: 8px 0 4px; } .pay-wc small { display: block; opacity: .75; margin-top: 4px; font-size: .82rem; line-height: 1.35; }
+.cc-note { margin: 6px 0; padding: 8px 10px; border-radius: 10px; background: rgba(120,190,255,.1); font-size: .92rem; }
+.evinfo .evnote { display: block; margin-top: 4px; font-size: .85rem; opacity: .85; }
+.cc-unnamed { margin: 6px 0; padding: 8px 10px; border-radius: 10px; background: rgba(255,170,60,.12); color: #ffd9a0; font-size: .9rem; line-height: 1.4; }

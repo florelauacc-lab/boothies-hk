@@ -8,6 +8,8 @@ const TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TO
 const PASS_HASH = process.env.CLASS_PASS_SHA256;
 // a second, organiser-only code (Florence and Rienno): payment details and confirming money received
 const ORG_HASH = process.env.ORGANISER_PASS_SHA256;
+// the HK planning team: events they set up (and the original four) need the organiser code to remove
+const ORGANISERS = ["Rienno", "Lisa Lam", "Florence Lau", "Kejia Bian"];
 // key prefix: production has the real list; previews and local testing use their own keys
 const P = process.env.VERCEL_ENV === "production" ? "c1:" : process.env.CLASS_PREFIX || "dev1:";
 
@@ -106,7 +108,7 @@ export default async function handler(req, res) {
         const [cur] = await redis([["HGET", `${P}events`, ev]]);
         if (!cur) return res.status(404).json({ error: "no event" });
         const e = JSON.parse(cur);
-        ["title", "when", "venue", "bookedBy", "group"].forEach((f) => { if (b[f] != null) e[f] = clean(b[f], f === "venue" ? 80 : 70); });
+        ["title", "when", "venue", "bookedBy", "group", "note"].forEach((f) => { if (b[f] != null) e[f] = clean(b[f], f === "venue" || f === "note" ? 80 : 70); });
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
       }
@@ -147,9 +149,13 @@ export default async function handler(req, res) {
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
       }
-      case "delEvent":
+      case "delEvent": {
+        const [cur] = await redis([["HGET", `${P}events`, ev]]);
+        const e = cur ? JSON.parse(cur) : null;
+        if (e && (!e.by || ORGANISERS.includes(e.by)) && !org) return res.status(403).json({ error: "Only organisers can remove this event" });
         await redis([["HDEL", `${P}events`, ev], ["DEL", `${P}going:${ev}`], ["DEL", `${P}exp:${ev}`]]);
         break;
+      }
       case "addExpense": {
         const hkd = Math.round(+b.hkd * 100) / 100;
         if (!ev || !(hkd > 0) || hkd > 1e6) return res.status(400).json({ error: "bad amount" });

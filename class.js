@@ -250,6 +250,8 @@
   // table bookings for an event: just the times and sizes (people turn up and get seated as tables free up)
   // booked seats against everyone who said they're going: how many more to book (0 = enough)
   const seats = (e) => (e.tables || []).reduce((t, x) => t + (+x.size || 0), 0);
+  const ORGANISERS = ["Rienno", "Lisa Lam", "Florence Lau", "Kejia Bian"];
+  const orgEvent = (e) => !e.by || ORGANISERS.includes(e.by);
   const unnamed = (e) => +e.guests || 0; // said yes but not named yet
   const headcount = (e) => e.going.length + unnamed(e);
   const goingTxt = (e) => `${headcount(e)} going${unnamed(e) ? ` (${unnamed(e)} not named yet)` : ""}`;
@@ -277,6 +279,7 @@
       <summary><span class="t"><b>${esc(e.title)}</b><small>${esc([day, e.when].filter(Boolean).join(", "))}${e.venue ? ` · ${esc(e.venue)}` : ""}</small></span>
       <span class="n">${e.going.length}${unnamed(e) ? ` +${unnamed(e)}` : ""} going${inIt ? " · ✓ you" : ""}<br><em>${p ? `${hk(p)} each ≈ ${fx(p)}` : "price to come"}</em></span></summary>
       ${placesFor(e.venue).map((pl) => `<button type="button" class="cc-venue" data-jump="${pl.id}">📍 ${esc(pl.name)} · map &amp; taxi card →</button>`).join("")}
+      ${e.note ? `<p class="cc-note">ℹ️ ${esc(e.note)}</p>` : ""}
       ${e.group ? `<p class="cc-either">Pick one: ${data.events.filter((x) => x.group === e.group && x.id !== e.id).map((x) => esc(x.title)).join(" or ")} is the other option. Going to this one takes you off the other.</p>` : ""}
       ${me && live() ? `<button type="button" class="cc-imin${inIt ? " on" : ""}" data-tick="${e.id}" data-name="${esc(me)}" data-on="${inIt ? 0 : 1}">${inIt ? "✓ I'm going · tap to undo" : "+ I'm going"}</button>` : ""}
       ${ed
@@ -295,8 +298,10 @@
         <h4>Cost</h4>
         ${p ? `<p class="cc-price"><b>${hk(p)}</b> each <span>≈ ${["USD", "GBP", "EUR", "JPY"].map((c) => fx(p, c)).join(" · ")}</span></p>
           <p class="muted small">${e.total ? `Total ${hk(e.total)} ÷ ${e.priceCount || Math.round(e.total / p)} people = ${hk(p)} each` : `${hk(p)} per person`}</p>
-          ${e.total && e.priceCount && e.priceCount !== e.going.length && e.going.length && live()
-            ? `<p class="cc-recalc">Now ${e.going.length} going. <button type="button" class="cc-mini go" data-recalc="${e.id}">Recalculate: ${hk(e.total / e.going.length)} each</button></p>` : ""}`
+          ${e.total && e.priceCount && e.priceCount !== headcount(e) && headcount(e) && live()
+            ? `<p class="cc-recalc">Now ${goingTxt(e)}. <button type="button" class="cc-mini go" data-recalc="${e.id}">Recalculate: ${hk(e.total / headcount(e))} each</button></p>` : ""}
+          ${e.total ? `<p class="muted small">The price follows the final headcount: if more people join, tap Recalculate.</p>` : ""}
+          ${unnamed(e) ? `<p class="cc-unnamed">⚠️ ${unnamed(e)} not named yet. Their share isn't charged to anyone until you tick their name and tap − on "Not named yet".</p>` : ""}`
           : (() => { // no set price: split the bill(s) between whoever was there, whoever paid
               const evBills = (data.bills || []).filter((b) => b.ev === e.id);
               return `${evBills.length ? `<ul class="ev-bills">${evBills.map((b) => `<li><span>🧾 ${esc(b.what)} · paid by ${esc(b.paidBy)} · ${b.among.length} people</span><b>${hk(b.hkd)}</b></li>`).join("")}</ul>` : ""}
@@ -308,9 +313,9 @@
         ${live() ? `<form class="cc-inline bill" data-setprice="${e.id}">
           <input name="total" type="number" inputmode="numeric" min="0" step="1" placeholder="Total bill HK$" value="${e.total || ""}" aria-label="Total bill in HK$" required>
           <button type="submit">${e.total || e.price ? "Update total" : "Set total"}</button>
-          <span class="muted small">Split between the ${e.going.length} ticked</span></form>${p ? "" : "</details>"}` : ""}
+          <span class="muted small">Split between ${goingTxt(e)}</span></form>${p ? "" : "</details>"}` : ""}
       </div>
-      ${live() ? `<button type="button" class="cc-del" data-delev="${e.id}">🗑 Remove this event</button>` : ""}
+      ${live() ? `<button type="button" class="cc-del" data-delev="${e.id}">🗑 Remove this event${orgEvent(e) ? " (organisers)" : ""}</button>` : ""}
     </details>`;
   }
 
@@ -508,6 +513,7 @@
     return `<div class="cc-owe">
       <h3 class="cc-h">💸 Settle up</h3>
       <p class="muted small">Everything is netted out: who paid for what, your share, and what's already been paid back. So you may pay someone different from whoever covered your meal. "How it adds up" shows the detail.</p>
+      ${(() => { const un = data.events.filter((e) => unnamed(e)); return un.length ? `<p class="cc-unnamed">⚠️ Still not named: ${un.map((e) => `${esc(colName(e))} (${unnamed(e)})`).join(", ")}. Their shares aren't in anyone's balance yet, so name them before settling up.</p>` : ""; })()}
       ${!owe.length && !owed.length ? `<p class="small">✓ You're all square right now.</p>` : ""}
       ${owe.length ? `<p class="sp-h">💸 You owe <b>${hk(sum(owe))}</b> <small>≈ ${fx(sum(owe))}</small></p><ul class="sp-list">${owe.map(sRow).join("")}</ul>` : ""}
       ${owed.length ? `<p class="sp-h">💰 Owed to you <b>${hk(sum(owed))}</b></p><ul class="sp-list">${owed.map(sRow).join("")}</ul>` : ""}
@@ -658,7 +664,7 @@
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
       const myT = (e.tables || []).find((t) => (t.names || []).includes(me));
-      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${goingTxt(e)}${(e.tables || []).length ? ` · 🍽️ ${e.tables[0].time ? `tables from ${esc(e.tables[0].time)}` : `${seats(e)} seats booked`}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : seats(e) > headcount(e) ? ` · ${seats(e) - headcount(e)} seat${seats(e) - headcount(e) > 1 ? "s" : ""} free` : ""}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>`;
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${goingTxt(e)}${(e.tables || []).length ? ` · 🍽️ ${e.tables[0].time ? `tables from ${esc(e.tables[0].time)}` : `${seats(e)} seats booked`}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : seats(e) > headcount(e) ? ` · ${seats(e) - headcount(e)} seat${seats(e) - headcount(e) > 1 ? "s" : ""} free` : ""}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>${e.note ? `<small class="evnote">ℹ️ ${esc(e.note)}</small>` : ""}`;
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;
@@ -699,7 +705,20 @@
     const dx = t.closest("[data-delexp]");
     if (dx) { if (confirm("Remove this bill?")) op({ op: "delExpense", ev: dx.dataset.delexp, xid: dx.dataset.xid }); return; }
     const de = t.closest("[data-delev]");
-    if (de) { const E = data.events.find((x) => x.id === de.dataset.delev); if (confirm(`Remove "${E.title}" for everyone?`)) op({ op: "delEvent", ev: E.id }); return; }
+    if (de) {
+      const E = data.events.find((x) => x.id === de.dataset.delev);
+      if (!confirm(`Remove "${E.title}" for everyone?`)) return;
+      // events set up by the planning team need the organiser code; classmates' own events don't
+      if (orgEvent(E) && !data.organiser) {
+        const code = (prompt("This event was set up by the organisers. Enter the organiser code to remove it:") || "").trim().toLowerCase();
+        if (!code) return;
+        const keep = orgPass; orgPass = code;
+        op({ op: "delEvent", ev: E.id }).then((ok) => { orgPass = keep; if (ok) toast("Event removed"); });
+        return;
+      }
+      op({ op: "delEvent", ev: E.id });
+      return;
+    }
     const cf = t.closest("[data-confirm],[data-unconfirm]");
     if (cf) { const n = cf.dataset.confirm || cf.dataset.unconfirm; op({ op: cf.dataset.confirm ? "confirmPaid" : "unconfirmPaid", name: n, i: +cf.dataset.i }); return; }
     const rec = t.closest("[data-record]");
@@ -765,7 +784,7 @@
       return;
     }
     const rc = t.closest("[data-recalc]");
-    if (rc) { const E = data.events.find((x) => x.id === rc.dataset.recalc); op({ op: "setPrice", ev: E.id, total: E.total, count: E.going.length }).then((ok) => ok && toast(`Recalculated: ${hk(E.total / E.going.length)} each`)); return; }
+    if (rc) { const E = data.events.find((x) => x.id === rc.dataset.recalc); op({ op: "setPrice", ev: E.id, total: E.total, count: headcount(E) }).then((ok) => ok && toast(`Recalculated: ${hk(E.total / headcount(E))} each`)); return; }
     const ue = t.closest("[data-undoev]");
     if (ue) { const E = data.events.find((x) => x.id === ue.dataset.undoev); op({ op: "undoPaidEv", name: me, ev: E.id, hkd: Math.round(each(E) || 0) }).then((ok) => ok && toast(`Undone: ${E.title} is back to not paid`)); return; }
     const up = t.closest("[data-undopaid]");
@@ -841,7 +860,7 @@
     else if (f.dataset.setprice) {
       const E = data.events.find((x) => x.id === f.dataset.setprice);
       if (!E.going.length) { toast("Tick who's going first, then enter the total"); return; }
-      op({ op: "setPrice", ev: E.id, total: fd("total"), count: E.going.length }).then((ok) => ok && toast(`Saved: ${hk(+fd("total") / E.going.length)} each for ${E.going.length} people`));
+      op({ op: "setPrice", ev: E.id, total: fd("total"), count: headcount(E) }).then((ok) => ok && toast(`Saved: ${hk(+fd("total") / headcount(E))} each for ${headcount(E)} people`));
     }
     else if (f.dataset.addperson) { const ev = f.dataset.addperson, name = fd("name"); op({ op: "addPerson", name }).then(() => op({ op: "toggle", ev, name, on: true })); }
   });
