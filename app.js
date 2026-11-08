@@ -1192,6 +1192,8 @@
   renderPlan();
   loadWeather();
   setInterval(loadWeather, 30 * 60e3);
+  // phones pause background tabs, so check again when someone comes back to the site (still at most hourly)
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") loadWeather(); });
   renderStart();
   const start = location.hash.slice(1);
   setTab(["saiwan", "start", "city", "sights", "hikes", "shop", "week"].includes(start) ? start : "city");
