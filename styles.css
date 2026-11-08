@@ -1421,3 +1421,4 @@ button.bl .pw-copy { pointer-events: none; }
 .cc-collect form { flex-wrap: wrap; } .cc-collect form p { flex-basis: 100%; margin: 0 0 6px; }
 .cc-either { margin: 6px 0; padding: 8px 10px; border-radius: 10px; background: rgba(255,214,102,.1); font-size: .92rem; }
 .cc-tables h4 small { font-weight: 500; opacity: .75; }
+.pay-wc { margin: 8px 0 4px; } .pay-wc small { display: block; opacity: .75; margin-top: 4px; font-size: .82rem; line-height: 1.35; }

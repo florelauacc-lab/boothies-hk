@@ -335,7 +335,7 @@
         : `<div class="pw"><span class="pw-i">💳</span><div><b>PayPal or card</b><small>Works from any country. A card fee of about 3–5% applies.</small></div>${soon}</div>`}
       <div class="pw"><span class="pw-i">⚡</span><div><b>FPS</b><small>Hong Kong bank accounts: instant and free${L.fps ? ` · <span class="pw-v">${esc(L.fps)}</span>` : ""}</small></div>${L.fps ? copy(L.fps) : soon}</div>
       <div class="pw pw-bank"><span class="pw-i">🌍</span><div><b>Bank transfer (Wise)</b><small>Cheapest from abroad</small>${bankLines(L)}</div>${L.bank || L.accNo ? "" : soon}</div>
-      <div class="pw"><span class="pw-i">💬</span><div><b>WeChat Pay</b><small>Handy for classmates from China${L.wechat ? ` · <span class="pw-v">${esc(L.wechat)}</span>` : ""}</small></div>${L.wechat ? copy(L.wechat) : soon}</div>
+      <div class="pw"><span class="pw-i">💬</span><div><b>WeChat Pay</b><small>Only if your WeChat Pay uses a Chinese or HK bank account (overseas cards can't send to people)${L.wechat ? ` · <span class="pw-v">${esc(L.wechat)}</span>` : ""}</small></div>${L.wechat ? copy(L.wechat) : soon}</div>
     </div>`;
   }
 
@@ -463,10 +463,12 @@
       pr.fps && `<button class="paybtn" type="button" data-copy="${esc(pr.fps)}">⚡ FPS ${esc(pr.fps)} · copy</button>`,
 
       pr.wiseLink && `<a class="paybtn" href="${esc(pr.wiseLink)}" target="_blank" rel="noopener">🌍 Wise</a>`,
-      pr.wechat && `<button class="paybtn" type="button" data-copy="${esc(pr.wechat)}">💬 WeChat Pay ${esc(pr.wechat)} · copy</button>`,
     ].filter(Boolean);
+    // WeChat Pay only works person to person when both sides use a Chinese or HK bank, so it's shown as an extra with that caveat
+    const wc = pr.wechat ? `<div class="pay-wc"><button class="paybtn" type="button" data-copy="${esc(pr.wechat)}">💬 WeChat ID ${esc(pr.wechat)} · copy</button>
+      <small>Add them on WeChat, then Transfer. Only works if your WeChat Pay uses a Chinese or HK bank account.</small></div>` : "";
     const bl = bankLines(pr);
-    return rows.length || bl ? `${rows.length ? `<div class="paybtns">${rows.join("")}</div>` : ""}${bl ? `<p class="small" style="margin:8px 0 4px"><b>🌍 Bank transfer</b></p>${bl}` : ""}${pr.note ? `<p class="muted small">${esc(pr.note)}</p>` : ""}`
+    return rows.length || bl || wc ? `${rows.length ? `<div class="paybtns">${rows.join("")}</div>` : ""}${wc}${bl ? `<p class="small" style="margin:8px 0 4px"><b>🌍 Bank transfer</b></p>${bl}` : ""}${pr.note ? `<p class="muted small">${esc(pr.note)}</p>` : ""}`
       : `<p class="muted small">${esc(to)} hasn't added payment details yet. Ask in the group chat, or they can add them under "My payment details".</p>`;
   }
 
@@ -587,8 +589,10 @@
             <label>SWIFT / routing / sort code<input name="swift" value="${esc(pr.swift || "")}"></label>
             <label>Wise payment link <small>(optional)</small><input name="wiseLink" inputmode="url" placeholder="https://wise.com/pay/…" value="${esc(pr.wiseLink || "")}"></label></fieldset>
           <fieldset><legend>📱 Other apps</legend>
-            <label>Venmo, Revolut, Zelle, PayNow…<input name="note" placeholder="e.g. Venmo @yourname" value="${esc(pr.note || "")}"></label>
-            <label>WeChat Pay ID<input name="wechat" value="${esc(pr.wechat || "")}"></label></fieldset>
+            <label>Venmo, Revolut, Zelle, PayNow…<input name="note" placeholder="e.g. Venmo @yourname" value="${esc(pr.note || "")}"></label></fieldset>
+          <details class="fps-box"${pr.wechat ? " open" : ""}><summary>💬 Use WeChat Pay with a Chinese or HK bank account? Add your WeChat ID</summary>
+            <p class="small muted">Classmates whose WeChat Pay is also linked to a Chinese or HK bank can add you and send a transfer. WeChat Pay on an overseas card can't send money to people, so keep PayPal or bank details too.</p>
+            <label>WeChat ID<input name="wechat" autocapitalize="off" value="${esc(pr.wechat || "")}"></label></details>
           <details class="fps-box"${pr.fps ? " open" : ""}><summary>🇭🇰 Have a Hong Kong bank account? Add FPS</summary>
             <label>FPS ID or phone<input name="fps" inputmode="numeric" value="${esc(pr.fps || "")}"></label></details>
           <fieldset><legend>🔒 PIN</legend>
