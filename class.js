@@ -46,7 +46,7 @@
   const PAY_METHODS = ["PayPal / card", "Wise / bank", "FPS", "PayMe", "Cash"];
 
   /* ---------- state ---------- */
-  let data = null, mode = "locked", pass = get("hk-pass-v1") || "";
+  let data = null, mode = "locked", pass = get("hk-pass-v1") || "", orgPass = get("hk-org-v1") || "";
   let me = get("hk-me-v1") || "", cur = get("hk-cur-v1") || "USD";
   let editing = null, busy = false;
   const openEv = new Set();
@@ -65,7 +65,7 @@
     return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: unb64(L.iv) }, key, unb64(L.ct))));
   }
   async function api(method, body) {
-    const r = await fetch("/api/class", { method, headers: { "Content-Type": "application/json", "X-Class-Pass": pass }, body: body ? JSON.stringify(body) : undefined, cache: "no-store" });
+    const r = await fetch("/api/class", { method, headers: { "Content-Type": "application/json", "X-Class-Pass": pass, ...(orgPass ? { "X-Organiser-Pass": orgPass } : {}) }, body: body ? JSON.stringify(body) : undefined, cache: "no-store" });
     if (r.status === 401) throw Object.assign(new Error("wrong"), { code: 401 });
     if (!r.ok) throw Object.assign(new Error((await r.json().catch(() => ({}))).error || `HTTP ${r.status}`), { code: r.status });
     return r.json();
@@ -153,6 +153,7 @@
     const mine = evs.filter((e) => e.going.includes(me));
     const st = me ? status(me, bal) : null;
     const isPayer = me && me === data.payTo;
+    const canConfirm = data.organiser && isPayer; // only Rienno (with the organiser code) decides what's been received
     const opts = ppl.filter((p) => !p.away).map((p) => `<option${p.name === me ? " selected" : ""}>${esc(p.name)}</option>`).join("");
     const curOpts = CUR.map(([c]) => `<option${c === cur ? " selected" : ""}>${c}</option>`).join("");
     root.innerHTML = `<div class="cc-head">
@@ -176,7 +177,7 @@
           <datalist id="cc-places">${PLACES.filter((p) => ["city", "saiwan", "sights", "hikes", "shop"].includes(p.tab)).map((p) => `<option value="${esc(p.name)}">`).join("")}</datalist>
           <button type="submit">Add event</button>
         </form></details>` : ""}
-      ${settleUp(bal, isPayer)}
+      ${settleUp(bal, canConfirm)}
       ${overview(evs)}
       <details class="cc-groups"><summary>📚 Becker study groups</summary>
         <div class="cc-grid">${(data.groups || []).map(([g, ns]) => `<div><h4>${esc(g)}</h4><ul>${ns.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`).join("")}</div>
@@ -251,38 +252,44 @@
   }
 
   // Who still owes what, who says they've paid, and what Rienno has confirmed
-  function settleUp(bal, isPayer) {
+  function settleUp(bal, canConfirm) {
     const L = data.payLinks || {};
     const rows = people().filter((n) => n !== data.payTo).map((n) => ({ n, ...status(n, bal) })).filter((r) => r.share > 0.5 || r.sent);
     const collector = Object.entries(bal).filter(([, v]) => v > 0.5);
     const done = rows.filter((r) => r.settled).length;
     const list = rows.length ? `<ul class="cc-settle">${rows.map((r) => {
       const ps = payments(r.n);
-      const chip = (r.left ? `<em class="owe">Owes ${hk(r.left)}</em>` : r.settled ? `<em class="ok">✓ Settled</em>` : r.pending ? `<em class="wait">Paid, waiting for ${esc(data.payTo)}</em>` : "")
+      const chip = (r.left ? `<em class="owe">Owes ${hk(r.left)}</em>` : r.settled ? `<em class="ok">✓ Paid</em>` : r.pending ? `<em class="wait">Says paid · ${esc(data.payTo)} to confirm</em>` : "")
         + (r.over ? ` <em class="wait">Overpaid ${hk(r.over)}</em>` : "");
-      const confirm = isPayer && live() ? ps.map((p, i) => p.confirmed
+      const confirm = canConfirm && live() ? ps.map((p, i) => p.confirmed
         ? `<button type="button" class="cc-mini" data-unconfirm="${esc(r.n)}" data-i="${i}">✓ ${hk(p.hkd)} received · undo</button>`
-        : `<button type="button" class="cc-mini go" data-confirm="${esc(r.n)}" data-i="${i}">Confirm ${hk(p.hkd)} received (${esc(p.method || "")})</button>`).join("") : "";
+        : `<button type="button" class="cc-mini go" data-confirm="${esc(r.n)}" data-i="${i}">Confirm ${hk(p.hkd)} received (${esc(p.method || "")})</button>`).join("")
+        + (r.left ? `<button type="button" class="cc-mini go" data-record="${esc(r.n)}" data-amt="${r.left}">Got ${hk(r.left)} (cash or other)</button>` : "") : "";
       return `<li class="${r.n === me ? "me" : ""}${r.settled ? " done" : ""}"><span class="nm">${esc(r.n)}</span><span class="amt">${hk(r.share)}</span>${chip}${confirm ? `<div class="cc-confirm">${confirm}</div>` : ""}</li>`;
     }).join("")}</ul>` : `<p class="muted">Nothing to settle yet. Once an event has a price, everyone's share shows here.</p>`;
     return `<div class="cc-pay">
       <h3 class="cc-h">💸 Settle up ${rows.length ? `<small>${done} of ${rows.length} settled</small>` : ""}</h3>
       ${collector.length ? `<p>${collector.map(([n, v]) => `<b>${esc(n)}</b> paid ${hk(v + Math.max(0, -(bal[n] || 0)))} up front`).join(" · ")}</p>` : ""}
-      <p class="muted small">Paid? Tap "I've paid" in your box above. ${esc(data.payTo)} then confirms it here once the money arrives.</p>
+      <p class="muted small">Paid? Tap "I've paid" in your box above. It counts as paid once ${esc(data.payTo)} confirms the money arrived.</p>
+      ${canConfirm ? `<p class="cc-orgnote">🔑 You're signed in as organiser: confirm payments below, or tap "Got HK$…" for cash.</p>` : ""}
       ${list}
       <details class="cc-how"><summary>How to pay ${esc(data.payTo)}</summary>
         <p class="muted">${esc(data.payNote)}</p>
         <ul>${(data.methods || []).map(([em, n, d]) => `<li><span>${em}</span><b>${esc(n)}</b> ${esc(d)}</li>`).join("")}</ul>
         <p class="muted small">Other currencies are ${liveRates ? "today's rates" : "approximate"}. ${esc(data.payTo)} receives HKD.</p>
       </details>
-      ${live() ? `<details class="cc-paysetup"><summary>Payment details (for ${esc(data.payTo)} to fill in)</summary>
+      ${live() ? `<details class="cc-paysetup"><summary>🔑 Organisers (${esc(data.payTo)} &amp; Florence)</summary>
+        ${data.organiser ? `<p class="muted small" style="padding:0 14px">Only organisers can change payment details or confirm payments.</p>
         <form id="cc-pay" class="cc-grid-form">
           <input name="paypal" placeholder="PayPal.me link, e.g. https://paypal.me/name" value="${esc(L.paypal || "")}">
           <input name="fps" placeholder="FPS ID or phone number" value="${esc(L.fps || "")}">
           <input name="payme" placeholder="PayMe link" value="${esc(L.payme || "")}">
-          <input name="bank" placeholder="Bank: account name, bank, account no." value="${esc(L.bank || "")}">
-          <button type="submit">Save</button>
-        </form></details>` : ""}
+          <input name="bank" placeholder="Bank: account name, bank, account no., SWIFT" value="${esc(L.bank || "")}">
+          <button type="submit">Save payment details</button>
+        </form>
+        <button type="button" class="cc-done" data-orgout="1" style="margin:0 14px 14px">Sign out as organiser</button>`
+        : `<form id="cc-org" class="cc-grid-form" autocomplete="off"><input name="code" type="password" autocapitalize="none" placeholder="Organiser code" required aria-label="Organiser code"><button type="submit">Sign in</button></form>`}
+      </details>` : ""}
     </div>`;
   }
 
@@ -344,6 +351,9 @@
     if (de) { const E = data.events.find((x) => x.id === de.dataset.delev); if (confirm(`Remove "${E.title}" for everyone?`)) op({ op: "delEvent", ev: E.id }); return; }
     const cf = t.closest("[data-confirm],[data-unconfirm]");
     if (cf) { const n = cf.dataset.confirm || cf.dataset.unconfirm; op({ op: cf.dataset.confirm ? "confirmPaid" : "unconfirmPaid", name: n, i: +cf.dataset.i }); return; }
+    const rec = t.closest("[data-record]");
+    if (rec) { if (confirm(`Record ${hk(+rec.dataset.amt)} received from ${rec.dataset.record}?`)) op({ op: "markPaid", name: rec.dataset.record, hkd: +rec.dataset.amt, method: "Cash / other", confirmed: true }); return; }
+    if (t.closest("[data-orgout]")) { orgPass = ""; forget("hk-org-v1"); api("GET").then((s) => { data = s; render(); }); return; }
     const up = t.closest("[data-undopaid]");
     if (up) { if (confirm("Undo this payment?")) op({ op: "undoPaid", name: me, i: +up.dataset.undopaid }); return; }
     if (t.id === "cc-relock") { data = null; mode = "locked"; forget("hk-pass-v1"); render(); return; }
@@ -369,6 +379,10 @@
     const fd = (k) => f.elements[k]?.value?.trim() || "";
     if (f.id === "cc-form") { msg("Checking…"); unlock(fd("cc-pass") || $("#cc-pass").value); }
     else if (f.id === "cc-newev") { op({ op: "addEvent", title: fd("title"), iso: fd("iso"), when: fd("when"), venue: fd("venue") }).then((ok) => ok && toast("Event added for everyone")); }
+    else if (f.id === "cc-org") {
+      orgPass = fd("code").toLowerCase();
+      api("GET").then((s) => { if (s.organiser) { set("hk-org-v1", orgPass); data = s; render(); toast("Signed in as organiser"); } else { orgPass = ""; toast("That organiser code isn't right"); } }, () => { orgPass = ""; toast("Couldn't check the code"); });
+    }
     else if (f.id === "cc-pay") { op({ op: "setPay", paypal: fd("paypal"), fps: fd("fps"), payme: fd("payme"), bank: fd("bank") }).then((ok) => ok && toast("Saved")); }
     else if (f.id === "cc-paid") { const s = status(me, balances()); op({ op: "markPaid", name: me, hkd: s.left, method: fd("method") }).then((ok) => ok && toast(`Thanks! ${data.payTo} will confirm once it arrives`)); }
     else if (f.dataset.setprice) { op({ op: "setPrice", ev: f.dataset.setprice, price: fd("price") }).then((ok) => ok && toast("Price saved for everyone")); }

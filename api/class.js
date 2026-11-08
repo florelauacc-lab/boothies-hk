@@ -6,6 +6,8 @@ import { createHash, randomBytes } from "node:crypto";
 const URL_ = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
 const TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
 const PASS_HASH = process.env.CLASS_PASS_SHA256;
+// a second, organiser-only code (Florence and Rienno): payment details and confirming money received
+const ORG_HASH = process.env.ORGANISER_PASS_SHA256;
 // key prefix: production has the real list; previews and local testing use their own keys
 const P = process.env.VERCEL_ENV === "production" ? "c1:" : "dev1:";
 
@@ -26,7 +28,7 @@ const id = () => randomBytes(5).toString("hex");
 const clean = (s, n = 80) => String(s ?? "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, n);
 const pairs = (arr) => { const o = {}; for (let i = 0; i < (arr || []).length; i += 2) o[arr[i]] = arr[i + 1]; return o; };
 
-async function state() {
+async function state(org) {
   const [meta, events, settle] = await redis([["GET", `${P}meta`], ["HGETALL", `${P}events`], ["HGETALL", `${P}settle`]]);
   const ev = Object.entries(pairs(events)).map(([k, v]) => ({ id: k, ...JSON.parse(v) }));
   const res = ev.length ? await redis(ev.flatMap((e) => [["SMEMBERS", `${P}going:${e.id}`], ["HGETALL", `${P}exp:${e.id}`]])) : [];
@@ -37,7 +39,7 @@ async function state() {
   ev.sort((a, b) => (a.iso || "").localeCompare(b.iso || "") || (a.order ?? 50) - (b.order ?? 50) || (a.created || 0) - (b.created || 0));
   const m = meta ? JSON.parse(meta) : null;
   const st = Object.fromEntries(Object.entries(pairs(settle)).map(([k, v]) => [k, JSON.parse(v)]));
-  return { seeded: !!m, ...(m || {}), events: ev, settle: st };
+  return { seeded: !!m, ...(m || {}), events: ev, settle: st, organiser: !!org };
 }
 
 export default async function handler(req, res) {
@@ -46,9 +48,12 @@ export default async function handler(req, res) {
   if (!URL_ || !TOKEN || !PASS_HASH) return res.status(503).json({ error: "not configured" });
   if (sha(req.headers["x-class-pass"]) !== PASS_HASH) return res.status(401).json({ error: "wrong passcode" });
   try {
-    if (req.method === "GET") return res.status(200).json(await state());
+    const org = !!ORG_HASH && sha(req.headers["x-organiser-pass"]) === ORG_HASH;
+    if (req.method === "GET") return res.status(200).json(await state(org));
     if (req.method !== "POST") return res.status(405).end();
     const b = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    if (["setPay", "setInfo", "confirmPaid", "unconfirmPaid"].includes(b.op) && !org) return res.status(403).json({ error: "organisers only" });
+    if (b.op === "markPaid" && b.confirmed && !org) return res.status(403).json({ error: "organisers only" });
     const by = clean(b.by, 60);
     const ev = clean(b.ev, 40);
     switch (b.op) {
@@ -116,6 +121,14 @@ export default async function handler(req, res) {
         await redis([["SET", `${P}meta`, JSON.stringify(m)]]);
         break;
       }
+      case "setInfo": { // organisers: payment wording shown to everyone
+        const [cur] = await redis([["GET", `${P}meta`]]);
+        const m = JSON.parse(cur || "{}");
+        if (b.payNote != null) m.payNote = clean(b.payNote, 300);
+        if (Array.isArray(b.methods)) m.methods = b.methods.slice(0, 8).map((x) => [clean(x[0], 4), clean(x[1], 40), clean(x[2], 200)]);
+        await redis([["SET", `${P}meta`, JSON.stringify(m)]]);
+        break;
+      }
       case "setPay": {
         const [cur] = await redis([["GET", `${P}meta`]]);
         const m = JSON.parse(cur || "{}");
@@ -132,7 +145,9 @@ export default async function handler(req, res) {
         if (!name || !(hkd > 0)) return res.status(400).json({ error: "missing" });
         const [cur] = await redis([["HGET", `${P}settle`, name]]);
         const prev = cur ? JSON.parse(cur) : { payments: [] };
-        prev.payments = [...(prev.payments || []), { hkd, method: clean(b.method, 30), at: Date.now(), confirmed: false }];
+        // a classmate's "I've paid" is a heads-up; only the organiser (Rienno) can record a payment as received
+        const confirmed = !!(org && b.confirmed);
+        prev.payments = [...(prev.payments || []), { hkd, method: clean(b.method, 30), at: Date.now(), confirmed, confirmedBy: confirmed ? by : undefined }];
         await redis([["HSET", `${P}settle`, name, JSON.stringify(prev)]]);
         break;
       }
@@ -142,7 +157,10 @@ export default async function handler(req, res) {
         if (!cur) return res.status(404).json({ error: "no payment" });
         const prev = JSON.parse(cur);
         if (!prev.payments?.[i]) return res.status(404).json({ error: "no payment" });
-        if (b.op === "undoPaid") prev.payments.splice(i, 1);
+        if (b.op === "undoPaid") {
+          if (prev.payments[i].confirmed && !org) return res.status(403).json({ error: "Rienno has already confirmed this payment" });
+          prev.payments.splice(i, 1);
+        }
         else { prev.payments[i].confirmed = b.op === "confirmPaid"; prev.payments[i].confirmedBy = by; }
         await redis([["HSET", `${P}settle`, name, JSON.stringify(prev)]]);
         break;
@@ -150,7 +168,7 @@ export default async function handler(req, res) {
       default:
         return res.status(400).json({ error: "unknown op" });
     }
-    return res.status(200).json(await state());
+    return res.status(200).json(await state(org));
   } catch (e) {
     return res.status(500).json({ error: String(e.message || e).slice(0, 120) });
   }

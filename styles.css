@@ -1130,3 +1130,4 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
 .plan details.route.more .outs details.route { margin-top: 0; background: rgba(0,0,0,.2); }
 .hidden-n { display: block; margin-top: 8px; font: inherit; font-size: .84rem; font-weight: 700; color: var(--muted); background: none; border: 1px dashed rgba(255,255,255,.2); border-radius: 10px; padding: 8px 12px; cursor: pointer; width: 100%; text-align: left; }
 .cc-venue { display: block; margin: 0 14px 10px; font: inherit; font-size: .88rem; font-weight: 800; color: #2ee6ff; background: rgba(46,230,255,.08); border: 1px solid rgba(46,230,255,.3); border-radius: 10px; padding: 9px 12px; cursor: pointer; text-align: left; min-height: 40px; width: calc(100% - 28px); }
+.cc-orgnote { margin: 6px 0; padding: 8px 12px; border-radius: 10px; background: rgba(255,196,77,.1); border: 1px solid rgba(255,196,77,.3); font-size: .86rem; }
