@@ -108,6 +108,30 @@ export default async function handler(req, res) {
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
       }
+      /* ---- table bookings (e.g. 20:15 for 8, 20:30 for 9) ---- */
+      case "addTable": case "editTable": case "delTable": case "seat": {
+        const [cur] = await redis([["HGET", `${P}events`, ev]]);
+        if (!cur) return res.status(404).json({ error: "no event" });
+        const e = JSON.parse(cur);
+        e.tables = e.tables || [];
+        if (b.op === "addTable") {
+          const size = Math.round(+b.size) || null;
+          e.tables.push({ id: id(), time: clean(b.time, 20), size, label: clean(b.label, 40), names: [] });
+          e.tables.sort((a, c) => (a.time || "").localeCompare(c.time || ""));
+        } else {
+          const t = e.tables.find((x) => x.id === clean(b.table, 20));
+          if (!t && b.op !== "seat") return res.status(404).json({ error: "no table" });
+          if (b.op === "editTable") { if (b.time != null) t.time = clean(b.time, 20); if (b.size != null) t.size = Math.round(+b.size) || null; if (b.label != null) t.label = clean(b.label, 40); }
+          if (b.op === "delTable") e.tables = e.tables.filter((x) => x !== t);
+          if (b.op === "seat") { // one table per person: seating someone moves them
+            const name = clean(b.name, 60);
+            e.tables.forEach((x) => { x.names = (x.names || []).filter((n) => n !== name); });
+            if (t && b.on) t.names.push(name);
+          }
+        }
+        await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
+        break;
+      }
       case "delEvent":
         await redis([["HDEL", `${P}events`, ev], ["DEL", `${P}going:${ev}`], ["DEL", `${P}exp:${ev}`]]);
         break;
@@ -141,7 +165,7 @@ export default async function handler(req, res) {
         const [cur] = await redis([["GET", `${P}meta`]]);
         const m = JSON.parse(cur || "{}");
         m.payLinks = { ...(m.payLinks || {}) };
-        ["paypal", "payme", "fps", "bank"].forEach((k) => { if (b[k] != null) m.payLinks[k] = clean(b[k], 200) || null; });
+        ["paypal", "payme", "fps", "bank", "accName", "bankName", "accNo", "swift"].forEach((k) => { if (b[k] != null) m.payLinks[k] = clean(b[k], 200) || null; });
         if (m.payLinks.paypal && !/^https:\/\/(www\.)?paypal\.me\//i.test(m.payLinks.paypal)) return res.status(400).json({ error: "PayPal link must start with https://paypal.me/" });
         if (m.payLinks.payme && !/^https:\/\/(payme\.hsbc|pay\.payme)\./i.test(m.payLinks.payme)) return res.status(400).json({ error: "PayMe link must be an HSBC PayMe link" });
         await redis([["SET", `${P}meta`, JSON.stringify(m)]]);
@@ -215,7 +239,8 @@ export default async function handler(req, res) {
         const url = (v) => { const u = clean(v, 200); return !u ? "" : /^https:\/\//i.test(u) ? u : null; };
         const paypal = url(b.paypal), wise = url(b.wiseLink);
         if (paypal === null || wise === null) return res.status(400).json({ error: "Links must start with https://" });
-        const next = { paypal, fps: clean(b.fps, 60), bank: clean(b.bank, 160), wiseLink: wise, cash: !!b.cash, note: clean(b.note, 120), pinHash: prevP.pinHash || null };
+        const next = { paypal, fps: clean(b.fps, 60), bank: clean(b.bank, 160), accName: clean(b.accName, 80), bankName: clean(b.bankName, 80), accNo: clean(b.accNo, 40), swift: clean(b.swift, 20),
+          wiseLink: wise, cash: !!b.cash, note: clean(b.note, 120), pinHash: prevP.pinHash || null };
         if (b.newPin) next.pinHash = sha(`${name}|${clean(b.newPin, 12)}`);
         await redis([["HSET", `${P}profiles`, name, JSON.stringify(next)]]);
         break;

@@ -1321,3 +1321,24 @@ body.dragging .pd { outline: 1px dashed rgba(255,196,77,.5); }
 .cc-collect { margin-top: 8px; }
 .cc-collect > summary { cursor: pointer; font-size: .82rem; color: var(--muted); padding: 6px 0; }
 .cc-grid-form .bf-check input, .bf-check input { flex: none; width: 26px; height: 26px; min-width: 26px; padding: 0; }
+/* table bookings */
+.cc-tables { margin: 4px 14px 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,.08); }
+.cc-tables h4 { margin: 0 0 6px; font-size: .9rem; }
+.tb-list { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 6px; }
+.tb { padding: 8px 10px; border-radius: 12px; background: rgba(255,255,255,.05); }
+.tb.mine { outline: 2px solid rgba(62,232,181,.5); }
+.tb-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.tb-top b { font-size: 1.05rem; }
+.tb-top span { color: var(--muted); font-size: .86rem; }
+.tb-top em { margin-left: auto; font-style: normal; font-weight: 800; font-size: .8rem; }
+.tb-top em.ok { color: #3ee8b5; } .tb-top em.wait { color: var(--gold, #ffc44d); }
+.tb .cc-names { padding: 6px 0 0; }
+.tb-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; align-items: center; }
+.tb-actions .cc-x { margin-left: auto; }
+.cc-tables .cc-inline { margin: 6px 0 0; }
+.cc-tables .cc-inline input[name="size"] { flex: 0 1 90px; }
+.bank-lines { display: grid; gap: 4px; margin-top: 6px; }
+.bl { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 8px; border-radius: 8px; background: rgba(255,255,255,.05); }
+.bl span { min-width: 0; overflow-wrap: anywhere; font-weight: 700; font-size: .9rem; }
+.bl small { display: block; color: var(--muted); font-weight: 600; font-size: .72rem; }
+.pw-bank { align-items: flex-start; }

@@ -100,7 +100,7 @@
     catch (e) { toast(`Couldn't save: ${e.message}`); try { data = await api("GET"); } catch (e2) { /* keep local */ } return false; }
     finally { busy = false; render(); }
   }
-  async function refresh() { if (live() && !busy && !editing && !billDraft && document.visibilityState === "visible" && !root.contains(document.activeElement)) { try { data = await api("GET"); render(); } catch (e) { /* ignore */ } } }
+  async function refresh() { if (live() && !busy && !editing && !billDraft && !seatEditing && document.visibilityState === "visible" && !root.contains(document.activeElement)) { try { data = await api("GET"); render(); } catch (e) { /* ignore */ } } }
   setInterval(refresh, 30000); // pick up other people's ticks
   document.addEventListener("visibilitychange", refresh);
 
@@ -231,6 +231,40 @@
     </div>`;
   }
 
+
+  // table bookings for an event: who's at which time, who still needs a seat
+  function tablesBlock(e) {
+    const tables = e.tables || [];
+    if (!tables.length && !live()) return "";
+    const seated = new Set(tables.flatMap((t) => t.names || []));
+    const unseated = e.going.filter((n) => !seated.has(n));
+    const myT = tables.find((t) => (t.names || []).includes(me));
+    const rows = tables.map((t) => {
+      const n = (t.names || []).length, full = t.size && n >= t.size;
+      const mine = myT === t;
+      return `<li class="tb${mine ? " mine" : ""}">
+        <div class="tb-top"><b>${esc(t.time || "Time TBC")}</b> <span>${t.label ? `${esc(t.label)} · ` : ""}table for ${t.size || "?"}</span>
+          <em class="${full ? "ok" : "wait"}">${n}${t.size ? ` of ${t.size}` : ""} ${full ? "· full" : "seated"}</em></div>
+        <div class="cc-names">${(t.names || []).map((x) => `<span class="${x === me ? "me" : ""}">${esc(x)}</span>`).join("") || `<em class="muted">Nobody yet</em>`}</div>
+        ${live() ? `<div class="tb-actions">
+          ${me && e.going.includes(me) ? (mine ? `<button type="button" class="cc-mini undo" data-seat="${e.id}" data-table="${t.id}" data-name="${esc(me)}" data-on="0">Leave this table</button>`
+            : full ? "" : `<button type="button" class="cc-mini go" data-seat="${e.id}" data-table="${t.id}" data-name="${esc(me)}" data-on="1">＋ Join this table</button>`) : ""}
+          <button type="button" class="cc-mini" data-seatedit="${e.id}|${t.id}">✏️ Seat people</button>
+          <button type="button" class="cc-mini" data-splittable="${e.id}|${t.id}">🧾 Split this table's bill</button>
+          <button type="button" class="cc-x" data-deltable="${e.id}|${t.id}" aria-label="Remove booking">✕</button>
+        </div>` : ""}
+        ${seatEditing === `${e.id}|${t.id}` ? `<p class="cc-hint">Tap to seat or unseat (moves them from any other table)</p><div class="cc-names edit">${e.going.map((x) => `<button type="button" class="${(t.names || []).includes(x) ? "on" : ""}" data-seat="${e.id}" data-table="${t.id}" data-name="${esc(x)}" data-on="${(t.names || []).includes(x) ? 0 : 1}">${(t.names || []).includes(x) ? "✓ " : ""}${esc(x)}${tables.some((o) => o !== t && (o.names || []).includes(x)) ? " ·" + esc(tables.find((o) => o !== t && (o.names || []).includes(x)).time || "") : ""}</button>`).join("")}</div><button type="button" class="cc-done" data-seatedit="">Done</button>` : ""}
+      </li>`;
+    }).join("");
+    return `<div class="cc-tables"><h4>🍽️ Table bookings</h4>
+      ${myT ? `<p class="small">Your table: <b>${esc(myT.time || "TBC")}</b>${myT.label ? ` · ${esc(myT.label)}` : ""}. Walk in at that time.</p>` : ""}
+      ${tables.length ? `<ul class="tb-list">${rows}</ul>` : `<p class="muted small">No bookings yet.</p>`}
+      ${tables.length && unseated.length ? `<p class="small"><b>Not seated yet (${unseated.length}):</b> ${unseated.map(esc).join(", ")}</p>` : ""}
+      ${live() ? `<form class="cc-inline" data-addtable="${e.id}"><input name="time" placeholder="Time, e.g. 20:45" maxlength="20" required aria-label="Booking time"><input name="size" type="number" inputmode="numeric" min="1" max="40" placeholder="Seats" aria-label="Number of seats" required><button type="submit">＋ Add a booking</button></form>` : ""}
+    </div>`;
+  }
+  let seatEditing = null;
+
   function evCard(e, ppl) {
     const p = each(e), inIt = e.going.includes(me), ed = editing === e.id;
     const day = DAYS.find(([iso]) => iso === e.iso)?.[1];
@@ -246,6 +280,7 @@
           <button type="button" class="cc-done" data-edit="">Done</button>`
         : `<div class="cc-names">${e.going.map((n) => `<span class="${n === me ? "me" : ""}">${esc(n)}</span>`).join("") || `<em class="muted">Nobody yet</em>`}</div>
           ${live() ? `<button type="button" class="cc-editbtn" data-edit="${e.id}">✏️ Tick who's going</button>` : ""}`}
+      ${tablesBlock(e)}
       <div class="cc-bills">
         <h4>Cost</h4>
         ${p ? `<p class="cc-price"><b>${hk(p)}</b> each <span>≈ ${["USD", "GBP", "EUR", "JPY"].map((c) => fx(p, c)).join(" · ")}</span></p>
@@ -268,6 +303,14 @@
     </details>`;
   }
 
+
+  // bank details one line at a time, each with its own Copy (that's how bank apps ask for them)
+  function bankLines(o) {
+    const lines = [["Account name", o.accName], ["Bank", o.bankName], ["Account number", o.accNo], ["SWIFT / bank code", o.swift]].filter(([, v]) => v);
+    if (!lines.length && o.bank) lines.push(["Bank details", o.bank]);
+    return lines.length ? `<div class="bank-lines">${lines.map(([k, v]) => `<div class="bl"><span><small>${k}</small>${esc(v)}</span><button type="button" class="pw-copy" data-copy="${esc(v)}">Copy</button></div>`).join("")}</div>` : "";
+  }
+
   // Every way to pay, with the actual details, so settling up is one look and one tap
   function payWays(amt) {
     const L = data.payLinks || {};
@@ -278,7 +321,7 @@
       ${L.paypal ? `<a class="paybtn big" href="${esc(L.paypal.replace(/\/$/, ""))}${a ? `/${a}HKD` : ""}" target="_blank" rel="noopener">💳 Pay ${a ? `${hk(a)} ` : ""}with PayPal or card</a>`
         : `<div class="pw"><span class="pw-i">💳</span><div><b>PayPal or card</b><small>Works from any country. A card fee of about 3–5% applies.</small></div>${soon}</div>`}
       <div class="pw"><span class="pw-i">⚡</span><div><b>FPS</b><small>Hong Kong bank accounts: instant and free${L.fps ? ` · <span class="pw-v">${esc(L.fps)}</span>` : ""}</small></div>${L.fps ? copy(L.fps) : soon}</div>
-      <div class="pw"><span class="pw-i">🌍</span><div><b>Bank transfer (Wise)</b><small>Cheapest from abroad${L.bank ? ` · <span class="pw-v">${esc(L.bank)}</span>` : ""}</small></div>${L.bank ? copy(L.bank) : soon}</div>
+      <div class="pw pw-bank"><span class="pw-i">🌍</span><div><b>Bank transfer (Wise)</b><small>Cheapest from abroad</small>${bankLines(L)}</div>${L.bank || L.accNo ? "" : soon}</div>
       <div class="pw"><span class="pw-i">💵</span><div><b>Cash</b><small>HKD in person. ${esc(data.payTo)} is happy with cash.</small></div></div>
     </div>`;
   }
@@ -314,7 +357,10 @@
         <form id="cc-pay" class="cc-grid-form">
           <input name="paypal" placeholder="PayPal.me link, e.g. https://paypal.me/name" value="${esc(L.paypal || "")}">
           <input name="fps" placeholder="FPS ID or phone number" value="${esc(L.fps || "")}">
-          <input name="bank" placeholder="Bank: account name, bank, account no., SWIFT" value="${esc(L.bank || "")}">
+          <input name="accName" placeholder="Account name" value="${esc(L.accName || "")}">
+          <input name="bankName" placeholder="Bank (e.g. HSBC Hong Kong)" value="${esc(L.bankName || "")}">
+          <input name="accNo" placeholder="Account number" value="${esc(L.accNo || "")}">
+          <input name="swift" placeholder="SWIFT / bank code (for transfers from abroad)" value="${esc(L.swift || "")}">
           <button type="submit">Save payment details</button>
         </form>
         <button type="button" class="cc-done" data-orgout="1" style="margin:0 14px 14px">Sign out as organiser</button>`
@@ -373,11 +419,12 @@
     const rows = [
       pr.paypal && `<a class="paybtn" href="${esc(pr.paypal.replace(/\/$/, ""))}${/paypal\.me/i.test(pr.paypal) ? `/${Math.round(amt)}HKD` : ""}" target="_blank" rel="noopener">💳 PayPal / card</a>`,
       pr.fps && `<button class="paybtn" type="button" data-copy="${esc(pr.fps)}">⚡ FPS ${esc(pr.fps)} · copy</button>`,
-      pr.bank && `<button class="paybtn" type="button" data-copy="${esc(pr.bank)}">🌍 Bank · copy</button>`,
+
       pr.wiseLink && `<a class="paybtn" href="${esc(pr.wiseLink)}" target="_blank" rel="noopener">🌍 Wise</a>`,
       pr.cash && `<span class="pw-soon">💵 Cash is fine</span>`,
     ].filter(Boolean);
-    return rows.length ? `<div class="paybtns">${rows.join("")}</div>${pr.note ? `<p class="muted small">${esc(pr.note)}</p>` : ""}`
+    const bl = bankLines(pr);
+    return rows.length || bl ? `${rows.length ? `<div class="paybtns">${rows.join("")}</div>` : ""}${bl ? `<p class="small" style="margin:8px 0 4px"><b>🌍 Bank transfer</b></p>${bl}` : ""}${pr.note ? `<p class="muted small">${esc(pr.note)}</p>` : ""}`
       : `<p class="muted small">${esc(to)} hasn't added payment details yet. Ask in the group chat, or they can add them under "My payment details".</p>`;
   }
   function billsSection() {
@@ -431,12 +478,15 @@
           <button type="button" class="cc-x" data-bdel="${b.id}" aria-label="Delete bill">✕</button></div>
           <p class="small">Paid by ${esc(b.paidBy)} · ${b.shares ? "custom split" : `${hk(b.hkd / b.among.length)} each`}: ${b.among.map((n) => `${esc(n)}${b.shares ? ` ${hk(sh[n])}` : ""}`).join(", ")}</p></li>`;
       }).join("")}</ul></details>` : ""}
-      ${me ? `<details class="cc-sub"><summary>💳 My payment details${pr.paypal || pr.fps || pr.bank || pr.cash ? " ✓" : ""}</summary>
+      ${me ? `<details class="cc-sub"><summary>💳 My payment details${pr.paypal || pr.fps || pr.bank || pr.accNo || pr.cash ? " ✓" : ""}</summary>
         <form class="cc-grid-form" id="my-pay" autocomplete="off">
           <p class="small" style="flex-basis:100%">So people can pay you back for bills you cover. Only classmates with the passcode can see these.</p>
           <input name="paypal" placeholder="PayPal.me link, e.g. https://paypal.me/yourname" value="${esc(pr.paypal || "")}">
           <input name="fps" placeholder="FPS ID or phone (Hong Kong accounts)" value="${esc(pr.fps || "")}">
-          <input name="bank" placeholder="Bank / Wise details (name, bank, account no.)" value="${esc(pr.bank || "")}">
+          <input name="accName" placeholder="Bank: account name" value="${esc(pr.accName || "")}">
+          <input name="bankName" placeholder="Bank (e.g. Chase, HSBC Hong Kong)" value="${esc(pr.bankName || "")}">
+          <input name="accNo" placeholder="Account number / IBAN" value="${esc(pr.accNo || "")}">
+          <input name="swift" placeholder="SWIFT / routing / sort code" value="${esc(pr.swift || "")}">
           <input name="wiseLink" placeholder="Wise payment link (optional)" value="${esc(pr.wiseLink || "")}">
           <input name="note" placeholder="Note (e.g. Venmo @name, Revolut, PayNow)" value="${esc(pr.note || "")}">
           <label class="bf-check"><input type="checkbox" name="cash"${pr.cash ? " checked" : ""}> Cash is fine</label>
@@ -478,7 +528,8 @@
       const e = data && data.events.find((x) => x.id === el.dataset.evinfo);
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
-      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${p ? ` · ${hk(p)} each` : ""}</button>`;
+      const myT = (e.tables || []).find((t) => (t.names || []).includes(me));
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${myT ? ` · 🍽️ your table ${esc(myT.time || "")}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>`;
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;
@@ -529,6 +580,23 @@
     }
     if (t.closest("[data-orgout]")) { orgPass = ""; forget("hk-org-v1"); api("GET").then((s) => { data = s; render(); }); return; }
     if (t.closest("[data-bf-new]")) { billDraft = newDraft(); render(); return; }
+    const st = t.closest("[data-seat]");
+    if (st) {
+      const E = data.events.find((x) => x.id === st.dataset.seat), on = st.dataset.on === "1", name = st.dataset.name;
+      op({ op: "seat", ev: E.id, table: st.dataset.table, name, on }, () => { (E.tables || []).forEach((x) => { x.names = (x.names || []).filter((n) => n !== name); }); if (on) E.tables.find((x) => x.id === st.dataset.table).names.push(name); });
+      return;
+    }
+    const sedit = t.closest("[data-seatedit]");
+    if (sedit) { seatEditing = sedit.dataset.seatedit || null; if (seatEditing) openEv.add(seatEditing.split("|")[0]); render(); return; }
+    const dt = t.closest("[data-deltable]");
+    if (dt) { const [ev, table] = dt.dataset.deltable.split("|"); if (confirm("Remove this booking? People at it go back to 'not seated'.")) op({ op: "delTable", ev, table }); return; }
+    const sp = t.closest("[data-splittable]");
+    if (sp) {
+      const [ev, table] = sp.dataset.splittable.split("|"); const E = data.events.find((x) => x.id === ev), T = E.tables.find((x) => x.id === table);
+      billDraft = { ...newDraft(), ev, what: `${E.title}, ${T.time} table`, among: new Set(T.names || []), paidBy: (T.names || []).includes(me) ? me : (T.names || [])[0] || me };
+      render(); setTimeout(() => document.getElementById("bill-form")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+      return;
+    }
     const se = t.closest("[data-splitev]");
     if (se) {
       const E = data.events.find((x) => x.id === se.dataset.splitev);
@@ -601,19 +669,23 @@
       op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: fd("method") }).then((ok) => ok && toast(`Thanks! ${x.to} will confirm when it arrives`));
     }
     else if (f.id === "my-pay") {
-      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), bank: fd("bank"), wiseLink: fd("wiseLink"), note: fd("note"), cash: f.elements.cash.checked, pin: fd("pin"), newPin: fd("newPin") })
+      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wiseLink: fd("wiseLink"), note: fd("note"), cash: f.elements.cash.checked, pin: fd("pin"), newPin: fd("newPin") })
         .then((ok) => ok && toast("Your payment details are saved"));
     }
     else if (f.id === "cc-org") {
       orgPass = fd("code").toLowerCase();
       api("GET").then((s) => { if (s.organiser) { set("hk-org-v1", orgPass); data = s; render(); toast("Signed in as organiser"); } else { orgPass = ""; toast("That organiser code isn't right"); } }, () => { orgPass = ""; toast("Couldn't check the code"); });
     }
-    else if (f.id === "cc-pay") { op({ op: "setPay", paypal: fd("paypal"), fps: fd("fps"), bank: fd("bank") }).then((ok) => ok && toast("Saved")); }
+    else if (f.id === "cc-pay") { op({ op: "setPay", paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift") }).then((ok) => ok && toast("Saved")); }
     else if (f.id === "cc-paid") {
       const unpaid = data.events.filter((e) => e.going.includes(me) && each(e) && !evPay(me, e.id));
       const pick = fd("what") === "all" ? unpaid : unpaid.filter((e) => e.id === fd("what"));
       const st = status(me, balances()), sum = Math.round(pick.reduce((t, e) => t + each(e), 0));
       op({ op: "markPaid", name: me, hkd: fd("what") === "all" ? Math.min(sum, st.left) : sum, evs: pick.map((e) => e.id), method: fd("method") }).then((ok) => ok && toast(`Thanks! ${data.payTo} will confirm once it arrives`)); }
+    else if (f.dataset.addtable) {
+      openEv.add(f.dataset.addtable);
+      op({ op: "addTable", ev: f.dataset.addtable, time: fd("time"), size: fd("size") }).then((ok) => ok && toast("Booking added"));
+    }
     else if (f.dataset.setprice) {
       const E = data.events.find((x) => x.id === f.dataset.setprice);
       if (!E.going.length) { toast("Tick who's going first, then enter the total"); return; }
