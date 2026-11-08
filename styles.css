@@ -309,7 +309,7 @@ footer { max-width: 1240px; margin: 0 auto; padding: 10px 16px 40px; font-size: 
 .driver .en { color: var(--muted); font-size: 14px; margin-top: 10px; }
 .facts-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 6px; margin-top: 10px; }
 .facts-row div { background: rgba(255,255,255,.05); border-radius: 10px; padding: 6px 9px; font-size: 12.5px; }
-.facts-row div span { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 700; }
+.facts-row div span { display: block; font-size: 11.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 700; }
 
 /* ---------- start here ---------- */
 .ess-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); margin-top: 16px; }
@@ -1197,3 +1197,21 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
 .pd span { font-size: 15px; font-weight: 800; color: inherit; }
 .pd.on { background: var(--maroon); border-color: var(--maroon); color: #fff; }
 .pd:hover { border-color: var(--gold, #ffc44d); }
+/* fold the map away on phones; clear-filters chip */
+.map-hide { display: none; }
+@media (max-width: 900px) {
+  .map-hide { display: inline-flex; align-items: center; position: absolute; right: 10px; bottom: 64px; z-index: 500; min-height: 40px; padding: 6px 12px; font: inherit; font-size: .82rem; font-weight: 800; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); background: rgba(20,6,10,.85); color: var(--text); cursor: pointer; }
+  body.map-off .map-pane #map, body.map-off .map-pane .map-lock { display: none !important; }
+  body.map-off .map-pane { position: static; height: auto !important; display: flex; flex-direction: column; }
+  body.map-off .map-hide { position: static; align-self: flex-end; margin: 8px 12px 4px; }
+  body.map-off .map-pane .legend { position: static !important; }
+}
+.clear-f { font: inherit; font-size: .84rem; font-weight: 800; margin-left: 6px; padding: 4px 10px; min-height: 32px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.06); color: var(--text); cursor: pointer; }
+@media (pointer: coarse) { .clear-f { min-height: 40px; } }
+.meta .stars small { font-size: 12px; }
+/* tablets: the map legend wraps instead of running off the screen */
+@media (min-width: 601px) {
+  /* the map legend wraps onto a second line instead of scrolling off the side */
+  .legend { flex-wrap: wrap !important; overflow: visible !important; max-width: calc(100% - 52px); }
+}
+@media (min-width: 601px) and (max-width: 1100px) { .explore-tab .legend { display: flex !important; } }

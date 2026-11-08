@@ -426,6 +426,8 @@
     const groups = grouped(items);
     if (groups) countHtml = `Top picks of each kind · ${countHtml}`;
     else if (items.length && !state.shortlist && !me) countHtml = `Most popular &amp; best rated first · ${countHtml}`;
+    const filtersOn = !state.shortlist && (state.kinds.size || state.style !== "any" || state.local || state.area !== "all" || state.section !== "all");
+    if (filtersOn) countHtml += ` <button class="clear-f" data-clearf="1">✕ Clear filters</button>`;
     if (backTo && !groups) countHtml = `<button class="back-btn" data-back="1">← Back to all ${esc(backTo.label)}</button> ${countHtml}`;
     $("#count").innerHTML = countHtml;
     const shown = groups ? groups.flatMap((g) => g.top) : items.slice(0, state.limit);
@@ -499,6 +501,17 @@
     },
   });
   map.addControl(new NearMe());
+  // Phones: the list matters most (NN/g), so the map can be folded away; the choice is remembered
+  const mapHidden = () => document.body.classList.contains("map-off");
+  function setMapHidden(off) {
+    document.body.classList.toggle("map-off", off);
+    $("#map-hide").textContent = off ? "🗺️ Show map" : "Hide map ▴";
+    $("#map-hide").setAttribute("aria-expanded", String(!off));
+    store.set("hk-mapoff-v1", off);
+    if (!off) setTimeout(() => { map.invalidateSize(); drawMarkers(shownNow(), true); }, 60);
+  }
+  $("#map-hide").addEventListener("click", () => setMapHidden(!mapHidden()));
+  if (store.get("hk-mapoff-v1")) setTimeout(() => setMapHidden(true), 0);
   const homeIcon = (em) => L.divIcon({ className: "", html: `<div class="home-pin">${em}</div>`, iconSize: [46, 46], iconAnchor: [23, 23] });
   const homes = {
     campus: L.marker([HOME.campus.lat, HOME.campus.lng], { icon: homeIcon("🎓"), zIndexOffset: 1000 })
@@ -839,6 +852,7 @@
     }
     if (e.target.closest("[data-go-list]")) { window.scrollTo({ top: contentTop(), behavior: "smooth" }); return; }
     if (e.target.closest("[data-back]")) { history.back(); return; }
+    if (e.target.closest("[data-clearf]")) { state.kinds = new Set(); state.style = "any"; state.local = false; state.area = "all"; state.section = "all"; state.limit = 10; render(); return; }
     const sa = e.target.closest("[data-seeall]");
     if (sa) {
       // remember where we came from so "← Back" (and the phone's back gesture) returns to the grouped view
