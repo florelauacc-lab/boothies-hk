@@ -10909,7 +10909,7 @@ window.HK = {
    "lng": 114.15561,
    "id": "yung-kee-restaurant",
    "kinds": [
-    "Cantonese"
+    "Roast meats & noodles"
    ],
    "orScore": 4.0,
    "orReviews": 877,
@@ -10942,7 +10942,7 @@ window.HK = {
    "lng": 114.185461,
    "id": "ki-s-roasted-goose",
    "kinds": [
-    "Cantonese"
+    "Roast meats & noodles"
    ],
    "orScore": 3.5,
    "orReviews": 240,
@@ -10976,7 +10976,7 @@ window.HK = {
    "lng": 114.17189,
    "id": "ship-kee",
    "kinds": [
-    "Cantonese"
+    "Roast meats & noodles"
    ],
    "orSmile": 64,
    "orFaces": [
@@ -11015,7 +11015,7 @@ window.HK = {
    "lng": 114.169442,
    "id": "fat-j-char-siu",
    "kinds": [
-    "Cantonese"
+    "Roast meats & noodles"
    ],
    "orSmile": 86,
    "orFaces": [
@@ -11054,7 +11054,7 @@ window.HK = {
    "lng": 114.182234,
    "id": "kitchen-one-roast-goose",
    "kinds": [
-    "Cantonese"
+    "Roast meats & noodles"
    ],
    "orScore": 4.0,
    "orReviews": 238,
@@ -11088,11 +11088,309 @@ window.HK = {
    "lng": 114.05975,
    "id": "yue-kee-roast-goose-restaurant",
    "kinds": [
-    "Cantonese"
+    "Roast meats & noodles"
    ],
    "orScore": 3.5,
    "orReviews": 495,
    "openrice": "https://www.openrice.com/en/hongkong/r-yue-kee-restaurant-sham-tseng-guangdong-chinese-bbq-r4171"
+  },
+  {
+   "tab": "city",
+   "section": "Local legends",
+   "name": "Tak Tou",
+   "zh": "德島",
+   "area": "Tin Hau",
+   "cuisine": "Cha chaan teng (HK café)",
+   "price": "$",
+   "category": [
+    "lunch",
+    "coffee"
+   ],
+   "emoji": "🍞",
+   "intro": "A small Tin Hau café 10–12 minutes' walk from the Park Lane, famous for its 'champion' milk tea (the owner trained under a milk-tea champion) and a double-layer pineapple bun with butter. Real diners rave about both.",
+   "order": [
+    "Champion milk tea (hot)",
+    "Double-layer pineapple bun with butter (HK$18)",
+    "Satay beef noodles",
+    "Scrambled egg sandwich"
+   ],
+   "tips": "Small shop: go in small groups or in waves. Opens 07:00 or 08:00 depending on the source, so check before an early start. Breakfast and lunch only, no dinner.",
+   "hours": "Daily from about 07:00–08:00 to 18:00",
+   "addressEn": "Shop B, G/F, Hang Po Building, 6–8 Mercury Street, Tin Hau",
+   "local": true,
+   "lat": 22.285853,
+   "lng": 114.192233,
+   "id": "tak-tou",
+   "kinds": [
+    "Cha chaan teng & cafés"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "section": "HK classics",
+   "name": "Shing Kee",
+   "zh": "誠記",
+   "area": "Kennedy Town",
+   "cuisine": "Cha chaan teng (cooked food centre)",
+   "price": "$",
+   "category": [
+    "lunch"
+   ],
+   "emoji": "🍞",
+   "intro": "A no-frills stall in the Smithfield cooked food centre where Kennedy Town residents and HKU students eat breakfast. Its satay beef noodles are the signature, with French toast and milk tea.",
+   "order": [
+    "Satay beef noodles",
+    "French toast",
+    "Milk tea (ask for less sugar)"
+   ],
+   "tips": "Cash only; plastic stools and shared tables in a market hall, so it's easy for a group. Opens about 06:00, closed Mondays.",
+   "hours": "Tue–Sun 06:00–17:00 (closed Monday)",
+   "addressEn": "2/F Cooked Food Centre, Smithfield Municipal Services Building, 12K Smithfield, Kennedy Town",
+   "local": true,
+   "lat": 22.281782,
+   "lng": 114.128642,
+   "id": "shing-kee",
+   "kinds": [
+    "Cha chaan teng & cafés"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "section": "HK classics",
+   "name": "Shui Kee Coffee",
+   "zh": "瑞記咖啡",
+   "area": "Sheung Wan",
+   "cuisine": "Cha chaan teng (cooked food centre)",
+   "price": "$",
+   "category": [
+    "lunch",
+    "coffee"
+   ],
+   "emoji": "🍞",
+   "intro": "A cooked-food-centre café loved for French toast that is pan-fried rather than deep-fried (crisp edges, soft middle) and bottled iced milk tea.",
+   "order": [
+    "Pan-fried French toast",
+    "Egg and beef bun",
+    "Bottled iced milk tea"
+   ],
+   "tips": "Cash only. Daytime only (about 08:00–15:00 on weekdays); closed Sundays, and Saturdays may be closed too.",
+   "hours": "Mon–Fri about 08:00–15:00 (Saturday varies; closed Sunday)",
+   "addressEn": "Shop 17, 2/F Cooked Food Centre, Sheung Wan Municipal Services Building, 345 Queen's Road Central",
+   "local": true,
+   "lat": 22.286168,
+   "lng": 114.149738,
+   "id": "shui-kee-coffee",
+   "kinds": [
+    "Cha chaan teng & cafés"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local eats",
+   "name": "Tsim Chai Kee Noodle",
+   "zh": "沾仔記",
+   "area": "Central",
+   "cuisine": "Wonton noodles",
+   "price": "$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🍜",
+   "intro": "A no-nonsense Central noodle shop with huge, bouncy shrimp wontons. Locals back it as one of the best-value bowls in town.",
+   "order": [
+    "King prawn wonton noodles",
+    "Fish ball noodles",
+    "Beef noodles"
+   ],
+   "tips": "Quick turnover and shared tables; expect a short lunchtime queue.",
+   "hours": "Daily about 11:00–21:30",
+   "addressEn": "G/F, 98 Wellington Street, Central",
+   "local": true,
+   "lat": 22.282937,
+   "lng": 114.154467,
+   "id": "tsim-chai-kee-noodle",
+   "kinds": [
+    "Roast meats & noodles"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local eats",
+   "name": "Shui Kee (beef brisket dai pai dong)",
+   "zh": "水記",
+   "area": "Central",
+   "cuisine": "Beef brisket noodles (dai pai dong)",
+   "price": "$",
+   "category": [
+    "lunch"
+   ],
+   "emoji": "🍜",
+   "intro": "A street-side dai pai dong stall where locals queue for clear-broth beef brisket and beef balls: one of the last old open-air stalls in Central.",
+   "order": [
+    "Beef brisket noodles",
+    "Beef ball noodles",
+    "Iced lemon tea"
+   ],
+   "tips": "Weekday lunch only (about 11:30–17:30), cash only, folding stools on the street. Hours can be irregular.",
+   "hours": "Mon–Fri about 11:30–17:30",
+   "addressEn": "Stall 2, Gutzlaff Street, Central",
+   "local": true,
+   "lat": 22.283076,
+   "lng": 114.153869,
+   "id": "shui-kee-beef-brisket-dai-pai-dong",
+   "kinds": [
+    "Roast meats & noodles"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local eats",
+   "name": "Kau Kee Beef Offal Noodles",
+   "zh": "九記牛什粉麵",
+   "area": "Causeway Bay",
+   "cuisine": "Cart noodles / beef offal",
+   "price": "$",
+   "category": [
+    "lunch"
+   ],
+   "emoji": "🍜",
+   "intro": "A cooked-food-centre stall near the Park Lane that diners praise for well-cleaned beef offal and fried fish cake: pick your toppings, cart-noodle style. (Not the Kau Kee brisket shop on Gough Street.)",
+   "order": [
+    "Beef offal noodles",
+    "Fried fish cake",
+    "Three toppings for about HK$40"
+   ],
+   "tips": "About a 20-minute lunch queue; likely cash only. Closed Sundays.",
+   "hours": "Mon–Sat 07:00–17:00",
+   "addressEn": "Shop 8, 1/F Cooked Food Centre, Bowrington Road Market, 21 Bowrington Road, Wan Chai",
+   "local": true,
+   "lat": 22.278455,
+   "lng": 114.180276,
+   "id": "kau-kee-beef-offal-noodles",
+   "kinds": [
+    "Roast meats & noodles"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local legends",
+   "name": "Yuen Kee Dessert",
+   "zh": "源記甜品",
+   "area": "Tin Hau",
+   "cuisine": "Hong Kong desserts (tong sui)",
+   "price": "$",
+   "category": [
+    "dessert",
+    "late-night"
+   ],
+   "emoji": "🍧",
+   "intro": "A century-old Cantonese dessert house that has reopened in Tin Hau, near the Park Lane. Locals come back for its traditional sweet soups.",
+   "order": [
+    "Mulberry mistletoe tea with egg",
+    "Sesame or walnut sweet soup",
+    "Red bean soup"
+   ],
+   "tips": "Afternoon and evening only; the closed day varies by source (possibly Tuesday).",
+   "hours": "About 12:30–23:00 (closed one weekday)",
+   "addressEn": "Shop B, G/F, Mei Sing Garden, 2A–2E Wing Hing Street, Tin Hau",
+   "local": true,
+   "lat": 22.285291,
+   "lng": 114.192241,
+   "id": "yuen-kee-dessert-2",
+   "kinds": [
+    "Dessert & sweets"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local eats",
+   "name": "Keung Kee",
+   "zh": "強記美食",
+   "area": "Wan Chai",
+   "cuisine": "Cantonese snacks (sticky rice, rice rolls)",
+   "price": "$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🥢",
+   "intro": "A tiny Wan Chai shop known for wok-fried preserved-meat sticky rice (in season in November) and pan-fried rice rolls that diners say taste like an old teahouse's.",
+   "order": [
+    "Preserved-meat sticky rice (HK$39–45)",
+    "Pan-fried dried-shrimp rice rolls (HK$22)"
+   ],
+   "tips": "About 20 seats; no credit cards. Closed Mondays.",
+   "hours": "Tue–Sun 12:00–22:00",
+   "addressEn": "Lockhart Road, Wan Chai (near No. 382)",
+   "local": true,
+   "lat": 22.278217,
+   "lng": 114.173766,
+   "id": "keung-kee",
+   "kinds": [
+    "Roast meats & noodles"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "section": "HK classics",
+   "name": "Sang Kee Chiu Chow Braised Goose",
+   "zh": "生記滷味",
+   "area": "Sai Ying Pun",
+   "cuisine": "Chiu Chow braised goose (lou soi)",
+   "price": "$$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🪿",
+   "intro": "A Sai Ying Pun shop for Chiu Chow-style braised goose and marinated meats, a different taste from Cantonese roast goose. Locals rate it highly, and it's a few minutes from the MTR. (Not the same shop as Sang Kee Congee.)",
+   "order": [
+    "Braised goose slices",
+    "Braised goose with tofu and egg",
+    "Marinated pig's intestine"
+   ],
+   "tips": "Two minutes from Sai Ying Pun MTR exit A1.",
+   "hours": "Daily 09:00–21:00",
+   "addressEn": "Shop 4, Wo Yick Building, 263 Queen's Road West, Sai Ying Pun",
+   "local": true,
+   "lat": 22.287032,
+   "lng": 114.144941,
+   "id": "sang-kee-chiu-chow-braised-goose",
+   "kinds": [
+    "Roast meats & noodles"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local eats",
+   "name": "Trusty Congee King",
+   "zh": "靠得住粥麵小館",
+   "area": "Wan Chai",
+   "cuisine": "Cantonese congee",
+   "price": "$",
+   "category": [
+    "lunch",
+    "dinner",
+    "late-night"
+   ],
+   "emoji": "🥢",
+   "intro": "A Wan Chai congee shop that cooks its congee in fish broth. Locals lean positive, and it's an easy late meal near the Park Lane.",
+   "order": [
+    "Pork liver or fish belly congee",
+    "Sampan congee",
+    "Fried dough stick (yau char kwai)"
+   ],
+   "tips": "Casual; short waits at peak.",
+   "hours": "Mon–Sat 11:00–22:30, Sun 11:00–21:30",
+   "addressEn": "G/F, 7 Heard Street, Wan Chai",
+   "local": true,
+   "lat": 22.277527,
+   "lng": 114.177134,
+   "id": "trusty-congee-king",
+   "kinds": [
+    "Roast meats & noodles"
+   ]
   }
  ],
  "OUTINGS": [
