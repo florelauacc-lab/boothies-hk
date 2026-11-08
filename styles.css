@@ -1345,3 +1345,36 @@ body.dragging .pd { outline: 1px dashed rgba(255,196,77,.5); }
 .name-find { width: 100%; font: inherit; font-size: 16px; padding: 10px 12px; margin: 4px 0 6px; border-radius: 10px; border: 1px solid rgba(255,196,77,.45); background: rgba(0,0,0,.3); color: var(--text); }
 .cc-ev .name-find { width: calc(100% - 28px); margin: 0 14px 8px; }
 .tb-top .cc-mini { margin-left: auto; }
+/* payment rows: names + amount on top, status and buttons on their own line */
+.sp-top { flex-wrap: nowrap; align-items: baseline; }
+.sp-who { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.sp-top .amt { flex: none; margin-left: 10px; text-align: right; }
+.sp-act { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
+.sp-status { font-size: .76rem; font-weight: 800; padding: 4px 9px; border-radius: 999px; }
+.sp-status.wait { background: rgba(255,196,77,.14); color: var(--gold, #ffc44d); }
+.sp-status.owe { background: rgba(255,159,159,.12); color: #ff9f9f; }
+.paybtn.static { cursor: default; background: rgba(255,255,255,.08); color: var(--text); font-weight: 700; }
+.cc-mine li.mi { display: block; }
+.cc-mine li.mi .mrow { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.cc-mine li.mi .mrow span { min-width: 0; }
+.cc-mine li.mi .sp-act { margin-top: 6px; }
+.cc-mine li.mi .pay1 { flex-basis: auto; margin-top: 0; }
+.sp-status.ok { background: rgba(62,232,181,.14); color: #3ee8b5; }
+/* payment details form: grouped, labelled, one column */
+.pay-form { display: grid; gap: 12px; padding: 0 14px 14px; }
+.pay-form p { margin: 0; }
+.pay-form fieldset { margin: 0; padding: 10px 12px 12px; border: 1px solid rgba(255,255,255,.1); border-radius: 12px; display: grid; gap: 10px; }
+.pay-form legend { padding: 0 6px; font-weight: 800; font-size: .9rem; }
+.pay-form label { display: grid; gap: 4px; font-size: .8rem; font-weight: 700; color: var(--muted); }
+.pay-form label small { font-weight: 600; }
+.pay-form input:not([type=checkbox]) { font: inherit; font-size: 16px; padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); background: rgba(0,0,0,.3); color: var(--text); width: 100%; box-sizing: border-box; }
+.pay-form .fps-box { border: 1px dashed rgba(255,255,255,.18); border-radius: 12px; padding: 0 12px; }
+.pay-form .fps-box > summary { cursor: pointer; padding: 12px 0; font-weight: 700; font-size: .88rem; min-height: 44px; }
+.pay-form .fps-box > label { padding-bottom: 12px; }
+.pay-form .bf-check { color: var(--text); font-size: .9rem; }
+/* compact secondary buttons: never stretch across a row */
+.cc-mine li.mi .sp-act { justify-content: flex-end; }
+.cc-mine li.mi .sp-act .sp-status { margin-right: auto; }
+.cc-mine li .pay1, .cc-mine li.mi .pay1 { flex: none !important; width: auto; justify-content: center; }
+@media (max-width: 600px) { .cc-mine li .pay1 { flex-basis: auto !important; margin-top: 0; } }
+.sp-h { margin: 12px 0 4px; font-weight: 800; font-size: .95rem; } .sp-h b { margin-left: 4px; }

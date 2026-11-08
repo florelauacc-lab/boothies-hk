@@ -248,7 +248,9 @@ export default async function handler(req, res) {
       case "markXfer": { // "I've paid X" for a bill split; X confirms when it arrives
         const from = clean(b.from, 60), to = clean(b.to, 60), hkd = Math.round(+b.hkd);
         if (!from || !to || from === to || !(hkd > 0)) return res.status(400).json({ error: "missing" });
-        await redis([["HSET", `${P}xfers`, `t-${id()}`, JSON.stringify({ from, to, hkd, method: clean(b.method, 30), by, at: Date.now(), confirmed: false })]]);
+        // the person being paid can record it as received straight away
+        const conf = !!b.confirmed && by === to;
+        await redis([["HSET", `${P}xfers`, `t-${id()}`, JSON.stringify({ from, to, hkd, method: clean(b.method, 30), by, at: Date.now(), confirmed: conf, confirmedBy: conf ? by : undefined })]]);
         break;
       }
       case "confirmXfer": case "unconfirmXfer": case "undoXfer": {

@@ -108,7 +108,8 @@
   // The list to tick against: everyone in the Becker section, plus anyone added
   function roster() {
     const out = [], seen = new Set();
-    (data.groups || []).forEach(([, ns]) => ns.forEach((n) => { const away = /\*$/.test(n), name = n.replace(/\*+$/, ""); if (!seen.has(name)) { seen.add(name); out.push({ name, away }); } }));
+    // classmates not in Hong Kong (marked * in the study-group list) are left out entirely
+    (data.groups || []).forEach(([, ns]) => ns.forEach((n) => { if (/\*$/.test(n)) return; if (!seen.has(n)) { seen.add(n); out.push({ name: n }); } }));
     [data.payTo, ...(data.extra || []), ...data.events.flatMap((e) => e.going), ...data.events.flatMap((e) => e.expenses.map((x) => x.paidBy))]
       .forEach((n) => { if (n && !seen.has(n)) { seen.add(n); out.push({ name: n, guest: true }); } });
     return out.sort((a, b) => (a.away - b.away) || a.name.localeCompare(b.name));
@@ -186,8 +187,7 @@
       ${settleUp(bal, canConfirm)}
       ${overview(evs)}
       <details class="cc-groups"><summary>📚 Becker study groups</summary>
-        <div class="cc-grid">${(data.groups || []).map(([g, ns]) => `<div><h4>${esc(g)}</h4><ul>${ns.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`).join("")}</div>
-        <p class="muted small">${esc(data.groupsNote || "")}</p>
+        <div class="cc-grid">${(data.groups || []).map(([g, ns]) => `<div><h4>${esc(g)}</h4><ul>${ns.filter((n) => !/\*$/.test(n)).map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`).join("")}</div>
       </details>`;
     fillPlan();
     root.querySelectorAll(".name-find").forEach((inp) => { if (inp.value) inp.dispatchEvent(new Event("input", { bubbles: true })); }); // keep the name filter after a redraw
@@ -205,7 +205,9 @@
       const payOne = !ps && each(e) && live() ? `<button type="button" class="cc-mini go pay1" data-payev="${e.id}">✓ I've paid this</button>` : "";
       // tapped "I've paid" by mistake? undo it here until Rienno confirms
       const undo = ps === "wait" && live() ? `<button type="button" class="cc-mini pay1 undo" data-undoev="${e.id}">↩ Undo "I've paid"</button>` : "";
-      return `<li><span>${esc(e.title)}${ps ? ` <em class="${ps === "paid" ? "ok" : "wait"}">${ps === "paid" ? "✓ Paid" : `Waiting for ${esc(data.payTo)}`}</em>` : ""}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : (data.bills || []).some((b) => b.ev === e.id) ? `<small>split bill ↓</small>` : `<small>cost to come</small>`}</b>${payOne}${undo}</li>`; }).join("");
+      const status = ps ? `<span class="sp-status ${ps === "paid" ? "ok" : "wait"}">${ps === "paid" ? "✓ Paid" : `⏳ ${esc(data.payTo)} to confirm`}</span>` : "";
+      return `<li class="mi"><div class="mrow"><span>${esc(e.title)}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : (data.bills || []).some((b) => b.ev === e.id) ? `<small>split bill ↓</small>` : `<small>cost to come</small>`}</b></div>
+        ${status || payOne || undo ? `<div class="sp-act">${status}${payOne}${undo}</div>` : ""}</li>`; }).join("");
     const unpaid = mine.filter((e) => each(e) && !evPay(me, e.id));
     const mineP = payments(me).map((p, i) => `<li><span>Paid ${hk(p.hkd)}${p.method ? ` · ${esc(p.method)}` : ""}${evNames(p)}</span><b class="${p.confirmed ? "ok" : "wait"}">${p.confirmed ? `✓ ${esc(data.payTo)} confirmed` : `Waiting for ${esc(data.payTo)}`}</b>${!p.confirmed && live() ? `<button type="button" class="cc-mini undo" data-undopaid="${i}">↩ Undo</button>` : ""}</li>`).join("");
     const head = owedToMe ? ["You're owed", `${hk(bal[me])} <span>≈ ${fx(bal[me])}</span>`]
@@ -257,7 +259,7 @@
       ${ed
         ? `<p class="cc-hint">Tap names to tick or untick · ${e.going.length} going</p>
           <input class="name-find" data-find="ev" placeholder="Type a name to find them (Enter to tick)" autocomplete="off" aria-label="Find a name">
-          <div class="cc-names edit">${ppl.map((x) => `<button type="button" data-nm="${esc(x.name.toLowerCase())}" class="${e.going.includes(x.name) ? "on" : ""}${x.away ? " away" : ""}" data-tick="${e.id}" data-name="${esc(x.name)}" data-on="${e.going.includes(x.name) ? 0 : 1}">${e.going.includes(x.name) ? "✓ " : ""}${esc(x.name)}${x.away ? " (not in HK)" : ""}</button>`).join("")}</div>
+          <div class="cc-names edit">${ppl.map((x) => `<button type="button" data-nm="${esc(x.name.toLowerCase())}" class="${e.going.includes(x.name) ? "on" : ""}${x.away ? " away" : ""}" data-tick="${e.id}" data-name="${esc(x.name)}" data-on="${e.going.includes(x.name) ? 0 : 1}">${e.going.includes(x.name) ? "✓ " : ""}${esc(x.name)}</button>`).join("")}</div>
           <form class="cc-inline" data-addperson="${e.id}"><input name="name" placeholder="Not on the list? Add their name" maxlength="60" required><button type="submit">Add &amp; tick</button></form>
           <button type="button" class="cc-done" data-edit="">Done</button>`
         : `<div class="cc-names">${e.going.map((n) => `<span class="${n === me ? "me" : ""}">${esc(n)}</span>`).join("") || `<em class="muted">Nobody yet</em>`}</div>
@@ -306,7 +308,6 @@
       <div class="pw"><span class="pw-i">⚡</span><div><b>FPS</b><small>Hong Kong bank accounts: instant and free${L.fps ? ` · <span class="pw-v">${esc(L.fps)}</span>` : ""}</small></div>${L.fps ? copy(L.fps) : soon}</div>
       <div class="pw pw-bank"><span class="pw-i">🌍</span><div><b>Bank transfer (Wise)</b><small>Cheapest from abroad</small>${bankLines(L)}</div>${L.bank || L.accNo ? "" : soon}</div>
       <div class="pw"><span class="pw-i">💬</span><div><b>WeChat Pay</b><small>Handy for classmates from China${L.wechat ? ` · <span class="pw-v">${esc(L.wechat)}</span>` : ""}</small></div>${L.wechat ? copy(L.wechat) : soon}</div>
-      <div class="pw"><span class="pw-i">💵</span><div><b>Cash</b><small>HKD in person. ${esc(data.payTo)} is happy with cash.</small></div></div>
     </div>`;
   }
 
@@ -410,7 +411,6 @@
 
       pr.wiseLink && `<a class="paybtn" href="${esc(pr.wiseLink)}" target="_blank" rel="noopener">🌍 Wise</a>`,
       pr.wechat && `<button class="paybtn" type="button" data-copy="${esc(pr.wechat)}">💬 WeChat Pay ${esc(pr.wechat)} · copy</button>`,
-      pr.cash && `<span class="pw-soon">💵 Cash is fine</span>`,
     ].filter(Boolean);
     const bl = bankLines(pr);
     return rows.length || bl ? `${rows.length ? `<div class="paybtns">${rows.join("")}</div>` : ""}${bl ? `<p class="small" style="margin:8px 0 4px"><b>🌍 Bank transfer</b></p>${bl}` : ""}${pr.note ? `<p class="muted small">${esc(pr.note)}</p>` : ""}`
@@ -419,16 +419,22 @@
   function billsSection() {
     if (!live()) return "";
     const bal = billBalances(), sugg = simplify(bal);
-    const pend = (data.xfers || []).filter((x) => !x.confirmed);
+    // only what involves you: what you owe, what's owed to you, and payments waiting on you
+    const pend = (data.xfers || []).filter((x) => !x.confirmed && me && (x.from === me || x.to === me));
     const ppl = people();
     const evName = (id) => data.events.find((e) => e.id === id)?.title;
     const mineSugg = me ? sugg.filter((t) => t.from === me || t.to === me) : [];
     const others = sugg.filter((t) => !mineSugg.includes(t));
-    const sRow = (t) => `<li class="sp${t.from === me || t.to === me ? " me" : ""}"><div class="sp-top"><b>${esc(t.from)}</b> → <b>${esc(t.to)}</b><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
-      ${t.from === me ? `${waysToPay(t.to, t.hkd)}<form class="cc-inline paid" data-xfer="${esc(JSON.stringify(t))}"><select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select><button type="submit">✓ I've paid ${esc(t.to)}</button></form>` : ""}</li>`;
-    const pRow = (x) => `<li class="sp pending"><div class="sp-top"><span>${esc(x.from)} paid ${esc(x.to)} ${hk(x.hkd)}${x.method ? ` · ${esc(x.method)}` : ""}</span>
-      ${x.to === me ? `<button type="button" class="cc-mini go" data-xconfirm="${x.id}">✓ Received</button>` : `<em class="wait">Waiting for ${esc(x.to)}</em>`}
-      ${x.from === me ? `<button type="button" class="cc-mini undo" data-xundo="${x.id}">↩ Undo</button>` : ""}</div></li>`;
+    // each payment: who → who and the amount on top; status and buttons on their own line (anyone can mark or confirm)
+    const sRow = (t) => `<li class="sp${t.from === me || t.to === me ? " me" : ""}">
+      <div class="sp-top"><span class="sp-who">${t.to === me ? `<b>${esc(t.from)}</b> owes you` : t.from === me ? `To <b>${esc(t.to)}</b>` : `<b>${esc(t.from)}</b> → <b>${esc(t.to)}</b>`}</span><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
+      ${t.from === me ? `${waysToPay(t.to, t.hkd)}<form class="cc-inline paid" data-xfer="${esc(JSON.stringify(t))}"><select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select><button type="submit">✓ I've paid ${esc(t.to)}</button></form>`
+        : `<div class="sp-act"><span class="sp-status owe">Not paid yet</span><button type="button" class="cc-mini go" data-xmark="${esc(JSON.stringify(t))}">✓ They've paid me</button></div>`}</li>`;
+    const pRow = (x) => `<li class="sp pending">
+      <div class="sp-top"><span class="sp-who"><b>${esc(x.from)}</b> paid <b>${esc(x.to)}</b>${x.method ? ` <small>· ${esc(x.method)}</small>` : ""}</span><span class="amt">${hk(x.hkd)}</span></div>
+      <div class="sp-act"><span class="sp-status wait">⏳ Needs confirming</span>
+        <button type="button" class="cc-mini go" data-xconfirm="${x.id}">✓ Confirm received</button>
+        <button type="button" class="cc-mini undo" data-xundo="${x.id}">↩ Undo</button></div></li>`;
     const d = billDraft;
     const form = d ? (() => {
       const total = +d.hkd || 0, among = [...d.among];
@@ -457,32 +463,40 @@
     const pr = me ? (data.profiles || {})[me] || {} : null;
     return `<div class="cc-bills2">
       <h3 class="cc-h">🧾 Split a bill <small>dinners by table, your own events, whoever paid</small></h3>
-      ${me ? `<p class="small">${(bal[me] || 0) < -0.5 ? `You owe <b>${hk(-bal[me])}</b> in bills.` : (bal[me] || 0) > 0.5 ? `You're owed <b>${hk(bal[me])}</b> in bills.` : "You're all square on bills."}</p>` : ""}
-      ${mineSugg.length ? `<ul class="sp-list">${mineSugg.map(sRow).join("")}</ul>` : ""}
+      ${me ? (() => {
+        const owe = mineSugg.filter((x) => x.from === me), owed = mineSugg.filter((x) => x.to === me);
+        if (!owe.length && !owed.length) return `<p class="small">You're all square on bills.</p>`;
+        return `${owe.length ? `<p class="sp-h">💸 You owe <b>${hk(owe.reduce((s2, x) => s2 + x.hkd, 0))}</b></p><ul class="sp-list">${owe.map(sRow).join("")}</ul>` : ""}
+          ${owed.length ? `<p class="sp-h">💰 Owed to you <b>${hk(owed.reduce((s2, x) => s2 + x.hkd, 0))}</b></p><ul class="sp-list">${owed.map(sRow).join("")}</ul>` : ""}`;
+      })() : ""}
       ${pend.length ? `<ul class="sp-list">${pend.map(pRow).join("")}</ul>` : ""}
       ${form}
-      ${others.length ? `<details class="cc-sub"><summary>Everyone else's payments · ${others.length}</summary><ul class="sp-list">${others.map(sRow).join("")}</ul></details>` : ""}
       ${bills.length ? `<details class="cc-sub"><summary>All bills · ${bills.length}</summary><ul class="bill-list">${bills.map((b) => {
         const sh = billShares(b);
         return `<li><div class="sp-top"><b>${esc(b.what)}</b>${b.ev && evName(b.ev) ? ` <small>· ${esc(evName(b.ev))}</small>` : ""}<span class="amt">${hk(b.hkd)}</span>
           <button type="button" class="cc-x" data-bdel="${b.id}" aria-label="Delete bill">✕</button></div>
           <p class="small">Paid by ${esc(b.paidBy)} · ${b.shares ? "custom split" : `${hk(b.hkd / b.among.length)} each`}: ${b.among.map((n) => `${esc(n)}${b.shares ? ` ${hk(sh[n])}` : ""}`).join(", ")}</p></li>`;
       }).join("")}</ul></details>` : ""}
-      ${me ? `<details class="cc-sub"><summary>💳 My payment details${pr.paypal || pr.fps || pr.bank || pr.accNo || pr.cash ? " ✓" : ""}</summary>
-        <form class="cc-grid-form" id="my-pay" autocomplete="off">
-          <p class="small" style="flex-basis:100%">So people can pay you back for bills you cover. Only classmates with the passcode can see these.</p>
-          <input name="paypal" placeholder="PayPal.me link, e.g. https://paypal.me/yourname" value="${esc(pr.paypal || "")}">
-          <input name="fps" placeholder="FPS ID or phone (Hong Kong accounts)" value="${esc(pr.fps || "")}">
-          <input name="accName" placeholder="Bank: account name" value="${esc(pr.accName || "")}">
-          <input name="bankName" placeholder="Bank (e.g. Chase, HSBC Hong Kong)" value="${esc(pr.bankName || "")}">
-          <input name="accNo" placeholder="Account number / IBAN" value="${esc(pr.accNo || "")}">
-          <input name="swift" placeholder="SWIFT / routing / sort code" value="${esc(pr.swift || "")}">
-          <input name="wiseLink" placeholder="Wise payment link (optional)" value="${esc(pr.wiseLink || "")}">
-          <input name="wechat" placeholder="WeChat ID (for WeChat Pay)" value="${esc(pr.wechat || "")}">
-          <input name="note" placeholder="Note (e.g. Venmo @name, Revolut, PayNow)" value="${esc(pr.note || "")}">
-          <label class="bf-check"><input type="checkbox" name="cash"${pr.cash ? " checked" : ""}> Cash is fine</label>
-          ${pr.locked ? `<input name="pin" type="password" inputmode="numeric" placeholder="Your PIN (needed to change these)">` : `<input name="newPin" type="password" inputmode="numeric" maxlength="12" placeholder="Optional PIN, so only you can change these">`}
-          <button type="submit">Save my details</button>
+      ${me ? `<details class="cc-sub"><summary>💳 My payment details${pr.paypal || pr.fps || pr.bank || pr.accNo || pr.note || pr.wechat ? " ✓" : ""}</summary>
+        <form class="pay-form" id="my-pay" autocomplete="off">
+          <p class="small muted">So people can pay you back when you cover a bill. Fill in only what you use; only classmates with the passcode can see these.</p>
+          <fieldset><legend>💳 PayPal</legend>
+            <label>PayPal.me link<input name="paypal" inputmode="url" placeholder="paypal.me/yourname" value="${esc(pr.paypal || "")}"></label></fieldset>
+          <fieldset><legend>🌍 Bank transfer</legend>
+            <label>Account name<input name="accName" placeholder="Name on the account" value="${esc(pr.accName || "")}"></label>
+            <label>Bank<input name="bankName" placeholder="e.g. Chase, Barclays, MUFG" value="${esc(pr.bankName || "")}"></label>
+            <label>Account number / IBAN<input name="accNo" value="${esc(pr.accNo || "")}"></label>
+            <label>SWIFT / routing / sort code<input name="swift" value="${esc(pr.swift || "")}"></label>
+            <label>Wise payment link <small>(optional)</small><input name="wiseLink" inputmode="url" placeholder="https://wise.com/pay/…" value="${esc(pr.wiseLink || "")}"></label></fieldset>
+          <fieldset><legend>📱 Other apps</legend>
+            <label>Venmo, Revolut, Zelle, PayNow…<input name="note" placeholder="e.g. Venmo @yourname" value="${esc(pr.note || "")}"></label>
+            <label>WeChat Pay ID<input name="wechat" value="${esc(pr.wechat || "")}"></label></fieldset>
+          <details class="fps-box"${pr.fps ? " open" : ""}><summary>🇭🇰 Have a Hong Kong bank account? Add FPS</summary>
+            <label>FPS ID or phone<input name="fps" inputmode="numeric" value="${esc(pr.fps || "")}"></label></details>
+          <fieldset><legend>🔒 PIN</legend>
+            ${pr.locked ? `<label>Your PIN <small>(needed to change these)</small><input name="pin" type="password" inputmode="numeric" autocomplete="off"></label>`
+              : `<label>Set a PIN <small>(optional, so only you can change these)</small><input name="newPin" type="password" inputmode="numeric" maxlength="12" autocomplete="new-password"></label>`}</fieldset>
+          <button type="submit" class="paybtn big">Save my details</button>
         </form></details>` : `<p class="muted small">Pick your name above to add bills and your payment details.</p>`}
     </div>`;
   }
@@ -624,6 +638,8 @@
       if (billDraft.mode === "custom") { const n = billDraft.among.size, tot = +billDraft.hkd || 0; [...billDraft.among].forEach((x) => { if (billDraft.shares[x] == null && n && tot) billDraft.shares[x] = (Math.round((tot / n) * 100) / 100).toString(); }); }
       render(); return;
     }
+    const xm = t.closest("[data-xmark]");
+    if (xm) { const x = JSON.parse(xm.dataset.xmark); op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: "", confirmed: x.to === me }).then((ok) => ok && toast(x.to === me ? `Got it: ${x.from} has paid you` : `Marked: ${x.from} paid ${x.to}`)); return; }
     const xc = t.closest("[data-xconfirm]");
     if (xc) { op({ op: "confirmXfer", id: xc.dataset.xconfirm }).then((ok) => ok && toast("Marked as received")); return; }
     const xu = t.closest("[data-xundo]");
@@ -677,7 +693,7 @@
       op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: fd("method") }).then((ok) => ok && toast(`Thanks! ${x.to} will confirm when it arrives`));
     }
     else if (f.id === "my-pay") {
-      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), note: fd("note"), cash: f.elements.cash.checked, pin: fd("pin"), newPin: fd("newPin") })
+      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), note: fd("note"), pin: fd("pin"), newPin: fd("newPin") })
         .then((ok) => ok && toast("Your payment details are saved"));
     }
     else if (f.id === "cc-org") {
