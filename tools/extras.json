@@ -2567,7 +2567,9 @@
   "Sheung Hei Claypot Rice": {
    "kinds_override": [
     "Cantonese & seafood"
-   ]
+   ],
+   "intro": "A Kennedy Town favourite a short walk from campus, known for claypot rice with a crispy crust and very large dim sum. Locals still rate the food highly; service is slow and the queue can be chaotic.",
+   "tips": "Walk-in only; listed as open very long hours (possibly 24 hours), so confirm before a late-night visit. Expect a dinner queue, and claypots take about 20 minutes."
   },
   "Carnegies": {
    "kinds_override": [
@@ -2714,7 +2716,8 @@
   "HSBC Main Building",
   "Lippo Centre ('Koala Tree')",
   "Lai Tak Tsuen (round towers)",
-  "Central & Western District Promenade (Sun Yat Sen Memorial Park)"
+  "Central & Western District Promenade (Sun Yat Sen Memorial Park)",
+  "Beesy Bay"
  ],
  "emoji": {
   "Joy Tonight Grill": "🍢",

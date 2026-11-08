@@ -5371,14 +5371,14 @@ window.HK = {
     "late-night"
    ],
    "price": "$$",
-   "intro": "A Michelin Bib Gourmand spot a short walk from campus, known for claypot rice with a crispy crust and very large dim sum.",
+   "intro": "A Kennedy Town favourite a short walk from campus, known for claypot rice with a crispy crust and very large dim sum. Locals still rate the food highly; service is slow and the queue can be chaotic.",
    "order": [
     "Cured meat claypot rice (臘味煲仔飯)",
     "Steamed eel claypot rice (白鱔煲仔飯)",
     "Giant shrimp dumplings (大蝦餃)"
    ],
    "reviews": "Many diners praise the crispy rice and the dim sum, but some Tripadvisor reviewers found the claypot rice bland and complained about long waits and service.",
-   "tips": "Walk-in only; OpenRice lists very long (possibly 24-hour) hours, so confirm before a late-night visit; dinner queues are common and claypots take about 20 minutes.",
+   "tips": "Walk-in only; listed as open very long hours (possibly 24 hours), so confirm before a late-night visit. Expect a dinner queue, and claypots take about 20 minutes.",
    "addressEn": "G/F, Fook On Mansion, 25 North Street, Kennedy Town",
    "addressZh": "香港堅尼地城北街25號福安大廈地下",
    "lat": 22.28308,
@@ -5821,38 +5821,6 @@ window.HK = {
     "credit": "Nick-D",
     "license": "CC BY-SA 4.0"
    }
-  },
-  {
-   "tab": "city",
-   "name": "Beesy Bay",
-   "zh": "Beesy Bay",
-   "area": "Stanley",
-   "section": "Stanley",
-   "cuisine": "Waterfront bar & restaurant",
-   "category": [
-    "drinks",
-    "dinner"
-   ],
-   "price": "$$",
-   "intro": "A three-floor waterfront spot (the former Boathouse) with a balcony and rooftop terrace overlooking Stanley Bay.",
-   "order": [
-    "Fish and chips",
-    "Beesy at Bay cocktail",
-    "Eggs Benedict (daytime)"
-   ],
-   "tips": "Ask for the rooftop or 2/F balcony for sunset; service can be slow upstairs when busy.",
-   "addressEn": "86-88 Stanley Main Street, Stanley",
-   "addressZh": "赤柱大街86-88號",
-   "lat": 22.21866,
-   "lng": 114.21152,
-   "stanley": true,
-   "id": "beesy-bay",
-   "kinds": [
-    "Rooftops & views"
-   ],
-   "emoji": "🍸",
-   "gRating": 3.7,
-   "gReviews": 195
   },
   {
    "tab": "city",
