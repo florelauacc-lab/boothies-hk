@@ -10848,7 +10848,7 @@ window.HK = {
     ],
     [
      "Lunch",
-     "Dim sum lunch",
+     "Dim Sum Lunch",
      "ours",
      "sun-dimsum",
      {
@@ -10904,7 +10904,7 @@ window.HK = {
     ],
     [
      "Evening",
-     "Hotpot + karaoke (A Smoking Affair)",
+     "Hotpot + Karaoke (A Smoking Affair)",
      "ours",
      "mon-hotpot",
      {
@@ -11087,7 +11087,7 @@ window.HK = {
     ],
     [
      "Evening",
-     "Tram party",
+     "Tram Party",
      "ours",
      "wed-tram"
     ],
@@ -11169,7 +11169,7 @@ window.HK = {
     ],
     [
      "Evening",
-     "Dai pai dong dinner",
+     "Dai Pai Dong Dinner",
      "ours",
      "thu-dpd",
      {

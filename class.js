@@ -323,7 +323,7 @@
     </div>`;
   }
 
-  const SHORT = { "sun-dimsum": "Sun dim sum", "mon-hotpot": "Mon hotpot", "wed-tram": "Wed tram", "thu-dpd": "Thu dai pai dong", };
+  const SHORT = { "sun-dimsum": "Sun Dim Sum", "mon-hotpot": "Mon Hotpot", "wed-tram": "Wed Tram", "thu-dpd": "Thu Dai Pai Dong", };
   function overview(evs) {
     const ppl = people(), bal = balances();
     const grand = evs.reduce((t, e) => t + (each(e) || 0) * e.going.length, 0);
