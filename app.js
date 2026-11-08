@@ -638,7 +638,9 @@
   const mine = store.get(MLS) || {}; // "iso|slot" -> true when someone adds an optional or social item to their own plan
   let onlyMine = !!store.get("hk-onlymine-v1");
   const showHidden = new Set();
-  const findPlace = (q) => { const l = q.toLowerCase(); return live.find((p) => p.name.toLowerCase().includes(l)); };
+  // exact name first, then "starts with", then "contains", so "COA" doesn't match "…coastal walk"
+  const findPlace = (q) => { if (!q) return null; const l = q.toLowerCase(), n = (p) => p.name.toLowerCase();
+    return live.find((p) => n(p) === l) || live.find((p) => n(p).startsWith(l)) || live.find((p) => n(p).includes(l)); };
   function renderPlan() {
     // "today" in Hong Kong time, so the week opens on the right day during the trip
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong" }).format(new Date());
@@ -792,7 +794,9 @@
     const n = TASTE.filter((t) => tried.has(t.name)).length;
     $("#taste-score").textContent = `${n} of ${TASTE.length}`;
     $("#taste-bar").style.width = TASTE.length ? `${(n / TASTE.length) * 100}%` : "0";
-    $("#tips").innerHTML = TIPS.map((g) => `<div><h3>${esc(g.title)}</h3><ul>${g.items.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
+    // tips may carry [label](https://…) links, e.g. App Store / Google Play
+    const linkify = (t) => esc(t).replace(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g, (m, l, u) => `<a href="${u}" target="_blank" rel="noopener">${l}</a>`);
+    $("#tips").innerHTML = TIPS.map((g) => `<div><h3>${esc(g.title)}</h3><ul>${g.items.map((x) => `<li>${linkify(x)}</li>`).join("")}</ul></div>`).join("");
   }
   document.addEventListener("click", (e) => {
     const t = e.target.closest("[data-taste]");

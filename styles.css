@@ -1239,3 +1239,4 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
 .pd.today { border-color: #3ee8b5; }
 .pd.today b { color: #3ee8b5; }
 .pd.today.on b { color: #fff; }
+#tips li a { color: #2ee6ff; font-weight: 800; text-decoration: underline; text-underline-offset: 2px; padding: 4px 2px; }

@@ -6851,6 +6851,9 @@ window.HK = {
    "mapsQuery": "Avenue of Stars Tsim Sha Tsui Hong Kong",
    "local": false,
    "id": "tsim-sha-tsui-promenade-avenue-of-stars-",
+   "flags": [
+    "Symphony of Lights is ending in 2026: check it's still on"
+   ],
    "addressZh": "尖沙咀海濱長廊（星光大道）",
    "emoji": "🌊",
    "gRating": 4.4,
@@ -9957,38 +9960,33 @@ window.HK = {
    "title": "Harbour, the Peak & TST (full day)",
    "steps": [
     [
-     "🚋",
-     "Ding ding tram west from Causeway Bay: Admiralty for Dim Sum Library (about 15 min) or Sheung Wan for Lin Heung Lau (about 30 min). Tap Visa/Mastercard or Octopus",
-     "Ding Ding tram"
-    ],
-    [
-     "🥟",
-     "Dim sum lunch on the way, e.g. Maxim's Palace at City Hall (no booking, go before noon)",
-     "Maxim's Palace"
-    ],
-    [
      "🚡",
-     "Peak Tram up from Garden Road (10 min walk or a short taxi). HK$82 one way / HK$116 return. Buy e-tickets at thepeak.com.hk to skip the ticket queue",
+     "09:00 Peak Tram up from Garden Road (book e-tickets at thepeak.com.hk; queues can pass 45 min). HK$82 one way / HK$116 return",
      "Victoria Peak"
     ],
     [
-     "🍦",
-     "At the Peak: egg tart gelato at Messina, or milk tea at Men Wah Bing Teng",
-     "Men Wah Bing Teng"
-    ],
-    [
      "🌆",
-     "Walk the flat Peak Circle Walk (about 3.5 km / 2 miles). Lugard Road Lookout has the best view",
+     "Lugard Road Lookout on the flat Peak Circle Walk for the classic skyline (about 3.5 km)",
      "Peak Circle Walk"
     ],
     [
+     "🍦",
+     "Egg tart gelato at Messina or milk tea at Men Wah Bing Teng before heading down",
+     "Men Wah Bing Teng"
+    ],
+    [
+     "🥟",
+     "Dim sum lunch in Central, e.g. Maxim's Palace at City Hall (no booking, go before 12:00)",
+     "Maxim's Palace"
+    ],
+    [
      "⛴️",
-     "Back down, then the Star Ferry from Central to Tsim Sha Tsui",
+     "Star Ferry from Central Pier 7 to Tsim Sha Tsui around 16:30",
      "Star Ferry"
     ],
     [
-     "🖼️",
-     "K11 Musea or the HK Museum of Art, then the TST Promenade for the 20:00 Symphony of Lights",
+     "🌃",
+     "TST Promenade by 17:15. Sunset is about 17:40, then the skyline lights up. The 20:00 Symphony of Lights is being retired in 2026, so check it's still on",
      "Tsim Sha Tsui Promenade"
     ]
    ],
@@ -10015,7 +10013,7 @@ window.HK = {
     ],
     [
      "🌃",
-     "TST Promenade for sunset and the 20:00 Symphony of Lights",
+     "TST Promenade for sunset (about 17:40) and the lit-up skyline. The 20:00 Symphony of Lights is being retired in 2026, so check it's still on",
      "Tsim Sha Tsui Promenade"
     ],
     [
@@ -10032,12 +10030,12 @@ window.HK = {
    "steps": [
     [
      "🪷",
-     "Chi Lin Nunnery & Nan Lian Garden: calm, wooden temple halls and gardens (MTR Diamond Hill)",
+     "Start by 10:00 at Chi Lin Nunnery & Nan Lian Garden (nunnery closes 16:30): calm wooden halls and gardens (MTR Diamond Hill)",
      "Chi Lin Nunnery"
     ],
     [
      "🏮",
-     "Wong Tai Sin Temple, one stop away. Try fortune sticks",
+     "Wong Tai Sin Temple, one stop away (closes about 17:00). Try the fortune sticks",
      "Wong Tai Sin Temple"
     ],
     [
@@ -10069,7 +10067,7 @@ window.HK = {
     ],
     [
      "🏮",
-     "Temple Street night market and Mido Café",
+     "Temple Street night market (opens about 16:00, best 19:00–22:00) and Mido Café",
      "Temple Street"
     ],
     [
@@ -10086,7 +10084,7 @@ window.HK = {
    "steps": [
     [
      "🏯",
-     "Hong Kong Palace Museum (book a timed ticket)",
+     "Hong Kong Palace Museum at 10:00 (book online; it has special opening hours in November, so check first)",
      "Hong Kong Palace Museum"
     ],
     [
@@ -10122,14 +10120,24 @@ window.HK = {
      "PMQ"
     ],
     [
+     "🧋",
+     "Milk tea at Lan Fong Yuen on Gage Street, the original 'silk stocking' milk tea",
+     "Lan Fong Yuen"
+    ],
+    [
+     "🛗",
+     "Ride the Mid-Levels Escalator a few stops up to Soho (the world's longest outdoor covered escalator)",
+     null
+    ],
+    [
      "🏛️",
      "Tai Kwun, the old police station and prison turned arts hub",
      "Tai Kwun"
     ],
     [
      "🍸",
-     "Sundowners in Soho",
-     "Lan Kwai Fong"
+     "Sundowners in Soho (busy from about 18:00)",
+     "COA"
     ]
    ],
    "em": "🏚️",
@@ -10157,30 +10165,274 @@ window.HK = {
      "🏖️",
      "Repulse Bay beach on the way back",
      "Repulse Bay Beach"
+    ],
+    [
+     "🚕",
+     "Head back before the evening traffic (the road over the hills can take 45–75 min at rush hour)",
+     null
     ]
    ],
    "em": "🏖️",
    "short": "Stanley & beaches"
   },
   {
+   "title": "Hike: Dragon's Back to Shek O",
+   "em": "🐉",
+   "short": "Dragon's Back hike",
+   "steps": [
+    [
+     "🚇",
+     "08:30 MTR to Shau Kei Wan (Exit A2), then bus 9 to To Tei Wan",
+     null
+    ],
+    [
+     "⛰️",
+     "Stone steps up to views over Tai Tam Bay, then the ridge to Shek O Peak (284 m)",
+     "Dragon's Back"
+    ],
+    [
+     "🏖️",
+     "Down to Big Wave Bay (about 7.5 km, 2–2.5 hrs). Bring water and sun cream: there's no shade",
+     "Big Wave Bay"
+    ],
+    [
+     "🍜",
+     "Lunch and beach time at Shek O",
+     "Shek O Beach"
+    ],
+    [
+     "💪",
+     "Want harder? Violet Hill & The Twins (about 1,200 steps), ending in Stanley",
+     "Violet Hill"
+    ]
+   ]
+  },
+  {
+   "title": "Food crawl: Central & Sheung Wan classics",
+   "em": "🍜",
+   "short": "Island food crawl",
+   "steps": [
+    [
+     "🧋",
+     "Milk tea and a pork chop bun at Lan Fong Yuen on Gage Street",
+     "Lan Fong Yuen"
+    ],
+    [
+     "🥧",
+     "Egg tarts at Tai Cheong Bakery, a few minutes away",
+     "Tai Cheong Bakery"
+    ],
+    [
+     "🍜",
+     "Wonton noodles at Mak's Noodle",
+     "Mak's Noodle"
+    ],
+    [
+     "🍲",
+     "Beef brisket at Kau Kee (cash, expect a queue)",
+     "Kau Kee"
+    ],
+    [
+     "🍅",
+     "Tomato noodles at Sing Heung Yuen dai pai dong",
+     "Sing Heung Yuen"
+    ],
+    [
+     "🦢",
+     "Roast goose at Yat Lok or Kam's Roast Goose to finish",
+     "Yat Lok"
+    ]
+   ]
+  },
+  {
+   "title": "Night out: sunset drinks, Soho & Wan Chai",
+   "em": "🍸",
+   "short": "Night out",
+   "steps": [
+    [
+     "🌇",
+     "17:15 sunset drinks at Ozone, 118/F, the world's highest bar (book; smart casual)",
+     "Ozone"
+    ],
+    [
+     "🍽️",
+     "Dinner in Soho",
+     "Lan Kwai Fong"
+    ],
+    [
+     "🍸",
+     "Soho cocktail bars, e.g. COA (queue from about 18:30)",
+     "COA"
+    ],
+    [
+     "🎶",
+     "Late bars and live music in Wan Chai",
+     "Wan Chai neon"
+    ],
+    [
+     "🚕",
+     "Taxi back to Causeway Bay (MTR runs until about 01:00)",
+     null
+    ]
+   ]
+  },
+  {
+   "title": "Wan Chai heritage walk",
+   "em": "🏮",
+   "short": "Wan Chai heritage",
+   "steps": [
+    [
+     "🚇",
+     "09:30 Wan Chai MTR (Exit A3) into the street markets",
+     null
+    ],
+    [
+     "🟦",
+     "The Blue House cluster, 1920s tenements with a little museum",
+     "The Blue House"
+    ],
+    [
+     "🛕",
+     "Pak Tai Temple (1863, free), a three-minute walk away",
+     null
+    ],
+    [
+     "🟨",
+     "More stops on the Wan Chai Heritage Trail, like the Yellow House",
+     null
+    ],
+    [
+     "🛍️",
+     "Lunch and shopping on Lee Tung Avenue",
+     null
+    ]
+   ]
+  },
+  {
    "title": "Day trip: Big Buddha & Tai O",
    "steps": [
     [
      "🚠",
-     "Ngong Ping 360 cable car to the Big Buddha",
+     "Ngong Ping 360 cable car from Tung Chung. Pre-book online, as weekend ticket queues can pass an hour",
+     "Big Buddha"
+    ],
+    [
+     "🛕",
+     "The Big Buddha's 268 steps, then Po Lin Monastery next door (vegetarian lunch in the monastery hall)",
      "Big Buddha"
     ],
     [
      "🛖",
-     "Bus 21 to Tai O stilt-house fishing village",
+     "Bus 21 (about 20 min) to Tai O stilt-house fishing village",
      "Tai O"
+    ],
+    [
+     "⏰",
+     "Leave Tai O by mid-afternoon: the bus queue back is long and the cable car closes about 18:00 (18:30 at weekends)",
+     null
     ]
    ],
    "em": "🚠",
    "short": "Big Buddha & Tai O"
   },
   {
-   "title": "Day trip: Ocean Park & a seafood dinner",
+   "title": "Day trip: Cheung Chau island",
+   "steps": [
+    [
+     "⛴️",
+     "Fast ferry from Central Pier 5 (35–40 min; slow ferry 55–60 min)",
+     "Cheung Chau"
+    ],
+    [
+     "🛕",
+     "Pak Tai Temple, home of the famous Bun Festival",
+     null
+    ],
+    [
+     "🍡",
+     "Snack crawl: mango mochi, fish balls and peace buns at Kwok Kam Kee",
+     null
+    ],
+    [
+     "🏖️",
+     "Tung Wan Beach, then the short walk to Cheung Po Tsai pirate cave",
+     "Cheung Chau"
+    ]
+   ],
+   "em": "⛴️",
+   "short": "Cheung Chau island"
+  },
+  {
+   "title": "Day trip: Macau",
+   "em": "🇲🇴",
+   "short": "Macau day trip",
+   "steps": [
+    [
+     "⛴️",
+     "08:00 TurboJET from Sheung Wan (Macau Ferry Terminal, about 1 hr). Bring your passport and buy tickets a few days ahead",
+     null
+    ],
+    [
+     "⛪",
+     "Senado Square and St Dominic's Church, early before the crowds",
+     null
+    ],
+    [
+     "🏛️",
+     "Ruins of St Paul's, Macau's icon",
+     null
+    ],
+    [
+     "🥧",
+     "Lord Stow's egg tarts in Coloane (or the Taipa branch)",
+     null
+    ],
+    [
+     "🎰",
+     "Afternoon in Taipa or Cotai (Venetian, Galaxy); free hotel shuttles from the ferry terminals",
+     null
+    ],
+    [
+     "⛴️",
+     "Ferry back around 20:00–21:30",
+     null
+    ]
+   ]
+  },
+  {
+   "title": "Day trip: Lamma Island walk & seafood",
+   "em": "🏝️",
+   "short": "Lamma Island",
+   "steps": [
+    [
+     "⛴️",
+     "10:00 ferry from Central Pier 4 to Yung Shue Wan (about 25 min)",
+     null
+    ],
+    [
+     "☕",
+     "Wander Yung Shue Wan village: cafés, bakeries, water for the walk",
+     null
+    ],
+    [
+     "🥾",
+     "Family Trail to Sok Kwu Wan (5 km, 1–1.5 hrs walking), via Hung Shing Yeh Beach and the Lamma Winds lookout",
+     null
+    ],
+    [
+     "🦐",
+     "Seafood lunch over the fish rafts in Sok Kwu Wan",
+     null
+    ],
+    [
+     "⛴️",
+     "Ferry back to Central (about 30 min; sailings are spaced out, so check the timetable)",
+     null
+    ]
+   ]
+  },
+  {
+   "title": "Optional day trip: Ocean Park & a seafood dinner",
    "steps": [
     [
      "🐼",
@@ -10194,27 +10446,11 @@ window.HK = {
     ]
    ],
    "em": "🐼",
-   "short": "Ocean Park & seafood"
+   "short": "Ocean Park & seafood",
+   "optional": true
   },
   {
-   "title": "Day trip: Cheung Chau island",
-   "steps": [
-    [
-     "⛴️",
-     "Ferry from Central Pier 5 (35–55 min)",
-     "Cheung Chau"
-    ],
-    [
-     "🍡",
-     "Snacks, beaches and car-free lanes",
-     "Cheung Chau"
-    ]
-   ],
-   "em": "⛴️",
-   "short": "Cheung Chau island"
-  },
-  {
-   "title": "Day trip: Hong Kong Disneyland",
+   "title": "Optional day trip: Hong Kong Disneyland",
    "steps": [
     [
      "🏰",
@@ -10223,7 +10459,8 @@ window.HK = {
     ]
    ],
    "em": "🏰",
-   "short": "Disneyland"
+   "short": "Disneyland",
+   "optional": true
   }
  ],
  "PLAN": [
@@ -10253,38 +10490,33 @@ window.HK = {
     "title": "Harbour, the Peak & TST (full day)",
     "steps": [
      [
-      "🚋",
-      "Ding ding tram west from Causeway Bay: Admiralty for Dim Sum Library (about 15 min) or Sheung Wan for Lin Heung Lau (about 30 min). Tap Visa/Mastercard or Octopus",
-      "Ding Ding tram"
-     ],
-     [
-      "🥟",
-      "Dim sum lunch on the way, e.g. Maxim's Palace at City Hall (no booking, go before noon)",
-      "Maxim's Palace"
-     ],
-     [
       "🚡",
-      "Peak Tram up from Garden Road (10 min walk or a short taxi). HK$82 one way / HK$116 return. Buy e-tickets at thepeak.com.hk to skip the ticket queue",
+      "09:00 Peak Tram up from Garden Road (book e-tickets at thepeak.com.hk; queues can pass 45 min). HK$82 one way / HK$116 return",
       "Victoria Peak"
      ],
      [
-      "🍦",
-      "At the Peak: egg tart gelato at Messina, or milk tea at Men Wah Bing Teng",
-      "Men Wah Bing Teng"
-     ],
-     [
       "🌆",
-      "Walk the flat Peak Circle Walk (about 3.5 km / 2 miles). Lugard Road Lookout has the best view",
+      "Lugard Road Lookout on the flat Peak Circle Walk for the classic skyline (about 3.5 km)",
       "Peak Circle Walk"
      ],
      [
+      "🍦",
+      "Egg tart gelato at Messina or milk tea at Men Wah Bing Teng before heading down",
+      "Men Wah Bing Teng"
+     ],
+     [
+      "🥟",
+      "Dim sum lunch in Central, e.g. Maxim's Palace at City Hall (no booking, go before 12:00)",
+      "Maxim's Palace"
+     ],
+     [
       "⛴️",
-      "Back down, then the Star Ferry from Central to Tsim Sha Tsui",
+      "Star Ferry from Central Pier 7 to Tsim Sha Tsui around 16:30",
       "Star Ferry"
      ],
      [
-      "🖼️",
-      "K11 Musea or the HK Museum of Art, then the TST Promenade for the 20:00 Symphony of Lights",
+      "🌃",
+      "TST Promenade by 17:15. Sunset is about 17:40, then the skyline lights up. The 20:00 Symphony of Lights is being retired in 2026, so check it's still on",
       "Tsim Sha Tsui Promenade"
      ]
     ],
@@ -11363,10 +11595,19 @@ window.HK = {
    "items": [
     "💳 Tap Visa or Mastercard on the MTR, buses, trams and in most shops.",
     "💵 Carry HK$300–500 cash. Local spots and minibuses are often cash only.",
-    "🐙 Octopus card for everywhere else. On iPhone, get the \"Octopus for Tourists\" app and pay with Apple Pay. Or buy a card at any MTR station.",
+    "🐙 Octopus card: iPhone, get [Octopus for Tourists](https://apps.apple.com/app/octopus-for-tourists/id1505492952) and top up with Apple Pay. Android has no visitor app yet, so buy a card at the airport, any MTR station or 7-Eleven.",
     "🚕 Taxi? Tap \"Show the driver\" on any place and hand over your phone.",
     "🛗 Escalators: stand on the right, walk on the left.",
     "🧭 Citymapper is the best app for getting around."
+   ]
+  },
+  {
+   "title": "📱 Apps to get",
+   "items": [
+    "🧭 Citymapper: the best for buses, minibuses and MTR · [iPhone](https://apps.apple.com/app/id469463298) · [Android](https://play.google.com/store/apps/details?id=com.citymapper.app.release)",
+    "🗺️ Google Maps: every place in this guide opens in it · [iPhone](https://apps.apple.com/app/id585027354) · [Android](https://play.google.com/store/apps/details?id=com.google.android.apps.maps)",
+    "🐙 Octopus for Tourists (iPhone only): a tap card in your Apple Wallet · [iPhone](https://apps.apple.com/app/octopus-for-tourists/id1505492952)",
+    "🚕 Uber: handy for booking regular red taxis · [iPhone](https://apps.apple.com/app/id368677368) · [Android](https://play.google.com/store/apps/details?id=com.ubercab)"
    ]
   },
   {
