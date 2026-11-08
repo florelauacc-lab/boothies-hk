@@ -449,8 +449,8 @@
     const items = [];
     data.events.forEach((e) => { if (e.price > 0 && e.going.includes(me)) items.push([e.title, -e.price, `paid by ${data.payTo}`]); });
     (data.bills || []).forEach((b) => { const sh = billShares(b)[me]; if (sh) items.push([b.what, -sh, `paid by ${b.paidBy}`]); if (b.paidBy === me) items.push([`You paid: ${b.what}`, b.hkd, `for ${b.among.length} people`]); });
-    (data.xfers || []).filter((x) => x.confirmed && (x.from === me || x.to === me)).forEach((x) => items.push([x.from === me ? `You paid ${x.to}` : `${x.from} paid you`, x.from === me ? x.hkd : -x.hkd, "settled"]));
-    Object.values(data.settle?.[me]?.payments || []).forEach((p) => items.push([`You paid ${data.payTo}`, p.hkd, p.confirmed ? "confirmed" : "waiting"]));
+    (data.xfers || []).filter((x) => x.confirmed && (x.from === me || x.to === me)).forEach((x) => items.push([x.from === me ? `You paid ${x.to}` : `${x.from} paid you`, x.from === me ? x.hkd : -x.hkd, "✓✓ confirmed"]));
+    Object.values(data.settle?.[me]?.payments || []).forEach((p) => items.push([`You paid ${data.payTo}`, p.hkd, p.confirmed ? "✓✓ confirmed" : "⏳ needs confirming"]));
     return `<div class="cc-owe">
       <h3 class="cc-h">💸 Settle up</h3>
       <p class="muted small">Everything is netted out: who paid for what, your share, and what's already been paid back. So you may pay someone different from whoever covered your meal. "How it adds up" shows the detail.</p>
