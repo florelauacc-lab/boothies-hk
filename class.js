@@ -41,7 +41,8 @@
   const hk = (n) => `HK$${Math.round(n).toLocaleString("en")}`;
   const fx = (n, c = cur) => { const v = n * rates[c]; return `${SYM[c]}${v >= 100 ? Math.round(v).toLocaleString("en") : v.toFixed(c === "JPY" || c === "KRW" ? 0 : 2)}`; };
   const total = (e) => (e.expenses || []).reduce((t, x) => t + (+x.hkd || 0), 0);
-  const each = (e) => (total(e) && e.going.length ? total(e) / e.going.length : null);
+  // each person's share: the set price per person, or (if a bill was entered instead) the bill split evenly
+  const each = (e) => (e.price > 0 ? +e.price : total(e) && e.going.length ? total(e) / e.going.length : null);
   const PAY_METHODS = ["PayPal / card", "Wise / bank", "FPS", "PayMe", "Cash"];
 
   /* ---------- state ---------- */
@@ -95,8 +96,8 @@
     if (!live()) { toast("You're offline, so changes can't be saved right now"); return; }
     if (optimistic) { optimistic(); render(); }
     busy = true;
-    try { data = await api("POST", { by: me, ...body }); }
-    catch (e) { toast(`Couldn't save: ${e.message}`); try { data = await api("GET"); } catch (e2) { /* keep local */ } }
+    try { data = await api("POST", { by: me, ...body }); return true; }
+    catch (e) { toast(`Couldn't save: ${e.message}`); try { data = await api("GET"); } catch (e2) { /* keep local */ } return false; }
     finally { busy = false; render(); }
   }
   async function refresh() { if (live() && !busy && !editing && document.visibilityState === "visible" && !root.contains(document.activeElement)) { try { data = await api("GET"); render(); } catch (e) { /* ignore */ } } }
@@ -119,7 +120,8 @@
     data.events.forEach((e) => {
       const s = each(e); if (!s) return;
       e.going.forEach((n) => { b[n] = (b[n] || 0) - s; });
-      e.expenses.forEach((x) => { b[x.paidBy] = (b[x.paidBy] || 0) + (+x.hkd || 0); });
+      if (e.price > 0) b[data.payTo] = (b[data.payTo] || 0) + s * e.going.length; // fixed price: everyone pays the collector
+      else e.expenses.forEach((x) => { b[x.paidBy] = (b[x.paidBy] || 0) + (+x.hkd || 0); });
     });
     return b;
   }
@@ -163,7 +165,7 @@
         <label>Prices in <select id="cc-cur" aria-label="Currency">${curOpts}</select></label>
       </div>
       ${me ? myPlace(mine, st, bal, isPayer) : `<p class="muted">Pick your name to see your own events and what you owe.</p>`}
-      <h3 class="cc-h">🎉 Class events <small>tap one to tick who's going or add the bill</small></h3>
+      <h3 class="cc-h">🎉 Class events <small>tap one to tick who's going or set the price</small></h3>
       <div class="cc-events">${evs.map((e) => evCard(e, ppl)).join("")}</div>
       ${live() ? `<details class="cc-add"><summary>➕ Add an event for the class</summary>
         <form id="cc-newev" class="cc-grid-form">
@@ -188,7 +190,7 @@
   // "My place": my events, my share of each, and paying it
   function myPlace(mine, st, bal, isPayer) {
     const owedToMe = (bal[me] || 0) > 0.5;
-    const rows = mine.map((e) => `<li><span>${esc(e.title)}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : `<small>bill to come</small>`}</b></li>`).join("");
+    const rows = mine.map((e) => `<li><span>${esc(e.title)}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : `<small>price to come</small>`}</b></li>`).join("");
     let pay = "";
     if (!owedToMe && st.left > 0) {
       pay = `${payButtons(st.left)}
@@ -210,29 +212,27 @@
   function evCard(e, ppl) {
     const p = each(e), inIt = e.going.includes(me), ed = editing === e.id;
     const day = DAYS.find(([iso]) => iso === e.iso)?.[1];
-    const payerOpts = people().map((n) => `<option${n === data.payTo ? " selected" : ""}>${esc(n)}</option>`).join("");
     return `<details class="cc-ev${inIt ? " mine" : ""}" id="ev-${e.id}" data-ev="${e.id}"${openEv.has(e.id) || ed ? " open" : ""}>
       <summary><span class="t"><b>${esc(e.title)}</b><small>${esc([day, e.when].filter(Boolean).join(", "))}${e.venue ? ` · ${esc(e.venue)}` : ""}</small></span>
-      <span class="n">${e.going.length} going${inIt ? " · ✓ you" : ""}<br><em>${p ? `${hk(p)} each ≈ ${fx(p)}` : "split evenly after"}</em></span></summary>
+      <span class="n">${e.going.length} going${inIt ? " · ✓ you" : ""}<br><em>${p ? `${hk(p)} each ≈ ${fx(p)}` : "price to come"}</em></span></summary>
       ${placeFor(e.venue) ? `<button type="button" class="cc-venue" data-jump="${placeFor(e.venue).id}">📍 ${esc(placeFor(e.venue).name)} · map &amp; taxi card →</button>` : ""}
       ${me && live() ? `<button type="button" class="cc-imin${inIt ? " on" : ""}" data-tick="${e.id}" data-name="${esc(me)}" data-on="${inIt ? 0 : 1}">${inIt ? "✓ I'm going · tap to undo" : "+ I'm going"}</button>` : ""}
       ${ed
         ? `<p class="cc-hint">Tap names to tick or untick · ${e.going.length} going</p>
           <div class="cc-names edit">${ppl.map((x) => `<button type="button" class="${e.going.includes(x.name) ? "on" : ""}${x.away ? " away" : ""}" data-tick="${e.id}" data-name="${esc(x.name)}" data-on="${e.going.includes(x.name) ? 0 : 1}">${e.going.includes(x.name) ? "✓ " : ""}${esc(x.name)}${x.away ? " (not in HK)" : ""}</button>`).join("")}</div>
-          <form class="cc-inline" data-addperson="${e.id}"><input name="name" placeholder="Someone else (e.g. a partner)" maxlength="60" required><button type="submit">Add</button></form>
+          <form class="cc-inline" data-addperson="${e.id}"><input name="name" placeholder="Not on the list? Add their name" maxlength="60" required><button type="submit">Add &amp; tick</button></form>
           <button type="button" class="cc-done" data-edit="">Done</button>`
         : `<div class="cc-names">${e.going.map((n) => `<span class="${n === me ? "me" : ""}">${esc(n)}</span>`).join("") || `<em class="muted">Nobody yet</em>`}</div>
           ${live() ? `<button type="button" class="cc-editbtn" data-edit="${e.id}">✏️ Tick who's going</button>` : ""}`}
       <div class="cc-bills">
-        <h4>Bill</h4>
-        ${e.expenses.length ? `<ul>${e.expenses.map((x) => `<li><span>${esc(x.what)} · paid by ${esc(x.paidBy)}</span><b>${hk(+x.hkd)}</b>${live() ? `<button type="button" class="cc-x" data-delexp="${e.id}" data-xid="${x.id}" aria-label="Remove bill">✕</button>` : ""}</li>`).join("")}</ul>
-          <p class="cc-split">${hk(total(e))} ÷ ${e.going.length} people = <b>${p ? hk(p) : "–"}</b> each${p ? ` · ${["USD", "GBP", "EUR", "JPY"].map((c) => fx(p, c)).join(" · ")}` : ""}</p>`
-          : `<p class="cc-split muted">Add the bill after the event. It's split evenly between everyone ticked.</p>`}
-        ${live() ? `<form class="cc-inline bill" data-addexp="${e.id}">
-          <input name="what" placeholder="What" maxlength="40" value="${e.expenses.length ? "" : "Dinner"}" aria-label="What">
-          <input name="hkd" type="number" inputmode="decimal" min="1" step="0.01" placeholder="HK$ total" required aria-label="Amount in HK$">
-          <select name="paidBy" aria-label="Paid by">${payerOpts}</select>
-          <button type="submit">Add bill</button></form>` : ""}
+        <h4>Price per person</h4>
+        ${p ? `<p class="cc-price"><b>${hk(p)}</b> each <span>≈ ${["USD", "GBP", "EUR", "JPY"].map((c) => fx(p, c)).join(" · ")}</span></p>
+          <p class="muted small">${e.going.length} going × ${hk(p)} = ${hk(p * e.going.length)} to ${esc(data.payTo)}</p>`
+          : `<p class="cc-split muted">No price yet. Once it's set, everyone ticked owes that amount.</p>`}
+        ${e.expenses.length ? `<ul>${e.expenses.map((x) => `<li><span>${esc(x.what)} · paid by ${esc(x.paidBy)}</span><b>${hk(+x.hkd)}</b>${live() ? `<button type="button" class="cc-x" data-delexp="${e.id}" data-xid="${x.id}" aria-label="Remove bill">✕</button>` : ""}</li>`).join("")}</ul>` : ""}
+        ${live() ? `<form class="cc-inline bill" data-setprice="${e.id}">
+          <input name="price" type="number" inputmode="numeric" min="0" step="1" placeholder="HK$ per person" value="${e.price || ""}" aria-label="Price per person in HK$" required>
+          <button type="submit">${e.price ? "Update price" : "Set price"}</button></form>` : ""}
       </div>
       ${live() ? `<button type="button" class="cc-del" data-delev="${e.id}">🗑 Remove this event</button>` : ""}
     </details>`;
@@ -264,7 +264,7 @@
         ? `<button type="button" class="cc-mini" data-unconfirm="${esc(r.n)}" data-i="${i}">✓ ${hk(p.hkd)} received · undo</button>`
         : `<button type="button" class="cc-mini go" data-confirm="${esc(r.n)}" data-i="${i}">Confirm ${hk(p.hkd)} received (${esc(p.method || "")})</button>`).join("") : "";
       return `<li class="${r.n === me ? "me" : ""}${r.settled ? " done" : ""}"><span class="nm">${esc(r.n)}</span><span class="amt">${hk(r.share)}</span>${chip}${confirm ? `<div class="cc-confirm">${confirm}</div>` : ""}</li>`;
-    }).join("")}</ul>` : `<p class="muted">Nothing to settle yet. Once a bill is added to an event, everyone's share shows here.</p>`;
+    }).join("")}</ul>` : `<p class="muted">Nothing to settle yet. Once an event has a price, everyone's share shows here.</p>`;
     return `<div class="cc-pay">
       <h3 class="cc-h">💸 Settle up ${rows.length ? `<small>${done} of ${rows.length} settled</small>` : ""}</h3>
       ${collector.length ? `<p>${collector.map(([n, v]) => `<b>${esc(n)}</b> paid ${hk(v + Math.max(0, -(bal[n] || 0)))} up front`).join(" · ")}</p>` : ""}
@@ -289,12 +289,12 @@
   const SHORT = { "sun-dimsum": "Sun dim sum", "mon-hotpot": "Mon hotpot", "wed-tram": "Wed tram", "thu-dpd": "Thu dai pai dong", "thu-duck": "Thu duck" };
   function overview(evs) {
     const ppl = people(), bal = balances();
-    const grand = evs.reduce((t, e) => t + total(e), 0);
+    const grand = evs.reduce((t, e) => t + (each(e) || 0) * e.going.length, 0);
     return `<details class="cc-all"><summary>📋 Full list: everyone × every event</summary>
       <div class="cc-scroll"><table>
         <thead><tr><th>Name</th>${evs.map((e) => `<th>${esc(SHORT[e.id] || e.title)}</th>`).join("")}<th>Share</th><th>Paid</th></tr></thead>
         <tbody>${ppl.map((n) => { const s = status(n, bal); return `<tr class="${n === me ? "me" : ""}"><td>${esc(n)}</td>${evs.map((e) => `<td>${live() ? `<button type="button" class="cc-cell${e.going.includes(n) ? " on" : ""}" data-tick="${e.id}" data-name="${esc(n)}" data-on="${e.going.includes(n) ? 0 : 1}" aria-label="${esc(n)}: ${esc(e.title)}">${e.going.includes(n) ? "✓" : ""}</button>` : e.going.includes(n) ? "✓" : ""}</td>`).join("")}<td>${s.share ? hk(s.share) : "–"}</td><td>${s.settled ? "✓✓" : s.sent ? "✓" : ""}</td></tr>`; }).join("")}</tbody>
-        <tfoot><tr><td>Going</td>${evs.map((e) => `<td>${e.going.length}<br><small>${total(e) ? hk(total(e)) : "bill after"}</small></td>`).join("")}<td>${grand ? hk(grand) : "–"}</td><td></td></tr></tfoot>
+        <tfoot><tr><td>Going</td>${evs.map((e) => `<td>${e.going.length}<br><small>${each(e) ? `${hk(each(e))} each` : "price TBC"}</small></td>`).join("")}<td>${grand ? hk(grand) : "–"}</td><td></td></tr></tfoot>
       </table></div>
       <p class="muted small">${live() ? "Tap a box to tick or untick. " : ""}Paid: ✓ = says they've paid, ✓✓ = ${esc(data.payTo)} confirmed.</p>
       <button type="button" class="cc-csv" id="cc-csv">Copy as spreadsheet (CSV)</button>
@@ -307,7 +307,7 @@
       const e = data && data.events.find((x) => x.id === el.dataset.evinfo);
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
-      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${e.going.includes(me) ? " · ✓ you" : ""} · ${p ? `${hk(p)} each` : "split evenly after"}</button>`;
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${e.going.includes(me) ? " · ✓ you" : ""} · ${p ? `${hk(p)} each` : "price to come"}</button>`;
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;
@@ -368,10 +368,10 @@
     e.preventDefault();
     const fd = (k) => f.elements[k]?.value?.trim() || "";
     if (f.id === "cc-form") { msg("Checking…"); unlock(fd("cc-pass") || $("#cc-pass").value); }
-    else if (f.id === "cc-newev") { op({ op: "addEvent", title: fd("title"), iso: fd("iso"), when: fd("when"), venue: fd("venue") }).then(() => toast("Event added for everyone")); }
-    else if (f.id === "cc-pay") { op({ op: "setPay", paypal: fd("paypal"), fps: fd("fps"), payme: fd("payme"), bank: fd("bank") }).then(() => toast("Saved")); }
-    else if (f.id === "cc-paid") { const s = status(me, balances()); op({ op: "markPaid", name: me, hkd: s.left, method: fd("method") }).then(() => toast(`Thanks! ${data.payTo} will confirm once it arrives`)); }
-    else if (f.dataset.addexp) { op({ op: "addExpense", ev: f.dataset.addexp, what: fd("what"), hkd: fd("hkd"), paidBy: fd("paidBy") }); }
+    else if (f.id === "cc-newev") { op({ op: "addEvent", title: fd("title"), iso: fd("iso"), when: fd("when"), venue: fd("venue") }).then((ok) => ok && toast("Event added for everyone")); }
+    else if (f.id === "cc-pay") { op({ op: "setPay", paypal: fd("paypal"), fps: fd("fps"), payme: fd("payme"), bank: fd("bank") }).then((ok) => ok && toast("Saved")); }
+    else if (f.id === "cc-paid") { const s = status(me, balances()); op({ op: "markPaid", name: me, hkd: s.left, method: fd("method") }).then((ok) => ok && toast(`Thanks! ${data.payTo} will confirm once it arrives`)); }
+    else if (f.dataset.setprice) { op({ op: "setPrice", ev: f.dataset.setprice, price: fd("price") }).then((ok) => ok && toast("Price saved for everyone")); }
     else if (f.dataset.addperson) { const ev = f.dataset.addperson, name = fd("name"); op({ op: "addPerson", name }).then(() => op({ op: "toggle", ev, name, on: true })); }
   });
 

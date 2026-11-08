@@ -86,6 +86,15 @@ export default async function handler(req, res) {
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
       }
+      case "setPrice": { // fixed price per person, so nobody owes more (or gets refunds) when people join or drop
+        const [cur] = await redis([["HGET", `${P}events`, ev]]);
+        if (!cur) return res.status(404).json({ error: "no event" });
+        const e = JSON.parse(cur), price = Math.round(+b.price);
+        if (!(price >= 0) || price > 100000) return res.status(400).json({ error: "bad price" });
+        e.price = price || null; e.priceBy = by;
+        await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
+        break;
+      }
       case "delEvent":
         await redis([["HDEL", `${P}events`, ev], ["DEL", `${P}going:${ev}`], ["DEL", `${P}exp:${ev}`]]);
         break;
