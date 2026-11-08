@@ -949,3 +949,120 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
 .tips ul { font-size: 15px; line-height: 1.5; gap: 8px; padding-left: 0; list-style: none; }
 .tips li { padding-left: 0; }
 @media (max-width: 600px) { .tips > div { padding: 14px 16px; } .tips ul { font-size: 15px; } }
+
+/* ---------- grouped top picks (broad choices show the best few of each kind) ---------- */
+.cards .grp { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 10px 2px 0; }
+.cards .grp:first-child { margin-top: 0; }
+.cards .grp h3 { margin: 0; font-size: 1.02rem; font-weight: 800; letter-spacing: .01em; display: flex; align-items: center; gap: 8px; min-width: 0; }
+.cards .grp h3 span { font-size: 1.15rem; }
+.see-all { flex: none; cursor: pointer; font: inherit; font-size: .86rem; font-weight: 700; color: var(--gold, #ffc44d); background: none; border: 0; padding: 8px 2px; }
+.see-all:hover { text-decoration: underline; }
+.meta .stars { color: var(--gold, #ffc44d); font-weight: 800; }
+.meta .stars small { color: var(--muted); font-weight: 500; }
+@media (pointer: coarse) { .see-all { min-height: 44px; } }
+
+/* ---------- week: my plan, shuttle, suggested routes ---------- */
+.plan-mode { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: rgba(255,255,255,.06); margin: 4px 0 10px; }
+.plan-mode button { font: inherit; font-weight: 700; font-size: .9rem; color: var(--muted); background: none; border: 0; border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+.plan-mode button.on { background: var(--maroon, #800000); color: #fff; }
+.slotrow { flex-wrap: wrap; }
+.slotrow .sv { flex: 1 1 0; min-width: 0; }
+.slotrow.off .sv { opacity: .62; }
+.slotrow .mine { flex: none; margin-left: auto; font: inherit; font-size: .8rem; font-weight: 800; border-radius: 999px; padding: 5px 11px; cursor: pointer; border: 1px solid rgba(255,255,255,.25); background: none; color: var(--text); }
+.slotrow .mine.on { background: #3ee8b5; border-color: #3ee8b5; color: #06281f; }
+.slotrow .evinfo { flex-basis: 100%; order: 5; }
+.evlock { font: inherit; font-size: .8rem; font-weight: 700; color: var(--gold, #ffc44d); background: rgba(255,196,77,.08); border: 1px solid rgba(255,196,77,.25); border-radius: 999px; padding: 4px 10px; margin-top: 6px; cursor: pointer; }
+.daynote { margin: 6px 0 0; font-size: .88rem; color: var(--gold, #ffc44d); }
+.plan details.bus, .plan details.route { margin-top: 8px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+.plan details summary { cursor: pointer; padding: 10px 12px; font-weight: 800; font-size: .92rem; list-style: none; }
+.plan details summary::-webkit-details-marker { display: none; }
+.plan details summary::after { content: " ▾"; color: var(--muted); }
+.plan details[open] summary::after { content: " ▴"; }
+.plan details ul, .plan details ol { margin: 0; padding: 0 12px 10px 30px; font-size: .9rem; line-height: 1.45; }
+.plan details.route ol { list-style: none; padding-left: 12px; }
+.plan details.route li { display: flex; gap: 10px; padding: 5px 0; }
+.plan details.route .re { flex: none; width: 1.5em; text-align: center; }
+.plan details p.small { padding: 0 12px 10px; margin: 0; }
+.rlink { font: inherit; font-size: .8rem; font-weight: 800; color: #2ee6ff; background: none; border: 0; padding: 0 2px; cursor: pointer; white-space: nowrap; }
+.muted.small, .small { font-size: .82rem; }
+
+/* ---------- class corner (passcode-locked) ---------- */
+.cc { margin-top: 26px; padding: 18px; border-radius: 20px; background: linear-gradient(160deg, rgba(128,0,0,.35), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.1); }
+.cc h2 { margin: 0 0 6px; }
+.cc-form { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.cc-form input { flex: 1 1 200px; min-width: 0; font: inherit; font-size: 16px; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.2); background: rgba(0,0,0,.3); color: var(--text); }
+.cc-form button, .cc-lockbtn { font: inherit; font-weight: 800; padding: 12px 18px; border-radius: 12px; border: 0; background: var(--gold, #ffc44d); color: #2b1600; cursor: pointer; }
+.cc-msg { min-height: 1.2em; margin: 8px 0 0; color: var(--gold, #ffc44d); font-size: .9rem; }
+.cc-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.cc-lockbtn { background: rgba(255,255,255,.08); color: var(--text); padding: 8px 12px; font-size: .85rem; }
+.cc-me { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 10px 0; }
+.cc-me label { display: flex; align-items: center; gap: 8px; font-weight: 700; min-width: 0; max-width: 100%; }
+.cc-me select { font: inherit; font-size: 16px; max-width: 100%; min-width: 0; padding: 8px 10px; border-radius: 10px; background: rgba(0,0,0,.35); color: var(--text); border: 1px solid rgba(255,255,255,.2); }
+.cc-owe { padding: 12px 14px; border-radius: 14px; background: rgba(62,232,181,.1); border: 1px solid rgba(62,232,181,.3); margin-bottom: 12px; }
+.cc-owe small { display: block; color: var(--muted); font-weight: 700; }
+.cc-owe b { font-size: 1.4rem; }
+.cc-owe b span { font-size: 1rem; color: #3ee8b5; }
+.cc-owe p { margin: 4px 0 0; font-size: .9rem; }
+.cc-events { display: grid; gap: 8px; }
+.cc-ev { border-radius: 14px; background: rgba(0,0,0,.22); border: 1px solid rgba(255,255,255,.08); }
+.cc-ev.mine { border-color: rgba(62,232,181,.45); }
+.cc-ev summary { display: flex; gap: 10px; justify-content: space-between; align-items: center; padding: 12px 14px; cursor: pointer; list-style: none; }
+.cc-ev summary::-webkit-details-marker { display: none; }
+.cc-ev .t { min-width: 0; }
+.cc-ev .t b { display: block; }
+.cc-ev .t small, .cc-ev .n em { color: var(--muted); font-size: .82rem; font-style: normal; }
+.cc-ev .n { flex: none; text-align: right; font-weight: 800; font-size: .9rem; }
+.cc-split { margin: 0 14px 8px; font-size: .88rem; }
+.cc-names { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 14px; }
+.cc-names span { font-size: .82rem; padding: 4px 9px; border-radius: 999px; background: rgba(255,255,255,.07); }
+.cc-names span.me { background: #3ee8b5; color: #06281f; font-weight: 800; }
+.cc-pay { margin-top: 16px; }
+.cc-pay h3 { margin: 0 0 4px; }
+.cc-pay ul { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 6px; }
+.cc-pay li { display: grid; grid-template-columns: 1.6em auto; column-gap: 6px; font-size: .92rem; line-height: 1.4; }
+.cc-pay li b { margin-right: 4px; }
+.cc-pay li > span { grid-row: span 2; }
+.cc-groups { margin-top: 14px; }
+.cc-groups summary { cursor: pointer; font-weight: 800; padding: 8px 0; }
+.cc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); gap: 10px; }
+.cc-grid h4 { margin: 0 0 4px; color: var(--gold, #ffc44d); }
+.cc-grid ul { margin: 0; padding-left: 16px; font-size: .88rem; line-height: 1.5; }
+@media (max-width: 600px) {
+  .cc { padding: 14px; border-radius: 16px; }
+  .cc-ev summary { flex-direction: column; align-items: flex-start; }
+  .cc-ev .n { text-align: left; }
+}
+
+/* ---------- photos on sights, hikes & shopping cards ---------- */
+.card .ph { position: relative; margin: -2px -2px 10px; border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 9; background: rgba(255,255,255,.05); }
+.card .ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.card .ph figcaption { position: absolute; right: 0; bottom: 0; max-width: 100%; padding: 3px 7px; font-size: .66rem; line-height: 1.3; background: rgba(0,0,0,.55); border-top-left-radius: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card .ph figcaption a { color: rgba(255,255,255,.8); text-decoration: none; }
+@media (max-width: 600px) { .card .ph { aspect-ratio: 2 / 1; } }
+.cc-all { margin-top: 14px; }
+.cc-all summary { cursor: pointer; font-weight: 800; padding: 8px 0; }
+.cc-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid rgba(255,255,255,.1); max-height: 70vh; }
+.cc-scroll table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+.cc-scroll th, .cc-scroll td { padding: 7px 9px; text-align: center; border-bottom: 1px solid rgba(255,255,255,.07); white-space: nowrap; }
+.cc-scroll th { position: sticky; top: 0; background: #2a0d12; font-size: .78rem; }
+.cc-scroll td:first-child, .cc-scroll th:first-child { text-align: left; position: sticky; left: 0; background: #1d0a0e; }
+.cc-scroll tr.me td { background: rgba(62,232,181,.14); }
+.cc-scroll tfoot td { font-weight: 800; background: #2a0d12; }
+.cc-csv { margin-top: 8px; font: inherit; font-weight: 700; font-size: .88rem; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); background: none; color: var(--text); cursor: pointer; }
+@media (max-width: 600px) { .card .ph { aspect-ratio: auto; height: 120px; margin-bottom: 8px; } }
+/* slot rows: time label on top, then the item with its "+ Me" button on the right */
+#plan .slotrow { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 10px; align-items: center; }
+#plan .slotrow > span:first-child { grid-column: 1 / -1; }
+#plan .slotrow span.sv, #plan .slotrow span.evinfo { display: block; color: inherit; font-size: inherit; text-transform: none; letter-spacing: normal; font-weight: inherit; min-width: 0; overflow-wrap: anywhere; }
+#plan .slotrow span.evinfo { grid-column: 1 / -1; }
+#plan .slotrow .mine { grid-column: 2; grid-row: 2; align-self: center; }
+@media (pointer: coarse) { #plan .slotrow .mine { min-height: 36px; } }
+/* the one-day-at-a-time rule is for day cards only, not the lists inside them */
+#plan li li { display: list-item !important; padding: 2px 0; margin: 0; border: 0; background: none; box-shadow: none; min-height: 0; }
+#plan details.route li { display: flex !important; padding: 5px 0; }
+.cc-owes { list-style: none; padding: 0; margin: 8px 0 12px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr)); gap: 6px; }
+.cc-owes li { display: flex; justify-content: space-between; gap: 8px; padding: 6px 10px; border-radius: 10px; background: rgba(255,255,255,.05); font-size: .88rem; }
+.cc-owes li.me { background: rgba(62,232,181,.16); }
+.paybtns { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.paybtn { display: inline-flex; align-items: center; min-height: 44px; font: inherit; font-weight: 800; font-size: .92rem; padding: 10px 16px; border-radius: 12px; border: 0; background: #3ee8b5; color: #06281f; text-decoration: none; cursor: pointer; }
+.paybtn + .paybtn { background: rgba(255,255,255,.1); color: var(--text); }

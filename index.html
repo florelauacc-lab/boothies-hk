@@ -6,6 +6,7 @@
   <title>Boothies in HK · Becker Section guide</title>
   <meta name="description" content="An interactive map of classmate-picked places to eat and drink near HKU: Kennedy Town, Sai Ying Pun and beyond." />
   <meta name="theme-color" content="#800000" />
+  <meta name="robots" content="noindex, nofollow" />
   <meta property="og:title" content="Boothies in HK · Becker Section guide" />
   <meta property="og:description" content="Pick tonight's dinner, dessert or bar on the map." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥢</text></svg>" />
@@ -156,9 +157,11 @@
     <div class="week-inner">
       <p class="eyebrow">The Becker allocation of time</p>
       <h2>The week at a glance</h2>
-      <p class="muted">🎓 Becker schedule · <em class="opt">Optional</em> · 🎉 our plans</p>
+      <p class="muted">🎓 Becker schedule · <em class="opt">Optional</em> · 🎉 our plans · tap <b>+ Me</b> to build your own week</p>
+      <div class="plan-mode" id="plan-mode" role="group" aria-label="Show"></div>
       <div class="plandays" id="plandays"></div>
       <ol id="plan" class="plan"></ol>
+      <section id="cc" class="cc" aria-label="Class corner"></section>
     </div>
   </section>
 
@@ -195,5 +198,7 @@
   <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js"></script>
   <script src="data.js"></script>
   <script src="app.js"></script>
+  <script src="private.enc.js"></script>
+  <script src="class.js"></script>
 </body>
 </html>

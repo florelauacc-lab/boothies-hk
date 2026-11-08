@@ -23,6 +23,7 @@
         { k: "neon", label: "Neon lights", em: "🌈", c: C.pink },
         { k: "architecture", label: "Cool buildings", em: "🏢", c: C.violet },
         { k: "beach", label: "Beaches", em: "🏖️", c: C.cyan },
+        { k: "daytrip", label: "Day trips", em: "⛴️", c: C.lime },
         { k: "free", label: "Free", em: "🆓", c: C.lime },
         { k: "near-campus", label: "Near Booth", em: "🎓", c: C.orange },
       ],
@@ -55,14 +56,14 @@
   const EXPLORE = new Set(["sights", "hikes", "shop"]);
   const WHERE = [
     ["all", "anywhere"], ["saiwan", "near Booth (Sai Wan)"], ["central", "in Central & Soho"],
-    ["cwb", "near the Park Lane"], ["south", "in Stanley 🛶"], ["kowloon", "across the harbour"],
+    ["cwb", "near the Park Lane"], ["south", "in Stanley & the south 🛶"], ["kowloon", "across the harbour"],
   ];
   function whereOf(p) {
     const a = `${p.area} ${p.addressEn || ""}`.toLowerCase();
     if (/kennedy town|sai ying pun|shek tong tsui|sai wan|mount davis|pok fu lam|hku/.test(a)) return "saiwan";
     if (/tsim sha tsui|tst|jordan|mong kok|yau ma tei|kowloon|prince edward|sham shui po|hung hom|to kwa wan/.test(a)) return "kowloon";
     if (/causeway|wan chai|north point|tai hang|happy valley|quarry|braemar|tin hau|jardine|fortress hill|tai koo|shau kei/.test(a)) return "cwb";
-    if (/stanley|repulse|tai tam|chung hom|deep water bay/.test(a)) return "south";
+    if (/stanley|repulse|tai tam|chung hom|deep water bay|ap lei chau|aberdeen|ocean park|southern district/.test(a)) return "south";
     if (/central|soho|sheung wan|admiralty|mid-levels|lan kwai|lkf|noho|tai kwun|peak|hollywood/.test(a)) return "central";
     return "other";
   }
@@ -101,9 +102,23 @@
   const BAR_SHORT = { "Cocktails": "Cocktails", "Rooftops & views": "Rooftop", "Wine bars": "Wine", "Beer & pubs": "Pubs", "Jazz & live music": "Live music", "Clubbing": "Clubs" };
   const filterKeysOf = (p) => (state.mood === "drinks" ? (p.kinds || []).filter((k) => BAR_GROUPS.includes(k)) : groupsOf(p));
 
+  // Saved choices live in localStorage with a cookie copy, so a cleared or capped store doesn't lose them
+  const store = {
+    get(k) {
+      try { const v = localStorage.getItem(k); if (v != null) return JSON.parse(v); } catch (e) { /* private mode */ }
+      const m = document.cookie.match(new RegExp(`(?:^|; )${k}=([^;]*)`));
+      try { return m ? JSON.parse(decodeURIComponent(m[1])) : null; } catch (e) { return null; }
+    },
+    set(k, v) {
+      const j = JSON.stringify(v);
+      try { localStorage.setItem(k, j); } catch (e) { /* private mode */ }
+      document.cookie = `${k}=${encodeURIComponent(j)}; max-age=${60 * 60 * 24 * 400}; path=/; SameSite=Lax`;
+    },
+  };
+  navigator.storage?.persist?.().catch(() => {});
   const LS = "hk-shortlist-v1";
-  const loved = new Set(JSON.parse(localStorage.getItem(LS) || "[]"));
-  const state = { tab: "saiwan", mood: "all", area: "all", section: "all", q: "", shortlist: false, active: null, local: false, boothies: false, all: false, more: false, limit: 6, kinds: new Set(), where: "saiwan", style: "any" };
+  const loved = new Set(store.get(LS) || []);
+  const state = { tab: "city", mood: "all", area: "all", section: "all", q: "", shortlist: false, active: null, local: false, boothies: false, all: false, more: false, limit: 10, kinds: new Set(), where: "all", style: "any" };
 
   const $ = (s) => document.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -151,7 +166,7 @@
     clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2200);
   }
   function saveLoved() {
-    localStorage.setItem(LS, JSON.stringify([...loved]));
+    store.set(LS, [...loved]);
     $("#sl-count").textContent = loved.size;
   }
 
@@ -165,9 +180,20 @@
     return tabItems.filter((p) => !p.lite);
   }
   const allCount = () => live.filter((p) => (FOOD.has(state.tab) ? FOOD.has(p.tab) : p.tab === state.tab) && (state.where === "all" || whereOf(p) === state.where)).length;
-  const startLimit = (tab) => (tab === "sights" || tab === "hikes" ? 9 : FOOD.has(tab) && state.mood === "drinks" ? 10 : 6);
+  const startLimit = () => 10;
   let me = null; // the user's location once they tap "Near me"
   const rank = (p) => (state.mood === "drinks" && p.topBar ? -1 : p.essential ? 0 : p.picked ? 1 : p.lite ? 3 : 2);
+  // Popular AND well rated: Google stars weighted by how many people reviewed (a 4.6 with 3,000 reviews beats a 4.9 with 40)
+  // HK locals rate harshly on Google (famous roast-goose shops sit at 3.5–4.0), so review volume counts as much as stars.
+  // Places without Google numbers get a middle-of-the-pack score and our own picks decide.
+  const PRIOR = 4.1, WEIGHT = 150;
+  const MED = (() => { const v = PLACES.map((p) => p.gReviews).filter(Boolean).sort((a, b) => a - b); return v[v.length >> 1] || 500; })();
+  function score(p) {
+    const v = p.gRating ? p.gReviews || 0 : MED, r = p.gRating || PRIOR;
+    return (v / (v + WEIGHT)) * r + (WEIGHT / (v + WEIGHT)) * PRIOR + 0.3 * Math.log10(v + 1)
+      + (p.essential ? 0.3 : 0) + (p.picked ? 0.2 : 0) + (p.classic || p.award ? 0.15 : 0)
+      + (state.mood === "drinks" && p.topBar ? 0.4 : 0) - (p.lite ? 0.6 : 0);
+  }
   function filtered() {
     const q = state.q.trim().toLowerCase();
     return pool().filter((p) => {
@@ -193,7 +219,40 @@
         if (!hay.includes(q)) return false;
       }
       return true;
-    }).sort((a, b) => me && a.lat != null && b.lat != null ? km(me, a) - km(me, b) : rank(a) - rank(b) || (a.topRank ?? 99) - (b.topRank ?? 99));
+    }).sort((a, b) => me && a.lat != null && b.lat != null ? km(me, a) - km(me, b) : score(b) - score(a) || rank(a) - rank(b) || (a.topRank ?? 99) - (b.topRank ?? 99));
+  }
+  // Broad picks ("dinner", "drinks", "sights") show the top few of each sub-category, so nobody has to tap "show more";
+  // as soon as something narrower is chosen it's one ranked top-10 list.
+  const GROUP_TABS = { sights: ["iconic", "views", "culture", "daytrip", "night", "neon", "architecture", "beach"], hikes: ["easy", "moderate"], shop: ["luxury", "gifts", "malls", "local"] };
+  function grouped(items) {
+    if (state.flat || state.shortlist || state.q.trim() || me || state.kinds.size || state.style !== "any" || state.area !== "all" || state.section !== "all" || state.boothies || state.local) return null;
+    let defs;
+    if (FOOD.has(state.tab)) {
+      if (state.mood === "all") defs = FOOD_MOODS.map((m) => ({ key: `mood:${m.k}`, label: m.label, em: m.em, has: (p) => p.category.includes(m.k) }));
+      else if (state.mood === "drinks") defs = BAR_GROUPS.map((g) => ({ key: `kind:${g}`, label: g, em: BAR_EMOJI[g], has: (p) => (p.kinds || []).includes(g) }));
+      else if (state.mood === "coffee") return null;
+      else defs = GROUP_ORDER.filter((g) => g !== "Veggie" && g !== "Bars" && (g !== "Dessert" || state.mood === "late-night"))
+        .map((g) => ({ key: `kind:${g}`, label: g === "Local HK" ? "Local Hong Kong" : g, em: GROUP_EMOJI[g], has: (p) => groupsOf(p).includes(g) }));
+    } else {
+      if (state.mood !== "all") return null;
+      defs = (GROUP_TABS[state.tab] || []).map((k) => moodOf(k, state.tab)).filter(Boolean)
+        .map((m) => ({ key: `mood:${m.k}`, label: m.label, em: m.em, has: (p) => p.category.includes(m.k) }));
+    }
+    defs = defs.map((d) => ({ ...d, all: items.filter(d.has) })).filter((d) => d.all.length);
+    if (defs.length < 2) return null;
+    const per = defs.length <= 3 ? 5 : defs.length <= 5 ? 4 : 3;
+    const used = new Set();
+    // one card per place, and one branch per chain (two Picis side by side looks like a mistake)
+    const base = (p) => p.name.replace(/\s*\(.*\)\s*$/, "").toLowerCase();
+    defs.forEach((d) => {
+      d.top = [];
+      for (const p of d.all) {
+        if (d.top.length >= per) break;
+        if (used.has(p.id) || used.has(base(p))) continue;
+        d.top.push(p); used.add(p.id); used.add(base(p));
+      }
+    });
+    return defs.filter((d) => d.top.length);
   }
   const uniq = (arr) => [...new Set(arr.filter(Boolean))];
 
@@ -231,6 +290,7 @@
 
   document.addEventListener("change", (e) => {
     if (!e.target.closest(".builder")) return;
+    state.flat = false;
     const id = e.target.id, v = e.target.value;
     if (id === "b-what") {
       const [t, m] = v.split(":");
@@ -286,6 +346,7 @@
     const tags = uniq([p.section, ...p.category.map((c) => moodOf(c, p.tab)?.label)]).map((t) => `<span class="tag">${esc(t)}</span>`).join("")
       + (p.veg ? `<span class="tag badge-veg">🥬 ${esc(p.veg)}</span>` : "") + (p.boothies ? `<span class="tag badge-boothies">👥 Boothies map</span>` : "") + (p.local ? `<span class="tag badge-local">🏮 Local favourite</span>` : "") + (p.topBar ? `<span class="tag badge-pick">★ Top bar${p.award ? ` · ${esc(p.award.split(/[;+(]/)[0].trim())}` : ""}</span>` : "") + (p.picked ? `<span class="tag badge-pick">★ Class pick</span>` : "") + (p.flags || []).map((f) => `<span class="tag warn">${esc(f)}</span>`).join("");
     const meta = [
+      p.gRating && `<span class="stars" title="Google rating">★ ${p.gRating.toFixed(1)}${p.gReviews ? ` <small>(${p.gReviews >= 1000 ? `${(p.gReviews / 1000).toFixed(p.gReviews >= 10000 ? 0 : 1)}k` : p.gReviews})</small>` : ""}</span>`,
       p.price && `<span class="price">${esc(p.price)}</span>`,
       `<span>${esc(p.cuisine)}</span>`,
       `<span>${esc(p.area)}</span>`,
@@ -303,6 +364,7 @@
       p.phone && `<a href="tel:+852${esc(p.phone.replace(/\s/g, ""))}">📞 ${esc(p.phone)}</a>`,
     ].filter(Boolean).join("");
     return `<article class="card${state.active === p.id ? " active open" : ""}" data-id="${p.id}" style="--c:${colorOf(p)};animation-delay:${Math.min(i, 12) * 30}ms">
+      ${p.photo ? `<figure class="ph"><img src="${esc(p.photo.src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('figure').remove()"><figcaption><a href="${esc(p.photo.page)}" target="_blank" rel="noopener">📷 ${esc(p.photo.credit)} · ${esc(p.photo.license)}</a></figcaption></figure>` : ""}
       <div class="card-top">
         <div class="badge">${emojiOf(p)}</div>
         <div class="titles"><h3>${esc(p.name)}</h3>${p.zh && p.zh !== p.name ? `<span class="zh" lang="zh">${esc(p.zh)}</span>` : ""}</div>
@@ -343,10 +405,17 @@
         + (extra > 0 && curated ? ` · <a href="#" data-all="1">+ ${extra} classmate picks from the Boothies map</a>` : "")
         + (state.all ? ` · <a href="#" data-all="0">Back to hand-picked only</a>` : "");
     }
+    const groups = grouped(items);
+    if (groups) countHtml = `Top picks of each kind · ${countHtml}`;
+    else if (items.length && !state.shortlist && !me) countHtml = `Most popular &amp; best rated first · ${countHtml}`;
     $("#count").innerHTML = countHtml;
-    const shown = items.slice(0, state.limit);
+    const shown = groups ? groups.flatMap((g) => g.top) : items.slice(0, state.limit);
     const rest = items.length - shown.length;
-    $("#grid").innerHTML = items.length ? shown.map(card).join("") + (rest > 0 ? `<button class="show-more" data-showmore="1">Show ${Math.min(rest, startLimit(state.tab))} more <small>(${rest} more to see)</small></button>` : "")
+    let i = 0;
+    $("#grid").innerHTML = groups
+      ? groups.map((g) => `<div class="grp"><h3><span>${g.em}</span> ${esc(g.label)}</h3>${g.all.length > g.top.length ? `<button class="see-all" data-seeall="${esc(g.key)}">See top ${Math.min(10, g.all.length)} →</button>` : ""}</div>`
+        + g.top.map((p) => card(p, i++)).join("")).join("")
+      : items.length ? shown.map(card).join("") + (rest > 0 ? `<button class="show-more" data-showmore="1">Show ${Math.min(rest, 10)} more <small>(${rest} more to see)</small></button>` : "")
       : state.shortlist
         ? `<div class="empty"><b>♡</b>Tap the heart on any place to build a shortlist you can send to the group chat.</div>`
         : `<div class="empty"><b>🤷</b>Nothing matches. Try another mood or clear the search.</div>`;
@@ -481,17 +550,19 @@
     $("#legend").innerHTML = `<span class="lg home">${homeLbl}</span>${chips}`;
   }
 
+  const shownNow = () => { const it = filtered(), g = grouped(it); return g ? g.flatMap((x) => x.top) : it.slice(0, state.limit); };
   function focus(id, { fromMap = false, open = true } = {}) {
     const prev = state.active;
     state.active = id;
     document.querySelectorAll(".card.active").forEach((c) => c.classList.remove("active"));
     let el = document.querySelector(`.cards .card[data-id="${id}"]`);
     if (!el && filtered().some((p) => p.id === id)) {
+      state.flat = true; // jumping to a place outside the grouped top picks shows the full ranked list instead
       state.limit = Math.max(state.limit, filtered().findIndex((p) => p.id === id) + 1);
       render({ fit: false }); el = document.querySelector(`.cards .card[data-id="${id}"]`);
     }
     if (el) { el.classList.add("active"); if (open) el.classList.add("open"); }
-    if ((byId[id] && byId[id].pins) || (prev && byId[prev] && byId[prev].pins)) drawMarkers(filtered().slice(0, state.limit), false);
+    if ((byId[id] && byId[id].pins) || (prev && byId[prev] && byId[prev].pins)) drawMarkers(shownNow(), false);
     [prev, id].forEach((k) => { if (k && markers[k] && byId[k]) markers[k].setIcon(pinIcon(byId[k])); });
     const p = byId[id];
     if (p?.pins) {
@@ -506,19 +577,56 @@
   /* ---------- week ---------- */
   // Week: official Becker schedule (🎓) + our own plans (🎉). Phones show one day at a time.
   let planDay = null;
+  const MLS = "hk-myplan-v1";
+  const mine = store.get(MLS) || {}; // "iso|slot" -> true when someone adds an optional or social item to their own plan
+  let onlyMine = !!store.get("hk-onlymine-v1");
+  const findPlace = (q) => { const l = q.toLowerCase(); return live.find((p) => p.name.toLowerCase().includes(l)); };
   function renderPlan() {
     const today = new Date().toISOString().slice(0, 10);
     if (planDay == null) planDay = Math.max(0, PLAN.findIndex((d) => d.iso === today));
     const dayBtns = PLAN.map((d, i) => `<button class="pd${i === planDay ? " on" : ""}" data-planday="${i}"><b>${esc(d.day)}</b><span>${esc(d.date.split(" ")[0])}</span></button>`).join("");
+    const row = (d, [t, v, kind, ev], j) => {
+      const key = `${d.iso}|${j}`, pickable = kind === "optional" || kind === "ours", on = !!mine[key];
+      if (onlyMine && pickable && !on) return "";
+      return `<div class="slotrow ${kind || "school"}${pickable && !on ? " off" : ""}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : ""}</span>`
+        + `<span class="sv">${kind === "ours" ? "🎉 " : ""}${esc(v)}</span>`
+        + (ev ? `<span class="evinfo" data-evinfo="${ev}"></span>` : "")
+        + (pickable ? `<button class="mine${on ? " on" : ""}" data-mine="${key}" aria-pressed="${on}" aria-label="${on ? "Remove from" : "Add to"} my plan">${on ? "✓ Going" : "+ Me"}</button>` : "")
+        + `</div>`;
+    };
+    const route = (r) => r ? `<details class="route"><summary>🗺️ ${esc(r.title)}</summary><ol>${r.steps.map(([em, text, q]) => {
+      const p = q && findPlace(q);
+      return `<li><span class="re">${em}</span><span>${esc(text)}${p ? ` <button class="rlink" data-jump="${p.id}">Map →</button>` : ""}</span></li>`;
+    }).join("")}</ol></details>` : "";
+    const bus = (b) => b ? `<details class="bus"><summary>🚌 Shuttle bus</summary><ul>${b.map((x) => `<li>${esc(x)}</li>`).join("")}</ul><p class="muted small">Times are for the first stop. Buses don't wait, so be there on time.</p></details>` : "";
     const dayCard = (d, i) => `<li class="${i === planDay ? "sel" : ""}">
       <div class="day"><small>${esc(d.date)}</small>${esc(d.day)}</div>
-      ${d.slots.map(([t, v, kind]) => `<div class="slotrow ${kind || "school"}"><span>${esc(t)}${kind === "optional" ? ' <em class="opt">Optional</em>' : ""}</span>${kind === "ours" ? "🎉 " : ""}${esc(v)}</div>`).join("")}
+      ${d.slots.map((sl, j) => row(d, sl, j)).join("")}
+      ${d.note ? `<p class="daynote">${esc(d.note)}</p>` : ""}
+      ${bus(d.bus)}${route(d.route)}
       ${[d.go, d.go2].filter(Boolean).map((g) => `<button class="go" data-go='${esc(JSON.stringify(g))}'>${esc(g.label)} →</button>`).join(" ")}
     </li>`;
     $("#plan").innerHTML = PLAN.map(dayCard).join("");
     $("#plandays").innerHTML = dayBtns;
+    const nMine = Object.values(mine).filter(Boolean).length;
+    $("#plan-mode").innerHTML = `<button class="${onlyMine ? "" : "on"}" data-onlymine="0">Everything</button><button class="${onlyMine ? "on" : ""}" data-onlymine="1">⭐ My week${nMine ? ` · ${nMine}` : ""}</button>`;
+    window.HK_PRIVATE_RENDER?.();
   }
+  // The class corner knows which booked events you said yes to in the poll: tick those for you
+  // (anything you've ticked or unticked yourself stays as you left it)
+  window.HK_AUTO_MINE = (evIds) => {
+    let changed = false;
+    PLAN.forEach((d) => d.slots.forEach(([, , , ev], j) => {
+      const k = `${d.iso}|${j}`;
+      if (ev && evIds.includes(ev) && mine[k] === undefined) { mine[k] = true; changed = true; }
+    }));
+    if (changed) { store.set(MLS, mine); renderPlan(); }
+  };
   document.addEventListener("click", (e) => {
+    const m = e.target.closest("[data-mine]");
+    if (m) { const k = m.dataset.mine; mine[k] = !mine[k]; store.set(MLS, mine); renderPlan(); return; }
+    const om = e.target.closest("[data-onlymine]");
+    if (om) { onlyMine = om.dataset.onlymine === "1"; store.set("hk-onlymine-v1", onlyMine); renderPlan(); return; }
     const b = e.target.closest("[data-planday]");
     if (!b) return;
     planDay = +b.dataset.planday; renderPlan();
@@ -596,11 +704,11 @@
     let w = null;
     if (tab === "saiwan") { tab = "city"; w = "saiwan"; }
     if (where) w = where;
-    else if (w == null) w = keepWhere && FOOD.has(state.tab) ? state.where : FOOD.has(tab) ? (q ? "all" : "saiwan") : "all";
+    else if (w == null) w = keepWhere && FOOD.has(state.tab) ? state.where : "all";
     if (!FOOD.has(tab) && !where) w = "all";
     state.where = w;
     if (!FOOD.has(tab)) state.style = "any";
-    state.tab = tab; state.mood = mood; state.area = "all"; state.kinds = new Set(); state.all = false; state.boothies = false; state.limit = startLimit(tab); state.section = "all"; state.shortlist = false; state.active = null; state.q = q;
+    state.tab = tab; state.mood = mood; state.area = "all"; state.kinds = new Set(); state.all = false; state.boothies = false; state.limit = startLimit(tab); state.flat = false; state.section = "all"; state.shortlist = false; state.active = null; state.q = q;
     $("#search").value = q;
     $("#shortlist-btn").classList.remove("on");
     syncTabs(tab);
@@ -608,7 +716,7 @@
     $("#finder").hidden = isWeek;
     $("#week").hidden = tab !== "week";
     $("#start").hidden = tab !== "start";
-    if (!isWeek) { render({ fit: false }); requestAnimationFrame(() => { map.invalidateSize(); drawMarkers(filtered().slice(0, state.limit), true); }); } else renderMoods();
+    if (!isWeek) { render({ fit: false }); requestAnimationFrame(() => { map.invalidateSize(); drawMarkers(shownNow(), true); }); } else renderMoods();
     history.replaceState(null, "", `#${tab}`);
   }
 
@@ -650,6 +758,15 @@
       return;
     }
     if (e.target.closest("[data-go-list]")) { window.scrollTo({ top: contentTop(), behavior: "smooth" }); return; }
+    const sa = e.target.closest("[data-seeall]");
+    if (sa) {
+      const [t, v] = sa.dataset.seeall.split(/:(.*)/);
+      if (t === "mood" && FOOD.has(state.tab)) { setTab("city", { mood: v, keepWhere: true }); }
+      else if (t === "mood") { state.mood = v; state.limit = 10; render(); }
+      else { state.kinds = new Set([v]); state.limit = 10; render(); }
+      window.scrollTo({ top: contentTop(), behavior: "smooth" });
+      return;
+    }
     if (e.target.closest("[data-showmore]")) { state.limit += startLimit(state.tab); render({ fit: false }); return; }
     const all = e.target.closest("[data-all]");
     if (all) { e.preventDefault(); state.all = all.dataset.all === "1"; render(); return; }
@@ -667,7 +784,7 @@
     if (go) { const g = JSON.parse(go.dataset.go); setTab(g.tab, g); window.scrollTo({ top: contentTop(), behavior: "smooth" }); return; }
     const t = e.target.closest("[data-mood],[data-area],[data-section],[data-tab],[data-local],[data-kind],[data-boothies]");
     if (t) {
-      state.limit = startLimit(state.tab);
+      state.limit = startLimit(state.tab); state.flat = false;
       if (t.dataset.tab) {
         if (t.dataset.group === "explore" && EXPLORE.has(state.tab)) return;
         setTab(t.dataset.tab);

@@ -5,3 +5,6 @@ __pycache__/
 tools/research/boothies.json
 .vercel
 .env*
+
+# classmates, attendance and payments: only the encrypted private.enc.js is published
+tools/private/

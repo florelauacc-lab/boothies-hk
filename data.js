@@ -49,7 +49,9 @@ window.HK = {
    "kinds": [
     "Cantonese & seafood"
    ],
-   "emoji": "🍚"
+   "emoji": "🍚",
+   "gRating": 3.8,
+   "gReviews": 1955
   },
   {
    "tab": "saiwan",
@@ -340,7 +342,9 @@ window.HK = {
     "Dim sum",
     "Cantonese & seafood"
    ],
-   "emoji": "🥟"
+   "emoji": "🥟",
+   "gRating": 4.1,
+   "gReviews": 2221
   },
   {
    "tab": "saiwan",
@@ -412,7 +416,9 @@ window.HK = {
    "kinds": [
     "Taiwanese"
    ],
-   "emoji": "🍱"
+   "emoji": "🍱",
+   "gRating": 4.0,
+   "gReviews": 1270
   },
   {
    "tab": "saiwan",
@@ -449,7 +455,9 @@ window.HK = {
    "kinds": [
     "Western & Med"
    ],
-   "emoji": "🍝"
+   "emoji": "🍝",
+   "gRating": 4.8,
+   "gReviews": 2131
   },
   {
    "tab": "saiwan",
@@ -522,7 +530,9 @@ window.HK = {
     "Dim sum",
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🥟"
+   "emoji": "🥟",
+   "gRating": 4.1,
+   "gReviews": 932
   },
   {
    "tab": "saiwan",
@@ -697,7 +707,9 @@ window.HK = {
    "kinds": [
     "Cocktails"
    ],
-   "emoji": "🍸"
+   "emoji": "🍸",
+   "gRating": 4.3,
+   "gReviews": 675
   },
   {
    "tab": "saiwan",
@@ -803,7 +815,9 @@ window.HK = {
    "kinds": [
     "Western & Med"
    ],
-   "emoji": "🌮"
+   "emoji": "🌮",
+   "gRating": 4.2,
+   "gReviews": 313
   },
   {
    "tab": "saiwan",
@@ -1115,7 +1129,9 @@ window.HK = {
     "Cantonese & seafood"
    ],
    "addressZh": "灣仔謝斐道303號KONNECT 2樓",
-   "emoji": "🥢"
+   "emoji": "🥢",
+   "gRating": 3.9,
+   "gReviews": 1935
   },
   {
    "tab": "city",
@@ -1214,7 +1230,9 @@ window.HK = {
     "Dim sum"
    ],
    "addressZh": "中西區德輔道中249-251號東寧大廈",
-   "emoji": "🥟"
+   "emoji": "🥟",
+   "gRating": 3.8,
+   "gReviews": 5417
   },
   {
    "tab": "city",
@@ -1247,7 +1265,9 @@ window.HK = {
     "Cantonese & seafood"
    ],
    "addressZh": "中西區士丹利街24-26號陸羽大廈",
-   "emoji": "🥟"
+   "emoji": "🥟",
+   "gRating": 3.6,
+   "gReviews": 1842
   },
   {
    "tab": "city",
@@ -1488,7 +1508,9 @@ window.HK = {
     "Roast meats & noodles"
    ],
    "addressZh": "中西區歌賦街21號",
-   "emoji": "🍜"
+   "emoji": "🍜",
+   "gRating": 3.6,
+   "gReviews": 4748
   },
   {
    "tab": "city",
@@ -1785,7 +1807,9 @@ window.HK = {
     "Japanese"
    ],
    "addressZh": "中西區善慶街2號",
-   "emoji": "🍣"
+   "emoji": "🍣",
+   "gRating": 4.7,
+   "gReviews": 131
   },
   {
    "tab": "city",
@@ -1820,7 +1844,9 @@ window.HK = {
     "Japanese"
    ],
    "addressZh": "灣仔區謝斐道440號駱克大廈Ｂ座",
-   "emoji": "🍜"
+   "emoji": "🍜",
+   "gRating": 4.1,
+   "gReviews": 4169
   },
   {
    "tab": "city",
@@ -1851,7 +1877,9 @@ window.HK = {
    "kinds": [
     "Western & Med"
    ],
-   "emoji": "🍝"
+   "emoji": "🍝",
+   "gRating": 4.7,
+   "gReviews": 4309
   },
   {
    "tab": "city",
@@ -1950,7 +1978,9 @@ window.HK = {
     "Western & Med"
    ],
    "addressZh": "中西區堅道55號",
-   "emoji": "🍝"
+   "emoji": "🍝",
+   "gRating": 4.5,
+   "gReviews": 115
   },
   {
    "tab": "city",
@@ -2017,7 +2047,9 @@ window.HK = {
     "Western & Med"
    ],
    "addressZh": "西營盤皇后大道西189號",
-   "emoji": "🥘"
+   "emoji": "🥘",
+   "gRating": 4.3,
+   "gReviews": 2145
   },
   {
    "tab": "city",
@@ -2682,7 +2714,9 @@ window.HK = {
     "Rooftops & views"
    ],
    "addressZh": "中西區德己立街32號加州大廈",
-   "emoji": "🥩"
+   "emoji": "🥩",
+   "gRating": 4.4,
+   "gReviews": 2144
   },
   {
    "tab": "city",
@@ -2978,7 +3012,9 @@ window.HK = {
    "boothies": true,
    "kinds": [
     "Cantonese & seafood"
-   ]
+   ],
+   "gRating": 4.8,
+   "gReviews": 2015
   },
   {
    "tab": "city",
@@ -3068,7 +3104,9 @@ window.HK = {
    "id": "arabica-kennedy-town",
    "kinds": [
     "Coffee"
-   ]
+   ],
+   "gRating": 4.3,
+   "gReviews": 1324
   },
   {
    "tab": "saiwan",
@@ -3099,7 +3137,9 @@ window.HK = {
    "id": "noc-coffee-co-sai-ying-pun",
    "kinds": [
     "Coffee"
-   ]
+   ],
+   "gRating": 4.2,
+   "gReviews": 895
   },
   {
    "tab": "city",
@@ -3192,7 +3232,9 @@ window.HK = {
    "id": "cupping-room-central",
    "kinds": [
     "Coffee"
-   ]
+   ],
+   "gRating": 4.0,
+   "gReviews": 1142
   },
   {
    "tab": "city",
@@ -3255,7 +3297,9 @@ window.HK = {
    "id": "barista-jam",
    "kinds": [
     "Coffee"
-   ]
+   ],
+   "gRating": 4.3,
+   "gReviews": 495
   },
   {
    "tab": "city",
@@ -3289,7 +3333,9 @@ window.HK = {
    "kinds": [
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🍳"
+   "emoji": "🍳",
+   "gRating": 4.0,
+   "gReviews": 6472
   },
   {
    "tab": "city",
@@ -3323,7 +3369,9 @@ window.HK = {
    "kinds": [
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🍍"
+   "emoji": "🍍",
+   "gRating": 3.7,
+   "gReviews": 6498
   },
   {
    "tab": "city",
@@ -3356,7 +3404,9 @@ window.HK = {
    "kinds": [
     "Dessert & sweets"
    ],
-   "emoji": "🥧"
+   "emoji": "🥧",
+   "gRating": 3.9,
+   "gReviews": 2973
   },
   {
    "tab": "city",
@@ -3391,7 +3441,9 @@ window.HK = {
     "Cha chaan teng & cafés",
     "Cantonese & seafood"
    ],
-   "emoji": "🍞"
+   "emoji": "🍞",
+   "gRating": 3.7,
+   "gReviews": 4965
   },
   {
    "tab": "city",
@@ -3426,7 +3478,9 @@ window.HK = {
    "kinds": [
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🍞"
+   "emoji": "🍞",
+   "gRating": 3.2,
+   "gReviews": 837
   },
   {
    "tab": "city",
@@ -3462,7 +3516,9 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍖"
+   "emoji": "🍖",
+   "gRating": 4.1,
+   "gReviews": 6381
   },
   {
    "tab": "city",
@@ -3498,7 +3554,9 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍖"
+   "emoji": "🍖",
+   "gRating": 3.4,
+   "gReviews": 6045
   },
   {
    "tab": "city",
@@ -3532,7 +3590,9 @@ window.HK = {
    "kinds": [
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🍞"
+   "emoji": "🍞",
+   "gRating": 3.8,
+   "gReviews": 2263
   },
   {
    "tab": "city",
@@ -3568,7 +3628,9 @@ window.HK = {
     "Roast meats & noodles",
     "Cantonese & seafood"
    ],
-   "emoji": "🍖"
+   "emoji": "🍖",
+   "gRating": 3.8,
+   "gReviews": 2870
   },
   {
    "tab": "city",
@@ -3604,7 +3666,9 @@ window.HK = {
     "Dessert & sweets",
     "Cantonese & seafood"
    ],
-   "emoji": "🍧"
+   "emoji": "🍧",
+   "gRating": 4.2,
+   "gReviews": 5906
   },
   {
    "tab": "city",
@@ -3776,7 +3840,9 @@ window.HK = {
    "kinds": [
     "Dessert & sweets"
    ],
-   "emoji": "🍮"
+   "emoji": "🍮",
+   "gRating": 4.0,
+   "gReviews": 1587
   },
   {
    "tab": "city",
@@ -3812,7 +3878,9 @@ window.HK = {
    "kinds": [
     "Dessert & sweets"
    ],
-   "emoji": "🍮"
+   "emoji": "🍮",
+   "gRating": 4.0,
+   "gReviews": 2928
   },
   {
    "tab": "city",
@@ -4060,7 +4128,9 @@ window.HK = {
    "kinds": [
     "Cantonese & seafood"
    ],
-   "emoji": "🌶️"
+   "emoji": "🌶️",
+   "gRating": 4.3,
+   "gReviews": 1423
   },
   {
    "tab": "city",
@@ -4124,7 +4194,9 @@ window.HK = {
    "kinds": [
     "Cantonese & seafood"
    ],
-   "emoji": "🥢"
+   "emoji": "🥢",
+   "gRating": 4.5,
+   "gReviews": 865
   },
   {
    "tab": "city",
@@ -4442,7 +4514,9 @@ window.HK = {
    "kinds": [
     "Cha chaan teng & cafés"
    ],
-   "emoji": "🍞"
+   "emoji": "🍞",
+   "gRating": 3.7,
+   "gReviews": 611
   },
   {
    "tab": "saiwan",
@@ -4793,7 +4867,9 @@ window.HK = {
    "lat": 22.28519,
    "lng": 114.15367,
    "emoji": "🍪",
-   "id": "jenny-bakery"
+   "id": "jenny-bakery",
+   "gRating": 4.9,
+   "gReviews": 3840
   },
   {
    "tab": "shop",
@@ -5016,7 +5092,13 @@ window.HK = {
    "lng": 114.21414,
    "stanley": true,
    "id": "stanley-main-beach-dragon-boat-venue",
-   "emoji": "🛶"
+   "emoji": "🛶",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Stanley_Peninsula.jpg/960px-Stanley_Peninsula.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Stanley_Peninsula.jpg",
+    "credit": "Wikimedia Commons",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -5039,7 +5121,13 @@ window.HK = {
    "lng": 114.20973,
    "stanley": true,
    "id": "murray-house-stanley-plaza",
-   "emoji": "🏛️"
+   "emoji": "🏛️",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Murray_House_Stanley_Hong_Kong.jpg/960px-Murray_House_Stanley_Hong_Kong.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Murray_House_Stanley_Hong_Kong.jpg",
+    "credit": "Hankt",
+    "license": "CC BY 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -5062,7 +5150,13 @@ window.HK = {
    "lng": 114.21014,
    "stanley": true,
    "id": "blake-pier-at-stanley-sunset-spot",
-   "emoji": "🌅"
+   "emoji": "🌅",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Blake_Pier_at_Stanley_View.jpg/960px-Blake_Pier_at_Stanley_View.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Blake_Pier_at_Stanley_View.jpg",
+    "credit": "WiNG",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -5085,7 +5179,13 @@ window.HK = {
    "lng": 114.21152,
    "stanley": true,
    "id": "stanley-waterfront-promenade-stanley-mai",
-   "emoji": "🌊"
+   "emoji": "🌊",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Stanley_Peninsula.jpg/960px-Stanley_Peninsula.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Stanley_Peninsula.jpg",
+    "credit": "Wikimedia Commons",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -5150,7 +5250,13 @@ window.HK = {
    "lng": 114.21628,
    "stanley": true,
    "id": "stanley-military-cemetery",
-   "emoji": "🪦"
+   "emoji": "🪦",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/General_view_of_the_Stanley_Military_Cemetery_January_2026.jpg/960px-General_view_of_the_Stanley_Military_Cemetery_January_2026.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:General_view_of_the_Stanley_Military_Cemetery_January_2026.jpg",
+    "credit": "Nick-D",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "city",
@@ -5337,7 +5443,13 @@ window.HK = {
    "links": [],
    "emoji": "🥾",
    "stanley": true,
-   "id": "ma-hang-park-to-chung-hom-kok-coastal-wa"
+   "id": "ma-hang-park-to-chung-hom-kok-coastal-wa",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Chung_Hom_Kok_1.jpg/960px-Chung_Hom_Kok_1.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chung_Hom_Kok_1.jpg",
+    "credit": "Minghong",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "hikes",
@@ -5377,7 +5489,13 @@ window.HK = {
    ],
    "emoji": "💧",
    "stanley": true,
-   "id": "tai-tam-waterworks-heritage-trail"
+   "id": "tai-tam-waterworks-heritage-trail",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Tai_Tam_Reservoir_2.jpg/960px-Tai_Tam_Reservoir_2.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tai_Tam_Reservoir_2.jpg",
+    "credit": "Minghong",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -5399,7 +5517,13 @@ window.HK = {
    "lat": 22.23655,
    "lng": 114.19654,
    "emoji": "🏖️",
-   "id": "repulse-bay-beach"
+   "id": "repulse-bay-beach",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/View_of_Repulse_Bay_from_Sir_Cecil%27s_Ride.jpg/960px-View_of_Repulse_Bay_from_Sir_Cecil%27s_Ride.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:View_of_Repulse_Bay_from_Sir_Cecil%27s_Ride.jpg",
+    "credit": "Shanghai88",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -5421,7 +5545,13 @@ window.HK = {
    "lat": 22.24452,
    "lng": 114.18762,
    "emoji": "🏖️",
-   "id": "deep-water-bay-beach"
+   "id": "deep-water-bay-beach",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Deep_Water_Bay_2018.jpg/960px-Deep_Water_Bay_2018.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Deep_Water_Bay_2018.jpg",
+    "credit": "Wpcpey",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -5535,7 +5665,13 @@ window.HK = {
    "lng": 114.17104,
    "emoji": "🌈",
    "local": true,
-   "id": "mong-kok-neon-streets-portland-st-tung-c"
+   "id": "mong-kok-neon-streets-portland-st-tung-c",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Sai_Yeung_Choi_Street_South_2008_Night.jpg/960px-Sai_Yeung_Choi_Street_South_2008_Night.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sai_Yeung_Choi_Street_South_2008_Night.jpg",
+    "credit": "[2]",
+    "license": "CC BY 2.0"
+   }
   },
   {
    "tab": "sights",
@@ -5569,7 +5705,13 @@ window.HK = {
    "lng": 114.17292,
    "emoji": "🌈",
    "local": true,
-   "id": "wan-chai-neon-bar-strip-lockhart-road"
+   "id": "wan-chai-neon-bar-strip-lockhart-road",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Lockhart_Road_201309.jpg/960px-Lockhart_Road_201309.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lockhart_Road_201309.jpg",
+    "credit": "Wing1990hk",
+    "license": "CC BY 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -5603,7 +5745,15 @@ window.HK = {
    "lng": 114.21195,
    "emoji": "🏢",
    "local": true,
-   "id": "monster-building-yick-cheong-montane-man"
+   "id": "monster-building-yick-cheong-montane-man",
+   "gRating": 4.2,
+   "gReviews": 312,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Looking_upward_at_the_Yick_Cheong_Building%2C_13_June_2019.jpg/960px-Looking_upward_at_the_Yick_Cheong_Building%2C_13_June_2019.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Looking_upward_at_the_Yick_Cheong_Building,_13_June_2019.jpg",
+    "credit": "Benh LIEU SONG (Flickr)",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -5636,42 +5786,15 @@ window.HK = {
    "lng": 114.15948,
    "emoji": "🏢",
    "local": false,
-   "id": "hsbc-main-building"
-  },
-  {
-   "tab": "sights",
-   "name": "Bank of China Tower",
-   "zh": "中銀大廈",
-   "area": "Central / Admiralty, Hong Kong Island",
-   "cuisine": "Architecture",
-   "category": [
-    "architecture",
-    "iconic",
-    "night",
-    "neon",
-    "free"
-   ],
-   "intro": "I. M. Pei's 1990 glass-and-triangles tower, the sharpest silhouette on the Hong Kong skyline.",
-   "funFact": "The white lines tracing its triangles at night are neon tubes; NEONSIGNS.HK lists the tower as one of the city's featured neon landmarks.",
-   "tips": "View it from outside: the 43/F observation deck is reported closed to the public. The best close-up angle is from Cheung Kong Park or Garden Road, and the best skyline shot is from the Star Ferry or the Tsim Sha Tsui waterfront after dark.",
-   "getting": "From Park Lane: MTR to Admiralty (Exit B, via Lippo Centre) or Central (Exit K), about 10 min plus a 5-10 min walk. From Booth: MTR to Central, about 15 min. It's a 5-min walk from HSBC.",
-   "facts": [
-    [
-     "Cost",
-     "Free (exterior)"
-    ],
-    [
-     "Time",
-     "15-20 min"
-    ]
-   ],
-   "addressEn": "Bank of China Tower, 1 Garden Road, Central",
-   "addressZh": "香港中環花園道1號中銀大廈",
-   "lat": 22.27906,
-   "lng": 114.16149,
-   "emoji": "🏢",
-   "local": false,
-   "id": "bank-of-china-tower"
+   "id": "hsbc-main-building",
+   "gRating": 4.1,
+   "gReviews": 1208,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/HK_HSBC_Main_Building_2008.jpg/960px-HK_HSBC_Main_Building_2008.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_HSBC_Main_Building_2008.jpg",
+    "credit": "WiNG",
+    "license": "CC BY 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -5704,7 +5827,13 @@ window.HK = {
    "lng": 114.16356,
    "emoji": "🏢",
    "local": false,
-   "id": "lippo-centre-koala-tree"
+   "id": "lippo-centre-koala-tree",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Lippo_centre.jpg/960px-Lippo_centre.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lippo_centre.jpg",
+    "credit": "Craddocktm",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -5738,7 +5867,13 @@ window.HK = {
    "lng": 114.17411,
    "emoji": "🏢",
    "local": true,
-   "id": "the-blue-house"
+   "id": "the-blue-house",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Blue_House%2C_Hong_Kong.jpg/960px-Blue_House%2C_Hong_Kong.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Blue_House,_Hong_Kong.jpg",
+    "credit": "Prosperity Horizons",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -5772,7 +5907,13 @@ window.HK = {
    "lng": 114.20724,
    "emoji": "🏢",
    "local": true,
-   "id": "choi-hung-estate-rainbow-estate-rooftop-"
+   "id": "choi-hung-estate-rainbow-estate-rooftop-",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Choi_Hung_Estate_2018.jpg/960px-Choi_Hung_Estate_2018.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Choi_Hung_Estate_2018.jpg",
+    "credit": "Wpcpey",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -5808,7 +5949,15 @@ window.HK = {
    "flags": [
     "Check it's open first"
    ],
-   "id": "lai-tak-tsuen-round-towers"
+   "id": "lai-tak-tsuen-round-towers",
+   "gRating": 4.2,
+   "gReviews": 59,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/LTT2.jpg/960px-LTT2.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:LTT2.jpg",
+    "credit": "Billy Yellow",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -5848,7 +5997,15 @@ window.HK = {
    "essentialTitle": "See the skyline from the Peak",
    "essentialWhy": "Go at sunset and stay for the lights.",
    "addressZh": "中西區山頂道128號凌霄閣",
-   "emoji": "🚠"
+   "emoji": "🚠",
+   "gRating": 4.6,
+   "gReviews": 5030,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/High_West_and_Victoria_Peak_from_Victoria_Gap_%28crop1%29.jpg/960px-High_West_and_Victoria_Peak_from_Victoria_Gap_%28crop1%29.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:High_West_and_Victoria_Peak_from_Victoria_Gap_(crop1).jpg",
+    "credit": "Daniel Case",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -5918,7 +6075,15 @@ window.HK = {
      2
     ]
    ],
-   "emoji": "⛴️"
+   "emoji": "⛴️",
+   "gRating": 4.5,
+   "gReviews": 1343,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Tsim_Sha_Tsui_Ferry_Pier.jpg/960px-Tsim_Sha_Tsui_Ferry_Pier.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tsim_Sha_Tsui_Ferry_Pier.jpg",
+    "credit": "Baycrest",
+    "license": "CC BY-SA 2.5"
+   }
   },
   {
    "tab": "sights",
@@ -5958,7 +6123,13 @@ window.HK = {
    "essentialTitle": "Ride a ding ding tram",
    "essentialWhy": "Top deck, front seat, from Kennedy Town.",
    "addressZh": "堅尼地城電車總站",
-   "emoji": "🚋"
+   "emoji": "🚋",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Hong_Kong_Tramways_in_2017.jpg/960px-Hong_Kong_Tramways_in_2017.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Tramways_in_2017.jpg",
+    "credit": "Exploringlife",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -5996,7 +6167,9 @@ window.HK = {
    "local": false,
    "id": "tai-kwun",
    "addressZh": "中環荷李活道10號大館",
-   "emoji": "🏛️"
+   "emoji": "🏛️",
+   "gRating": 4.4,
+   "gReviews": 13715
   },
   {
    "tab": "sights",
@@ -6033,7 +6206,15 @@ window.HK = {
    "local": true,
    "id": "pmq-a-mahjong-lesson",
    "addressZh": "中西區鴨巴甸街35號元創方",
-   "emoji": "🀄"
+   "emoji": "🀄",
+   "gRating": 4.2,
+   "gReviews": 5201,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/PMQ_Overview_201510.jpg/960px-PMQ_Overview_201510.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:PMQ_Overview_201510.jpg",
+    "credit": "Wpcpey",
+    "license": "CC BY 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -6071,7 +6252,13 @@ window.HK = {
    "local": false,
    "id": "man-mo-temple-hollywood-road-cat-street",
    "addressZh": "中西區荷李活道124-126號文武廟",
-   "emoji": "🛕"
+   "emoji": "🛕",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Man_Mo_Temple%2C_1847-62%2C_Sheung_Wan%2C_Hong_Kong_%2817%29_%2832748033042%29.jpg/960px-Man_Mo_Temple%2C_1847-62%2C_Sheung_Wan%2C_Hong_Kong_%2817%29_%2832748033042%29.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Man_Mo_Temple,_1847-62,_Sheung_Wan,_Hong_Kong_(17)_(32748033042).jpg",
+    "credit": "Richard Mortel from Riyadh, Saudi Arabia",
+    "license": "CC BY 2.0"
+   }
   },
   {
    "tab": "sights",
@@ -6110,7 +6297,15 @@ window.HK = {
    "essentialTitle": "A night out in LKF & Soho",
    "essentialWhy": "Bar-hop up the hill.",
    "addressZh": "中西區蘭桂坊2號蘭芳樓",
-   "emoji": "🍻"
+   "emoji": "🍻",
+   "gRating": 4.2,
+   "gReviews": 10260,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/LKF_Street_View01.jpg/960px-LKF_Street_View01.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:LKF_Street_View01.jpg",
+    "credit": "Wiki.lkfa",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -6147,7 +6342,15 @@ window.HK = {
    "local": true,
    "id": "happy-valley-racecourse-wednesday-night-",
    "addressZh": "跑馬地馬場",
-   "emoji": "🏇"
+   "emoji": "🏇",
+   "gRating": 4.5,
+   "gReviews": 1472,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Happy_Valley_Racecourse_1.jpg/960px-Happy_Valley_Racecourse_1.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Happy_Valley_Racecourse_1.jpg",
+    "credit": "Minghong",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -6185,7 +6388,15 @@ window.HK = {
    "local": false,
    "id": "m-museum-west-kowloon-waterfront",
    "addressZh": "西九文化區M+博物館",
-   "emoji": "🖼️"
+   "emoji": "🖼️",
+   "gRating": 4.3,
+   "gReviews": 5959,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/WKCD_M%2B%2C_2021.11.jpg/960px-WKCD_M%2B%2C_2021.11.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:WKCD_M%2B,_2021.11.jpg",
+    "credit": "Lord Jaraxxus",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -6223,7 +6434,15 @@ window.HK = {
    "local": false,
    "id": "stanley-repulse-bay",
    "addressZh": "赤柱市集",
-   "emoji": "🏖️"
+   "emoji": "🏖️",
+   "gRating": 4.0,
+   "gReviews": 8747,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Stanley_Market_View1_201007.jpg/960px-Stanley_Market_View1_201007.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Stanley_Market_View1_201007.jpg",
+    "credit": "WiNG",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -6262,7 +6481,13 @@ window.HK = {
    "local": true,
    "id": "kennedy-town-waterfront-sunset",
    "addressZh": "中西區堅彌地城海旁38號堅城中心",
-   "emoji": "🌅"
+   "emoji": "🌅",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Kennedy_Town_3.jpg/960px-Kennedy_Town_3.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kennedy_Town_3.jpg",
+    "credit": "Minghong",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -6301,7 +6526,15 @@ window.HK = {
    "local": true,
    "id": "central-western-district-promenade-sun-y",
    "addressZh": "中西區東邊街北16號中山紀念公園游泳池",
-   "emoji": "🌊"
+   "emoji": "🌊",
+   "gRating": 4.3,
+   "gReviews": 5197,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Sun_Yat_Sen_Memorial_Park_Memorial_Lawn_201008.jpg/960px-Sun_Yat_Sen_Memorial_Park_Memorial_Lawn_201008.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sun_Yat_Sen_Memorial_Park_Memorial_Lawn_201008.jpg",
+    "credit": "WiNG",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -6340,7 +6573,9 @@ window.HK = {
    "local": true,
    "id": "dried-seafood-street-des-voeux-road-west",
    "addressZh": "中西區德輔道西28號宜必思香港中上環酒店",
-   "emoji": "🦑"
+   "emoji": "🦑",
+   "gRating": 4.0,
+   "gReviews": 282
   },
   {
    "tab": "sights",
@@ -6378,7 +6613,13 @@ window.HK = {
    "local": true,
    "id": "possession-street-tai-ping-shan-pak-sing",
    "addressZh": "中西區水坑口街9號寶泰大廈",
-   "emoji": "🏮"
+   "emoji": "🏮",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/HK_Sheung_Wan_Tai_Ping_Shan_Street_Kwong_Fook_I_Tsz_2.JPG/960px-HK_Sheung_Wan_Tai_Ping_Shan_Street_Kwong_Fook_I_Tsz_2.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_Sheung_Wan_Tai_Ping_Shan_Street_Kwong_Fook_I_Tsz_2.JPG",
+    "credit": "YauKee1QRW",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "sights",
@@ -6417,7 +6658,13 @@ window.HK = {
    "local": true,
    "id": "wet-market-walk-sai-ying-pun-market-cent",
    "addressZh": "中西區正街45號西營盤街市",
-   "emoji": "🐟"
+   "emoji": "🐟",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/HK_%E8%A5%BF%E7%87%9F%E7%9B%A4_Sai_Ying_Pun_Market_%E7%AC%AC%E4%B8%89%E8%A1%97_Third_Street_%E6%AD%A3%E8%A1%97_Centre_Street_Aug_2016_DSC.jpg/960px-HK_%E8%A5%BF%E7%87%9F%E7%9B%A4_Sai_Ying_Pun_Market_%E7%AC%AC%E4%B8%89%E8%A1%97_Third_Street_%E6%AD%A3%E8%A1%97_Centre_Street_Aug_2016_DSC.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_%E8%A5%BF%E7%87%9F%E7%9B%A4_Sai_Ying_Pun_Market_%E7%AC%AC%E4%B8%89%E8%A1%97_Third_Street_%E6%AD%A3%E8%A1%97_Centre_Street_Aug_2016_DSC.jpg",
+    "credit": "Nioathinlaoloa",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -6454,7 +6701,9 @@ window.HK = {
    "local": true,
    "id": "tram-through-chun-yeung-street-market",
    "addressZh": "東區春秧街112號北角M1酒店",
-   "emoji": "🚋"
+   "emoji": "🚋",
+   "gRating": 3.7,
+   "gReviews": 1362
   },
   {
    "tab": "sights",
@@ -6492,7 +6741,13 @@ window.HK = {
    "local": true,
    "id": "yuen-po-street-bird-garden-flower-market",
    "addressZh": "油尖旺區園圃街8號園圃街雀鳥花園",
-   "emoji": "🐦"
+   "emoji": "🐦",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Yuen_Po_Street_Bird_Garden_Entrance_2012.jpg/960px-Yuen_Po_Street_Bird_Garden_Entrance_2012.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Yuen_Po_Street_Bird_Garden_Entrance_2012.jpg",
+    "credit": "Wing1990hk",
+    "license": "CC BY 3.0"
+   }
   },
   {
    "tab": "saiwan",
@@ -6568,7 +6823,15 @@ window.HK = {
    "local": false,
    "id": "central-harbourfront-tamar-park-observat",
    "addressZh": "中環海濱長廊（香港摩天輪）",
-   "emoji": "🌊"
+   "emoji": "🌊",
+   "gRating": 4.3,
+   "gReviews": 1579,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Hong_Kong_Observation_Wheel_Sept_2018.jpg/960px-Hong_Kong_Observation_Wheel_Sept_2018.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Observation_Wheel_Sept_2018.jpg",
+    "credit": "Erc Chw",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "sights",
@@ -6607,7 +6870,15 @@ window.HK = {
    "local": false,
    "id": "tsim-sha-tsui-promenade-avenue-of-stars-",
    "addressZh": "尖沙咀海濱長廊（星光大道）",
-   "emoji": "🌊"
+   "emoji": "🌊",
+   "gRating": 4.4,
+   "gReviews": 17499,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Avenue_of_Stars_201901.jpg/960px-Avenue_of_Stars_201901.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Avenue_of_Stars_201901.jpg",
+    "credit": "Wpcpey",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "hikes",
@@ -6661,7 +6932,15 @@ window.HK = {
     }
    ],
    "emoji": "🌇",
-   "id": "red-incense-burner-summit-braemar-hill"
+   "id": "red-incense-burner-summit-braemar-hill",
+   "gRating": 4.6,
+   "gReviews": 1161,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/1_braemar_hill_hong_kong_panorama_2013.jpg/960px-1_braemar_hill_hong_kong_panorama_2013.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:1_braemar_hill_hong_kong_panorama_2013.jpg",
+    "credit": "chensiyuan",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "hikes",
@@ -6714,7 +6993,13 @@ window.HK = {
     }
    ],
    "emoji": "🏞️",
-   "id": "siu-ma-shan"
+   "id": "siu-ma-shan",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Siu_Ma_Shan_Trigo.JPG/960px-Siu_Ma_Shan_Trigo.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Siu_Ma_Shan_Trigo.JPG",
+    "credit": "Tohtoh",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "hikes",
@@ -6768,7 +7053,13 @@ window.HK = {
     }
    ],
    "emoji": "⛰️",
-   "id": "wan-chai-to-the-peak-wan-chai-green-trai"
+   "id": "wan-chai-to-the-peak-wan-chai-green-trai",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Wan_Chai_Gap_201607.jpg/960px-Wan_Chai_Gap_201607.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Wan_Chai_Gap_201607.jpg",
+    "credit": "Wpcpey",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "hikes",
@@ -6819,7 +7110,13 @@ window.HK = {
     }
    ],
    "emoji": "⛰️",
-   "id": "hku-to-victoria-peak-via-lung-fu-shan"
+   "id": "hku-to-victoria-peak-via-lung-fu-shan",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Lung_Fu_Shan_2.jpg/960px-Lung_Fu_Shan_2.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lung_Fu_Shan_2.jpg",
+    "credit": "Minghong",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "hikes",
@@ -6872,7 +7169,15 @@ window.HK = {
     }
    ],
    "emoji": "🐉",
-   "id": "dragon-s-back"
+   "id": "dragon-s-back",
+   "gRating": 4.6,
+   "gReviews": 1838,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/%E9%BE%99%E8%84%8A%E5%BE%84%E8%B5%B7%E7%82%B9_-_Starting_Point_of_Dragon%27s_Back_Trail_-_2015.01_-_panoramio.jpg/960px-%E9%BE%99%E8%84%8A%E5%BE%84%E8%B5%B7%E7%82%B9_-_Starting_Point_of_Dragon%27s_Back_Trail_-_2015.01_-_panoramio.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:%E9%BE%99%E8%84%8A%E5%BE%84%E8%B5%B7%E7%82%B9_-_Starting_Point_of_Dragon%27s_Back_Trail_-_2015.01_-_panoramio.jpg",
+    "credit": "rheins",
+    "license": "CC BY 3.0"
+   }
   },
   {
    "tab": "hikes",
@@ -6926,7 +7231,16 @@ window.HK = {
     }
    ],
    "emoji": "⛰️",
-   "id": "peak-circle-walk-lugard-road-harlech-roa"
+   "id": "peak-circle-walk-lugard-road-harlech-roa",
+   "classmateNote": "A Hong Kong friend's favourite view is from Lugard Road Lookout, about 20 minutes' flat walk from the Peak Tower. Go before sunset and bring a phone torch for the walk back.",
+   "gRating": 4.5,
+   "gReviews": 699,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Lugard_road.jpg/960px-Lugard_road.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lugard_road.jpg",
+    "credit": "Ngchikit at English Wikipedia",
+    "license": "Public domain"
+   }
   },
   {
    "tab": "hikes",
@@ -6981,7 +7295,13 @@ window.HK = {
     }
    ],
    "emoji": "🏰",
-   "id": "mount-davis-path-jubilee-battery"
+   "id": "mount-davis-path-jubilee-battery",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Mount_Davis_4.jpg/960px-Mount_Davis_4.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mount_Davis_4.jpg",
+    "credit": "Minghong",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "hikes",
@@ -7034,7 +7354,13 @@ window.HK = {
     }
    ],
    "emoji": "🔥",
-   "id": "violet-hill-the-twins-wilson-trail-stage"
+   "id": "violet-hill-the-twins-wilson-trail-stage",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Violet_Hill_1.jpg/960px-Violet_Hill_1.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Violet_Hill_1.jpg",
+    "credit": "Minghong",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "hikes",
@@ -7079,7 +7405,13 @@ window.HK = {
     }
    ],
    "emoji": "💧",
-   "id": "tai-tam-waterworks-heritage-trail-2"
+   "id": "tai-tam-waterworks-heritage-trail-2",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Tai_Tam_Reservoir_2.jpg/960px-Tai_Tam_Reservoir_2.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tai_Tam_Reservoir_2.jpg",
+    "credit": "Minghong",
+    "license": "CC BY-SA 3.0"
+   }
   },
   {
    "tab": "hikes",
@@ -7128,7 +7460,15 @@ window.HK = {
     }
    ],
    "emoji": "🌳",
-   "id": "bowen-road-fitness-trail-lovers-rock"
+   "id": "bowen-road-fitness-trail-lovers-rock",
+   "gRating": 4.4,
+   "gReviews": 129,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Bowen_Road_Fitness_Trail.jpg/960px-Bowen_Road_Fitness_Trail.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Bowen_Road_Fitness_Trail.jpg",
+    "credit": "Seader",
+    "license": "CC BY 3.0"
+   }
   },
   {
    "tab": "shop",
@@ -7180,7 +7520,15 @@ window.HK = {
    "picked": false,
    "id": "times-square",
    "addressZh": "灣仔區勿地臣街1號時代廣場",
-   "emoji": "🛍️"
+   "emoji": "🛍️",
+   "gRating": 4.1,
+   "gReviews": 16072,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Times_Square%2C_Hong_Kong.jpg/960px-Times_Square%2C_Hong_Kong.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Times_Square,_Hong_Kong.jpg",
+    "credit": "Exploringlife",
+    "license": "CC BY-SA 4.0"
+   }
   },
   {
    "tab": "shop",
@@ -7207,7 +7555,15 @@ window.HK = {
    "picked": false,
    "id": "pacific-place",
    "addressZh": "中西區金鐘道88號太古廣場港麗酒店",
-   "emoji": "🛍️"
+   "emoji": "🛍️",
+   "gRating": 4.2,
+   "gReviews": 10197,
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/HK_Pacific_Place_201207.jpg/960px-HK_Pacific_Place_201207.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:HK_Pacific_Place_201207.jpg",
+    "credit": "WiNG",
+    "license": "CC BY 3.0"
+   }
   },
   {
    "tab": "shop",
@@ -7234,7 +7590,15 @@ window.HK = {
    "picked": true,
    "id": "ifc-mall",
    "addressZh": "中西區港景街1號國際金融中心國際金融中心商場",
-   "emoji": "🛍️"
+   "emoji": "🛍️",
+   "gRating": 4.2,
+   "gReviews": 17020,
+   "photo": {
+    "src": "https://upload.wikimedia.org/wikipedia/commons/2/2d/IFC%2C_Hong_Kong_Island_%282796343561%29%28cropped%29.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:IFC,_Hong_Kong_Island_(2796343561)(cropped).jpg",
+    "credit": "Peter Dowley from Dubai, United Arab Emirates",
+    "license": "CC BY 2.0"
+   }
   },
   {
    "tab": "shop",
@@ -7261,7 +7625,9 @@ window.HK = {
    "picked": false,
    "id": "landmark-central",
    "addressZh": "中環皇后大道中15號置地廣場",
-   "emoji": "🛍️"
+   "emoji": "🛍️",
+   "gRating": 4.2,
+   "gReviews": 3614
   },
   {
    "tab": "shop",
@@ -7289,7 +7655,13 @@ window.HK = {
    "picked": true,
    "id": "k11-musea",
    "addressZh": "尖沙咀梳士巴利道18號K11 MUSEA",
-   "emoji": "🎨"
+   "emoji": "🎨",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Victoria_Dockside_202007.jpg/960px-Victoria_Dockside_202007.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Victoria_Dockside_202007.jpg",
+    "credit": "Wpcpey",
+    "license": "CC BY 4.0"
+   }
   },
   {
    "tab": "shop",
@@ -7370,7 +7742,9 @@ window.HK = {
    "picked": false,
    "id": "pmq-with-tai-kwun-nearby",
    "addressZh": "中環鴨巴甸街35號元創方",
-   "emoji": "🎨"
+   "emoji": "🎨",
+   "gRating": 4.2,
+   "gReviews": 5201
   },
   {
    "tab": "shop",
@@ -7397,7 +7771,9 @@ window.HK = {
    "picked": false,
    "id": "stanley-market",
    "addressZh": "南區赤柱市場道20號赤柱海濱小賣亭",
-   "emoji": "🧧"
+   "emoji": "🧧",
+   "gRating": 4.0,
+   "gReviews": 8747
   },
   {
    "tab": "city",
@@ -7447,7 +7823,9 @@ window.HK = {
     "Cocktails"
    ],
    "addressZh": "中西區荷李活道10號中央裁判司署",
-   "emoji": "🍽️"
+   "emoji": "🍽️",
+   "gRating": 4.4,
+   "gReviews": 211
   },
   {
    "tab": "city",
@@ -7497,7 +7875,9 @@ window.HK = {
     "Beer & pubs"
    ],
    "addressZh": "油尖旺區亞士厘道9-11號順豐大廈",
-   "emoji": "🍺"
+   "emoji": "🍺",
+   "gRating": 4.3,
+   "gReviews": 1391
   },
   {
    "tab": "city",
@@ -7523,7 +7903,9 @@ window.HK = {
     "Rooftops & views"
    ],
    "addressZh": "灣仔區電氣道108號冠貿商業大廈",
-   "emoji": "🌃"
+   "emoji": "🌃",
+   "gRating": 4.5,
+   "gReviews": 437
   },
   {
    "tab": "city",
@@ -7548,7 +7930,9 @@ window.HK = {
     "Beer & pubs"
    ],
    "addressZh": "中西區嘉咸街45-53A號嘉利大廈",
-   "emoji": "🍺"
+   "emoji": "🍺",
+   "gRating": 4.4,
+   "gReviews": 1577
   },
   {
    "tab": "city",
@@ -7572,7 +7956,9 @@ window.HK = {
     "Beer & pubs"
    ],
    "addressZh": "中西區太平山街22A號太平樓",
-   "emoji": "🍺"
+   "emoji": "🍺",
+   "gRating": 4.7,
+   "gReviews": 180
   },
   {
    "tab": "city",
@@ -7621,7 +8007,9 @@ window.HK = {
     "Cocktails"
    ],
    "addressZh": "中西區鴨巴甸街41-49號金豪大廈",
-   "emoji": "🍸"
+   "emoji": "🍸",
+   "gRating": 4.6,
+   "gReviews": 153
   },
   {
    "tab": "city",
@@ -7653,7 +8041,9 @@ window.HK = {
    "kinds": [
     "Cocktails"
    ],
-   "emoji": "🍸"
+   "emoji": "🍸",
+   "gRating": 4.6,
+   "gReviews": 736
   },
   {
    "tab": "city",
@@ -7775,7 +8165,9 @@ window.HK = {
     "Beer & pubs"
    ],
    "addressZh": "中西區東街21號",
-   "emoji": "🍺"
+   "emoji": "🍺",
+   "gRating": 4.5,
+   "gReviews": 272
   },
   {
    "tab": "city",
@@ -7862,7 +8254,9 @@ window.HK = {
    "id": "bar-leone",
    "kinds": [
     "Cocktails"
-   ]
+   ],
+   "gRating": 4.4,
+   "gReviews": 831
   },
   {
    "tab": "city",
@@ -7892,7 +8286,9 @@ window.HK = {
    "kinds": [
     "Jazz & live music",
     "Cocktails"
-   ]
+   ],
+   "gRating": 4.7,
+   "gReviews": 840
   },
   {
    "tab": "city",
@@ -7923,7 +8319,9 @@ window.HK = {
    "id": "gokan",
    "kinds": [
     "Cocktails"
-   ]
+   ],
+   "gRating": 4.2,
+   "gReviews": 227
   },
   {
    "tab": "city",
@@ -8046,7 +8444,9 @@ window.HK = {
    "id": "penicillin",
    "kinds": [
     "Cocktails"
-   ]
+   ],
+   "gRating": 4.5,
+   "gReviews": 430
   },
   {
    "tab": "city",
@@ -8106,7 +8506,9 @@ window.HK = {
    "id": "dragon-i",
    "kinds": [
     "Clubbing"
-   ]
+   ],
+   "gRating": 4.0,
+   "gReviews": 602
   },
   {
    "tab": "city",
@@ -8483,7 +8885,402 @@ window.HK = {
    "id": "mott-32",
    "kinds": [
     "Cantonese & seafood"
+   ],
+   "gRating": 4.4,
+   "gReviews": 2489
+  },
+  {
+   "tab": "sights",
+   "name": "Hong Kong Museum of Art",
+   "zh": "香港藝術館",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Museum & waterfront",
+   "category": [
+    "culture",
+    "views"
+   ],
+   "emoji": "🖼️",
+   "intro": "A calm, air-conditioned stop with Chinese painting, calligraphy and Hong Kong art, plus harbour views from the galleries. Easy to pair with a walk along the TST Promenade.",
+   "getting": "MTR from Causeway Bay to Tsim Sha Tsui (change at Admiralty or Tsim Sha Tsui via Tsuen Wan line), about 20-25 min, then a 10-min walk. Or Star Ferry from Central, about 10 min.",
+   "tips": "Check the closing day on the museum website before you go (it moved recently). Time it so you walk out onto the Promenade for sunset and the 8pm Symphony of Lights.",
+   "hours": "Mon-Wed, Fri 10:00-18:00; Sat, Sun, public holidays 10:00-21:00; closed Thursdays (official FAQ still says Tuesday, so check)",
+   "lat": 22.2935,
+   "lng": 114.172,
+   "addressEn": "10 Salisbury Road, Tsim Sha Tsui, Kowloon",
+   "addressZh": "香港九龍尖沙咀梳士巴利道10號",
+   "url": "https://hk.art.museum/en/web/ma/home.html",
+   "priceNote": "About HK$30 for the permanent collection; free on Wednesdays per third-party guides; special exhibitions may cost extra",
+   "facts": [
+    [
+     "Time",
+     "1.5–2 hrs"
+    ],
+    [
+     "Next door",
+     "TST Promenade, K11 Musea"
+    ]
+   ],
+   "id": "hong-kong-museum-of-art"
+  },
+  {
+   "tab": "sights",
+   "name": "Big Buddha & Ngong Ping 360 cable car",
+   "zh": "天壇大佛、寶蓮禪寺及昂坪360",
+   "area": "Lantau",
+   "cuisine": "Day trip",
+   "category": [
+    "daytrip",
+    "iconic",
+    "views",
+    "culture"
+   ],
+   "emoji": "🚠",
+   "intro": "Ride a 25-minute cable car over the bay and mountains to a 34-metre bronze Buddha and a lively working monastery. It is Hong Kong's classic half-day escape from the city.",
+   "getting": "MTR to Tung Chung (Causeway Bay to Tung Chung about 45 min, change at Central/Hong Kong or Lai King), then Ngong Ping 360 cable car about 25 min. Or bus 23 from Tung Chung.",
+   "tips": "Book cable car online in advance and go early on a weekday to avoid long queues; check the cable car is running that day.",
+   "hours": "Cable car: weekdays 10:00-18:00, weekends and public holidays 09:00-18:30; service can pause for wind or maintenance",
+   "lat": 22.254,
+   "lng": 113.905,
+   "addressEn": "Ngong Ping, Lantau Island (Ngong Ping 360 terminal: Tung Chung)",
+   "addressZh": "香港大嶼山昂坪寶蓮禪寺(天壇大佛)",
+   "url": "https://www.np360.com.hk/en/",
+   "priceNote": "Standard cabin return roughly HK$235 weekdays, more at weekends (sources vary; check official site); Buddha grounds free, 268 steps to climb",
+   "facts": [
+    [
+     "Time",
+     "Half a day"
+    ],
+    [
+     "Pair with",
+     "Tai O fishing village"
+    ]
+   ],
+   "funFact": "The Big Buddha is 34 m tall and was the world's largest seated outdoor bronze Buddha when it was finished in 1993. There are 268 steps to the top.",
+   "id": "big-buddha-ngong-ping-360-cable-car",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Tian_Tan_Buddha_2023081302.jpg/960px-Tian_Tan_Buddha_2023081302.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tian_Tan_Buddha_2023081302.jpg",
+    "credit": "Huangdan2060",
+    "license": "CC BY 4.0"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "Tai O Fishing Village",
+   "zh": "大澳",
+   "area": "Lantau",
+   "cuisine": "Day trip",
+   "category": [
+    "daytrip",
+    "culture",
+    "local"
+   ],
+   "emoji": "🛖",
+   "intro": "A traditional fishing village with stilt houses over the tidal creek, small boat rides, salted fish stalls and local snacks. It shows an older Hong Kong that few visitors see.",
+   "getting": "From Ngong Ping/Big Buddha take bus 21 (about 30 min); from Tung Chung bus 11 (about 40 min). From Causeway Bay allow about 1.5 to 2 hours.",
+   "tips": "Pair with the Big Buddha and head to Tai O in the afternoon; go on a weekday as weekends get crowded.",
+   "hours": "Village open all day; most shops and stalls roughly 10:00-18:00",
+   "lat": 22.2542,
+   "lng": 113.8636,
+   "addressEn": "Tai O, Lantau Island",
+   "addressZh": "香港大嶼山大澳",
+   "url": "https://www.discoverhongkong.com/eng/explore/attractions/tai-o.html",
+   "priceNote": "Free to wander; snacks and boat ride are a few HK$ to about HK$30",
+   "facts": [
+    [
+     "Time",
+     "2–3 hrs"
+    ],
+    [
+     "Pair with",
+     "Big Buddha (bus 21, 30 min)"
+    ]
+   ],
+   "funFact": "Tai O's stilt houses (pang uk) belong to the Tanka boat people, who have fished these waters for centuries. Look for the shrimp paste and salted fish drying in the sun.",
+   "id": "tai-o-fishing-village",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/1_tai_o_hong_kong_2013.jpg/960px-1_tai_o_hong_kong_2013.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:1_tai_o_hong_kong_2013.jpg",
+    "credit": "chensiyuan",
+    "license": "CC BY-SA 4.0"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "Cheung Chau Island",
+   "zh": "長洲",
+   "area": "Cheung Chau",
+   "cuisine": "Day trip",
+   "category": [
+    "daytrip",
+    "local",
+    "beach"
+   ],
+   "emoji": "⛴️",
+   "intro": "A car-free island with a seafront promenade, beaches, temples and street snacks like fish balls and mango mochi. Famous for the Cheung Chau Bun Festival, when people once climbed towers of buns, a tradition that continues in spring.",
+   "getting": "MTR to Central, walk to Central Pier 5; Fast ferry about 35 min, ordinary ferry about 55 min. Causeway Bay to Central about 10 min by MTR.",
+   "tips": "Take the fast ferry out and the slow ferry back for the harbour view; check ferry timetable on the operator site.",
+   "hours": "Ferries run roughly 06:00 to after midnight; shops and cafes mostly open daytime to evening",
+   "lat": 22.2086,
+   "lng": 114.0283,
+   "addressEn": "Cheung Chau Ferry Pier, San Hing Praya Street, Cheung Chau",
+   "addressZh": "香港長洲新興海傍街長洲碼頭",
+   "url": "https://www.nwff.com.hk/",
+   "priceNote": "Ferry about HK$17 to HK$37 one way depending on class and day; snacks HK$10 to HK$40",
+   "facts": [
+    [
+     "Time",
+     "Half a day"
+    ],
+    [
+     "Ferry",
+     "Central Pier 5, 35–55 min"
+    ]
+   ],
+   "funFact": "There are no cars on Cheung Chau, just bikes and tiny village trucks. At the spring Bun Festival, climbers race up a 14 m tower covered in buns.",
+   "id": "cheung-chau-island",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Blick_%C3%BCber_Cheung_Chau.JPG/960px-Blick_%C3%BCber_Cheung_Chau.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Blick_%C3%BCber_Cheung_Chau.JPG",
+    "credit": "Man77",
+    "license": "CC BY-SA 3.0"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "Hong Kong Disneyland",
+   "zh": "香港迪士尼樂園",
+   "area": "Lantau",
+   "cuisine": "Theme park",
+   "category": [
+    "daytrip"
+   ],
+   "emoji": "🏰",
+   "intro": "A compact Disney park with Frozen, Marvel and Toy Story lands and fewer crowds than other Disney parks. Fun for a break from city sightseeing.",
+   "getting": "MTR to Sunny Bay, change to the Disneyland Resort line to Disneyland Resort station. About 50 min from Causeway Bay.",
+   "tips": "Buy tickets online and arrive before opening; weekdays are far quieter; ride Premier Access for popular rides if you have limited time.",
+   "hours": "About 10:30-20:30 daily (varies; check official calendar)",
+   "lat": 22.3131,
+   "lng": 114.041,
+   "addressEn": "Lantau Island, Hong Kong",
+   "addressZh": "香港大嶼山香港迪士尼樂園",
+   "url": "https://www.hongkongdisneyland.com/",
+   "priceNote": "One-day ticket about HK$639 to HK$879 depending on the date tier (sources vary)",
+   "facts": [
+    [
+     "Time",
+     "Full day"
+    ],
+    [
+     "MTR",
+     "Disneyland Resort line"
+    ]
+   ],
+   "id": "hong-kong-disneyland",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Hong_Kong_Disneyland_Castle.jpg/960px-Hong_Kong_Disneyland_Castle.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Disneyland_Castle.jpg",
+    "credit": "Ashwin Kumar",
+    "license": "CC BY-SA 2.0"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "Ocean Park (giant pandas)",
+   "zh": "香港海洋公園",
+   "area": "Southern District",
+   "cuisine": "Theme park",
+   "category": [
+    "daytrip",
+    "views"
+   ],
+   "emoji": "🐼",
+   "intro": "Hong Kong's homegrown marine park with roller coasters, a cable car and giant pandas, including twin cubs born in 2024. Good for classmates who like rides and animals, and it is close to the school side of the island.",
+   "getting": "MTR from Causeway Bay to Admiralty, change to the South Island line to Ocean Park station, about 20-25 min.",
+   "tips": "See the pandas first thing, when they're most active (their area closes earlier than the park). Then take the South Island line two stops to Lei Tung for a seafood dinner in Ap Lei Chau.",
+   "hours": "Roughly 10:00-18:30 or 19:30 daily; Giant Panda Adventure has shorter hours that changed on 3 November 2026, so check the daily schedule",
+   "lat": 22.2348,
+   "lng": 114.1708,
+   "addressEn": "Ocean Park, Nam Long Shan Road, Aberdeen",
+   "addressZh": "香港仔南朗山道香港海洋公園",
+   "url": "https://www.oceanpark.com.hk/en",
+   "priceNote": "Adult about HK$538, child about HK$269 (third-party sources); Water World is a separate ticket",
+   "facts": [
+    [
+     "Time",
+     "Half to full day"
+    ],
+    [
+     "Then",
+     "Seafood dinner in Ap Lei Chau"
+    ]
+   ],
+   "id": "ocean-park-giant-pandas",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Ocean_Park_Hong_Kong.jpg/960px-Ocean_Park_Hong_Kong.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Ocean_Park_Hong_Kong.jpg",
+    "credit": "Exploringlife",
+    "license": "CC BY-SA 4.0"
+   }
+  },
+  {
+   "tab": "city",
+   "name": "Ap Lei Chau seafood (pick it, they cook it)",
+   "zh": "鴨脷洲街市及熟食中心",
+   "area": "Ap Lei Chau",
+   "cuisine": "Seafood dai pai dong",
+   "category": [
+    "dinner",
+    "lunch"
+   ],
+   "emoji": "🦀",
+   "intro": "Pick live fish, prawns and crab from the market downstairs, then have the stalls upstairs cook it for you. Stalls like Yiu Kee, Chan Sun Kee and Chu Kee are well known for this. Good for an after Ocean Park dinner.",
+   "getting": "MTR South Island line to Lei Tung station (exits A1/A2), a few stops from Ocean Park; from Causeway Bay via Admiralty about 30 min.",
+   "tips": "Buy live seafood at the market downstairs, then have a stall upstairs (Yiu Kee, Chan Sun Kee or Chu Kee) cook it. Agree the price per catty and the cooking fee first, bring cash, and book a table on busy evenings. It's perfect after Ocean Park.",
+   "hours": "Market from morning; cooked food stalls generally lunch and dinner (hours vary by stall)",
+   "lat": 22.2445,
+   "lng": 114.1552,
+   "addressEn": "Ap Lei Chau Municipal Services Building, 8 Hung Shing Street, Ap Lei Chau",
+   "addressZh": "香港鴨脷洲洪聖街8號鴨脷洲市政大廈",
+   "url": "https://www.fehd.gov.hk/english/map/market/market_pt.html?mapID=621&type=market",
+   "price": "$$$",
+   "section": "HK classics",
+   "local": true,
+   "id": "ap-lei-chau-seafood-pick-it-they-cook-it",
+   "kinds": [
+    "Cantonese & seafood"
    ]
+  },
+  {
+   "tab": "city",
+   "name": "Men Wah Bing Teng (Peak Galleria)",
+   "zh": "敏華冰廳(山頂廣場)",
+   "area": "The Peak",
+   "cuisine": "Cha chaan teng (at the Peak)",
+   "category": [
+    "lunch",
+    "dessert"
+   ],
+   "emoji": "🍞",
+   "intro": "A Hong Kong-style tea restaurant with milk tea, pineapple buns, egg tarts and baked pork chop rice, with a branch at the Peak Galleria. A cosy local meal after the Peak views.",
+   "getting": "Peak Tram from Garden Road (Central) about 10 min, or bus 15 from Central Pier; the Galleria is by the Peak Tower. Causeway Bay to Central about 10 min.",
+   "tips": "Egg tarts sell out soon after coming out of the oven, so order early.",
+   "hours": "Hang Lung Malls lists Mon-Thu 10:00-21:30, Fri-Sun and holidays 10:00-22:00 (OpenRice shows 10:00-20:30; confirm)",
+   "lat": 22.2704,
+   "lng": 114.1499,
+   "addressEn": "Shop 205, 2/F, Peak Galleria, 118 Peak Road, The Peak",
+   "addressZh": "香港山頂山頂道118號山頂廣場2樓205號舖",
+   "url": "https://www.hanglungmalls.com/en/peak-galleria/dining/men-wah-bing-teng",
+   "price": "$",
+   "local": true,
+   "id": "men-wah-bing-teng-peak-galleria",
+   "kinds": [
+    "Cha chaan teng & cafés"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Messina (the Peak) · egg tart gelato",
+   "zh": "Messina 雪糕店(山頂廣場)",
+   "area": "The Peak",
+   "cuisine": "Gelato",
+   "category": [
+    "dessert"
+   ],
+   "emoji": "🥧",
+   "intro": "Australian gelato with a Hong Kong exclusive egg tart flavour, egg custard gelato layered with caramelised puff pastry. A good cool-down treat on the Peak.",
+   "getting": "Peak Tram from Garden Road (Central) about 10 min, or bus 15; the Galleria is next to the Peak Tower.",
+   "tips": "Get the Hong Kong-only egg tart flavour, which is custard gelato with caramelised puff pastry. Check opening hours before you go.",
+   "hours": "Not confirmed for this branch (an Instagram post gives Mon-Thu 12:00-22:00, Fri-Sun 12:00-23:00, possibly other outlet); check before going",
+   "lat": 22.2704,
+   "lng": 114.1499,
+   "addressEn": "Shop G08, G/F, Peak Galleria, 118 Peak Road, The Peak",
+   "addressZh": "香港山頂山頂道118號山頂廣場地下G08號舖",
+   "url": "https://www.gelatomessina.com.hk/",
+   "price": "$",
+   "id": "messina-the-peak-egg-tart-gelato",
+   "kinds": [
+    "Dessert & sweets"
+   ]
+  },
+  {
+   "tab": "sights",
+   "name": "Ladies' Market (Tung Choi Street)",
+   "zh": "女人街",
+   "area": "Mong Kok, Kowloon",
+   "cuisine": "Wet market walk",
+   "category": [
+    "culture",
+    "night",
+    "free"
+   ],
+   "emoji": "🐟",
+   "intro": "A kilometre of street stalls under the Mong Kok neon: T-shirts, phone cases, bags, souvenirs and snacks. It's loud, crowded and a great slice of Kowloon street life.",
+   "tips": "Haggle with a smile and start at about half the asking price. Go after dark (stalls run from about noon to 11pm), and then walk the neon streets around Sai Yeung Choi Street. Keep your phone and wallet in a front pocket.",
+   "getting": "MTR to Mong Kok (Exit D3), about 25 min from Causeway Bay. Or a taxi, 20–30 min via the Cross-Harbour Tunnel.",
+   "facts": [
+    [
+     "Time",
+     "1 hr"
+    ],
+    [
+     "Best",
+     "After dark"
+    ],
+    [
+     "Pay",
+     "Cash"
+    ]
+   ],
+   "lat": 22.3175,
+   "lng": 114.1709,
+   "addressEn": "Tung Choi Street, Mong Kok, Kowloon",
+   "addressZh": "九龍旺角通菜街（女人街）",
+   "mapsQuery": "Ladies' Market Tung Choi Street Mong Kok Hong Kong",
+   "id": "ladies-market-tung-choi-street",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Tung_Choi_Street_201705.JPG/960px-Tung_Choi_Street_201705.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:Tung_Choi_Street_201705.JPG",
+    "credit": "Wpcpey",
+    "license": "CC BY-SA 4.0"
+   }
+  },
+  {
+   "tab": "sights",
+   "name": "Hong Kong Palace Museum",
+   "zh": "香港故宮文化博物館",
+   "area": "West Kowloon",
+   "cuisine": "Museum & waterfront",
+   "category": [
+    "culture",
+    "iconic"
+   ],
+   "emoji": "🖼️",
+   "intro": "Treasures from Beijing's Forbidden City, including imperial paintings, porcelain and jade, in a striking new building on the West Kowloon waterfront. Pair it with M+ next door and a harbour walk.",
+   "tips": "Book a timed ticket online, especially for special exhibitions. Allow 2 hours. M+ and the West Kowloon Art Park are a few minutes' walk away for sunset skyline views.",
+   "getting": "MTR to Kowloon station or Austin, then a 10-min walk. A taxi from Central is about 15 min.",
+   "facts": [
+    [
+     "Time",
+     "2 hrs"
+    ],
+    [
+     "Next door",
+     "M+ & Art Park"
+    ]
+   ],
+   "lat": 22.30165,
+   "lng": 114.1554,
+   "addressEn": "8 Museum Drive, West Kowloon Cultural District",
+   "addressZh": "九龍西九文化區博物館道8號香港故宮文化博物館",
+   "url": "https://www.hkpm.org.hk/en/",
+   "id": "hong-kong-palace-museum",
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Hong_Kong_Palace_Museum_2022.jpg/960px-Hong_Kong_Palace_Museum_2022.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Palace_Museum_2022.jpg",
+    "credit": "xiquinhosilva",
+    "license": "CC BY 2.0"
+   }
   }
  ],
  "PLAN": [
@@ -8511,15 +9308,68 @@ window.HK = {
     ],
     [
      "Lunch",
-     "Dim sum at Dim Sum Library (Pacific Place)",
-     "ours"
+     "Dim sum option A: Dim Sum Library, Pacific Place (modern, polished)",
+     "ours",
+     "sun-dimsum"
+    ],
+    [
+     "Lunch",
+     "Dim sum option B: Lin Heung Lau, Sheung Wan (old-school trolleys, very local)",
+     "ours",
+     "sun-dimsum"
     ]
    ],
    "go": {
     "label": "Dim Sum Library",
     "tab": "city",
     "q": "Dim Sum Library"
-   }
+   },
+   "route": {
+    "title": "Suggested Sunday: harbour, dim sum & the Peak",
+    "steps": [
+     [
+      "🚋",
+      "Ding ding tram west from Causeway Bay: Admiralty for Dim Sum Library (about 15 min) or Sheung Wan for Lin Heung Lau (about 30 min). Tap Visa/Mastercard or Octopus",
+      "Ding Ding tram"
+     ],
+     [
+      "🥟",
+      "Dim sum lunch at your pick (booked)",
+      "Dim Sum Library"
+     ],
+     [
+      "🚡",
+      "Peak Tram up from Garden Road (10 min walk or short taxi from Admiralty). Buy tickets online to skip the queue",
+      "Victoria Peak"
+     ],
+     [
+      "🍦",
+      "At the Peak: egg tart gelato at Messina, or milk tea at Men Wah Bing Teng",
+      "Men Wah Bing Teng"
+     ],
+     [
+      "🌆",
+      "Walk the flat Peak Circle Walk (about 3.5 km / 2 miles). Lugard Road Lookout has the best view",
+      "Peak Circle Walk"
+     ],
+     [
+      "⛴️",
+      "Back down, then the Star Ferry from Central to Tsim Sha Tsui",
+      "Star Ferry"
+     ],
+     [
+      "🖼️",
+      "K11 Musea or the HK Museum of Art, then the TST Promenade for the 8pm Symphony of Lights",
+      "Tsim Sha Tsui Promenade"
+     ]
+    ]
+   },
+   "go2": {
+    "label": "Lin Heung Lau",
+    "tab": "city",
+    "q": "Lin Heung Lau"
+   },
+   "note": "Pick the one you'd like and tell us in the group chat. We'll book."
   },
   {
    "day": "Mon",
@@ -8544,12 +9394,13 @@ window.HK = {
     [
      "2:00–4:00",
      "Becker Week Activity: dragon boating, Stanley",
-     "school"
+     "optional"
     ],
     [
      "Evening",
      "A Smoking Affair: hotpot + karaoke",
-     "ours"
+     "ours",
+     "mon-hotpot"
     ]
    ],
    "go": {
@@ -8561,7 +9412,12 @@ window.HK = {
     "label": "A Smoking Affair",
     "tab": "city",
     "q": "Smoking Affair"
-   }
+   },
+   "bus": [
+    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
+    "Back: campus → Sai Ying Pun / HKU / Park Lane 1:30pm",
+    "Dragon boating: campus → Stanley 1:15pm (2 buses) · Stanley → hotel or Admiralty MTR 3:45pm"
+   ]
   },
   {
    "day": "Tue",
@@ -8604,7 +9460,11 @@ window.HK = {
     "tab": "city",
     "mood": "dinner",
     "where": "saiwan"
-   }
+   },
+   "bus": [
+    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
+    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+   ]
   },
   {
    "day": "Wed",
@@ -8639,7 +9499,8 @@ window.HK = {
     [
      "Evening",
      "Tram party, then bar hopping",
-     "ours"
+     "ours",
+     "wed-tram"
     ]
    ],
    "go": {
@@ -8653,7 +9514,11 @@ window.HK = {
     "tab": "city",
     "mood": "dinner",
     "where": "saiwan"
-   }
+   },
+   "bus": [
+    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
+    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+   ]
   },
   {
    "day": "Thu",
@@ -8666,9 +9531,14 @@ window.HK = {
      "school"
     ],
     [
+     "7:30–9:00",
+     "Early dim sum (yum cha) breakfast: Sun Hing, Kennedy Town (near Booth, famous custard buns) or Luk On Kui, Sheung Wan",
+     "optional"
+    ],
+    [
      "10:00–11:30",
      "AIHK talk (Grand Hall)",
-     "school"
+     "optional"
     ],
     [
      "12:00–2:00",
@@ -8682,14 +9552,40 @@ window.HK = {
     ],
     [
      "Evening",
-     "Dinner: Peng Leng Jeng (Soho) or Peking Garden",
-     "ours"
+     "Dai pai dong dinner: Peng Leng Jeng (Soho)",
+     "ours",
+     "thu-dpd"
+    ],
+    [
+     "Evening",
+     "Or Peking duck: Peking Garden",
+     "ours",
+     "thu-duck"
     ]
    ],
    "go": {
     "label": "Dinner options",
     "tab": "city",
     "q": "Peng Leng"
+   },
+   "bus": [
+    "To campus: Park Lane 9:15–11:15 · Sai Ying Pun (B3) & HKU (B2) 9:30–11:30",
+    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+   ],
+   "route": {
+    "title": "Early dim sum breakfast picks",
+    "steps": [
+     [
+      "🥟",
+      "Sun Hing (新興食家), Kennedy Town: opens 3am, 5 min by taxi from Booth. Get the molten custard buns (流沙包)",
+      "Sun Hing"
+     ],
+     [
+      "🫖",
+      "Luk On Kui (六安居), Sheung Wan: the old Lin Heung Kui team, trolleys and big round tables",
+      "Luk On Kui"
+     ]
+    ]
    }
   },
   {
@@ -8720,7 +9616,7 @@ window.HK = {
     [
      "5:00",
      "Linda Ginzel's Tropical Fruit Fair (Grand Hall)",
-     "school"
+     "optional"
     ],
     [
      "6:00",
@@ -8733,7 +9629,11 @@ window.HK = {
     "tab": "city",
     "mood": "dinner",
     "where": "saiwan"
-   }
+   },
+   "bus": [
+    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
+    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+   ]
   },
   {
    "day": "Sat",
@@ -8775,7 +9675,11 @@ window.HK = {
     "label": "Nanhai No. 2",
     "tab": "city",
     "q": "Nanhai"
-   }
+   },
+   "bus": [
+    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
+    "Closing dinner: campus → MTR 6:45pm · campus → hotel 6:45pm (2 buses) · campus → restaurant 7:00pm"
+   ]
   },
   {
    "day": "Sun",
@@ -8792,7 +9696,37 @@ window.HK = {
      "Hotel check-out by 12pm on 23 Nov",
      "school"
     ]
-   ]
+   ],
+   "route": {
+    "title": "Free day? Pick a day trip",
+    "steps": [
+     [
+      "🚠",
+      "Big Buddha by cable car, then Tai O fishing village (full day, Lantau)",
+      "Big Buddha"
+     ],
+     [
+      "🐼",
+      "Ocean Park pandas, then a pick-your-own seafood dinner in Ap Lei Chau",
+      "Ocean Park"
+     ],
+     [
+      "⛴️",
+      "Cheung Chau island: car-free, snacks and beaches (ferry from Central Pier 5)",
+      "Cheung Chau"
+     ],
+     [
+      "🏰",
+      "Hong Kong Disneyland (full day)",
+      "Disneyland"
+     ]
+    ]
+   },
+   "go": {
+    "label": "All day trips",
+    "tab": "sights",
+    "mood": "daytrip"
+   }
   }
  ],
  "TASTE": [
@@ -9359,11 +10293,11 @@ window.HK = {
   {
    "title": "Survival kit",
    "items": [
-    "💳 Contactless Visa or Mastercard works in most places, including the MTR, buses, the tram and most shops and restaurants.",
-    "🐙 An Octopus card (or Octopus in Apple Wallet) covers the rest: taxis, minibuses and small local spots.",
+    "💳 Contactless Visa or Mastercard works on the MTR, buses, the tram and in most chains, but not always in small local shops or taxis.",
+    "💵 Carry some cash (about HK$300–500). The really local spots are often cash only: cha chaan tengs, dai pai dongs, markets and minibuses.",
+    "🐙 Octopus gets you into all the local places cards don't. On iPhone, add an Octopus card in Apple Wallet and top it up with Apple Pay. Or buy a card at any MTR station.",
     "🚕 Taking a taxi? Open any place and tap \"Show the driver\". It shows the name and address in Chinese, so just hand them your phone.",
     "🛗 On escalators, stand on the right and walk on the left.",
-    "💵 Keep a little cash for cha chaan tengs and dai pai dongs.",
     "🧭 Citymapper is the best app for getting around."
    ]
   },

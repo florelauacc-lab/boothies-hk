@@ -650,6 +650,21 @@ for t in taste:
     if t["name"] in EXTRAS.get("taste_emoji", {}):
         t["emoji"] = EXTRAS["taste_emoji"][t["name"]]
 
+# Google rating + review count (researched; only confident matches are kept) for "most popular & best rated" ranking
+RATINGS = json.loads((ROOT / "tools" / "research" / "ratings.json").read_text()) if (ROOT / "tools" / "research" / "ratings.json").exists() else {}
+for p in places:
+    r = RATINGS.get(p["id"])
+    if r:
+        p["gRating"], p["gReviews"] = r["rating"], r["reviews"]
+
+# Photos for sights, hikes and shopping (freely licensed, from Wikimedia Commons; see tools/photos/fetch_photos.py)
+PHOTOS = json.loads((ROOT / "tools" / "research" / "photos.json").read_text()) if (ROOT / "tools" / "research" / "photos.json").exists() else {}
+BAD_PHOTOS = {"tai-kwun", "hong-kong-museum-of-art", "dried-seafood-street-des-voeux-road-west", "shek-o-beach", "temple-street-yau-ma-tei-neon-walk-incl-"}
+for p in places:
+    ph = PHOTOS.get(p["id"])
+    if ph and ph.get("src") and p["id"] not in BAD_PHOTOS:
+        p["photo"] = {"src": ph["src"].split("?")[0], "page": (ph.get("page") or "").split("?")[0], "credit": ph.get("credit", ""), "license": ph.get("license", "")}
+
 out = {"HOME": home, "PLACES": places, "PLAN": EXTRAS["plan"], "TASTE": taste, "TIPS": tips}
 (ROOT / "data.js").write_text("window.HK = " + json.dumps(out, ensure_ascii=False, indent=1) + ";\n")
 from collections import Counter

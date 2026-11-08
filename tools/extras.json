@@ -1,919 +1,1400 @@
 {
-  "home": {
-    "campus": {
-      "lat": 22.2797,
-      "lng": 114.1259,
-      "address": "UChicago Francis and Rose Yuen Campus, Mount Davis, Kennedy Town"
-    },
-    "parklane": {
-      "lat": 22.2805,
-      "lng": 114.1868,
-      "address": "The Park Lane Hong Kong, 310 Gloucester Road, Causeway Bay"
-    }
+ "home": {
+  "campus": {
+   "lat": 22.2797,
+   "lng": 114.1259,
+   "address": "UChicago Francis and Rose Yuen Campus, Mount Davis, Kennedy Town"
   },
-  "plan": [
-    {
-      "day": "Sat",
-      "date": "14 Nov",
-      "iso": "2026-11-14",
-      "slots": [
-        [
-          "3pm",
-          "Hotel check-in from 3pm",
-          "school"
-        ]
-      ]
-    },
-    {
-      "day": "Sun",
-      "date": "15 Nov",
-      "iso": "2026-11-15",
-      "slots": [
-        [
-          "All day",
-          "Meals on your own",
-          "school"
-        ],
-        [
-          "Lunch",
-          "Dim sum at Dim Sum Library (Pacific Place)",
-          "ours"
-        ]
-      ],
-      "go": {
-        "label": "Dim Sum Library",
-        "tab": "city",
-        "q": "Dim Sum Library"
-      }
-    },
-    {
-      "day": "Mon",
-      "date": "16 Nov",
-      "iso": "2026-11-16",
-      "slots": [
-        [
-          "8:00–9:30",
-          "Breakfast, Student Lounge",
-          "school"
-        ],
-        [
-          "9:30–11:00",
-          "Microeconomics midterm",
-          "school"
-        ],
-        [
-          "11:30–1:00",
-          "Welcome speech, orientation & lunch (Grand Hall)",
-          "school"
-        ],
-        [
-          "2:00–4:00",
-          "Becker Week Activity: dragon boating, Stanley",
-          "school"
-        ],
-        [
-          "Evening",
-          "A Smoking Affair: hotpot + karaoke",
-          "ours"
-        ]
-      ],
-      "go": {
-        "label": "Stanley",
-        "tab": "sights",
-        "where": "south"
-      },
-      "go2": {
-        "label": "A Smoking Affair",
-        "tab": "city",
-        "q": "Smoking Affair"
-      }
-    },
-    {
-      "day": "Tue",
-      "date": "17 Nov",
-      "iso": "2026-11-17",
-      "slots": [
-        [
-          "8:00–9:00",
-          "Breakfast, Student Lounge",
-          "school"
-        ],
-        [
-          "9:00–12:00",
-          "Microeconomics",
-          "school"
-        ],
-        [
-          "12:30–1:30",
-          "Heritage Tour (G/F Reception)",
-          "optional"
-        ],
-        [
-          "2:00–5:00",
-          "Statistics",
-          "school"
-        ],
-        [
-          "5:30–6:30",
-          "Statistics review",
-          "optional"
-        ],
-        [
-          "6:30",
-          "Boxed dinner, Student Lounge",
-          "school"
-        ]
-      ],
-      "go": {
-        "label": "Dinner near Booth",
-        "tab": "city",
-        "mood": "dinner",
-        "where": "saiwan"
-      }
-    },
-    {
-      "day": "Wed",
-      "date": "18 Nov",
-      "iso": "2026-11-18",
-      "slots": [
-        [
-          "8:00–9:00",
-          "Breakfast, Student Lounge",
-          "school"
-        ],
-        [
-          "9:00–12:00",
-          "Microeconomics",
-          "school"
-        ],
-        [
-          "12:30–1:30",
-          "Microeconomics review",
-          "optional"
-        ],
-        [
-          "2:00–5:00",
-          "Statistics",
-          "school"
-        ],
-        [
-          "6:00",
-          "Boxed dinner, Student Lounge",
-          "school"
-        ],
-        [
-          "Evening",
-          "Tram party, then bar hopping",
-          "ours"
-        ]
-      ],
-      "go": {
-        "label": "LKF & Soho bars",
-        "tab": "city",
-        "mood": "drinks",
-        "where": "central"
-      },
-      "go2": {
-        "label": "Dinner near Booth",
-        "tab": "city",
-        "mood": "dinner",
-        "where": "saiwan"
-      }
-    },
-    {
-      "day": "Thu",
-      "date": "19 Nov",
-      "iso": "2026-11-19",
-      "slots": [
-        [
-          "Morning",
-          "Breakfast on your own",
-          "school"
-        ],
-        [
-          "10:00–11:30",
-          "AIHK talk (Grand Hall)",
-          "school"
-        ],
-        [
-          "12:00–2:00",
-          "Lunch (Grand Hall)",
-          "school"
-        ],
-        [
-          "2:00–5:00",
-          "Statistics",
-          "school"
-        ],
-        [
-          "Evening",
-          "Dinner: Peng Leng Jeng (Soho) or Peking Garden",
-          "ours"
-        ]
-      ],
-      "go": {
-        "label": "Dinner options",
-        "tab": "city",
-        "q": "Peng Leng"
-      }
-    },
-    {
-      "day": "Fri",
-      "date": "20 Nov",
-      "iso": "2026-11-20",
-      "slots": [
-        [
-          "8:00–9:00",
-          "Breakfast, Student Lounge",
-          "school"
-        ],
-        [
-          "9:00–12:00",
-          "Microeconomics",
-          "school"
-        ],
-        [
-          "12:00–2:00",
-          "HK theme lunch (Grand Hall)",
-          "school"
-        ],
-        [
-          "2:00–5:00",
-          "Statistics",
-          "school"
-        ],
-        [
-          "5:00",
-          "Linda Ginzel's Tropical Fruit Fair (Grand Hall)",
-          "school"
-        ],
-        [
-          "6:00",
-          "Boxed dinner, Student Lounge",
-          "school"
-        ]
-      ],
-      "go": {
-        "label": "Dinner near Booth",
-        "tab": "city",
-        "mood": "dinner",
-        "where": "saiwan"
-      }
-    },
-    {
-      "day": "Sat",
-      "date": "21 Nov",
-      "iso": "2026-11-21",
-      "slots": [
-        [
-          "8:00–9:00",
-          "Breakfast, Student Lounge",
-          "school"
-        ],
-        [
-          "9:00–12:00",
-          "Microeconomics",
-          "school"
-        ],
-        [
-          "12:30–1:30",
-          "Microeconomics review",
-          "optional"
-        ],
-        [
-          "2:00–5:00",
-          "Statistics",
-          "school"
-        ],
-        [
-          "5:30–6:30",
-          "Statistics review",
-          "optional"
-        ],
-        [
-          "7:30–9:30",
-          "Closing dinner, Nanhai No. 2 (Causeway Bay)",
-          "school"
-        ]
-      ],
-      "go": {
-        "label": "Nanhai No. 2",
-        "tab": "city",
-        "q": "Nanhai"
-      }
-    },
-    {
-      "day": "Sun",
-      "date": "22 Nov",
-      "iso": "2026-11-22",
-      "slots": [
-        [
-          "All day",
-          "Free day",
-          "school"
-        ],
-        [
-          "Next day",
-          "Hotel check-out by 12pm on 23 Nov",
-          "school"
-        ]
-      ]
-    }
-  ],
-  "tips": [
-    {
-      "title": "Survival kit",
-      "items": [
-        "💳 Contactless Visa or Mastercard works in most places, including the MTR, buses, the tram and most shops and restaurants.",
-        "🐙 An Octopus card (or Octopus in Apple Wallet) covers the rest: taxis, minibuses and small local spots.",
-        "🚕 Taking a taxi? Open any place and tap \"Show the driver\". It shows the name and address in Chinese, so just hand them your phone.",
-        "🛗 On escalators, stand on the right and walk on the left.",
-        "💵 Keep a little cash for cha chaan tengs and dai pai dongs.",
-        "🧭 Citymapper is the best app for getting around."
-      ]
-    },
-    {
-      "title": "Did you know?",
-      "items": [
-        "🇬🇧 A British colony until 1997, now part of China under \"one country, two systems\". It keeps its own currency, passport and laws, and cars still drive on the left.",
-        "🏙️ More skyscrapers than any other city on Earth, yet about 40% of the land is country park.",
-        "🛗 The Central–Mid-Levels escalator is the world's longest outdoor covered escalator, about 800 m uphill.",
-        "🚋 The ding ding trams are the world's largest double-decker tram fleet, running since 1904.",
-        "🌸 \"Hong Kong\" means \"Fragrant Harbour\"."
-      ]
-    }
-  ],
-  "add": [
-    {
-      "tab": "city",
-      "name": "Afternoon tea at The Peninsula",
-      "zh": "半島酒店大堂茶座",
-      "area": "Tsim Sha Tsui",
-      "cuisine": "Classic afternoon tea",
-      "category": [
-        "dessert",
-        "lunch"
-      ],
-      "emoji": "🫖",
-      "intro": "Tiered scones, finger sandwiches and a string quartet in the gilded lobby of Hong Kong's oldest hotel, opened in 1928. It's a quintessential colonial-era Hong Kong ritual.",
-      "funFact": "During the Second World War, the British governor surrendered Hong Kong to Japan at The Peninsula on Christmas Day 1941, in a room on the hotel's third floor.",
-      "tips": "Go mid-afternoon on a weekday and expect a queue. Check The Peninsula's website for current booking rules. Afterwards, walk five minutes to the Tsim Sha Tsui promenade for the skyline, and stay for the 8pm Symphony of Lights.",
-      "getting": "From the Park Lane: MTR from Causeway Bay to Tsim Sha Tsui (about 20 min), or take the Star Ferry from Wan Chai.",
-      "facts": [
-        [
-          "Where",
-          "The Lobby, The Peninsula"
-        ],
-        [
-          "Time",
-          "1.5–2 hrs"
-        ],
-        [
-          "Dress",
-          "Smart casual"
-        ]
-      ],
-      "lat": 22.2951,
-      "lng": 114.1718,
-      "mapsQuery": "The Lobby The Peninsula Hong Kong",
-      "url": "https://www.peninsula.com/en/hong-kong/hotel-fine-dining/the-lobby-afternoon-tea",
-      "picked": true,
-      "section": "HK classics"
-    },
-    {
-      "tab": "city",
-      "name": "Mott 32",
-      "zh": "卅二公館",
-      "area": "Central",
-      "section": "Cantonese fine dining",
-      "cuisine": "Modern Cantonese (famous Peking duck)",
-      "category": [
-        "dinner",
-        "lunch"
-      ],
-      "price": "$$$$",
-      "intro": "A glamorous, moody basement restaurant in an old bank building, and one of Hong Kong's most famous Chinese restaurants.",
-      "order": [
-        "Applewood-roasted Peking duck (book it when you reserve)",
-        "Barbecue Iberico pork char siu",
-        "Dim sum at lunch"
-      ],
-      "reviews": "Loved for the room and the duck; it's pricey, and the duck's second course costs extra.",
-      "tips": "Book ahead on SevenRooms and pre-order the duck. Lunch is 11:30–2:30 and dinner 5:30 till late.",
-      "addressEn": "Basement, Standard Chartered Bank Building, 4-4A Des Voeux Road Central",
-      "addressZh": "中環德輔道中4-4A號渣打銀行大廈地庫",
-      "url": "https://mott32.com/hong-kong/",
-      "lat": 22.28026,
-      "lng": 114.15894,
-      "mapsQuery": "Mott 32 Standard Chartered Bank Building Central",
-      "emoji": "🦆"
-    }
-  ],
-  "patch": {
-    "Star Ferry": {
-      "essential": 1,
-      "essentialTitle": "Ride the Star Ferry",
-      "essentialWhy": "The best harbour view for a few dollars.",
-      "area": "Central or Wan Chai ↔ Tsim Sha Tsui",
-      "getting": "Two piers, both going to Tsim Sha Tsui. Central Pier 7 is easiest from Booth (taxi or MTR to Central, then a 10 min walk). Wan Chai Pier is easiest from the Park Lane (about 10 min by taxi).",
-      "tips": "Sit on the upper deck at dusk. Go over from Central or Wan Chai, walk the Tsim Sha Tsui promenade, then ride back after dark for the lit-up skyline.",
-      "addressZh": "中環天星碼頭（7號碼頭）／ 灣仔天星碼頭 ／ 尖沙咀天星碼頭",
-      "pins": [
-        {
-          "label": "Central Pier 7",
-          "zh": "中環天星碼頭（7號碼頭）",
-          "lat": 22.28704,
-          "lng": 114.16119
-        },
-        {
-          "label": "Wan Chai Pier",
-          "zh": "灣仔天星碼頭",
-          "lat": 22.2821,
-          "lng": 114.17603
-        },
-        {
-          "label": "Tsim Sha Tsui Pier (landing)",
-          "zh": "尖沙咀天星碼頭",
-          "lat": 22.29354,
-          "lng": 114.16799
-        }
-      ],
-      "routes": [
-        [
-          0,
-          2
-        ],
-        [
-          1,
-          2
-        ]
-      ]
-    },
-    "Victoria Peak & the Peak Tram": {
-      "essential": 2,
-      "essentialTitle": "See the skyline from the Peak",
-      "essentialWhy": "Go at sunset and stay for the lights."
-    },
-    "Ding Ding tram (Kennedy Town to Shau Kei Wan)": {
-      "essential": 3,
-      "essentialTitle": "Ride a ding ding tram",
-      "essentialWhy": "Top deck, front seat, from Kennedy Town."
-    },
-    "Maxim's Palace (City Hall)": {
-      "essential": 4,
-      "essentialTitle": "Yum cha (dim sum)",
-      "essentialWhy": "Pick dumplings off the trolleys."
-    },
-    "Kwan Kee Clay Pot Rice": {
-      "essential": 5,
-      "essentialTitle": "Claypot rice near Booth",
-      "essentialWhy": "Crispy-bottomed rice, a Michelin pick.",
-      "kinds_override": [
-        "Cantonese & seafood"
-      ]
-    },
-    "Shun Kee Typhoon Shelter Seafood": {
-      "essential": 6,
-      "essentialTitle": "Dinner on a sampan",
-      "essentialWhy": "Garlic chilli crab on a boat."
-    },
-    "Lan Kwai Fong (LKF)": {
-      "essential": 7,
-      "essentialTitle": "A night out in LKF & Soho",
-      "essentialWhy": "Bar-hop up the hill."
-    },
-    "Afternoon tea at The Peninsula": {
-      "essential": 8,
-      "essentialTitle": "Afternoon tea at The Peninsula",
-      "essentialWhy": "Scones and a string quartet since 1928.",
-      "kinds_override": [
-        "Dessert & sweets"
-      ]
-    },
-    "Cha chaan teng breakfast (Mountain Road Cafe)": {
-      "tab": "saiwan",
-      "name_override": "Mountain Road Cafe",
-      "section": "HK classics",
-      "cuisine": "Cha chaan teng breakfast",
-      "category": [
-        "lunch"
-      ]
-    },
-    "Landmark (Central)": {
-      "category": [
-        "luxury",
-        "malls"
-      ],
-      "cuisine": "Luxury mall"
-    },
-    "Pacific Place": {
-      "category": [
-        "luxury",
-        "malls"
-      ],
-      "cuisine": "Luxury mall"
-    },
-    "IFC Mall": {
-      "category": [
-        "luxury",
-        "malls"
-      ],
-      "cuisine": "Luxury mall"
-    },
-    "Lee Gardens": {
-      "category": [
-        "luxury",
-        "malls"
-      ],
-      "cuisine": "Luxury mall"
-    },
-    "K11 MUSEA": {
-      "category": [
-        "luxury",
-        "design",
-        "malls"
-      ],
-      "cuisine": "Art & design mall"
-    },
-    "Harbour City & Canton Road": {
-      "category": [
-        "luxury",
-        "malls"
-      ],
-      "cuisine": "Mega-mall & luxury street"
-    },
-    "Ying Kee Tea House (Johnston Road)": {
-      "category": [
-        "gifts",
-        "local"
-      ],
-      "cuisine": "Chinese tea shop"
-    },
-    "PMQ (with Tai Kwun nearby)": {
-      "category": [
-        "gifts",
-        "design",
-        "local"
-      ],
-      "cuisine": "Design studios & shops"
-    },
-    "Stanley Market": {
-      "category": [
-        "gifts",
-        "local"
-      ],
-      "cuisine": "Souvenir market"
-    },
-    "英皇 CEO Neway Karaoke": {
-      "name_override": "Neway CEO Karaoke"
-    },
-    "DarkSide": {
-      "section": "Jazz bar"
-    },
-    "Stanley & Repulse Bay": {
-      "category": [
-        "beach",
-        "views",
-        "walk",
-        "free"
-      ]
-    },
-    "Dragon's Back": {
-      "category": [
-        "moderate",
-        "views"
-      ]
-    },
-    "Violet Hill & The Twins (Wilson Trail Stage 1)": {
-      "category": [
-        "views",
-        "south"
-      ]
-    },
-    "Tai Tam Waterworks Heritage Trail": {
-      "category": [
-        "easy",
-        "south"
-      ]
-    },
-    "Times Square": {
-      "cuisine": "Shopping mall"
-    },
-    "Shanghai Tang": {
-      "category": [
-        "gifts",
-        "luxury",
-        "design"
-      ]
-    },
-    "Chinese Arts & Crafts": {
-      "category": [
-        "gifts",
-        "local"
-      ]
-    },
-    "Maggie Choo's": {
-      "kinds_override": [
-        "Jazz & live music",
-        "Cocktails"
-      ],
-      "cuisine": "Live music & cocktail bar (jazz, soul, funk)"
-    },
-    "Tai Kwun": {
-      "category": [
-        "culture",
-        "free",
-        "walk",
-        "architecture"
-      ]
-    },
-    "M+ museum & West Kowloon waterfront": {
-      "category": [
-        "culture",
-        "views",
-        "neon",
-        "architecture"
-      ]
-    },
-    "Temple Street & Yau Ma Tei neon walk (incl. Mido Café)": {
-      "category": [
-        "neon",
-        "night",
-        "free",
-        "local",
-        "culture",
-        "iconic"
-      ]
-    },
-    "TREEHOUSE (Causeway Bay)": {
-      "category": [
-        "lunch",
-        "dinner"
-      ],
-      "kinds_override": [
-        "Vegan & vegetarian",
-        "Western & Med"
-      ]
-    },
-    "TREEHOUSE (H Code, Central)": {
-      "category": [
-        "lunch",
-        "dinner"
-      ],
-      "kinds_override": [
-        "Vegan & vegetarian",
-        "Western & Med"
-      ]
-    },
-    "Lock Cha Tea House (Tai Kwun)": {
-      "category": [
-        "lunch"
-      ],
-      "kinds_override": [
-        "Vegan & vegetarian",
-        "Dim sum"
-      ]
-    },
-    "Lock Cha Tea House (Hong Kong Park)": {
-      "category": [
-        "lunch"
-      ],
-      "kinds_override": [
-        "Vegan & vegetarian",
-        "Dim sum"
-      ]
-    },
-    "Kam Wah Cafe": {
-      "category": [
-        "lunch"
-      ],
-      "kinds_override": [
-        "Cha chaan teng & cafés"
-      ]
-    },
-    "Kung Lee Sugar Cane Juice": {
-      "kinds_override": [
-        "Dessert & sweets"
-      ]
-    },
-    "Pane e Latte": {
-      "category": [
-        "lunch",
-        "dessert"
-      ],
-      "kinds_override": [
-        "Western & Med",
-        "Dessert & sweets"
-      ]
-    },
-    "Madame Fù – Grand Café Chinois": {
-      "kinds_override": [
-        "Dim sum",
-        "Cantonese & seafood"
-      ]
-    },
-    "Café Malacca": {
-      "kinds_override": [
-        "Thai & SE Asian"
-      ]
-    },
-    "House of Culture": {
-      "kinds_override": [
-        "Thai & SE Asian"
-      ]
-    },
-    "Aya (Tsukemen & Ramen)": {
-      "kinds_override": [
-        "Japanese"
-      ]
-    },
-    "Baka Ramen": {
-      "kinds_override": [
-        "Japanese"
-      ]
-    },
-    "Joy Tonight Grill": {
-      "kinds_override": [
-        "Cantonese & seafood"
-      ]
-    },
-    "Yuan Is Here": {
-      "kinds_override": [
-        "Taiwanese"
-      ]
-    },
-    "Ciclo": {
-      "category": [
-        "drinks",
-        "late-night"
-      ],
-      "kinds_override": [
-        "Cocktails"
-      ]
-    },
-    "Harbourside (Regent Hong Kong)": {
-      "kinds_override": [
-        "Western & Med"
-      ]
-    },
-    "Surf & Turf Grill and Bar": {
-      "kinds_override": [
-        "Western & Med"
-      ]
-    },
-    "Sheung Hei Claypot Rice": {
-      "kinds_override": [
-        "Cantonese & seafood"
-      ]
-    },
-    "Carnegies": {
-      "kinds_override": [
-        "Clubbing",
-        "Jazz & live music"
-      ]
-    },
-    "% Arabica (Kennedy Town)": {
-      "category": [
-        "coffee"
-      ]
-    },
-    "project c": {
-      "category": [
-        "coffee"
-      ]
-    },
-    "Blue Bottle Coffee (Central)": {
-      "category": [
-        "coffee"
-      ]
-    },
-    "Barista Jam": {
-      "category": [
-        "coffee"
-      ]
-    },
-    "EN Coffee (Causeway Bay)": {
-      "category": [
-        "coffee",
-        "dessert"
-      ]
-    },
-    "St. Lolan Bakery": {
-      "category": [
-        "dessert"
-      ]
-    },
-    "Bernice Bakery": {
-      "category": [
-        "dessert"
-      ]
-    },
-    "Pineapple Bakery": {
-      "category": [
-        "dessert"
-      ]
-    }
-  },
-  "drop": [
-    "Central–Mid-Levels Escalator",
-    "Chow Sang Sang & the big HK jewellery chains (Hennessy Road)",
-    "Chow Sang Sang (Hennessy Road, Causeway Bay)",
-    "Chow Tai Fook Global Flagship (Canton Road)",
-    "Cooked-food-centre dinner: Smithfield, Kennedy Town",
-    "Fortress & Broadway (electronics)",
-    "Kau Kee",
-    "King Fook Jewellery (Central)",
-    "Lukfook Jewellery (Causeway Bay, 499 Hennessy Road)",
-    "M+ Museum (neon collection & building)",
-    "Ronald Abram (Mandarin Oriental)",
-    "SOGO Causeway Bay",
-    "Sam's Tailor",
-    "Sasa & Mannings (beauty and pharmacy)",
-    "TSL Jewellery (Yee Wo Street, Causeway Bay)",
-    "Tai Kwun (Centre for Heritage & Arts)",
-    "Temple Street Night Market",
-    "The Twins (Wilson Trail Section 1)",
-    "Watches: brand boutiques & authorised dealers",
-    "Yuen Kee Dessert"
-  ],
-  "emoji": {
-    "Joy Tonight Grill": "🍢",
-    "Café Malacca": "🍛",
-    "Ping Pong 129 Gintonería": "🍸",
-    "CODA Jazz Kissa": "🎷",
-    "La Cave": "🍷",
-    "ThinkWine": "🍷",
-    "Terroirs by LQV": "🍷",
-    "CORKS Wine & Bar": "🍷",
-    "Samsen (Sheung Wan)": "🍜",
-    "Ăn Chơi": "🍲",
-    "Gold Star": "🍜",
-    "The Diplomat": "🍸",
-    "Ciclo": "🍸",
-    "Lounge Hakuba": "💨",
-    "SKYE Roofbar & Grill": "🌃",
-    "Terrace Boulud by Mandarin Oriental": "🌃",
-    "Felix (The Peninsula)": "🍸",
-    "Yume": "🪩",
-    "The Iron Fairies": "🍸",
-    "Aqua": "🌃",
-    "Hutong": "🌶️",
-    "Ozone (The Ritz-Carlton)": "🌃",
-    "Harbourside (Regent Hong Kong)": "🍽️",
-    "Madame Fù – Grand Café Chinois": "🥟",
-    "Sing Heung Yuen": "🍜",
-    "Kam Wah Cafe": "🍍",
-    "Magistracy Dining Room": "🍽️",
-    "Lock Cha Tea House (Hong Kong Park)": "🥟",
-    "Lock Cha Tea House (Tai Kwun)": "🥟",
-    "TREEHOUSE (Causeway Bay)": "🥗",
-    "TREEHOUSE (H Code, Central)": "🥗",
-    "Woodlands Indian Vegetarian Restaurant (Wan Chai)": "🍛",
-    "New Dim Siu Yi": "🥢",
-    "Sing Kee": "🥢",
-    "Tung Po Kitchen": "🥢",
-    "Nanhai No. 2": "🥢",
-    "Australia Dairy Company": "🍳",
-    "Goshaku": "🏮",
-    "Thai Zab Verr": "🌶️",
-    "Yeon Nam Dong": "🍲",
-    "Jeonpo Meat Shop": "🥩",
-    "Porterhouse": "🥩",
-    "Cardinal Point": "🌃",
-    "Salisterra": "🌃",
-    "Migas": "🌃",
-    "Chicken Pot (Smithfield Cooked Food Centre)": "🍲",
-    "Stanley Waterfront Promenade (Stanley Main Street)": "🌊",
-    "Dragon State Kitchen": "🍖",
-    "Joy Hing Roasted Meat": "🍖",
-    "Kam's Roast Goose": "🍖",
-    "Po Kee": "🍖",
-    "Yat Lok": "🍖",
-    "Capital Café": "🍞",
-    "Cheung Hong Yuen": "🍞",
-    "Lan Fong Yuen": "🍞",
-    "Luen Wah Cafe": "🍞",
-    "Mido Café": "🍞",
-    "Mountain Road Cafe": "🍞",
-    "Si Yik": "🍞",
-    "Tak Yu Restaurant": "🍞",
-    "Pane e Latte": "🥐",
-    "Jenny Bakery": "🍪",
-    "Kee Wah Bakery": "🥮",
-    "Wing Wah Cake Shop": "🥮",
-    "Yiu Fung Store": "🍬",
-    "Kowloon Soy Company": "🫙",
-    "Chinese Arts & Crafts": "🏺",
-    "Shanghai Tang": "🎁",
-    "Stanley Market": "🧧",
-    "Gokan": "🍸",
-    "Kinsman": "🍸",
-    "Maggie Choo's": "🎷"
-  },
-  "taste_emoji": {
-    "Hong Kong milk tea": "☕",
-    "Claypot rice": "🍚",
-    "Roast goose & char siu": "🍖",
-    "Beef brisket noodles": "🍜"
+  "parklane": {
+   "lat": 22.2805,
+   "lng": 114.1868,
+   "address": "The Park Lane Hong Kong, 310 Gloucester Road, Causeway Bay"
   }
+ },
+ "plan": [
+  {
+   "day": "Sat",
+   "date": "14 Nov",
+   "iso": "2026-11-14",
+   "slots": [
+    [
+     "3pm",
+     "Hotel check-in from 3pm",
+     "school"
+    ]
+   ]
+  },
+  {
+   "day": "Sun",
+   "date": "15 Nov",
+   "iso": "2026-11-15",
+   "slots": [
+    [
+     "All day",
+     "Meals on your own",
+     "school"
+    ],
+    [
+     "Lunch",
+     "Dim sum option A: Dim Sum Library, Pacific Place (modern, polished)",
+     "ours",
+     "sun-dimsum"
+    ],
+    [
+     "Lunch",
+     "Dim sum option B: Lin Heung Lau, Sheung Wan (old-school trolleys, very local)",
+     "ours",
+     "sun-dimsum"
+    ]
+   ],
+   "go": {
+    "label": "Dim Sum Library",
+    "tab": "city",
+    "q": "Dim Sum Library"
+   },
+   "route": {
+    "title": "Suggested Sunday: harbour, dim sum & the Peak",
+    "steps": [
+     [
+      "🚋",
+      "Ding ding tram west from Causeway Bay: Admiralty for Dim Sum Library (about 15 min) or Sheung Wan for Lin Heung Lau (about 30 min). Tap Visa/Mastercard or Octopus",
+      "Ding Ding tram"
+     ],
+     [
+      "🥟",
+      "Dim sum lunch at your pick (booked)",
+      "Dim Sum Library"
+     ],
+     [
+      "🚡",
+      "Peak Tram up from Garden Road (10 min walk or short taxi from Admiralty). Buy tickets online to skip the queue",
+      "Victoria Peak"
+     ],
+     [
+      "🍦",
+      "At the Peak: egg tart gelato at Messina, or milk tea at Men Wah Bing Teng",
+      "Men Wah Bing Teng"
+     ],
+     [
+      "🌆",
+      "Walk the flat Peak Circle Walk (about 3.5 km / 2 miles). Lugard Road Lookout has the best view",
+      "Peak Circle Walk"
+     ],
+     [
+      "⛴️",
+      "Back down, then the Star Ferry from Central to Tsim Sha Tsui",
+      "Star Ferry"
+     ],
+     [
+      "🖼️",
+      "K11 Musea or the HK Museum of Art, then the TST Promenade for the 8pm Symphony of Lights",
+      "Tsim Sha Tsui Promenade"
+     ]
+    ]
+   },
+   "go2": {
+    "label": "Lin Heung Lau",
+    "tab": "city",
+    "q": "Lin Heung Lau"
+   },
+   "note": "Pick the one you'd like and tell us in the group chat. We'll book."
+  },
+  {
+   "day": "Mon",
+   "date": "16 Nov",
+   "iso": "2026-11-16",
+   "slots": [
+    [
+     "8:00–9:30",
+     "Breakfast, Student Lounge",
+     "school"
+    ],
+    [
+     "9:30–11:00",
+     "Microeconomics midterm",
+     "school"
+    ],
+    [
+     "11:30–1:00",
+     "Welcome speech, orientation & lunch (Grand Hall)",
+     "school"
+    ],
+    [
+     "2:00–4:00",
+     "Becker Week Activity: dragon boating, Stanley",
+     "optional"
+    ],
+    [
+     "Evening",
+     "A Smoking Affair: hotpot + karaoke",
+     "ours",
+     "mon-hotpot"
+    ]
+   ],
+   "go": {
+    "label": "Stanley",
+    "tab": "sights",
+    "where": "south"
+   },
+   "go2": {
+    "label": "A Smoking Affair",
+    "tab": "city",
+    "q": "Smoking Affair"
+   },
+   "bus": [
+    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
+    "Back: campus → Sai Ying Pun / HKU / Park Lane 1:30pm",
+    "Dragon boating: campus → Stanley 1:15pm (2 buses) · Stanley → hotel or Admiralty MTR 3:45pm"
+   ]
+  },
+  {
+   "day": "Tue",
+   "date": "17 Nov",
+   "iso": "2026-11-17",
+   "slots": [
+    [
+     "8:00–9:00",
+     "Breakfast, Student Lounge",
+     "school"
+    ],
+    [
+     "9:00–12:00",
+     "Microeconomics",
+     "school"
+    ],
+    [
+     "12:30–1:30",
+     "Heritage Tour (G/F Reception)",
+     "optional"
+    ],
+    [
+     "2:00–5:00",
+     "Statistics",
+     "school"
+    ],
+    [
+     "5:30–6:30",
+     "Statistics review",
+     "optional"
+    ],
+    [
+     "6:30",
+     "Boxed dinner, Student Lounge",
+     "school"
+    ]
+   ],
+   "go": {
+    "label": "Dinner near Booth",
+    "tab": "city",
+    "mood": "dinner",
+    "where": "saiwan"
+   },
+   "bus": [
+    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
+    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+   ]
+  },
+  {
+   "day": "Wed",
+   "date": "18 Nov",
+   "iso": "2026-11-18",
+   "slots": [
+    [
+     "8:00–9:00",
+     "Breakfast, Student Lounge",
+     "school"
+    ],
+    [
+     "9:00–12:00",
+     "Microeconomics",
+     "school"
+    ],
+    [
+     "12:30–1:30",
+     "Microeconomics review",
+     "optional"
+    ],
+    [
+     "2:00–5:00",
+     "Statistics",
+     "school"
+    ],
+    [
+     "6:00",
+     "Boxed dinner, Student Lounge",
+     "school"
+    ],
+    [
+     "Evening",
+     "Tram party, then bar hopping",
+     "ours",
+     "wed-tram"
+    ]
+   ],
+   "go": {
+    "label": "LKF & Soho bars",
+    "tab": "city",
+    "mood": "drinks",
+    "where": "central"
+   },
+   "go2": {
+    "label": "Dinner near Booth",
+    "tab": "city",
+    "mood": "dinner",
+    "where": "saiwan"
+   },
+   "bus": [
+    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
+    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+   ]
+  },
+  {
+   "day": "Thu",
+   "date": "19 Nov",
+   "iso": "2026-11-19",
+   "slots": [
+    [
+     "Morning",
+     "Breakfast on your own",
+     "school"
+    ],
+    [
+     "7:30–9:00",
+     "Early dim sum (yum cha) breakfast: Sun Hing, Kennedy Town (near Booth, famous custard buns) or Luk On Kui, Sheung Wan",
+     "optional"
+    ],
+    [
+     "10:00–11:30",
+     "AIHK talk (Grand Hall)",
+     "optional"
+    ],
+    [
+     "12:00–2:00",
+     "Lunch (Grand Hall)",
+     "school"
+    ],
+    [
+     "2:00–5:00",
+     "Statistics",
+     "school"
+    ],
+    [
+     "Evening",
+     "Dai pai dong dinner: Peng Leng Jeng (Soho)",
+     "ours",
+     "thu-dpd"
+    ],
+    [
+     "Evening",
+     "Or Peking duck: Peking Garden",
+     "ours",
+     "thu-duck"
+    ]
+   ],
+   "go": {
+    "label": "Dinner options",
+    "tab": "city",
+    "q": "Peng Leng"
+   },
+   "bus": [
+    "To campus: Park Lane 9:15–11:15 · Sai Ying Pun (B3) & HKU (B2) 9:30–11:30",
+    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+   ],
+   "route": {
+    "title": "Early dim sum breakfast picks",
+    "steps": [
+     [
+      "🥟",
+      "Sun Hing (新興食家), Kennedy Town: opens 3am, 5 min by taxi from Booth. Get the molten custard buns (流沙包)",
+      "Sun Hing"
+     ],
+     [
+      "🫖",
+      "Luk On Kui (六安居), Sheung Wan: the old Lin Heung Kui team, trolleys and big round tables",
+      "Luk On Kui"
+     ]
+    ]
+   }
+  },
+  {
+   "day": "Fri",
+   "date": "20 Nov",
+   "iso": "2026-11-20",
+   "slots": [
+    [
+     "8:00–9:00",
+     "Breakfast, Student Lounge",
+     "school"
+    ],
+    [
+     "9:00–12:00",
+     "Microeconomics",
+     "school"
+    ],
+    [
+     "12:00–2:00",
+     "HK theme lunch (Grand Hall)",
+     "school"
+    ],
+    [
+     "2:00–5:00",
+     "Statistics",
+     "school"
+    ],
+    [
+     "5:00",
+     "Linda Ginzel's Tropical Fruit Fair (Grand Hall)",
+     "optional"
+    ],
+    [
+     "6:00",
+     "Boxed dinner, Student Lounge",
+     "school"
+    ]
+   ],
+   "go": {
+    "label": "Dinner near Booth",
+    "tab": "city",
+    "mood": "dinner",
+    "where": "saiwan"
+   },
+   "bus": [
+    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
+    "Back: to Sai Ying Pun / HKU 8:30pm · to Park Lane 8:30pm & 9:00pm"
+   ]
+  },
+  {
+   "day": "Sat",
+   "date": "21 Nov",
+   "iso": "2026-11-21",
+   "slots": [
+    [
+     "8:00–9:00",
+     "Breakfast, Student Lounge",
+     "school"
+    ],
+    [
+     "9:00–12:00",
+     "Microeconomics",
+     "school"
+    ],
+    [
+     "12:30–1:30",
+     "Microeconomics review",
+     "optional"
+    ],
+    [
+     "2:00–5:00",
+     "Statistics",
+     "school"
+    ],
+    [
+     "5:30–6:30",
+     "Statistics review",
+     "optional"
+    ],
+    [
+     "7:30–9:30",
+     "Closing dinner, Nanhai No. 2 (Causeway Bay)",
+     "school"
+    ]
+   ],
+   "go": {
+    "label": "Nanhai No. 2",
+    "tab": "city",
+    "q": "Nanhai"
+   },
+   "bus": [
+    "To campus: Park Lane 7:45–8:15 · Sai Ying Pun MTR (Exit B3) & HKU MTR (Exit B2) 8:00–8:15, every ~15 min",
+    "Closing dinner: campus → MTR 6:45pm · campus → hotel 6:45pm (2 buses) · campus → restaurant 7:00pm"
+   ]
+  },
+  {
+   "day": "Sun",
+   "date": "22 Nov",
+   "iso": "2026-11-22",
+   "slots": [
+    [
+     "All day",
+     "Free day",
+     "school"
+    ],
+    [
+     "Next day",
+     "Hotel check-out by 12pm on 23 Nov",
+     "school"
+    ]
+   ],
+   "route": {
+    "title": "Free day? Pick a day trip",
+    "steps": [
+     [
+      "🚠",
+      "Big Buddha by cable car, then Tai O fishing village (full day, Lantau)",
+      "Big Buddha"
+     ],
+     [
+      "🐼",
+      "Ocean Park pandas, then a pick-your-own seafood dinner in Ap Lei Chau",
+      "Ocean Park"
+     ],
+     [
+      "⛴️",
+      "Cheung Chau island: car-free, snacks and beaches (ferry from Central Pier 5)",
+      "Cheung Chau"
+     ],
+     [
+      "🏰",
+      "Hong Kong Disneyland (full day)",
+      "Disneyland"
+     ]
+    ]
+   },
+   "go": {
+    "label": "All day trips",
+    "tab": "sights",
+    "mood": "daytrip"
+   }
+  }
+ ],
+ "tips": [
+  {
+   "title": "Survival kit",
+   "items": [
+    "💳 Contactless Visa or Mastercard works on the MTR, buses, the tram and in most chains, but not always in small local shops or taxis.",
+    "💵 Carry some cash (about HK$300–500). The really local spots are often cash only: cha chaan tengs, dai pai dongs, markets and minibuses.",
+    "🐙 Octopus gets you into all the local places cards don't. On iPhone, add an Octopus card in Apple Wallet and top it up with Apple Pay. Or buy a card at any MTR station.",
+    "🚕 Taking a taxi? Open any place and tap \"Show the driver\". It shows the name and address in Chinese, so just hand them your phone.",
+    "🛗 On escalators, stand on the right and walk on the left.",
+    "🧭 Citymapper is the best app for getting around."
+   ]
+  },
+  {
+   "title": "Did you know?",
+   "items": [
+    "🇬🇧 A British colony until 1997, now part of China under \"one country, two systems\". It keeps its own currency, passport and laws, and cars still drive on the left.",
+    "🏙️ More skyscrapers than any other city on Earth, yet about 40% of the land is country park.",
+    "🛗 The Central–Mid-Levels escalator is the world's longest outdoor covered escalator, about 800 m uphill.",
+    "🚋 The ding ding trams are the world's largest double-decker tram fleet, running since 1904.",
+    "🌸 \"Hong Kong\" means \"Fragrant Harbour\"."
+   ]
+  }
+ ],
+ "add": [
+  {
+   "tab": "city",
+   "name": "Afternoon tea at The Peninsula",
+   "zh": "半島酒店大堂茶座",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Classic afternoon tea",
+   "category": [
+    "dessert",
+    "lunch"
+   ],
+   "emoji": "🫖",
+   "intro": "Tiered scones, finger sandwiches and a string quartet in the gilded lobby of Hong Kong's oldest hotel, opened in 1928. It's a quintessential colonial-era Hong Kong ritual.",
+   "funFact": "During the Second World War, the British governor surrendered Hong Kong to Japan at The Peninsula on Christmas Day 1941, in a room on the hotel's third floor.",
+   "tips": "Go mid-afternoon on a weekday and expect a queue. Check The Peninsula's website for current booking rules. Afterwards, walk five minutes to the Tsim Sha Tsui promenade for the skyline, and stay for the 8pm Symphony of Lights.",
+   "getting": "From the Park Lane: MTR from Causeway Bay to Tsim Sha Tsui (about 20 min), or take the Star Ferry from Wan Chai.",
+   "facts": [
+    [
+     "Where",
+     "The Lobby, The Peninsula"
+    ],
+    [
+     "Time",
+     "1.5–2 hrs"
+    ],
+    [
+     "Dress",
+     "Smart casual"
+    ]
+   ],
+   "lat": 22.2951,
+   "lng": 114.1718,
+   "mapsQuery": "The Lobby The Peninsula Hong Kong",
+   "url": "https://www.peninsula.com/en/hong-kong/hotel-fine-dining/the-lobby-afternoon-tea",
+   "picked": true,
+   "section": "HK classics"
+  },
+  {
+   "tab": "city",
+   "name": "Mott 32",
+   "zh": "卅二公館",
+   "area": "Central",
+   "section": "Cantonese fine dining",
+   "cuisine": "Modern Cantonese (famous Peking duck)",
+   "category": [
+    "dinner",
+    "lunch"
+   ],
+   "price": "$$$$",
+   "intro": "A glamorous, moody basement restaurant in an old bank building, and one of Hong Kong's most famous Chinese restaurants.",
+   "order": [
+    "Applewood-roasted Peking duck (book it when you reserve)",
+    "Barbecue Iberico pork char siu",
+    "Dim sum at lunch"
+   ],
+   "reviews": "Loved for the room and the duck; it's pricey, and the duck's second course costs extra.",
+   "tips": "Book ahead on SevenRooms and pre-order the duck. Lunch is 11:30–2:30 and dinner 5:30 till late.",
+   "addressEn": "Basement, Standard Chartered Bank Building, 4-4A Des Voeux Road Central",
+   "addressZh": "中環德輔道中4-4A號渣打銀行大廈地庫",
+   "url": "https://mott32.com/hong-kong/",
+   "lat": 22.28026,
+   "lng": 114.15894,
+   "mapsQuery": "Mott 32 Standard Chartered Bank Building Central",
+   "emoji": "🦆"
+  },
+  {
+   "tab": "sights",
+   "name": "Hong Kong Museum of Art",
+   "zh": "香港藝術館",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Art museum",
+   "category": [
+    "culture",
+    "views"
+   ],
+   "emoji": "🖼️",
+   "intro": "A calm, air-conditioned stop with Chinese painting, calligraphy and Hong Kong art, plus harbour views from the galleries. Easy to pair with a walk along the TST Promenade.",
+   "getting": "MTR from Causeway Bay to Tsim Sha Tsui (change at Admiralty or Tsim Sha Tsui via Tsuen Wan line), about 20-25 min, then a 10-min walk. Or Star Ferry from Central, about 10 min.",
+   "tips": "Check the closing day on the museum website before you go (it moved recently). Time it so you walk out onto the Promenade for sunset and the 8pm Symphony of Lights.",
+   "hours": "Mon-Wed, Fri 10:00-18:00; Sat, Sun, public holidays 10:00-21:00; closed Thursdays (official FAQ still says Tuesday, so check)",
+   "lat": 22.2935,
+   "lng": 114.172,
+   "addressEn": "10 Salisbury Road, Tsim Sha Tsui, Kowloon",
+   "addressZh": "香港九龍尖沙咀梳士巴利道10號",
+   "url": "https://hk.art.museum/en/web/ma/home.html",
+   "priceNote": "About HK$30 for the permanent collection; free on Wednesdays per third-party guides; special exhibitions may cost extra",
+   "facts": [
+    [
+     "Time",
+     "1.5–2 hrs"
+    ],
+    [
+     "Next door",
+     "TST Promenade, K11 Musea"
+    ]
+   ]
+  },
+  {
+   "tab": "sights",
+   "name": "Big Buddha & Ngong Ping 360 cable car",
+   "zh": "天壇大佛、寶蓮禪寺及昂坪360",
+   "area": "Lantau",
+   "cuisine": "Day trip",
+   "category": [
+    "daytrip",
+    "iconic",
+    "views",
+    "culture"
+   ],
+   "emoji": "🚠",
+   "intro": "Ride a 25-minute cable car over the bay and mountains to a 34-metre bronze Buddha and a lively working monastery. It is Hong Kong's classic half-day escape from the city.",
+   "getting": "MTR to Tung Chung (Causeway Bay to Tung Chung about 45 min, change at Central/Hong Kong or Lai King), then Ngong Ping 360 cable car about 25 min. Or bus 23 from Tung Chung.",
+   "tips": "Book cable car online in advance and go early on a weekday to avoid long queues; check the cable car is running that day.",
+   "hours": "Cable car: weekdays 10:00-18:00, weekends and public holidays 09:00-18:30; service can pause for wind or maintenance",
+   "lat": 22.254,
+   "lng": 113.905,
+   "addressEn": "Ngong Ping, Lantau Island (Ngong Ping 360 terminal: Tung Chung)",
+   "addressZh": "香港大嶼山昂坪寶蓮禪寺(天壇大佛)",
+   "url": "https://www.np360.com.hk/en/",
+   "priceNote": "Standard cabin return roughly HK$235 weekdays, more at weekends (sources vary; check official site); Buddha grounds free, 268 steps to climb",
+   "facts": [
+    [
+     "Time",
+     "Half a day"
+    ],
+    [
+     "Pair with",
+     "Tai O fishing village"
+    ]
+   ],
+   "funFact": "The Big Buddha is 34 m tall and was the world's largest seated outdoor bronze Buddha when it was finished in 1993. There are 268 steps to the top."
+  },
+  {
+   "tab": "sights",
+   "name": "Tai O Fishing Village",
+   "zh": "大澳",
+   "area": "Lantau",
+   "cuisine": "Day trip",
+   "category": [
+    "daytrip",
+    "culture",
+    "local"
+   ],
+   "emoji": "🛖",
+   "intro": "A traditional fishing village with stilt houses over the tidal creek, small boat rides, salted fish stalls and local snacks. It shows an older Hong Kong that few visitors see.",
+   "getting": "From Ngong Ping/Big Buddha take bus 21 (about 30 min); from Tung Chung bus 11 (about 40 min). From Causeway Bay allow about 1.5 to 2 hours.",
+   "tips": "Pair with the Big Buddha and head to Tai O in the afternoon; go on a weekday as weekends get crowded.",
+   "hours": "Village open all day; most shops and stalls roughly 10:00-18:00",
+   "lat": 22.2542,
+   "lng": 113.8636,
+   "addressEn": "Tai O, Lantau Island",
+   "addressZh": "香港大嶼山大澳",
+   "url": "https://www.discoverhongkong.com/eng/explore/attractions/tai-o.html",
+   "priceNote": "Free to wander; snacks and boat ride are a few HK$ to about HK$30",
+   "facts": [
+    [
+     "Time",
+     "2–3 hrs"
+    ],
+    [
+     "Pair with",
+     "Big Buddha (bus 21, 30 min)"
+    ]
+   ],
+   "funFact": "Tai O's stilt houses (pang uk) belong to the Tanka boat people, who have fished these waters for centuries. Look for the shrimp paste and salted fish drying in the sun."
+  },
+  {
+   "tab": "sights",
+   "name": "Cheung Chau Island",
+   "zh": "長洲",
+   "area": "Cheung Chau",
+   "cuisine": "Day trip",
+   "category": [
+    "daytrip",
+    "local",
+    "beach"
+   ],
+   "emoji": "⛴️",
+   "intro": "A car-free island with a seafront promenade, beaches, temples and street snacks like fish balls and mango mochi. Famous for the Cheung Chau Bun Festival, when people once climbed towers of buns, a tradition that continues in spring.",
+   "getting": "MTR to Central, walk to Central Pier 5; Fast ferry about 35 min, ordinary ferry about 55 min. Causeway Bay to Central about 10 min by MTR.",
+   "tips": "Take the fast ferry out and the slow ferry back for the harbour view; check ferry timetable on the operator site.",
+   "hours": "Ferries run roughly 06:00 to after midnight; shops and cafes mostly open daytime to evening",
+   "lat": 22.2086,
+   "lng": 114.0283,
+   "addressEn": "Cheung Chau Ferry Pier, San Hing Praya Street, Cheung Chau",
+   "addressZh": "香港長洲新興海傍街長洲碼頭",
+   "url": "https://www.nwff.com.hk/",
+   "priceNote": "Ferry about HK$17 to HK$37 one way depending on class and day; snacks HK$10 to HK$40",
+   "facts": [
+    [
+     "Time",
+     "Half a day"
+    ],
+    [
+     "Ferry",
+     "Central Pier 5, 35–55 min"
+    ]
+   ],
+   "funFact": "There are no cars on Cheung Chau, just bikes and tiny village trucks. At the spring Bun Festival, climbers race up a 14 m tower covered in buns."
+  },
+  {
+   "tab": "sights",
+   "name": "Hong Kong Disneyland",
+   "zh": "香港迪士尼樂園",
+   "area": "Lantau",
+   "cuisine": "Theme park",
+   "category": [
+    "daytrip"
+   ],
+   "emoji": "🏰",
+   "intro": "A compact Disney park with Frozen, Marvel and Toy Story lands and fewer crowds than other Disney parks. Fun for a break from city sightseeing.",
+   "getting": "MTR to Sunny Bay, change to the Disneyland Resort line to Disneyland Resort station. About 50 min from Causeway Bay.",
+   "tips": "Buy tickets online and arrive before opening; weekdays are far quieter; ride Premier Access for popular rides if you have limited time.",
+   "hours": "About 10:30-20:30 daily (varies; check official calendar)",
+   "lat": 22.3131,
+   "lng": 114.041,
+   "addressEn": "Lantau Island, Hong Kong",
+   "addressZh": "香港大嶼山香港迪士尼樂園",
+   "url": "https://www.hongkongdisneyland.com/",
+   "priceNote": "One-day ticket about HK$639 to HK$879 depending on the date tier (sources vary)",
+   "facts": [
+    [
+     "Time",
+     "Full day"
+    ],
+    [
+     "MTR",
+     "Disneyland Resort line"
+    ]
+   ]
+  },
+  {
+   "tab": "sights",
+   "name": "Ocean Park (giant pandas)",
+   "zh": "香港海洋公園",
+   "area": "Southern District",
+   "cuisine": "Theme park",
+   "category": [
+    "daytrip",
+    "views"
+   ],
+   "emoji": "🐼",
+   "intro": "Hong Kong's homegrown marine park with roller coasters, a cable car and giant pandas, including twin cubs born in 2024. Good for classmates who like rides and animals, and it is close to the school side of the island.",
+   "getting": "MTR from Causeway Bay to Admiralty, change to the South Island line to Ocean Park station, about 20-25 min.",
+   "tips": "See the pandas first thing, when they're most active (their area closes earlier than the park). Then take the South Island line two stops to Lei Tung for a seafood dinner in Ap Lei Chau.",
+   "hours": "Roughly 10:00-18:30 or 19:30 daily; Giant Panda Adventure has shorter hours that changed on 3 November 2026, so check the daily schedule",
+   "lat": 22.2348,
+   "lng": 114.1708,
+   "addressEn": "Ocean Park, Nam Long Shan Road, Aberdeen",
+   "addressZh": "香港仔南朗山道香港海洋公園",
+   "url": "https://www.oceanpark.com.hk/en",
+   "priceNote": "Adult about HK$538, child about HK$269 (third-party sources); Water World is a separate ticket",
+   "facts": [
+    [
+     "Time",
+     "Half to full day"
+    ],
+    [
+     "Then",
+     "Seafood dinner in Ap Lei Chau"
+    ]
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Ap Lei Chau seafood (pick it, they cook it)",
+   "zh": "鴨脷洲街市及熟食中心",
+   "area": "Ap Lei Chau",
+   "cuisine": "Seafood dai pai dong",
+   "category": [
+    "dinner",
+    "lunch"
+   ],
+   "emoji": "🦐",
+   "intro": "Pick live fish, prawns and crab from the market downstairs, then have the stalls upstairs cook it for you. Stalls like Yiu Kee, Chan Sun Kee and Chu Kee are well known for this. Good for an after Ocean Park dinner.",
+   "getting": "MTR South Island line to Lei Tung station (exits A1/A2), a few stops from Ocean Park; from Causeway Bay via Admiralty about 30 min.",
+   "tips": "Buy live seafood at the market downstairs, then have a stall upstairs (Yiu Kee, Chan Sun Kee or Chu Kee) cook it. Agree the price per catty and the cooking fee first, bring cash, and book a table on busy evenings. It's perfect after Ocean Park.",
+   "hours": "Market from morning; cooked food stalls generally lunch and dinner (hours vary by stall)",
+   "lat": 22.2445,
+   "lng": 114.1552,
+   "addressEn": "Ap Lei Chau Municipal Services Building, 8 Hung Shing Street, Ap Lei Chau",
+   "addressZh": "香港鴨脷洲洪聖街8號鴨脷洲市政大廈",
+   "url": "https://www.fehd.gov.hk/english/map/market/market_pt.html?mapID=621&type=market",
+   "price": "$$$",
+   "section": "HK classics",
+   "local": true,
+   "kinds_override": [
+    "Cantonese & seafood"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Men Wah Bing Teng (Peak Galleria)",
+   "zh": "敏華冰廳(山頂廣場)",
+   "area": "The Peak",
+   "cuisine": "Cha chaan teng (at the Peak)",
+   "category": [
+    "lunch",
+    "dessert"
+   ],
+   "emoji": "🍞",
+   "intro": "A Hong Kong-style tea restaurant with milk tea, pineapple buns, egg tarts and baked pork chop rice, with a branch at the Peak Galleria. A cosy local meal after the Peak views.",
+   "getting": "Peak Tram from Garden Road (Central) about 10 min, or bus 15 from Central Pier; the Galleria is by the Peak Tower. Causeway Bay to Central about 10 min.",
+   "tips": "Egg tarts sell out soon after coming out of the oven, so order early.",
+   "hours": "Hang Lung Malls lists Mon-Thu 10:00-21:30, Fri-Sun and holidays 10:00-22:00 (OpenRice shows 10:00-20:30; confirm)",
+   "lat": 22.2704,
+   "lng": 114.1499,
+   "addressEn": "Shop 205, 2/F, Peak Galleria, 118 Peak Road, The Peak",
+   "addressZh": "香港山頂山頂道118號山頂廣場2樓205號舖",
+   "url": "https://www.hanglungmalls.com/en/peak-galleria/dining/men-wah-bing-teng",
+   "price": "$",
+   "local": true,
+   "kinds_override": [
+    "Cha chaan teng & cafés"
+   ]
+  },
+  {
+   "tab": "city",
+   "name": "Messina (the Peak) · egg tart gelato",
+   "zh": "Messina 雪糕店(山頂廣場)",
+   "area": "The Peak",
+   "cuisine": "Gelato",
+   "category": [
+    "dessert"
+   ],
+   "emoji": "🍦",
+   "intro": "Australian gelato with a Hong Kong exclusive egg tart flavour, egg custard gelato layered with caramelised puff pastry. A good cool-down treat on the Peak.",
+   "getting": "Peak Tram from Garden Road (Central) about 10 min, or bus 15; the Galleria is next to the Peak Tower.",
+   "tips": "Get the Hong Kong-only egg tart flavour, which is custard gelato with caramelised puff pastry. Check opening hours before you go.",
+   "hours": "Not confirmed for this branch (an Instagram post gives Mon-Thu 12:00-22:00, Fri-Sun 12:00-23:00, possibly other outlet); check before going",
+   "lat": 22.2704,
+   "lng": 114.1499,
+   "addressEn": "Shop G08, G/F, Peak Galleria, 118 Peak Road, The Peak",
+   "addressZh": "香港山頂山頂道118號山頂廣場地下G08號舖",
+   "url": "https://www.gelatomessina.com.hk/",
+   "price": "$",
+   "kinds_override": [
+    "Dessert & sweets"
+   ]
+  },
+  {
+   "tab": "sights",
+   "name": "Ladies' Market (Tung Choi Street)",
+   "zh": "女人街",
+   "area": "Mong Kok, Kowloon",
+   "cuisine": "Street market",
+   "category": [
+    "culture",
+    "night",
+    "free"
+   ],
+   "emoji": "🏮",
+   "intro": "A kilometre of street stalls under the Mong Kok neon: T-shirts, phone cases, bags, souvenirs and snacks. It's loud, crowded and a great slice of Kowloon street life.",
+   "tips": "Haggle with a smile and start at about half the asking price. Go after dark (stalls run from about noon to 11pm), and then walk the neon streets around Sai Yeung Choi Street. Keep your phone and wallet in a front pocket.",
+   "getting": "MTR to Mong Kok (Exit D3), about 25 min from Causeway Bay. Or a taxi, 20–30 min via the Cross-Harbour Tunnel.",
+   "facts": [
+    [
+     "Time",
+     "1 hr"
+    ],
+    [
+     "Best",
+     "After dark"
+    ],
+    [
+     "Pay",
+     "Cash"
+    ]
+   ],
+   "lat": 22.3175,
+   "lng": 114.1709,
+   "addressEn": "Tung Choi Street, Mong Kok, Kowloon",
+   "addressZh": "九龍旺角通菜街（女人街）",
+   "mapsQuery": "Ladies' Market Tung Choi Street Mong Kok Hong Kong"
+  },
+  {
+   "tab": "sights",
+   "name": "Hong Kong Palace Museum",
+   "zh": "香港故宮文化博物館",
+   "area": "West Kowloon",
+   "cuisine": "Museum",
+   "category": [
+    "culture",
+    "iconic"
+   ],
+   "emoji": "🏯",
+   "intro": "Treasures from Beijing's Forbidden City, including imperial paintings, porcelain and jade, in a striking new building on the West Kowloon waterfront. Pair it with M+ next door and a harbour walk.",
+   "tips": "Book a timed ticket online, especially for special exhibitions. Allow 2 hours. M+ and the West Kowloon Art Park are a few minutes' walk away for sunset skyline views.",
+   "getting": "MTR to Kowloon station or Austin, then a 10-min walk. A taxi from Central is about 15 min.",
+   "facts": [
+    [
+     "Time",
+     "2 hrs"
+    ],
+    [
+     "Next door",
+     "M+ & Art Park"
+    ]
+   ],
+   "lat": 22.30165,
+   "lng": 114.1554,
+   "addressEn": "8 Museum Drive, West Kowloon Cultural District",
+   "addressZh": "九龍西九文化區博物館道8號香港故宮文化博物館",
+   "url": "https://www.hkpm.org.hk/en/"
+  }
+ ],
+ "patch": {
+  "Star Ferry": {
+   "essential": 1,
+   "essentialTitle": "Ride the Star Ferry",
+   "essentialWhy": "The best harbour view for a few dollars.",
+   "area": "Central or Wan Chai ↔ Tsim Sha Tsui",
+   "getting": "Two piers, both going to Tsim Sha Tsui. Central Pier 7 is easiest from Booth (taxi or MTR to Central, then a 10 min walk). Wan Chai Pier is easiest from the Park Lane (about 10 min by taxi).",
+   "tips": "Sit on the upper deck at dusk. Go over from Central or Wan Chai, walk the Tsim Sha Tsui promenade, then ride back after dark for the lit-up skyline.",
+   "addressZh": "中環天星碼頭（7號碼頭）／ 灣仔天星碼頭 ／ 尖沙咀天星碼頭",
+   "pins": [
+    {
+     "label": "Central Pier 7",
+     "zh": "中環天星碼頭（7號碼頭）",
+     "lat": 22.28704,
+     "lng": 114.16119
+    },
+    {
+     "label": "Wan Chai Pier",
+     "zh": "灣仔天星碼頭",
+     "lat": 22.2821,
+     "lng": 114.17603
+    },
+    {
+     "label": "Tsim Sha Tsui Pier (landing)",
+     "zh": "尖沙咀天星碼頭",
+     "lat": 22.29354,
+     "lng": 114.16799
+    }
+   ],
+   "routes": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ]
+   ]
+  },
+  "Victoria Peak & the Peak Tram": {
+   "essential": 2,
+   "essentialTitle": "See the skyline from the Peak",
+   "essentialWhy": "Go at sunset and stay for the lights."
+  },
+  "Ding Ding tram (Kennedy Town to Shau Kei Wan)": {
+   "essential": 3,
+   "essentialTitle": "Ride a ding ding tram",
+   "essentialWhy": "Top deck, front seat, from Kennedy Town."
+  },
+  "Maxim's Palace (City Hall)": {
+   "essential": 4,
+   "essentialTitle": "Yum cha (dim sum)",
+   "essentialWhy": "Pick dumplings off the trolleys."
+  },
+  "Kwan Kee Clay Pot Rice": {
+   "essential": 5,
+   "essentialTitle": "Claypot rice near Booth",
+   "essentialWhy": "Crispy-bottomed rice, a Michelin pick.",
+   "kinds_override": [
+    "Cantonese & seafood"
+   ]
+  },
+  "Shun Kee Typhoon Shelter Seafood": {
+   "essential": 6,
+   "essentialTitle": "Dinner on a sampan",
+   "essentialWhy": "Garlic chilli crab on a boat."
+  },
+  "Lan Kwai Fong (LKF)": {
+   "essential": 7,
+   "essentialTitle": "A night out in LKF & Soho",
+   "essentialWhy": "Bar-hop up the hill."
+  },
+  "Afternoon tea at The Peninsula": {
+   "essential": 8,
+   "essentialTitle": "Afternoon tea at The Peninsula",
+   "essentialWhy": "Scones and a string quartet since 1928.",
+   "kinds_override": [
+    "Dessert & sweets"
+   ]
+  },
+  "Cha chaan teng breakfast (Mountain Road Cafe)": {
+   "tab": "saiwan",
+   "name_override": "Mountain Road Cafe",
+   "section": "HK classics",
+   "cuisine": "Cha chaan teng breakfast",
+   "category": [
+    "lunch"
+   ]
+  },
+  "Landmark (Central)": {
+   "category": [
+    "luxury",
+    "malls"
+   ],
+   "cuisine": "Luxury mall"
+  },
+  "Pacific Place": {
+   "category": [
+    "luxury",
+    "malls"
+   ],
+   "cuisine": "Luxury mall"
+  },
+  "IFC Mall": {
+   "category": [
+    "luxury",
+    "malls"
+   ],
+   "cuisine": "Luxury mall"
+  },
+  "Lee Gardens": {
+   "category": [
+    "luxury",
+    "malls"
+   ],
+   "cuisine": "Luxury mall"
+  },
+  "K11 MUSEA": {
+   "category": [
+    "luxury",
+    "design",
+    "malls"
+   ],
+   "cuisine": "Art & design mall"
+  },
+  "Harbour City & Canton Road": {
+   "category": [
+    "luxury",
+    "malls"
+   ],
+   "cuisine": "Mega-mall & luxury street"
+  },
+  "Ying Kee Tea House (Johnston Road)": {
+   "category": [
+    "gifts",
+    "local"
+   ],
+   "cuisine": "Chinese tea shop"
+  },
+  "PMQ (with Tai Kwun nearby)": {
+   "category": [
+    "gifts",
+    "design",
+    "local"
+   ],
+   "cuisine": "Design studios & shops"
+  },
+  "Stanley Market": {
+   "category": [
+    "gifts",
+    "local"
+   ],
+   "cuisine": "Souvenir market"
+  },
+  "英皇 CEO Neway Karaoke": {
+   "name_override": "Neway CEO Karaoke"
+  },
+  "DarkSide": {
+   "section": "Jazz bar"
+  },
+  "Stanley & Repulse Bay": {
+   "category": [
+    "beach",
+    "views",
+    "walk",
+    "free"
+   ]
+  },
+  "Dragon's Back": {
+   "category": [
+    "moderate",
+    "views"
+   ]
+  },
+  "Violet Hill & The Twins (Wilson Trail Stage 1)": {
+   "category": [
+    "views",
+    "south"
+   ]
+  },
+  "Tai Tam Waterworks Heritage Trail": {
+   "category": [
+    "easy",
+    "south"
+   ]
+  },
+  "Times Square": {
+   "cuisine": "Shopping mall"
+  },
+  "Shanghai Tang": {
+   "category": [
+    "gifts",
+    "luxury",
+    "design"
+   ]
+  },
+  "Chinese Arts & Crafts": {
+   "category": [
+    "gifts",
+    "local"
+   ]
+  },
+  "Maggie Choo's": {
+   "kinds_override": [
+    "Jazz & live music",
+    "Cocktails"
+   ],
+   "cuisine": "Live music & cocktail bar (jazz, soul, funk)"
+  },
+  "Tai Kwun": {
+   "category": [
+    "culture",
+    "free",
+    "walk",
+    "architecture"
+   ]
+  },
+  "M+ museum & West Kowloon waterfront": {
+   "category": [
+    "culture",
+    "views",
+    "neon",
+    "architecture"
+   ]
+  },
+  "Temple Street & Yau Ma Tei neon walk (incl. Mido Café)": {
+   "category": [
+    "neon",
+    "night",
+    "free",
+    "local",
+    "culture",
+    "iconic"
+   ]
+  },
+  "TREEHOUSE (Causeway Bay)": {
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "kinds_override": [
+    "Vegan & vegetarian",
+    "Western & Med"
+   ]
+  },
+  "TREEHOUSE (H Code, Central)": {
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "kinds_override": [
+    "Vegan & vegetarian",
+    "Western & Med"
+   ]
+  },
+  "Lock Cha Tea House (Tai Kwun)": {
+   "category": [
+    "lunch"
+   ],
+   "kinds_override": [
+    "Vegan & vegetarian",
+    "Dim sum"
+   ]
+  },
+  "Lock Cha Tea House (Hong Kong Park)": {
+   "category": [
+    "lunch"
+   ],
+   "kinds_override": [
+    "Vegan & vegetarian",
+    "Dim sum"
+   ]
+  },
+  "Kam Wah Cafe": {
+   "category": [
+    "lunch"
+   ],
+   "kinds_override": [
+    "Cha chaan teng & cafés"
+   ]
+  },
+  "Kung Lee Sugar Cane Juice": {
+   "kinds_override": [
+    "Dessert & sweets"
+   ]
+  },
+  "Pane e Latte": {
+   "category": [
+    "lunch",
+    "dessert"
+   ],
+   "kinds_override": [
+    "Western & Med",
+    "Dessert & sweets"
+   ]
+  },
+  "Madame Fù – Grand Café Chinois": {
+   "kinds_override": [
+    "Dim sum",
+    "Cantonese & seafood"
+   ]
+  },
+  "Café Malacca": {
+   "kinds_override": [
+    "Thai & SE Asian"
+   ]
+  },
+  "House of Culture": {
+   "kinds_override": [
+    "Thai & SE Asian"
+   ]
+  },
+  "Aya (Tsukemen & Ramen)": {
+   "kinds_override": [
+    "Japanese"
+   ]
+  },
+  "Baka Ramen": {
+   "kinds_override": [
+    "Japanese"
+   ]
+  },
+  "Joy Tonight Grill": {
+   "kinds_override": [
+    "Cantonese & seafood"
+   ]
+  },
+  "Yuan Is Here": {
+   "kinds_override": [
+    "Taiwanese"
+   ]
+  },
+  "Ciclo": {
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "kinds_override": [
+    "Cocktails"
+   ]
+  },
+  "Harbourside (Regent Hong Kong)": {
+   "kinds_override": [
+    "Western & Med"
+   ]
+  },
+  "Surf & Turf Grill and Bar": {
+   "kinds_override": [
+    "Western & Med"
+   ]
+  },
+  "Sheung Hei Claypot Rice": {
+   "kinds_override": [
+    "Cantonese & seafood"
+   ]
+  },
+  "Carnegies": {
+   "kinds_override": [
+    "Clubbing",
+    "Jazz & live music"
+   ]
+  },
+  "% Arabica (Kennedy Town)": {
+   "category": [
+    "coffee"
+   ]
+  },
+  "project c": {
+   "category": [
+    "coffee"
+   ]
+  },
+  "Blue Bottle Coffee (Central)": {
+   "category": [
+    "coffee"
+   ]
+  },
+  "Barista Jam": {
+   "category": [
+    "coffee"
+   ]
+  },
+  "EN Coffee (Causeway Bay)": {
+   "category": [
+    "coffee",
+    "dessert"
+   ]
+  },
+  "St. Lolan Bakery": {
+   "category": [
+    "dessert"
+   ]
+  },
+  "Bernice Bakery": {
+   "category": [
+    "dessert"
+   ]
+  },
+  "Pineapple Bakery": {
+   "category": [
+    "dessert"
+   ]
+  },
+  "Peak Circle Walk (Lugard Road & Harlech Road)": {
+   "classmateNote": "A Hong Kong friend's favourite view is from Lugard Road Lookout, about 20 minutes' flat walk from the Peak Tower. Go before sunset and bring a phone torch for the walk back."
+  }
+ },
+ "drop": [
+  "Central–Mid-Levels Escalator",
+  "Chow Sang Sang & the big HK jewellery chains (Hennessy Road)",
+  "Chow Sang Sang (Hennessy Road, Causeway Bay)",
+  "Chow Tai Fook Global Flagship (Canton Road)",
+  "Cooked-food-centre dinner: Smithfield, Kennedy Town",
+  "Fortress & Broadway (electronics)",
+  "Kau Kee",
+  "King Fook Jewellery (Central)",
+  "Lukfook Jewellery (Causeway Bay, 499 Hennessy Road)",
+  "M+ Museum (neon collection & building)",
+  "Ronald Abram (Mandarin Oriental)",
+  "SOGO Causeway Bay",
+  "Sam's Tailor",
+  "Sasa & Mannings (beauty and pharmacy)",
+  "TSL Jewellery (Yee Wo Street, Causeway Bay)",
+  "Tai Kwun (Centre for Heritage & Arts)",
+  "Temple Street Night Market",
+  "The Twins (Wilson Trail Section 1)",
+  "Watches: brand boutiques & authorised dealers",
+  "Yuen Kee Dessert",
+  "Bank of China Tower"
+ ],
+ "emoji": {
+  "Joy Tonight Grill": "🍢",
+  "Café Malacca": "🍛",
+  "Ping Pong 129 Gintonería": "🍸",
+  "CODA Jazz Kissa": "🎷",
+  "La Cave": "🍷",
+  "ThinkWine": "🍷",
+  "Terroirs by LQV": "🍷",
+  "CORKS Wine & Bar": "🍷",
+  "Samsen (Sheung Wan)": "🍜",
+  "Ăn Chơi": "🍲",
+  "Gold Star": "🍜",
+  "The Diplomat": "🍸",
+  "Ciclo": "🍸",
+  "Lounge Hakuba": "💨",
+  "SKYE Roofbar & Grill": "🌃",
+  "Terrace Boulud by Mandarin Oriental": "🌃",
+  "Felix (The Peninsula)": "🍸",
+  "Yume": "🪩",
+  "The Iron Fairies": "🍸",
+  "Aqua": "🌃",
+  "Hutong": "🌶️",
+  "Ozone (The Ritz-Carlton)": "🌃",
+  "Harbourside (Regent Hong Kong)": "🍽️",
+  "Madame Fù – Grand Café Chinois": "🥟",
+  "Sing Heung Yuen": "🍜",
+  "Kam Wah Cafe": "🍍",
+  "Magistracy Dining Room": "🍽️",
+  "Lock Cha Tea House (Hong Kong Park)": "🥟",
+  "Lock Cha Tea House (Tai Kwun)": "🥟",
+  "TREEHOUSE (Causeway Bay)": "🥗",
+  "TREEHOUSE (H Code, Central)": "🥗",
+  "Woodlands Indian Vegetarian Restaurant (Wan Chai)": "🍛",
+  "New Dim Siu Yi": "🥢",
+  "Sing Kee": "🥢",
+  "Tung Po Kitchen": "🥢",
+  "Nanhai No. 2": "🥢",
+  "Australia Dairy Company": "🍳",
+  "Goshaku": "🏮",
+  "Thai Zab Verr": "🌶️",
+  "Yeon Nam Dong": "🍲",
+  "Jeonpo Meat Shop": "🥩",
+  "Porterhouse": "🥩",
+  "Cardinal Point": "🌃",
+  "Salisterra": "🌃",
+  "Migas": "🌃",
+  "Chicken Pot (Smithfield Cooked Food Centre)": "🍲",
+  "Stanley Waterfront Promenade (Stanley Main Street)": "🌊",
+  "Dragon State Kitchen": "🍖",
+  "Joy Hing Roasted Meat": "🍖",
+  "Kam's Roast Goose": "🍖",
+  "Po Kee": "🍖",
+  "Yat Lok": "🍖",
+  "Capital Café": "🍞",
+  "Cheung Hong Yuen": "🍞",
+  "Lan Fong Yuen": "🍞",
+  "Luen Wah Cafe": "🍞",
+  "Mido Café": "🍞",
+  "Mountain Road Cafe": "🍞",
+  "Si Yik": "🍞",
+  "Tak Yu Restaurant": "🍞",
+  "Pane e Latte": "🥐",
+  "Jenny Bakery": "🍪",
+  "Kee Wah Bakery": "🥮",
+  "Wing Wah Cake Shop": "🥮",
+  "Yiu Fung Store": "🍬",
+  "Kowloon Soy Company": "🫙",
+  "Chinese Arts & Crafts": "🏺",
+  "Shanghai Tang": "🎁",
+  "Stanley Market": "🧧",
+  "Gokan": "🍸",
+  "Kinsman": "🍸",
+  "Maggie Choo's": "🎷"
+ },
+ "taste_emoji": {
+  "Hong Kong milk tea": "☕",
+  "Claypot rice": "🍚",
+  "Roast goose & char siu": "🍖",
+  "Beef brisket noodles": "🍜"
+ }
 }
