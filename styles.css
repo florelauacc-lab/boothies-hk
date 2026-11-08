@@ -1277,3 +1277,47 @@ body.dragging .pd { outline: 1px dashed rgba(255,196,77,.5); }
 .pick-preview li { display: flex; gap: 8px; padding: 4px 0; }
 .pick-preview .re { flex: none; width: 1.5em; text-align: center; }
 .pp-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+
+/* ---------- split a bill ---------- */
+.cc-bills2 { margin-top: 18px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,.08); }
+.sp-list { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 6px; }
+.sp { padding: 10px 12px; border-radius: 12px; background: rgba(255,255,255,.05); }
+.sp.me { outline: 1px solid rgba(62,232,181,.45); }
+.sp.pending { background: rgba(255,196,77,.07); }
+.sp-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: .92rem; }
+.sp-top .amt { margin-left: auto; font-weight: 800; }
+.sp-top .amt small { color: var(--muted); font-weight: 600; }
+.sp-top em.wait { font-style: normal; font-weight: 800; font-size: .8rem; color: var(--gold, #ffc44d); margin-left: auto; }
+.sp .paybtns { margin: 8px 0 0; }
+.sp .cc-inline.paid { margin: 8px 0 0; }
+.cc-add-bill { width: 100%; min-height: 48px; margin: 6px 0; font: inherit; font-weight: 800; border-radius: 12px; border: 1px dashed rgba(255,196,77,.6); background: rgba(255,196,77,.06); color: var(--gold, #ffc44d); cursor: pointer; }
+.bill-form { margin: 8px 0; padding: 12px; border-radius: 14px; background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.1); display: grid; gap: 8px; }
+.bf-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.bf-row > input, .bf-row > select { flex: 1 1 160px; }
+.bill-form input, .bill-form select { font: inherit; font-size: 16px; padding: 9px 11px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); background: rgba(0,0,0,.3); color: var(--text); min-width: 0; }
+.bf-l { display: flex; align-items: center; gap: 8px; flex: 1 1 150px; font-weight: 700; font-size: .88rem; }
+.bf-l input, .bf-l select { flex: 1; }
+.bf-h { margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-weight: 800; font-size: .9rem; }
+.bf-h small { color: var(--muted); font-weight: 600; }
+.bf-custom { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); gap: 6px; }
+.bf-custom label { display: grid; gap: 3px; font-size: .8rem; font-weight: 700; }
+.warn-t { color: #ff9f9f; font-weight: 700; }
+.ok-t { color: #3ee8b5; font-weight: 700; }
+.bf-check { display: flex; align-items: center; gap: 8px; font-weight: 700; flex-basis: 100%; }
+.bf-check input { width: 22px; height: 22px; }
+.cc-sub { margin-top: 10px; border-radius: 12px; background: rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.08); }
+.cc-sub > summary { cursor: pointer; padding: 12px 14px; font-weight: 800; min-height: 44px; }
+.cc-sub > .sp-list, .cc-sub > .bill-list, .cc-sub > form { margin: 0 12px 12px; }
+.bill-list { list-style: none; padding: 0; display: grid; gap: 6px; }
+.bill-list li { padding: 8px 10px; border-radius: 10px; background: rgba(255,255,255,.04); }
+.bill-list p { margin: 4px 0 0; }
+/* weather */
+.wx { margin: 4px 0 8px; font-size: .92rem; }
+.wx span { color: var(--muted); }
+.wx small { display: block; color: var(--muted); font-size: .76rem; margin-top: 2px; }
+.pd .pd-wx { font-style: normal; font-size: 12px; line-height: 1; margin-top: 2px; }
+.ev-bills { list-style: none; padding: 0; margin: 0 0 8px; }
+.ev-bills li { display: flex; justify-content: space-between; gap: 8px; font-size: .88rem; padding: 4px 0; }
+.cc-collect { margin-top: 8px; }
+.cc-collect > summary { cursor: pointer; font-size: .82rem; color: var(--muted); padding: 6px 0; }
+.cc-grid-form .bf-check input, .bf-check input { flex: none; width: 26px; height: 26px; min-width: 26px; padding: 0; }

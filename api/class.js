@@ -29,7 +29,8 @@ const clean = (s, n = 80) => String(s ?? "").replace(/[\u0000-\u001f<>]/g, "").t
 const pairs = (arr) => { const o = {}; for (let i = 0; i < (arr || []).length; i += 2) o[arr[i]] = arr[i + 1]; return o; };
 
 async function state(org) {
-  const [meta, events, settle] = await redis([["GET", `${P}meta`], ["HGETALL", `${P}events`], ["HGETALL", `${P}settle`]]);
+  const [meta, events, settle, bills, profiles, xfers] = await redis([["GET", `${P}meta`], ["HGETALL", `${P}events`], ["HGETALL", `${P}settle`],
+    ["HGETALL", `${P}bills`], ["HGETALL", `${P}profiles`], ["HGETALL", `${P}xfers`]]);
   const ev = Object.entries(pairs(events)).map(([k, v]) => ({ id: k, ...JSON.parse(v) }));
   const res = ev.length ? await redis(ev.flatMap((e) => [["SMEMBERS", `${P}going:${e.id}`], ["HGETALL", `${P}exp:${e.id}`]])) : [];
   ev.forEach((e, i) => {
@@ -39,7 +40,10 @@ async function state(org) {
   ev.sort((a, b) => (a.iso || "").localeCompare(b.iso || "") || (a.order ?? 50) - (b.order ?? 50) || (a.created || 0) - (b.created || 0));
   const m = meta ? JSON.parse(meta) : null;
   const st = Object.fromEntries(Object.entries(pairs(settle)).map(([k, v]) => [k, JSON.parse(v)]));
-  return { seeded: !!m, ...(m || {}), events: ev, settle: st, organiser: !!org };
+  const list = (h) => Object.entries(pairs(h)).map(([k, v]) => ({ id: k, ...JSON.parse(v) })).sort((a, b) => (a.at || 0) - (b.at || 0));
+  // people's own payment details; the PIN hash never leaves the server
+  const prof = Object.fromEntries(Object.entries(pairs(profiles)).map(([k, v]) => { const { pinHash, ...rest } = JSON.parse(v); return [k, { ...rest, locked: !!pinHash }]; }));
+  return { seeded: !!m, ...(m || {}), events: ev, settle: st, bills: list(bills), profiles: prof, xfers: list(xfers), organiser: !!org };
 }
 
 export default async function handler(req, res) {
@@ -97,7 +101,7 @@ export default async function handler(req, res) {
         const e = JSON.parse(cur);
         // organisers enter the total bill; it's split by the number ticked and then fixed per person
         const total = b.total != null ? Math.round(+b.total) : null, count = Math.round(+b.count) || 0;
-        const price = total && count ? Math.round(total / count) : Math.round(+b.price);
+        const price = total === 0 ? 0 : total && count ? Math.round(total / count) : Math.round(+b.price || 0); // a total of 0 clears it
         if (!(price >= 0) || price > 100000 || (total != null && !(total >= 0))) return res.status(400).json({ error: "bad amount" });
         e.price = price || null; e.priceBy = by;
         if (total != null) { e.total = total || null; e.priceCount = count || null; }
@@ -182,6 +186,58 @@ export default async function handler(req, res) {
         }
         else { prev.payments[i].confirmed = b.op === "confirmPaid"; prev.payments[i].confirmedBy = by; }
         await redis([["HSET", `${P}settle`, name, JSON.stringify(prev)]]);
+        break;
+      }
+      /* ---- splitting bills between anyone (dinners by table, own events) ---- */
+      case "addBill": {
+        const hkd = Math.round(+b.hkd * 100) / 100, among = [...new Set((b.among || []).map((n) => clean(n, 60)).filter(Boolean))].slice(0, 80);
+        const paidBy = clean(b.paidBy, 60);
+        if (!(hkd > 0) || hkd > 1e6 || !paidBy || !among.length) return res.status(400).json({ error: "Add the total, who paid and who it's split between" });
+        // shares: equal by default, or custom amounts per person that must add up to the total
+        let shares = null;
+        if (b.shares && typeof b.shares === "object") {
+          shares = Object.fromEntries(among.map((n) => [n, Math.round((+b.shares[n] || 0) * 100) / 100]));
+          const sum = Object.values(shares).reduce((t, x) => t + x, 0);
+          if (Math.abs(sum - hkd) > 1) return res.status(400).json({ error: `The amounts add up to HK$${Math.round(sum)}, not HK$${Math.round(hkd)}` });
+        }
+        await redis([["HSET", `${P}bills`, `b-${id()}`, JSON.stringify({ what: clean(b.what, 60) || "Bill", ev: clean(b.ev, 40) || null, paidBy, hkd, among, shares, by, at: Date.now() })]]);
+        break;
+      }
+      case "delBill":
+        await redis([["HDEL", `${P}bills`, clean(b.id, 20)]]);
+        break;
+      case "setProfile": { // your own payment details, optionally locked with a PIN
+        const name = clean(b.name, 60);
+        if (!name) return res.status(400).json({ error: "missing name" });
+        const [cur] = await redis([["HGET", `${P}profiles`, name]]);
+        const prevP = cur ? JSON.parse(cur) : {};
+        if (prevP.pinHash && !org && sha(`${name}|${b.pin || ""}`) !== prevP.pinHash) return res.status(403).json({ error: "Wrong PIN for these payment details" });
+        const url = (v) => { const u = clean(v, 200); return !u ? "" : /^https:\/\//i.test(u) ? u : null; };
+        const paypal = url(b.paypal), wise = url(b.wiseLink);
+        if (paypal === null || wise === null) return res.status(400).json({ error: "Links must start with https://" });
+        const next = { paypal, fps: clean(b.fps, 60), bank: clean(b.bank, 160), wiseLink: wise, cash: !!b.cash, note: clean(b.note, 120), pinHash: prevP.pinHash || null };
+        if (b.newPin) next.pinHash = sha(`${name}|${clean(b.newPin, 12)}`);
+        await redis([["HSET", `${P}profiles`, name, JSON.stringify(next)]]);
+        break;
+      }
+      case "markXfer": { // "I've paid X" for a bill split; X confirms when it arrives
+        const from = clean(b.from, 60), to = clean(b.to, 60), hkd = Math.round(+b.hkd);
+        if (!from || !to || from === to || !(hkd > 0)) return res.status(400).json({ error: "missing" });
+        await redis([["HSET", `${P}xfers`, `t-${id()}`, JSON.stringify({ from, to, hkd, method: clean(b.method, 30), by, at: Date.now(), confirmed: false })]]);
+        break;
+      }
+      case "confirmXfer": case "unconfirmXfer": case "undoXfer": {
+        const k = clean(b.id, 20);
+        const [cur] = await redis([["HGET", `${P}xfers`, k]]);
+        if (!cur) return res.status(404).json({ error: "no payment" });
+        const x = JSON.parse(cur);
+        if (b.op === "undoXfer") {
+          if (x.confirmed && !org) return res.status(403).json({ error: `${x.to} has already confirmed it` });
+          await redis([["HDEL", `${P}xfers`, k]]);
+        } else {
+          x.confirmed = b.op === "confirmXfer"; x.confirmedBy = by;
+          await redis([["HSET", `${P}xfers`, k, JSON.stringify(x)]]);
+        }
         break;
       }
       default:

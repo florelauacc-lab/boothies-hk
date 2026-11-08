@@ -53,7 +53,7 @@
   const live = () => mode === "live";
 
   function fromSnapshot(d) {
-    const ISO = { "sun-dimsum": "2026-11-15", "mon-hotpot": "2026-11-16", "wed-tram": "2026-11-18", "thu-dpd": "2026-11-19", "thu-duck": "2026-11-19" };
+    const ISO = { "sun-dimsum": "2026-11-15", "mon-hotpot": "2026-11-16", "wed-tram": "2026-11-18", "thu-dpd": "2026-11-19" };
     const time = (w) => String(w || "").replace(/^[A-Za-z]{3} \d{1,2} [A-Za-z]{3},?\s*/, "").replace(/^./, (c) => c.toUpperCase());
     return { ...d, extra: d.extra || [], settle: {}, events: Object.entries(d.events).map(([id, e], i) => ({ id, iso: ISO[id], order: i, ...e, when: time(e.when), expenses: (e.expenses || []).map((x, j) => ({ id: `s${j}`, ...x })) })) };
   }
@@ -100,7 +100,7 @@
     catch (e) { toast(`Couldn't save: ${e.message}`); try { data = await api("GET"); } catch (e2) { /* keep local */ } return false; }
     finally { busy = false; render(); }
   }
-  async function refresh() { if (live() && !busy && !editing && document.visibilityState === "visible" && !root.contains(document.activeElement)) { try { data = await api("GET"); render(); } catch (e) { /* ignore */ } } }
+  async function refresh() { if (live() && !busy && !editing && !billDraft && document.visibilityState === "visible" && !root.contains(document.activeElement)) { try { data = await api("GET"); render(); } catch (e) { /* ignore */ } } }
   setInterval(refresh, 30000); // pick up other people's ticks
   document.addEventListener("visibilitychange", refresh);
 
@@ -182,6 +182,7 @@
           <datalist id="cc-places">${PLACES.filter((p) => ["city", "saiwan", "sights", "hikes", "shop"].includes(p.tab)).map((p) => `<option value="${esc(p.name)}">`).join("")}</datalist>
           <button type="submit">Add event</button>
         </form></details>` : ""}
+      ${billsSection()}
       ${settleUp(bal, canConfirm)}
       ${overview(evs)}
       <details class="cc-groups"><summary>📚 Becker study groups</summary>
@@ -203,7 +204,7 @@
       const payOne = !ps && each(e) && live() ? `<button type="button" class="cc-mini go pay1" data-payev="${e.id}">✓ I've paid this</button>` : "";
       // tapped "I've paid" by mistake? undo it here until Rienno confirms
       const undo = ps === "wait" && live() ? `<button type="button" class="cc-mini pay1 undo" data-undoev="${e.id}">↩ Undo "I've paid"</button>` : "";
-      return `<li><span>${esc(e.title)}${ps ? ` <em class="${ps === "paid" ? "ok" : "wait"}">${ps === "paid" ? "✓ Paid" : `Waiting for ${esc(data.payTo)}`}</em>` : ""}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : `<small>price to come</small>`}</b>${payOne}${undo}</li>`; }).join("");
+      return `<li><span>${esc(e.title)}${ps ? ` <em class="${ps === "paid" ? "ok" : "wait"}">${ps === "paid" ? "✓ Paid" : `Waiting for ${esc(data.payTo)}`}</em>` : ""}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : (data.bills || []).some((b) => b.ev === e.id) ? `<small>split bill ↓</small>` : `<small>cost to come</small>`}</b>${payOne}${undo}</li>`; }).join("");
     const unpaid = mine.filter((e) => each(e) && !evPay(me, e.id));
     const mineP = payments(me).map((p, i) => `<li><span>Paid ${hk(p.hkd)}${p.method ? ` · ${esc(p.method)}` : ""}${evNames(p)}</span><b class="${p.confirmed ? "ok" : "wait"}">${p.confirmed ? `✓ ${esc(data.payTo)} confirmed` : `Waiting for ${esc(data.payTo)}`}</b>${!p.confirmed && live() ? `<button type="button" class="cc-mini undo" data-undopaid="${i}">↩ Undo</button>` : ""}</li>`).join("");
     const head = owedToMe ? ["You're owed", `${hk(bal[me])} <span>≈ ${fx(bal[me])}</span>`]
@@ -251,12 +252,17 @@
           <p class="muted small">${e.total ? `Total ${hk(e.total)} ÷ ${e.priceCount || Math.round(e.total / p)} people = ${hk(p)} each` : `${hk(p)} per person`}</p>
           ${e.total && e.priceCount && e.priceCount !== e.going.length && e.going.length && live()
             ? `<p class="cc-recalc">Now ${e.going.length} going. <button type="button" class="cc-mini go" data-recalc="${e.id}">Recalculate: ${hk(e.total / e.going.length)} each</button></p>` : ""}`
-          : `<p class="cc-split muted">No cost yet. Enter the total bill and it's split between everyone ticked.</p>`}
+          : (() => { // no set price: split the bill(s) between whoever was there, whoever paid
+              const evBills = (data.bills || []).filter((b) => b.ev === e.id);
+              return `${evBills.length ? `<ul class="ev-bills">${evBills.map((b) => `<li><span>🧾 ${esc(b.what)} · paid by ${esc(b.paidBy)} · ${b.among.length} people</span><b>${hk(b.hkd)}</b></li>`).join("")}</ul>` : ""}
+                ${live() ? `<button type="button" class="cc-mini go" data-splitev="${e.id}">🧾 ${evBills.length ? "Add another bill (e.g. another table)" : "Split the bill (whoever paid)"}</button>
+                <details class="cc-collect"><summary>Rienno collecting a set price instead?</summary>` : ""}`;
+            })()}
         ${e.expenses.length ? `<ul>${e.expenses.map((x) => `<li><span>${esc(x.what)} · paid by ${esc(x.paidBy)}</span><b>${hk(+x.hkd)}</b>${live() ? `<button type="button" class="cc-x" data-delexp="${e.id}" data-xid="${x.id}" aria-label="Remove bill">✕</button>` : ""}</li>`).join("")}</ul>` : ""}
         ${live() ? `<form class="cc-inline bill" data-setprice="${e.id}">
           <input name="total" type="number" inputmode="numeric" min="0" step="1" placeholder="Total bill HK$" value="${e.total || ""}" aria-label="Total bill in HK$" required>
           <button type="submit">${e.total || e.price ? "Update total" : "Set total"}</button>
-          <span class="muted small">Split between the ${e.going.length} ticked</span></form>` : ""}
+          <span class="muted small">Split between the ${e.going.length} ticked</span></form>${p ? "" : "</details>"}` : ""}
       </div>
       ${live() ? `<button type="button" class="cc-del" data-delev="${e.id}">🗑 Remove this event</button>` : ""}
     </details>`;
@@ -317,7 +323,7 @@
     </div>`;
   }
 
-  const SHORT = { "sun-dimsum": "Sun dim sum", "mon-hotpot": "Mon hotpot", "wed-tram": "Wed tram", "thu-dpd": "Thu dai pai dong", "thu-duck": "Thu duck" };
+  const SHORT = { "sun-dimsum": "Sun dim sum", "mon-hotpot": "Mon hotpot", "wed-tram": "Wed tram", "thu-dpd": "Thu dai pai dong", };
   function overview(evs) {
     const ppl = people(), bal = balances();
     const grand = evs.reduce((t, e) => t + (each(e) || 0) * e.going.length, 0);
@@ -331,6 +337,140 @@
       <button type="button" class="cc-csv" id="cc-csv">Copy as spreadsheet (CSV)</button>
     </details>`;
   }
+
+
+  /* ---------- split a bill: dinners by table, people's own events, any payer ---------- */
+  // a draft kept outside the DOM, so the form survives the list refreshing every 30 seconds
+  let billDraft = null;
+  const newDraft = () => ({ what: "", ev: "", hkd: "", paidBy: me, among: new Set(me ? [me] : []), mode: "equal", shares: {} });
+  const billShares = (b) => b.shares || Object.fromEntries(b.among.map((n) => [n, b.hkd / b.among.length]));
+  function billBalances() { // + means you're owed, - means you owe
+    const bal = {};
+    (data.bills || []).forEach((b) => {
+      bal[b.paidBy] = (bal[b.paidBy] || 0) + b.hkd;
+      Object.entries(billShares(b)).forEach(([n, v]) => { bal[n] = (bal[n] || 0) - v; });
+    });
+    (data.xfers || []).forEach((x) => { bal[x.from] = (bal[x.from] || 0) + x.hkd; bal[x.to] = (bal[x.to] || 0) - x.hkd; });
+    return bal;
+  }
+  // fewest payments that settle everyone up (largest debts paid to largest credits first)
+  function simplify(bal) {
+    const debt = Object.entries(bal).filter(([, v]) => v < -0.5).map(([n, v]) => [n, -v]).sort((a, b) => b[1] - a[1]);
+    const cred = Object.entries(bal).filter(([, v]) => v > 0.5).map(([n, v]) => [n, v]).sort((a, b) => b[1] - a[1]);
+    const out = [];
+    let i = 0, j = 0;
+    while (i < debt.length && j < cred.length) {
+      const amt = Math.min(debt[i][1], cred[j][1]);
+      if (amt > 0.5) out.push({ from: debt[i][0], to: cred[j][0], hkd: Math.round(amt) });
+      debt[i][1] -= amt; cred[j][1] -= amt;
+      if (debt[i][1] < 0.5) i++;
+      if (cred[j][1] < 0.5) j++;
+    }
+    return out;
+  }
+  function waysToPay(to, amt) {
+    const pr = (data.profiles || {})[to] || {};
+    const rows = [
+      pr.paypal && `<a class="paybtn" href="${esc(pr.paypal.replace(/\/$/, ""))}${/paypal\.me/i.test(pr.paypal) ? `/${Math.round(amt)}HKD` : ""}" target="_blank" rel="noopener">💳 PayPal / card</a>`,
+      pr.fps && `<button class="paybtn" type="button" data-copy="${esc(pr.fps)}">⚡ FPS ${esc(pr.fps)} · copy</button>`,
+      pr.bank && `<button class="paybtn" type="button" data-copy="${esc(pr.bank)}">🌍 Bank · copy</button>`,
+      pr.wiseLink && `<a class="paybtn" href="${esc(pr.wiseLink)}" target="_blank" rel="noopener">🌍 Wise</a>`,
+      pr.cash && `<span class="pw-soon">💵 Cash is fine</span>`,
+    ].filter(Boolean);
+    return rows.length ? `<div class="paybtns">${rows.join("")}</div>${pr.note ? `<p class="muted small">${esc(pr.note)}</p>` : ""}`
+      : `<p class="muted small">${esc(to)} hasn't added payment details yet. Ask in the group chat, or they can add them under "My payment details".</p>`;
+  }
+  function billsSection() {
+    if (!live()) return "";
+    const bal = billBalances(), sugg = simplify(bal);
+    const pend = (data.xfers || []).filter((x) => !x.confirmed);
+    const ppl = people();
+    const evName = (id) => data.events.find((e) => e.id === id)?.title;
+    const mineSugg = me ? sugg.filter((t) => t.from === me || t.to === me) : [];
+    const others = sugg.filter((t) => !mineSugg.includes(t));
+    const sRow = (t) => `<li class="sp${t.from === me || t.to === me ? " me" : ""}"><div class="sp-top"><b>${esc(t.from)}</b> → <b>${esc(t.to)}</b><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
+      ${t.from === me ? `${waysToPay(t.to, t.hkd)}<form class="cc-inline paid" data-xfer="${esc(JSON.stringify(t))}"><select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select><button type="submit">✓ I've paid ${esc(t.to)}</button></form>` : ""}</li>`;
+    const pRow = (x) => `<li class="sp pending"><div class="sp-top"><span>${esc(x.from)} paid ${esc(x.to)} ${hk(x.hkd)}${x.method ? ` · ${esc(x.method)}` : ""}</span>
+      ${x.to === me ? `<button type="button" class="cc-mini go" data-xconfirm="${x.id}">✓ Received</button>` : `<em class="wait">Waiting for ${esc(x.to)}</em>`}
+      ${x.from === me ? `<button type="button" class="cc-mini undo" data-xundo="${x.id}">↩ Undo</button>` : ""}</div></li>`;
+    const d = billDraft;
+    const form = d ? (() => {
+      const total = +d.hkd || 0, among = [...d.among];
+      const each = among.length ? total / among.length : 0;
+      const sum = among.reduce((t, n) => t + (+d.shares[n] || 0), 0);
+      return `<form class="bill-form" id="bill-form" autocomplete="off">
+        <div class="bf-row"><input name="what" placeholder="What (e.g. Thu dinner, table 2)" maxlength="60" value="${esc(d.what)}" data-bf="what">
+          <select name="ev" data-bf="ev" aria-label="Which event"><option value="">Not linked to an event</option>${data.events.map((e) => `<option value="${e.id}"${d.ev === e.id ? " selected" : ""}>${esc(e.title)}</option>`).join("")}</select></div>
+        <div class="bf-row"><label class="bf-l">Total HK$<input name="hkd" type="number" inputmode="decimal" min="1" step="0.01" value="${esc(d.hkd)}" data-bf="hkd" required></label>
+          <label class="bf-l">Paid by<select name="paidBy" data-bf="paidBy">${ppl.map((n) => `<option${n === d.paidBy ? " selected" : ""}>${esc(n)}</option>`).join("")}</select></label></div>
+        <p class="bf-h">Who's at this table? <small>${among.length} picked</small>
+          ${d.ev ? `<button type="button" class="cc-mini" data-bf-all="1">Everyone at ${esc(evName(d.ev) || "the event")}</button>` : ""}
+          <button type="button" class="cc-mini" data-bf-none="1">Clear</button></p>
+        <div class="cc-names edit">${ppl.map((n) => `<button type="button" class="${d.among.has(n) ? "on" : ""}" data-bf-toggle="${esc(n)}">${d.among.has(n) ? "✓ " : ""}${esc(n)}</button>`).join("")}</div>
+        <p class="bf-h">Split
+          <button type="button" class="cc-mini${d.mode === "equal" ? " go" : ""}" data-bf-mode="equal">Equally</button>
+          <button type="button" class="cc-mini${d.mode === "custom" ? " go" : ""}" data-bf-mode="custom">Custom amounts</button></p>
+        ${d.mode === "equal" ? `<p class="small">${among.length && total ? `${hk(total)} ÷ ${among.length} = <b>${hk(each)}</b> each` : "Pick who's in it and enter the total."}</p>`
+          : `<div class="bf-custom">${among.map((n) => `<label>${esc(n)}<input type="number" inputmode="decimal" min="0" step="0.01" value="${esc(d.shares[n] ?? "")}" data-bf-share="${esc(n)}" placeholder="HK$"></label>`).join("")}</div>
+             <p class="small ${Math.abs(sum - total) > 1 ? "warn-t" : "ok-t"}">Adds up to ${hk(sum)} of ${hk(total)}${Math.abs(sum - total) > 1 ? ` · ${hk(total - sum)} left to assign` : " ✓"}</p>`}
+        <div class="bf-row"><button type="submit" class="paybtn">Add bill</button><button type="button" class="cc-mini" data-bf-cancel="1">Cancel</button></div>
+      </form>`;
+    })() : `<button type="button" class="cc-add-bill" data-bf-new="1">➕ Add a bill</button>`;
+    const bills = (data.bills || []).slice().reverse();
+    const pr = me ? (data.profiles || {})[me] || {} : null;
+    return `<div class="cc-bills2">
+      <h3 class="cc-h">🧾 Split a bill <small>dinners by table, your own events, whoever paid</small></h3>
+      ${me ? `<p class="small">${(bal[me] || 0) < -0.5 ? `You owe <b>${hk(-bal[me])}</b> in bills.` : (bal[me] || 0) > 0.5 ? `You're owed <b>${hk(bal[me])}</b> in bills.` : "You're all square on bills."}</p>` : ""}
+      ${mineSugg.length ? `<ul class="sp-list">${mineSugg.map(sRow).join("")}</ul>` : ""}
+      ${pend.length ? `<ul class="sp-list">${pend.map(pRow).join("")}</ul>` : ""}
+      ${form}
+      ${others.length ? `<details class="cc-sub"><summary>Everyone else's payments · ${others.length}</summary><ul class="sp-list">${others.map(sRow).join("")}</ul></details>` : ""}
+      ${bills.length ? `<details class="cc-sub"><summary>All bills · ${bills.length}</summary><ul class="bill-list">${bills.map((b) => {
+        const sh = billShares(b);
+        return `<li><div class="sp-top"><b>${esc(b.what)}</b>${b.ev && evName(b.ev) ? ` <small>· ${esc(evName(b.ev))}</small>` : ""}<span class="amt">${hk(b.hkd)}</span>
+          <button type="button" class="cc-x" data-bdel="${b.id}" aria-label="Delete bill">✕</button></div>
+          <p class="small">Paid by ${esc(b.paidBy)} · ${b.shares ? "custom split" : `${hk(b.hkd / b.among.length)} each`}: ${b.among.map((n) => `${esc(n)}${b.shares ? ` ${hk(sh[n])}` : ""}`).join(", ")}</p></li>`;
+      }).join("")}</ul></details>` : ""}
+      ${me ? `<details class="cc-sub"><summary>💳 My payment details${pr.paypal || pr.fps || pr.bank || pr.cash ? " ✓" : ""}</summary>
+        <form class="cc-grid-form" id="my-pay" autocomplete="off">
+          <p class="small" style="flex-basis:100%">So people can pay you back for bills you cover. Only classmates with the passcode can see these.</p>
+          <input name="paypal" placeholder="PayPal.me link, e.g. https://paypal.me/yourname" value="${esc(pr.paypal || "")}">
+          <input name="fps" placeholder="FPS ID or phone (Hong Kong accounts)" value="${esc(pr.fps || "")}">
+          <input name="bank" placeholder="Bank / Wise details (name, bank, account no.)" value="${esc(pr.bank || "")}">
+          <input name="wiseLink" placeholder="Wise payment link (optional)" value="${esc(pr.wiseLink || "")}">
+          <input name="note" placeholder="Note (e.g. Venmo @name, Revolut, PayNow)" value="${esc(pr.note || "")}">
+          <label class="bf-check"><input type="checkbox" name="cash"${pr.cash ? " checked" : ""}> Cash is fine</label>
+          ${pr.locked ? `<input name="pin" type="password" inputmode="numeric" placeholder="Your PIN (needed to change these)">` : `<input name="newPin" type="password" inputmode="numeric" maxlength="12" placeholder="Optional PIN, so only you can change these">`}
+          <button type="submit">Save my details</button>
+        </form></details>` : `<p class="muted small">Pick your name above to add bills and your payment details.</p>`}
+    </div>`;
+  }
+  document.addEventListener("input", (e) => {
+    const t = e.target;
+    if (!billDraft || !root.contains(t)) return;
+    if (t.dataset.bf) billDraft[t.dataset.bf] = t.value;
+    if (t.dataset.bfShare) { billDraft.shares[t.dataset.bfShare] = t.value; const p = t.closest(".bill-form"); if (p) refreshSum(p); }
+    if (t.dataset.bf === "hkd") { const p = t.closest(".bill-form"); if (p) refreshSum(p); }
+  });
+  function refreshSum(formEl) { // update the "adds up to" line without redrawing (keeps the keyboard open)
+    const d = billDraft, total = +d.hkd || 0, among = [...d.among];
+    const line = formEl.querySelector(".bf-custom + p.small") || formEl.querySelector('[data-bf-mode="equal"].go') && formEl.querySelector(".bf-row ~ p.small");
+    if (d.mode === "custom") {
+      const sum = among.reduce((t, n) => t + (+d.shares[n] || 0), 0);
+      const p = formEl.querySelector(".bf-custom + p.small");
+      if (p) { p.className = `small ${Math.abs(sum - total) > 1 ? "warn-t" : "ok-t"}`; p.innerHTML = `Adds up to ${hk(sum)} of ${hk(total)}${Math.abs(sum - total) > 1 ? ` · ${hk(total - sum)} left to assign` : " ✓"}`; }
+    } else {
+      const p = [...formEl.querySelectorAll("p.small")].find((x) => /each|Pick who/.test(x.textContent));
+      if (p) p.innerHTML = among.length && total ? `${hk(total)} ÷ ${among.length} = <b>${hk(total / among.length)}</b> each` : "Pick who's in it and enter the total.";
+    }
+    return line;
+  }
+  document.addEventListener("change", (e) => {
+    const t = e.target;
+    if (!billDraft || !root.contains(t) || !t.dataset.bf) return;
+    billDraft[t.dataset.bf] = t.value;
+    if (t.dataset.bf === "ev" && t.value) { const E = data.events.find((x) => x.id === t.value); if (E) { billDraft.among = new Set(E.going); if (!billDraft.what) billDraft.what = E.title; } render(); }
+  });
 
   // the week plan shows a one-line summary under each class event
   function fillPlan() {
@@ -388,6 +528,32 @@
       return;
     }
     if (t.closest("[data-orgout]")) { orgPass = ""; forget("hk-org-v1"); api("GET").then((s) => { data = s; render(); }); return; }
+    if (t.closest("[data-bf-new]")) { billDraft = newDraft(); render(); return; }
+    const se = t.closest("[data-splitev]");
+    if (se) {
+      const E = data.events.find((x) => x.id === se.dataset.splitev);
+      billDraft = { ...newDraft(), ev: E.id, what: E.title, among: new Set(E.going) };
+      render();
+      setTimeout(() => document.getElementById("bill-form")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+      return;
+    }
+    if (t.closest("[data-bf-cancel]")) { billDraft = null; render(); return; }
+    const bt = t.closest("[data-bf-toggle]");
+    if (bt && billDraft) { const n = bt.dataset.bfToggle; if (billDraft.among.has(n)) billDraft.among.delete(n); else billDraft.among.add(n); render(); return; }
+    if (t.closest("[data-bf-all]") && billDraft) { const E = data.events.find((x) => x.id === billDraft.ev); if (E) billDraft.among = new Set(E.going); render(); return; }
+    if (t.closest("[data-bf-none]") && billDraft) { billDraft.among = new Set(); render(); return; }
+    const bm = t.closest("[data-bf-mode]");
+    if (bm && billDraft) {
+      billDraft.mode = bm.dataset.bfMode;
+      if (billDraft.mode === "custom") { const n = billDraft.among.size, tot = +billDraft.hkd || 0; [...billDraft.among].forEach((x) => { if (billDraft.shares[x] == null && n && tot) billDraft.shares[x] = (Math.round((tot / n) * 100) / 100).toString(); }); }
+      render(); return;
+    }
+    const xc = t.closest("[data-xconfirm]");
+    if (xc) { op({ op: "confirmXfer", id: xc.dataset.xconfirm }).then((ok) => ok && toast("Marked as received")); return; }
+    const xu = t.closest("[data-xundo]");
+    if (xu) { op({ op: "undoXfer", id: xu.dataset.xundo }).then((ok) => ok && toast("Undone")); return; }
+    const bd = t.closest("[data-bdel]");
+    if (bd) { if (confirm("Delete this bill for everyone?")) op({ op: "delBill", id: bd.dataset.bdel }); return; }
     const p1 = t.closest("[data-payev]");
     if (p1) {
       const E = data.events.find((x) => x.id === p1.dataset.payev);
@@ -424,6 +590,20 @@
     const fd = (k) => f.elements[k]?.value?.trim() || "";
     if (f.id === "cc-form") { msg("Checking…"); unlock(fd("cc-pass") || $("#cc-pass").value); }
     else if (f.id === "cc-newev") { op({ op: "addEvent", title: fd("title"), iso: fd("iso"), when: fd("when"), venue: fd("venue") }).then((ok) => ok && toast("Event added for everyone")); }
+    else if (f.id === "bill-form" && billDraft) {
+      const d = billDraft, among = [...d.among];
+      const body = { op: "addBill", what: d.what, ev: d.ev, hkd: +d.hkd, paidBy: d.paidBy, among };
+      if (d.mode === "custom") body.shares = Object.fromEntries(among.map((n) => [n, +d.shares[n] || 0]));
+      op(body).then((ok) => { if (ok) { billDraft = null; render(); toast("Bill added: everyone's share is worked out"); } });
+    }
+    else if (f.dataset.xfer) {
+      const x = JSON.parse(f.dataset.xfer);
+      op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: fd("method") }).then((ok) => ok && toast(`Thanks! ${x.to} will confirm when it arrives`));
+    }
+    else if (f.id === "my-pay") {
+      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), bank: fd("bank"), wiseLink: fd("wiseLink"), note: fd("note"), cash: f.elements.cash.checked, pin: fd("pin"), newPin: fd("newPin") })
+        .then((ok) => ok && toast("Your payment details are saved"));
+    }
     else if (f.id === "cc-org") {
       orgPass = fd("code").toLowerCase();
       api("GET").then((s) => { if (s.organiser) { set("hk-org-v1", orgPass); data = s; render(); toast("Signed in as organiser"); } else { orgPass = ""; toast("That organiser code isn't right"); } }, () => { orgPass = ""; toast("Couldn't check the code"); });

@@ -644,11 +644,52 @@
   // exact name first, then "starts with", then "contains", so "COA" doesn't match "…coastal walk"
   const findPlace = (q) => { if (!q) return null; const l = q.toLowerCase(), n = (p) => p.name.toLowerCase();
     return live.find((p) => n(p) === l) || live.find((p) => n(p).startsWith(l)) || live.find((p) => n(p).includes(l)); };
+
+  /* ---------- weather: Hong Kong Observatory 9-day forecast, Open-Meteo for days further out ---------- */
+  const WX_KEY = "hk-wx-v1";
+  let wx = store.get(WX_KEY)?.days || {};
+  const HKO_ICON = { 50: "☀️", 51: "🌤️", 52: "🌤️", 53: "🌦️", 54: "🌦️", 60: "☁️", 61: "☁️", 62: "🌧️", 63: "🌧️", 64: "🌧️", 65: "⛈️",
+    70: "🌙", 71: "🌙", 72: "🌙", 73: "🌙", 74: "🌙", 75: "🌙", 76: "☁️", 77: "🌤️", 80: "💨", 81: "🌤️", 82: "💧", 83: "🌫️", 84: "🌫️", 85: "🌫️", 90: "🥵", 91: "🌤️", 92: "🍃", 93: "🥶" };
+  const omIcon = (c) => (c === 0 ? "☀️" : c <= 2 ? "🌤️" : c === 3 ? "☁️" : c <= 48 ? "🌫️" : c <= 67 ? "🌧️" : c <= 82 ? "🌦️" : "⛈️");
+  const omRain = (p) => (p == null ? "" : p < 20 ? "Low" : p < 40 ? "Medium Low" : p < 60 ? "Medium" : p < 80 ? "Medium High" : "High");
+  const toF = (c) => Math.round((c * 9) / 5 + 32);
+  async function loadWeather() {
+    const cached = store.get(WX_KEY);
+    if (cached && Date.now() - cached.t < 60 * 60e3) return; // refresh hourly
+    const days = {};
+    try { // backup / longer range first, so HKO can overwrite the days it covers
+      const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude=22.28&longitude=114.16&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code&timezone=Asia%2FHong_Kong&forecast_days=16");
+      const j = await r.json();
+      (j.daily?.time || []).forEach((iso, i) => { const pc = j.daily.precipitation_probability_max[i], ic = omIcon(j.daily.weather_code[i]);
+        days[iso] = { src: "Open-Meteo", icon: pc != null && pc < 30 && /🌧️|🌦️|⛈️/.test(ic) ? "🌥️" : ic, max: Math.round(j.daily.temperature_2m_max[i]), min: Math.round(j.daily.temperature_2m_min[i]), rain: omRain(j.daily.precipitation_probability_max[i]), pct: j.daily.precipitation_probability_max[i] }; });
+    } catch (e) { /* offline */ }
+    try {
+      const r = await fetch("https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=en");
+      const j = await r.json();
+      (j.weatherForecast || []).forEach((x) => {
+        const iso = `${x.forecastDate.slice(0, 4)}-${x.forecastDate.slice(4, 6)}-${x.forecastDate.slice(6, 8)}`;
+        days[iso] = { src: "HKO", icon: HKO_ICON[x.ForecastIcon] || "🌤️", max: x.forecastMaxtemp?.value, min: x.forecastMintemp?.value, rain: x.PSR, text: x.forecastWeather, updated: j.updateTime };
+      });
+    } catch (e) { /* HKO unavailable: Open-Meteo values stay */ }
+    if (Object.keys(days).length) { wx = days; store.set(WX_KEY, { t: Date.now(), days }); renderPlan(); }
+  }
+  const wxLine = (iso) => {
+    const w = wx[iso];
+    if (!w) {
+      const first = PLAN.find((d) => d.iso === iso);
+      const avail = new Date(new Date(`${iso}T12:00:00+08:00`).getTime() - 9 * 864e5);
+      return first ? `<p class="wx muted">🌤️ Forecast from ${avail.getDate()} Nov · typical mid-November: about 19–25°C (66–77°F), mostly dry</p>` : "";
+    }
+    const rainy = /High|Medium$/.test(w.rain || "");
+    return `<p class="wx">${w.icon} <b>${w.min}–${w.max}°C</b> <span>(${toF(w.min)}–${toF(w.max)}°F)</span> · ${rainy ? "☔ " : ""}Rain: ${esc((w.rain || "n/a").toLowerCase())}${w.pct != null && w.src !== "HKO" ? ` (${w.pct}%)` : ""}
+      <small>${w.src === "HKO" ? `Hong Kong Observatory${w.text ? ` · ${esc(w.text.split(". ")[0])}` : ""}` : "Open-Meteo (the HKO forecast covers 9 days ahead)"}</small></p>`;
+  };
+
   function renderPlan() {
     // "today" in Hong Kong time, so the week opens on the right day during the trip
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong" }).format(new Date());
     if (planDay == null) planDay = Math.max(0, PLAN.findIndex((d) => d.iso === today));
-    const dayBtns = PLAN.map((d, i) => `<button class="pd${i === planDay ? " on" : ""}${d.iso === today ? " today" : ""}" data-planday="${i}" aria-label="${esc(d.day)} ${esc(d.date)}${d.iso === today ? ", today" : ""}"><b>${d.iso === today ? "Today" : esc(d.day)}</b><span>${esc(d.date.split(" ")[0])}</span></button>`).join("");
+    const dayBtns = PLAN.map((d, i) => `<button class="pd${i === planDay ? " on" : ""}${d.iso === today ? " today" : ""}" data-planday="${i}" aria-label="${esc(d.day)} ${esc(d.date)}${d.iso === today ? ", today" : ""}"><b>${d.iso === today ? "Today" : esc(d.day)}</b><span>${esc(d.date.split(" ")[0])}</span>${wx[d.iso] ? `<i class="pd-wx" aria-hidden="true">${wx[d.iso].icon}</i>` : ""}</button>`).join("");
     const row = (d, [t, v, kind, ev, go], j) => {
       // class events follow the shared list once you've picked your name in the class corner
       const shared = ev && window.HK_CLASS?.going(ev);
@@ -670,6 +711,7 @@
       <p class="muted small">Morning buses run every ~15 min. Times are for the first stop, and buses don't wait.</p></details>` : "";
     const dayCard = (d, i) => `<li class="${i === planDay ? "sel" : ""}" data-iso="${d.iso}">
       <div class="day"><small>${esc(d.date)}</small>${esc(d.day)}</div>
+      ${wxLine(d.iso)}
       ${d.slots.map((sl, j) => row(d, sl, j)).join("")}
       ${myPlans.filter((p) => p.iso === d.iso).map((p) => `<div class="slotrow personal" data-drag="${esc(JSON.stringify({ move: p.id }))}" title="Drag to another day, or up and down to reorder"><span><span class="grip" aria-hidden="true">⠿</span> ${esc(p.when || "Anytime")} <em class="mine-tag">Mine</em></span><span class="sv">⭐ ${esc(p.title)}${p.place && byId[p.place] ? ` <button class="rlink" data-jump="${p.place}">Map →</button>` : ""}${p.idea ? ` <button class="rlink" data-idea="${esc(p.idea)}" data-iso="${d.iso}">See plan →</button>` : ""}</span><button class="cc-x" data-delmine="${p.id}" aria-label="Remove from my week">✕</button></div>`).join("")}
       ${(() => { const n = onlyMine && !showHidden.has(d.iso) ? d.slots.filter(([, v, k, ev]) => (k === "ours" || k === "event") && !mine[slotKey(d.iso, v, ev)]).length : 0;
@@ -1065,6 +1107,8 @@
   if (shared) shared.split(",").filter((id) => byId[id]).forEach((id) => loved.add(id));
   saveLoved();
   renderPlan();
+  loadWeather();
+  setInterval(loadWeather, 30 * 60e3);
   renderStart();
   const start = location.hash.slice(1);
   setTab(["saiwan", "start", "city", "sights", "hikes", "shop", "week"].includes(start) ? start : "city");

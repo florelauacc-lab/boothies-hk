@@ -10258,22 +10258,27 @@ window.HK = {
  ],
  "OUTINGS": [
   {
-   "title": "Harbour, the Peak & TST (full day)",
+   "title": "The Peak & Central (half to full day)",
    "steps": [
     [
      "🚡",
-     "09:00 Peak Tram up from Garden Road (book e-tickets at thepeak.com.hk; queues can pass 45 min). HK$82 one way / HK$116 return",
+     "Go up early: Peak Tram from Garden Road around 09:00 (book e-tickets at thepeak.com.hk; queues can pass 45 min). HK$82 one way / HK$116 return",
      "Victoria Peak"
     ],
     [
      "🌆",
-     "Lugard Road Lookout on the flat Peak Circle Walk for the classic skyline (about 3.5 km)",
+     "Lugard Road Lookout on the flat Peak Circle Walk for the classic skyline (about 3.5 km, 1 hr)",
      "Peak Circle Walk"
     ],
     [
      "🍦",
-     "Egg tart gelato at Messina or milk tea at Men Wah Bing Teng before heading down",
+     "Egg tart gelato at Messina or milk tea at Men Wah Bing Teng",
      "Men Wah Bing Teng"
+    ],
+    [
+     "🚌",
+     "Down by the tram, bus 15 (views from the top deck) or a 15-min taxi to Central",
+     null
     ],
     [
      "🥟",
@@ -10281,18 +10286,18 @@ window.HK = {
      "Maxim's Palace"
     ],
     [
-     "⛴️",
-     "Star Ferry from Central Pier 7 to Tsim Sha Tsui around 16:30",
-     "Star Ferry"
+     "🏛️",
+     "Afternoon in Central: Tai Kwun, then the Graham Street mural and PMQ",
+     "Tai Kwun"
     ],
     [
-     "🌃",
-     "TST Promenade by 17:15. Sunset is about 17:40, then the skyline lights up. The 20:00 Symphony of Lights is being retired in 2026, so check it's still on",
-     "Tsim Sha Tsui Promenade"
+     "🎡",
+     "Finish on the Central harbourfront by the Observation Wheel for sunset (about 17:40)",
+     "Central Harbourfront"
     ]
    ],
-   "em": "🏙️",
-   "short": "Peak & TST day"
+   "em": "🚡",
+   "short": "Peak & Central"
   },
   {
    "title": "TST harbourfront, afternoon to night",
@@ -11171,17 +11176,6 @@ window.HK = {
       "label": "Peng Leng Jeng",
       "tab": "city",
       "q": "Peng Leng"
-     }
-    ],
-    [
-     "Evening",
-     "Or Peking duck dinner",
-     "ours",
-     "thu-duck",
-     {
-      "label": "Peking Garden",
-      "tab": "city",
-      "q": "Peking Garden"
      }
     ],
     [
