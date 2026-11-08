@@ -195,32 +195,35 @@
   }
 
   // "My place": my events, my share of each, and paying it
+  // Top of the class corner: what I owe, every way to pay, and "I've paid"
   function myPlace(mine, st, bal, isPayer) {
+    if (!me) return `<div class="cc-owe"><h3 class="cc-h">💸 Pay ${esc(data.payTo)}</h3><p class="small">Pick your name above to see what you owe.</p>${payWays(0)}</div>`;
     const owedToMe = (bal[me] || 0) > 0.5;
     const rows = mine.map((e) => { const ps = evPay(me, e.id);
       return `<li><span>${esc(e.title)}${ps ? ` <em class="${ps === "paid" ? "ok" : "wait"}">${ps === "paid" ? "✓ Paid" : `Waiting for ${esc(data.payTo)}`}</em>` : ""}</span><b>${each(e) ? `${hk(each(e))} <small>≈ ${fx(each(e))}</small>` : `<small>price to come</small>`}</b></li>`; }).join("");
     const unpaid = mine.filter((e) => each(e) && !evPay(me, e.id));
-    let pay = "";
-    if (!owedToMe && st.left > 0) {
-      pay = `${payButtons(st.left)}
-        ${live() && unpaid.length ? `<form class="cc-inline paid" id="cc-paid">
+    const mineP = payments(me).map((p, i) => `<li><span>Paid ${hk(p.hkd)}${p.method ? ` · ${esc(p.method)}` : ""}${evNames(p)}</span><b class="${p.confirmed ? "ok" : "wait"}">${p.confirmed ? `✓ ${esc(data.payTo)} confirmed` : `Waiting for ${esc(data.payTo)}`}</b>${!p.confirmed && live() ? `<button type="button" class="cc-x" data-undopaid="${i}" aria-label="Undo">✕</button>` : ""}</li>`).join("");
+    const head = owedToMe ? ["You're owed", `${hk(bal[me])} <span>≈ ${fx(bal[me])}</span>`]
+      : st.settled ? ["All settled", "✓ Paid, thank you!"]
+      : st.left ? [`You owe ${esc(data.payTo)}`, `${hk(st.left)} <span>≈ ${fx(st.left)}</span>`]
+      : st.pending ? ["Paid", `Waiting for ${esc(data.payTo)} to confirm`]
+      : ["Your share so far", st.share ? hk(st.share) : "Nothing yet"];
+    return `<div class="cc-owe">
+      <div class="cc-owe-top"><div><small>${head[0]}</small><b>${head[1]}</b>
+        ${st.over ? `<p class="small">You've paid ${hk(st.over)} more than your share. ${esc(data.payTo)} can refund it or count it towards the next event.</p>` : ""}</div></div>
+      ${!owedToMe && st.left ? payWays(st.left) : ""}
+      ${!owedToMe && st.left && live() && unpaid.length ? `<form class="cc-inline paid" id="cc-paid">
+          <p class="small">Paid? Let ${esc(data.payTo)} know:</p>
           <select name="what" aria-label="What you're paying for">
             <option value="all">Everything · ${hk(Math.min(st.left, unpaid.reduce((t, e) => t + each(e), 0)))}</option>
             ${unpaid.length > 1 ? unpaid.map((e) => `<option value="${e.id}">${esc(e.title)} · ${hk(each(e))}</option>`).join("") : ""}
           </select>
           <select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select>
-          <button type="submit">✓ I've paid</button></form>` : ""}`;
-    }
-    const mineP = payments(me).map((p, i) => `<li><span>Paid ${hk(p.hkd)}${p.method ? ` · ${esc(p.method)}` : ""}${evNames(p)}</span><b class="${p.confirmed ? "ok" : "wait"}">${p.confirmed ? `✓ ${esc(data.payTo)} confirmed` : `Waiting for ${esc(data.payTo)}`}</b>${!p.confirmed && live() ? `<button type="button" class="cc-x" data-undopaid="${i}" aria-label="Undo">✕</button>` : ""}</li>`).join("");
-    return `<div class="cc-owe">
-      <div class="cc-owe-top"><div><small>${owedToMe ? "You're owed" : st.settled ? "All settled" : st.left ? "You owe" : st.pending ? "Paid" : "Your share so far"}</small>
-        <b>${owedToMe ? `${hk(bal[me])} <span>≈ ${fx(bal[me])}</span>` : st.settled ? "✓ Settled" : st.left ? `${hk(st.left)} <span>≈ ${fx(st.left)}</span>` : st.pending ? `Waiting for ${esc(data.payTo)} to confirm` : "HK$0"}</b>
-        ${st.over ? `<p class="small">You've paid ${hk(st.over)} more than your share (someone joined after you paid). ${esc(data.payTo)} can refund it or count it towards the next bill.</p>` : ""}
-        ${!owedToMe && st.left && st.left !== Math.round(st.share) ? `<p class="small">Of ${hk(st.share)} in total</p>` : ""}</div></div>
-      ${rows ? `<ul class="cc-mine">${rows}</ul>` : `<p>You're not on any lists yet. Open an event below and tap "I'm going".</p>`}
+          <button type="submit">✓ I've paid</button></form>` : ""}
       ${mineP ? `<ul class="cc-mine pays">${mineP}</ul>` : ""}
-      ${pay}
-      ${isPayer ? `<p class="small">You're collecting: confirm payments as they arrive in "Settle up" below.</p>` : ""}
+      ${rows ? `<details class="cc-break"${st.left ? "" : " open"}><summary>What it's for · ${mine.length} event${mine.length > 1 ? "s" : ""}</summary><ul class="cc-mine">${rows}</ul></details>`
+        : `<p class="small">You're not on any lists yet. Open an event below and tap "I'm going".</p>`}
+      ${isPayer ? `<p class="small">You're collecting: confirm payments in "Who's paid" below.</p>` : ""}
     </div>`;
   }
 
@@ -253,15 +256,19 @@
     </details>`;
   }
 
-  function payButtons(amt) {
+  // Every way to pay, with the actual details, so settling up is one look and one tap
+  function payWays(amt) {
     const L = data.payLinks || {};
     const a = Math.round(amt);
-    const btns = [
-      L.paypal && `<a class="paybtn" href="${esc(L.paypal.replace(/\/$/, ""))}${a ? `/${a}HKD` : ""}" target="_blank" rel="noopener">💳 Pay ${a ? hk(a) : ""} by card / PayPal</a>`,
-      L.fps && `<button class="paybtn" type="button" data-copy="${esc(L.fps)}">⚡ Copy FPS ID</button>`,
-      L.bank && `<button class="paybtn" type="button" data-copy="${esc(L.bank)}">🌍 Copy bank details</button>`,
-    ].filter(Boolean);
-    return btns.length ? `<div class="paybtns">${btns.join("")}</div>` : `<p class="cc-split muted">${esc(data.payTo)}'s payment details are coming soon.</p>`;
+    const soon = `<span class="pw-soon">coming soon</span>`;
+    const copy = (v) => `<button type="button" class="pw-copy" data-copy="${esc(v)}">Copy</button>`;
+    return `<div class="payways">
+      ${L.paypal ? `<a class="paybtn big" href="${esc(L.paypal.replace(/\/$/, ""))}${a ? `/${a}HKD` : ""}" target="_blank" rel="noopener">💳 Pay ${a ? `${hk(a)} ` : ""}with PayPal or card</a>`
+        : `<div class="pw"><span class="pw-i">💳</span><div><b>PayPal or card</b><small>Works from any country. A card fee of about 3–5% applies.</small></div>${soon}</div>`}
+      <div class="pw"><span class="pw-i">⚡</span><div><b>FPS</b><small>Hong Kong bank accounts: instant and free${L.fps ? ` · <span class="pw-v">${esc(L.fps)}</span>` : ""}</small></div>${L.fps ? copy(L.fps) : soon}</div>
+      <div class="pw"><span class="pw-i">🌍</span><div><b>Bank transfer (Wise)</b><small>Cheapest from abroad${L.bank ? ` · <span class="pw-v">${esc(L.bank)}</span>` : ""}</small></div>${L.bank ? copy(L.bank) : soon}</div>
+      <div class="pw"><span class="pw-i">💵</span><div><b>Cash</b><small>HKD in person. ${esc(data.payTo)} is happy with cash.</small></div></div>
+    </div>`;
   }
 
   // Who still owes what, who says they've paid, and what Rienno has confirmed
@@ -285,16 +292,11 @@
       return `<li class="${r.n === me ? "me" : ""}${r.settled ? " done" : ""}"><span class="nm">${esc(r.n)}</span><span class="amt">${hk(r.share)}</span>${chip}${confirm ? `<div class="cc-confirm">${confirm}</div>` : ""}</li>`;
     }).join("")}</ul>` : `<p class="muted">Nothing to settle yet. Once an event has a price, everyone's share shows here.</p>`;
     return `<div class="cc-pay">
-      <h3 class="cc-h">💸 Settle up ${rows.length ? `<small>${done} of ${rows.length} settled</small>` : ""}</h3>
+      <h3 class="cc-h">📒 Who's paid ${rows.length ? `<small>${done} of ${rows.length} paid</small>` : ""}</h3>
       ${rows.length ? `<p class="small"><b>${esc(data.payTo)}</b> is collecting ${hk(rows.reduce((t, r) => t + r.share, 0))} in total · ${hk(rows.reduce((t, r) => t + r.ok, 0))} received so far</p>` : ""}
-      <p class="muted small">Paid? Tap "I've paid" in your box above. It counts as paid once ${esc(data.payTo)} confirms the money arrived.</p>
+      <p class="muted small">It counts as paid once ${esc(data.payTo)} confirms the money arrived.</p>
       ${canConfirm ? `<p class="cc-orgnote">🔑 You're signed in as organiser: confirm payments below, or tap "Got HK$…" for cash.</p>` : ""}
       ${list}
-      <details class="cc-how"><summary>How to pay ${esc(data.payTo)}</summary>
-        <p class="muted">${esc(data.payNote)}</p>
-        <ul>${(data.methods || []).map(([em, n, d]) => `<li><span>${em}</span><b>${esc(n)}</b> ${esc(d)}</li>`).join("")}</ul>
-        <p class="muted small">Other currencies are ${liveRates ? "today's rates" : "approximate"}. ${esc(data.payTo)} receives HKD.</p>
-      </details>
       ${live() ? `<details class="cc-paysetup"><summary>🔑 Organisers (Rienno, Lisa, Florence &amp; Kejia)</summary>
         ${data.organiser ? `<p class="muted small" style="padding:0 14px">Only organisers can change payment details. Only Rienno confirms payments (pick Rienno as your name).</p>
         <form id="cc-pay" class="cc-grid-form">
@@ -330,7 +332,7 @@
       const e = data && data.events.find((x) => x.id === el.dataset.evinfo);
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
-      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${e.going.includes(me) ? " · ✓ you" : ""} · ${p ? `${hk(p)} each` : "price to come"}</button>`;
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${p ? ` · ${hk(p)} each` : ""}</button>`;
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;

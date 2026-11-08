@@ -144,6 +144,8 @@
     // rough taxi time: roads wind ~1.4x the straight line, ~22 km/h average in town, plus pick-up
     const taxi = (km) => Math.max(5, Math.round((km * 1.4 / 22) * 60 + 3));
     if (fromBooth) return `🚕 ~${taxi(d)} min by taxi from Booth`;
+    // Kowloon means a cross-harbour tunnel, which is often the slow bit
+    if (whereOf(p) === "kowloon") return `🚕 ~${taxi(d) + 10} min by taxi via the tunnel · or ⛴️ Star Ferry`;
     return `🚕 ~${taxi(d)} min by taxi from Park Lane`;
   }
   function colorOf(p) { return moodOf(p.category[0], p.tab)?.c || C.pink; }
@@ -602,6 +604,7 @@
   /* ---------- week ---------- */
   // Week: official Becker schedule (🎓) + our own plans (🎉). Phones show one day at a time.
   let planDay = null;
+  const ideaOpen = {}; // day -> idea open in its ideas grid
   const MLS = "hk-myplan-v2"; // keys are day + event id (or the item text), so edits to the schedule don't shift ticks
   const slotKey = (iso, v, ev) => `${iso}|${ev || v.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 40)}`;
   const mine = store.get(MLS) || {}; // "iso|slot" -> true when someone adds an optional or social item to their own plan
@@ -627,8 +630,8 @@
       const p = q && findPlace(q);
       return `<li><span class="re">${em}</span><span>${esc(text)}${p ? ` <button class="rlink" data-jump="${p.id}">Map →</button>` : ""}</span></li>`;
     }).join("")}</ol></details>` : "";
-    const bus = (b, iso) => b ? `<details class="bus" data-k="bus"><summary>🚌 Shuttle bus times</summary>
-      ${b.map(([title, rows]) => `<table class="bt"><caption>${esc(title)}</caption>${rows.map(([stop, time]) => `<tr><th>${esc(stop)}</th><td>${esc(time)}</td></tr>`).join("")}</table>`).join("")}
+    const bus = (b) => b ? `<details class="bus" data-k="bus"><summary>🚌 Shuttle bus times</summary>
+      ${b.map(([title, rows]) => `<div class="bt"><p class="bt-h">${esc(title)}</p>${rows.map(([stop, time]) => `<div class="bt-row"><span class="bt-stop">${esc(stop)}</span><span class="bt-time">${time.split(/,\s*/).map(esc).join("<br>")}</span></div>`).join("")}</div>`).join("")}
       <p class="muted small">Morning buses run every ~15 min. Times are for the first stop, and buses don't wait.</p></details>` : "";
     const dayCard = (d, i) => `<li class="${i === planDay ? "sel" : ""}" data-iso="${d.iso}">
       <div class="day"><small>${esc(d.date)}</small>${esc(d.day)}</div>
@@ -637,7 +640,14 @@
         return n ? `<button class="hidden-n" data-showhidden="${d.iso}">+ ${n} more you haven't added · show</button>` : ""; })()}
       ${d.note ? `<p class="daynote">${esc(d.note)}</p>` : ""}
       ${bus(d.bus)}${route(d.route)}${(d.routes || []).map(route).join("")}
-      ${d.outings ? `<div class="ideas"><p class="ideas-h">🧭 ${d.route ? "More ideas" : "Ideas"} to pick from</p><div class="outs">${OUTINGS.filter((o) => o.title !== d.route?.title).map(route).join("")}</div></div>` : ""}
+      ${d.outings ? (() => {
+        // compact grid of short idea buttons; tapping one opens just that plan underneath
+        const list = OUTINGS.filter((o) => o.title !== d.route?.title);
+        const open = list.find((o) => o.title === ideaOpen[d.iso]);
+        return `<div class="ideas"><p class="ideas-h">🧭 ${d.route ? "More ideas" : "Ideas"} to pick from</p>
+          <div class="idea-grid">${list.map((o) => `<button type="button" class="idea${open === o ? " on" : ""}" data-idea="${esc(o.title)}" data-iso="${d.iso}" aria-expanded="${open === o}"><span>${o.em || "🗺️"}</span>${esc(o.short || o.title)}</button>`).join("")}</div>
+          ${open ? `<div class="idea-open">${route(open).replace("<details", "<details open")}</div>` : ""}</div>`;
+      })() : ""}
       ${[d.go, d.go2].filter(Boolean).map((g) => `<button class="go" data-go='${esc(JSON.stringify(g))}'>${esc(g.label)} →</button>`).join(" ")}
     </li>`;
     // keep whatever boxes (shuttle, ideas) were open: the plan redraws when the class list refreshes
@@ -659,6 +669,8 @@
     $("#plandays").innerHTML = dayBtns;
     const nMine = Object.values(mine).filter(Boolean).length;
     $("#plan-mode").innerHTML = `<button class="${onlyMine ? "" : "on"}" data-onlymine="0">Everything</button><button class="${onlyMine ? "on" : ""}" data-onlymine="1">⭐ My week${nMine ? ` · ${nMine}` : ""}</button>`;
+    // a shortcut to the class corner (who's going, what you owe, paying Rienno), which sits below the day
+    if (!$("#cc-jump")) $("#plan-mode").insertAdjacentHTML("afterend", `<button type="button" id="cc-jump" class="cc-jump">💸 Who's going &amp; pay Rienno ↓</button>`);
     window.HK_PRIVATE_RENDER?.();
   }
   let customEvents = [];
@@ -688,6 +700,9 @@
       else if (ev && now && window.HK_CLASS?.hint) window.HK_CLASS.hint();
       renderPlan(); return;
     }
+    const id = e.target.closest("[data-idea]");
+    if (id) { ideaOpen[id.dataset.iso] = ideaOpen[id.dataset.iso] === id.dataset.idea ? null : id.dataset.idea; renderPlan(); return; }
+    if (e.target.closest("#cc-jump")) { document.getElementById("cc")?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     const sh = e.target.closest("[data-showhidden]");
     if (sh) { showHidden.add(sh.dataset.showhidden); renderPlan(); return; }
     const om = e.target.closest("[data-onlymine]");

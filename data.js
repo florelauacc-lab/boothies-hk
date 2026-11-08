@@ -9991,7 +9991,9 @@ window.HK = {
      "K11 Musea or the HK Museum of Art, then the TST Promenade for the 8pm Symphony of Lights",
      "Tsim Sha Tsui Promenade"
     ]
-   ]
+   ],
+   "em": "🏙️",
+   "short": "Peak & TST day"
   },
   {
    "title": "TST harbourfront, afternoon to night",
@@ -10021,7 +10023,9 @@ window.HK = {
      "Dinner across the harbour: dim sum at Yat Tung Heen or wonton noodles at Mak Man Kee",
      "Yat Tung Heen"
     ]
-   ]
+   ],
+   "em": "🌃",
+   "short": "TST harbourfront"
   },
   {
    "title": "Kowloon temples & photo spots (half day)",
@@ -10046,7 +10050,9 @@ window.HK = {
      "Kowloon Walled City Park, where the world's densest settlement once stood",
      "Kowloon Walled City Park"
     ]
-   ]
+   ],
+   "em": "🪷",
+   "short": "Kowloon temples"
   },
   {
    "title": "Mong Kok & Temple Street at night",
@@ -10071,7 +10077,9 @@ window.HK = {
      "Late bite: Mak Man Kee wonton noodles in Jordan",
      "Mak Man Kee"
     ]
-   ]
+   ],
+   "em": "🏮",
+   "short": "Mong Kok nights"
   },
   {
    "title": "West Kowloon art & sunset",
@@ -10091,7 +10099,9 @@ window.HK = {
      "Sunset over the skyline from the West Kowloon Art Park lawn",
      "M+ museum"
     ]
-   ]
+   ],
+   "em": "🖼️",
+   "short": "West Kowloon art"
   },
   {
    "title": "Old Hong Kong walk: Sheung Wan to Soho",
@@ -10121,7 +10131,9 @@ window.HK = {
      "Sundowners in Soho",
      "Lan Kwai Fong"
     ]
-   ]
+   ],
+   "em": "🏚️",
+   "short": "Old HK walk"
   },
   {
    "title": "South side: Stanley & beaches",
@@ -10146,7 +10158,9 @@ window.HK = {
      "Repulse Bay beach on the way back",
      "Repulse Bay Beach"
     ]
-   ]
+   ],
+   "em": "🏖️",
+   "short": "Stanley & beaches"
   },
   {
    "title": "Day trip: Big Buddha & Tai O",
@@ -10161,7 +10175,9 @@ window.HK = {
      "Bus 21 to Tai O stilt-house fishing village",
      "Tai O"
     ]
-   ]
+   ],
+   "em": "🚠",
+   "short": "Big Buddha & Tai O"
   },
   {
    "title": "Day trip: Ocean Park & a seafood dinner",
@@ -10176,7 +10192,9 @@ window.HK = {
      "Pick-your-own seafood in Ap Lei Chau, two MTR stops away",
      "Ap Lei Chau seafood"
     ]
-   ]
+   ],
+   "em": "🐼",
+   "short": "Ocean Park & seafood"
   },
   {
    "title": "Day trip: Cheung Chau island",
@@ -10191,7 +10209,9 @@ window.HK = {
      "Snacks, beaches and car-free lanes",
      "Cheung Chau"
     ]
-   ]
+   ],
+   "em": "⛴️",
+   "short": "Cheung Chau island"
   },
   {
    "title": "Day trip: Hong Kong Disneyland",
@@ -10201,7 +10221,9 @@ window.HK = {
      "Full day; MTR to Disneyland Resort",
      "Disneyland"
     ]
-   ]
+   ],
+   "em": "🏰",
+   "short": "Disneyland"
   }
  ],
  "PLAN": [
@@ -10265,7 +10287,9 @@ window.HK = {
       "K11 Musea or the HK Museum of Art, then the TST Promenade for the 8pm Symphony of Lights",
       "Tsim Sha Tsui Promenade"
      ]
-    ]
+    ],
+    "em": "🏙️",
+    "short": "Peak & TST day"
    },
    "outings": true
   },
@@ -10281,7 +10305,7 @@ window.HK = {
     ],
     [
      "Lunch",
-     "🥟 Dim sum lunch",
+     "Dim sum lunch",
      "ours",
      "sun-dimsum"
     ]
@@ -10338,23 +10362,23 @@ window.HK = {
    },
    "bus": [
     [
-     "To campus (morning)",
+     "To campus · morning",
      [
       [
        "🏨 Park Lane",
        "7:45–8:15"
       ],
       [
-       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
        "8:00–8:15"
       ]
      ]
     ],
     [
-     "Back (lunchtime)",
+     "Back · lunchtime",
      [
       [
-       "Campus → HKU → SYP → Park Lane",
+       "🏨🚇 To HKU, Sai Ying Pun & Park Lane",
        "1:30pm"
       ]
      ]
@@ -10422,27 +10446,27 @@ window.HK = {
    },
    "bus": [
     [
-     "To campus (morning)",
+     "To campus · morning",
      [
       [
        "🏨 Park Lane",
        "7:45–8:15"
       ],
       [
-       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
        "8:00–8:15"
       ]
      ]
     ],
     [
-     "Back (evening)",
+     "Back · evening",
      [
       [
-       "🏨 Campus → Park Lane",
-       "8:30pm · 9:00pm"
+       "🏨 To Park Lane",
+       "8:30pm, 9:00pm"
       ],
       [
-       "🚇 Campus → HKU → Sai Ying Pun",
+       "🚇 To HKU & Sai Ying Pun",
        "8:30pm"
       ]
      ]
@@ -10481,7 +10505,7 @@ window.HK = {
     ],
     [
      "Evening",
-     "🚋 Tram party",
+     "Tram party",
      "ours",
      "wed-tram"
     ]
@@ -10494,27 +10518,27 @@ window.HK = {
    },
    "bus": [
     [
-     "To campus (morning)",
+     "To campus · morning",
      [
       [
        "🏨 Park Lane",
        "7:45–8:15"
       ],
       [
-       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
        "8:00–8:15"
       ]
      ]
     ],
     [
-     "Back (evening)",
+     "Back · evening",
      [
       [
-       "🏨 Campus → Park Lane",
-       "8:30pm · 9:00pm"
+       "🏨 To Park Lane",
+       "8:30pm, 9:00pm"
       ],
       [
-       "🚇 Campus → HKU → Sai Ying Pun",
+       "🚇 To HKU & Sai Ying Pun",
        "8:30pm"
       ]
      ]
@@ -10566,27 +10590,27 @@ window.HK = {
    },
    "bus": [
     [
-     "To campus (late start)",
+     "To campus · late start",
      [
       [
        "🏨 Park Lane",
        "9:15–11:15"
       ],
       [
-       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
        "9:30–11:30"
       ]
      ]
     ],
     [
-     "Back (evening)",
+     "Back · evening",
      [
       [
-       "🏨 Campus → Park Lane",
-       "8:30pm · 9:00pm"
+       "🏨 To Park Lane",
+       "8:30pm, 9:00pm"
       ],
       [
-       "🚇 Campus → HKU → Sai Ying Pun",
+       "🚇 To HKU & Sai Ying Pun",
        "8:30pm"
       ]
      ]
@@ -10637,27 +10661,27 @@ window.HK = {
    },
    "bus": [
     [
-     "To campus (morning)",
+     "To campus · morning",
      [
       [
        "🏨 Park Lane",
        "7:45–8:15"
       ],
       [
-       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
        "8:00–8:15"
       ]
      ]
     ],
     [
-     "Back (evening)",
+     "Back · evening",
      [
       [
-       "🏨 Campus → Park Lane",
-       "8:30pm · 9:00pm"
+       "🏨 To Park Lane",
+       "8:30pm, 9:00pm"
       ],
       [
-       "🚇 Campus → HKU → Sai Ying Pun",
+       "🚇 To HKU & Sai Ying Pun",
        "8:30pm"
       ]
      ]
@@ -10707,14 +10731,14 @@ window.HK = {
    },
    "bus": [
     [
-     "To campus (morning)",
+     "To campus · morning",
      [
       [
        "🏨 Park Lane",
        "7:45–8:15"
       ],
       [
-       "🚇 Sai Ying Pun Exit B3 → HKU Exit B2",
+       "🚇 Sai Ying Pun (Exit B3), then HKU (Exit B2)",
        "8:00–8:15"
       ]
      ]

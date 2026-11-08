@@ -1142,3 +1142,58 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
 .cc-owe .cc-mine li b { font-size: .95rem; font-weight: 800; }
 .cc-owe .cc-mine li b small { font-size: .78rem; display: block; text-align: right; }
 .cc-owe .cc-mine.pays li b { font-size: .82rem; }
+/* shuttle timetable: rows that wrap cleanly in narrow day columns and on phones */
+.plan details.bus .bt { margin: 0 12px 10px; }
+.plan details.bus .bt-h { margin: 4px 0 2px; font-weight: 800; font-size: .76rem; text-transform: uppercase; letter-spacing: .06em; color: var(--gold, #ffc44d); }
+.plan details.bus .bt-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 12px; padding: 7px 0; border-top: 1px solid rgba(255,255,255,.08); font-size: .9rem; }
+.plan details.bus .bt-stop { flex: 1 1 9em; min-width: 0; line-height: 1.35; }
+.plan details.bus .bt-time { flex: none; margin-left: auto; text-align: right; font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; line-height: 1.35; }
+#plan .slotrow span.evinfo .evlock { white-space: normal; text-align: left; }
+.plan .idea-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 140px), 1fr)); gap: 6px; }
+.plan .idea { display: flex; align-items: center; gap: 7px; min-height: 44px; padding: 8px 10px; font: inherit; font-size: .86rem; font-weight: 700; line-height: 1.2; text-align: left; color: var(--text); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; cursor: pointer; }
+.plan .idea span { flex: none; font-size: 1.1rem; }
+.plan .idea.on { background: rgba(255,196,77,.14); border-color: var(--gold, #ffc44d); color: var(--gold, #ffc44d); }
+.plan .idea-open { margin-top: 8px; }
+.plan .idea-open details.route { margin-top: 0; }
+
+/* ---------- week: one day at a time on every screen (less scrolling, no cramped columns) ---------- */
+.plandays { display: grid !important; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 6px; margin: 8px 0 12px; max-width: 760px; }
+.plan { grid-template-columns: minmax(0, 1fr) !important; max-width: 760px; }
+#plan > li { display: none; }
+#plan > li.sel { display: block; padding: 18px; }
+#plan > li.sel .slotrow { font-size: 15px; margin-top: 10px; }
+#plan > li.sel .slotrow > span:first-child { font-size: 12.5px; }
+.plan-mode, #cc { max-width: 760px; }
+@media (min-width: 601px) { .pd { min-height: 52px; } }
+/* Pay Rienno box */
+.payways { display: grid; gap: 6px; margin: 12px 0 4px; }
+.paybtn.big { justify-content: center; width: 100%; font-size: 1rem; min-height: 50px; background: #ffc439; color: #1b1300; }
+.pw { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; background: rgba(0,0,0,.22); border: 1px solid rgba(255,255,255,.08); }
+.pw > div { flex: 1; min-width: 0; }
+.pw b { display: block; font-size: .92rem; }
+.pw small { display: block; color: var(--muted); font-size: .8rem; line-height: 1.35; overflow-wrap: anywhere; }
+.pw .pw-v { color: var(--text); font-weight: 700; }
+.pw-i { flex: none; font-size: 1.2rem; }
+.pw-soon { flex: none; font-size: .72rem; font-weight: 800; color: var(--muted); padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,.07); }
+.pw-copy { flex: none; font: inherit; font-size: .82rem; font-weight: 800; padding: 8px 12px; min-height: 38px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); background: none; color: var(--text); cursor: pointer; }
+.cc-inline.paid { margin-top: 10px; }
+.cc-inline.paid p { flex-basis: 100%; margin: 0; }
+.cc-break { margin-top: 10px; }
+.cc-break summary { cursor: pointer; font-weight: 700; font-size: .88rem; color: var(--muted); padding: 6px 0; }
+.cc-owe .cc-h { margin-top: 0; }
+/* tap targets: at least 44px on touch screens (WCAG 2.5.5 / Apple HIG) */
+@media (pointer: coarse) {
+  #mb-change, .plan-mode button, .cc-lockbtn, .pw-copy, .cc-names.edit button, .cc-mini, .cc-editbtn, .cc-del, .cc-done,
+  .plan details > summary, .cc-break > summary, .cc-groups > summary, .cc-all > summary, .cc-add > summary, .cc-paysetup > summary { min-height: 44px; }
+  .plan details > summary, .cc-break > summary, .cc-groups > summary, .cc-all > summary { display: flex; align-items: center; }
+  .cc-x { width: 44px; height: 44px; }
+  .rlink { display: inline-flex; align-items: center; min-height: 36px; padding: 0 8px; margin-left: 2px; border-radius: 8px; background: rgba(46,230,255,.08); }
+}
+.cc-jump { margin: 0 0 10px 8px; font: inherit; font-size: .88rem; font-weight: 800; min-height: 44px; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(255,196,77,.4); background: rgba(255,196,77,.1); color: var(--gold, #ffc44d); cursor: pointer; } @media (max-width: 600px) { .cc-jump { margin-left: 0; } }
+/* day picker on every screen */
+.pd { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 52px; padding: 4px 0;
+      border-radius: 12px; border: 1px solid var(--line); background: var(--panel); color: var(--muted); cursor: pointer; font: inherit; }
+.pd b { font-size: 12.5px; color: #fff; }
+.pd span { font-size: 15px; font-weight: 800; color: inherit; }
+.pd.on { background: var(--maroon); border-color: var(--maroon); color: #fff; }
+.pd:hover { border-color: var(--gold, #ffc44d); }
