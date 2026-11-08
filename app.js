@@ -3,6 +3,7 @@
 
   const C = { pink: "#ff3e8a", cyan: "#2ee6ff", gold: "#ffc44d", lime: "#9dff6a", violet: "#a77bff", orange: "#ff8a3d" };
   const FOOD_MOODS = [
+    { k: "breakfast", label: "Breakfast", em: "🍳", c: C.lime },
     { k: "coffee", label: "Coffee", em: "☕", c: C.orange },
     { k: "lunch", label: "Lunch", em: "🍜", c: C.cyan },
     { k: "dinner", label: "Dinner", em: "🥘", c: C.pink },
@@ -74,7 +75,7 @@
   // When someone wants drinks, "that's…" offers kinds of bar instead of food styles
   const BAR_STYLES = [["any", "any kind of bar"], ["top", "a top cocktail bar ★"], ["fancy", "a bit fancy $$$"]];
   const WHAT = [
-    ["food:all", "anything to eat or drink"], ["food:coffee", "☕ good coffee"], ["food:lunch", "🍜 lunch"], ["food:dinner", "🥘 dinner"], ["food:dessert", "🍧 dessert"],
+    ["food:all", "anything to eat or drink"], ["food:breakfast", "🍳 breakfast"], ["food:coffee", "☕ good coffee"], ["food:lunch", "🍜 lunch"], ["food:dinner", "🥘 dinner"], ["food:dessert", "🍧 dessert"],
     ["food:drinks", "🍸 drinks"], ["food:late-night", "🌙 a late-night bite"],
     ["sights:all", "📸 something to see"], ["hikes:all", "🥾 a hike"], ["shop:all", "🛍️ shopping"],
   ];
@@ -239,7 +240,7 @@
   // as soon as something narrower is chosen it's one ranked top-10 list.
   const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate"], shop: ["luxury", "gifts", "malls", "local"] };
   function groupLabel() {
-    if (FOOD.has(state.tab)) return { all: "eat & drink picks", drinks: "bars", lunch: "lunch picks", dinner: "dinner picks", dessert: "dessert picks", "late-night": "late-night picks" }[state.mood] || "picks";
+    if (FOOD.has(state.tab)) return { all: "eat & drink picks", drinks: "bars", breakfast: "breakfast picks", lunch: "lunch picks", dinner: "dinner picks", dessert: "dessert picks", "late-night": "late-night picks" }[state.mood] || "picks";
     return { sights: "sights", hikes: "hikes", shop: "shopping" }[state.tab] || "picks";
   }
   function grouped(items) {

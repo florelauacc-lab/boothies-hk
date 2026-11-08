@@ -315,7 +315,13 @@
           <button type="submit">${e.total || e.price ? "Update total" : "Set total"}</button>
           <span class="muted small">Split between ${goingTxt(e)}</span></form>${p ? "" : "</details>"}` : ""}
       </div>
-      ${live() ? `<button type="button" class="cc-del" data-delev="${e.id}">🗑 Remove this event${orgEvent(e) ? " (organisers)" : ""}</button>` : ""}
+      ${live() ? `<details class="cc-editev"><summary>✏️ Change time or place</summary>
+        <form class="cc-inline" data-editev="${e.id}">
+          <input name="when" value="${esc(e.when || "")}" placeholder="Time, e.g. 08:15" maxlength="50" aria-label="Time">
+          <input name="venue" value="${esc(e.venue || "")}" placeholder="Where" maxlength="80" aria-label="Where" list="cc-places-city">
+          <input name="title" value="${esc(e.title)}" placeholder="Event name" maxlength="70" aria-label="Event name" required>
+          <button type="submit">Save</button></form></details>
+        <button type="button" class="cc-del" data-delev="${e.id}">🗑 Remove this event${orgEvent(e) ? " (organisers)" : ""}</button>` : ""}
     </details>`;
   }
 
@@ -856,6 +862,9 @@
     else if (f.dataset.addtable) {
       openEv.add(f.dataset.addtable);
       op({ op: "addTable", ev: f.dataset.addtable, time: fd("time"), size: fd("size") }).then((ok) => ok && toast("Booking added"));
+    }
+    else if (f.dataset.editev) {
+      op({ op: "editEvent", ev: f.dataset.editev, when: fd("when"), venue: fd("venue"), title: fd("title") }).then((ok) => ok && toast("Saved for everyone"));
     }
     else if (f.dataset.setprice) {
       const E = data.events.find((x) => x.id === f.dataset.setprice);

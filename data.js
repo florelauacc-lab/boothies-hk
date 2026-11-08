@@ -367,7 +367,8 @@ window.HK = {
    "cuisine": "Old-school Cantonese dim sum",
    "category": [
     "late-night",
-    "lunch"
+    "lunch",
+    "breakfast"
    ],
    "price": "$",
    "intro": "A cult old-school dim sum house that opens at 03:00, serving night owls, taxi drivers and early risers with classic dim sum, some still on trolleys.",
@@ -3673,7 +3674,8 @@ window.HK = {
    "section": "Local legends",
    "cuisine": "Cha chaan teng (HK-style cafe)",
    "category": [
-    "lunch"
+    "lunch",
+    "breakfast"
    ],
    "price": "$",
    "intro": "Hong Kong's most famous cha chaan teng, where locals and tourists queue on the pavement for silky scrambled eggs and steamed milk pudding. It is fast, loud and very Hong Kong.",
@@ -3718,7 +3720,8 @@ window.HK = {
    "section": "Local legends",
    "cuisine": "Cha chaan teng and bakery",
    "category": [
-    "lunch"
+    "lunch",
+    "breakfast"
    ],
    "price": "$",
    "intro": "A Bute Street institution since 1973, widely named as one of the best places in the city for a pineapple bun with butter. The buns come out of the oven hot all day.",
@@ -3757,7 +3760,8 @@ window.HK = {
    "section": "Local legends",
    "cuisine": "Traditional Chinese bakery",
    "category": [
-    "dessert"
+    "dessert",
+    "breakfast"
    ],
    "price": "$",
    "intro": "A Central bakery dating to 1954 and the city's best-known name for egg tarts. They have a buttery, cookie-like shortcrust and wobbly custard, and you eat them warm on the pavement.",
@@ -3795,7 +3799,8 @@ window.HK = {
    "section": "Local legends",
    "cuisine": "Cha chaan teng (dai pai dong roots)",
    "category": [
-    "lunch"
+    "lunch",
+    "breakfast"
    ],
    "price": "$",
    "intro": "It began as a street stall on steep Gage Street in the early 1950s and claims to have invented 'silk stocking' milk tea, the strong, smooth brew that is now a symbol of Hong Kong. Locals still squeeze into the tiny shop for tea and pork chop buns.",
@@ -3969,7 +3974,8 @@ window.HK = {
    "section": "Local legends",
    "cuisine": "Cha chaan teng (bing sutt revival)",
    "category": [
-    "lunch"
+    "lunch",
+    "breakfast"
    ],
    "price": "$",
    "intro": "A modern retro cafe dedicated to the golden age of Cantopop, beloved for some of the creamiest scrambled eggs in the city. Its walls are lined with old record sleeves and celebrity photos.",
@@ -4199,7 +4205,8 @@ window.HK = {
    "section": "Local legends",
    "cuisine": "Bakery: sourdough egg tarts",
    "category": [
-    "dessert"
+    "dessert",
+    "breakfast"
    ],
    "price": "$",
    "intro": "A modern bakery whose flaky sourdough egg tart has become Hong Kong's most-queued-for pastry of the past decade. It is a new-school answer to Tai Cheong's classic tart.",
@@ -4861,7 +4868,8 @@ window.HK = {
    "section": "HK classics",
    "cuisine": "Hong Kong-style bakery",
    "category": [
-    "dessert"
+    "dessert",
+    "breakfast"
    ],
    "price": "$",
    "intro": "An old neighbourhood bakery near HKU, popular with students for its cheap puff-pastry egg tarts.",
@@ -4923,7 +4931,8 @@ window.HK = {
    "section": "HK classics",
    "cuisine": "Hong Kong bakery",
    "category": [
-    "dessert"
+    "dessert",
+    "breakfast"
    ],
    "price": "$",
    "intro": "A small bakery whose crisp, buttery pineapple buns went viral; they are baked in a few small batches a day and sell out fast.",
@@ -4954,7 +4963,8 @@ window.HK = {
    "section": "HK classics",
    "cuisine": "Cha chaan teng",
    "category": [
-    "lunch"
+    "lunch",
+    "breakfast"
    ],
    "price": "$",
    "intro": "A busy cha chaan teng next to Kennedy Town MTR serving classic breakfast and tea sets, and the closest one to campus.",
@@ -4985,7 +4995,8 @@ window.HK = {
    "section": "HK classics",
    "cuisine": "Cha chaan teng",
    "category": [
-    "lunch"
+    "lunch",
+    "breakfast"
    ],
    "price": "$",
    "intro": "A cha chaan teng open since the 1960s, with an old tiled interior and a small mezzanine.",
@@ -5185,7 +5196,8 @@ window.HK = {
    "cuisine": "Cantonese congee",
    "category": [
     "lunch",
-    "dinner"
+    "dinner",
+    "breakfast"
    ],
    "price": "$",
    "intro": "A Sheung Wan congee shop open for more than 40 years, famous for silky congee with fresh fish.",
@@ -5223,7 +5235,8 @@ window.HK = {
    "cuisine": "Cantonese dim sum (cart service)",
    "category": [
     "lunch",
-    "dinner"
+    "dinner",
+    "breakfast"
    ],
    "price": "$",
    "intro": "One of the last old-style tea houses where dim sum is pushed around on trolleys and you grab what you want; formerly called Lin Heung Kui, same kitchen.",
@@ -5866,7 +5879,8 @@ window.HK = {
    "section": "Stanley",
    "cuisine": "Local dai pai dong (HK café)",
    "category": [
-    "lunch"
+    "lunch",
+    "breakfast"
    ],
    "price": "$",
    "intro": "A 60-plus-year-old open-air dai pai dong in Stanley Market and the most authentic local bite in town.",
@@ -6168,7 +6182,8 @@ window.HK = {
     "free",
     "local",
     "culture",
-    "iconic"
+    "iconic",
+    "photo"
    ],
    "intro": "Old-Kowloon night market streets with the best surviving cluster of vintage signs, plus neon-style art from the 2023 market revamp.",
    "funFact": "Mido Café (63 Temple St) has been a cha chaan teng since 1950, and its corner sign is one of the most-photographed vintage signs in town.",
@@ -11104,7 +11119,8 @@ window.HK = {
    "price": "$",
    "category": [
     "lunch",
-    "coffee"
+    "coffee",
+    "breakfast"
    ],
    "emoji": "🍞",
    "intro": "A small Tin Hau café 10–12 minutes' walk from the Park Lane, famous for its 'champion' milk tea (the owner trained under a milk-tea champion) and a double-layer pineapple bun with butter. Real diners rave about both.",
@@ -11134,7 +11150,8 @@ window.HK = {
    "cuisine": "Cha chaan teng (cooked food centre)",
    "price": "$",
    "category": [
-    "lunch"
+    "lunch",
+    "breakfast"
    ],
    "emoji": "🍞",
    "intro": "A no-frills stall in the Smithfield cooked food centre where Kennedy Town residents and HKU students eat breakfast. Its satay beef noodles are the signature, with French toast and milk tea.",
@@ -11164,7 +11181,8 @@ window.HK = {
    "price": "$",
    "category": [
     "lunch",
-    "coffee"
+    "coffee",
+    "breakfast"
    ],
    "emoji": "🍞",
    "intro": "A cooked-food-centre café loved for French toast that is pan-fried rather than deep-fried (crisp edges, soft middle) and bottled iced milk tea.",
@@ -11252,7 +11270,8 @@ window.HK = {
    "cuisine": "Cart noodles / beef offal",
    "price": "$",
    "category": [
-    "lunch"
+    "lunch",
+    "breakfast"
    ],
    "emoji": "🍜",
    "intro": "A cooked-food-centre stall near the Park Lane that diners praise for well-cleaned beef offal and fried fish cake: pick your toppings, cart-noodle style. (Not the Kau Kee brisket shop on Gough Street.)",

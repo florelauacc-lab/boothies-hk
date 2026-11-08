@@ -468,10 +468,11 @@ for name, patch in EXTRAS.get("patch", {}).items():
         patch = dict(patch)
         if "name_override" in patch:
             p["name"] = patch.pop("name_override")
-        for c in patch.pop("add_category", []):
+        extra_cats = patch.pop("add_category", [])
+        p.update(patch)  # a patch may replace the categories, so extra ones are added after
+        for c in extra_cats:
             if c not in p.setdefault("category", []):
                 p["category"].append(c)
-        p.update(patch)
     else:
         print("  ! patch target not found:", name)
 

@@ -2780,6 +2780,9 @@
    ],
    "kinds_override": [
     "Cha chaan teng & cafés"
+   ],
+   "add_category": [
+    "breakfast"
    ]
   },
   "Kung Lee Sugar Cane Juice": {
@@ -2894,6 +2897,9 @@
   "St. Lolan Bakery": {
    "category": [
     "dessert"
+   ],
+   "add_category": [
+    "breakfast"
    ]
   },
   "Bernice Bakery": {
@@ -2904,6 +2910,9 @@
   "Pineapple Bakery": {
    "category": [
     "dessert"
+   ],
+   "add_category": [
+    "breakfast"
    ]
   },
   "Peak Circle Walk (Lugard Road & Harlech Road)": {
@@ -2977,6 +2986,81 @@
     "hip"
    ],
    "tips": "Tai Nan Street has coffee roasters and leather ateliers; Ki Lung and Yu Chau streets are for fabric, ribbons and beads; Apliu Street sells gadgets. Go on a weekday afternoon, as wholesalers close at weekends."
+  },
+  "Australia Dairy Company": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Tai Cheong Bakery": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Lan Fong Yuen": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Capital Café": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Bakehouse": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Cheung Hong Yuen": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Luen Wah Cafe": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Sang Kee Congee Shop": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Luk On Kui (formerly Lin Heung Kui)": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Si Yik": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Tak Tou": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Shing Kee": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Shui Kee Coffee": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Kau Kee Beef Offal Noodles": {
+   "add_category": [
+    "breakfast"
+   ]
+  },
+  "Sun Hing Restaurant": {
+   "add_category": [
+    "breakfast"
+   ]
   }
  },
  "drop": [
