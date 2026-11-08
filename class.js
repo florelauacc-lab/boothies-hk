@@ -350,6 +350,8 @@
     if (e.price > 0) return e.going.includes(n) ? +e.price : 0;
     return (data.bills || []).filter((b) => b.ev === e.id).reduce((t, b) => t + (billShares(b)[n] || 0), 0);
   }
+  // column names: short day + event, e.g. "Thu Dim Sum Breakfast"
+  const colName = (e) => SHORT[e.id] || `${(DAYS.find(([iso]) => iso === e.iso)?.[1] || "").split(" ")[0]} ${e.title}`.trim();
   function overview(evs) {
     const ppl = people(), bal = allBalances();
     const other = (n) => (data.bills || []).filter((b) => !b.ev).reduce((t, b) => t + (billShares(b)[n] || 0), 0);
@@ -362,7 +364,7 @@
     };
     return `<details class="cc-all"><summary>📋 Full list: everyone × every event</summary>
       <div class="cc-scroll"><table>
-        <thead><tr><th>Name</th>${evs.map((e) => `<th>${esc(SHORT[e.id] || e.title)}</th>`).join("")}<th>Total</th><th>Balance</th></tr></thead>
+        <thead><tr><th>Name</th>${evs.map((e) => `<th>${esc(colName(e))}</th>`).join("")}<th>Total</th><th>Balance</th></tr></thead>
         <tbody>${ppl.map((n) => { const b = Math.round(bal[n] || 0), tt = total(n);
           return `<tr class="${n === me ? "me" : ""}"><td>${esc(n)}</td>${evs.map((e) => cell(n, e)).join("")}<td>${tt ? hk(tt) : "–"}</td><td class="${b < 0 ? "neg" : b > 0 ? "pos" : ""}">${Math.abs(b) < 1 ? "✓" : b < 0 ? `owes ${hk(-b)}` : `owed ${hk(b)}`}</td></tr>`; }).join("")}</tbody>
         <tfoot><tr><td>Going</td>${evs.map((e) => `<td>${e.going.length}<br><small>${evTotal(e) ? hk(evTotal(e)) : "cost TBC"}</small></td>`).join("")}<td></td><td></td></tr></tfoot>
@@ -711,7 +713,7 @@
     if (t.id === "cc-csv" && data) {
       const evs = data.events, bal = balances();
       const ab = allBalances();
-      const rows = [["Name", ...evs.map((ev) => SHORT[ev.id] || ev.title), "Total (HKD)", "Balance (HKD, minus = owes)"]];
+      const rows = [["Name", ...evs.map((ev) => colName(ev)), "Total (HKD)", "Balance (HKD, minus = owes)"]];
       people().forEach((n) => rows.push([n, ...evs.map((ev) => Math.round(shareFor(n, ev)) || (ev.going.includes(n) ? "going" : "")), Math.round(evs.reduce((t, ev) => t + shareFor(n, ev), 0)) || "", Math.round(ab[n] || 0)]));
       const csv = rows.map((r) => r.map((x) => `"${String(x).replace(/"/g, '""')}"`).join(",")).join("\n");
       (navigator.clipboard?.writeText(csv) || Promise.reject()).then(() => { t.textContent = "Copied ✓ Paste into Sheets or Excel"; }, () => prompt("Copy this:", csv));
