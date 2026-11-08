@@ -165,7 +165,7 @@ export default async function handler(req, res) {
         const [cur] = await redis([["GET", `${P}meta`]]);
         const m = JSON.parse(cur || "{}");
         m.payLinks = { ...(m.payLinks || {}) };
-        ["paypal", "payme", "fps", "bank", "accName", "bankName", "accNo", "swift"].forEach((k) => { if (b[k] != null) m.payLinks[k] = clean(b[k], 200) || null; });
+        ["paypal", "payme", "fps", "bank", "accName", "bankName", "accNo", "swift", "wechat"].forEach((k) => { if (b[k] != null) m.payLinks[k] = clean(b[k], 200) || null; });
         if (m.payLinks.paypal && !/^https:\/\/(www\.)?paypal\.me\//i.test(m.payLinks.paypal)) return res.status(400).json({ error: "PayPal link must start with https://paypal.me/" });
         if (m.payLinks.payme && !/^https:\/\/(payme\.hsbc|pay\.payme)\./i.test(m.payLinks.payme)) return res.status(400).json({ error: "PayMe link must be an HSBC PayMe link" });
         await redis([["SET", `${P}meta`, JSON.stringify(m)]]);
@@ -239,7 +239,7 @@ export default async function handler(req, res) {
         const url = (v) => { const u = clean(v, 200); return !u ? "" : /^https:\/\//i.test(u) ? u : null; };
         const paypal = url(b.paypal), wise = url(b.wiseLink);
         if (paypal === null || wise === null) return res.status(400).json({ error: "Links must start with https://" });
-        const next = { paypal, fps: clean(b.fps, 60), bank: clean(b.bank, 160), accName: clean(b.accName, 80), bankName: clean(b.bankName, 80), accNo: clean(b.accNo, 40), swift: clean(b.swift, 20),
+        const next = { paypal, fps: clean(b.fps, 60), bank: clean(b.bank, 160), accName: clean(b.accName, 80), bankName: clean(b.bankName, 80), accNo: clean(b.accNo, 40), swift: clean(b.swift, 20), wechat: clean(b.wechat, 60),
           wiseLink: wise, cash: !!b.cash, note: clean(b.note, 120), pinHash: prevP.pinHash || null };
         if (b.newPin) next.pinHash = sha(`${name}|${clean(b.newPin, 12)}`);
         await redis([["HSET", `${P}profiles`, name, JSON.stringify(next)]]);

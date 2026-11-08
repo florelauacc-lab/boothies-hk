@@ -1342,3 +1342,6 @@ body.dragging .pd { outline: 1px dashed rgba(255,196,77,.5); }
 .bl span { min-width: 0; overflow-wrap: anywhere; font-weight: 700; font-size: .9rem; }
 .bl small { display: block; color: var(--muted); font-weight: 600; font-size: .72rem; }
 .pw-bank { align-items: flex-start; }
+.name-find { width: 100%; font: inherit; font-size: 16px; padding: 10px 12px; margin: 4px 0 6px; border-radius: 10px; border: 1px solid rgba(255,196,77,.45); background: rgba(0,0,0,.3); color: var(--text); }
+.cc-ev .name-find { width: calc(100% - 28px); margin: 0 14px 8px; }
+.tb-top .cc-mini { margin-left: auto; }

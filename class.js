@@ -43,7 +43,7 @@
   const total = (e) => (e.expenses || []).reduce((t, x) => t + (+x.hkd || 0), 0);
   // each person's share: the set price per person, or (if a bill was entered instead) the bill split evenly
   const each = (e) => (e.price > 0 ? +e.price : total(e) && e.going.length ? total(e) / e.going.length : null);
-  const PAY_METHODS = ["PayPal / card", "Wise / bank", "FPS", "Cash"];
+  const PAY_METHODS = ["PayPal / card", "Wise / bank", "FPS", "WeChat Pay", "Cash"];
 
   /* ---------- state ---------- */
   let data = null, mode = "locked", pass = get("hk-pass-v1") || "", orgPass = get("hk-org-v1") || "";
@@ -190,6 +190,7 @@
         <p class="muted small">${esc(data.groupsNote || "")}</p>
       </details>`;
     fillPlan();
+    root.querySelectorAll(".name-find").forEach((inp) => { if (inp.value) inp.dispatchEvent(new Event("input", { bubbles: true })); }); // keep the name filter after a redraw
     window.HK_REPLAN?.();
     window.HK_CUSTOM_EVENTS?.(evs.filter((e) => e.id.startsWith("x-")));
     if (me) window.HK_AUTO_MINE?.(mine.map((e) => e.id));
@@ -232,34 +233,14 @@
   }
 
 
-  // table bookings for an event: who's at which time, who still needs a seat
+  // table bookings for an event: just the times and sizes (people turn up and get seated as tables free up)
   function tablesBlock(e) {
     const tables = e.tables || [];
     if (!tables.length && !live()) return "";
-    const seated = new Set(tables.flatMap((t) => t.names || []));
-    const unseated = e.going.filter((n) => !seated.has(n));
-    const myT = tables.find((t) => (t.names || []).includes(me));
-    const rows = tables.map((t) => {
-      const n = (t.names || []).length, full = t.size && n >= t.size;
-      const mine = myT === t;
-      return `<li class="tb${mine ? " mine" : ""}">
-        <div class="tb-top"><b>${esc(t.time || "Time TBC")}</b> <span>${t.label ? `${esc(t.label)} · ` : ""}table for ${t.size || "?"}</span>
-          <em class="${full ? "ok" : "wait"}">${n}${t.size ? ` of ${t.size}` : ""} ${full ? "· full" : "seated"}</em></div>
-        <div class="cc-names">${(t.names || []).map((x) => `<span class="${x === me ? "me" : ""}">${esc(x)}</span>`).join("") || `<em class="muted">Nobody yet</em>`}</div>
-        ${live() ? `<div class="tb-actions">
-          ${me && e.going.includes(me) ? (mine ? `<button type="button" class="cc-mini undo" data-seat="${e.id}" data-table="${t.id}" data-name="${esc(me)}" data-on="0">Leave this table</button>`
-            : full ? "" : `<button type="button" class="cc-mini go" data-seat="${e.id}" data-table="${t.id}" data-name="${esc(me)}" data-on="1">＋ Join this table</button>`) : ""}
-          <button type="button" class="cc-mini" data-seatedit="${e.id}|${t.id}">✏️ Seat people</button>
-          <button type="button" class="cc-mini" data-splittable="${e.id}|${t.id}">🧾 Split this table's bill</button>
-          <button type="button" class="cc-x" data-deltable="${e.id}|${t.id}" aria-label="Remove booking">✕</button>
-        </div>` : ""}
-        ${seatEditing === `${e.id}|${t.id}` ? `<p class="cc-hint">Tap to seat or unseat (moves them from any other table)</p><div class="cc-names edit">${e.going.map((x) => `<button type="button" class="${(t.names || []).includes(x) ? "on" : ""}" data-seat="${e.id}" data-table="${t.id}" data-name="${esc(x)}" data-on="${(t.names || []).includes(x) ? 0 : 1}">${(t.names || []).includes(x) ? "✓ " : ""}${esc(x)}${tables.some((o) => o !== t && (o.names || []).includes(x)) ? " ·" + esc(tables.find((o) => o !== t && (o.names || []).includes(x)).time || "") : ""}</button>`).join("")}</div><button type="button" class="cc-done" data-seatedit="">Done</button>` : ""}
-      </li>`;
-    }).join("");
     return `<div class="cc-tables"><h4>🍽️ Table bookings</h4>
-      ${myT ? `<p class="small">Your table: <b>${esc(myT.time || "TBC")}</b>${myT.label ? ` · ${esc(myT.label)}` : ""}. Walk in at that time.</p>` : ""}
-      ${tables.length ? `<ul class="tb-list">${rows}</ul>` : `<p class="muted small">No bookings yet.</p>`}
-      ${tables.length && unseated.length ? `<p class="small"><b>Not seated yet (${unseated.length}):</b> ${unseated.map(esc).join(", ")}</p>` : ""}
+      ${tables.length ? `<ul class="tb-list">${tables.map((t) => `<li class="tb"><div class="tb-top"><b>${esc(t.time || "Time TBC")}</b> <span>${t.label ? `${esc(t.label)} · ` : ""}table for ${t.size || "?"}</span>
+        ${live() ? `<button type="button" class="cc-mini" data-splittable="${e.id}|${t.id}">🧾 Split this table's bill</button><button type="button" class="cc-x" data-deltable="${e.id}|${t.id}" aria-label="Remove booking">✕</button>` : ""}</div></li>`).join("")}</ul>
+        <p class="small">Arrive from ${esc(tables[0].time || "the first booking")} and you'll be seated as tables free up. After dinner, each table splits its own bill.</p>` : `<p class="muted small">No bookings yet.</p>`}
       ${live() ? `<form class="cc-inline" data-addtable="${e.id}"><input name="time" placeholder="Time, e.g. 20:45" maxlength="20" required aria-label="Booking time"><input name="size" type="number" inputmode="numeric" min="1" max="40" placeholder="Seats" aria-label="Number of seats" required><button type="submit">＋ Add a booking</button></form>` : ""}
     </div>`;
   }
@@ -275,7 +256,8 @@
       ${me && live() ? `<button type="button" class="cc-imin${inIt ? " on" : ""}" data-tick="${e.id}" data-name="${esc(me)}" data-on="${inIt ? 0 : 1}">${inIt ? "✓ I'm going · tap to undo" : "+ I'm going"}</button>` : ""}
       ${ed
         ? `<p class="cc-hint">Tap names to tick or untick · ${e.going.length} going</p>
-          <div class="cc-names edit">${ppl.map((x) => `<button type="button" class="${e.going.includes(x.name) ? "on" : ""}${x.away ? " away" : ""}" data-tick="${e.id}" data-name="${esc(x.name)}" data-on="${e.going.includes(x.name) ? 0 : 1}">${e.going.includes(x.name) ? "✓ " : ""}${esc(x.name)}${x.away ? " (not in HK)" : ""}</button>`).join("")}</div>
+          <input class="name-find" data-find="ev" placeholder="Type a name to find them (Enter to tick)" autocomplete="off" aria-label="Find a name">
+          <div class="cc-names edit">${ppl.map((x) => `<button type="button" data-nm="${esc(x.name.toLowerCase())}" class="${e.going.includes(x.name) ? "on" : ""}${x.away ? " away" : ""}" data-tick="${e.id}" data-name="${esc(x.name)}" data-on="${e.going.includes(x.name) ? 0 : 1}">${e.going.includes(x.name) ? "✓ " : ""}${esc(x.name)}${x.away ? " (not in HK)" : ""}</button>`).join("")}</div>
           <form class="cc-inline" data-addperson="${e.id}"><input name="name" placeholder="Not on the list? Add their name" maxlength="60" required><button type="submit">Add &amp; tick</button></form>
           <button type="button" class="cc-done" data-edit="">Done</button>`
         : `<div class="cc-names">${e.going.map((n) => `<span class="${n === me ? "me" : ""}">${esc(n)}</span>`).join("") || `<em class="muted">Nobody yet</em>`}</div>
@@ -322,6 +304,7 @@
         : `<div class="pw"><span class="pw-i">💳</span><div><b>PayPal or card</b><small>Works from any country. A card fee of about 3–5% applies.</small></div>${soon}</div>`}
       <div class="pw"><span class="pw-i">⚡</span><div><b>FPS</b><small>Hong Kong bank accounts: instant and free${L.fps ? ` · <span class="pw-v">${esc(L.fps)}</span>` : ""}</small></div>${L.fps ? copy(L.fps) : soon}</div>
       <div class="pw pw-bank"><span class="pw-i">🌍</span><div><b>Bank transfer (Wise)</b><small>Cheapest from abroad</small>${bankLines(L)}</div>${L.bank || L.accNo ? "" : soon}</div>
+      <div class="pw"><span class="pw-i">💬</span><div><b>WeChat Pay</b><small>Handy for classmates from China${L.wechat ? ` · <span class="pw-v">${esc(L.wechat)}</span>` : ""}</small></div>${L.wechat ? copy(L.wechat) : soon}</div>
       <div class="pw"><span class="pw-i">💵</span><div><b>Cash</b><small>HKD in person. ${esc(data.payTo)} is happy with cash.</small></div></div>
     </div>`;
   }
@@ -361,6 +344,7 @@
           <input name="bankName" placeholder="Bank (e.g. HSBC Hong Kong)" value="${esc(L.bankName || "")}">
           <input name="accNo" placeholder="Account number" value="${esc(L.accNo || "")}">
           <input name="swift" placeholder="SWIFT / bank code (for transfers from abroad)" value="${esc(L.swift || "")}">
+          <input name="wechat" placeholder="WeChat ID (for WeChat Pay)" value="${esc(L.wechat || "")}">
           <button type="submit">Save payment details</button>
         </form>
         <button type="button" class="cc-done" data-orgout="1" style="margin:0 14px 14px">Sign out as organiser</button>`
@@ -388,7 +372,9 @@
   /* ---------- split a bill: dinners by table, people's own events, any payer ---------- */
   // a draft kept outside the DOM, so the form survives the list refreshing every 30 seconds
   let billDraft = null;
-  const newDraft = () => ({ what: "", ev: "", hkd: "", paidBy: me, among: new Set(me ? [me] : []), mode: "equal", shares: {} });
+  // who paid: Rienno by default, but only for events he's at; otherwise you
+  const defaultPayer = (evId) => { const E = evId && data.events.find((x) => x.id === evId); return E && data.payTo && E.going.includes(data.payTo) ? data.payTo : me || data.payTo; };
+  const newDraft = () => ({ what: "", ev: "", hkd: "", paidBy: me || data.payTo, among: new Set(me ? [me] : []), mode: "equal", shares: {}, q: "" });
   const billShares = (b) => b.shares || Object.fromEntries(b.among.map((n) => [n, b.hkd / b.among.length]));
   function billBalances() { // + means you're owed, - means you owe
     const bal = {};
@@ -421,6 +407,7 @@
       pr.fps && `<button class="paybtn" type="button" data-copy="${esc(pr.fps)}">⚡ FPS ${esc(pr.fps)} · copy</button>`,
 
       pr.wiseLink && `<a class="paybtn" href="${esc(pr.wiseLink)}" target="_blank" rel="noopener">🌍 Wise</a>`,
+      pr.wechat && `<button class="paybtn" type="button" data-copy="${esc(pr.wechat)}">💬 WeChat Pay ${esc(pr.wechat)} · copy</button>`,
       pr.cash && `<span class="pw-soon">💵 Cash is fine</span>`,
     ].filter(Boolean);
     const bl = bankLines(pr);
@@ -453,7 +440,8 @@
         <p class="bf-h">Who's at this table? <small>${among.length} picked</small>
           ${d.ev ? `<button type="button" class="cc-mini" data-bf-all="1">Everyone at ${esc(evName(d.ev) || "the event")}</button>` : ""}
           <button type="button" class="cc-mini" data-bf-none="1">Clear</button></p>
-        <div class="cc-names edit">${ppl.map((n) => `<button type="button" class="${d.among.has(n) ? "on" : ""}" data-bf-toggle="${esc(n)}">${d.among.has(n) ? "✓ " : ""}${esc(n)}</button>`).join("")}</div>
+        <input class="name-find" data-find="bf" placeholder="Type a name to find them (Enter to tick)" value="${esc(d.q || "")}" autocomplete="off" aria-label="Find a name">
+        <div class="cc-names edit">${ppl.map((n) => `<button type="button" class="${d.among.has(n) ? "on" : ""}" data-bf-toggle="${esc(n)}" data-nm="${esc(n.toLowerCase())}">${d.among.has(n) ? "✓ " : ""}${esc(n)}</button>`).join("")}</div>
         <p class="bf-h">Split
           <button type="button" class="cc-mini${d.mode === "equal" ? " go" : ""}" data-bf-mode="equal">Equally</button>
           <button type="button" class="cc-mini${d.mode === "custom" ? " go" : ""}" data-bf-mode="custom">Custom amounts</button></p>
@@ -488,6 +476,7 @@
           <input name="accNo" placeholder="Account number / IBAN" value="${esc(pr.accNo || "")}">
           <input name="swift" placeholder="SWIFT / routing / sort code" value="${esc(pr.swift || "")}">
           <input name="wiseLink" placeholder="Wise payment link (optional)" value="${esc(pr.wiseLink || "")}">
+          <input name="wechat" placeholder="WeChat ID (for WeChat Pay)" value="${esc(pr.wechat || "")}">
           <input name="note" placeholder="Note (e.g. Venmo @name, Revolut, PayNow)" value="${esc(pr.note || "")}">
           <label class="bf-check"><input type="checkbox" name="cash"${pr.cash ? " checked" : ""}> Cash is fine</label>
           ${pr.locked ? `<input name="pin" type="password" inputmode="numeric" placeholder="Your PIN (needed to change these)">` : `<input name="newPin" type="password" inputmode="numeric" maxlength="12" placeholder="Optional PIN, so only you can change these">`}
@@ -519,7 +508,24 @@
     const t = e.target;
     if (!billDraft || !root.contains(t) || !t.dataset.bf) return;
     billDraft[t.dataset.bf] = t.value;
-    if (t.dataset.bf === "ev" && t.value) { const E = data.events.find((x) => x.id === t.value); if (E) { billDraft.among = new Set(E.going); if (!billDraft.what) billDraft.what = E.title; } render(); }
+    if (t.dataset.bf === "ev" && t.value) { const E = data.events.find((x) => x.id === t.value); if (E) { billDraft.among = new Set(E.going); billDraft.paidBy = defaultPayer(E.id); if (!billDraft.what) billDraft.what = E.title; } render(); }
+  });
+
+
+  // name finder: filters the chips as you type; Enter ticks the first visible match
+  document.addEventListener("input", (e) => {
+    const inp = e.target.closest?.(".name-find");
+    if (!inp) return;
+    const q = inp.value.trim().toLowerCase(), box = inp.nextElementSibling;
+    if (inp.dataset.find === "bf" && billDraft) billDraft.q = inp.value;
+    box?.querySelectorAll("[data-nm]").forEach((b) => { b.hidden = !!q && !b.dataset.nm.split(/\s+/).some((w) => w.startsWith(q)) && !b.dataset.nm.includes(q); });
+  });
+  document.addEventListener("keydown", (e) => {
+    const inp = e.target.closest?.(".name-find");
+    if (!inp || e.key !== "Enter") return;
+    e.preventDefault();
+    const first = [...(inp.nextElementSibling?.querySelectorAll("[data-nm]") || [])].find((b) => !b.hidden);
+    if (first) { inp.value = ""; if (billDraft && inp.dataset.find === "bf") billDraft.q = ""; first.click(); setTimeout(() => root.querySelector(`.name-find[data-find="${inp.dataset.find}"]`)?.focus(), 80); }
   });
 
   // the week plan shows a one-line summary under each class event
@@ -529,7 +535,7 @@
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
       const myT = (e.tables || []).find((t) => (t.names || []).includes(me));
-      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${myT ? ` · 🍽️ your table ${esc(myT.time || "")}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>`;
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.going.length} going${(e.tables || []).length ? ` · 🍽️ tables from ${esc(e.tables[0].time || "")}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>`;
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;
@@ -593,14 +599,14 @@
     const sp = t.closest("[data-splittable]");
     if (sp) {
       const [ev, table] = sp.dataset.splittable.split("|"); const E = data.events.find((x) => x.id === ev), T = E.tables.find((x) => x.id === table);
-      billDraft = { ...newDraft(), ev, what: `${E.title}, ${T.time} table`, among: new Set(T.names || []), paidBy: (T.names || []).includes(me) ? me : (T.names || [])[0] || me };
+      billDraft = { ...newDraft(), ev, what: `${E.title}, ${T.time} table`, among: new Set(me ? [me] : []), paidBy: defaultPayer(ev) };
       render(); setTimeout(() => document.getElementById("bill-form")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
       return;
     }
     const se = t.closest("[data-splitev]");
     if (se) {
       const E = data.events.find((x) => x.id === se.dataset.splitev);
-      billDraft = { ...newDraft(), ev: E.id, what: E.title, among: new Set(E.going) };
+      billDraft = { ...newDraft(), ev: E.id, what: E.title, among: new Set(E.going), paidBy: defaultPayer(E.id) };
       render();
       setTimeout(() => document.getElementById("bill-form")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
       return;
@@ -669,14 +675,14 @@
       op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: fd("method") }).then((ok) => ok && toast(`Thanks! ${x.to} will confirm when it arrives`));
     }
     else if (f.id === "my-pay") {
-      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wiseLink: fd("wiseLink"), note: fd("note"), cash: f.elements.cash.checked, pin: fd("pin"), newPin: fd("newPin") })
+      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), note: fd("note"), cash: f.elements.cash.checked, pin: fd("pin"), newPin: fd("newPin") })
         .then((ok) => ok && toast("Your payment details are saved"));
     }
     else if (f.id === "cc-org") {
       orgPass = fd("code").toLowerCase();
       api("GET").then((s) => { if (s.organiser) { set("hk-org-v1", orgPass); data = s; render(); toast("Signed in as organiser"); } else { orgPass = ""; toast("That organiser code isn't right"); } }, () => { orgPass = ""; toast("Couldn't check the code"); });
     }
-    else if (f.id === "cc-pay") { op({ op: "setPay", paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift") }).then((ok) => ok && toast("Saved")); }
+    else if (f.id === "cc-pay") { op({ op: "setPay", paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat") }).then((ok) => ok && toast("Saved")); }
     else if (f.id === "cc-paid") {
       const unpaid = data.events.filter((e) => e.going.includes(me) && each(e) && !evPay(me, e.id));
       const pick = fd("what") === "all" ? unpaid : unpaid.filter((e) => e.id === fd("what"));
