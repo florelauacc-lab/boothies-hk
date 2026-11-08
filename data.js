@@ -124,6 +124,11 @@ window.HK = {
    ],
    "emoji": "🌶️",
    "orSmile": 97,
+   "orFaces": [
+    333,
+    10,
+    2
+   ],
    "orScore": 4.9,
    "orReviews": 357
   },
@@ -164,6 +169,11 @@ window.HK = {
    ],
    "emoji": "🍲",
    "orSmile": 97,
+   "orFaces": [
+    192,
+    5,
+    1
+   ],
    "orScore": 4.9,
    "orReviews": 212
   },
@@ -203,6 +213,11 @@ window.HK = {
    ],
    "emoji": "🍜",
    "orSmile": 96,
+   "orFaces": [
+    85,
+    3,
+    1
+   ],
    "orScore": 4.9,
    "orReviews": 93
   },
@@ -242,6 +257,11 @@ window.HK = {
    ],
    "emoji": "🍢",
    "orSmile": 100,
+   "orFaces": [
+    46,
+    0,
+    0
+   ],
    "orScore": 5.0,
    "orReviews": 51
   },
@@ -281,6 +301,11 @@ window.HK = {
    ],
    "emoji": "🍧",
    "orSmile": 99,
+   "orFaces": [
+    71,
+    0,
+    1
+   ],
    "orScore": 4.9,
    "orReviews": 76
   },
@@ -321,6 +346,11 @@ window.HK = {
    ],
    "emoji": "🍣",
    "orSmile": 95,
+   "orFaces": [
+    331,
+    13,
+    6
+   ],
    "orScore": 4.9,
    "orReviews": 366
   },
@@ -364,6 +394,11 @@ window.HK = {
    "gRating": 4.1,
    "gReviews": 2221,
    "orSmile": 71,
+   "orFaces": [
+    126,
+    38,
+    14
+   ],
    "orScore": 4.3,
    "orReviews": 212
   },
@@ -402,6 +437,11 @@ window.HK = {
    ],
    "emoji": "🍢",
    "orSmile": 100,
+   "orFaces": [
+    56,
+    0,
+    0
+   ],
    "orScore": 5.0,
    "orReviews": 59
   },
@@ -444,6 +484,11 @@ window.HK = {
    "gRating": 4.0,
    "gReviews": 1270,
    "orSmile": 74,
+   "orFaces": [
+    228,
+    57,
+    23
+   ],
    "orScore": 4.3,
    "orReviews": 373
   },
@@ -486,6 +531,11 @@ window.HK = {
    "gRating": 4.8,
    "gReviews": 2131,
    "orSmile": 87,
+   "orFaces": [
+    62,
+    6,
+    3
+   ],
    "orScore": 4.7,
    "orReviews": 77
   },
@@ -525,6 +575,11 @@ window.HK = {
    ],
    "emoji": "🍧",
    "orSmile": 93,
+   "orFaces": [
+    123,
+    3,
+    6
+   ],
    "orScore": 4.8,
    "orReviews": 138
   },
@@ -567,6 +622,11 @@ window.HK = {
    "gRating": 4.1,
    "gReviews": 932,
    "orSmile": 78,
+   "orFaces": [
+    238,
+    58,
+    9
+   ],
    "orScore": 4.5,
    "orReviews": 361
   },
@@ -604,6 +664,11 @@ window.HK = {
    ],
    "emoji": "🍜",
    "orSmile": 72,
+   "orFaces": [
+    128,
+    34,
+    15
+   ],
    "orScore": 4.3,
    "orReviews": 216
   },
@@ -643,6 +708,11 @@ window.HK = {
    ],
    "emoji": "🍛",
    "orSmile": 75,
+   "orFaces": [
+    141,
+    33,
+    14
+   ],
    "orScore": 4.4,
    "orReviews": 261
   },
@@ -2922,6 +2992,11 @@ window.HK = {
    "addressZh": "中西區些利街2號LL TOWER",
    "emoji": "🍷",
    "orSmile": 100,
+   "orFaces": [
+    31,
+    0,
+    0
+   ],
    "orScore": 5.0,
    "orReviews": 36,
    "openrice": "https://www.openrice.com/en/hongkong/r-thinkwine-central-western-wine-r648432"
@@ -3480,6 +3555,11 @@ window.HK = {
    "gRating": 4.0,
    "gReviews": 6472,
    "orSmile": 69,
+   "orFaces": [
+    1903,
+    570,
+    298
+   ],
    "orScore": 4.2,
    "orReviews": 3226,
    "openrice": "https://www.openrice.com/en/hongkong/r-australia-dairy-company-jordan-hong-kong-style-dessert-r90/"
@@ -3671,7 +3751,16 @@ window.HK = {
    ],
    "emoji": "🍖",
    "gRating": 4.1,
-   "gReviews": 6381
+   "gReviews": 6381,
+   "orSmile": 40,
+   "orFaces": [
+    90,
+    80,
+    54
+   ],
+   "orScore": 3.3,
+   "orReviews": 335,
+   "openrice": "https://www.openrice.com/en/hongkong/r-kams-roast-goose-wan-chai-guangdong-chinese-bbq-r175339"
   },
   {
    "tab": "city",
@@ -4303,6 +4392,11 @@ window.HK = {
    "gRating": 4.3,
    "gReviews": 1423,
    "orSmile": 77,
+   "orFaces": [
+    157,
+    34,
+    13
+   ],
    "orScore": 4.4,
    "orReviews": 236,
    "openrice": "https://www.openrice.com/en/hongkong/r-hutong-tsim-sha-tsui-sichuan-dim-sum-r734623"

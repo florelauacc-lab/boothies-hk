@@ -167,7 +167,11 @@
  "kam-s-roast-goose": {
   "rating": 4.1,
   "reviews": 6381,
-  "or_url": "https://www.openrice.com/en/hongkong/r-kams-roast-goose-wan-chai-guangdong-chinese-bbq-r175339"
+  "or_url": "https://www.openrice.com/en/hongkong/r-kams-roast-goose-wan-chai-guangdong-chinese-bbq-r175339",
+  "or_smile": 90,
+  "or_ok": 80,
+  "or_cry": 54,
+  "or_reviews": 335
  },
  "yat-lok": {
   "rating": 3.4,

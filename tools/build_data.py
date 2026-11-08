@@ -672,6 +672,7 @@ for p in places:
     if not orv and votes >= 20:
         orv = round((5 * sm + 3 * ok + 1 * cr) / votes, 1)
         p["orSmile"] = round(100 * sm / votes)
+        p["orFaces"] = [sm, ok, cr]  # shown as OpenRice does: 😊 yummy · 😐 OK · 😢 bad
     if orv:
         p["orScore"], p["orReviews"] = orv, r.get("or_reviews") or votes or 0
         if r.get("or_url") and not p.get("openrice"):

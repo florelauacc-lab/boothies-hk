@@ -366,7 +366,7 @@
       + (p.veg ? `<span class="tag badge-veg">🥬 ${esc(p.veg)}</span>` : "") + (p.boothies ? `<span class="tag badge-boothies">👥 Boothies map</span>` : "") + (p.local ? `<span class="tag badge-local">🏮 Local favourite</span>` : "") + (p.topBar ? `<span class="tag badge-pick">★ Top bar${p.award ? ` · ${esc(p.award.split(/[;+(]/)[0].trim())}` : ""}</span>` : "") + (p.picked ? `<span class="tag badge-pick">★ Class pick</span>` : "") + (p.flags || []).map((f) => `<span class="tag warn">${esc(f)}</span>`).join("");
     const meta = [
       p.gRating && `<span class="stars" title="Google rating">★ ${p.gRating.toFixed(1)}${p.gReviews ? ` <small>(${kfmt(p.gReviews)})</small>` : ""}</span>`,
-      p.orScore && `<span class="stars or" title="OpenRice, Hong Kong's local review site">OpenRice ${p.orSmile != null ? `😊 ${p.orSmile}%` : p.orScore.toFixed(1)}${p.orReviews ? ` <small>(${kfmt(p.orReviews)})</small>` : ""}</span>`,
+      p.orScore && `<span class="stars or" title="OpenRice, Hong Kong's local review site">OpenRice ${p.orFaces ? `😊 ${kfmt(p.orFaces[0])} · 😐 ${kfmt(p.orFaces[1])} · 😢 ${kfmt(p.orFaces[2])}` : `${p.orScore.toFixed(1)}<small>/5</small>${p.orReviews ? ` <small>(${kfmt(p.orReviews)})</small>` : ""}`}</span>`,
       p.price && `<span class="price">${esc(p.price)}</span>`,
       `<span>${esc(p.cuisine)}</span>`,
       `<span>${esc(p.area)}</span>`,
