@@ -260,8 +260,8 @@
     const seatLine = tables.length ? (short
       ? `<p class="tb-gap">⚠️ <b>${headcount(e)} going, ${n} seats booked: book ${short} more seat${short > 1 ? "s" : ""}</b>${unnamed(e) ? `<br><small>Includes ${unnamed(e)} not named yet</small>` : ""}</p>`
       : `<p class="tb-ok">✓ ${n} seats booked for ${headcount(e)} going${n > headcount(e) ? ` · ${n - headcount(e)} spare` : ""}</p>`) : "";
-    if (!tables.length && !live()) return "";
-    return `<div class="cc-tables"><h4>🍽️ Table bookings</h4>${seatLine}
+    if (!tables.length && !live() && !e.bookedBy) return "";
+    return `<div class="cc-tables"><h4>🍽️ Table bookings${e.bookedBy ? ` <small>· booked by ${esc(e.bookedBy)}</small>` : ""}</h4>${seatLine}
       ${tables.length ? `<ul class="tb-list">${tables.map((t) => `<li class="tb"><div class="tb-top"><b>${esc(t.time || "Time TBC")}</b> <span>${t.label ? `${esc(t.label)} · ` : ""}table for ${t.size || "?"}</span>
         ${live() ? `<button type="button" class="cc-mini" data-splittable="${e.id}|${t.id}">🧾 Split this table's bill</button><button type="button" class="cc-x" data-deltable="${e.id}|${t.id}" aria-label="Remove booking">✕</button>` : ""}</div></li>`).join("")}</ul>
         <p class="small">Arrive from ${esc(tables[0].time || "the first booking")} and you'll be seated as tables free up. After dinner, each table splits its own bill.</p>` : `<p class="muted small">No bookings yet.</p>`}
@@ -277,6 +277,7 @@
       <summary><span class="t"><b>${esc(e.title)}</b><small>${esc([day, e.when].filter(Boolean).join(", "))}${e.venue ? ` · ${esc(e.venue)}` : ""}</small></span>
       <span class="n">${e.going.length}${unnamed(e) ? ` +${unnamed(e)}` : ""} going${inIt ? " · ✓ you" : ""}<br><em>${p ? `${hk(p)} each ≈ ${fx(p)}` : "price to come"}</em></span></summary>
       ${placesFor(e.venue).map((pl) => `<button type="button" class="cc-venue" data-jump="${pl.id}">📍 ${esc(pl.name)} · map &amp; taxi card →</button>`).join("")}
+      ${e.group ? `<p class="cc-either">Pick one: ${data.events.filter((x) => x.group === e.group && x.id !== e.id).map((x) => esc(x.title)).join(" or ")} is the other option. Going to this one takes you off the other.</p>` : ""}
       ${me && live() ? `<button type="button" class="cc-imin${inIt ? " on" : ""}" data-tick="${e.id}" data-name="${esc(me)}" data-on="${inIt ? 0 : 1}">${inIt ? "✓ I'm going · tap to undo" : "+ I'm going"}</button>` : ""}
       ${ed
         ? `<p class="cc-hint">Tap names to tick or untick · ${e.going.length} going</p>
@@ -417,8 +418,28 @@
       bal[b.paidBy] = (bal[b.paidBy] || 0) + b.hkd;
       Object.entries(billShares(b)).forEach(([n, v]) => { bal[n] = (bal[n] || 0) - v; });
     });
-    (data.xfers || []).forEach((x) => { bal[x.from] = (bal[x.from] || 0) + x.hkd; bal[x.to] = (bal[x.to] || 0) - x.hkd; });
+    (data.xfers || []).filter((x) => !x.direct).forEach((x) => { bal[x.from] = (bal[x.from] || 0) + x.hkd; bal[x.to] = (bal[x.to] || 0) - x.hkd; });
     return bal;
+  }
+  // when two people owe each other (one way netted, the other a payback), show only the difference
+  function offsetPairs(pool, direct) {
+    const out = pool.map((t) => ({ ...t }));
+    direct.forEach((d) => {
+      const t = out.find((x) => !x.direct && x.from === d.to && x.to === d.from);
+      if (!t) { out.push({ ...d }); return; }
+      const net = d.hkd - t.hkd;
+      out.splice(out.indexOf(t), 1);
+      if (net >= 1) out.push({ ...d, hkd: net, note: `${d.note}, less the ${hk(t.hkd)} ${d.to} owes ${d.from}` });
+      else if (net <= -1) out.push({ ...t, hkd: -net });
+    });
+    return out;
+  }
+  // money someone fronted for a bill that another person collects: the collector pays them back directly
+  function directDebts() {
+    const m = {};
+    (data.bills || []).filter((b) => b.frontedBy).forEach((b) => { const k = `${b.paidBy}|${b.frontedBy}`; (m[k] = m[k] || { from: b.paidBy, to: b.frontedBy, hkd: 0, what: [] }).hkd += b.hkd; m[k].what.push(b.what); });
+    (data.xfers || []).filter((x) => x.direct).forEach((x) => { const k = `${x.from}|${x.to}`; if (m[k]) m[k].hkd -= x.hkd; });
+    return Object.values(m).filter((d) => d.hkd >= 1).map((d) => ({ from: d.from, to: d.to, hkd: Math.round(d.hkd), direct: true, note: d.what.join(", ") }));
   }
   // fewest payments that settle everyone up (largest debts paid to largest credits first)
   function simplify(bal) {
@@ -452,11 +473,11 @@
   /* ---------- one combined balance: set-price events (Rienno paid), every bill, every payment ---------- */
     // each payment: who → who and the amount on top; status and buttons on their own line (anyone can mark or confirm)
   const sRow = (t) => `<li class="sp${t.to === me ? " owed" : t.from === me ? " me" : ""}">
-      <div class="sp-top"><span class="sp-who">${t.to === me ? `<b>${esc(t.from)}</b> owes you` : t.from === me ? `To <b>${esc(t.to)}</b>` : `<b>${esc(t.from)}</b> → <b>${esc(t.to)}</b>`}</span><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
+      <div class="sp-top"><span class="sp-who">${t.to === me ? `<b>${esc(t.from)}</b> owes you` : t.from === me ? `To <b>${esc(t.to)}</b>` : `<b>${esc(t.from)}</b> → <b>${esc(t.to)}</b>`}${t.direct ? `<small class="sp-for">Paid up front: ${esc(t.note)}</small>` : ""}</span><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
       ${t.from === me ? `${waysToPay(t.to, t.hkd)}<form class="cc-inline paid" data-xfer="${esc(JSON.stringify(t))}"><select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select><button type="submit">✓ I've paid ${esc(t.to)}</button></form>`
         : `<button type="button" class="cc-mini go sp-paid" data-xmark="${esc(JSON.stringify(t))}" aria-label="${esc(t.from)} has paid me">✓ Paid me</button>`}</li>`;
   const pRow = (x) => `<li class="sp pending">
-      <div class="sp-top"><span class="sp-who"><b>${esc(x.from)}</b> paid <b>${esc(x.to)}</b>${x.method ? ` <small>· ${esc(x.method)}</small>` : ""}</span><span class="amt">${hk(x.hkd)}</span></div>
+      <div class="sp-top"><span class="sp-who"><b>${esc(x.from)}</b> paid <b>${esc(x.to)}</b>${x.method ? ` <small>· ${esc(x.method)}</small>` : ""}${x.note ? ` <small>· ${esc(x.note)}</small>` : ""}</span><span class="amt">${hk(x.hkd)}</span></div>
       <div class="sp-act"><span class="sp-status wait">⏳ Needs confirming</span>
         <button type="button" class="cc-mini go" data-xconfirm="${x.id}">✓ Confirm received</button>
         <button type="button" class="cc-mini undo" data-xundo="${x.id}">↩ Undo</button></div></li>`;
@@ -472,12 +493,14 @@
   function settleBox() {
     if (!me) return `<div class="cc-owe"><h3 class="cc-h">💸 Settle up</h3><p class="small">Pick your name above to see what you owe and what you're owed.</p></div>`;
     const bal = allBalances(), sugg = simplify(bal);
-    const owe = sugg.filter((t) => t.from === me), owed = sugg.filter((t) => t.to === me);
+    const all = offsetPairs(sugg, directDebts());
+    const owe = all.filter((t) => t.from === me), owed = all.filter((t) => t.to === me);
     const pend = (data.xfers || []).filter((x) => !x.confirmed && (x.from === me || x.to === me));
     const sum = (a) => a.reduce((t, x) => t + x.hkd, 0);
     const items = [];
     data.events.forEach((e) => { if (e.price > 0 && e.going.includes(me)) items.push([e.title, -e.price, `paid by ${data.payTo}`]); });
-    (data.bills || []).forEach((b) => { const sh = billShares(b)[me]; if (sh) items.push([b.what, -sh, `paid by ${b.paidBy}`]); if (b.paidBy === me) items.push([`You paid: ${b.what}`, b.hkd, `for ${b.among.length} people`]); });
+    (data.bills || []).forEach((b) => { const sh = billShares(b)[me]; if (sh) items.push([b.what, -sh, `paid by ${b.paidBy}`]); if (b.paidBy === me) items.push([b.frontedBy ? `You collect: ${b.what}` : `You paid: ${b.what}`, b.hkd, `for ${b.among.length} people`]);
+      if (b.frontedBy === me) items.push([`You paid the restaurant: ${b.what}`, b.hkd, `${b.paidBy} pays you back`]); if (b.frontedBy && b.paidBy === me) items.push([`${b.frontedBy} paid the restaurant`, -b.hkd, "you pay them back"]); });
     (data.xfers || []).filter((x) => x.confirmed && (x.from === me || x.to === me)).forEach((x) => items.push([x.from === me ? `You paid ${x.to}` : `${x.from} paid you`, x.from === me ? x.hkd : -x.hkd, "✓✓ confirmed"]));
     Object.values(data.settle?.[me]?.payments || []).forEach((p) => items.push([`You paid ${data.payTo}`, p.hkd, p.confirmed ? "✓✓ confirmed" : "⏳ needs confirming"]));
     return `<div class="cc-owe">
@@ -487,6 +510,11 @@
       ${owe.length ? `<p class="sp-h">💸 You owe <b>${hk(sum(owe))}</b> <small>≈ ${fx(sum(owe))}</small></p><ul class="sp-list">${owe.map(sRow).join("")}</ul>` : ""}
       ${owed.length ? `<p class="sp-h">💰 Owed to you <b>${hk(sum(owed))}</b></p><ul class="sp-list">${owed.map(sRow).join("")}</ul>` : ""}
       ${pend.length ? `<p class="sp-h">⏳ Waiting to be confirmed</p><ul class="sp-list">${pend.map(pRow).join("")}</ul>` : ""}
+      ${live() ? `<details class="cc-collect"><summary>💵 Someone paid you for their share? Record it</summary>
+        <form class="cc-inline" id="cc-collect"><p class="muted small">For example, a classmate pays you by FPS or cash for an event ${esc(data.payTo)} paid. Record it here: their balance clears, and you then owe ${esc(data.payTo)} that amount instead.</p>
+          <select name="from" aria-label="Who paid you" required><option value="">Who paid you?</option>${people().filter((n) => n !== me).map((n) => `<option>${esc(n)}</option>`).join("")}</select>
+          <input name="hkd" type="number" inputmode="decimal" min="1" step="1" placeholder="HK$" aria-label="Amount" required>
+          <button type="submit">✓ Record</button></form></details>` : ""}
       ${items.length ? `<details class="cc-break"><summary>How it adds up · ${items.length}</summary><ul class="cc-mine">${items.map(([w, v, by]) => `<li class="mi"><div class="mrow"><span>${esc(w)} <small>· ${esc(by)}</small></span><b class="${v < 0 ? "neg" : "pos"}">${v < 0 ? "−" : "+"}${hk(Math.abs(v))}</b></div></li>`).join("")}</ul></details>` : ""}
     </div>`;
   }
@@ -518,7 +546,9 @@
         <div class="bf-row"><input name="what" placeholder="What (e.g. Thu dinner, table 2)" maxlength="60" value="${esc(d.what)}" data-bf="what">
           <select name="ev" data-bf="ev" aria-label="Which event"><option value="">Not linked to an event</option>${data.events.map((e) => `<option value="${e.id}"${d.ev === e.id ? " selected" : ""}>${esc(e.title)}</option>`).join("")}</select></div>
         <div class="bf-row"><label class="bf-l">Total HK$<input name="hkd" type="number" inputmode="decimal" min="1" step="0.01" value="${esc(d.hkd)}" data-bf="hkd" required></label>
-          <label class="bf-l">Paid by<select name="paidBy" data-bf="paidBy">${ppl.map((n) => `<option${n === d.paidBy ? " selected" : ""}>${esc(n)}</option>`).join("")}</select></label></div>
+          <label class="bf-l">Paid by <small>(everyone pays them)</small><select name="paidBy" data-bf="paidBy">${ppl.map((n) => `<option${n === d.paidBy ? " selected" : ""}>${esc(n)}</option>`).join("")}</select></label></div>
+        <label class="bf-check"><input type="checkbox" data-bf="fronted"${d.fronted ? " checked" : ""}> Someone else paid the restaurant: ${esc(d.paidBy)} collects from everyone and pays them back</label>
+        ${d.fronted ? `<label class="bf-l">Who paid the restaurant?<select name="frontedBy" data-bf="frontedBy">${ppl.filter((n) => n !== d.paidBy).map((n) => `<option${n === (d.frontedBy || me) ? " selected" : ""}>${esc(n)}</option>`).join("")}</select></label>` : ""}
         <p class="bf-h">Who's at this table? <small>${among.length} picked</small>
           ${d.ev ? `<button type="button" class="cc-mini" data-bf-all="1">Everyone at ${esc(evName(d.ev) || "the event")}</button>` : ""}
           <button type="button" class="cc-mini" data-bf-none="1">Clear</button></p>
@@ -543,7 +573,7 @@
         const sh = billShares(b);
         return `<li><div class="sp-top"><b>${esc(b.what)}</b>${b.ev && evName(b.ev) ? ` <small>· ${esc(evName(b.ev))}</small>` : ""}<span class="amt">${hk(b.hkd)}</span>
           <button type="button" class="cc-x" data-bdel="${b.id}" aria-label="Delete bill">✕</button></div>
-          <p class="small">Paid by ${esc(b.paidBy)} · ${b.shares ? "custom split" : `${hk(b.hkd / b.among.length)} each`}: ${b.among.map((n) => `${esc(n)}${b.shares ? ` ${hk(sh[n])}` : ""}`).join(", ")}</p></li>`;
+          <p class="small">Paid by ${esc(b.paidBy)}${b.frontedBy ? ` (${esc(b.frontedBy)} paid the restaurant)` : ""} · ${b.shares ? "custom split" : `${hk(b.hkd / b.among.length)} each`}: ${b.among.map((n) => `${esc(n)}${b.shares ? ` ${hk(sh[n])}` : ""}`).join(", ")}</p></li>`;
       }).join("")}</ul></details>` : ""}
       ${me ? `<details class="cc-sub"><summary>💳 My payment details${pr.paypal || pr.fps || pr.bank || pr.accNo || pr.note || pr.wechat ? " ✓" : ""}</summary>
         <form class="pay-form" id="my-pay" autocomplete="off">
@@ -595,6 +625,7 @@
   document.addEventListener("change", (e) => {
     const t = e.target;
     if (!billDraft || !root.contains(t) || !t.dataset.bf) return;
+    if (t.dataset.bf === "fronted") { billDraft.fronted = t.checked; if (t.checked && !billDraft.frontedBy) billDraft.frontedBy = me !== billDraft.paidBy ? me : ""; render(); return; }
     billDraft[t.dataset.bf] = t.value;
     if (t.dataset.bf === "ev" && t.value) { const E = data.events.find((x) => x.id === t.value); if (E) { billDraft.among = new Set(E.going); billDraft.paidBy = defaultPayer(E.id); if (!billDraft.what) billDraft.what = E.title; } render(); }
   });
@@ -623,7 +654,7 @@
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
       const myT = (e.tables || []).find((t) => (t.names || []).includes(me));
-      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${goingTxt(e)}${(e.tables || []).length ? ` · 🍽️ tables from ${esc(e.tables[0].time || "")}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : ""}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>`;
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${goingTxt(e)}${(e.tables || []).length ? ` · 🍽️ ${e.tables[0].time ? `tables from ${esc(e.tables[0].time)}` : `${seats(e)} seats booked`}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : seats(e) > headcount(e) ? ` · ${seats(e) - headcount(e)} seat${seats(e) - headcount(e) > 1 ? "s" : ""} free` : ""}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>`;
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;
@@ -655,7 +686,8 @@
     if (tick) {
       const ev = tick.dataset.tick, name = tick.dataset.name, on = tick.dataset.on === "1";
       const E = data.events.find((x) => x.id === ev);
-      op({ op: "toggle", ev, name, on }, () => { E.going = on ? [...new Set([...E.going, name])].sort((a, b) => a.localeCompare(b)) : E.going.filter((n) => n !== name); });
+      op({ op: "toggle", ev, name, on }, () => { E.going = on ? [...new Set([...E.going, name])].sort((a, b) => a.localeCompare(b)) : E.going.filter((n) => n !== name);
+        if (on && E.group) data.events.forEach((x) => { if (x !== E && x.group === E.group) x.going = x.going.filter((n) => n !== name); }); });
       return;
     }
     const ed = t.closest("[data-edit]");
@@ -714,7 +746,7 @@
       render(); return;
     }
     const xm = t.closest("[data-xmark]");
-    if (xm) { const x = JSON.parse(xm.dataset.xmark); op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: "", confirmed: x.to === me }).then((ok) => ok && toast(x.to === me ? `Got it: ${x.from} has paid you` : `Marked: ${x.from} paid ${x.to}`)); return; }
+    if (xm) { const x = JSON.parse(xm.dataset.xmark); op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: "", confirmed: x.to === me, direct: !!x.direct, note: x.direct ? x.note : "" }).then((ok) => ok && toast(x.to === me ? `Got it: ${x.from} has paid you` : `Marked: ${x.from} paid ${x.to}`)); return; }
     const xc = t.closest("[data-xconfirm]");
     if (xc) { op({ op: "confirmXfer", id: xc.dataset.xconfirm }).then((ok) => ok && toast("Marked as received")); return; }
     const xu = t.closest("[data-xundo]");
@@ -766,12 +798,18 @@
     else if (f.id === "bill-form" && billDraft) {
       const d = billDraft, among = [...d.among];
       const body = { op: "addBill", what: d.what, ev: d.ev, hkd: +d.hkd, paidBy: d.paidBy, among };
+      if (d.fronted) body.frontedBy = f.elements.frontedBy?.value || d.frontedBy;
       if (d.mode === "custom") body.shares = Object.fromEntries(among.map((n) => [n, +d.shares[n] || 0]));
       op(body).then((ok) => { if (ok) { billDraft = null; render(); toast("Bill added: everyone's share is worked out"); } });
     }
     else if (f.dataset.xfer) {
       const x = JSON.parse(f.dataset.xfer);
-      op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: fd("method") }).then((ok) => ok && toast(`Thanks! ${x.to} will confirm when it arrives`));
+      op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: fd("method"), direct: !!x.direct, note: x.direct ? x.note : "" }).then((ok) => ok && toast(`Thanks! ${x.to} will confirm when it arrives`));
+    }
+    else if (f.id === "cc-collect") {
+      const from = fd("from"), hkd = Math.round(+fd("hkd"));
+      if (!from || !(hkd > 0)) return;
+      op({ op: "markXfer", from, to: me, hkd, method: "Collected", confirmed: true, note: `collected for ${data.payTo}` }).then((ok) => ok && toast(`Recorded: ${from} paid you ${hk(hkd)}`));
     }
     else if (f.id === "my-pay" && fd("orgcode")) { // organiser resets a forgotten PIN
       const keep = orgPass; orgPass = fd("orgcode").toLowerCase();

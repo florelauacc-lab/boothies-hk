@@ -76,7 +76,14 @@ export default async function handler(req, res) {
       case "toggle": {
         const name = clean(b.name, 60);
         if (!ev || !name) return res.status(400).json({ error: "missing" });
-        await redis([[b.on ? "SADD" : "SREM", `${P}going:${ev}`, name]]);
+        const cmds = [[b.on ? "SADD" : "SREM", `${P}going:${ev}`, name]];
+        // events in the same group are either/or (e.g. two dim sum lunches): going to one takes you off the others
+        if (b.on) {
+          const [cur, all] = await redis([["HGET", `${P}events`, ev], ["HGETALL", `${P}events`]]);
+          const g = cur && JSON.parse(cur).group;
+          if (g) Object.entries(pairs(all)).forEach(([k, v]) => { if (k !== ev && JSON.parse(v).group === g) cmds.push(["SREM", `${P}going:${k}`, name]); });
+        }
+        await redis(cmds);
         break;
       }
       case "setGuests": { // people who said yes but aren't named yet (a +1 in the chat): counted for bookings, not charged
@@ -99,7 +106,7 @@ export default async function handler(req, res) {
         const [cur] = await redis([["HGET", `${P}events`, ev]]);
         if (!cur) return res.status(404).json({ error: "no event" });
         const e = JSON.parse(cur);
-        ["title", "when", "venue"].forEach((f) => { if (b[f] != null) e[f] = clean(b[f], f === "venue" ? 80 : 70); });
+        ["title", "when", "venue", "bookedBy", "group"].forEach((f) => { if (b[f] != null) e[f] = clean(b[f], f === "venue" ? 80 : 70); });
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
       }
@@ -232,7 +239,9 @@ export default async function handler(req, res) {
           const sum = Object.values(shares).reduce((t, x) => t + x, 0);
           if (Math.abs(sum - hkd) > 1) return res.status(400).json({ error: `The amounts add up to HK$${Math.round(sum)}, not HK$${Math.round(hkd)}` });
         }
-        await redis([["HSET", `${P}bills`, `b-${id()}`, JSON.stringify({ what: clean(b.what, 60) || "Bill", ev: clean(b.ev, 40) || null, paidBy, hkd, among, shares, by, at: Date.now() })]]);
+        // frontedBy: someone else paid the restaurant; everyone still pays paidBy, who then pays frontedBy back
+        const frontedBy = clean(b.frontedBy, 60);
+        await redis([["HSET", `${P}bills`, `b-${id()}`, JSON.stringify({ what: clean(b.what, 60) || "Bill", ev: clean(b.ev, 40) || null, paidBy, hkd, among, shares, frontedBy: frontedBy && frontedBy !== paidBy ? frontedBy : undefined, by, at: Date.now() })]]);
         break;
       }
       case "delBill":
@@ -258,7 +267,8 @@ export default async function handler(req, res) {
         if (!from || !to || from === to || !(hkd > 0)) return res.status(400).json({ error: "missing" });
         // the person being paid can record it as received straight away
         const conf = !!b.confirmed && by === to;
-        await redis([["HSET", `${P}xfers`, `t-${id()}`, JSON.stringify({ from, to, hkd, method: clean(b.method, 30), by, at: Date.now(), confirmed: conf, confirmedBy: conf ? by : undefined })]]);
+        // direct: paying back money someone fronted (kept apart from the netted balances); note: what it was for
+        await redis([["HSET", `${P}xfers`, `t-${id()}`, JSON.stringify({ from, to, hkd, method: clean(b.method, 30), note: clean(b.note, 60) || undefined, direct: !!b.direct || undefined, by, at: Date.now(), confirmed: conf, confirmedBy: conf ? by : undefined })]]);
         break;
       }
       case "confirmXfer": case "unconfirmXfer": case "undoXfer": {

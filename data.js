@@ -10852,8 +10852,8 @@ window.HK = {
      "school"
     ],
     [
-     "13:00",
-     "Dim Sum Lunch",
+     "12:45",
+     "Dim Sum Lunch (Contemporary dim sum)",
      "ours",
      "sun-dimsum",
      {
