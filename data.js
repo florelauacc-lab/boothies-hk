@@ -10569,6 +10569,188 @@ window.HK = {
     "credit": "Minghong",
     "license": "CC BY-SA 4.0"
    }
+  },
+  {
+   "tab": "city",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "section": "Local legends",
+   "emoji": "🍖",
+   "local": true,
+   "name": "Yung Kee Restaurant",
+   "zh": "鏞記酒家",
+   "area": "Central",
+   "cuisine": "Cantonese roast goose (siu mei)",
+   "price": "$$$",
+   "intro": "The original Hong Kong roast goose house, on Wellington Street since the 1940s. Charcoal-roasted goose with crackling skin; locals say it's pricier than the newer spots, but it's the classic and you can book a table for a group.",
+   "order": [
+    "Charcoal-roasted goose (half or a plate)",
+    "Century egg with pickled ginger",
+    "Char siu"
+   ],
+   "tips": "Bookable, so the best roast goose option for a big group. Cards accepted.",
+   "hours": "Daily 11:00–22:30",
+   "addressEn": "32–40 Wellington Street, Central",
+   "lat": 22.2815,
+   "lng": 114.15561,
+   "id": "yung-kee-restaurant",
+   "kinds": [
+    "Cantonese"
+   ]
+  },
+  {
+   "tab": "city",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "section": "Local legends",
+   "emoji": "🍖",
+   "local": true,
+   "name": "Ki's Roasted Goose",
+   "zh": "棋哥燒鵝餐室",
+   "area": "Causeway Bay",
+   "cuisine": "Cantonese roast goose (siu mei)",
+   "price": "$",
+   "intro": "A casual goose shop on Jardine's Bazaar, five minutes from the Park Lane. The goose is smoked over lychee wood, and diners rate the smoky skin and the good-value sets.",
+   "order": [
+    "Lychee-wood roast goose",
+    "Roast pork belly",
+    "Two-person roast meat set (about HK$288)"
+   ],
+   "tips": "Casual; short queues at lunch. Another branch on Hennessy Road, Wan Chai.",
+   "hours": "Daily about 11:00–22:00 (check before going)",
+   "addressEn": "G/F, 45 Jardine's Bazaar, Causeway Bay",
+   "lat": 22.279382,
+   "lng": 114.185461,
+   "id": "ki-s-roasted-goose",
+   "kinds": [
+    "Cantonese"
+   ]
+  },
+  {
+   "tab": "city",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "section": "Local legends",
+   "emoji": "🍖",
+   "local": true,
+   "name": "Ship Kee",
+   "zh": "船記",
+   "area": "Wan Chai",
+   "cuisine": "Cantonese roast meats (char siu, siu mei)",
+   "price": "$$",
+   "award": "Michelin Bib Gourmand 2026",
+   "intro": "Michelin Bib Gourmand for three years running, famous for its char siu, with roast meats and dim sum too. A proper air-conditioned dining room that takes bookings.",
+   "order": [
+    "Signature char siu (from HK$98)",
+    "Roast goose",
+    "Pork lung and almond soup"
+   ],
+   "tips": "Book by phone; good for a big group. Cards accepted.",
+   "hours": "Daily 11:00–15:45 and 18:00–23:00",
+   "addressEn": "6/F, Hopewell Centre, 183 Queen's Road East, Wan Chai",
+   "lat": 22.274751,
+   "lng": 114.17189,
+   "id": "ship-kee",
+   "kinds": [
+    "Cantonese"
+   ]
+  },
+  {
+   "tab": "city",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "section": "Local legends",
+   "emoji": "🍖",
+   "local": true,
+   "name": "Fat J Char Siu",
+   "zh": "發達叉燒",
+   "area": "Wan Chai",
+   "cuisine": "Cantonese roast goose (siu mei)",
+   "price": "$",
+   "intro": "A newer name locals queue for: the siu mei chef comes from a private kitchen. Diners rave about the crispy-skinned goose and the value (goose rice about HK$70).",
+   "order": [
+    "Roast goose rice",
+    "Roast goose lower quarter",
+    "Char siu with double-yolk egg rice"
+   ],
+   "tips": "Small shop; expect a queue at dinner (20+ people around 18:00).",
+   "hours": "Daily about 12:00–21:00 (check before going)",
+   "addressEn": "Shop 2, G/F, 2 Landale Street, Wan Chai",
+   "lat": 22.277231,
+   "lng": 114.169442,
+   "id": "fat-j-char-siu",
+   "kinds": [
+    "Cantonese"
+   ]
+  },
+  {
+   "tab": "city",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "section": "Local legends",
+   "emoji": "🍖",
+   "local": true,
+   "name": "Kitchen One Roast Goose",
+   "zh": "大壹燒鵝",
+   "area": "Causeway Bay",
+   "cuisine": "Cantonese roast goose (siu mei)",
+   "price": "$",
+   "intro": "A quick, local siu mei shop three minutes from the Park Lane. The charred, fatty char siu is the standout; the goose gets mixed reviews.",
+   "order": [
+    "Char siu (pork collar)",
+    "Roast goose rice (HK$60)",
+    "Roast pork belly (sells out)"
+   ],
+   "tips": "Casual, mostly quick meals and takeaway.",
+   "hours": "Daily 11:00–20:30",
+   "addressEn": "G/F, Tang Fai Building, 36–48 Tang Lung Street, Causeway Bay",
+   "lat": 22.279296,
+   "lng": 114.182234,
+   "id": "kitchen-one-roast-goose",
+   "kinds": [
+    "Cantonese"
+   ]
+  },
+  {
+   "tab": "city",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "section": "Local legends",
+   "emoji": "🍖",
+   "local": true,
+   "name": "Yue Kee Roast Goose Restaurant",
+   "zh": "裕記大飯店",
+   "area": "Sham Tseng",
+   "cuisine": "Cantonese roast goose (siu mei)",
+   "price": "$$",
+   "award": "Michelin Bib Gourmand 2026",
+   "intro": "Sham Tseng is Hong Kong's goose village, and family-run Yue Kee (since 1958) is its best-known table, roasting its own geese over charcoal. Worth the trip for a goose lunch.",
+   "order": [
+    "Charcoal-roasted goose (served from 11:45)",
+    "Goose with lai fun noodles",
+    "Braised goose offal"
+   ],
+   "tips": "Out of town: about 30–40 min by taxi. Book ahead, especially at weekends. Cards accepted.",
+   "hours": "Daily 11:30–22:00",
+   "addressEn": "9 Sham Hong Road, Sham Tseng, New Territories",
+   "lat": 22.368353,
+   "lng": 114.05975,
+   "id": "yue-kee-roast-goose-restaurant",
+   "kinds": [
+    "Cantonese"
+   ]
   }
  ],
  "OUTINGS": [

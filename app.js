@@ -432,6 +432,8 @@
     const filtersOn = !state.shortlist && (state.kinds.size || state.style !== "any" || state.local || state.area !== "all" || state.section !== "all");
     if (filtersOn) countHtml += ` <button class="clear-f" data-clearf="1">✕ Clear filters</button>`;
     if (backTo && !groups) countHtml = `<button class="back-btn" data-back="1">← Back to all ${esc(backTo.label)}</button> ${countHtml}`;
+    // a light note so visitors know what OpenRice is (food tabs only)
+    if ((state.tab === "city" || state.tab === "saiwan") && items.some((p) => p.orScore)) countHtml += `<span class="or-note">Ratings: Google ★ and OpenRice, Hong Kong's own review site where locals rate places.</span>`;
     $("#count").innerHTML = countHtml;
     const shown = groups ? groups.flatMap((g) => g.top) : items.slice(0, state.limit);
     const rest = items.length - shown.length;

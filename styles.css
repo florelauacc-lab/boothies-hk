@@ -1438,3 +1438,4 @@ button.bl .pw-copy { pointer-events: none; }
 .ics-list li span { min-width: 0; overflow-wrap: anywhere; } .ics-list li small { display: block; opacity: .7; font-size: .78rem; }
 .ics-list li .cc-mini { flex-shrink: 0; min-height: 44px; display: inline-flex; align-items: center; }
 .ics-g[open] > summary { margin-bottom: 6px; } .ics-list { padding-top: 2px; border-top: 1px solid rgba(255,255,255,.08); }
+.count .or-note { display: block; margin-top: 4px; font-size: .82rem; opacity: .7; font-weight: 500; }
