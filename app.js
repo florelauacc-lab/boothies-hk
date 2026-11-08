@@ -621,6 +621,7 @@
   // Week: official Becker schedule (🎓) + our own plans (🎉). Phones show one day at a time.
   let planDay = null;
   const ideaOpen = {}; // day -> idea open in its ideas grid
+  let trayPick = null; // the idea or place tapped in the picks tray
   // Personal plans: day trips, ideas, places or anything typed in, kept on this phone and shown in "My week"
   const MYP = "hk-myplans-v1";
   let myPlans = store.get(MYP) || [];
@@ -673,17 +674,7 @@
       ${myPlans.filter((p) => p.iso === d.iso).map((p) => `<div class="slotrow personal" data-drag="${esc(JSON.stringify({ move: p.id }))}" title="Drag to another day, or up and down to reorder"><span><span class="grip" aria-hidden="true">⠿</span> ${esc(p.when || "Anytime")} <em class="mine-tag">Mine</em></span><span class="sv">⭐ ${esc(p.title)}${p.place && byId[p.place] ? ` <button class="rlink" data-jump="${p.place}">Map →</button>` : ""}${p.idea ? ` <button class="rlink" data-idea="${esc(p.idea)}" data-iso="${d.iso}">See plan →</button>` : ""}</span><button class="cc-x" data-delmine="${p.id}" aria-label="Remove from my week">✕</button></div>`).join("")}
       ${(() => { const n = onlyMine && !showHidden.has(d.iso) ? d.slots.filter(([, v, k, ev]) => (k === "ours" || k === "event") && !mine[slotKey(d.iso, v, ev)]).length : 0;
         return n ? `<button class="hidden-n" data-showhidden="${d.iso}">+ ${n} more you haven't added · show</button>` : ""; })()}
-      ${d.note ? `<p class="daynote">${esc(d.note)}</p>` : ""}
-      ${bus(d.bus)}${route(d.route)}${(d.routes || []).map(route).join("")}
-      ${d.outings ? (() => {
-        // compact grid of short idea buttons; tapping one opens just that plan underneath
-        const list = OUTINGS.filter((o) => o.title !== d.route?.title);
-        const open = list.find((o) => o.title === ideaOpen[d.iso]);
-        return `<div class="ideas"><p class="ideas-h">🧭 ${d.route ? "More ideas" : "Ideas"} to pick from</p>
-          <div class="idea-grid">${list.map((o) => `<button type="button" class="idea${open === o ? " on" : ""}" data-idea="${esc(o.title)}" data-iso="${d.iso}" aria-expanded="${open === o}"><span>${o.em || "🗺️"}</span>${esc(o.short || o.title)}</button>`).join("")}</div>
-          ${open ? `<div class="idea-open">${route(open).replace("<details", "<details open")}</div>` : ""}</div>`;
-      })() : ""}
-      ${[d.go, d.go2].filter(Boolean).map((g) => `<button class="go" data-go='${esc(JSON.stringify(g))}'>${esc(g.label)} →</button>`).join(" ")}
+      ${bus(d.bus)}
     </li>`;
     // keep whatever boxes (shuttle, ideas) were open: the plan redraws when the class list refreshes
     const openK = new Set([...document.querySelectorAll("#plan details[open][data-k]")].map((x) => `${x.closest("li[data-iso]")?.dataset.iso}|${x.dataset.k}`));
@@ -703,14 +694,27 @@
     if (Math.abs(window.scrollY - y) > 2) window.scrollTo(0, y);
     $("#plandays").innerHTML = dayBtns;
     // picks tray: your ♥ shortlist and the ideas, as chips you drag onto a day (or tap to add to the day you're viewing)
-    const chip = (item, label) => `<button type="button" class="dragchip" data-drag="${esc(JSON.stringify(item))}">${esc(label)}</button>`;
+    const key = (it) => it.idea || it.place;
+    const chip = (item, label) => `<button type="button" class="dragchip${trayPick && key(trayPick) === key(item) ? " on" : ""}" data-drag="${esc(JSON.stringify(item))}" aria-expanded="${!!(trayPick && key(trayPick) === key(item))}">${esc(label)}</button>`;
     const fav = live.filter((p) => loved.has(p.id));
+    const ideaItem = (o) => ({ title: `${o.em || "🗺️"} ${o.short || o.title}`, idea: o.title });
+    const placeItem = (p) => ({ title: `${emojiOf(p)} ${p.name}`, place: p.id });
+    // the item you tapped, so you can read it before placing it on a day
+    let preview = "";
+    if (trayPick) {
+      const o = trayPick.idea && OUTINGS.find((x) => x.title === trayPick.idea), p = trayPick.place && byId[trayPick.place];
+      const body = o ? `<b>${esc(o.em || "🗺️")} ${esc(o.title)}</b><ol>${o.steps.map(([em, text, q]) => { const pl = q && findPlace(q); return `<li><span class="re">${em}</span><span>${esc(text)}${pl ? ` <button class="rlink" data-jump="${pl.id}">Map →</button>` : ""}</span></li>`; }).join("")}</ol>`
+        : p ? `<b>${esc(emojiOf(p))} ${esc(p.name)}</b><p class="small">${esc(p.intro || "")}</p><button class="rlink" data-jump="${p.id}">Open on the map →</button>` : "";
+      preview = body ? `<div class="pick-preview">${body}
+        <div class="pp-actions"><button type="button" class="cc-mini go" data-addpick="1">⭐ Add to ${esc(dayLabel(PLAN[planDay].iso))}</button><span class="muted small">or drag its chip onto any day</span><button type="button" class="cc-mini" data-closepick="1">Close</button></div></div>` : "";
+    }
     $("#picks-body").innerHTML = `
+      <p class="picks-h">🧭 Ideas to pick from</p>
+      <div class="chips">${OUTINGS.map((o) => chip(ideaItem(o), `${o.em || "🗺️"} ${o.short || o.title}`)).join("")}</div>
       <p class="picks-h">♥ Your shortlist</p>
-      <div class="chips">${fav.length ? fav.map((p) => chip({ title: `${emojiOf(p)} ${p.name}`, place: p.id }, `${emojiOf(p)} ${p.name}`)).join("") : `<span class="muted small">Tap ♥ on any place in Eat &amp; drink or Explore and it shows up here.</span>`}</div>
-      <p class="picks-h">🧭 Ideas</p>
-      <div class="chips">${OUTINGS.map((o) => chip({ title: `${o.em || "🗺️"} ${o.short || o.title}`, idea: o.title }, `${o.em || "🗺️"} ${o.short || o.title}`)).join("")}</div>
-      <p class="muted small">Drag onto a day button or the day below · or tap to add to ${esc(dayLabel(PLAN[planDay].iso))}.</p>`;
+      <div class="chips">${fav.length ? fav.map((p) => chip(placeItem(p), `${emojiOf(p)} ${p.name}`)).join("") : `<span class="muted small">Tap ♥ on any place in Eat &amp; drink or Explore and it shows up here.</span>`}</div>
+      ${preview}
+      <p class="muted small">Tap to see what it is · drag it onto a day to add it to your week.</p>`;
     const nMine = Object.values(mine).filter(Boolean).length + myPlans.length;
     $("#plan-mode").innerHTML = `<button class="${onlyMine ? "" : "on"}" data-onlymine="0">Everything</button><button class="${onlyMine ? "on" : ""}" data-onlymine="1">⭐ My week${nMine ? ` · ${nMine}` : ""}</button>`;
     // a shortcut to the class corner (who's going, what you owe, paying Rienno), which sits below the day
@@ -744,10 +748,12 @@
       else if (ev && now && window.HK_CLASS?.hint) window.HK_CLASS.hint();
       renderPlan(); return;
     }
+    if (e.target.closest("[data-addpick]") && trayPick) { addMyPlan({ ...trayPick, iso: PLAN[planDay].iso }); return; }
+    if (e.target.closest("[data-closepick]")) { trayPick = null; renderPlan(); return; }
     const dm = e.target.closest("[data-delmine]");
     if (dm) { myPlans = myPlans.filter((p) => p.id !== dm.dataset.delmine); saveMyPlans(); renderPlan(); toast("Removed from your week"); return; }
     const id = e.target.closest("[data-idea]");
-    if (id && id.classList.contains("rlink")) { planDay = Math.max(0, PLAN.findIndex((d) => d.iso === id.dataset.iso)); ideaOpen[id.dataset.iso] = id.dataset.idea; renderPlan(); return; }
+    if (id && id.classList.contains("rlink")) { trayPick = { idea: id.dataset.idea, title: id.dataset.idea }; $("#picks").open = true; renderPlan(); $("#picks").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     if (id) { ideaOpen[id.dataset.iso] = ideaOpen[id.dataset.iso] === id.dataset.idea ? null : id.dataset.idea; renderPlan(); return; }
     if (e.target.closest("#cc-jump")) { document.getElementById("cc")?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     const sh = e.target.closest("[data-showhidden]");
@@ -790,8 +796,8 @@
   const endDrag = (e, cancel) => {
     if (!drag) return;
     const d = drag; drag = null;
-    if (!d.on) { // a tap: add to the day being viewed
-      if (!cancel && !d.item.move) addMyPlan({ ...d.item, iso: PLAN[planDay].iso });
+    if (!d.on) { // a tap: show what it is, so they can read it before placing it
+      if (!cancel && !d.item.move) { const k = (it) => it.idea || it.place; trayPick = trayPick && k(trayPick) === k(d.item) ? null : d.item; renderPlan(); }
       return;
     }
     d.ghost.remove(); document.body.classList.remove("dragging"); d.el.classList.remove("lifted"); d.over?.classList.remove("drop-ok");

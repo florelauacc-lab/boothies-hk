@@ -1270,3 +1270,10 @@ body.dragging .pd { outline: 1px dashed rgba(255,196,77,.5); }
 @media (min-width: 601px) { .cc-mine li .pay1 { flex-basis: auto; margin-top: 0; } }
 .cc-mini.undo { border-color: rgba(255,196,77,.5); color: var(--gold, #ffc44d); }
 .cc-recalc { margin: 4px 0 8px; font-size: .86rem; } .cc-inline.bill .muted.small { flex-basis: 100%; }
+.dragchip.on { background: rgba(255,196,77,.18); border-color: var(--gold, #ffc44d); color: var(--gold, #ffc44d); }
+.pick-preview { margin: 10px 0 4px; padding: 12px; border-radius: 12px; background: rgba(0,0,0,.28); border: 1px solid rgba(255,196,77,.35); }
+.pick-preview > b { display: block; margin-bottom: 6px; }
+.pick-preview ol { list-style: none; margin: 0; padding: 0; font-size: .9rem; line-height: 1.45; }
+.pick-preview li { display: flex; gap: 8px; padding: 4px 0; }
+.pick-preview .re { flex: none; width: 1.5em; text-align: center; }
+.pp-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
