@@ -415,6 +415,7 @@
         ${p.priceNote ? `<p class="group">💵 ${esc(p.priceNote)}</p>` : ""}
         ${block("What people say", p.reviews && `<p class="reviews">“${esc(p.reviews)}”</p>`)}
         ${block("Getting there", p.getting && `<p class="reviews" style="font-style:normal">${esc(p.getting)}</p>`)}
+        ${p.weekNote ? `<p class="week-note">📅 <b>During our week (14–22 Nov):</b> ${esc(p.weekNote)}</p>` : ""}
         ${block("Our tip", p.tips && `<p class="reviews" style="font-style:normal">${esc(p.tips)}</p>`)}
         ${p.group ? `<p class="group">👥 ${esc(p.group)}</p>` : ""}
         ${p.hours ? `<p class="group">🕒 ${esc(p.hours)}</p>` : ""}

@@ -679,6 +679,14 @@ for p in places:
         if r.get("or_url") and not p.get("openrice"):
             p["openrice"] = r["or_url"]
 
+# patches by id, for places whose names repeat or were renamed (e.g. trip-week notes)
+by_id = {p["id"]: p for p in places}
+for pid, patch in EXTRAS.get("patch_id", {}).items():
+    if pid in by_id:
+        by_id[pid].update(patch)
+    else:
+        print("  ! patch_id target not found:", pid)
+
 # Photos for sights, hikes and shopping (freely licensed, from Wikimedia Commons; see tools/photos/fetch_photos.py)
 PHOTOS = json.loads((ROOT / "tools" / "research" / "photos.json").read_text()) if (ROOT / "tools" / "research" / "photos.json").exists() else {}
 BAD_PHOTOS = {"hong-kong-museum-of-art", "dried-seafood-street-des-voeux-road-west", "east-coast-boardwalk-glass-observatory-d",

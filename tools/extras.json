@@ -2634,7 +2634,9 @@
     "design",
     "local"
    ],
-   "cuisine": "Design studios & shops"
+   "cuisine": "Design studios & shops",
+   "weekNote": "Shops and studios open 12:00–19:00 (cafés from 09:00). The deTour design festival runs from Fri 20 Nov, with extra exhibitions and crowds.",
+   "hours": "Shops and studios 12:00–19:00; cafés and restaurants 09:00–23:00"
   },
   "Stanley Market": {
    "category": [
@@ -2661,7 +2663,8 @@
    "category": [
     "moderate",
     "views"
-   ]
+   ],
+   "weekNote": "Sun 15 Nov: an organised group hike on top of the usual Sunday crowds, and full buses at Shau Kei Wan. Weekdays or Saturday are quieter."
   },
   "Violet Hill & The Twins (Wilson Trail Stage 1)": {
    "category": [
@@ -2673,7 +2676,8 @@
    "category": [
     "easy",
     "south"
-   ]
+   ],
+   "weekNote": "14–15 Nov: race runners and hiking groups on the reservoir roads. Use the temporary toilets at Tai Tam Tuk."
   },
   "Times Square": {
    "cuisine": "Shopping mall"
@@ -2704,7 +2708,8 @@
     "free",
     "walk",
     "architecture"
-   ]
+   ],
+   "weekNote": "The JC Contemporary art gallery is closed on Mondays (Tue–Sun 11:00–19:00). The rest of the site is open daily."
   },
   "M+ museum & West Kowloon waterfront": {
    "category": [
@@ -2940,12 +2945,14 @@
    ],
    "flags": [
     "Symphony of Lights is ending in 2026: check it's still on"
-   ]
+   ],
+   "weekNote": "The 20:00 Symphony of Lights is due to be retired in late 2026, so check it's still on that night. The skyline view is worth it either way."
   },
   "The Blue House": {
    "add_category": [
     "photo"
-   ]
+   ],
+   "weekNote": "The House of Stories is closed on Wednesdays (Wed 18 Nov). It's a residential building, so keep it quiet."
   },
   "Tai O Fishing Village": {
    "add_category": [
@@ -2957,7 +2964,9 @@
     "photo"
    ]
   },
-  "Hong Kong Palace Museum": {},
+  "Hong Kong Palace Museum": {
+   "weekNote": "Closed Tue 17 Nov. Open 10:00–18:00, and to 20:00 on Fri and Sat. Galleries 8 and 9 are shut for now."
+  },
   "Kennedy Town waterfront & sunset": {
    "name_override": "Western harbourfront: Kennedy Town to Sai Ying Pun",
    "add_category": [
@@ -3067,6 +3076,27 @@
    "lat": 22.282373,
    "lng": 114.152466,
    "tips": "Moved in late 2025 to a larger basement nearby: the entrance is from the alley at 54 Graham Street. DM @chez.trente on Instagram before coming to reserve and confirm the night's programme; casual dress."
+  },
+  "PMQ & a Mahjong lesson": {
+   "weekNote": "PMQ shops open at 12:00. The deTour design festival runs from Fri 20 Nov."
+  },
+  "Big Buddha & Ngong Ping 360 cable car": {
+   "weekNote": "The cable car runs as normal (weekdays 10:00–18:00, weekends 09:00–18:30, weather permitting). The Wisdom Path is closed for refurbishment."
+  },
+  "Chi Lin Nunnery & Nan Lian Garden": {
+   "weekNote": "The nunnery closes at Typhoon Signal 3 or black rain; the garden only at Signal 8."
+  },
+  "Shek O Beach": {
+   "weekNote": "Probably no lifeguards in November. For a swim, Big Wave Bay next door is lifeguarded (08:00–17:00)."
+  },
+  "Siu Ma Shan": {
+   "weekNote": "Sat 14 Nov: a trail race uses the narrow ridge path, so pick another day for a quiet hike."
+  },
+  "Lion Rock": {
+   "weekNote": "20–22 Nov: Oxfam Trailwalker teams pass nearby. Go earlier in the week for a quiet summit."
+  },
+  "Ocean Park (giant pandas)": {
+   "weekNote": "The North Pole exhibit is closed until 2027. Panda hours changed on 3 Nov, so check the daily schedule before you go."
   }
  },
  "drop": [
@@ -3689,5 +3719,16 @@
    "short": "Disneyland",
    "optional": true
   }
- ]
+ ],
+ "patch_id": {
+  "m-museum-west-kowloon-waterfront": {
+   "weekNote": "Closed Mon 16 Nov. Open 10:00–18:00, and to 22:00 on Fri 20 Nov. The Art Park and waterfront stay open."
+  },
+  "tai-tam-waterworks-heritage-trail": {
+   "weekNote": "14–15 Nov: race runners and hiking groups on the reservoir roads. Use the temporary toilets at Tai Tam Tuk."
+  },
+  "tai-tam-waterworks-heritage-trail-2": {
+   "weekNote": "14–15 Nov: race runners and hiking groups on the reservoir roads. Use the temporary toilets at Tai Tam Tuk."
+  }
+ }
 }

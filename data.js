@@ -6104,6 +6104,7 @@ window.HK = {
    "emoji": "💧",
    "stanley": true,
    "id": "tai-tam-waterworks-heritage-trail",
+   "weekNote": "14–15 Nov: race runners and hiking groups on the reservoir roads. Use the temporary toilets at Tai Tam Tuk.",
    "photo": {
     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Tai_Tam_Reservoir_2.jpg/960px-Tai_Tam_Reservoir_2.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Tai_Tam_Reservoir_2.jpg",
@@ -6210,6 +6211,7 @@ window.HK = {
    "lng": 114.25063,
    "emoji": "🏖️",
    "id": "shek-o-beach",
+   "weekNote": "Probably no lifeguards in November. For a swim, Big Wave Bay next door is lifeguarded (08:00–17:00).",
    "photo": {
     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Playa_de_Shek_o_beach.jpg/960px-Playa_de_Shek_o_beach.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Playa_de_Shek_o_beach.jpg",
@@ -6418,6 +6420,7 @@ window.HK = {
    "emoji": "🏢",
    "local": true,
    "id": "the-blue-house",
+   "weekNote": "The House of Stories is closed on Wednesdays (Wed 18 Nov). It's a residential building, so keep it quiet.",
    "photo": {
     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Blue_House%2C_Hong_Kong.jpg/960px-Blue_House%2C_Hong_Kong.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Blue_House,_Hong_Kong.jpg",
@@ -6675,6 +6678,7 @@ window.HK = {
    "mapsQuery": "Tai Kwun 10 Hollywood Road Central Hong Kong",
    "local": false,
    "id": "tai-kwun",
+   "weekNote": "The JC Contemporary art gallery is closed on Mondays (Tue–Sun 11:00–19:00). The rest of the site is open daily.",
    "addressZh": "中環荷李活道10號大館",
    "emoji": "🏛️",
    "gRating": 4.4,
@@ -6720,6 +6724,7 @@ window.HK = {
    "mapsQuery": "PMQ 35 Aberdeen Street Central Hong Kong",
    "local": true,
    "id": "pmq-a-mahjong-lesson",
+   "weekNote": "PMQ shops open at 12:00. The deTour design festival runs from Fri 20 Nov.",
    "addressZh": "中西區鴨巴甸街35號元創方",
    "emoji": "🀄",
    "gRating": 4.2,
@@ -6913,6 +6918,7 @@ window.HK = {
    "emoji": "🖼️",
    "gRating": 4.3,
    "gReviews": 5959,
+   "weekNote": "Closed Mon 16 Nov. Open 10:00–18:00, and to 22:00 on Fri 20 Nov. The Art Park and waterfront stay open.",
    "photo": {
     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/M%2B%2C_West_Kowloon_%28Hong_Kong%29.jpg/960px-M%2B%2C_West_Kowloon_%28Hong_Kong%29.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:M%2B,_West_Kowloon_(Hong_Kong).jpg",
@@ -7356,6 +7362,7 @@ window.HK = {
    "flags": [
     "Symphony of Lights is ending in 2026: check it's still on"
    ],
+   "weekNote": "The 20:00 Symphony of Lights is due to be retired in late 2026, so check it's still on that night. The skyline view is worth it either way.",
    "addressZh": "尖沙咀海濱長廊（星光大道）",
    "emoji": "🌊",
    "gRating": 4.4,
@@ -7481,6 +7488,7 @@ window.HK = {
    ],
    "emoji": "🏞️",
    "id": "siu-ma-shan",
+   "weekNote": "Sat 14 Nov: a trail race uses the narrow ridge path, so pick another day for a quiet hike.",
    "photo": {
     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Siu_Ma_Shan_Trigo.JPG/960px-Siu_Ma_Shan_Trigo.JPG",
     "page": "https://commons.wikimedia.org/wiki/File:Siu_Ma_Shan_Trigo.JPG",
@@ -7657,6 +7665,7 @@ window.HK = {
    ],
    "emoji": "🐉",
    "id": "dragon-s-back",
+   "weekNote": "Sun 15 Nov: an organised group hike on top of the usual Sunday crowds, and full buses at Shau Kei Wan. Weekdays or Saturday are quieter.",
    "gRating": 4.6,
    "gReviews": 1838,
    "photo": {
@@ -7893,6 +7902,7 @@ window.HK = {
    ],
    "emoji": "💧",
    "id": "tai-tam-waterworks-heritage-trail-2",
+   "weekNote": "14–15 Nov: race runners and hiking groups on the reservoir roads. Use the temporary toilets at Tai Tam Tuk.",
    "photo": {
     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Tai_Tam_Reservoir_2.jpg/960px-Tai_Tam_Reservoir_2.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Tai_Tam_Reservoir_2.jpg",
@@ -8222,12 +8232,13 @@ window.HK = {
    ],
    "getting": "From Park Lane: MTR to Central (about 15 mins), then 10–15 mins on foot uphill or via the Mid-Levels Escalator (our estimate). Taxi about 15–20 mins.",
    "tips": "Pair it with Tai Kwun, Hollywood Road antiques and SoHo dinner.",
-   "hours": "PMQ studios and shops about 11:00–20:00 daily (2018 info; individual shops vary). Tai Kwun compound 08:00–23:00 daily.",
+   "hours": "Shops and studios 12:00–19:00; cafés and restaurants 09:00–23:00",
    "lat": 22.283325,
    "lng": 114.1518365,
    "mapsQuery": "PMQ, 35 Aberdeen Street, Central",
    "picked": false,
    "id": "pmq-with-tai-kwun-nearby",
+   "weekNote": "Shops and studios open 12:00–19:00 (cafés from 09:00). The deTour design festival runs from Fri 20 Nov, with extra exhibitions and crowds.",
    "addressZh": "中環鴨巴甸街35號元創方",
    "emoji": "🎨",
    "gRating": 4.2,
@@ -9549,6 +9560,7 @@ window.HK = {
    ],
    "funFact": "The Big Buddha is 34 m tall and was the world's largest seated outdoor bronze Buddha when it was finished in 1993. There are 268 steps to the top.",
    "id": "big-buddha-ngong-ping-360-cable-car",
+   "weekNote": "The cable car runs as normal (weekdays 10:00–18:00, weekends 09:00–18:30, weather permitting). The Wisdom Path is closed for refurbishment.",
    "photo": {
     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Tian_Tan_Buddha_2023081302.jpg/960px-Tian_Tan_Buddha_2023081302.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Tian_Tan_Buddha_2023081302.jpg",
@@ -9709,6 +9721,7 @@ window.HK = {
     ]
    ],
    "id": "ocean-park-giant-pandas",
+   "weekNote": "The North Pole exhibit is closed until 2027. Panda hours changed on 3 Nov, so check the daily schedule before you go.",
    "photo": {
     "src": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Panda_Hongkong.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Panda_Hongkong.jpg",
@@ -9873,6 +9886,7 @@ window.HK = {
    "addressZh": "九龍西九文化區博物館道8號香港故宮文化博物館",
    "url": "https://www.hkpm.org.hk/en/",
    "id": "hong-kong-palace-museum",
+   "weekNote": "Closed Tue 17 Nov. Open 10:00–18:00, and to 20:00 on Fri and Sat. Galleries 8 and 9 are shut for now.",
    "photo": {
     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Hong_Kong_Palace_Museum_2022.jpg/960px-Hong_Kong_Palace_Museum_2022.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Palace_Museum_2022.jpg",
@@ -10433,6 +10447,7 @@ window.HK = {
    "url": "https://en.chilin.org/",
    "priceNote": "Free",
    "id": "chi-lin-nunnery-nan-lian-garden",
+   "weekNote": "The nunnery closes at Typhoon Signal 3 or black rain; the garden only at Signal 8.",
    "photo": {
     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Chi_Lin_Nunnery_%282037672635%29.jpg/960px-Chi_Lin_Nunnery_%282037672635%29.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Chi_Lin_Nunnery_(2037672635).jpg",
@@ -10942,6 +10957,7 @@ window.HK = {
    "addressZh": "黃大仙竹園道獅子山公園",
    "url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-lion-rock-country-park.html",
    "id": "lion-rock",
+   "weekNote": "20–22 Nov: Oxfam Trailwalker teams pass nearby. Go earlier in the week for a quiet summit.",
    "photo": {
     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Lion_Rock_5.jpg/960px-Lion_Rock_5.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Lion_Rock_5.jpg",

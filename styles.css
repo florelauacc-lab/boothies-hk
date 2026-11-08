@@ -1447,3 +1447,4 @@ button.bl .pw-copy { pointer-events: none; }
 .cc-editev > summary::-webkit-details-marker { display: none; }
 .cc-editev[open] > summary { margin-bottom: 8px; }
 .cc-editev form { margin: 0; }
+.week-note { margin: 8px 0; padding: 8px 10px; border-radius: 10px; background: rgba(255,196,77,.12); color: #ffe2a3; font-size: .9rem; line-height: 1.4; }
