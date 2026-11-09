@@ -11543,7 +11543,12 @@ window.HK = {
    "id": "kam-cheung-pork-noodle",
    "kinds": [
     "Roast meats & noodles"
-   ]
+   ],
+   "gRating": 4.3,
+   "gReviews": 1092,
+   "orScore": 4.0,
+   "orReviews": 219,
+   "openrice": "https://www.openrice.com/en/hongkong/r-kam-cheung-pork-noodle-western-district-shanghai-r20984"
   },
   {
    "tab": "saiwan",
@@ -11573,7 +11578,12 @@ window.HK = {
    "id": "home-town-dumpling",
    "kinds": [
     "Regional Chinese"
-   ]
+   ],
+   "gRating": 4.0,
+   "gReviews": 319,
+   "orScore": 3.5,
+   "orReviews": 49,
+   "openrice": "https://www.openrice.com/en/hongkong/r-home-town-dumpling-western-district-shandong-chinese-buns-r492853"
   },
   {
    "tab": "saiwan",
@@ -11620,16 +11630,19 @@ window.HK = {
    "order": [
     "Fried chicken leg"
    ],
-   "tips": "Takeaway only; about 3 minutes from Kennedy Town station Exit A.",
+   "tips": "Takeaway only; a few minutes from Kennedy Town station.",
    "hours": "Mon–Sat 12:00–20:00 (closed Sunday)",
-   "addressEn": "Shop 2B, G/F Ka Fai Garden, 71–77 Smithfield Road, Kennedy Town",
+   "addressEn": "Shop 22B, G/F, Smithfield Court Shopping Arcade, 43 Smithfield Road, Kennedy Town",
    "local": true,
-   "lat": 22.283674,
-   "lng": 114.128251,
+   "lat": 22.282112,
+   "lng": 114.127895,
    "id": "hingkee-factory",
    "kinds": [
     "Other"
-   ]
+   ],
+   "orScore": 4.0,
+   "orReviews": 7,
+   "openrice": "https://www.openrice.com/en/hongkong/r-hingkee-factory-western-district-hong-kong-style-r1122631"
   },
   {
    "tab": "saiwan",
@@ -11685,7 +11698,12 @@ window.HK = {
    "id": "coffee-by-zion",
    "kinds": [
     "Coffee"
-   ]
+   ],
+   "gRating": 4.2,
+   "gReviews": 633,
+   "orScore": 4.5,
+   "orReviews": 624,
+   "openrice": "https://www.openrice.com/en/hongkong/r-coffee-by-zion-western-district-western-r525933"
   },
   {
    "tab": "saiwan",
@@ -11714,7 +11732,10 @@ window.HK = {
    "id": "coco-shop",
    "kinds": [
     "Dessert & sweets"
-   ]
+   ],
+   "orScore": 3.5,
+   "orReviews": 182,
+   "openrice": "https://www.openrice.com/en/hongkong/r-%E5%8F%AF%E5%8F%AF%E5%BA%97-western-district-hong-kong-style-r14284"
   },
   {
    "tab": "saiwan",
@@ -11774,7 +11795,10 @@ window.HK = {
    "id": "hung-s-delicacies",
    "kinds": [
     "Regional Chinese"
-   ]
+   ],
+   "orScore": 4.0,
+   "orReviews": 28,
+   "openrice": "https://www.openrice.com/en/hongkong/r-hungs-delicacies-causeway-bay-guangdong-r873229"
   },
   {
    "tab": "city",
@@ -11831,7 +11855,10 @@ window.HK = {
    "id": "chiu-chow-delicacies",
    "kinds": [
     "Regional Chinese"
-   ]
+   ],
+   "orScore": 4.0,
+   "orReviews": 294,
+   "openrice": "https://www.openrice.com/en/hongkong/r-chiu-chow-delicacies-north-point-chiu-chow-r188551"
   },
   {
    "tab": "city",
@@ -11861,37 +11888,10 @@ window.HK = {
    "id": "hee-kee-typhoon-shelter-crab",
    "kinds": [
     "Cantonese & seafood"
-   ]
-  },
-  {
-   "tab": "city",
-   "section": "Local eats",
-   "name": "Seorae Korean BBQ",
-   "zh": "喜來稀肉",
-   "area": "Causeway Bay",
-   "cuisine": "Korean BBQ",
-   "price": "$$",
-   "category": [
-    "dinner",
-    "late-night"
    ],
-   "emoji": "🥩",
-   "intro": "A lively Korean BBQ chain known for its skirt meat, a few minutes from the Park Lane and open until midnight.",
-   "order": [
-    "Galmaegisal (pork skirt)",
-    "Marinated beef",
-    "Egg ring on the grill"
-   ],
-   "tips": "Book on OpenRice the day before; weekend bookings may need 4 or more. Watch the grill, as the meat burns easily.",
-   "hours": "Sun–Thu 11:30–14:30 and 18:00–00:00; Fri–Sat to 01:00",
-   "addressEn": "Shop 3, G/F & 1/F, Kam Lung Mansion, 41–51 Tang Lung Street, Causeway Bay",
-   "local": true,
-   "lat": 22.279219,
-   "lng": 114.182215,
-   "id": "seorae-korean-bbq",
-   "kinds": [
-    "Korean"
-   ]
+   "orScore": 4.5,
+   "orReviews": 423,
+   "openrice": "https://www.openrice.com/en/hongkong/r-hee-kee-fried-crab-expert-ltd-causeway-bay-guangdong-seafood-r792612"
   },
   {
    "tab": "city",
@@ -11921,7 +11921,10 @@ window.HK = {
    "id": "nglausao-izakaya",
    "kinds": [
     "Japanese"
-   ]
+   ],
+   "orScore": 4.5,
+   "orReviews": 163,
+   "openrice": "https://www.openrice.com/en/hongkong/r-nglausao-izakaya-causeway-bay-japanese-sushi-sashimi-r695961"
   },
   {
    "tab": "city",
@@ -11937,7 +11940,7 @@ window.HK = {
     "late-night"
    ],
    "emoji": "🍜",
-   "intro": "A no-frills Jardine's Crescent noodle shop for bouncy cuttlefish balls, open until 02:00. A classic late-night bowl near the Park Lane.",
+   "intro": "A no-frills Jardine's Bazaar noodle shop for bouncy cuttlefish balls, open until 02:00. A classic late-night bowl near the Park Lane.",
    "order": [
     "Cuttlefish ball noodles",
     "Fish skin dumplings",
@@ -11945,14 +11948,16 @@ window.HK = {
    ],
    "tips": "Cash only; walk-in, shared tables.",
    "hours": "Daily 08:00–02:00",
-   "addressEn": "22–24 Jardine's Crescent, Causeway Bay",
+   "addressEn": "22–24 Jardine's Bazaar, Causeway Bay",
    "local": true,
-   "lat": 22.279095,
-   "lng": 114.18515,
+   "lat": 22.279382,
+   "lng": 114.185461,
    "id": "man-fai-cuttlefish-ball-noodles",
    "kinds": [
     "Roast meats & noodles"
-   ]
+   ],
+   "gRating": 3.3,
+   "gReviews": 601
   },
   {
    "tab": "city",
@@ -11974,7 +11979,7 @@ window.HK = {
    ],
    "tips": "The pistachio flavour divides opinion.",
    "hours": "Daily 08:00–00:00",
-   "addressEn": "Shops 3–7, G/F, Sim Kung Mansion, 2–4 Hysan Avenue, Causeway Bay",
+   "addressEn": "Shops 3–7, G/F, Empire Court, 2–4 Hysan Avenue, Causeway Bay",
    "local": true,
    "lat": 22.277878,
    "lng": 114.184286,
@@ -12010,7 +12015,10 @@ window.HK = {
    "id": "auntie-sweet",
    "kinds": [
     "Dessert & sweets"
-   ]
+   ],
+   "orScore": 4.0,
+   "orReviews": 656,
+   "openrice": "https://www.openrice.com/en/hongkong/r-auntie-sweet-causeway-bay-hong-kong-style-dessert-r686243"
   },
   {
    "tab": "city",

@@ -2584,12 +2584,12 @@
    "order": [
     "Fried chicken leg"
    ],
-   "tips": "Takeaway only; about 3 minutes from Kennedy Town station Exit A.",
+   "tips": "Takeaway only; a few minutes from Kennedy Town station.",
    "hours": "Mon–Sat 12:00–20:00 (closed Sunday)",
-   "addressEn": "Shop 2B, G/F Ka Fai Garden, 71–77 Smithfield Road, Kennedy Town",
+   "addressEn": "Shop 22B, G/F, Smithfield Court Shopping Arcade, 43 Smithfield Road, Kennedy Town",
    "local": true,
-   "lat": 22.283674,
-   "lng": 114.128251
+   "lat": 22.282112,
+   "lng": 114.127895
   },
   {
    "tab": "saiwan",
@@ -2819,35 +2819,6 @@
   {
    "tab": "city",
    "section": "Local eats",
-   "name": "Seorae Korean BBQ",
-   "zh": "喜來稀肉",
-   "area": "Causeway Bay",
-   "cuisine": "Korean BBQ",
-   "price": "$$",
-   "category": [
-    "dinner",
-    "late-night"
-   ],
-   "emoji": "🥩",
-   "kinds_override": [
-    "Korean"
-   ],
-   "intro": "A lively Korean BBQ chain known for its skirt meat, a few minutes from the Park Lane and open until midnight.",
-   "order": [
-    "Galmaegisal (pork skirt)",
-    "Marinated beef",
-    "Egg ring on the grill"
-   ],
-   "tips": "Book on OpenRice the day before; weekend bookings may need 4 or more. Watch the grill, as the meat burns easily.",
-   "hours": "Sun–Thu 11:30–14:30 and 18:00–00:00; Fri–Sat to 01:00",
-   "addressEn": "Shop 3, G/F & 1/F, Kam Lung Mansion, 41–51 Tang Lung Street, Causeway Bay",
-   "local": true,
-   "lat": 22.279219,
-   "lng": 114.182215
-  },
-  {
-   "tab": "city",
-   "section": "Local eats",
    "name": "Nglausao Izakaya",
    "zh": "吳留手居酒屋",
    "area": "Causeway Bay",
@@ -2891,7 +2862,7 @@
    "kinds_override": [
     "Roast meats & noodles"
    ],
-   "intro": "A no-frills Jardine's Crescent noodle shop for bouncy cuttlefish balls, open until 02:00. A classic late-night bowl near the Park Lane.",
+   "intro": "A no-frills Jardine's Bazaar noodle shop for bouncy cuttlefish balls, open until 02:00. A classic late-night bowl near the Park Lane.",
    "order": [
     "Cuttlefish ball noodles",
     "Fish skin dumplings",
@@ -2899,10 +2870,10 @@
    ],
    "tips": "Cash only; walk-in, shared tables.",
    "hours": "Daily 08:00–02:00",
-   "addressEn": "22–24 Jardine's Crescent, Causeway Bay",
+   "addressEn": "22–24 Jardine's Bazaar, Causeway Bay",
    "local": true,
-   "lat": 22.279095,
-   "lng": 114.18515
+   "lat": 22.279382,
+   "lng": 114.185461
   },
   {
    "tab": "city",
@@ -2927,7 +2898,7 @@
    ],
    "tips": "The pistachio flavour divides opinion.",
    "hours": "Daily 08:00–00:00",
-   "addressEn": "Shops 3–7, G/F, Sim Kung Mansion, 2–4 Hysan Avenue, Causeway Bay",
+   "addressEn": "Shops 3–7, G/F, Empire Court, 2–4 Hysan Avenue, Causeway Bay",
    "local": true,
    "lat": 22.277878,
    "lng": 114.184286

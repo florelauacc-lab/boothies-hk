@@ -1451,5 +1451,78 @@
  "yume": {
   "rating": 4.5,
   "reviews": 21
+ },
+ "kam-cheung-pork-noodle": {
+  "rating": 4.3,
+  "reviews": 1092,
+  "or_score": 4.0,
+  "or_reviews": 219,
+  "or_url": "https://www.openrice.com/en/hongkong/r-kam-cheung-pork-noodle-western-district-shanghai-r20984"
+ },
+ "home-town-dumpling": {
+  "rating": 4.0,
+  "reviews": 319,
+  "or_score": 3.5,
+  "or_reviews": 49,
+  "or_url": "https://www.openrice.com/en/hongkong/r-home-town-dumpling-western-district-shandong-chinese-buns-r492853"
+ },
+ "hingkee-factory": {
+  "or_score": 4.0,
+  "or_reviews": 7,
+  "or_url": "https://www.openrice.com/en/hongkong/r-hingkee-factory-western-district-hong-kong-style-r1122631"
+ },
+ "winstons-coffee-kennedy-town": {
+  "or_url": "https://www.openrice.com/en/hongkong/r-winstons-coffee-western-district-australian-r568871"
+ },
+ "coffee-by-zion": {
+  "rating": 4.2,
+  "reviews": 633,
+  "or_score": 4.5,
+  "or_reviews": 624,
+  "or_url": "https://www.openrice.com/en/hongkong/r-coffee-by-zion-western-district-western-r525933"
+ },
+ "coco-shop": {
+  "or_score": 3.5,
+  "or_reviews": 182,
+  "or_url": "https://www.openrice.com/en/hongkong/r-%E5%8F%AF%E5%8F%AF%E5%BA%97-western-district-hong-kong-style-r14284"
+ },
+ "yung-kee-hainan-chicken": {
+  "or_url": "https://www.openrice.com/en/hongkong/r-yung-kee-hainan-chicken-sheung-wan-hong-kong-style-r1121214"
+ },
+ "hung-s-delicacies": {
+  "or_score": 4.0,
+  "or_reviews": 28,
+  "or_url": "https://www.openrice.com/en/hongkong/r-hungs-delicacies-causeway-bay-guangdong-r873229"
+ },
+ "chiu-chow-delicacies": {
+  "or_score": 4.0,
+  "or_reviews": 294,
+  "or_url": "https://www.openrice.com/en/hongkong/r-chiu-chow-delicacies-north-point-chiu-chow-r188551"
+ },
+ "hee-kee-typhoon-shelter-crab": {
+  "or_score": 4.5,
+  "or_reviews": 423,
+  "or_url": "https://www.openrice.com/en/hongkong/r-hee-kee-fried-crab-expert-ltd-causeway-bay-guangdong-seafood-r792612"
+ },
+ "nglausao-izakaya": {
+  "or_score": 4.5,
+  "or_reviews": 163,
+  "or_url": "https://www.openrice.com/en/hongkong/r-nglausao-izakaya-causeway-bay-japanese-sushi-sashimi-r695961"
+ },
+ "man-fai-cuttlefish-ball-noodles": {
+  "rating": 3.3,
+  "reviews": 601,
+  "or_url": "https://www.openrice.com/en/hongkong/r-man-fai-causeway-bay-chiu-chow-noodles-rice-noodles-r5304"
+ },
+ "grindie": {
+  "or_url": "https://www.openrice.com/en/hongkong/r-grindie-causeway-bay-hong-kong-style-dessert-r993320"
+ },
+ "auntie-sweet": {
+  "or_score": 4.0,
+  "or_reviews": 656,
+  "or_url": "https://www.openrice.com/en/hongkong/r-auntie-sweet-causeway-bay-hong-kong-style-dessert-r686243"
+ },
+ "draft-land-causeway-bay": {
+  "or_url": "https://www.openrice.com/en/hongkong/r-draft-land-causeway-bay-international-wine-r847431"
  }
 }
