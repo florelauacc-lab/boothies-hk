@@ -53,7 +53,8 @@ window.HK = {
    "gRating": 3.8,
    "gReviews": 1955,
    "orScore": 3.5,
-   "orReviews": 0
+   "orReviews": 0,
+   "tips": "Dinner only (about 17:30–22:30), cash only, no bookings, and a HK$100 minimum per person; staff move tables along quickly."
   },
   {
    "tab": "saiwan",
@@ -91,7 +92,8 @@ window.HK = {
    ],
    "emoji": "🍲",
    "orScore": 4.0,
-   "orReviews": 65
+   "orReviews": 65,
+   "tips": "Closed Wednesdays."
   },
   {
    "tab": "saiwan",
@@ -134,7 +136,8 @@ window.HK = {
     2
    ],
    "orScore": 4.9,
-   "orReviews": 357
+   "orReviews": 357,
+   "tips": "Very spicy, and its near-perfect online score rests mostly on influencer posts."
   },
   {
    "tab": "saiwan",
@@ -179,7 +182,8 @@ window.HK = {
     1
    ],
    "orScore": 4.9,
-   "orReviews": 212
+   "orReviews": 212,
+   "tips": "Much of its online praise comes from blogger and promo posts."
   },
   {
    "tab": "saiwan",
@@ -223,7 +227,8 @@ window.HK = {
     1
    ],
    "orScore": 4.9,
-   "orReviews": 93
+   "orReviews": 93,
+   "tips": "About 15 seats, so expect a 1–1.5 hour queue at peak."
   },
   {
    "tab": "saiwan",
@@ -267,7 +272,8 @@ window.HK = {
     0
    ],
    "orScore": 5.0,
-   "orReviews": 51
+   "orReviews": 51,
+   "tips": "Its near-perfect online score rests mostly on influencer posts; 10% service charge."
   },
   {
    "tab": "saiwan",
@@ -448,7 +454,8 @@ window.HK = {
     0
    ],
    "orScore": 5.0,
-   "orReviews": 59
+   "orReviews": 59,
+   "tips": "Its near-perfect online score rests mostly on influencer posts."
   },
   {
    "tab": "saiwan",
@@ -677,7 +684,8 @@ window.HK = {
     15
    ],
    "orScore": 4.3,
-   "orReviews": 216
+   "orReviews": 216,
+   "tips": "Some diners find the dipping broth thin or salty."
   },
   {
    "tab": "saiwan",
@@ -794,7 +802,8 @@ window.HK = {
    ],
    "emoji": "🍜",
    "orScore": 3.5,
-   "orReviews": 83
+   "orReviews": 83,
+   "tips": "Real diners call it hit and miss, and recent reviews say the soup lacks sourness and heat."
   },
   {
    "tab": "saiwan",
@@ -1410,7 +1419,8 @@ window.HK = {
    "gReviews": 5417,
    "orScore": 4.0,
    "orReviews": 244,
-   "openrice": "https://www.openrice.com/en/hongkong/r-lin-heung-lau-sheung-wan-guangdong-dim-sum-r1128979"
+   "openrice": "https://www.openrice.com/en/hongkong/r-lin-heung-lau-sheung-wan-guangdong-dim-sum-r1128979",
+   "tips": "Dim sum sells out by about 13:00, so arrive on time (or early) to catch the trolleys."
   },
   {
    "tab": "city",
@@ -1762,7 +1772,8 @@ window.HK = {
    "gReviews": 686,
    "orScore": 3.5,
    "orReviews": 162,
-   "openrice": "https://www.openrice.com/en/hongkong/r-mak-an-kee-noodle-central-guangdong-noodles-rice-noodles-r8842"
+   "openrice": "https://www.openrice.com/en/hongkong/r-mak-an-kee-noodle-central-guangdong-noodles-rice-noodles-r8842",
+   "tips": "Real diners are mixed: small portions for the price."
   },
   {
    "tab": "city",
@@ -1915,7 +1926,8 @@ window.HK = {
    "gReviews": 1404,
    "orScore": 4.0,
    "orReviews": 303,
-   "openrice": "https://www.openrice.com/en/hongkong/r-samsen-%E6%B3%B0%E9%A4%A8-sheung-wan-thai-r658685"
+   "openrice": "https://www.openrice.com/en/hongkong/r-samsen-%E6%B3%B0%E9%A4%A8-sheung-wan-thai-r658685",
+   "tips": "No bookings: about an hour's queue after 19:00."
   },
   {
    "tab": "city",
@@ -3372,7 +3384,7 @@ window.HK = {
     "Mapo tofu (麻婆豆腐)"
    ],
    "reviews": "Rated 4/5 on OpenRice, with praise for tender, mostly boneless fish and good-value lunch sets (about HK$80–100), though some reviewers found the odd bone, thin slices or over-salty dishes.",
-   "tips": "Choose your spice level when you order: 'mild' (小辣) still has a kick, and the lunch sets (sour fish about HK$78, with rice and a drink) are the cheapest way to try it.",
+   "tips": "Choose your spice level when you order: 'mild' (小辣) still has a kick, and the lunch sets (sour fish about HK$78, with rice and a drink) are the cheapest way to try it. Recent reviews are mixed (salty, oily dishes), so its high online score looks generous.",
    "addressEn": "Shop 2-4, G/F, Pearl Court, 13 Belcher's Street, Kennedy Town",
    "addressZh": "堅尼地城卑路乍街13號珍珠閣地下2-4號舖",
    "lat": 22.28449,
@@ -4998,38 +5010,6 @@ window.HK = {
   },
   {
    "tab": "saiwan",
-   "name": "Cheung Hong Yuen",
-   "zh": "祥香園餐廳",
-   "area": "Kennedy Town",
-   "section": "HK classics",
-   "cuisine": "Cha chaan teng",
-   "category": [
-    "lunch",
-    "breakfast"
-   ],
-   "price": "$",
-   "intro": "A busy cha chaan teng next to Kennedy Town MTR serving classic breakfast and tea sets, and the closest one to campus.",
-   "order": [
-    "Pineapple bun with butter (菠蘿油)",
-    "Milk tea (奶茶)",
-    "Egg tart (蛋撻)"
-   ],
-   "reviews": "Recent 2026 OpenRice reviews praise the crisp pineapple bun with butter, smooth milk tea and generous portions, while older reviews call the breakfast sets ordinary.",
-   "tips": "Open 07:00 to 18:00 daily; takes cash, Octopus and AlipayHK; it gets packed around 15:00 tea time.",
-   "addressEn": "Shop 6, G/F, Mei Fai Court, 41A-43 Smithfield Road, Kennedy Town",
-   "addressZh": "香港堅尼地城士美菲路41A-43號美菲閣地下6號舖",
-   "lat": 22.28244,
-   "lng": 114.1281,
-   "local": true,
-   "classic": "HK milk tea / cha chaan teng breakfast",
-   "id": "cheung-hong-yuen",
-   "kinds": [
-    "Cha chaan teng & cafés"
-   ],
-   "emoji": "🍞"
-  },
-  {
-   "tab": "saiwan",
    "name": "Luen Wah Cafe",
    "zh": "聯華茶餐廳",
    "area": "Sai Ying Pun",
@@ -5212,7 +5192,7 @@ window.HK = {
     "Roast goose (燒鵝)"
    ],
    "reviews": "Food bloggers rate the char siu among the city's best, but there are complaints about salty duck, slow dine-in service and one burnt takeaway order in September 2026.",
-   "tips": "Cash only; open about 07:00 to 23:00 and busiest at lunch, so go after 14:00.",
+   "tips": "Cash only; open about 07:00 to 23:00 and busiest at lunch, so go after 14:00. Some diners find the char siu dry and service brusque; expect a 20–30 minute wait.",
    "addressEn": "Shop B, G/F, 38 Bonham Strand, Sheung Wan",
    "addressZh": "香港上環文咸東街38號地下B舖",
    "lat": 22.28575,
@@ -5435,7 +5415,7 @@ window.HK = {
     "Giant shrimp dumplings (大蝦餃)"
    ],
    "reviews": "Many diners praise the crispy rice and the dim sum, but some Tripadvisor reviewers found the claypot rice bland and complained about long waits and service.",
-   "tips": "Walk-in only; listed as open very long hours (possibly 24 hours), so confirm before a late-night visit. Expect a dinner queue, and claypots take about 20 minutes.",
+   "tips": "Walk-in only; listed as open very long hours (possibly 24 hours), so confirm before a late-night visit. Expect a dinner queue, and claypots take about 20 minutes. Not for a one-hour lunch: claypots take about 30 minutes, often longer with the queue.",
    "addressEn": "G/F, Fook On Mansion, 25 North Street, Kennedy Town",
    "addressZh": "香港堅尼地城北街25號福安大廈地下",
    "lat": 22.28308,
@@ -11534,6 +11514,235 @@ window.HK = {
    "orScore": 3.5,
    "orReviews": 244,
    "openrice": "https://www.openrice.com/en/hongkong/r-trusty-congee-king-wan-chai-hong-kong-style-congee-r12650"
+  },
+  {
+   "tab": "saiwan",
+   "section": "HK classics",
+   "name": "Kam Cheung Pork Noodle",
+   "zh": "金祥排骨麵",
+   "area": "Sai Ying Pun",
+   "cuisine": "Pork chop noodles",
+   "price": "$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🍜",
+   "intro": "A long-running Sai Ying Pun noodle shop locals keep going back to for crisp pork chop with noodles. A quick, cheap campus-day lunch.",
+   "order": [
+    "Pork chop with vegetable wonton noodles",
+    "Pork chop noodles in soup"
+   ],
+   "tips": "Cramped seating, quick turnover. Hours vary by source (one says closed Tuesdays), so check before going.",
+   "hours": "About 11:00–22:30",
+   "addressEn": "Shop C, G/F Standard Building, 316 Des Voeux Road West, Sai Ying Pun",
+   "local": true,
+   "lat": 22.287956,
+   "lng": 114.140559,
+   "id": "kam-cheung-pork-noodle",
+   "kinds": [
+    "Roast meats & noodles"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "section": "HK classics",
+   "name": "Home Town Dumpling",
+   "zh": "京香餃",
+   "area": "Sai Ying Pun",
+   "cuisine": "Northern Chinese dumplings & noodles",
+   "price": "$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🍜",
+   "intro": "A dumpling shop by HKU station. Diners rate the lamb dumplings and the lamb noodle soup, which one reviewer called 'a surprise'.",
+   "order": [
+    "Lamb dumplings",
+    "Fish dumplings",
+    "Lamb noodle soup"
+   ],
+   "tips": "Right by HKU station Exit B1, so it's an easy campus-day lunch.",
+   "hours": "Daily 11:00–21:30",
+   "addressEn": "G/F, 418 Queen's Road West",
+   "local": true,
+   "lat": 22.2858,
+   "lng": 114.137,
+   "id": "home-town-dumpling",
+   "kinds": [
+    "Regional Chinese"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "section": "HK classics",
+   "name": "Hei Baat Fong",
+   "zh": "囍八方",
+   "area": "Sheung Wan",
+   "cuisine": "Dumplings & lo mein",
+   "price": "$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🥟",
+   "intro": "A small Sheung Wan dumpling and noodle shop. A self-paid diner gave it five stars: 'super tasty and cheap'.",
+   "order": [
+    "Pork and chive dumplings",
+    "Lo mein"
+   ],
+   "tips": "Small and casual; hours not fully confirmed.",
+   "hours": "About 11:30–21:30",
+   "addressEn": "G/F, 3 & 3A Upper Station Street, Sheung Wan",
+   "local": true,
+   "lat": 22.285055,
+   "lng": 114.148291,
+   "id": "hei-baat-fong",
+   "kinds": [
+    "Regional Chinese"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "section": "HK classics",
+   "name": "Hingkee Factory",
+   "zh": "卿記工房",
+   "area": "Kennedy Town",
+   "cuisine": "Fried chicken (takeaway)",
+   "price": "$",
+   "category": [
+    "lunch"
+   ],
+   "emoji": "🍗",
+   "intro": "A Kennedy Town takeaway counter loved for its juicy fried chicken leg (about HK$35). A quick snack near campus.",
+   "order": [
+    "Fried chicken leg"
+   ],
+   "tips": "Takeaway only; about 3 minutes from Kennedy Town station Exit A.",
+   "hours": "Mon–Sat 12:00–20:00 (closed Sunday)",
+   "addressEn": "Shop 2B, G/F Ka Fai Garden, 71–77 Smithfield Road, Kennedy Town",
+   "local": true,
+   "lat": 22.283674,
+   "lng": 114.128251,
+   "id": "hingkee-factory",
+   "kinds": [
+    "Other"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "section": "Coffee",
+   "name": "Winstons Coffee (Kennedy Town)",
+   "zh": "Winstons Coffee",
+   "area": "Kennedy Town",
+   "cuisine": "Specialty coffee; cocktails at night",
+   "price": "$$",
+   "category": [
+    "coffee"
+   ],
+   "emoji": "☕",
+   "intro": "A corner café two minutes from Kennedy Town station: coffee by day, cocktails in the evening.",
+   "order": [
+    "Flat white",
+    "Espresso martini (evenings)"
+   ],
+   "tips": "Opens 07:00; closes earlier on Mondays.",
+   "hours": "About 07:00–22:00 (Monday to 18:00)",
+   "addressEn": "Shop 8, G/F, 11 Davis Street, Kennedy Town",
+   "local": true,
+   "lat": 22.282714,
+   "lng": 114.126794,
+   "id": "winstons-coffee-kennedy-town",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "section": "Coffee",
+   "name": "Coffee by Zion",
+   "zh": "Coffee by Zion",
+   "area": "Sai Ying Pun",
+   "cuisine": "Specialty coffee",
+   "price": "$",
+   "category": [
+    "coffee"
+   ],
+   "emoji": "☕",
+   "intro": "A small café opposite Sai Ying Pun station that locals call reliably good. Handy before the shuttle.",
+   "order": [
+    "Latte",
+    "Filter coffee"
+   ],
+   "tips": "Opposite Sai Ying Pun MTR Exit B1.",
+   "hours": "Weekdays 08:00–18:00, weekends 08:00–19:00",
+   "addressEn": "Shop 1, G/F, 83 First Street, Sai Ying Pun",
+   "local": true,
+   "lat": 22.286533,
+   "lng": 114.142233,
+   "id": "coffee-by-zion",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "section": "HK classics",
+   "name": "Coco Shop",
+   "zh": "可可店",
+   "area": "Kennedy Town",
+   "cuisine": "Late-night rice rolls & sweet soups",
+   "price": "$",
+   "category": [
+    "dessert",
+    "late-night"
+   ],
+   "emoji": "🍧",
+   "intro": "A Kennedy Town late-night spot for rice rolls and Cantonese sweet soups, open until 04:00. A self-paid local post backs it, though some say it's not what it was.",
+   "order": [
+    "Steamed rice rolls",
+    "Sweet soups (tong sui)"
+   ],
+   "tips": "Open late, 16:00–04:00.",
+   "hours": "Daily 16:00–04:00",
+   "addressEn": "G/F Luen Wai Building, 136–142 Belcher's Street, Kennedy Town",
+   "local": true,
+   "lat": 22.285663,
+   "lng": 114.132438,
+   "id": "coco-shop",
+   "kinds": [
+    "Dessert & sweets"
+   ]
+  },
+  {
+   "tab": "saiwan",
+   "section": "HK classics",
+   "name": "Yung Kee Hainan Chicken",
+   "zh": "勇記海南雞",
+   "area": "Sheung Wan",
+   "cuisine": "Hainan chicken rice",
+   "price": "$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🍗",
+   "intro": "The best-backed Hainan chicken rice near campus: a small Sheung Wan shop, HK$66–77 a plate. Reviews are mixed but mostly positive.",
+   "order": [
+    "Hainan chicken rice",
+    "Chicken with oil rice"
+   ],
+   "tips": "About 3 minutes from Sheung Wan MTR Exit A2. Closed Sundays; sources give different street numbers on Su Hang Street.",
+   "hours": "Mon–Sat 11:30–20:00 (last order 19:30)",
+   "addressEn": "G/F, Wing Cheong Commercial Building, 19–25 Su Hang Street, Sheung Wan",
+   "local": true,
+   "lat": 22.28518,
+   "lng": 114.152242,
+   "id": "yung-kee-hainan-chicken",
+   "kinds": [
+    "Roast meats & noodles"
+   ]
   }
  ],
  "OUTINGS": [
@@ -12978,14 +13187,6 @@ window.HK = {
      "lat": 22.2874,
      "lng": 114.14224,
      "address": "G/F, 28 Centre Street, Sai Ying Pun"
-    },
-    {
-     "place": "Cheung Hong Yuen",
-     "zh": "祥香園餐廳",
-     "area": "Kennedy Town",
-     "lat": 22.28244,
-     "lng": 114.1281,
-     "address": "Shop 6, G/F, Mei Fai Court, 41A-43 Smithfield Road, Kennedy Town"
     },
     {
      "place": "Lan Fong Yuen",
