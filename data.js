@@ -1226,7 +1226,7 @@ window.HK = {
   {
    "tab": "city",
    "name": "Shun Kee Typhoon Shelter Seafood",
-   "zh": "順記避風塘海鮮",
+   "zh": "信記避風塘海鮮美食",
    "area": "Causeway Bay",
    "section": "Seafood & dai pai dong",
    "cuisine": "Cantonese typhoon-shelter seafood on a sampan",
@@ -1262,7 +1262,8 @@ window.HK = {
    "gReviews": 108,
    "orScore": 3.5,
    "orReviews": 74,
-   "openrice": "https://www.openrice.com/en/hongkong/r-shun-kee-typhoon-shelter-causeway-bay-hong-kong-style-seafood-r50112"
+   "openrice": "https://www.openrice.com/en/hongkong/r-shun-kee-typhoon-shelter-causeway-bay-hong-kong-style-seafood-r50112",
+   "tips": "Dinner only (about 18:00–22:30); book ahead for the boat transfer. Diners say the sampan experience is the draw and the food is pricey."
   },
   {
    "tab": "city",
@@ -3937,7 +3938,7 @@ window.HK = {
     "Char siu (叉燒)"
    ],
    "reviews": "Most say the goose lives up to the star, a minority call it overrated for the price, and queues of 15-60+ minutes and quick turnover are the norm.",
-   "tips": "Arrive at opening (about 10:30) or after 14:00 on a weekday. Put your name down at the door; there is no booking. Order the goose quarter plus a rice or noodle plate. It is a short tram or taxi ride from Causeway Bay.",
+   "tips": "Arrive at opening (about 10:30) or after 14:00 on a weekday. Put your name down at the door; there is no booking. Order the goose quarter plus a rice or noodle plate. It is a short tram or taxi ride from Causeway Bay. Evenings mean a 30–60 minute queue and a 10% service charge after 18:00.",
    "hours": "About 10:30-21:30 daily",
    "addressEn": "G/F, Po Wah Commercial Centre, 226 Hennessy Road, Wan Chai, Hong Kong",
    "addressZh": "香港灣仔軒尼詩道226號寶華商業中心地下",
@@ -4065,7 +4066,7 @@ window.HK = {
     "Roast goose (燒鵝)"
    ],
    "reviews": "Reviewers say the char siu is among the best in town and great value (around HK$50 a plate), but expect shared tables, brusque service and a queue at lunch.",
-   "tips": "Point at the meats hanging in the window, or ask for a two-meat combo on rice (雙拼飯). Avoid the 12:30-13:30 office rush. It is a 10-minute walk from Causeway Bay.",
+   "tips": "Point at the meats hanging in the window, or ask for a two-meat combo on rice (雙拼飯). Avoid the 12:30-13:30 office rush. It is a 10-minute walk from Causeway Bay. Some recent diners find the famous char siu chewy; it often sells out by mid-afternoon.",
    "hours": "About 09:30-22:00; some listings say closed Sundays (check)",
    "addressEn": "Flat C, G/F, Cheung Hing Building, 265-267 Hennessy Road, Wan Chai, Hong Kong",
    "addressZh": "香港灣仔軒尼詩道265-267號祥興大廈地下C舖",
@@ -11742,6 +11743,329 @@ window.HK = {
    "id": "yung-kee-hainan-chicken",
    "kinds": [
     "Roast meats & noodles"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local legends",
+   "name": "Hung's Delicacies",
+   "zh": "阿鴻小吃",
+   "area": "Causeway Bay",
+   "cuisine": "Chiu Chow (marinated goose)",
+   "price": "$$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🪿",
+   "award": "Michelin Bib Gourmand 2026",
+   "intro": "A Michelin Bib Gourmand Chiu Chow restaurant five minutes from the Park Lane, famous for marinated goose. Diners say the branch keeps its standard and the marinade is still excellent.",
+   "order": [
+    "Marinated goose",
+    "Braised pork knuckle",
+    "Chiu Chow cold crab (seasonal)"
+   ],
+   "tips": "Has private rooms (the largest seats two banquet tables), so it suits a group. Book by phone 2831 0188 or WhatsApp; even booked tables sometimes wait.",
+   "hours": "11:30–16:00 and 17:30–22:00",
+   "addressEn": "Shop B01, Basement, Tower 535, 535 Jaffe Road, Causeway Bay",
+   "local": true,
+   "lat": 22.281327,
+   "lng": 114.183927,
+   "id": "hung-s-delicacies",
+   "kinds": [
+    "Regional Chinese"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local eats",
+   "name": "Sijie Sichuan",
+   "zh": "四姐川菜",
+   "area": "Causeway Bay",
+   "cuisine": "Sichuan (private kitchen, set menu)",
+   "price": "$$$",
+   "category": [
+    "dinner"
+   ],
+   "emoji": "🌶️",
+   "intro": "A private-kitchen-style Sichuan restaurant on the 10th floor near the Park Lane, with a fixed menu of about HK$340–360 a head. Fiery and fun for a group.",
+   "order": [
+    "The set menu (chef's choice)"
+   ],
+   "tips": "Book ahead. Dinner 18:30–22:30, closed Sundays. Most reviews are a few years old.",
+   "hours": "Mon–Sat 18:30–22:30 (lunch 11:30–14:30)",
+   "addressEn": "10/F Bartlock Centre, 3 Yiu Wa Street, Causeway Bay",
+   "local": true,
+   "lat": 22.277498,
+   "lng": 114.181948,
+   "id": "sijie-sichuan",
+   "kinds": [
+    "Regional Chinese"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local eats",
+   "name": "Chiu Chow Delicacies",
+   "zh": "潮樂園",
+   "area": "North Point",
+   "cuisine": "Chiu Chow",
+   "price": "$$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🪿",
+   "intro": "A small, long-time Michelin Bib Gourmand Chiu Chow shop by North Point MTR, known for marinated goose and oyster congee.",
+   "order": [
+    "Marinated goose",
+    "Oyster congee",
+    "Pan-fried oyster omelette"
+   ],
+   "tips": "Small, so dinner may have time limits when full. Cash or AlipayHK. Phone 3568 5643.",
+   "hours": "About 11:00–23:00",
+   "addressEn": "Shop 4, G/F, 96 Wharf Road, North Point (near North Point MTR Exit A1)",
+   "local": true,
+   "lat": 22.29176,
+   "lng": 114.195733,
+   "id": "chiu-chow-delicacies",
+   "kinds": [
+    "Regional Chinese"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Seafood & dai pai dong",
+   "name": "Hee Kee Typhoon Shelter Crab",
+   "zh": "喜記避風塘炒辣蟹",
+   "area": "Causeway Bay",
+   "cuisine": "Typhoon-shelter fried crab",
+   "price": "$$$",
+   "category": [
+    "dinner",
+    "late-night"
+   ],
+   "emoji": "🦀",
+   "intro": "The famous typhoon-shelter-style crab, wok-fried with a mountain of crispy garlic and chilli, open until 02:00. A splurge: a crab is about HK$650–788, and some say it's not worth the name.",
+   "order": [
+    "Typhoon-shelter fried crab",
+    "Fried mantis shrimp",
+    "Clams in black bean sauce"
+   ],
+   "tips": "Book via Chope or phone. Expect HK$400+ a head. Pick this over the separately run 橋底辣蟹 (Under Bridge Spicy Crab), which reviews as touristy.",
+   "hours": "Daily 11:30–02:00",
+   "addressEn": "G/F & 1/F A, Shining Building, 477–481 Jaffe Road, Causeway Bay",
+   "local": true,
+   "lat": 22.280997,
+   "lng": 114.182493,
+   "id": "hee-kee-typhoon-shelter-crab",
+   "kinds": [
+    "Cantonese & seafood"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local eats",
+   "name": "Seorae Korean BBQ",
+   "zh": "喜來稀肉",
+   "area": "Causeway Bay",
+   "cuisine": "Korean BBQ",
+   "price": "$$",
+   "category": [
+    "dinner",
+    "late-night"
+   ],
+   "emoji": "🥩",
+   "intro": "A lively Korean BBQ chain known for its skirt meat, a few minutes from the Park Lane and open until midnight.",
+   "order": [
+    "Galmaegisal (pork skirt)",
+    "Marinated beef",
+    "Egg ring on the grill"
+   ],
+   "tips": "Book on OpenRice the day before; weekend bookings may need 4 or more. Watch the grill, as the meat burns easily.",
+   "hours": "Sun–Thu 11:30–14:30 and 18:00–00:00; Fri–Sat to 01:00",
+   "addressEn": "Shop 3, G/F & 1/F, Kam Lung Mansion, 41–51 Tang Lung Street, Causeway Bay",
+   "local": true,
+   "lat": 22.279219,
+   "lng": 114.182215,
+   "id": "seorae-korean-bbq",
+   "kinds": [
+    "Korean"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local eats",
+   "name": "Nglausao Izakaya",
+   "zh": "吳留手居酒屋",
+   "area": "Causeway Bay",
+   "cuisine": "Japanese izakaya",
+   "price": "$$",
+   "category": [
+    "dinner",
+    "late-night"
+   ],
+   "emoji": "🍣",
+   "intro": "A Causeway Bay izakaya that went viral on Threads for its beef tongue. Fun for a group, though reviews are mixed and service can be slow.",
+   "order": [
+    "Grilled beef tongue",
+    "Yakitori",
+    "Highballs"
+   ],
+   "tips": "Book ahead (+852 5686 8223) and reconfirm, as one diner's booking was lost. Private rooms available.",
+   "hours": "Lunch 12:00–14:45; dinner 18:00–01:00 (last order 22:45)",
+   "addressEn": "G/F, 5 Pennington Street, Causeway Bay",
+   "local": true,
+   "lat": 22.27872,
+   "lng": 114.186081,
+   "id": "nglausao-izakaya",
+   "kinds": [
+    "Japanese"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local eats",
+   "name": "Man Fai Cuttlefish Ball Noodles",
+   "zh": "文輝墨魚丸大王",
+   "area": "Causeway Bay",
+   "cuisine": "Fish ball & cuttlefish ball noodles",
+   "price": "$",
+   "category": [
+    "lunch",
+    "dinner",
+    "late-night"
+   ],
+   "emoji": "🍜",
+   "intro": "A no-frills Jardine's Crescent noodle shop for bouncy cuttlefish balls, open until 02:00. A classic late-night bowl near the Park Lane.",
+   "order": [
+    "Cuttlefish ball noodles",
+    "Fish skin dumplings",
+    "Fried fish skin"
+   ],
+   "tips": "Cash only; walk-in, shared tables.",
+   "hours": "Daily 08:00–02:00",
+   "addressEn": "22–24 Jardine's Crescent, Causeway Bay",
+   "local": true,
+   "lat": 22.279095,
+   "lng": 114.18515,
+   "id": "man-fai-cuttlefish-ball-noodles",
+   "kinds": [
+    "Roast meats & noodles"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Dessert",
+   "name": "Grindie",
+   "zh": "研香",
+   "area": "Causeway Bay",
+   "cuisine": "Hong Kong desserts (sesame and nut soups)",
+   "price": "$",
+   "category": [
+    "dessert",
+    "late-night"
+   ],
+   "emoji": "🍧",
+   "intro": "A dessert shop by Hysan Place that grinds its sesame and nut sweet soups fresh. The black sesame soup is the safe order.",
+   "order": [
+    "Black sesame soup",
+    "Walnut or almond soup"
+   ],
+   "tips": "The pistachio flavour divides opinion.",
+   "hours": "Daily 08:00–00:00",
+   "addressEn": "Shops 3–7, G/F, Sim Kung Mansion, 2–4 Hysan Avenue, Causeway Bay",
+   "local": true,
+   "lat": 22.277878,
+   "lng": 114.184286,
+   "id": "grindie",
+   "kinds": [
+    "Dessert & sweets"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Dessert",
+   "name": "Auntie Sweet",
+   "zh": "甜姨姨",
+   "area": "Causeway Bay",
+   "cuisine": "Hong Kong desserts",
+   "price": "$",
+   "category": [
+    "dessert",
+    "late-night"
+   ],
+   "emoji": "🍧",
+   "intro": "A popular Causeway Bay dessert shop near the Park Lane for mango and Hong Kong-style sweets. Expect an evening queue.",
+   "order": [
+    "Mango pomelo sago",
+    "Durian or mango pancakes"
+   ],
+   "tips": "No bookings; queues in the evening.",
+   "hours": "About 14:00–23:30",
+   "addressEn": "G/F, 11 Yiu Wa Street, Causeway Bay",
+   "local": true,
+   "lat": 22.277802,
+   "lng": 114.182483,
+   "id": "auntie-sweet",
+   "kinds": [
+    "Dessert & sweets"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Causeway Bay",
+   "name": "Draft Land (Causeway Bay)",
+   "zh": "Draft Land",
+   "area": "Causeway Bay",
+   "cuisine": "Cocktails on tap",
+   "price": "$$",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "emoji": "🍸",
+   "intro": "The Causeway Bay branch of the cocktails-on-tap bar, listed in SCMP's 100 Top Tables 2026: quick, creative drinks five minutes from the Park Lane.",
+   "order": [
+    "Any tap cocktail (the menu rotates)"
+   ],
+   "tips": "Hours not confirmed; call 2667 2028.",
+   "hours": "Evenings (check before going)",
+   "addressEn": "Shop D, G/F, Soundwill Plaza II – Midtown, 1–29 Tang Lung Street, Causeway Bay",
+   "local": false,
+   "lat": 22.278898,
+   "lng": 114.18168,
+   "id": "draft-land-causeway-bay",
+   "kinds": [
+    "Cocktails"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Top cocktail bars",
+   "name": "Dirty Laundry",
+   "zh": "Dirty Laundry",
+   "area": "Wan Chai",
+   "cuisine": "Speakeasy cocktail bar",
+   "price": "$$",
+   "category": [
+    "drinks",
+    "late-night"
+   ],
+   "emoji": "🍸",
+   "intro": "A Wan Chai speakeasy hidden behind a fake laundromat, with live music and late hours.",
+   "order": [
+    "House cocktails"
+   ],
+   "tips": "Book by WhatsApp (5501 1756). Hours are from a 2024 listing, so confirm.",
+   "hours": "Sun–Thu 17:00–02:00; Fri–Sat to 04:00",
+   "addressEn": "Shop A, King Tao Building, 100 Lockhart Road, Wan Chai",
+   "local": false,
+   "lat": 22.278184,
+   "lng": 114.172736,
+   "id": "dirty-laundry",
+   "kinds": [
+    "Cocktails"
    ]
   }
  ],
