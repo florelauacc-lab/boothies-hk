@@ -2116,7 +2116,10 @@ window.HK = {
    "gReviews": 4169,
    "orScore": 4.0,
    "orReviews": 958,
-   "openrice": "https://www.openrice.com/en/hongkong/r-ichiran-causeway-bay-japanese-ramen-r140523"
+   "openrice": "https://www.openrice.com/en/hongkong/r-ichiran-causeway-bay-japanese-ramen-r140523",
+   "hours": "Daily 09:00–05:00 (last order 04:30), per Ichiran's site on 11 Nov 2026",
+   "url": "https://en.ichiran.com/shop/oversea/hongkong/causewaybay/",
+   "weekNote": "Ichiran's own site still lists this branch as open (checked 11 Nov). If it's shut, the Tsim Sha Tsui branch at 8 Minden Avenue is open 09:00–04:00."
   },
   {
    "tab": "city",
@@ -6062,7 +6065,8 @@ window.HK = {
    "category": [
     "easy",
     "views",
-    "south"
+    "south",
+    "run"
    ],
    "intro": "A mostly paved trail past Victorian-era reservoirs, granite dams and bridges, a short ride from Stanley.",
    "getting": "From Stanley: taxi about 10 minutes to Tai Tam Tuk Reservoir dam, or bus 14 towards Sai Wan Ho. From Causeway Bay: taxi about 20 minutes to Wong Nai Chung Gap (Parkview) for the north start.",
@@ -7672,7 +7676,8 @@ window.HK = {
    "category": [
     "easy",
     "views",
-    "sunset"
+    "sunset",
+    "run"
    ],
    "intro": "A flat, paved loop around the Peak that gives the classic postcard view of the Victoria Harbour skyline for free.",
    "order": [
@@ -7736,7 +7741,8 @@ window.HK = {
     "easy",
     "near-campus",
     "views",
-    "sunset"
+    "sunset",
+    "run"
    ],
    "intro": "A gentle paved climb that starts right beside the Booth campus and leads to WWII gun batteries and military ruins on the summit of Mount Davis.",
    "order": [
@@ -7849,65 +7855,14 @@ window.HK = {
   },
   {
    "tab": "hikes",
-   "name": "Tai Tam Waterworks Heritage Trail",
-   "zh": "大潭水務文物徑（起點：黃泥涌峽陽明山莊附近大潭水塘道）",
-   "area": "Tai Tam Country Park",
-   "cuisine": "Easy hike",
-   "category": [
-    "easy",
-    "south"
-   ],
-   "intro": "A mostly downhill, shaded walk past Tai Tam's reservoirs and their historic dams, bridges and other waterworks structures.",
-   "order": [
-    "Historic waterworks structures (declared monuments)",
-    "Reservoir and forest scenery",
-    "Gentle gradient, suitable for everyone"
-   ],
-   "getting": "From Park Lane: taxi to the top of Tai Tam Reservoir Road near Hong Kong Parkview, Wong Nai Chung Gap (about 15 mins, our estimate). Alternatively take bus 6, 41A, 63, 66 or 76, or green minibus 5, to Wong Nai Chung Gap and walk up. From campus: taxi (about 25–30 mins, our estimate).",
-   "tips": "Wear normal trainers and bring water; there are toilets near the Parkview start. The trail ends at the junction of Tai Tam Road and Tai Tam Reservoir Road; catch a bus or taxi on Tai Tam Road towards Stanley or back to town. It works well as a morning walk.",
-   "facts": [
-    [
-     "Distance",
-     "5 km"
-    ],
-    [
-     "Time",
-     "about 2 hrs"
-    ],
-    [
-     "Level",
-     "Easy"
-    ]
-   ],
-   "lat": 22.2578583,
-   "lng": 114.1961124,
-   "mapsQuery": "Tai Tam Reservoir Road, Hong Kong Parkview, Wong Nai Chung Gap",
-   "picked": false,
-   "links": [
-    {
-     "label": "Wikipedia",
-     "url": "https://en.wikipedia.org/wiki/Tai_Tam_Waterworks_Heritage_Trail"
-    }
-   ],
-   "emoji": "💧",
-   "id": "tai-tam-waterworks-heritage-trail-2",
-   "weekNote": "14–15 Nov: race runners and hiking groups on the reservoir roads. Use the temporary toilets at Tai Tam Tuk.",
-   "photo": {
-    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Tai_Tam_Reservoir_2.jpg/960px-Tai_Tam_Reservoir_2.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Tai_Tam_Reservoir_2.jpg",
-    "credit": "Minghong",
-    "license": "CC BY-SA 3.0"
-   }
-  },
-  {
-   "tab": "hikes",
    "name": "Bowen Road Fitness Trail & Lovers' Rock",
    "zh": "寶雲道（司徒拔道交界起步）",
    "area": "Mid-Levels above Wan Chai / Happy Valley",
    "cuisine": "Easy hike",
    "category": [
     "easy",
-    "views"
+    "views",
+    "run"
    ],
    "intro": "A flat, car-free path along the hillside above Wan Chai, popular with joggers and close to the hotel. It suits a quick morning walk or run.",
    "order": [
@@ -12297,6 +12252,314 @@ window.HK = {
    "kinds": [
     "Cantonese & seafood"
    ]
+  },
+  {
+   "tab": "hikes",
+   "name": "Central to Wan Chai Harbourfront Run",
+   "zh": "添馬公園",
+   "area": "Central / Admiralty / Wan Chai",
+   "cuisine": "Running route",
+   "category": [
+    "run",
+    "views",
+    "free",
+    "night"
+   ],
+   "emoji": "🏃",
+   "intro": "A flat, paved run along Victoria Harbour from the Central Harbourfront past Tamar Park and the Convention Centre to the Wan Chai waterfront. It has the best skyline views of any run near the hotel.",
+   "getting": "From Park Lane, walk about 10–12 min to the Wan Chai end (via the Canal Road West footbridge), then run west to Central and back. To start at the Central end, take the MTR to Admiralty and walk through Tamar Park. From campus, MTR Kennedy Town to Admiralty, about 15 min.",
+   "tips": "Go early morning or after dark, when it's cooler and the skyline is lit. About 1 km near the Wan Chai Temporary Promenade is shared with cyclists, so keep to your side. There are water-filling machines along the Wan Chai section. Turn at the Convention Centre for a shorter run, or carry on east towards Causeway Bay for a longer one.",
+   "hours": "Open 24 hours",
+   "priceNote": "Free",
+   "facts": [
+    [
+     "Distance",
+     "About 3 km each way (our estimate)"
+    ],
+    [
+     "Time",
+     "30–45 min out and back"
+    ],
+    [
+     "Level",
+     "Easy, flat and paved"
+    ]
+   ],
+   "lat": 22.2836,
+   "lng": 114.1644,
+   "addressEn": "Central and Western District Promenade (Central Section), by Tamar Park, Admiralty",
+   "mapsQuery": "Tamar Park, Admiralty, Hong Kong",
+   "url": "https://www.hfc.org.hk/en/hss/water-sports-and-recreation-precinct-wan-chai",
+   "links": [
+    {
+     "label": "Wan Chai promenade (gov.hk)",
+     "url": "https://www.info.gov.hk/gia/general/202105/07/P2021050700254.htm"
+    }
+   ],
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Wan_Chai_Harbourfront_21-04-2022%287%29.jpg/960px-Wan_Chai_Harbourfront_21-04-2022%287%29.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Wan_Chai_Harbourfront_21-04-2022(7).jpg",
+    "credit": "LN9267",
+    "license": "CC BY-SA 4.0"
+   },
+   "id": "central-to-wan-chai-harbourfront-run"
+  },
+  {
+   "tab": "hikes",
+   "name": "Kennedy Town Waterfront Run",
+   "zh": "卑路乍灣海濱長廊",
+   "area": "Kennedy Town (near Booth)",
+   "cuisine": "Running route",
+   "category": [
+    "run",
+    "near-campus",
+    "sunset",
+    "free"
+   ],
+   "emoji": "🏃",
+   "intro": "A short sea-view run from Kennedy Town Praya past the Belcher Bay Promenade boardwalk, east along the Western District waterfront towards Sun Yat Sen Memorial Park. Mount Davis Path is close by if you want a hill.",
+   "getting": "From campus, walk downhill to Kennedy Town, about 10–15 min. Belcher Bay Promenade is about 6 min on foot from Kennedy Town MTR. From Park Lane, MTR Causeway Bay to Kennedy Town (end of the line), about 20 min.",
+   "tips": "Start on the Praya near Cadogan Street. The Praya is a waterfront street with a pavement rather than a separate promenade, and a few short links are on street pavements. Belcher Bay Promenade has toilets and drinks machines. For hills, Mount Davis Path starts off Victoria Road west of Kennedy Town MTR and climbs steadily to the summit. Sunset over the western harbour is the best time.",
+   "hours": "Open 24 hours",
+   "priceNote": "Free",
+   "facts": [
+    [
+     "Distance",
+     "About 2.5 km each way (our estimate)"
+    ],
+    [
+     "Time",
+     "About 30 min out and back"
+    ],
+    [
+     "Level",
+     "Easy; harder with the Mount Davis climb"
+    ]
+   ],
+   "lat": 22.2851,
+   "lng": 114.129,
+   "addressEn": "Belcher Bay Promenade, Shing Sai Road, Kennedy Town",
+   "mapsQuery": "Belcher Bay Promenade, Kennedy Town, Hong Kong",
+   "url": "https://www.hfc.org.hk/en/hss/belcher-bay-promenade-kennedy-town",
+   "links": [
+    {
+     "label": "Kennedy Town to Lung Fu Shan (Round-the-Island Trail)",
+     "url": "https://www.roundislandtrail.gov.hk/en/exploring-the-trail/route-suggestions/kennedy-town-to-lung-fu-shan-walk"
+    }
+   ],
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Belcher_Bay_Promenade_22-09-2021%281%29.jpg/960px-Belcher_Bay_Promenade_22-09-2021%281%29.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Belcher_Bay_Promenade_22-09-2021(1).jpg",
+    "credit": "LN9267",
+    "license": "CC BY-SA 4.0"
+   },
+   "id": "kennedy-town-waterfront-run"
+  },
+  {
+   "tab": "hikes",
+   "name": "Victoria Park Jogging Track",
+   "zh": "維多利亞公園緩跑徑",
+   "area": "Causeway Bay",
+   "cuisine": "Running route",
+   "category": [
+    "run",
+    "free"
+   ],
+   "emoji": "🏃",
+   "intro": "A jogging track of about 625 m with fitness stations, in Hong Kong Island's biggest city park, just across Gloucester Road from the hotel.",
+   "getting": "From Park Lane, cross Gloucester Road into the park, about 3–5 min on foot. Nearest MTR: Causeway Bay Exit E or Tin Hau Exit A2.",
+   "tips": "The easiest early-morning run from the hotel: do laps. Expect tai chi groups and walkers in the morning. There are fitness stations and changing rooms.",
+   "weekNote": "Arts in the Park fills the park on Sat 14 and Sun 15 Nov (carnival about 10:00–17:00, parades Sat evening and Sun afternoon), so run early those days.",
+   "hours": "Open 24 hours",
+   "priceNote": "Free",
+   "facts": [
+    [
+     "Distance",
+     "About 625 m a lap"
+    ],
+    [
+     "Time",
+     "4 laps is about 15 min"
+    ],
+    [
+     "Level",
+     "Easy, flat"
+    ]
+   ],
+   "lat": 22.2819,
+   "lng": 114.1881,
+   "addressEn": "Victoria Park, 1 Hing Fat Street, Causeway Bay",
+   "mapsQuery": "Victoria Park, Causeway Bay, Hong Kong",
+   "url": "https://www.lcsd.gov.hk/en/parks/vp/",
+   "links": [
+    {
+     "label": "Arts in the Park 2026",
+     "url": "https://www.scartsinthepark.com/en/year_event/2026/"
+    }
+   ],
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Victoria_Park_Hong_Kong704.jpg/960px-Victoria_Park_Hong_Kong704.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Victoria_Park_Hong_Kong704.jpg",
+    "credit": "Matthias Süßen",
+    "license": "CC BY-SA 3.0"
+   },
+   "id": "victoria-park-jogging-track"
+  },
+  {
+   "tab": "hikes",
+   "name": "Sai Kung Geopark Kayaking (Half Day)",
+   "zh": "西貢海濱公園",
+   "area": "Sai Kung",
+   "cuisine": "Outdoor activity",
+   "category": [
+    "active",
+    "views"
+   ],
+   "emoji": "🛶",
+   "intro": "A guided half-day sea kayak from the Sai Kung coast to Sharp Island and the Kiu Tsui rock causeway, in the UNESCO Global Geopark. Gear and a guide are included, and you don't need experience.",
+   "getting": "From Park Lane, MTR to Hang Hau (change at North Point), then green minibus 101M to Sai Kung Town, about 75–90 min in all; a taxi is quicker. Kayarine meets beside Sai Kung Waterfront Park. TerraMar's base is at Ah Kung Wan, a short minibus or taxi ride on from Sai Kung Town.",
+   "tips": "Book online ahead as one group (TerraMar needs at least 4). Bring water shoes, a hat, sun cream, at least 1.5 litres of water, a change of clothes and some cash. In November the north-east monsoon can make the sea choppy, so trips may be rerouted or cancelled; check the operator's weather policy. The sea arches and caves need a full-day trip.",
+   "hours": "Half days usually start around 09:00 and take about 4 hours; check the operator",
+   "priceNote": "TerraMar half day HK$550 per person (minimum 4); Kayarine tours from HK$420 per person",
+   "facts": [
+    [
+     "Paddling",
+     "5–6 km"
+    ],
+    [
+     "Time",
+     "About 4 h, plus 1.5 h travel each way"
+    ],
+    [
+     "Level",
+     "Beginner-friendly, in double kayaks"
+    ]
+   ],
+   "lat": 22.3823,
+   "lng": 114.2744,
+   "addressEn": "Sai Kung Waterfront Park, Sai Kung Town",
+   "mapsQuery": "Sai Kung Waterfront Park, Hong Kong",
+   "url": "https://terramar.hk/kayaking-sai-kung-unesco/",
+   "links": [
+    {
+     "label": "Kayarine guided tours",
+     "url": "https://kayarine.club/en"
+    },
+    {
+     "label": "Wild Hong Kong full-day kayaking",
+     "url": "https://wildhongkong.com/kayaking-sup-tours/geopark-kayaking-beginner-intermediate-level/"
+    }
+   ],
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Sharp_Island_and_Pak_Sha_Chau_%28cropped%29.jpg/960px-Sharp_Island_and_Pak_Sha_Chau_%28cropped%29.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sharp_Island_and_Pak_Sha_Chau_(cropped).jpg",
+    "credit": "Geographer",
+    "license": "CC BY-SA 4.0"
+   },
+   "id": "sai-kung-geopark-kayaking-half-day"
+  },
+  {
+   "tab": "hikes",
+   "name": "Stanley Stand-Up Paddle",
+   "zh": "赤柱正灘",
+   "area": "Stanley",
+   "cuisine": "Outdoor activity",
+   "category": [
+    "active",
+    "south"
+   ],
+   "emoji": "🏄",
+   "intro": "Rent a stand-up paddleboard, or take a lesson with a short guided paddle, at Stanley Main Beach. Stanley's market and waterfront are a short walk away for lunch afterwards.",
+   "getting": "From Park Lane, green minibus 40 from Causeway Bay to Stanley, about 35–45 min, or bus 6, 6X or 260 from Central. The centre is on Hoi Fung Path by the steps down to Stanley Main Beach.",
+   "tips": "Rental is for people who've paddled before; beginners should book the lesson. You must be able to swim 50 m in the sea and sign a form. Book ahead online, especially at weekends. The sea is about 24°C in mid-November, so a rash vest is usually enough; rent a wetsuit if it's windy. Paddle upwind first, and be off the water before sunset (about 17:40).",
+   "hours": "Aqua-Bound Centre 09:00–18:00",
+   "priceNote": "Rental HK$80 for 1 h, HK$150 for 2 h; lesson plus guided paddle (2 h) HK$550 each for a group of 4",
+   "facts": [
+    [
+     "Time",
+     "1–3 h rental, or a 2 h lesson"
+    ],
+    [
+     "Level",
+     "Beginners with a lesson"
+    ],
+    [
+     "Sea",
+     "About 24°C"
+    ]
+   ],
+   "lat": 22.2206,
+   "lng": 114.2142,
+   "addressEn": "HK Aqua-Bound Centre, Hoi Fung Path, Stanley Main Beach, Stanley",
+   "mapsQuery": "Aqua-Bound Centre, Stanley Main Beach, Hong Kong",
+   "url": "https://www.aquabound.com.hk/sup-board",
+   "links": [
+    {
+     "label": "Sea temperatures (HKO)",
+     "url": "https://www.weather.gov.hk/en/cis/normal/1991_2020/seatemp.htm"
+    }
+   ],
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Stanley_Main_Beach_18-09-2024%283%29.jpg/960px-Stanley_Main_Beach_18-09-2024%283%29.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Stanley_Main_Beach_18-09-2024(3).jpg",
+    "credit": "LN9267",
+    "license": "CC BY-SA 4.0"
+   },
+   "id": "stanley-stand-up-paddle"
+  },
+  {
+   "tab": "hikes",
+   "name": "Tolo Harbour Cycling: Sha Tin to Tai Mei Tuk",
+   "zh": "大圍站",
+   "area": "Sha Tin to Tai Po",
+   "cuisine": "Outdoor activity",
+   "category": [
+    "active",
+    "views"
+   ],
+   "emoji": "🚴",
+   "intro": "Hong Kong's classic flat cycle track, along the Shing Mun River and Tolo Harbour past Science Park and Tai Po Waterfront Park to Tai Mei Tuk, by the Plover Cove dam and the Pat Sin Leng ridge.",
+   "getting": "From Park Lane, MTR to Admiralty, then the East Rail Line to Tai Wai, about 35–40 min. Bike rental shops are just outside Tai Wai Station Exit A.",
+   "tips": "Bring a passport or photo ID, which shops usually keep as a deposit. Ask whether you can drop the bike at a partner shop in Tai Po or Tai Mei Tuk (usually a small extra fee and an earlier return time). Follow the signs along the river, then Science Park, Tai Po Waterfront Park and Tai Mei Tuk Road. Weekday mornings are much quieter than weekends. Start by 10:00 for a round trip before sunset (about 17:40).",
+   "weekNote": "Sat 14 Nov, 05:00–09:30: roads beyond Tai Mei Tuk close for a cycling race. The cycle track isn't affected, but it'll be busy near Tai Mei Tuk.",
+   "hours": "Track open daily; rental shops typically about 10:00–19:00",
+   "priceNote": "Bike rental about HK$50–80 a day (varies; check on the day)",
+   "facts": [
+    [
+     "Distance",
+     "About 22 km each way"
+    ],
+    [
+     "Time",
+     "About 2.5 h each way at an easy pace"
+    ],
+    [
+     "Level",
+     "Easy, flat"
+    ]
+   ],
+   "lat": 22.3731,
+   "lng": 114.1786,
+   "addressEn": "Start: Tai Wai MTR Station Exit A, Sha Tin",
+   "mapsQuery": "Tai Wai Station Exit A, Hong Kong",
+   "url": "https://www.gohk.gov.hk/en/spots/spot_detail.php?spot=Tolo+Harbour+Cycling+Track",
+   "links": [
+    {
+     "label": "Discover Hong Kong route",
+     "url": "https://www.discoverhongkong.com/eng/explore/great-outdoor/sha-tin-to-tai-mei-tuk.html"
+    },
+    {
+     "label": "Cycle track notices (TD)",
+     "url": "https://www.td.gov.hk/mini_site/cic/en/safe-cycling/notice.html"
+    }
+   ],
+   "photo": {
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Tolo_Harbour_cycling_track_2017.jpg/960px-Tolo_Harbour_cycling_track_2017.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tolo_Harbour_cycling_track_2017.jpg",
+    "credit": "Wpcpey",
+    "license": "CC BY-SA 4.0"
+   },
+   "id": "tolo-harbour-cycling-sha-tin-to-tai-mei-"
   }
  ],
  "OUTINGS": [
@@ -12901,7 +13164,7 @@ window.HK = {
      "sun-dimsum",
      {
       "label": "Dim Sum Library",
-      "note": "booked for 14",
+      "note": "booked for 4",
       "q": "Dim Sum Library"
      }
     ],
@@ -13222,13 +13485,13 @@ window.HK = {
      "school"
     ],
     [
-     "20:15",
+     "20:00",
      "Dai Pai Dong Dinner (Traditional HK diner)",
      "ours",
      "thu-dpd",
      {
       "label": "Peng Leng Jeng",
-      "note": "tables at 20:15 and 20:30",
+      "note": "tables at 20:00",
       "q": "Peng Leng Jeng"
      }
     ],

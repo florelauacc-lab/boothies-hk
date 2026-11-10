@@ -1471,3 +1471,7 @@ button.bl .pw-copy { pointer-events: none; }
 .fixn-row > p { flex: 1 1 100%; margin: 0; }
 .fixn-alias > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-size: .9rem; font-weight: 700; }
 .fixn-alias form { flex-wrap: wrap; } .fixn-alias form > p { flex: 1 1 100%; margin: 0 0 4px; }
+/* change a booking's time or seats */
+.tb-edit > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-size: .86rem; font-weight: 700; color: var(--muted); }
+.tb-edit .cc-inline { margin: 0 0 4px; }
+.tb-edit .cc-inline input[name="size"] { flex-basis: 80px; }

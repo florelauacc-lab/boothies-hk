@@ -686,6 +686,11 @@ for pid, patch in EXTRAS.get("patch_id", {}).items():
         by_id[pid].update(patch)
     else:
         print("  ! patch_id target not found:", pid)
+# drops by id, for duplicates that share a name with the entry we keep
+drop_id = set(EXTRAS.get("drop_id", []))
+for pid in drop_id - set(by_id):
+    print("  ! drop_id target not found:", pid)
+places = [p for p in places if p["id"] not in drop_id]
 
 # Photos for sights, hikes and shopping (freely licensed, from Wikimedia Commons; see tools/photos/fetch_photos.py)
 PHOTOS = json.loads((ROOT / "tools" / "research" / "photos.json").read_text()) if (ROOT / "tools" / "research" / "photos.json").exists() else {}

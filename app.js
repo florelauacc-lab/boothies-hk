@@ -38,6 +38,8 @@
         { k: "moderate", label: "Moderate hikes", em: "🥾", c: C.orange },
         { k: "hard", label: "Challenging hikes", em: "🔥", c: C.pink },
         { k: "beach", label: "Beaches", em: "🏖️", c: C.cyan },
+        { k: "run", label: "Running routes", em: "🏃", c: C.lime },
+        { k: "active", label: "Outdoor activities", em: "🚣", c: C.orange },
         { k: "views", label: "Big views", em: "🏙️", c: C.cyan },
         { k: "sunset", label: "Sunset", em: "🌅", c: C.pink },
         { k: "near-campus", label: "Near Booth", em: "🎓", c: C.gold },
@@ -78,7 +80,7 @@
   const WHAT = [
     ["food:all", "anything to eat or drink"], ["food:breakfast", "🍳 breakfast"], ["food:coffee", "☕ good coffee"], ["food:lunch", "🍜 lunch"], ["food:dinner", "🥘 dinner"], ["food:dessert", "🍧 dessert"],
     ["food:drinks", "🍸 drinks"], ["food:late-night", "🌙 a late-night bite"],
-    ["sights:all", "📸 something to see"], ["hikes:all", "🌿 hikes & beaches"], ["shop:all", "🛍️ shopping"],
+    ["sights:all", "📸 something to see"], ["hikes:all", "🌿 hikes, beaches & runs"], ["shop:all", "🛍️ shopping"],
   ];
 
   const KIND_EMOJI = {
@@ -251,10 +253,10 @@
   }
   // Broad picks ("dinner", "drinks", "sights") show the top few of each sub-category, so nobody has to tap "show more";
   // as soon as something narrower is chosen it's one ranked top-10 list.
-  const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate", "hard", "beach"], shop: ["luxury", "gifts", "malls", "local"] };
+  const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate", "hard", "beach", "run", "active"], shop: ["luxury", "gifts", "malls", "local"] };
   function groupLabel() {
     if (FOOD.has(state.tab)) return { all: "eat & drink picks", drinks: "bars", breakfast: "breakfast picks", lunch: "lunch picks", dinner: "dinner picks", dessert: "dessert picks", "late-night": "late-night picks" }[state.mood] || "picks";
-    return { sights: "sights", hikes: "hikes and beaches", shop: "shopping" }[state.tab] || "picks";
+    return { sights: "sights", hikes: "outdoor picks", shop: "shopping" }[state.tab] || "picks";
   }
   function grouped(items) {
     if (state.flat || state.shortlist || state.q.trim() || me || state.kinds.size || state.style !== "any" || state.area !== "all" || state.section !== "all" || state.boothies || state.local) return null;
@@ -766,7 +768,7 @@
       // events added in the class corner show on their day too (unless already in the schedule)
       const inPlan = new Set(d.slots.map((x) => x[3]).filter(Boolean));
       const extra = customEvents.filter((e) => e.iso === d.iso && !inPlan.has(e.id)).map(customSlot);
-      return { ...d, slots: byTime([...d.slots, ...extra]) };
+      return { ...d, slots: byTime([...d.slots.map(liveSlot), ...extra]) };
     }).map(dayCard).join("");
     document.querySelectorAll("#plan details[data-k]").forEach((x) => { if (openK.has(`${x.closest("li[data-iso]")?.dataset.iso}|${x.dataset.k}`)) x.open = true; });
     if (Math.abs(window.scrollY - y) > 2) window.scrollTo(0, y);
@@ -807,15 +809,42 @@
     if (v.length < 4) return null;
     return live.find((p) => p.name.toLowerCase() === v) || live.find((p) => { const n = p.name.toLowerCase().replace(/\s*\(.*\)$/, ""); return n.length >= 5 && (v.includes(n) || n.startsWith(v)); });
   };
+  // what the 📍 tag says about a live booking: "booked for 4", "tables at 20:00 · 17 seats"
+  const bookNote = (e) => {
+    const t = (e.tables || []).filter((x) => +x.size), n = t.reduce((a, x) => a + +x.size, 0);
+    if (!t.length) return "";
+    const times = [...new Set(t.map((x) => x.time).filter(Boolean))];
+    if (t.length === 1) return `booked for ${n}${times[0] && times[0] !== e.when ? ` at ${times[0]}` : ""}`;
+    return `${times.length ? `tables at ${times.join(" and ")} · ` : ""}${n} seats`;
+  };
   const customSlot = (e) => {
-    const p = venuePlace(e.venue), short = p ? p.name.replace(/\s*\(.*\)$/, "") : "";
+    const p = venuePlace(e.venue), short = p ? p.name.replace(/\s*\(.*\)$/, "") : "", note = bookNote(e);
     // the place tag already says where, so the venue only goes in the text when it isn't a place in the guide
-    return [e.when || "Anytime", `${e.title}${e.venue && !p ? ` · ${e.venue}` : ""}`, "ours", e.id, p ? { label: short, jump: p.id } : null];
+    return [e.when || "Anytime", `${e.title}${e.venue && !p ? ` · ${e.venue}` : ""}`, "ours", e.id, p ? { label: short, jump: p.id, ...(note ? { note } : {}) } : null];
+  };
+  // a class event that's in the printed week plan: once the class list is open, its time and 📍 tag follow the live booking
+  const liveSlot = (sl) => {
+    const [t, v, kind, ev, go, rsvp] = sl;
+    const e = kind === "ours" && ev && window.HK_CLASS?.event?.(ev);
+    if (!e) return sl;
+    const note = bookNote(e), tags = [].concat(go || []);
+    const i = tags.findIndex((g) => !g.url), p = e.venue && venuePlace(e.venue);
+    if (i >= 0 || p) {
+      const base = p ? { label: p.name.replace(/\s*\(.*\)$/, ""), jump: p.id } : { ...tags[i] };
+      delete base.note;
+      if (note) base.note = note;
+      if (i >= 0) tags[i] = base; else tags.unshift(base);
+    }
+    return [/\d{1,2}:\d{2}/.test(e.when || "") ? e.when : t, v, kind, ev, tags.length ? tags : null, rsvp];
   };
   let replanQueued = false; // the class corner asks for a redraw when the shared list changes
-  window.HK_REPLAN = () => { if (replanQueued) return; replanQueued = true; requestAnimationFrame(() => { replanQueued = false; renderPlan(); }); };
+  window.HK_REPLAN = () => {
+    if (replanQueued) return; replanQueued = true;
+    const go = () => { if (!replanQueued) return; replanQueued = false; renderPlan(); };
+    requestAnimationFrame(go); setTimeout(go, 120); // the timer covers background tabs, where frames pause
+  };
   window.HK_CUSTOM_EVENTS = (list) => {
-    const sig = JSON.stringify(list.map((e) => [e.id, e.iso, e.when, e.title, e.venue]));
+    const sig = JSON.stringify(list.map((e) => [e.id, e.iso, e.when, e.title, e.venue, (e.tables || []).map((t) => [t.time, t.size])]));
     if (sig === window.HK_CUSTOM_EVENTS.sig) return;
     window.HK_CUSTOM_EVENTS.sig = sig; customEvents = list; renderPlan();
   };

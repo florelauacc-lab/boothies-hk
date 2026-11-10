@@ -266,7 +266,8 @@
     if (!tables.length && !live() && !e.bookedBy) return "";
     return `<div class="cc-tables"><h4>🍽️ Table bookings${e.bookedBy ? ` <small>· booked by ${esc(e.bookedBy)}</small>` : ""}</h4>${seatLine}
       ${tables.length ? `<ul class="tb-list">${tables.map((t) => `<li class="tb"><div class="tb-top"><b>${esc(t.time || "Time TBC")}</b> <span>${t.label ? `${esc(t.label)} · ` : ""}table for ${t.size || "?"}</span>
-        ${live() ? `<button type="button" class="cc-mini" data-splittable="${e.id}|${t.id}">🧾 Split this table's bill</button><button type="button" class="cc-x" data-deltable="${e.id}|${t.id}" aria-label="Remove booking">✕</button>` : ""}</div></li>`).join("")}</ul>
+        ${live() ? `<button type="button" class="cc-mini" data-splittable="${e.id}|${t.id}">🧾 Split this table's bill</button><button type="button" class="cc-x" data-deltable="${e.id}|${t.id}" aria-label="Remove booking">✕</button>` : ""}</div>
+        ${live() ? `<details class="tb-edit"><summary>✏️ Change time or seats</summary><form class="cc-inline" data-edittable="${e.id}|${t.id}"><input name="time" value="${esc(t.time || "")}" placeholder="Time, e.g. 20:00" maxlength="20" aria-label="Booking time"><input name="size" type="number" inputmode="numeric" min="1" max="40" value="${t.size || ""}" placeholder="Seats" aria-label="Number of seats" required><button type="submit">Save</button></form></details>` : ""}</li>`).join("")}</ul>
         <p class="small">Arrive from ${esc(tables[0].time || "the first booking")} and you'll be seated as tables free up. After dinner, each table splits its own bill.</p>` : `<p class="muted small">No bookings yet.</p>`}
       ${live() ? `<form class="cc-inline" data-addtable="${e.id}"><input name="time" placeholder="Time, e.g. 20:45" maxlength="20" required aria-label="Booking time"><input name="size" type="number" inputmode="numeric" min="1" max="40" placeholder="Seats" aria-label="Number of seats" required><button type="submit">＋ Add a booking</button></form>` : ""}
     </div>`;
@@ -724,6 +725,8 @@
   window.HK_PRIVATE_RENDER = fillPlan;
   // the week plan's "+ Me" on a class event ticks you on the shared list too
   window.HK_CLASS = {
+    // the live event, so the week plan's time and 📍 tag follow the real booking
+    event: (ev) => (data && live() ? data.events.find((x) => x.id === ev) || null : null),
     going: (ev) => { if (!data || !me || !live()) return null; const e = data.events.find((x) => x.id === ev); return e ? e.going.includes(me) : null; },
     tick: (ev, on) => { const E = data.events.find((x) => x.id === ev); op({ op: "toggle", ev, name: me, on }, () => { E.going = on ? [...new Set([...E.going, me])].sort((a, b) => a.localeCompare(b)) : E.going.filter((n) => n !== me); }).then(() => window.HK_REPLAN?.()); },
     hint: () => toast(data ? "Pick your name in the class corner so the organisers see you're going" : "Unlock the class corner below so the organisers see you're going"),
@@ -918,6 +921,11 @@
     else if (f.dataset.addtable) {
       openEv.add(f.dataset.addtable);
       op({ op: "addTable", ev: f.dataset.addtable, time: fd("time"), size: fd("size") }).then((ok) => ok && toast("Booking added"));
+    }
+    else if (f.dataset.edittable) {
+      const [ev, table] = f.dataset.edittable.split("|");
+      openEv.add(ev);
+      op({ op: "editTable", ev, table, time: fd("time"), size: fd("size") }).then((ok) => ok && toast("Booking updated for everyone"));
     }
     else if (f.dataset.editev) {
       op({ op: "editEvent", ev: f.dataset.editev, when: fd("when"), venue: fd("venue"), title: fd("title") }).then((ok) => ok && toast("Saved for everyone"));
