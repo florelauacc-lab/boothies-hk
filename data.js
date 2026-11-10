@@ -5675,13 +5675,14 @@ window.HK = {
    "id": "shanghai-tang"
   },
   {
-   "tab": "sights",
+   "tab": "hikes",
    "name": "Stanley Main Beach (dragon boat venue)",
    "zh": "赤柱正灘",
    "area": "Stanley",
    "cuisine": "Dragon boat beach",
    "category": [
-    "iconic",
+    "beach",
+    "south",
     "free",
     "local"
    ],
@@ -6100,7 +6101,7 @@ window.HK = {
    }
   },
   {
-   "tab": "sights",
+   "tab": "hikes",
    "name": "Repulse Bay Beach",
    "zh": "淺水灣泳灘",
    "area": "South side",
@@ -6128,7 +6129,7 @@ window.HK = {
    }
   },
   {
-   "tab": "sights",
+   "tab": "hikes",
    "name": "Deep Water Bay Beach",
    "zh": "深水灣泳灘",
    "area": "South side",
@@ -6156,7 +6157,7 @@ window.HK = {
    }
   },
   {
-   "tab": "sights",
+   "tab": "hikes",
    "name": "Big Wave Bay Beach",
    "zh": "大浪灣泳灘",
    "area": "South side",
@@ -6178,7 +6179,7 @@ window.HK = {
    "id": "big-wave-bay-beach"
   },
   {
-   "tab": "sights",
+   "tab": "hikes",
    "name": "Shek O Beach",
    "zh": "石澳泳灘",
    "area": "South side",
@@ -7793,6 +7794,7 @@ window.HK = {
    "area": "Wong Nai Chung Gap to Stanley",
    "cuisine": "Hard hike",
    "category": [
+    "hard",
     "views",
     "south"
    ],

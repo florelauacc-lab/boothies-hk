@@ -23,7 +23,6 @@
         { k: "night", label: "After dark", em: "🌃", c: C.violet },
         { k: "neon", label: "Neon lights", em: "🌈", c: C.pink },
         { k: "architecture", label: "Cool buildings", em: "🏢", c: C.violet },
-        { k: "beach", label: "Beaches", em: "🏖️", c: C.cyan },
         { k: "daytrip", label: "Day trips", em: "⛴️", c: C.lime },
         { k: "photo", label: "Photo spots", em: "📸", c: C.pink },
         { k: "harbour", label: "Harbour walks", em: "🌊", c: C.cyan },
@@ -35,8 +34,10 @@
     hikes: {
       home: "parklane", orderLabel: "Highlights",
       moods: [
-        { k: "easy", label: "Easy", em: "🚶", c: C.lime },
-        { k: "moderate", label: "Moderate", em: "🥾", c: C.orange },
+        { k: "easy", label: "Easy hikes", em: "🚶", c: C.lime },
+        { k: "moderate", label: "Moderate hikes", em: "🥾", c: C.orange },
+        { k: "hard", label: "Challenging hikes", em: "🔥", c: C.pink },
+        { k: "beach", label: "Beaches", em: "🏖️", c: C.cyan },
         { k: "views", label: "Big views", em: "🏙️", c: C.cyan },
         { k: "sunset", label: "Sunset", em: "🌅", c: C.pink },
         { k: "near-campus", label: "Near Booth", em: "🎓", c: C.gold },
@@ -77,7 +78,7 @@
   const WHAT = [
     ["food:all", "anything to eat or drink"], ["food:breakfast", "🍳 breakfast"], ["food:coffee", "☕ good coffee"], ["food:lunch", "🍜 lunch"], ["food:dinner", "🥘 dinner"], ["food:dessert", "🍧 dessert"],
     ["food:drinks", "🍸 drinks"], ["food:late-night", "🌙 a late-night bite"],
-    ["sights:all", "📸 something to see"], ["hikes:all", "🥾 a hike"], ["shop:all", "🛍️ shopping"],
+    ["sights:all", "📸 something to see"], ["hikes:all", "🌿 hikes & beaches"], ["shop:all", "🛍️ shopping"],
   ];
 
   const KIND_EMOJI = {
@@ -250,10 +251,10 @@
   }
   // Broad picks ("dinner", "drinks", "sights") show the top few of each sub-category, so nobody has to tap "show more";
   // as soon as something narrower is chosen it's one ranked top-10 list.
-  const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate"], shop: ["luxury", "gifts", "malls", "local"] };
+  const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate", "hard", "beach"], shop: ["luxury", "gifts", "malls", "local"] };
   function groupLabel() {
     if (FOOD.has(state.tab)) return { all: "eat & drink picks", drinks: "bars", breakfast: "breakfast picks", lunch: "lunch picks", dinner: "dinner picks", dessert: "dessert picks", "late-night": "late-night picks" }[state.mood] || "picks";
-    return { sights: "sights", hikes: "hikes", shop: "shopping" }[state.tab] || "picks";
+    return { sights: "sights", hikes: "hikes and beaches", shop: "shopping" }[state.tab] || "picks";
   }
   function grouped(items) {
     if (state.flat || state.shortlist || state.q.trim() || me || state.kinds.size || state.style !== "any" || state.area !== "all" || state.section !== "all" || state.boothies || state.local) return null;
@@ -309,7 +310,7 @@
   // slim title bar for phones once the header scrolls away
   function updateMinibar() {
     const sel = (id) => { const el = document.getElementById(id); return el ? el.options[el.selectedIndex]?.text || "" : ""; };
-    const tabName = { city: "Eat & drink", sights: "Sights", hikes: "Hikes", shop: "Shopping", start: "First time in HK", week: "This week" }[state.tab] || "";
+    const tabName = { city: "Eat & drink", sights: "Sights", hikes: "Nature", shop: "Shopping", start: "First time in HK", week: "This week" }[state.tab] || "";
     const sum = TABS[state.tab]
       ? [sel("b-what").replace(/^anything to eat or drink$/, "Eat & drink"), sel("b-where").replace(/^anywhere$/, "")].filter(Boolean).join(" · ")
       : tabName;

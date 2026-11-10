@@ -190,7 +190,7 @@
           <input name="title" placeholder="What (e.g. Dragon's Back hike, Lamma day trip, drinks)" required maxlength="70">
           <select name="iso" aria-label="Day">${DAYS.map(([iso, l]) => `<option value="${iso}">${esc(l)}</option>`).join("")}</select>
           <input name="when" placeholder="Time (e.g. 19:00)" maxlength="40">
-          <select name="kind" aria-label="What kind of event" data-evkind="1">${[["hikes", "🥾 Hike"], ["sights", "📸 Sight or outing"], ["city", "🍽️ Food & drink"], ["shop", "🛍️ Shopping"], ["", "Other"]].map(([k, l]) => `<option value="${k}"${(newEvKind ?? "hikes") === k ? " selected" : ""}>${l}</option>`).join("")}</select>
+          <select name="kind" aria-label="What kind of event" data-evkind="1">${[["hikes", "🌿 Hike or beach"], ["sights", "📸 Sight or outing"], ["city", "🍽️ Food & drink"], ["shop", "🛍️ Shopping"], ["", "Other"]].map(([k, l]) => `<option value="${k}"${(newEvKind ?? "hikes") === k ? " selected" : ""}>${l}</option>`).join("")}</select>
           <input name="venue" placeholder="Where: pick from the guide or type a place" maxlength="80" list="cc-places-${newEvKind ?? "hikes"}">
           ${[["hikes", ["hikes"]], ["sights", ["sights"]], ["city", ["city", "saiwan"]], ["shop", ["shop"]]].map(([k, tabs]) => `<datalist id="cc-places-${k}">${PLACES.filter((p) => tabs.includes(p.tab)).map((p) => `<option value="${esc(p.name)}">`).join("")}</datalist>`).join("")}
           <button type="submit">Add event</button>

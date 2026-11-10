@@ -4525,6 +4525,34 @@
   },
   "kam-wah-cafe": {
    "tips": "Use the takeaway counter to skip the dine-in queue; dining in needs one drink each and is cramped. Weekday mornings before 09:00 are quietest. Pay with cash or Octopus."
+  },
+  "repulse-bay-beach": {
+   "tab": "hikes"
+  },
+  "deep-water-bay-beach": {
+   "tab": "hikes"
+  },
+  "big-wave-bay-beach": {
+   "tab": "hikes"
+  },
+  "shek-o-beach": {
+   "tab": "hikes"
+  },
+  "stanley-main-beach-dragon-boat-venue": {
+   "tab": "hikes",
+   "category": [
+    "beach",
+    "south",
+    "free",
+    "local"
+   ]
+  },
+  "violet-hill-the-twins-wilson-trail-stage": {
+   "category": [
+    "hard",
+    "views",
+    "south"
+   ]
   }
  }
 }
