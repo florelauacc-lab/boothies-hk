@@ -4845,7 +4845,7 @@ window.HK = {
    "name": "Peking Garden (Alexandra House)",
    "zh": "北京樓（歷山大廈）",
    "area": "Central",
-   "section": "Class dinner",
+   "section": "Peking duck",
    "cuisine": "Beijing / Northern Chinese (Maxim's)",
    "category": [
     "lunch",
@@ -4881,7 +4881,7 @@ window.HK = {
    "name": "Peking Garden (Pacific Place)",
    "zh": "北京樓（太古廣場）",
    "area": "Admiralty",
-   "section": "Class dinner",
+   "section": "Peking duck",
    "cuisine": "Beijing / Northern Chinese (Maxim's)",
    "category": [
     "lunch",
