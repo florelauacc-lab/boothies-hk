@@ -197,6 +197,7 @@
         </form></details>` : ""}
       ${billsSection()}
       ${everyoneBalances()}
+      ${live() ? nameFixer() : ""}
       ${overview(evs)}
       <details class="cc-groups"><summary>📚 Becker study groups</summary>
         <div class="cc-grid">${(data.groups || []).map(([g, ns]) => `<div><h4>${esc(g)}</h4><ul>${ns.filter((n) => !/\*$/.test(n)).map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`).join("")}</div>
@@ -547,6 +548,35 @@
       ${items.length ? `<details class="cc-break"><summary>How it adds up · ${items.length}</summary><ul class="cc-mine">${items.map(([w, v, by]) => `<li class="mi"><div class="mrow"><span>${esc(w)} <small>· ${esc(by)}</small></span><b class="${v < 0 ? "neg" : "pos"}">${v < 0 ? "−" : "+"}${hk(Math.abs(v))}</b></div></li>`).join("")}</ul></details>` : ""}
     </div>`;
   }
+  // organisers: match names that aren't on the class list (WhatsApp nicknames) or count them as "not named yet";
+  // and show a classmate by the name they go by
+  function nameFixer() {
+    const listed = roster().filter((p) => !p.guest).map((p) => p.name);
+    const odd = roster().filter((p) => p.guest).map((p) => p.name);
+    const where = (n) => data.events.filter((e) => e.going.includes(n)).map((e) => colName(e));
+    const pick = (nm, ph) => `<select name="${nm}" aria-label="${ph}" required><option value="">${ph}</option>${listed.map((n) => `<option>${esc(n)}</option>`).join("")}</select>`;
+    return `<details class="cc-sub cc-fixnames"${odd.length ? " open" : ""}><summary>🔧 Names not on the class list${odd.length ? ` · ${odd.length}` : " ✓"} <small>(organisers)</small></summary>
+      <div class="fixn">
+        ${odd.length ? odd.map((n) => `<form class="cc-inline fixn-row" data-fixname="${esc(n)}">
+            <p class="small"><b>${esc(n)}</b>${where(n).length ? ` <small>· ${esc(where(n).join(", "))}</small>` : ""}</p>
+            ${pick("to", "Same person as…")}
+            <button type="submit">✓ Match</button>
+            <button type="button" class="cc-mini" data-fixanon="${esc(n)}">Count as not named yet</button></form>`).join("")
+          : `<p class="small muted">Everyone ticked is on the class list.</p>`}
+        <details class="fixn-alias"><summary>Show someone by the name they go by</summary>
+          <form class="cc-inline" data-aliasname="1"><p class="small muted">For example Pan Fan Wan shows as Rienno Wan. Searching the old name still finds them.</p>
+            ${pick("from", "Class-list name…")}<input name="to" placeholder="Name they go by" maxlength="60" required><button type="submit">Save</button></form></details>
+      </div></details>`;
+  }
+  // run an organiser-only change, asking for the organiser code if this device isn't signed in as organiser
+  function asOrganiser(body, done) {
+    if (data.organiser) return op(body).then((ok) => ok && done?.());
+    const code = (prompt("Organisers only. Enter the organiser code:") || "").trim().toLowerCase();
+    if (!code) return;
+    const keep = orgPass; orgPass = code;
+    return op(body).then((ok) => { orgPass = keep; if (ok) done?.(); });
+  }
+
   // everyone's net position (useful for organisers), plus the organiser settings
   function everyoneBalances() {
     const bal = allBalances();
@@ -762,6 +792,10 @@
     const sedit = t.closest("[data-seatedit]");
     if (sedit) { seatEditing = sedit.dataset.seatedit || null; if (seatEditing) openEv.add(seatEditing.split("|")[0]); render(); return; }
     const gq = t.closest("[data-guests]");
+    const fa = e.target.closest("[data-fixanon]");
+    if (fa) { const n = fa.dataset.fixanon, evs = data.events.filter((x) => x.going.includes(n));
+      if (!confirm(`Take "${n}" off ${evs.length} event${evs.length === 1 ? "" : "s"} and count them as "not named yet" instead?`)) return;
+      (async () => { for (const E of evs) { await op({ op: "toggle", ev: E.id, name: n, on: false }); await op({ op: "setGuests", ev: E.id, n: unnamed(E) + 1 }); } toast(`${n} is now counted as not named yet`); })(); return; }
     if (gq) { const [ev, d] = gq.dataset.guests.split("|"); const E = data.events.find((x) => x.id === ev); const n = Math.max(0, unnamed(E) + +d);
       op({ op: "setGuests", ev, n }, () => { E.guests = n; }); return; }
     const dt = t.closest("[data-deltable]");
@@ -855,6 +889,8 @@
       const x = JSON.parse(f.dataset.xfer);
       op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: fd("method"), direct: !!x.direct, note: x.direct ? x.note : "" }).then((ok) => ok && toast(`Thanks! ${x.to} will confirm when it arrives`));
     }
+    else if (f.dataset.fixname) { const from = f.dataset.fixname, to = fd("to"); if (to) asOrganiser({ op: "renamePerson", from, to }, () => toast(`${from} is now ${to} everywhere`)); }
+    else if (f.dataset.aliasname) { const from = fd("from"), to = fd("to"); if (from && to && confirm(`Show ${from} as "${to}" everywhere?`)) asOrganiser({ op: "renamePerson", from, to }, () => toast(`${from} now shows as ${to}`)); }
     else if (f.id === "cc-collect") {
       const from = fd("from"), hkd = Math.round(+fd("hkd"));
       if (!from || !(hkd > 0)) return;

@@ -1464,3 +1464,10 @@ button.bl .pw-copy { pointer-events: none; }
 .pm-form .pm-pane button.bl:active { background: rgba(255,196,77,.18); }
 .pm-form .pm-pane .pw-copy { background: none; color: var(--text); border: 1px solid rgba(255,255,255,.2); padding: 8px 12px; min-height: 38px; font-size: .82rem; }
 .pm-form .pm-pane .pw-copy.all { color: var(--gold, #ffc44d); border-color: rgba(255,196,77,.5); min-height: 44px; }
+
+/* organisers: names not on the class list */
+.fixn { padding: 0 14px 12px; display: grid; gap: 10px; }
+.fixn-row { flex-wrap: wrap; align-items: center; }
+.fixn-row > p { flex: 1 1 100%; margin: 0; }
+.fixn-alias > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-size: .9rem; font-weight: 700; }
+.fixn-alias form { flex-wrap: wrap; } .fixn-alias form > p { flex: 1 1 100%; margin: 0 0 4px; }
