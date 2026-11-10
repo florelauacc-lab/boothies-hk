@@ -250,7 +250,7 @@
   // table bookings for an event: just the times and sizes (people turn up and get seated as tables free up)
   // booked seats against everyone who said they're going: how many more to book (0 = enough)
   const seats = (e) => (e.tables || []).reduce((t, x) => t + (+x.size || 0), 0);
-  const ORGANISERS = ["Rienno", "Lisa Lam", "Florence Lau", "Kejia Bian"];
+  const ORGANISERS = ["Rienno Wan", "Lisa Lam", "Florence Lau", "Kejia Bian"];
   const orgEvent = (e) => !e.by || ORGANISERS.includes(e.by);
   const unnamed = (e) => +e.guests || 0; // said yes but not named yet
   const headcount = (e) => e.going.length + unnamed(e);
@@ -285,8 +285,8 @@
       ${ed
         ? `<p class="cc-hint">Tap names to tick or untick · ${e.going.length} going</p>
           <input class="name-find" data-find="ev" placeholder="Type a name to find them (Enter to tick)" autocomplete="off" aria-label="Find a name">
-          <div class="cc-names edit">${ppl.map((x) => `<button type="button" data-nm="${esc(x.name.toLowerCase())}" class="${e.going.includes(x.name) ? "on" : ""}${x.away ? " away" : ""}" data-tick="${e.id}" data-name="${esc(x.name)}" data-on="${e.going.includes(x.name) ? 0 : 1}">${e.going.includes(x.name) ? "✓ " : ""}${esc(x.name)}</button>`).join("")}</div>
-          <form class="cc-inline" data-addperson="${e.id}"><input name="name" placeholder="Not on the list? Add their name" maxlength="60" required><button type="submit">Add &amp; tick</button></form>
+          <div class="cc-names edit">${ppl.map((x) => `<button type="button" data-nm="${esc(`${x.name} ${(data.aka || {})[x.name] || ""}`.trim().toLowerCase())}" class="${e.going.includes(x.name) ? "on" : ""}${x.away ? " away" : ""}" data-tick="${e.id}" data-name="${esc(x.name)}" data-on="${e.going.includes(x.name) ? 0 : 1}">${e.going.includes(x.name) ? "✓ " : ""}${esc(x.name)}</button>`).join("")}</div>
+          <p class="cc-hint">Someone not on the class list? Count them under "not named yet" and tell an organiser who it is.</p>
           <button type="button" class="cc-done" data-edit="">Done</button>`
         : `<div class="cc-names">${e.going.map((n) => `<span class="${n === me ? "me" : ""}">${esc(n)}</span>`).join("") || `<em class="muted">Nobody yet</em>`}</div>
           ${live() ? `<button type="button" class="cc-editbtn" data-edit="${e.id}">✏️ Tick who's going</button>` : ""}`}
@@ -307,7 +307,7 @@
               return `${evBills.length ? `<ul class="ev-bills">${evBills.map((b) => `<li><span>🧾 ${esc(b.what)} · paid by ${esc(b.paidBy)} · ${b.among.length} people</span><b>${hk(b.hkd)}</b></li>`).join("")}</ul>` : ""}
                 ${live() ? `<p class="muted small">One bill per table if tables ate different things; each is split only between the people at that table.</p>
                 <button type="button" class="cc-mini go" data-splitev="${e.id}">🧾 ${evBills.length ? "Add another table's bill" : "Add the bill (or the first table's)"}</button>
-                <details class="cc-collect"><summary>Rienno collecting a set price instead?</summary>` : ""}`;
+                <details class="cc-collect"><summary>${esc(data.payTo)} collecting a set price instead?</summary>` : ""}`;
             })()}
         ${e.expenses.length ? `<ul>${e.expenses.map((x) => `<li><span>${esc(x.what)} · paid by ${esc(x.paidBy)}</span><b>${hk(+x.hkd)}</b>${live() ? `<button type="button" class="cc-x" data-delexp="${e.id}" data-xid="${x.id}" aria-label="Remove bill">✕</button>` : ""}</li>`).join("")}</ul>` : ""}
         ${live() ? `<form class="cc-inline bill" data-setprice="${e.id}">
@@ -467,27 +467,42 @@
     }
     return out;
   }
-  function waysToPay(to, amt) {
-    const pr = { ...(to === data.payTo ? data.payLinks || {} : {}), ...Object.fromEntries(Object.entries((data.profiles || {})[to] || {}).filter(([, v]) => v)) };
-    const rows = [
-      pr.paypal && `<a class="paybtn" href="${esc(pr.paypal.replace(/\/$/, ""))}${/paypal\.me/i.test(pr.paypal) ? `/${Math.round(amt)}HKD` : ""}" target="_blank" rel="noopener">💳 PayPal / card</a>`,
-      pr.fps && `<button class="paybtn" type="button" data-copy="${esc(pr.fps)}">⚡ FPS ${esc(pr.fps)} · copy</button>`,
-
-      pr.wiseLink && `<a class="paybtn" href="${esc(pr.wiseLink)}" target="_blank" rel="noopener">🌍 Wise</a>`,
+  // someone's saved payment details (Rienno's also fall back to the organiser pay links)
+  const profileOf = (to) => ({ ...(to === data.payTo ? data.payLinks || {} : {}), ...Object.fromEntries(Object.entries((data.profiles || {})[to] || {}).filter(([, v]) => v)) });
+  // one entry per way this person can be paid, each with its details: [method label, html]
+  function payOpts(to, amt) {
+    const pr = profileOf(to), bl = bankLines(pr);
+    return [
+      pr.paypal && ["PayPal / card", `<div class="paybtns"><a class="paybtn" href="${esc(pr.paypal.replace(/\/$/, ""))}${/paypal\.me/i.test(pr.paypal) && amt ? `/${Math.round(amt)}HKD` : ""}" target="_blank" rel="noopener">💳 Pay ${amt ? `${hk(amt)} ` : ""}by PayPal / card</a></div><small class="pm-hint">Opens PayPal${amt ? " with the amount filled in" : ""}. A card fee of about 3–5% applies.</small>`],
+      pr.fps && ["FPS", `<div class="bank-lines"><button type="button" class="bl" data-copy="${esc(pr.fps)}"><span><small>FPS ID / phone</small>${esc(pr.fps)}</span><span class="pw-copy">Copy</span></button></div><small class="pm-hint">Hong Kong bank accounts only: instant and free.</small>`],
+      (bl || pr.wiseLink) && ["Wise / bank", `${pr.wiseLink ? `<div class="paybtns"><a class="paybtn" href="${esc(pr.wiseLink)}" target="_blank" rel="noopener">🌍 Pay with Wise</a></div>` : ""}${bl}`],
+      pr.wechat && ["WeChat Pay", `<div class="bank-lines"><button type="button" class="bl" data-copy="${esc(pr.wechat)}"><span><small>WeChat ID</small>${esc(pr.wechat)}</span><span class="pw-copy">Copy</span></button></div><small class="pm-hint">Add them on WeChat, then Transfer. Only works if your WeChat Pay uses a Chinese or HK bank account.</small>`],
     ].filter(Boolean);
-    // WeChat Pay only works person to person when both sides use a Chinese or HK bank, so it's shown as an extra with that caveat
-    const wc = pr.wechat ? `<div class="pay-wc"><button class="paybtn" type="button" data-copy="${esc(pr.wechat)}">💬 WeChat ID ${esc(pr.wechat)} · copy</button>
-      <small>Add them on WeChat, then Transfer. Only works if your WeChat Pay uses a Chinese or HK bank account.</small></div>` : "";
-    const bl = bankLines(pr);
-    return rows.length || bl || wc ? `${rows.length ? `<div class="paybtns">${rows.join("")}</div>` : ""}${wc}${bl ? `<p class="small" style="margin:8px 0 4px"><b>🌍 Bank transfer</b></p>${bl}` : ""}${pr.note ? `<p class="muted small">${esc(pr.note)}</p>` : ""}`
-      : `<p class="muted small">${esc(to)} hasn't added payment details yet. Ask in the group chat, or they can add them under "My payment details".</p>`;
+  }
+  const noDetails = (to) => `<p class="muted small">${esc(to)} hasn't added payment details yet. Ask in the group chat, or they can add them under "My payment details".</p>`;
+  // everything at once (the "Look up payment details" panel)
+  function waysToPay(to, amt) {
+    const o = payOpts(to, amt), note = profileOf(to).note;
+    return o.length ? `${o.map(([m, h]) => `<div class="pm-all"><p class="pm-h">${esc(m)}</p>${h}</div>`).join("")}${note ? `<p class="muted small">${esc(note)}</p>` : ""}` : noDetails(to);
+  }
+  const pmChoice = {};
+  // paying one person: pick how, see just that method's details, then "I've paid"
+  function payForm(t) {
+    const o = payOpts(t.to, t.hkd), note = profileOf(t.to).note;
+    const methods = o.length ? [...o.map(([m]) => m), "Cash"] : PAY_METHODS;
+    const pick = methods.includes(pmChoice[t.to]) ? pmChoice[t.to] : methods[0]; // keep the method you chose across redraws
+    return `${o.length ? "" : noDetails(t.to)}<form class="cc-inline paid pm-form" data-xfer="${esc(JSON.stringify(t))}">
+      <label class="pm-pick"><span>How are you paying ${esc(t.to)}?</span><select name="method" data-pmsel="${esc(t.to)}">${methods.map((m) => `<option${m === pick ? " selected" : ""}>${m}</option>`).join("")}</select></label>
+      ${o.map(([m, h]) => `<div class="pm-pane" data-pm="${esc(m)}"${m === pick ? "" : " hidden"}>${h}</div>`).join("")}
+      ${note ? `<p class="muted small">${esc(note)}</p>` : ""}
+      <button type="submit">✓ I've paid ${esc(t.to)}</button></form>`;
   }
 
   /* ---------- one combined balance: set-price events (Rienno paid), every bill, every payment ---------- */
     // each payment: who → who and the amount on top; status and buttons on their own line (anyone can mark or confirm)
   const sRow = (t) => `<li class="sp${t.to === me ? " owed" : t.from === me ? " me" : ""}">
       <div class="sp-top"><span class="sp-who">${t.to === me ? `<b>${esc(t.from)}</b> owes you` : t.from === me ? `To <b>${esc(t.to)}</b>` : `<b>${esc(t.from)}</b> → <b>${esc(t.to)}</b>`}${t.direct ? `<small class="sp-for">Paid up front: ${esc(t.note)}</small>` : ""}</span><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
-      ${t.from === me ? `${waysToPay(t.to, t.hkd)}<form class="cc-inline paid" data-xfer="${esc(JSON.stringify(t))}"><select name="method" aria-label="How you paid">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select><button type="submit">✓ I've paid ${esc(t.to)}</button></form>`
+      ${t.from === me ? payForm(t)
         : `<button type="button" class="cc-mini go sp-paid" data-xmark="${esc(JSON.stringify(t))}" aria-label="${esc(t.from)} has paid me">✓ Paid me</button>`}</li>`;
   const pRow = (x) => `<li class="sp pending">
       <div class="sp-top"><span class="sp-who"><b>${esc(x.from)}</b> paid <b>${esc(x.to)}</b>${x.method ? ` <small>· ${esc(x.method)}</small>` : ""}${x.note ? ` <small>· ${esc(x.note)}</small>` : ""}</span><span class="amt">${hk(x.hkd)}</span></div>
@@ -589,6 +604,9 @@
           <button type="button" class="cc-x" data-bdel="${b.id}" aria-label="Delete bill">✕</button></div>
           <p class="small">Paid by ${esc(b.paidBy)}${b.frontedBy ? ` (${esc(b.frontedBy)} paid the restaurant)` : ""} · ${b.shares ? "custom split" : `${hk(b.hkd / b.among.length)} each`}: ${b.among.map((n) => `${esc(n)}${b.shares ? ` ${hk(sh[n])}` : ""}`).join(", ")}</p></li>`;
       }).join("")}</ul></details>` : ""}
+      ${(() => { const withPay = people().filter((n) => payOpts(n, 0).length); return `<details class="cc-sub cc-paylook"><summary>📇 Look up someone's payment details${withPay.length ? ` · ${withPay.length}` : ""}</summary>
+        ${withPay.length ? `<div class="paylook"><select data-paylook="1" aria-label="Whose payment details"><option value="">Pick a name…</option>${withPay.map((n) => `<option>${esc(n)}</option>`).join("")}</select><div class="paylook-out"></div></div>`
+          : `<p class="muted small">Nobody has saved payment details yet. Once they add them under "My payment details", they show here and next to anything you owe them.</p>`}</details>`; })()}
       ${me ? `<details class="cc-sub"><summary>💳 My payment details${pr.paypal || pr.fps || pr.bank || pr.accNo || pr.note || pr.wechat ? " ✓" : ""}</summary>
         <form class="pay-form" id="my-pay" autocomplete="off">
           <p class="small muted">So people can pay you back when you cover a bill. Fill in only what you use; only classmates with the passcode can see these.</p>
@@ -610,7 +628,7 @@
           <fieldset><legend>🔒 PIN</legend>
             ${pr.locked ? `<label>Your PIN <small>(needed to change these)</small><input name="pin" type="password" inputmode="numeric" autocomplete="off"></label>
               <details class="fps-box"><summary>Forgot your PIN?</summary>
-                <p class="small muted">Ask an organiser (Florence, Lisa, Kejia or Rienno) to type the organiser code here, then choose a new PIN.</p>
+                <p class="small muted">Ask an organiser (Florence Lau, Lisa Lam, Kejia Bian or Rienno Wan) to type the organiser code here, then choose a new PIN.</p>
                 <label>Organiser code<input name="orgcode" type="password" autocomplete="off"></label>
                 <label>New PIN<input name="newPin" type="password" inputmode="numeric" maxlength="12" autocomplete="new-password"></label></details>`
               : `<label>Set a PIN <small>(optional, so only you can change these)</small><input name="newPin" type="password" inputmode="numeric" maxlength="12" autocomplete="new-password"></label>`}</fieldset>
@@ -813,6 +831,8 @@
     }
   });
   document.addEventListener("change", (e) => {
+    if (e.target.dataset?.pmsel) { pmChoice[e.target.dataset.pmsel] = e.target.value; e.target.form.querySelectorAll(".pm-pane").forEach((p) => { p.hidden = p.dataset.pm !== e.target.value; }); return; }
+    if (e.target.dataset?.paylook) { const out = e.target.parentElement.querySelector(".paylook-out"); if (out) out.innerHTML = e.target.value ? waysToPay(e.target.value, 0) : ""; return; }
     if (e.target.dataset?.evkind) { newEvKind = e.target.value; const v = e.target.form?.elements.venue; if (v) v.setAttribute("list", `cc-places-${newEvKind || "none"}`); return; }
     if (e.target.id === "cc-me") { me = e.target.value; set("hk-me-v1", me); render(); }
     if (e.target.id === "cc-cur") { cur = e.target.value; set("hk-cur-v1", cur); render(); }
@@ -871,7 +891,6 @@
       if (!E.going.length) { toast("Tick who's going first, then enter the total"); return; }
       op({ op: "setPrice", ev: E.id, total: fd("total"), count: headcount(E) }).then((ok) => ok && toast(`Saved: ${hk(+fd("total") / headcount(E))} each for ${headcount(E)} people`));
     }
-    else if (f.dataset.addperson) { const ev = f.dataset.addperson, name = fd("name"); op({ op: "addPerson", name }).then(() => op({ op: "toggle", ev, name, on: true })); }
   });
 
   render();

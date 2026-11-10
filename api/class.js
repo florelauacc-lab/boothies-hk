@@ -6,10 +6,10 @@ import { createHash, randomBytes } from "node:crypto";
 const URL_ = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
 const TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
 const PASS_HASH = process.env.CLASS_PASS_SHA256;
-// a second, organiser-only code (Florence and Rienno): payment details and confirming money received
+// a second, organiser-only code (the HK planning team): payment details and confirming money received
 const ORG_HASH = process.env.ORGANISER_PASS_SHA256;
 // the HK planning team: events they set up (and the original four) need the organiser code to remove
-const ORGANISERS = ["Rienno", "Lisa Lam", "Florence Lau", "Kejia Bian"];
+const ORGANISERS = ["Rienno Wan", "Lisa Lam", "Florence Lau", "Kejia Bian"];
 // key prefix: production has the real list; previews and local testing use their own keys
 const P = process.env.VERCEL_ENV === "production" ? "c1:" : process.env.CLASS_PREFIX || "dev1:";
 
@@ -48,6 +48,13 @@ async function state(org) {
   return { seeded: !!m, ...(m || {}), events: ev, settle: st, bills: list(bills), profiles: prof, xfers: list(xfers), organiser: !!org };
 }
 
+// is this name on the class list (study groups, minus those marked * as not in Hong Kong)?
+async function onList(name) {
+  const [raw] = await redis([["GET", `${P}meta`]]);
+  const m = JSON.parse(raw || "{}");
+  return (m.groups || []).some(([, ns]) => ns.includes(name)) || (m.extra || []).includes(name);
+}
+
 export default async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
   res.setHeader("X-Robots-Tag", "noindex");
@@ -78,6 +85,8 @@ export default async function handler(req, res) {
       case "toggle": {
         const name = clean(b.name, 60);
         if (!ev || !name) return res.status(400).json({ error: "missing" });
+        // names must come from the class list (WhatsApp nicknames are matched to it first; unknown people count as "not named yet")
+        if (b.on && !(await onList(name))) return res.status(400).json({ error: "Only names from the class list. Count anyone else under \"not named yet\"." });
         const cmds = [[b.on ? "SADD" : "SREM", `${P}going:${ev}`, name]];
         // events in the same group are either/or (e.g. two dim sum lunches): going to one takes you off the others
         if (b.on) {
@@ -159,19 +168,48 @@ export default async function handler(req, res) {
       case "addExpense": {
         const hkd = Math.round(+b.hkd * 100) / 100;
         if (!ev || !(hkd > 0) || hkd > 1e6) return res.status(400).json({ error: "bad amount" });
-        await redis([["HSET", `${P}exp:${ev}`, id(), JSON.stringify({ what: clean(b.what, 40) || "Bill", paidBy: clean(b.paidBy, 60) || "Rienno", hkd, by, at: Date.now() })]]);
+        await redis([["HSET", `${P}exp:${ev}`, id(), JSON.stringify({ what: clean(b.what, 40) || "Bill", paidBy: clean(b.paidBy, 60) || "Rienno Wan", hkd, by, at: Date.now() })]]);
         break;
       }
       case "delExpense":
         await redis([["HDEL", `${P}exp:${ev}`, clean(b.xid, 20)]]);
         break;
-      case "addPerson": {
-        const name = clean(b.name, 60);
-        if (!name) return res.status(400).json({ error: "missing" });
-        const [cur] = await redis([["GET", `${P}meta`]]);
-        const m = JSON.parse(cur || "{}");
-        m.extra = [...new Set([...(m.extra || []), name])];
-        await redis([["SET", `${P}meta`, JSON.stringify(m)]]);
+      case "addPerson": // retired: only names from the class list
+        return res.status(400).json({ error: "Only names from the class list. Count anyone else under \"not named yet\"." });
+      case "renamePerson": { // organisers: a nickname that turned out to be someone on the list, moved everywhere it appears
+        if (!org) return res.status(403).json({ error: "organisers only" });
+        const from = clean(b.from, 60), to = clean(b.to, 60);
+        if (!from || !to || from === to) return res.status(400).json({ error: "missing" });
+        const [mraw, evs, bills, profiles, xfers, settle] = await redis([["GET", `${P}meta`], ["HGETALL", `${P}events`], ["HGETALL", `${P}bills`], ["HGETALL", `${P}profiles`], ["HGETALL", `${P}xfers`], ["HGETALL", `${P}settle`]]);
+        const sw = (v) => (v === from ? to : v);
+        const cmds = [], m = JSON.parse(mraw || "{}");
+        // renaming a class-list name to the name they go by (e.g. Pan Fan Wan → Rienno Wan): the list changes and the old name stays searchable;
+        // otherwise the new name must already be on the list (a WhatsApp nickname matched to it)
+        const listed = (n) => (m.groups || []).some(([, ns]) => ns.includes(n) || ns.includes(`${n}*`));
+        if (listed(from)) { m.groups = m.groups.map(([g, ns]) => [g, ns.map((n) => (n === from ? to : n === `${from}*` ? `${to}*` : n))]); m.aka = { ...(m.aka || {}), [to]: (m.aka || {})[from] || from }; }
+        else if (!listed(to) && !(m.extra || []).includes(to)) return res.status(400).json({ error: `${to} isn't on the class list` });
+        if (m.payTo === from) m.payTo = to;
+        m.extra = (m.extra || []).filter((n) => n !== from);
+        cmds.push(["SET", `${P}meta`, JSON.stringify(m)]);
+        const E = pairs(evs);
+        const has = await redis(Object.keys(E).map((k) => ["SISMEMBER", `${P}going:${k}`, from]));
+        Object.entries(E).forEach(([k, v], i) => {
+          if (has[i]) cmds.push(["SREM", `${P}going:${k}`, from], ["SADD", `${P}going:${k}`, to]);
+          const e = JSON.parse(v);
+          ["by", "bookedBy", "priceBy"].forEach((f) => { e[f] = sw(e[f]); });
+          (e.tables || []).forEach((t) => { t.names = (t.names || []).map(sw); });
+          cmds.push(["HSET", `${P}events`, k, JSON.stringify(e)]);
+        });
+        Object.entries(pairs(bills)).forEach(([k, v]) => { const x = JSON.parse(v);
+          ["paidBy", "frontedBy", "by"].forEach((f) => { x[f] = sw(x[f]); });
+          x.among = (x.among || []).map(sw);
+          if (x.shares) x.shares = Object.fromEntries(Object.entries(x.shares).map(([n, a]) => [sw(n), a]));
+          cmds.push(["HSET", `${P}bills`, k, JSON.stringify(x)]); });
+        Object.entries(pairs(xfers)).forEach(([k, v]) => { const x = JSON.parse(v); ["from", "to", "by"].forEach((f) => { x[f] = sw(x[f]); }); cmds.push(["HSET", `${P}xfers`, k, JSON.stringify(x)]); });
+        const pr = pairs(profiles), st = pairs(settle);
+        if (pr[from] && !pr[to]) cmds.push(["HSET", `${P}profiles`, to, pr[from]], ["HDEL", `${P}profiles`, from]);
+        if (st[from] && !st[to]) cmds.push(["HSET", `${P}settle`, to, st[from]], ["HDEL", `${P}settle`, from]);
+        await redis(cmds);
         break;
       }
       case "setInfo": { // organisers: payment wording shown to everyone
@@ -192,13 +230,13 @@ export default async function handler(req, res) {
         await redis([["SET", `${P}meta`, JSON.stringify(m)]]);
         break;
       }
-      // settling up: the payer marks "I've paid", the collector (Rienno) confirms they received it
+      // settling up: the payer marks "I've paid", the collector confirms they received it
       case "markPaid": {
         const name = clean(b.name, 60), hkd = Math.round(+b.hkd);
         if (!name || !(hkd > 0)) return res.status(400).json({ error: "missing" });
         const [cur] = await redis([["HGET", `${P}settle`, name]]);
         const prev = cur ? JSON.parse(cur) : { payments: [] };
-        // a classmate's "I've paid" is a heads-up; only the organiser (Rienno) can record a payment as received
+        // a classmate's "I've paid" is a heads-up; only an organiser can record a payment as received
         const confirmed = !!(org && b.confirmed);
         const evs = Array.isArray(b.evs) ? b.evs.slice(0, 20).map((x) => clean(x, 40)).filter(Boolean) : [];
         prev.payments = [...(prev.payments || []), { hkd, evs, method: clean(b.method, 30), at: Date.now(), confirmed, confirmedBy: confirmed ? by : undefined }];
@@ -211,7 +249,7 @@ export default async function handler(req, res) {
         if (!cur) return res.status(404).json({ error: "no payment" });
         const prev = JSON.parse(cur);
         const i = (prev.payments || []).findIndex((p) => !p.confirmed && (p.evs || []).includes(evId));
-        if (i < 0) return res.status(404).json({ error: "Rienno has already confirmed this one, so ask him to undo it" });
+        if (i < 0) return res.status(404).json({ error: "This was already confirmed, so ask the organiser who confirmed it to undo it" });
         const p = prev.payments[i];
         p.evs = p.evs.filter((x) => x !== evId);
         p.hkd = Math.max(0, p.hkd - amt);
@@ -226,7 +264,7 @@ export default async function handler(req, res) {
         const prev = JSON.parse(cur);
         if (!prev.payments?.[i]) return res.status(404).json({ error: "no payment" });
         if (b.op === "undoPaid") {
-          if (prev.payments[i].confirmed && !org) return res.status(403).json({ error: "Rienno has already confirmed this payment" });
+          if (prev.payments[i].confirmed && !org) return res.status(403).json({ error: "This payment was already confirmed" });
           prev.payments.splice(i, 1);
         }
         else { prev.payments[i].confirmed = b.op === "confirmPaid"; prev.payments[i].confirmedBy = by; }

@@ -1383,7 +1383,8 @@ window.HK = {
    ],
    "orScore": 3.6,
    "orReviews": 144,
-   "openrice": "https://www.openrice.com/en/hongkong/r-sing-kee-central-hong-kong-style-r10580"
+   "openrice": "https://www.openrice.com/en/hongkong/r-sing-kee-central-hong-kong-style-r10580",
+   "tips": "November is peak season, with 30+ minute queues even at 21:00–22:00. Seafood is market price, so ask before ordering. Go for the no-batter stir-fries: salt-and-pepper squid and pork ribs."
   },
   {
    "tab": "city",
@@ -1459,7 +1460,8 @@ window.HK = {
    "gReviews": 1842,
    "orScore": 3.5,
    "orReviews": 392,
-   "openrice": "https://www.openrice.com/en/hongkong/r-luk-yu-tea-house-central-guangdong-dim-sum-r1966"
+   "openrice": "https://www.openrice.com/en/hongkong/r-luk-yu-tea-house-central-guangdong-dim-sum-r1966",
+   "tips": "You pay for the 1930s room: tea charges and prices are high, and staff can be brusque with first-timers. Go for the atmosphere rather than value."
   },
   {
    "tab": "city",
@@ -1497,7 +1499,8 @@ window.HK = {
    "gReviews": 12604,
    "orScore": 3.5,
    "orReviews": 329,
-   "openrice": "https://www.openrice.com/en/hongkong/r-tim-ho-wan-the-dim-sum-specialists-central-hong-kong-style-dim-sum-r61957"
+   "openrice": "https://www.openrice.com/en/hongkong/r-tim-ho-wan-the-dim-sum-specialists-central-hong-kong-style-dim-sum-r61957",
+   "tips": "It's inside Hong Kong Station (IFC, Airport Express level), not Central MTR station. Stick to the baked BBQ pork buns, turnip cake and chicken feet; reviewers find the rest uneven. Queues move fast."
   },
   {
    "tab": "city",
@@ -1540,7 +1543,8 @@ window.HK = {
    "gReviews": 2807,
    "orScore": 3.5,
    "orReviews": 184,
-   "openrice": "https://www.openrice.com/en/hongkong/r-maxims-palace-central-hong-kong-style-chinese-bbq-r488"
+   "openrice": "https://www.openrice.com/en/hongkong/r-maxims-palace-central-hong-kong-style-chinese-bbq-r488",
+   "tips": "Waits of 30–60+ minutes at lunch and weekends are normal: arrive at the 09:00 opening or take a ticket in the online queue. A tea charge and 10% service are added."
   },
   {
    "tab": "city",
@@ -1735,7 +1739,8 @@ window.HK = {
    "gReviews": 4748,
    "orScore": 3.0,
    "orReviews": 1133,
-   "openrice": "https://www.openrice.com/en/hongkong/r-kau-kee-restaurant-central-guangdong-noodles-rice-noodles-r1618"
+   "openrice": "https://www.openrice.com/en/hongkong/r-kau-kee-restaurant-central-guangdong-noodles-rice-noodles-r1618",
+   "tips": "Queues can reach an hour, staff are curt and the house rules are strict (a minimum spend, no luggage, no swapping seats). Cash only, closed Sundays. Go mid-afternoon on a weekday, or try Shui Kee's brisket nearby instead."
   },
   {
    "tab": "city",
@@ -2218,7 +2223,8 @@ window.HK = {
     "Western & Med"
    ],
    "addressZh": "中西區歌賦街33號經富中心",
-   "emoji": "🍝"
+   "emoji": "🍝",
+   "tips": "Bookings are by WhatsApp only (see their Instagram). A small menu of about ten dishes that changes monthly. Check the closed day when you book (sources say Monday or Sunday)."
   },
   {
    "tab": "city",
@@ -3772,7 +3778,7 @@ window.HK = {
     "Egg tart (蛋撻)"
    ],
    "reviews": "Most reviewers rave about the hot bun and cold slab of butter, a few call it overhyped, and weekend mornings bring 10-30 minute queues.",
-   "tips": "Use the takeaway counter to skip the dine-in queue. Weekday mornings before 09:00 are quietest. Pay with cash or Octopus.",
+   "tips": "Use the takeaway counter to skip the dine-in queue; dining in needs one drink each and is cramped. Weekday mornings before 09:00 are quietest. Pay with cash or Octopus.",
    "hours": "Daily from about 06:30 to 21:00-23:00 (sources vary)",
    "addressEn": "G/F, 45-47 Bute Street, Prince Edward, Kowloon",
    "addressZh": "九龍太子弼街45-47號地下",
@@ -3851,7 +3857,7 @@ window.HK = {
     "Instant noodles with chicken and scallion (葱油雞扒撈丁)"
    ],
    "reviews": "Reviewers call it a must for the milk tea and atmosphere, though some find the tea unremarkable, and it is cramped and rushed with long queues at peak times.",
-   "tips": "Go mid-morning or around 15:00, after the lunch crowd. Order milk tea plus one pork chop bun. Closed Sundays.",
+   "tips": "Touristy now, and much of the food is ordinary: come for the milk tea. Dine-in has a minimum spend of about HK$40, so add a pork chop bun. Seating is cramped and shared. Go mid-morning or around 15:00. Closed Sundays.",
    "hours": "About 07:30-18:00 Mon-Sat; closed Sundays",
    "addressEn": "2 Gage Street, Central, Hong Kong",
    "addressZh": "香港中環結志街2號",
@@ -3898,7 +3904,7 @@ window.HK = {
     "Red bean ice (紅豆冰)"
    ],
    "reviews": "People come for the 1950s interior and milk tea. Recent reviews say the food and service are only average, with some saying it is not as good as before.",
-   "tips": "Ask for a table upstairs by the windows overlooking the Tin Hau Temple. Combine it with the Temple Street night market, but arrive before about 19:00. Closed Wednesdays.",
+   "tips": "People come for the 1950s room now, and recent reviews say the food has slipped. Ask for a table upstairs by the windows over the Tin Hau Temple. Cash only. Usually closed Wednesdays, so check first. Combine it with the Temple Street night market.",
    "hours": "About 11:00-19:30 or 20:00; closed Wednesdays (sources vary)",
    "addressEn": "63 Temple Street, Yau Ma Tei, Kowloon (corner of Public Square Street)",
    "addressZh": "九龍油麻地廟街63號",
@@ -3985,7 +3991,7 @@ window.HK = {
     "Char siu (叉燒)"
    ],
    "reviews": "Reviewers often rate it slightly above Kam's for flavour (if a little greasy), but it is tiny and brusque, with shared tables, and the goose can sell out by mid-afternoon.",
-   "tips": "Go before 11:00 or after 14:00. Bring cash. Point at the goose leg with lai fun if in doubt. It is easy to pair with Tai Cheong egg tarts and Lan Fong Yuen nearby.",
+   "tips": "Recent reviews are mixed: soft rather than crisp skin, salty, small portions and curt service. If you go, order only the roast goose leg with lai fun. Go before 11:00 or after 14:00, bring cash, and pair it with Tai Cheong egg tarts nearby.",
    "hours": "About 10:00-21:00 Mon-Sat; 10:00-17:30 Sun",
    "addressEn": "G/F, 34-38 Stanley Street, Central, Hong Kong",
    "addressZh": "香港中環士丹利街34-38號地下",
@@ -10270,7 +10276,7 @@ window.HK = {
     "Fried oyster omelette (or dried radish omelette)",
     "Chiu Chow-style sweet and sour noodles"
    ],
-   "tips": "Reserve directly. 9th-floor of a building (lift to 9/F). Chinese name per OpenRice; confirm at booking.",
+   "tips": "Reserve directly; it's on the 9th floor (lift to 9/F). Most seafood is market price, so ask before ordering. Book for weekend dinners.",
    "hours": "Daily 12:00-15:00, 18:00-23:00",
    "phone": "+852 9072 2887",
    "lat": 22.30263,
@@ -10343,7 +10349,7 @@ window.HK = {
     "Noodles with shrimp roe",
     "Noodles tossed with oyster sauce"
    ],
-   "tips": "Cash only (cards not accepted); shared tables, quick turnover, queues at peak. Hours reported as 12:00-00:30.",
+   "tips": "Bowls are barely bigger than a rice bowl, so add pork knuckle or brisket. Cash only, shared tables, queues at peak. Hours reported as 12:00–00:30.",
    "hours": "Daily 12:00-00:30",
    "phone": "+852 2736 5561",
    "url": "http://www.mmk.hk/",
@@ -12074,6 +12080,220 @@ window.HK = {
    "id": "dirty-laundry",
    "kinds": [
     "Cocktails"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local legends",
+   "name": "Ser Wong Fun",
+   "zh": "蛇王芬",
+   "area": "Central",
+   "cuisine": "Snake soup, claypot rice & cured sausage",
+   "price": "$$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🍚",
+   "intro": "A family-run snake soup shop of about 130 years, now in its fourth generation. Mid-November is the start of snake soup and claypot rice season, and the house-cured sausages are worth the trip on their own.",
+   "order": [
+    "Five-snake soup",
+    "House-cured liver and pork sausages",
+    "Winter claypot rice"
+   ],
+   "tips": "Snake soup is about HK$120–140 a bowl, which some find steep. The room is basic and crowded, and service is slow. Skip it if snake puts you off: the sausages and claypot rice are good on their own.",
+   "hours": "Daily 11:00–21:30",
+   "addressEn": "G/F, 30 Cochrane Street, Central",
+   "local": true,
+   "lat": 22.282818,
+   "lng": 114.154265,
+   "id": "ser-wong-fun",
+   "kinds": [
+    "Cantonese & seafood"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Dessert",
+   "name": "Leaf Dessert",
+   "zh": "玉葉甜品",
+   "area": "Soho",
+   "cuisine": "Cantonese sweet soups and rice balls",
+   "price": "$",
+   "category": [
+    "dessert",
+    "late-night"
+   ],
+   "emoji": "🍧",
+   "intro": "One of the last dessert dai pai dongs on the island: a tin shed on sloping Elgin Street serving handmade sweet rice balls in peanut and sesame, and herbal green bean soup.",
+   "order": [
+    "Tong bat lat (sweet rice balls in peanut and sesame)",
+    "Green bean soup with kelp",
+    "Black sesame soup"
+   ],
+   "tips": "The owner is famously gruff, which regulars call part of the charm. Tables slope, so hold your bowl. No air-con. Bring cash. Skip the coconut sago.",
+   "addressEn": "2 Elgin Street, Soho, Central (tin-shed stall)",
+   "local": true,
+   "lat": 22.282864,
+   "lng": 114.152626,
+   "id": "leaf-dessert",
+   "kinds": [
+    "Dessert & sweets"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Local eats",
+   "name": "Shung Hing Chiu Chow Seafood Restaurant",
+   "zh": "尚興潮州海鮮飯店",
+   "area": "Sheung Wan",
+   "cuisine": "Chiu Chow (Teochew) seafood",
+   "price": "$$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🦀",
+   "intro": "An old-school Chiu Chow seafood house that food writers and local celebrities have loved for decades. Go for the cold crab, braised goose slices and oyster dishes. It's big enough for a group dinner.",
+   "order": [
+    "Cold crab",
+    "Braised goose slices",
+    "Oyster omelette",
+    "Blanched sea whelk slices"
+   ],
+   "tips": "Cold crab and other seafood are market price, so ask before you order. Expect about HK$100–200 a head before seafood. Reviews are older and mixed. Listings give different numbers on Queen's Road West (27 to 37), so look for the sign.",
+   "addressEn": "G/F, 29 Queen's Road West, Sheung Wan",
+   "local": true,
+   "lat": 22.28662,
+   "lng": 114.148186,
+   "id": "shung-hing-chiu-chow-seafood-restaurant",
+   "kinds": [
+    "Regional Chinese",
+    "Cantonese & seafood"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Across the harbour (TST)",
+   "name": "Master Chan Dim Sum Specialist",
+   "zh": "陳師傅自製點心專門店",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Made-to-order dim sum",
+   "price": "$",
+   "category": [
+    "breakfast",
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🥟",
+   "intro": "A small shop where every piece is made fresh and steamed to order. Self-paid reviewers rate it close to hotel quality at street prices, about HK$100–150 a head, without the big-restaurant queue.",
+   "order": [
+    "Har gow",
+    "Siu mai",
+    "Crispy rice noodle roll",
+    "Lava sesame balls"
+   ],
+   "tips": "The room is small, so go outside peak lunch. Hours are about 09:00–22:30 (sources vary).",
+   "addressEn": "G/F, 56 Cameron Road, Tsim Sha Tsui",
+   "local": true,
+   "lat": 22.299264,
+   "lng": 114.174774,
+   "id": "master-chan-dim-sum-specialist",
+   "kinds": [
+    "Dim sum"
+   ],
+   "orScore": 4.0,
+   "orReviews": 174,
+   "openrice": "https://www.openrice.com/en/hongkong/r-master-chan-dim-sum-specialist-tsim-sha-tsui-hong-kong-style-dim-sum-r720124"
+  },
+  {
+   "tab": "city",
+   "section": "Across the harbour (TST)",
+   "name": "San Keung Kee Roast Meat Restaurant",
+   "zh": "新強記燒臘飯店",
+   "area": "Jordan",
+   "cuisine": "Cantonese roast meats (siu mei)",
+   "price": "$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🍖",
+   "intro": "An old-school Jordan roast meat shop with about 30 years of daily takeaway queues for its crackling roast pork, suckling pig and goose, all at neighbourhood prices.",
+   "order": [
+    "Roast pork belly",
+    "Suckling pig",
+    "Roast goose",
+    "Three-roast rice plate"
+   ],
+   "tips": "Cramped and basic. A few diners say they got a cheaper cut than they ordered, so check your plate. Bring cash. Hours about 09:00–22:00.",
+   "addressEn": "G/F, 113 Shanghai Street, Jordan",
+   "local": true,
+   "lat": 22.30613,
+   "lng": 114.1693,
+   "id": "san-keung-kee-roast-meat-restaurant",
+   "kinds": [
+    "Roast meats & noodles"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Across the harbour (TST)",
+   "name": "Hing Kee Claypot Rice",
+   "zh": "興記菜館",
+   "area": "Yau Ma Tei",
+   "cuisine": "Charcoal claypot rice & oyster omelette",
+   "price": "$",
+   "category": [
+    "dinner",
+    "late-night"
+   ],
+   "emoji": "🍚",
+   "intro": "Cooking claypot rice over charcoal on Temple Street since 1982. The scorched rice crust and the oyster omelette are the reasons to go, and mid-November is the start of claypot season.",
+   "order": [
+    "Claypot rice with preserved sausage",
+    "Claypot rice with salted fish and chicken",
+    "Oyster omelette"
+   ],
+   "tips": "Evening queues have grown since a Korean TV chef featured it, and some recent reviews mention burnt or over-salty rice. Claypots start at about HK$80. Bring cash. Open about 17:30–00:00, so it pairs well with the Temple Street night market.",
+   "hours": "Daily 13:30–15:30 and 17:30–00:00",
+   "addressEn": "G/F, 15 Temple Street, Yau Ma Tei",
+   "local": true,
+   "lat": 22.311423,
+   "lng": 114.170029,
+   "id": "hing-kee-claypot-rice",
+   "kinds": [
+    "Cantonese & seafood"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Seafood & dai pai dong",
+   "name": "Wing Fat Seafood",
+   "zh": "榮發大排檔",
+   "area": "Jordan",
+   "cuisine": "Dai pai dong seafood & wok stir-fries",
+   "price": "$$",
+   "category": [
+    "dinner",
+    "late-night"
+   ],
+   "emoji": "🦀",
+   "intro": "The go-to seafood dai pai dong by Temple Street, running since 1989: loud, generous, fresh seafood and real wok hei, in the Woosung Street cooked-food bazaar.",
+   "order": [
+    "Salt-and-pepper mantis shrimp",
+    "Typhoon-shelter crab",
+    "Clams in black bean sauce",
+    "Beef ho fun"
+   ],
+   "tips": "Waits can be long at peak, so go on a weekday night. Dishes lean salty, and seafood is market price, so ask first. About HK$50–100 a head before seafood.",
+   "addressEn": "Shop 6–8, G/F, Cooked Food Hawker Bazaar, 29–39 Woosung Street, Jordan",
+   "local": true,
+   "lat": 22.304165,
+   "lng": 114.170174,
+   "id": "wing-fat-seafood",
+   "kinds": [
+    "Cantonese & seafood"
    ]
   }
  ],
