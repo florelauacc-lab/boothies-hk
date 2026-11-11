@@ -12560,6 +12560,195 @@ window.HK = {
     "license": "CC BY-SA 4.0"
    },
    "id": "tolo-harbour-cycling-sha-tin-to-tai-mei-"
+  },
+  {
+   "tab": "city",
+   "section": "Coffee",
+   "category": [
+    "coffee"
+   ],
+   "price": "$",
+   "emoji": "☕",
+   "name": "18 Grams (Cannon Street)",
+   "area": "Causeway Bay",
+   "cuisine": "Specialty coffee",
+   "intro": "The original shop of a long-running Hong Kong roaster, grinding beans to order. At 7 minutes' walk, it's the closest 08:00 coffee to the hotel.",
+   "order": [
+    "Flat white",
+    "Single-origin pour-over"
+   ],
+   "tips": "Tiny, so grab it to go before the shuttle. Closing time varies by source, so check Instagram @18grams for the afternoon.",
+   "hours": "Daily from 08:00 (closes about 18:00 Mon–Thu, 20:00 Fri–Sun; listings vary)",
+   "addressEn": "Shop C, G/F, Hoi To Court, 15 Cannon Street, Causeway Bay",
+   "url": "https://www.instagram.com/18grams/",
+   "lat": 22.281677,
+   "lng": 114.18335,
+   "id": "18-grams-cannon-street",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Coffee",
+   "category": [
+    "coffee"
+   ],
+   "price": "$",
+   "emoji": "☕",
+   "name": "% Arabica (Hysan Place)",
+   "area": "Causeway Bay",
+   "cuisine": "Specialty coffee (Kyoto)",
+   "intro": "The Kyoto coffee brand's reliable lattes, in the basement of Hysan Place, about 6 minutes' walk from the hotel.",
+   "order": [
+    "Kyoto latte",
+    "Spanish latte"
+   ],
+   "tips": "It's on B1. Before the mall opens, the way in is probably through the MTR-level entrance.",
+   "hours": "Daily 08:00–19:00",
+   "addressEn": "B114, B1, Hysan Place, 500 Hennessy Road, Causeway Bay",
+   "url": "https://arabicacoffee.hk/locations/arabica-hysan-place",
+   "lat": 22.279806,
+   "lng": 114.183765,
+   "id": "arabica-hysan-place",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Coffee",
+   "category": [
+    "coffee"
+   ],
+   "price": "$",
+   "emoji": "☕",
+   "name": "Russell Coffee and Roastery",
+   "area": "Causeway Bay",
+   "cuisine": "Specialty coffee, roasted in-house",
+   "intro": "A narrow corridor café opposite Times Square that roasts its own beans. It took over the old Café Corridor site, which ran from 2001.",
+   "order": [
+    "Flat white",
+    "House-roast filter coffee"
+   ],
+   "tips": "A few outdoor seats; quiet hideaway just off the shopping crowds. Hours are from its Instagram, so check @russellcoffeehk.",
+   "hours": "Daily 08:00–18:00",
+   "addressEn": "G/F, 26A Russell Street, Causeway Bay",
+   "url": "https://www.instagram.com/russellcoffeehk/",
+   "lat": 22.279117,
+   "lng": 114.183286,
+   "id": "russell-coffee-and-roastery",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Coffee",
+   "category": [
+    "coffee"
+   ],
+   "price": "$",
+   "emoji": "☕",
+   "name": "Fineprint (Tai Hang)",
+   "area": "Tai Hang",
+   "cuisine": "Specialty coffee & sourdough",
+   "intro": "Opens at 06:00 every day with its own sourdough, so it's the one sit-down coffee well before an 08:00 shuttle. On a corner of Tai Hang's quiet old streets, about 12 minutes' walk from the hotel.",
+   "order": [
+    "Flat white",
+    "Sourdough toast"
+   ],
+   "tips": "Toasts get the praise; it's not cheap. Good start to a wander round Tai Hang.",
+   "hours": "Daily 06:00–18:00",
+   "addressEn": "1 Lily Street (corner of Wun Sha Street), Tai Hang",
+   "url": "https://fineprint.hk/pages/tai-hang",
+   "lat": 22.279296,
+   "lng": 114.192359,
+   "id": "fineprint-tai-hang",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Coffee",
+   "category": [
+    "coffee"
+   ],
+   "price": "$",
+   "emoji": "☕",
+   "name": "Winstons Coffee (Tai Hang)",
+   "area": "Tai Hang",
+   "cuisine": "Australian-style coffee bar",
+   "intro": "Australian-style flat whites from 07:00 every day, turning into espresso martinis in the evening. About 12 minutes' walk from the hotel.",
+   "order": [
+    "Flat white",
+    "Espresso martini (evenings)"
+   ],
+   "tips": "Small, with a few seats. Open until 22:00 Tue–Sat, so it also works as an easy drink.",
+   "hours": "Sun–Mon 07:00–19:00; Tue–Sat 07:00–22:00",
+   "addressEn": "G/F, 4 King Street, Tai Hang",
+   "url": "https://www.winstonscoffee.com/",
+   "lat": 22.278739,
+   "lng": 114.192028,
+   "id": "winstons-coffee-tai-hang",
+   "kinds": [
+    "Coffee"
+   ]
+  },
+  {
+   "tab": "hikes",
+   "name": "Run to Campus: Causeway Bay to Booth along the Harbour",
+   "area": "Causeway Bay to Kennedy Town (Booth)",
+   "cuisine": "Running route",
+   "category": [
+    "run",
+    "near-campus",
+    "views"
+   ],
+   "emoji": "🏃",
+   "intro": "Yes, you can run to class: about 10 km west along the harbour from the hotel, past the Convention Centre, Tamar, the Central piers and the new Sai Ying Pun Waterfront Park to Kennedy Town, then a gentle climb up Victoria Road to campus. The harbourfront has been joined up from Kennedy Town to Shau Kei Wan since late 2025.",
+   "order": [
+    "Causeway Bay typhoon shelter and the Noonday Gun",
+    "Wan Chai and Golden Bauhinia Square",
+    "Tamar, Central Harbourfront and the Star Ferry",
+    "Sai Ying Pun Waterfront Park and the old wholesale market piers",
+    "Victoria Road climb to campus (about 40 m up over 2 km)"
+   ],
+   "getting": "Start by crossing Gloucester Road on the footbridge to the typhoon shelter promenade, then keep the harbour on your right. Home: jog downhill about 2 km to Kennedy Town MTR, then the Island Line straight to Causeway Bay (about 20–25 min door to door).",
+   "tips": "Go early (sunrise is about 06:25); after 08:00 tour groups and pier commuters slow you down. It isn't one unbroken path: there are three short detours on pavement, by the Cross-Harbour Tunnel (single file on a narrow path), around Shun Tak Centre (go inland past the Macau Ferry Terminal), and past the Western District cargo area (pavement beside Connaught Road West). Toilets and showers at the Wan Chai Water Sports and Recreation Precinct. Water fountains in Victoria Park, along the Central promenade, Sun Yat Sen Memorial Park, the wholesale market piers and Belcher Bay Park. Victoria Road's footpath is narrow with buses, so keep to it in single file. Bring an Octopus card for the MTR back, and check whether you can shower on campus before running to class.",
+   "hours": "Promenades open 24 hours",
+   "priceNote": "Free",
+   "facts": [
+    [
+     "Distance",
+     "About 10 km (7.5 km on the waterfront)"
+    ],
+    [
+     "Time",
+     "About 1 h at an easy pace"
+    ],
+    [
+     "Level",
+     "Moderate: flat, then a gentle 2 km climb"
+    ]
+   ],
+   "lat": 22.2836,
+   "lng": 114.184,
+   "addressEn": "Start: Causeway Bay typhoon shelter promenade, opposite The Park Lane",
+   "mapsQuery": "Causeway Bay Typhoon Shelter, Hong Kong",
+   "url": "https://www.info.gov.hk/gia/general/202601/28/P2026012800606.htm",
+   "links": [
+    {
+     "label": "Mount Davis Historic Walk (Round-the-Island Trail)",
+     "url": "https://www.roundislandtrail.gov.hk/en/exploring-the-trail/route-suggestions/mount-davis-historic-walk"
+    },
+    {
+     "label": "Harbourfront guide (Zolima)",
+     "url": "https://zolimacitymag.com/opinionated-guide-hong-kong-island-harbourfront/"
+    }
+   ],
+   "id": "run-to-campus-causeway-bay-to-booth-alon"
   }
  ],
  "OUTINGS": [
