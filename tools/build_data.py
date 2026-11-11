@@ -756,3 +756,9 @@ out = {"HOME": home, "PLACES": places, "OUTINGS": EXTRAS.get("outings", []), "PL
 (ROOT / "data.js").write_text("window.HK = " + json.dumps(out, ensure_ascii=False, indent=1) + ";\n")
 from collections import Counter
 print("wrote data.js:", Counter(p["tab"] for p in places), "taste:", len(taste))
+
+# version the file links in index.html so phones fetch the new files after a deploy
+import sys as _sys
+_sys.path.insert(0, str(ROOT / "tools"))
+from stamp import stamp
+stamp()
