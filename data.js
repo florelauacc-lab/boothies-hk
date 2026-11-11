@@ -18292,7 +18292,8 @@ window.HK = {
     ]
    ],
    "em": "🚡",
-   "short": "Peak & Central"
+   "short": "Peak & Central",
+   "intro": "Peak Tram up, the Lugard Road skyline walk, dim sum in Central, Tai Kwun and a harbour sunset."
   },
   {
    "title": "TST harbourfront, afternoon to night",
@@ -18324,7 +18325,8 @@ window.HK = {
     ]
    ],
    "em": "🌃",
-   "short": "TST harbourfront"
+   "short": "TST harbourfront",
+   "intro": "Star Ferry across, 1881 Heritage and the art museum, then sunset and the lit-up skyline in TST."
   },
   {
    "title": "Kowloon temples & photo spots (half day)",
@@ -18351,7 +18353,8 @@ window.HK = {
     ]
    ],
    "em": "🪷",
-   "short": "Kowloon temples"
+   "short": "Kowloon temples",
+   "intro": "Chi Lin Nunnery's gardens, Wong Tai Sin's fortune sticks, the rainbow estate and Walled City Park."
   },
   {
    "title": "Mong Kok & Temple Street at night",
@@ -18378,7 +18381,8 @@ window.HK = {
     ]
    ],
    "em": "🏮",
-   "short": "Mong Kok nights"
+   "short": "Mong Kok nights",
+   "intro": "Ladies' Market, Mong Kok's neon, Temple Street night market and late wonton noodles."
   },
   {
    "title": "West Kowloon art & sunset",
@@ -18400,7 +18404,8 @@ window.HK = {
     ]
    ],
    "em": "🖼️",
-   "short": "West Kowloon art"
+   "short": "West Kowloon art",
+   "intro": "The Palace Museum and M+ in the morning, then sunset over the skyline from the Art Park lawn."
   },
   {
    "title": "Old Hong Kong walk: Sheung Wan to Soho",
@@ -18447,7 +18452,8 @@ window.HK = {
     ]
    ],
    "em": "🏚️",
-   "short": "Old HK walk"
+   "short": "Old HK walk",
+   "intro": "Man Mo Temple, Possession Street, PMQ, milk tea, the escalator to Soho and Tai Kwun."
   },
   {
    "title": "South side: Stanley & beaches",
@@ -18479,7 +18485,8 @@ window.HK = {
     ]
    ],
    "em": "🏖️",
-   "short": "Stanley & beaches"
+   "short": "Stanley & beaches",
+   "intro": "Top-deck bus over the hills to Stanley's market and waterfront, then Repulse Bay beach."
   },
   {
    "title": "Hike: Dragon's Back to Shek O",
@@ -18511,7 +18518,8 @@ window.HK = {
      "Want harder? Violet Hill & The Twins (about 1,200 steps), ending in Stanley",
      "Violet Hill"
     ]
-   ]
+   ],
+   "intro": "Hong Kong's favourite ridge walk, down to Big Wave Bay, then lunch and a swim at Shek O."
   },
   {
    "title": "Food crawl: Central & Sheung Wan classics",
@@ -18548,7 +18556,8 @@ window.HK = {
      "Roast goose at Yat Lok or Kam's Roast Goose to finish",
      "Yat Lok"
     ]
-   ]
+   ],
+   "intro": "Milk tea, egg tarts, wonton noodles, beef brisket, tomato noodles and roast goose."
   },
   {
    "title": "Night out: sunset drinks, Soho & Wan Chai",
@@ -18580,7 +18589,8 @@ window.HK = {
      "Taxi back to Causeway Bay (MTR runs until about 01:00)",
      null
     ]
-   ]
+   ],
+   "intro": "Sunset at the world's highest bar, dinner and cocktails in Soho, late bars in Wan Chai."
   },
   {
    "title": "Wan Chai heritage walk",
@@ -18632,7 +18642,8 @@ window.HK = {
       "Lee Tung Avenue"
      ]
     ]
-   ]
+   ],
+   "intro": "Street markets, the Blue House, Pak Tai Temple, the Yellow House and Lee Tung Avenue."
   },
   {
    "title": "Day trip: Big Buddha & Tai O",
@@ -18649,13 +18660,33 @@ window.HK = {
     ],
     [
      "🛕",
-     "The Big Buddha's 268 steps, then Po Lin Monastery next door (vegetarian lunch in the monastery hall)",
+     "The Big Buddha's 268 steps, then Po Lin Monastery next door",
      "Big Buddha"
+    ],
+    [
+     "🥢",
+     "Vegetarian lunch at Po Lin Monastery: a set meal bought at the counter (about HK$150)",
+     null,
+     [
+      22.25526,
+      113.90756,
+      "Po Lin Monastery vegetarian lunch"
+     ]
     ],
     [
      "🛖",
      "Bus 21 (about 20 min) to Tai O stilt-house fishing village",
      "Tai O"
+    ],
+    [
+     "🦐",
+     "Late lunch or early dinner in Tai O: seafood by the stilt houses at Crossing Boat Restaurant, 33 Kat Hing Street (roast goose, lotus-leaf rice), or grilled squid from the market stalls",
+     null,
+     [
+      22.25483,
+      113.86314,
+      "Crossing Boat Restaurant, Tai O"
+     ]
     ],
     [
      "⏰",
@@ -18664,7 +18695,8 @@ window.HK = {
     ]
    ],
    "em": "🚠",
-   "short": "Big Buddha & Tai O"
+   "short": "Big Buddha & Tai O",
+   "intro": "Cable car to the Big Buddha, vegetarian lunch at Po Lin, then seafood in Tai O's stilt-house village."
   },
   {
    "title": "Day trip: Cheung Chau island",
@@ -18691,7 +18723,7 @@ window.HK = {
     ],
     [
      "🍡",
-     "Snack crawl through the village lanes near the temple: giant mango mochi, curry fish balls, and peace buns at Kwok Kam Kee (closed Tuesdays; fresh buns from about 14:00)",
+     "Lunch on the go through the village lanes near the temple: giant mango mochi, curry fish balls, and peace buns at Kwok Kam Kee (closed Tuesdays; fresh buns from about 14:00)",
      "Kwok Kam Kee Cake Shop",
      [
       22.21145,
@@ -18736,7 +18768,7 @@ window.HK = {
     ],
     [
      "🦐",
-     "Seafood dinner on the Pak She Praya Road waterfront, e.g. New Baccarat (salt-and-pepper mantis shrimp, razor clams in black bean). Seafood is market price, so ask first; about HK$300 or more a head. Bring cash",
+     "Dinner: seafood on the Pak She Praya Road waterfront, e.g. New Baccarat (salt-and-pepper mantis shrimp, razor clams in black bean). Seafood is market price, so ask first; about HK$300 or more a head. Bring cash",
      "New Baccarat Seafood Restaurant",
      [
       22.2119,
@@ -18751,7 +18783,8 @@ window.HK = {
     ]
    ],
    "em": "⛴️",
-   "short": "Cheung Chau island"
+   "short": "Cheung Chau island",
+   "intro": "Ferry to a car-free island: temple, snack lunch, beaches, a pirate cave and a seafood dinner."
   },
   {
    "title": "Day trip: Macau",
@@ -18789,6 +18822,16 @@ window.HK = {
      ]
     ],
     [
+     "🍜",
+     "Lunch at Wong Chi Kei on Senado Square: shrimp wonton noodles (expect a queue)",
+     null,
+     [
+      22.19414,
+      113.54019,
+      "Wong Chi Kei, Senado Square"
+     ]
+    ],
+    [
      "🥧",
      "Lord Stow's egg tarts in Coloane (or the Taipa branch)",
      null,
@@ -18809,11 +18852,22 @@ window.HK = {
      ]
     ],
     [
+     "🍷",
+     "Early Portuguese dinner at António in Taipa Village (book several days ahead)",
+     null,
+     [
+      22.15281,
+      113.55648,
+      "António, Taipa Village"
+     ]
+    ],
+    [
      "⛴️",
      "Ferry back around 20:00–21:30",
      null
     ]
-   ]
+   ],
+   "intro": "Ferry to Macau: Senado Square, wonton noodles, St Paul's, egg tarts and a Portuguese dinner in Taipa."
   },
   {
    "title": "Day trip: Lamma Island walk & seafood",
@@ -18875,7 +18929,8 @@ window.HK = {
       "Sok Kwu Wan Pier"
      ]
     ]
-   ]
+   ],
+   "intro": "Village brunch, the easy Family Trail past a beach, and seafood over the water in Sok Kwu Wan."
   },
   {
    "title": "Day trip: Ocean Park & a seafood dinner",
@@ -18896,7 +18951,8 @@ window.HK = {
    "optional": true,
    "was": [
     "Optional day trip: Ocean Park & a seafood dinner"
-   ]
+   ],
+   "intro": "Pandas and rides at Ocean Park, then pick-your-own seafood in Ap Lei Chau."
   },
   {
    "title": "Day trip: Hong Kong Disneyland",
@@ -18912,7 +18968,8 @@ window.HK = {
    "optional": true,
    "was": [
     "Optional day trip: Hong Kong Disneyland"
-   ]
+   ],
+   "intro": "A full day at Hong Kong Disneyland, by MTR to Disneyland Resort."
   }
  ],
  "PLAN": [

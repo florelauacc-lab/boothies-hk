@@ -162,7 +162,8 @@
         emoji: o.em || (day ? "⛴️" : "🗺️"), category: cat,
         cuisine: day ? "Day trip" : onFoot ? "Walking route" : /\bwalk\b/i.test(o.title) ? "Walk" : "Half-day plan",
         area: areas.join(" · ") || (o.title.match(/Macau|Lamma|Cheung Chau|Lantau/)?.[0] ?? "Hong Kong"),
-        intro: o.steps.map(([, t]) => t.split(/[,(:]| then /)[0].trim()).slice(0, 4).join(" → ") + (o.steps.length > 4 ? " …" : ""),
+        // the plan's own one-line description; otherwise the first few steps, without times, cut at a comma or colon (not inside 09:30)
+        intro: o.intro || o.steps.map(([, t]) => t.replace(/^\d{1,2}:\d{2}\s*/, "").split(/[,(;]|: | then /)[0].trim()).slice(0, 4).join(" → ") + (o.steps.length > 4 ? " …" : ""),
         order: o.steps.map(([em, t]) => `${em} ${t}`),
         facts: [["Stops", String(o.steps.length)], ["On the map", stops.length ? `${stops.length} place${stops.length > 1 ? "s" : ""}` : "not mapped"]],
         lat: stops[0]?.lat ?? null, lng: stops[0]?.lng ?? null,
