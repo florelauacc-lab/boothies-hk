@@ -157,7 +157,7 @@
       if (/night|neon|temple street/i.test(o.title)) cat.push("night");
       const areas = [...new Set(stops.filter((p) => p.area).map((p) => p.area.split(/[\/(,↔]| or /)[0].trim()))].filter((a, i, all) => !all.some((b, j) => j < i && (b.includes(a) || a.includes(b)))).slice(0, 3);
       const plan = {
-        id: `plan-${o.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40)}`,
+        id: `plan-${(o.was?.[0] || o.title).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40)}`,
         tab: "plans", isPlan: true, idea: o.title, short: o.short || o.title, onFoot, name: o.title,
         emoji: o.em || (day ? "⛴️" : "🗺️"), category: cat,
         cuisine: day ? "Day trip" : onFoot ? "Walking route" : /\bwalk\b/i.test(o.title) ? "Walk" : "Half-day plan",
@@ -754,6 +754,8 @@
   // Personal plans: day trips, ideas, places or anything typed in, kept on this phone and shown in "My week"
   const MYP = "hk-myplans-v1";
   let myPlans = store.get(MYP) || [];
+  // a renamed idea plan keeps its old title in "was": move saved picks over to the new title
+  myPlans.forEach((p) => { if (!p.idea || OUTINGS.some((o) => o.title === p.idea)) return; const o = OUTINGS.find((x) => (x.was || []).includes(p.idea)); if (o) { p.title = p.title.replace(p.idea, o.title); p.idea = o.title; } });
   const saveMyPlans = () => store.set(MYP, myPlans);
   const dayLabel = (iso) => { const d = PLAN.find((x) => x.iso === iso); return d ? `${d.day} ${d.date}` : iso; };
   function addMyPlan(p) {

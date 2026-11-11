@@ -18095,6 +18095,160 @@ window.HK = {
     ],
     "km": 9.96
    }
+  },
+  {
+   "tab": "city",
+   "section": "Seafood & dai pai dong",
+   "name": "New Baccarat Seafood Restaurant",
+   "zh": "新金湖海鮮酒家",
+   "area": "Cheung Chau",
+   "cuisine": "Waterfront Cantonese seafood",
+   "price": "$$$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🦀",
+   "intro": "A Cheung Chau institution: the last of the seafood restaurants along the Pak She Praya waterfront, just before Pak Tai Temple, with tables out by the harbour.",
+   "order": [
+    "Salt-and-pepper mantis shrimp",
+    "Razor clams in black bean and chilli",
+    "Garlic steamed scallops",
+    "Steamed fish"
+   ],
+   "tips": "Seafood is market price, so ask before you order. Busy at weekends; book ahead for a group. Expect about HK$300 or more a head with seafood.",
+   "hours": "Daily about 10:30–22:30",
+   "addressEn": "G/F, 9A Pak She Praya Road, Cheung Chau",
+   "local": true,
+   "lat": 22.2119,
+   "lng": 114.0273,
+   "id": "new-baccarat-seafood-restaurant",
+   "kinds": [
+    "Cantonese & seafood"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Seafood & dai pai dong",
+   "name": "Rainbow Seafood Restaurant",
+   "zh": "天虹海鮮酒家",
+   "area": "Lamma Island (Sok Kwu Wan)",
+   "cuisine": "Waterfront Cantonese seafood",
+   "price": "$$$",
+   "category": [
+    "lunch",
+    "dinner"
+   ],
+   "emoji": "🦀",
+   "intro": "Lamma's best-known seafood restaurant since 1984: a huge open-air terrace over the water in Sok Kwu Wan, at the end of the Family Trail.",
+   "order": [
+    "Salt-and-pepper mantis shrimp",
+    "Chilli crab",
+    "Steamed garoupa"
+   ],
+   "tips": "Book at least a day ahead and its free boat can take you to or from Central and Tsim Sha Tsui. Reviews are mixed on value, so agree seafood prices first.",
+   "hours": "Daily about 10:30–22:30",
+   "addressEn": "G/F, 23–27 First Street, Sok Kwu Wan, Lamma Island",
+   "url": "https://www.lammarainbow.com/",
+   "lat": 22.2045,
+   "lng": 114.13089,
+   "id": "rainbow-seafood-restaurant",
+   "kinds": [
+    "Cantonese & seafood"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Vegan & vegetarian",
+   "name": "Bookworm Cafe",
+   "zh": "南島書蟲",
+   "area": "Lamma Island (Yung Shue Wan)",
+   "cuisine": "Organic vegetarian café",
+   "price": "$$",
+   "category": [
+    "breakfast",
+    "lunch"
+   ],
+   "emoji": "🥬",
+   "intro": "A long-running bookshelf-lined café on Yung Shue Wan's main street, serving all-day organic vegetarian food. A good brunch before the Family Trail.",
+   "order": [
+    "Mushrooms and tofu on toast",
+    "Falafel",
+    "Veggie burger"
+   ],
+   "tips": "A few minutes' walk from the Yung Shue Wan pier. Check opening times before you go, as island cafés keep short hours.",
+   "addressEn": "79 Yung Shue Wan Main Street, Lamma Island",
+   "lat": 22.22489,
+   "lng": 114.11138,
+   "id": "bookworm-cafe",
+   "kinds": [
+    "Vegan & vegetarian"
+   ]
+  },
+  {
+   "tab": "city",
+   "section": "Dessert",
+   "name": "Kwok Kam Kee Cake Shop",
+   "zh": "郭錦記餅店",
+   "area": "Cheung Chau",
+   "cuisine": "Traditional bakery (peace buns)",
+   "price": "$",
+   "category": [
+    "dessert"
+   ],
+   "emoji": "🥧",
+   "intro": "The little bakery that makes the stamped 'peace buns' for the Cheung Chau Bun Festival, filled with lotus seed, red bean or sesame.",
+   "order": [
+    "Peace bun (lotus seed)",
+    "Sesame peace bun",
+    "Red bean peace bun"
+   ],
+   "tips": "Closed on Tuesdays. Fresh batches of buns come out in the afternoon (about 14:00). No English sign outside, so look for the stamped white buns.",
+   "hours": "About 07:00–19:00, closed Tuesday",
+   "addressEn": "46 Pak She Street, Cheung Chau",
+   "local": true,
+   "lat": 22.21145,
+   "lng": 114.02815,
+   "id": "kwok-kam-kee-cake-shop",
+   "kinds": [
+    "Dessert & sweets"
+   ]
+  },
+  {
+   "tab": "sights",
+   "name": "Lamma Island",
+   "zh": "南丫島",
+   "area": "Lamma Island",
+   "cuisine": "Day trip",
+   "category": [
+    "daytrip",
+    "local",
+    "beach"
+   ],
+   "emoji": "⛴️",
+   "intro": "A laid-back, car-free island 30 minutes from Central: village cafés in Yung Shue Wan, the easy 5 km Family Trail past Hung Shing Yeh Beach, and seafood over the fish rafts in Sok Kwu Wan.",
+   "getting": "Ferry from Central Pier 4 to Yung Shue Wan (about 25–30 min) or Sok Kwu Wan (about 30–40 min). Walk the trail between the two and take the ferry back from the other end.",
+   "tips": "Sailings are spaced out, especially from Sok Kwu Wan, so check the timetable for the ferry back. Bring water and sun cream for the walk.",
+   "addressEn": "Yung Shue Wan Pier, Lamma Island",
+   "url": "https://www.hkkf.com.hk/",
+   "lat": 22.22633,
+   "lng": 114.1088,
+   "facts": [
+    [
+     "Time",
+     "Most of a day"
+    ],
+    [
+     "Ferry",
+     "Central Pier 4, 25–40 min"
+    ],
+    [
+     "Walk",
+     "Family Trail, 5 km, 1–1.5 hrs"
+    ]
+   ],
+   "funFact": "There are no cars on Lamma, and the film star Chow Yun-fat grew up here.",
+   "id": "lamma-island"
   }
  ],
  "OUTINGS": [
@@ -18537,12 +18691,12 @@ window.HK = {
     ],
     [
      "🍡",
-     "Snack crawl down San Hing Street and the village lanes: giant mango mochi, curry fish balls, and peace buns at Kwok Kam Kee (fresh from about 14:00)",
-     null,
+     "Snack crawl through the village lanes near the temple: giant mango mochi, curry fish balls, and peace buns at Kwok Kam Kee (closed Tuesdays; fresh buns from about 14:00)",
+     "Kwok Kam Kee Cake Shop",
      [
-      22.2097,
-      114.02884,
-      "San Hing Street snacks"
+      22.21145,
+      114.02815,
+      "Kwok Kam Kee Cake Shop"
      ]
     ],
     [
@@ -18582,12 +18736,12 @@ window.HK = {
     ],
     [
      "🦐",
-     "Seafood dinner on the Pak She Praya Road waterfront, e.g. New Baccarat (salt-and-pepper mantis shrimp, razor clams in black bean). Cash; about HK$200–300 a head",
-     null,
+     "Seafood dinner on the Pak She Praya Road waterfront, e.g. New Baccarat (salt-and-pepper mantis shrimp, razor clams in black bean). Seafood is market price, so ask first; about HK$300 or more a head. Bring cash",
+     "New Baccarat Seafood Restaurant",
      [
-      22.21162,
-      114.02678,
-      "New Baccarat Seafood, Pak She Praya Road"
+      22.2119,
+      114.0273,
+      "New Baccarat Seafood Restaurant"
      ]
     ],
     [
@@ -18679,7 +18833,7 @@ window.HK = {
     [
      "☕",
      "Brunch in Yung Shue Wan village, e.g. Bookworm Cafe on Main Street (vegetarian), and water for the walk",
-     null,
+     "Bookworm Cafe",
      [
       22.22489,
       114.11138,
@@ -18704,7 +18858,7 @@ window.HK = {
     [
      "🦞",
      "Down to Sok Kwu Wan (5 km in all, 1–1.5 hrs walking) for a seafood lunch over the fish rafts, e.g. Rainbow Seafood (salt-and-pepper mantis shrimp, chilli crab). Book a day ahead and its free boat can take you back to Central or TST",
-     null,
+     "Rainbow Seafood Restaurant",
      [
       22.2045,
       114.13089,
@@ -18724,7 +18878,7 @@ window.HK = {
    ]
   },
   {
-   "title": "Optional day trip: Ocean Park & a seafood dinner",
+   "title": "Day trip: Ocean Park & a seafood dinner",
    "steps": [
     [
      "🐼",
@@ -18739,10 +18893,13 @@ window.HK = {
    ],
    "em": "🐼",
    "short": "Ocean Park & seafood",
-   "optional": true
+   "optional": true,
+   "was": [
+    "Optional day trip: Ocean Park & a seafood dinner"
+   ]
   },
   {
-   "title": "Optional day trip: Hong Kong Disneyland",
+   "title": "Day trip: Hong Kong Disneyland",
    "steps": [
     [
      "🏰",
@@ -18752,7 +18909,10 @@ window.HK = {
    ],
    "em": "🏰",
    "short": "Disneyland",
-   "optional": true
+   "optional": true,
+   "was": [
+    "Optional day trip: Hong Kong Disneyland"
+   ]
   }
  ],
  "PLAN": [
