@@ -56,11 +56,22 @@
       ],
     },
   };
+  // Explore › Walks & plans: the idea plans (also in This week), as cards with their stops on the map
+  TABS.plans = {
+    home: "parklane", orderLabel: "The plan",
+    moods: [
+      { k: "walk", label: "Walks", em: "🚶", c: C.lime },
+      { k: "half", label: "Half-day plans", em: "🧭", c: C.cyan },
+      { k: "daytrip", label: "Day trips", em: "⛴️", c: C.orange },
+      { k: "food", label: "Food crawls", em: "🍜", c: C.gold },
+      { k: "night", label: "After dark", em: "🌃", c: C.violet },
+    ],
+  };
   const ALL_MOODS = Object.values(TABS).flatMap((t) => t.moods);
   const moodOf = (k, tab) => (TABS[tab]?.moods || []).find((m) => m.k === k) || ALL_MOODS.find((m) => m.k === k);
 
   const FOOD = new Set(["saiwan", "city"]);
-  const EXPLORE = new Set(["sights", "hikes", "shop"]);
+  const EXPLORE = new Set(["sights", "hikes", "shop", "plans"]);
   const WHERE = [
     ["all", "anywhere"], ["saiwan", "near Booth (Sai Wan)"], ["central", "in Central & Soho"],
     ["cwb", "near the Park Lane"], ["south", "in Stanley & the south 🛶"], ["kowloon", "across the harbour (TST & Kowloon)"],
@@ -80,7 +91,7 @@
   const WHAT = [
     ["food:all", "anything to eat or drink"], ["food:breakfast", "🍳 breakfast"], ["food:coffee", "☕ good coffee"], ["food:lunch", "🍜 lunch"], ["food:dinner", "🥘 dinner"], ["food:dessert", "🍧 dessert"],
     ["food:drinks", "🍸 drinks"], ["food:late-night", "🌙 a late-night bite"],
-    ["sights:all", "📸 something to see"], ["hikes:all", "🌿 hikes, beaches & runs"], ["shop:all", "🛍️ shopping"],
+    ["sights:all", "📸 something to see"], ["hikes:all", "🌿 hikes, beaches & runs"], ["shop:all", "🛍️ shopping"], ["plans:all", "🗺️ a walk or day plan"],
   ];
 
   const KIND_EMOJI = {
@@ -131,6 +142,36 @@
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const byId = Object.fromEntries(PLACES.map((p) => [p.id, p]));
   const live = PLACES.filter((p) => p.status !== "closed");
+  // each idea plan becomes a card: its stops (places in the guide) are numbered pins joined by a dashed line
+  (() => {
+    const find = (q) => { const l = q.toLowerCase(), n = (p) => p.name.toLowerCase(); return live.find((p) => n(p) === l) || live.find((p) => n(p).startsWith(l)) || live.find((p) => n(p).includes(l)); };
+    const hop = (a, b) => { const r = Math.PI / 180, x = (b.lng - a.lng) * r * Math.cos((a.lat + b.lat) * r / 2), y = (b.lat - a.lat) * r; return 6371 * Math.hypot(x, y); };
+    OUTINGS.forEach((o) => {
+      const stops = [];
+      o.steps.forEach(([, , q]) => { const p = q && find(q); if (p && p.lat != null && !stops.includes(p)) stops.push(p); });
+      const day = /day trip/i.test(o.title);
+      const onFoot = !day && stops.length >= 3 && stops.length <= 10 && stops.every((p, i) => !i || hop(stops[i - 1], p) <= 1.2);
+      const cat = [day ? "daytrip" : onFoot || /\bwalk\b/i.test(o.title) ? "walk" : "half"];
+      if (/food|crawl/i.test(o.title)) cat.push("food");
+      if (/night|neon|temple street/i.test(o.title)) cat.push("night");
+      const areas = [...new Set(stops.map((p) => p.area.split(/[\/(,↔]| or /)[0].trim()))].filter((a, i, all) => !all.some((b, j) => j < i && (b.includes(a) || a.includes(b)))).slice(0, 3);
+      const plan = {
+        id: `plan-${o.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40)}`,
+        tab: "plans", isPlan: true, idea: o.title, short: o.short || o.title, onFoot, name: o.title,
+        emoji: o.em || (day ? "⛴️" : "🗺️"), category: cat,
+        cuisine: day ? "Day trip" : onFoot ? "Walking route" : /\bwalk\b/i.test(o.title) ? "Walk" : "Half-day plan",
+        area: areas.join(" · ") || (o.title.match(/Macau|Lamma|Cheung Chau|Lantau/)?.[0] ?? "Hong Kong"),
+        intro: o.steps.map(([, t]) => t.split(/[,(:]| then /)[0].trim()).slice(0, 4).join(" → ") + (o.steps.length > 4 ? " …" : ""),
+        order: o.steps.map(([em, t]) => `${em} ${t}`),
+        facts: [["Stops", String(o.steps.length)], ["On the map", stops.length ? `${stops.length} place${stops.length > 1 ? "s" : ""}` : "not mapped"]],
+        lat: stops[0]?.lat ?? null, lng: stops[0]?.lng ?? null,
+        pins: stops.length > 1 ? stops.map((p, i) => ({ lat: p.lat, lng: p.lng, label: `${i + 1}. ${p.name}`, n: i + 1, place: p.id })) : undefined,
+        routes: stops.length > 1 ? stops.slice(1).map((_, i) => [i, i + 1]) : undefined,
+        photo: stops.find((p) => p.photo)?.photo,
+      };
+      live.push(plan); byId[plan.id] = plan;
+    });
+  })();
 
   /* ---------- helpers ---------- */
   function km(a, b) {
@@ -178,6 +219,12 @@
     const ll = (x) => Array.isArray(x) ? `${x[0]},${x[1]}` : `${x.lat},${x.lng}`;
     const via = (r.via || []).slice(0, 8).map(ll).join("|");
     return `https://www.google.com/maps/dir/?api=1&origin=${ll(r.start)}&destination=${ll(r.loop ? r.start : r.end)}${via ? `&waypoints=${encodeURIComponent(via)}` : ""}&travelmode=walking`; // Google has no cycling directions in Hong Kong, so bike routes use walking along the same path
+  }
+  // a walking route in Google Maps through a list of stops
+  function walkUrl(stops) {
+    if (!stops || stops.length < 2 || stops.length > 10) return "";
+    const ll = (p) => `${p.lat},${p.lng}`, mid = stops.slice(1, -1).map(ll).join("|");
+    return `https://www.google.com/maps/dir/?api=1&origin=${ll(stops[0])}&destination=${ll(stops[stops.length - 1])}${mid ? `&waypoints=${encodeURIComponent(mid)}` : ""}&travelmode=walking`;
   }
   function cmUrl(p) {
     return `https://citymapper.com/directions?endcoord=${p.lat}%2C${p.lng}&endname=${encodeURIComponent(p.name)}&endaddress=${encodeURIComponent(p.area + ", Hong Kong")}`;
@@ -292,10 +339,10 @@
   }
   // Broad picks ("dinner", "drinks", "sights") show the top few of each sub-category, so nobody has to tap "show more";
   // as soon as something narrower is chosen it's one ranked top-10 list.
-  const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate", "hard", "beach", "run", "active"], shop: ["luxury", "gifts", "malls", "local"] };
+  const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate", "hard", "beach", "run", "active"], shop: ["luxury", "gifts", "malls", "local"], plans: ["walk", "half", "daytrip"] };
   function groupLabel() {
     if (FOOD.has(state.tab)) return { all: "eat & drink picks", drinks: "bars", breakfast: "breakfast picks", lunch: "lunch picks", dinner: "dinner picks", dessert: "dessert picks", "late-night": "late-night picks" }[state.mood] || "picks";
-    return { sights: "sights", hikes: "outdoor picks", shop: "shopping" }[state.tab] || "picks";
+    return { sights: "sights", hikes: "outdoor picks", shop: "shopping", plans: "plans" }[state.tab] || "picks";
   }
   function grouped(items) {
     if (state.flat || state.shortlist || state.q.trim() || me || state.kinds.size || state.style !== "any" || state.area !== "all" || state.section !== "all" || state.boothies || state.local) return null;
@@ -351,7 +398,7 @@
   // slim title bar for phones once the header scrolls away
   function updateMinibar() {
     const sel = (id) => { const el = document.getElementById(id); return el ? el.options[el.selectedIndex]?.text || "" : ""; };
-    const tabName = { city: "Eat & drink", sights: "Sights", hikes: "Nature", shop: "Shopping", start: "First time in HK", week: "This week" }[state.tab] || "";
+    const tabName = { city: "Eat & drink", sights: "Sights", hikes: "Nature", shop: "Shopping", plans: "Walks & plans", start: "First time in HK", week: "This week" }[state.tab] || "";
     const sum = TABS[state.tab]
       ? [sel("b-what").replace(/^anything to eat or drink$/, "Eat & drink"), sel("b-where").replace(/^anywhere$/, "")].filter(Boolean).join(" · ")
       : tabName;
@@ -429,7 +476,11 @@
     ].filter(Boolean).join("");
     const block = (label, html) => html ? `<p class="label">${label}</p>${html}` : "";
     const links = [
-      ...(p.pins ? p.pins.map((pin, i) => `<a${i ? "" : ' class="primary"'} href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(pin.label.replace(" (landing)", "") + " Star Ferry Hong Kong")}" target="_blank" rel="noopener">📍 ${esc(pin.label)}</a>`)
+      ...(p.isPlan ? [
+          p.pins && `<button type="button" class="primary route-btn" data-showroute="${p.id}">🗺️ See the stops on the map</button>`,
+          p.onFoot && walkUrl(p.pins) && `<a href="${esc(walkUrl(p.pins))}" target="_blank" rel="noopener">🧭 Walk it in Google Maps</a>`,
+          `<button type="button" class="drv" data-planweek="${esc(p.idea)}">📅 Open in This week</button>`]
+        : p.pins ? p.pins.map((pin, i) => `<a${i ? "" : ' class="primary"'} href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(pin.label.replace(" (landing)", "") + " Star Ferry Hong Kong")}" target="_blank" rel="noopener">📍 ${esc(pin.label)}</a>`)
         : p.route ? [
           `<button type="button" class="primary route-btn" data-showroute="${p.id}">🗺️ See the route on the map</button>`,
           p.route.mode !== "water" && `<a href="${esc(dirUrl(p.route))}" target="_blank" rel="noopener">🧭 ${p.route.loop ? "Loop" : "Start → finish"} in Google Maps</a>`,
@@ -439,9 +490,9 @@
       p.openrice && `<a href="${esc(p.openrice)}" target="_blank" rel="noopener">OpenRice</a>`,
       p.url && `<a href="${esc(p.url)}" target="_blank" rel="noopener">🔗 Website</a>`,
       ...(p.links || []).map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">📖 ${esc(l.label)}</a>`),
-      (p.zh || p.addressZh) && `<button class="drv" data-driver="${p.id}">🚕 Show the driver</button>`,
+      !p.isPlan && (p.zh || p.addressZh) && `<button class="drv" data-driver="${p.id}">🚕 Show the driver</button>`,
       p.phone && `<a href="tel:+852${esc(p.phone.replace(/\s/g, ""))}">📞 ${esc(p.phone)}</a>`,
-      window.HK_ADDWEEK && window.HK_ADDWEEK({ title: `${emojiOf(p)} ${p.name}`, place: p.id }, "🗓 Add to my week"),
+      window.HK_ADDWEEK && window.HK_ADDWEEK(p.isPlan ? { title: `${emojiOf(p)} ${p.short}`, idea: p.idea } : { title: `${emojiOf(p)} ${p.name}`, place: p.id }, "🗓 Add to my week"),
     ].filter(Boolean).join("");
     return `<article class="card${state.active === p.id ? " active open" : ""}" data-id="${p.id}" style="--c:${colorOf(p)};animation-delay:${Math.min(i, 12) * 30}ms">
       ${p.photo ? `<figure class="ph"><img src="${esc(p.photo.src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('figure').remove()"><figcaption><a href="${esc(p.photo.page)}" target="_blank" rel="noopener">📷 ${esc(p.photo.credit)} · ${esc(p.photo.license)}</a></figcaption></figure>` : ""}
@@ -482,7 +533,7 @@
       const extra = live.filter((p) => p.lite && moodOk(p) && (FOOD.has(state.tab) ? FOOD.has(p.tab) : p.tab === state.tab)
         && (state.where === "all" || whereOf(p) === state.where)).length;
       const curated = !state.all && !state.boothies && !state.q.trim();
-      countHtml = `${items.length} ${curated ? "hand-picked " : ""}place${items.length === 1 ? "" : "s"}`
+      countHtml = `${items.length} ${curated ? "hand-picked " : ""}${state.tab === "plans" ? "plan" : "place"}${items.length === 1 ? "" : "s"}`
         + (extra > 0 && curated ? ` · <a href="#" data-all="1">+ ${extra} classmate picks from the Boothies map</a>` : "")
         + (state.all ? ` · <a href="#" data-all="0">Back to hand-picked only</a>` : "");
     }
@@ -617,7 +668,7 @@
       }
       if (p.pins && state.active === p.id) {
         p.pins.forEach((pin, i) => {
-          const pm = L.marker([pin.lat, pin.lng], { icon: pinIcon(p), riseOnHover: true })
+          const pm = L.marker([pin.lat, pin.lng], { icon: pin.n ? L.divIcon({ className: "", html: `<div class="plan-pin">${pin.n}</div>`, iconSize: [30, 30], iconAnchor: [15, 15], popupAnchor: [0, -14] }) : pinIcon(p), riseOnHover: true, zIndexOffset: pin.n ? 2000 - pin.n : 0 })
             .bindPopup(`<b>${esc(p.name)}</b><small>${esc(pin.label)}</small>`, { closeButton: false });
           pm.on("click", () => focus(p.id, { fromMap: true }));
           pm.addTo(layer); pts.push([pin.lat, pin.lng]);
@@ -680,7 +731,7 @@
     if (el) { el.classList.add("active"); if (open) el.classList.add("open"); }
     const special = (k) => k && byId[k] && (byId[k].pins || byId[k].route);
     if (special(id) || special(prev)) drawMarkers(shownNow(), false);
-    [prev, id].forEach((k) => { if (k && markers[k] && byId[k] && !(byId[k].route && k === state.active)) markers[k].setIcon(pinIcon(byId[k])); });
+    [prev, id].forEach((k) => { if (k && markers[k] && byId[k] && !((byId[k].route || byId[k].isPlan) && k === state.active)) markers[k].setIcon(pinIcon(byId[k])); });
     const p = byId[id];
     if (p?.route) {
       map.flyToBounds(L.latLngBounds(p.route.line).pad(0.12), { duration: 0.7, maxZoom: 16 });
@@ -938,6 +989,8 @@
     if (e.target.closest("[data-closepick]")) { trayPick = null; renderPlan(); return; }
     const dm = e.target.closest("[data-delmine]");
     if (dm) { myPlans = myPlans.filter((p) => p.id !== dm.dataset.delmine); saveMyPlans(); renderPlan(); toast("Removed from your week"); return; }
+    const pw = e.target.closest("[data-planweek]");
+    if (pw) { e.stopPropagation(); setTab("week"); trayPick = { idea: pw.dataset.planweek, title: pw.dataset.planweek }; $("#picks").open = true; renderPlan(); setTimeout(() => $("#picks").scrollIntoView({ behavior: "smooth", block: "start" }), 80); return; }
     const id = e.target.closest("[data-idea]");
     if (id && id.classList.contains("rlink")) { trayPick = { idea: id.dataset.idea, title: id.dataset.idea }; $("#picks").open = true; renderPlan(); $("#picks").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
     if (id) { ideaOpen[id.dataset.iso] = ideaOpen[id.dataset.iso] === id.dataset.idea ? null : id.dataset.idea; renderPlan(); return; }
