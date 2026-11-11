@@ -86,7 +86,7 @@ export default async function handler(req, res) {
         const name = clean(b.name, 60);
         if (!ev || !name) return res.status(400).json({ error: "missing" });
         // names must come from the class list (WhatsApp nicknames are matched to it first; unknown people count as "not named yet")
-        if (b.on && !(await onList(name))) return res.status(400).json({ error: "Only names from the class list. Count anyone else under \"not named yet\"." });
+        if (b.on && !(await onList(name))) return res.status(400).json({ error: "Only names from the class list. Count anyone else under \"Guests\"." });
         const cmds = [[b.on ? "SADD" : "SREM", `${P}going:${ev}`, name]];
         // events in the same group are either/or (e.g. two dim sum lunches): going to one takes you off the others
         if (b.on) {
@@ -97,7 +97,7 @@ export default async function handler(req, res) {
         await redis(cmds);
         break;
       }
-      case "setGuests": { // people who said yes but aren't named yet (a +1 in the chat): counted for bookings, not charged
+      case "setGuests": { // guests not on the class list (another section, or a +1 not named yet): counted for seats and the cost split; they pay the collector directly
         const [cur] = await redis([["HGET", `${P}events`, ev]]);
         if (!cur) return res.status(404).json({ error: "no event" });
         const e = JSON.parse(cur);
@@ -175,7 +175,7 @@ export default async function handler(req, res) {
         await redis([["HDEL", `${P}exp:${ev}`, clean(b.xid, 20)]]);
         break;
       case "addPerson": // retired: only names from the class list
-        return res.status(400).json({ error: "Only names from the class list. Count anyone else under \"not named yet\"." });
+        return res.status(400).json({ error: "Only names from the class list. Count anyone else under \"Guests\"." });
       case "renamePerson": { // organisers: a nickname that turned out to be someone on the list, moved everywhere it appears
         if (!org) return res.status(403).json({ error: "organisers only" });
         const from = clean(b.from, 60), to = clean(b.to, 60);
@@ -285,7 +285,9 @@ export default async function handler(req, res) {
         }
         // frontedBy: someone else paid the restaurant; everyone still pays paidBy, who then pays frontedBy back
         const frontedBy = clean(b.frontedBy, 60);
-        await redis([["HSET", `${P}bills`, `b-${id()}`, JSON.stringify({ what: clean(b.what, 60) || "Bill", ev: clean(b.ev, 40) || null, paidBy, hkd, among, shares, frontedBy: frontedBy && frontedBy !== paidBy ? frontedBy : undefined, by, at: Date.now() })]]);
+        // guests at the table who aren't on the class list (equal split only): the bill is divided by among + guests, and they pay paidBy directly
+        const guests = shares ? 0 : Math.max(0, Math.min(20, Math.round(+b.guests) || 0));
+        await redis([["HSET", `${P}bills`, `b-${id()}`, JSON.stringify({ what: clean(b.what, 60) || "Bill", ev: clean(b.ev, 40) || null, paidBy, hkd, among, shares, frontedBy: frontedBy && frontedBy !== paidBy ? frontedBy : undefined, guests: guests || undefined, by, at: Date.now() })]]);
         break;
       }
       case "delBill":

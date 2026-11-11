@@ -663,7 +663,7 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
   .builder > span, .builder .pill { flex: 0 1 auto; min-width: 0; }
 }
 
-/* Explore: one tab, four-way switch (two rows on phones) */
+/* Explore: one tab, four-way switch (one row; two rows only on the narrowest phones) */
 .seg { display: grid; grid-template-columns: repeat(4, auto); gap: 4px; padding: 4px; margin-bottom: 10px;
        background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
 .seg button { cursor: pointer; font: 700 14.5px var(--sans); color: var(--muted); background: none; border: 0;
@@ -675,7 +675,7 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
   .seg button { font-size: 14px; }
 }
 @media (max-width: 360px) { .tab .tl { font-size: 12px; } .seg button { font-size: 13px; } }
-@media (max-width: 480px) { .seg { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 359px) { .seg { grid-template-columns: repeat(2, 1fr); } }
 /* minimum readable sizes */
 .label { font-size: 12px; }
 .crest, .crest b { font-size: 12.5px; }
@@ -1497,3 +1497,7 @@ button.bl .pw-copy { pointer-events: none; }
 .links button.route-btn { font: inherit; font-size: 13px; font-weight: 800; cursor: pointer; background: var(--c); border: 1px solid var(--c); color: #120b1a; border-radius: 11px; padding: 7px 11px; min-height: 44px; }
 .walk-route { display: inline-flex; align-items: center; min-height: 44px; margin: 4px 0 8px; padding: 6px 12px; border-radius: 11px; font-size: 13px; font-weight: 800; text-decoration: none; color: #08140f; background: #3ee8b5; }
 .plan-pin { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 800 14px/1 var(--sans); color: #08140f; background: #3ee8b5; border: 2px solid #08140f; box-shadow: 0 4px 12px rgba(0,0,0,.5); }
+.cc-gpay { margin: 6px 0; padding: 8px 10px; border-radius: 10px; background: rgba(120,200,255,.10); font-size: .9rem; line-height: 1.4; }
+.bf-g { display: flex; flex-direction: column; gap: 4px; margin: 8px 0 4px; }
+.bf-g small { opacity: .7; font-weight: 400; }
+.bf-g input { flex: none; max-width: 8em; }

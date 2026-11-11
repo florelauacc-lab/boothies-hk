@@ -56,7 +56,7 @@
       ],
     },
   };
-  // Explore › Walks & plans: the idea plans (also in This week), as cards with their stops on the map
+  // Explore › Plans: the idea plans (also in This week), as cards with their stops on the map
   TABS.plans = {
     home: "parklane", orderLabel: "The plan",
     moods: [
@@ -145,16 +145,17 @@
   // each idea plan becomes a card: its stops (places in the guide) are numbered pins joined by a dashed line
   (() => {
     const find = (q) => { const l = q.toLowerCase(), n = (p) => p.name.toLowerCase(); return live.find((p) => n(p) === l) || live.find((p) => n(p).startsWith(l)) || live.find((p) => n(p).includes(l)); };
+    // a step's stop: the guide place it names, or its own map point [lat, lng, name] for stops not in the guide
     const hop = (a, b) => { const r = Math.PI / 180, x = (b.lng - a.lng) * r * Math.cos((a.lat + b.lat) * r / 2), y = (b.lat - a.lat) * r; return 6371 * Math.hypot(x, y); };
     OUTINGS.forEach((o) => {
       const stops = [];
-      o.steps.forEach(([, , q]) => { const p = q && find(q); if (p && p.lat != null && !stops.includes(p)) stops.push(p); });
+      o.steps.forEach((st) => { const p = stopOf(st, find); if (p && p.lat != null && !stops.some((x) => x === p || x.name === p.name)) stops.push(p); });
       const day = /day trip/i.test(o.title);
       const onFoot = !day && stops.length >= 3 && stops.length <= 10 && stops.every((p, i) => !i || hop(stops[i - 1], p) <= 1.2);
       const cat = [day ? "daytrip" : onFoot || /\bwalk\b/i.test(o.title) ? "walk" : "half"];
       if (/food|crawl/i.test(o.title)) cat.push("food");
       if (/night|neon|temple street/i.test(o.title)) cat.push("night");
-      const areas = [...new Set(stops.map((p) => p.area.split(/[\/(,↔]| or /)[0].trim()))].filter((a, i, all) => !all.some((b, j) => j < i && (b.includes(a) || a.includes(b)))).slice(0, 3);
+      const areas = [...new Set(stops.filter((p) => p.area).map((p) => p.area.split(/[\/(,↔]| or /)[0].trim()))].filter((a, i, all) => !all.some((b, j) => j < i && (b.includes(a) || a.includes(b)))).slice(0, 3);
       const plan = {
         id: `plan-${o.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40)}`,
         tab: "plans", isPlan: true, idea: o.title, short: o.short || o.title, onFoot, name: o.title,
@@ -165,7 +166,7 @@
         order: o.steps.map(([em, t]) => `${em} ${t}`),
         facts: [["Stops", String(o.steps.length)], ["On the map", stops.length ? `${stops.length} place${stops.length > 1 ? "s" : ""}` : "not mapped"]],
         lat: stops[0]?.lat ?? null, lng: stops[0]?.lng ?? null,
-        pins: stops.length > 1 ? stops.map((p, i) => ({ lat: p.lat, lng: p.lng, label: `${i + 1}. ${p.name}`, n: i + 1, place: p.id })) : undefined,
+        pins: stops.length ? stops.map((p, i) => ({ lat: p.lat, lng: p.lng, label: `${i + 1}. ${p.name}`, n: i + 1, place: p.id })) : undefined, // pins go on the map in the order of the plan
         routes: stops.length > 1 ? stops.slice(1).map((_, i) => [i, i + 1]) : undefined,
         photo: stops.find((p) => p.photo)?.photo,
       };
@@ -174,6 +175,7 @@
   })();
 
   /* ---------- helpers ---------- */
+  function stopOf([, , q, pt], look) { return (q && look(q)) || (Array.isArray(pt) ? { name: pt[2], lat: pt[0], lng: pt[1] } : null); }
   function km(a, b) {
     const R = 6371, r = Math.PI / 180;
     const dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
@@ -398,7 +400,7 @@
   // slim title bar for phones once the header scrolls away
   function updateMinibar() {
     const sel = (id) => { const el = document.getElementById(id); return el ? el.options[el.selectedIndex]?.text || "" : ""; };
-    const tabName = { city: "Eat & drink", sights: "Sights", hikes: "Nature", shop: "Shopping", plans: "Walks & plans", start: "First time in HK", week: "This week" }[state.tab] || "";
+    const tabName = { city: "Eat & drink", sights: "Sights", hikes: "Nature", shop: "Shopping", plans: "Plans", start: "First time in HK", week: "This week" }[state.tab] || "";
     const sum = TABS[state.tab]
       ? [sel("b-what").replace(/^anything to eat or drink$/, "Eat & drink"), sel("b-where").replace(/^anywhere$/, "")].filter(Boolean).join(" · ")
       : tabName;
@@ -736,7 +738,7 @@
     if (p?.route) {
       map.flyToBounds(L.latLngBounds(p.route.line).pad(0.12), { duration: 0.7, maxZoom: 16 });
     } else if (p?.pins) {
-      map.flyToBounds(L.latLngBounds(p.pins.map((x) => [x.lat, x.lng])).pad(0.25), { duration: 0.7 });
+      map.flyToBounds(L.latLngBounds(p.pins.map((x) => [x.lat, x.lng])).pad(0.25), { duration: 0.7, maxZoom: 16 });
     } else if (p?.lat != null) {
       map.flyTo([p.lat, p.lng], Math.max(map.getZoom(), 16), { duration: 0.7 });
       markers[id]?.openPopup();
@@ -829,7 +831,7 @@
   // an idea plan you can do on foot (stops close together): one Google Maps walking route through all its stops
   function walkLink(r) {
     const stops = [];
-    r.steps.forEach(([, , q]) => { const p = q && findPlace(q); if (p && p.lat != null && !stops.includes(p)) stops.push(p); });
+    r.steps.forEach((st) => { const p = stopOf(st, findPlace); if (p && p.lat != null && !stops.some((x) => x === p || x.name === p.name)) stops.push(p); });
     if (stops.length < 3 || stops.length > 10) return "";
     if (stops.some((p, i) => i && km(stops[i - 1], p) > 1.2)) return ""; // a ferry, tram or MTR hop: not a walk
     const ll = (p) => `${p.lat},${p.lng}`, mid = stops.slice(1, -1).map(ll).join("|");

@@ -18237,12 +18237,12 @@ window.HK = {
     [
      "🖼️",
      "M+ museum next door",
-     "M+ museum"
+     "M+"
     ],
     [
      "🌅",
      "Sunset over the skyline from the West Kowloon Art Park lawn",
-     "M+ museum"
+     null
     ]
    ],
    "em": "🖼️",
@@ -18274,7 +18274,12 @@ window.HK = {
     [
      "🛗",
      "Ride the Mid-Levels Escalator a few stops up to Soho (the world's longest outdoor covered escalator)",
-     null
+     null,
+     [
+      22.28068,
+      114.15198,
+      "Mid-Levels Escalator"
+     ]
     ],
     [
      "🏛️",
@@ -18431,7 +18436,12 @@ window.HK = {
     [
      "🚇",
      "09:30 Wan Chai MTR (Exit A3) into the street markets",
-     null
+     null,
+     [
+      22.27605,
+      114.17323,
+      "Tai Yuen Street market"
+     ]
     ],
     [
      "🟦",
@@ -18441,17 +18451,32 @@ window.HK = {
     [
      "🛕",
      "Pak Tai Temple (1863, free), a three-minute walk away",
-     null
+     null,
+     [
+      22.27288,
+      114.17382,
+      "Pak Tai Temple, Wan Chai"
+     ]
     ],
     [
      "🟨",
      "More stops on the Wan Chai Heritage Trail, like the Yellow House",
-     null
+     null,
+     [
+      22.27381,
+      114.17428,
+      "Yellow House"
+     ]
     ],
     [
      "🛍️",
      "Lunch and shopping on Lee Tung Avenue",
-     null
+     null,
+     [
+      22.2761,
+      114.17243,
+      "Lee Tung Avenue"
+     ]
     ]
    ]
   },
@@ -18461,7 +18486,12 @@ window.HK = {
     [
      "🚠",
      "Ngong Ping 360 cable car from Tung Chung. Pre-book online, as weekend ticket queues can pass an hour",
-     "Big Buddha"
+     null,
+     [
+      22.2891,
+      113.93862,
+      "Ngong Ping 360, Tung Chung"
+     ]
     ],
     [
      "🛕",
@@ -18487,23 +18517,83 @@ window.HK = {
    "steps": [
     [
      "⛴️",
-     "Fast ferry from Central Pier 5 (35–40 min; slow ferry 55–60 min)",
-     "Cheung Chau"
+     "09:30 fast ferry from Central Pier 5 (35–40 min; slow ferry 55–60 min). Bring cash: many shops and stalls don't take cards",
+     null,
+     [
+      22.28765,
+      114.1592,
+      "Central Pier 5"
+     ]
     ],
     [
      "🛕",
-     "Pak Tai Temple, home of the famous Bun Festival",
-     null
+     "Pak Tai Temple (1783), home of the Bun Festival, five minutes north along the waterfront",
+     null,
+     [
+      22.21235,
+      114.02786,
+      "Pak Tai Temple, Cheung Chau"
+     ]
     ],
     [
      "🍡",
-     "Snack crawl: mango mochi, fish balls and peace buns at Kwok Kam Kee",
-     null
+     "Snack crawl down San Hing Street and the village lanes: giant mango mochi, curry fish balls, and peace buns at Kwok Kam Kee (fresh from about 14:00)",
+     null,
+     [
+      22.2097,
+      114.02884,
+      "San Hing Street snacks"
+     ]
     ],
     [
      "🏖️",
-     "Tung Wan Beach, then the short walk to Cheung Po Tsai pirate cave",
-     "Cheung Chau"
+     "Tung Wan Beach, the island's main beach, then the smaller Kwun Yam Wan next door",
+     null,
+     [
+      22.21073,
+      114.02977,
+      "Tung Wan Beach"
+     ]
+    ],
+    [
+     "🪨",
+     "Mini Great Wall: a short coastal trail (about 30 min) past Human Head Rock and Vase Rock",
+     null,
+     [
+      22.20717,
+      114.03668,
+      "Mini Great Wall"
+     ]
+    ],
+    [
+     "🏴‍☠️",
+     "Cheung Po Tsai Cave, the pirate's hideout at the south-west tip (about 30 min walk; bring a phone torch to squeeze through)",
+     null,
+     [
+      22.20042,
+      114.01753,
+      "Cheung Po Tsai Cave"
+     ]
+    ],
+    [
+     "🚤",
+     "Sampan (kaito) from Sai Wan back round to the main pier (about 10 min, a small cash fare)",
+     null
+    ],
+    [
+     "🦐",
+     "Seafood dinner on the Pak She Praya Road waterfront, e.g. New Baccarat (salt-and-pepper mantis shrimp, razor clams in black bean). Cash; about HK$200–300 a head",
+     null,
+     [
+      22.21162,
+      114.02678,
+      "New Baccarat Seafood, Pak She Praya Road"
+     ]
+    ],
+    [
+     "⛴️",
+     "Ferry back to Central from the main pier (they run into the evening; check the timetable for the last fast ferry)",
+     null
     ]
    ],
    "em": "⛴️",
@@ -18517,27 +18607,52 @@ window.HK = {
     [
      "⛴️",
      "08:00 TurboJET from Sheung Wan (Macau Ferry Terminal, about 1 hr). Bring your passport and buy tickets a few days ahead",
-     null
+     null,
+     [
+      22.28867,
+      114.15244,
+      "Hong Kong-Macau Ferry Terminal"
+     ]
     ],
     [
      "⛪",
      "Senado Square and St Dominic's Church, early before the crowds",
-     null
+     null,
+     [
+      22.19383,
+      113.53999,
+      "Senado Square"
+     ]
     ],
     [
      "🏛️",
      "Ruins of St Paul's, Macau's icon",
-     null
+     null,
+     [
+      22.19752,
+      113.54126,
+      "Ruins of St Paul's"
+     ]
     ],
     [
      "🥧",
      "Lord Stow's egg tarts in Coloane (or the Taipa branch)",
-     null
+     null,
+     [
+      22.1182,
+      113.55133,
+      "Lord Stow's Bakery, Coloane"
+     ]
     ],
     [
      "🎰",
      "Afternoon in Taipa or Cotai (Venetian, Galaxy); free hotel shuttles from the ferry terminals",
-     null
+     null,
+     [
+      22.14746,
+      113.56032,
+      "The Venetian, Cotai"
+     ]
     ],
     [
      "⛴️",
@@ -18554,27 +18669,57 @@ window.HK = {
     [
      "⛴️",
      "10:00 ferry from Central Pier 4 to Yung Shue Wan (about 25 min)",
-     null
+     null,
+     [
+      22.28787,
+      114.15843,
+      "Central Pier 4"
+     ]
     ],
     [
      "☕",
-     "Wander Yung Shue Wan village: cafés, bakeries, water for the walk",
+     "Brunch in Yung Shue Wan village, e.g. Bookworm Cafe on Main Street (vegetarian), and water for the walk",
+     null,
+     [
+      22.22489,
+      114.11138,
+      "Bookworm Cafe, Yung Shue Wan"
+     ]
+    ],
+    [
+     "🏖️",
+     "Family Trail to Hung Shing Yeh Beach (about 20 min)",
+     null,
+     [
+      22.21873,
+      114.11971,
+      "Hung Shing Yeh Beach"
+     ]
+    ],
+    [
+     "⛰️",
+     "Over the hill past the lookout pavilion, with views down to Sok Kwu Wan's fish farms",
      null
     ],
     [
-     "🥾",
-     "Family Trail to Sok Kwu Wan (5 km, 1–1.5 hrs walking), via Hung Shing Yeh Beach and the Lamma Winds lookout",
-     null
-    ],
-    [
-     "🦐",
-     "Seafood lunch over the fish rafts in Sok Kwu Wan",
-     null
+     "🦞",
+     "Down to Sok Kwu Wan (5 km in all, 1–1.5 hrs walking) for a seafood lunch over the fish rafts, e.g. Rainbow Seafood (salt-and-pepper mantis shrimp, chilli crab). Book a day ahead and its free boat can take you back to Central or TST",
+     null,
+     [
+      22.2045,
+      114.13089,
+      "Rainbow Seafood, Sok Kwu Wan"
+     ]
     ],
     [
      "⛴️",
-     "Ferry back to Central (about 30 min; sailings are spaced out, so check the timetable)",
-     null
+     "Or the public ferry from Sok Kwu Wan to Central (about 30 min; sailings are spaced out, so check the timetable)",
+     null,
+     [
+      22.20562,
+      114.13094,
+      "Sok Kwu Wan Pier"
+     ]
     ]
    ]
   },
