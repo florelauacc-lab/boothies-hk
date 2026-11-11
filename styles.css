@@ -472,7 +472,7 @@ h2 .score b { color: var(--lime); }
 .canto-card h3 { margin: 0 0 10px; font-family: var(--display); font-size: 19px; }
 .canto-card h3 small { display: block; font-family: var(--sans); font-size: 13px; font-weight: 600; color: #9fe3c7; margin-top: 2px; }
 .canto-list { display: flex; flex-wrap: wrap; gap: 6px; }
-.canto-list span { font-size: 13.5px; color: #cfeee2; background: rgba(0,0,0,.25); border-radius: 999px; padding: 5px 11px; }
+.canto-list .say { font: inherit; font-size: 13.5px; color: #cfeee2; background: rgba(0,0,0,.25); border: 1px solid transparent; border-radius: 999px; padding: 5px 11px; min-height: 44px; cursor: pointer; }
 .canto-list b { color: #fff; }
 .canto-card .joke { margin: 10px 0 0; font-size: 14px; color: #ffe3a3; }
 footer p { margin: 0 0 8px; }
@@ -589,7 +589,7 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
   .week { padding: 14px 12px 30px; }
   .week h2 { font-size: 24px; }
   .canto-card { padding: 12px; margin-bottom: 16px; }
-  .canto-list span { font-size: 12.5px; padding: 4px 9px; }
+  .canto-list .say { font-size: 12.5px; padding: 4px 9px; }
   .ess-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
   .ess { padding: 10px; border-radius: 14px; }
   .ess .em { font-size: 22px; }
@@ -647,7 +647,7 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
   .taste h3 { font-size: 14.5px; }
   .plan .slotrow { font-size: 14px; }
   .plan .slotrow span { font-size: 11px; }
-  .canto-list span { font-size: 13.5px; }
+  .canto-list .say { font-size: 13.5px; }
   .crest { font-size: 12px; }
   .hero-actions button { font-size: 14px; }
 }
@@ -940,7 +940,8 @@ dialog { overflow-y: auto; overscroll-behavior: contain; max-height: calc(100dvh
 /* phones: no mini sign (it looked cramped); the full sign shows from tablet up */
 @media (max-width: 600px) { .neon-sign { display: none !important; } }
 .tone-list { list-style: none; padding: 0; margin: 8px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
-.tone-list li { background: rgba(0,0,0,.25); border-radius: 10px; padding: 6px 8px; font-size: 13.5px; color: #cfeee2; text-align: center; }
+.tone-list li { display: flex; }
+.tone-list .say { flex: 1; font: inherit; background: rgba(0,0,0,.25); border: 1px solid transparent; border-radius: 10px; padding: 6px 8px; min-height: 44px; font-size: 13.5px; color: #cfeee2; text-align: center; cursor: pointer; }
 .tone-list b { display: block; color: #fff; font-size: 15px; }
 /* first-time page: two cards share the row on wide screens, stack on phones */
 .tips { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)) !important; gap: 14px; }
@@ -1475,3 +1476,16 @@ button.bl .pw-copy { pointer-events: none; }
 .tb-edit > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-size: .86rem; font-weight: 700; color: var(--muted); }
 .tb-edit .cc-inline { margin: 0 0 4px; }
 .tb-edit .cc-inline input[name="size"] { flex-basis: 80px; }
+
+/* Cantonese 101: tap to hear (the device's own Cantonese voice) */
+.say-hint { margin: -4px 0 8px; color: #9fe3c7; }
+.canto-card .say:hover { border-color: rgba(159,227,199,.5); }
+.canto-card .say.playing { border-color: #3ee8b5; background: rgba(62,232,181,.18); color: #fff; }
+.say-all { font: inherit; font-weight: 800; font-size: 13.5px; color: #0d3b2a; background: #9fe3c7; border: 0; border-radius: 999px; padding: 8px 14px; min-height: 44px; cursor: pointer; }
+.say-in { font: inherit; color: inherit; background: rgba(0,0,0,.2); border: 1px solid transparent; border-radius: 8px; padding: 0 6px; min-height: 0; cursor: pointer; }
+.say-zh { font: inherit; font-size: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: left; display: inline-flex; align-items: center; gap: 4px; min-height: 24px; }
+.say-zh span { font-size: .8em; opacity: .75; }
+.say-zh.playing { color: #3ee8b5; }
+.say-chip { font: inherit; font-size: 14px; font-weight: 700; color: #cfeee2; background: rgba(13,59,42,.85); border: 1px solid #1f7a4d; border-radius: 999px; padding: 8px 14px; min-height: 44px; cursor: pointer; margin: 0 0 8px; }
+.say-chip.playing { border-color: #3ee8b5; color: #fff; }
+.say-driver { width: 100%; margin-top: 10px; font-size: 16px; }

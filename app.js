@@ -182,6 +182,39 @@
     const sec = ["#finder", "#start", "#week"].map((q) => $(q)).find((el) => el && !el.hidden);
     return sec ? sec.offsetTop : 0;
   }
+  // Cantonese 101: tap a word to hear it in the phone's own Cantonese voice (none is downloaded from us)
+  const cantoVoice = () => {
+    // the most natural Cantonese voice on this device: Premium / Enhanced (Apple) or Google's (Android, Chrome) beat the basic one
+    const vs = (window.speechSynthesis?.getVoices() || []).filter((v) => /^(yue|zh[-_]HK)/i.test(v.lang) || /cantonese|粵/i.test(v.name));
+    const score = (v) => (/premium/i.test(v.name) ? 4 : 0) + (/enhanced|neural|natural/i.test(v.name) ? 3 : 0) + (/google/i.test(v.name) ? 2 : 0) + (/^yue/i.test(v.lang) ? 0.5 : 0);
+    return vs.sort((a, b) => score(b) - score(a))[0] || null;
+  };
+  window.speechSynthesis?.getVoices(); // some browsers load voices on first ask
+  function sayCanto(words, btns) {
+    if (!window.speechSynthesis) { toast("This browser can't play speech"); return; }
+    const v = cantoVoice();
+    if (!v) { toast(/iPhone|iPad|Mac/.test(navigator.userAgent) ? "No Cantonese voice yet: Settings › Accessibility › Spoken Content › Voices › Chinese (Hong Kong)" : "No Cantonese voice on this device yet: add Cantonese (Hong Kong) in your text-to-speech settings"); return; }
+    speechSynthesis.cancel();
+    document.querySelectorAll(".say.playing").forEach((b) => b.classList.remove("playing"));
+    words.forEach((w, i) => {
+      const u = new SpeechSynthesisUtterance(w);
+      u.voice = v; u.lang = v.lang; u.rate = words.length > 1 || w.length === 1 ? 0.85 : 0.95; // single tones a touch slower, phrases near normal speed
+      const b = btns[i] || btns[0];
+      u.onstart = () => { document.querySelectorAll(".say.playing").forEach((x) => x.classList.remove("playing")); b?.classList.add("playing"); };
+      u.onend = u.onerror = () => b?.classList.remove("playing");
+      speechSynthesis.speak(u);
+    });
+  }
+  // pauses between the parts of a name ("點心（飲茶）" → "點心，飲茶") so it's read like speech
+  const sayable = (zh) => String(zh || "").replace(/[（(]/g, "，").replace(/[）)]/g, "").replace(/[・·\/／]/g, "，").trim();
+  window.HK_SAYABLE = sayable;
+  document.addEventListener("click", (e) => {
+    const one = e.target.closest?.("[data-say]"), all = e.target.closest?.("[data-sayall]");
+    if (!one && !all) return;
+    e.stopPropagation(); e.preventDefault(); // a tap on a word doesn't also open or close the card under it
+    if (one) sayCanto(one.dataset.say.split("|"), [one]);
+    else { const ws = all.dataset.sayall.split("|"); sayCanto(ws, ws.map((w) => document.querySelector(`.tone-list [data-say="${w}"]`))); }
+  }, true);
   function toast(msg) {
     const t = $("#toast"); t.textContent = msg; t.classList.add("show");
     clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2200);
@@ -404,7 +437,7 @@
       ${p.photo ? `<figure class="ph"><img src="${esc(p.photo.src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('figure').remove()"><figcaption><a href="${esc(p.photo.page)}" target="_blank" rel="noopener">📷 ${esc(p.photo.credit)} · ${esc(p.photo.license)}</a></figcaption></figure>` : ""}
       <div class="card-top">
         <div class="badge">${emojiOf(p)}</div>
-        <div class="titles"><h3>${esc(p.name)}</h3>${p.zh && p.zh !== p.name ? `<span class="zh" lang="zh">${esc(p.zh)}</span>` : ""}</div>
+        <div class="titles"><h3>${esc(p.name)}</h3>${p.zh && p.zh !== p.name ? `<button type="button" class="zh say-zh" lang="zh" data-say="${esc(sayable(p.zh))}" aria-label="Hear the Cantonese name">${esc(p.zh)} <span aria-hidden="true">🔊</span></button>` : ""}</div>
         <button class="heart${loved.has(p.id) ? " on" : ""}" data-love="${p.id}" aria-label="Add to shortlist">♥</button>
       </div>
       <div class="meta">${meta}</div>
@@ -1057,6 +1090,7 @@
         <div class="row"><span class="em">${t.emoji}</span><h3>${esc(t.name)}</h3>
         <button class="check" data-taste="${esc(t.name)}" aria-label="Mark as tried">✓</button></div>
         <div class="taste-more">
+          ${t.zh ? `<button type="button" class="say-chip" lang="zh" data-say="${esc(sayable(t.zh))}">🔊 Say it: ${esc(t.zh)}</button>` : ""}
           <p>${esc(t.what)}</p>
           ${t.fun_fact ? `<p class="fact"><b>Fun fact:</b> ${esc(t.fun_fact)}</p>` : ""}
           <div class="spots">
@@ -1237,7 +1271,8 @@
     const p = byId[d.dataset.driver];
     $("#driver-body").innerHTML = `<div class="big" lang="zh">${esc(p.zh || p.name)}</div>
       ${p.addressZh ? `<div class="addr" lang="zh">${esc(p.addressZh)}</div>` : ""}
-      <p class="en">${esc(p.name)}${p.addressEn ? ` · ${esc(p.addressEn)}` : ""}</p>`;
+      <p class="en">${esc(p.name)}${p.addressEn ? ` · ${esc(p.addressEn)}` : ""}</p>
+      ${p.zh || p.addressZh ? `<button type="button" class="say-chip say-driver" data-say="${esc([p.zh && sayable(p.zh), p.addressZh && sayable(p.addressZh)].filter(Boolean).join("|"))}">🔊 Play it for the driver</button>` : ""}`;
     $("#driver").showModal();
   }, true);
   $("#driver-close").addEventListener("click", () => $("#driver").close());

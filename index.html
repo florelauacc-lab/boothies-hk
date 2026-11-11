@@ -124,21 +124,27 @@
     <div class="week-inner">
       <div class="canto-card">
         <h3>🗣 Cantonese 101 <small>Hong Kong speaks Cantonese, not Mandarin</small></h3>
+        <p class="say-hint muted small">🔊 Tap any word to hear it</p>
         <div class="canto-list">
-          <span><b>"Mm-goi"</b> thanks</span>
-          <span><b>"Yum sing!"</b> cheers</span>
-          <span><b>"Ho sik!"</b> delicious</span>
-          <span><b>"My-dan"</b> the bill, please</span>
-          <span><b>"Yau lok!"</b> stop the minibus</span>
-          <span><b>"Leng lui / leng jai"</b> pretty / handsome</span>
+          <button type="button" class="say" data-say="唔該" aria-label="Hear Mm-goi, thanks"><b>"Mm-goi"</b> thanks</button>
+          <button type="button" class="say" data-say="飲勝" aria-label="Hear Yum sing, cheers"><b>"Yum sing!"</b> cheers</button>
+          <button type="button" class="say" data-say="好食" aria-label="Hear Ho sik, delicious"><b>"Ho sik!"</b> delicious</button>
+          <button type="button" class="say" data-say="埋單" aria-label="Hear My-dan, the bill, please"><b>"My-dan"</b> the bill, please</button>
+          <button type="button" class="say" data-say="有落" aria-label="Hear Yau lok, stop the minibus"><b>"Yau lok!"</b> stop the minibus</button>
+          <button type="button" class="say" data-say="靚女，靚仔" aria-label="Hear Leng lui / leng jai, pretty / handsome"><b>"Leng lui / leng jai"</b> pretty / handsome</button>
         </div>
         <div class="tones">
           <p class="joke">🎵 Cantonese has 6 tones, and one sound changes meaning with each:</p>
           <ol class="tone-list">
-            <li><b>si¹</b> 詩 poem</li><li><b>si²</b> 史 history</li><li><b>si³</b> 試 try</li>
-            <li><b>si⁴</b> 時 time</li><li><b>si⁵</b> 市 market</li><li><b>si⁶</b> 事 a thing</li>
+            <li><button type="button" class="say" data-say="詩" aria-label="Hear si¹, poem"><b>si¹</b> 詩 poem</button></li>
+            <li><button type="button" class="say" data-say="史" aria-label="Hear si², history"><b>si²</b> 史 history</button></li>
+            <li><button type="button" class="say" data-say="試" aria-label="Hear si³, try"><b>si³</b> 試 try</button></li>
+            <li><button type="button" class="say" data-say="時" aria-label="Hear si⁴, time"><b>si⁴</b> 時 time</button></li>
+            <li><button type="button" class="say" data-say="市" aria-label="Hear si⁵, market"><b>si⁵</b> 市 market</button></li>
+            <li><button type="button" class="say" data-say="事" aria-label="Hear si⁶, a thing"><b>si⁶</b> 事 a thing</button></li>
           </ol>
-          <p class="joke">…and <b>si²</b> is also 屎 poo 💩. Same tone as history. Choose wisely.</p>
+          <button type="button" class="say say-all" data-sayall="詩|史|試|時|市|事">▶ Hear all 6 in a row</button>
+          <p class="joke">…and <button type="button" class="say say-in" data-say="屎" aria-label="Hear si2, poo"><b>si²</b> 🔊</button> is also 屎 poo 💩. Same tone as history. Choose wisely.</p>
         </div>
       </div>
 
