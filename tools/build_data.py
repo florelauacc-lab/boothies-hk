@@ -692,6 +692,20 @@ for pid in drop_id - set(by_id):
     print("  ! drop_id target not found:", pid)
 places = [p for p in places if p["id"] not in drop_id]
 
+# Routes for hikes, runs and walks: start, finish and the path, drawn on the map when the card is open
+ROUTES_FILE = ROOT / "tools" / "research" / "routes.json"
+ROUTES = json.loads(ROUTES_FILE.read_text()) if ROUTES_FILE.exists() else {}
+by_id = {p["id"]: p for p in places}
+for pid, r in ROUTES.items():
+    if pid not in by_id:
+        print("  ! route target not found:", pid); continue
+    if not r.get("line") or not r.get("start") or not r.get("end"):
+        print("  ! route incomplete:", pid); continue
+    keep = {k: r[k] for k in ("mode", "loop", "outAndBack", "start", "end", "via", "line", "km", "approx") if k in r}
+    keep["line"] = [[round(a, 5), round(b, 5)] for a, b in r["line"]]
+    if r.get("mode") == "water" or r.get("confidence") == "low": keep["approx"] = True
+    by_id[pid]["route"] = keep
+
 # Photos for sights, hikes and shopping (freely licensed, from Wikimedia Commons; see tools/photos/fetch_photos.py)
 PHOTOS = json.loads((ROOT / "tools" / "research" / "photos.json").read_text()) if (ROOT / "tools" / "research" / "photos.json").exists() else {}
 BAD_PHOTOS = {"hong-kong-museum-of-art", "dried-seafood-street-des-voeux-road-west", "east-coast-boardwalk-glass-observatory-d",

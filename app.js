@@ -173,6 +173,12 @@
     const q = p.address ? `${p.zh || p.name} ${p.address}` : (p.mapsQuery || `${p.name} ${p.area} Hong Kong`);
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
   }
+  // Google Maps directions along a route: start → key points → finish, on foot or by bike
+  function dirUrl(r) {
+    const ll = (x) => Array.isArray(x) ? `${x[0]},${x[1]}` : `${x.lat},${x.lng}`;
+    const via = (r.via || []).slice(0, 8).map(ll).join("|");
+    return `https://www.google.com/maps/dir/?api=1&origin=${ll(r.start)}&destination=${ll(r.loop ? r.start : r.end)}${via ? `&waypoints=${encodeURIComponent(via)}` : ""}&travelmode=walking`; // Google has no cycling directions in Hong Kong, so bike routes use walking along the same path
+  }
   function cmUrl(p) {
     return `https://citymapper.com/directions?endcoord=${p.lat}%2C${p.lng}&endname=${encodeURIComponent(p.name)}&endaddress=${encodeURIComponent(p.area + ", Hong Kong")}`;
   }
@@ -424,6 +430,10 @@
     const block = (label, html) => html ? `<p class="label">${label}</p>${html}` : "";
     const links = [
       ...(p.pins ? p.pins.map((pin, i) => `<a${i ? "" : ' class="primary"'} href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(pin.label.replace(" (landing)", "") + " Star Ferry Hong Kong")}" target="_blank" rel="noopener">📍 ${esc(pin.label)}</a>`)
+        : p.route ? [
+          `<button type="button" class="primary route-btn" data-showroute="${p.id}">🗺️ See the route on the map</button>`,
+          p.route.mode !== "water" && `<a href="${esc(dirUrl(p.route))}" target="_blank" rel="noopener">🧭 ${p.route.loop ? "Loop" : "Start → finish"} in Google Maps</a>`,
+          `<a href="${esc(mapUrl(p))}" target="_blank" rel="noopener">📍 Google Maps</a>`]
         : [`<a class="primary" href="${esc(mapUrl(p))}" target="_blank" rel="noopener">📍 Google Maps</a>`]),
       p.lat != null && `<a href="${esc(cmUrl(p))}" target="_blank" rel="noopener" title="Best for HK public transport, if you have the app">🚇 Citymapper</a>`,
       p.openrice && `<a href="${esc(p.openrice)}" target="_blank" rel="noopener">OpenRice</a>`,
@@ -594,6 +604,17 @@
       const m = L.marker([p.lat, p.lng], { icon: pinIcon(p), riseOnHover: true })
         .bindPopup(`<b>${esc(p.name)}</b><small>${esc(p.cuisine)} · ${esc(p.area)}</small>`, { closeButton: false });
       m.on("click", () => focus(p.id, { fromMap: true }));
+      if (p.route && state.active === p.id) {
+        const r = p.route, water = r.mode === "water";
+        L.polyline(r.line, { color: "#000", weight: 8, opacity: 0.35, interactive: false }).addTo(layer);
+        L.polyline(r.line, { color: water ? "#5ad1ff" : "#3ee8b5", weight: 4.5, opacity: 0.95, dashArray: water || r.approx ? "8 8" : null, interactive: false }).addTo(layer);
+        const end = (pt, txt, cls) => L.marker([pt.lat, pt.lng], { icon: L.divIcon({ className: "", html: `<div class="route-end ${cls}">${txt}</div>`, iconSize: [0, 0], iconAnchor: [0, 0] }), zIndexOffset: 2000 })
+          .bindPopup(`<b>${esc(txt.replace(/^\S+ /, ""))}</b><small>${esc(pt.label || "")}</small>`, { closeButton: false });
+        const sm = end(r.start, r.loop ? "🔁 Start & finish" : "🟢 Start", "start").addTo(layer);
+        if (!r.loop) end(r.end, r.outAndBack ? "↩️ Turn back" : "🏁 Finish", "finish").addTo(layer);
+        markers[p.id] = sm; r.line.forEach((x) => pts.push(x));
+        return;
+      }
       if (p.pins && state.active === p.id) {
         p.pins.forEach((pin, i) => {
           const pm = L.marker([pin.lat, pin.lng], { icon: pinIcon(p), riseOnHover: true })
@@ -657,10 +678,13 @@
       render({ fit: false }); el = document.querySelector(`.cards .card[data-id="${id}"]`);
     }
     if (el) { el.classList.add("active"); if (open) el.classList.add("open"); }
-    if ((byId[id] && byId[id].pins) || (prev && byId[prev] && byId[prev].pins)) drawMarkers(shownNow(), false);
-    [prev, id].forEach((k) => { if (k && markers[k] && byId[k]) markers[k].setIcon(pinIcon(byId[k])); });
+    const special = (k) => k && byId[k] && (byId[k].pins || byId[k].route);
+    if (special(id) || special(prev)) drawMarkers(shownNow(), false);
+    [prev, id].forEach((k) => { if (k && markers[k] && byId[k] && !(byId[k].route && k === state.active)) markers[k].setIcon(pinIcon(byId[k])); });
     const p = byId[id];
-    if (p?.pins) {
+    if (p?.route) {
+      map.flyToBounds(L.latLngBounds(p.route.line).pad(0.12), { duration: 0.7, maxZoom: 16 });
+    } else if (p?.pins) {
       map.flyToBounds(L.latLngBounds(p.pins.map((x) => [x.lat, x.lng])).pad(0.25), { duration: 0.7 });
     } else if (p?.lat != null) {
       map.flyTo([p.lat, p.lng], Math.max(map.getZoom(), 16), { duration: 0.7 });
@@ -751,6 +775,16 @@
     return slots.map((s, i) => { const k = startMin(s[0]); if (k != null) last = k; return { s, k: k ?? last, i }; })
       .sort((a, b) => a.k - b.k || a.i - b.i).map((x) => x.s);
   }
+  // an idea plan you can do on foot (stops close together): one Google Maps walking route through all its stops
+  function walkLink(r) {
+    const stops = [];
+    r.steps.forEach(([, , q]) => { const p = q && findPlace(q); if (p && p.lat != null && !stops.includes(p)) stops.push(p); });
+    if (stops.length < 3 || stops.length > 10) return "";
+    if (stops.some((p, i) => i && km(stops[i - 1], p) > 1.2)) return ""; // a ferry, tram or MTR hop: not a walk
+    const ll = (p) => `${p.lat},${p.lng}`, mid = stops.slice(1, -1).map(ll).join("|");
+    const url = `https://www.google.com/maps/dir/?api=1&origin=${ll(stops[0])}&destination=${ll(stops[stops.length - 1])}&waypoints=${encodeURIComponent(mid)}&travelmode=walking`;
+    return `<a class="walk-route" href="${esc(url)}" target="_blank" rel="noopener">🧭 Walk it in Google Maps · ${stops.length} stops</a>`;
+  }
   function renderPlan() {
     // "today" in Hong Kong time, so the week opens on the right day during the trip
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Hong_Kong" }).format(new Date());
@@ -780,7 +814,7 @@
     const route = (r) => r ? `<details class="route" data-k="r:${esc(r.title)}"><summary>${/^day trip/i.test(r.title) ? "⛴️" : "🗺️"} ${esc(r.title)}</summary><ol>${r.steps.map(([em, text, q]) => {
       const p = q && findPlace(q);
       return `<li><span class="re">${em}</span><span>${esc(text)}${p ? ` <button class="rlink" data-jump="${p.id}">Map →</button>` : ""}</span></li>`;
-    }).join("")}</ol>${window.HK_ADDWEEK({ title: `${r.em || (/^day trip/i.test(r.title) ? "⛴️" : "🗺️")} ${r.short || r.title}`, idea: r.title })}</details>` : "";
+    }).join("")}</ol>${walkLink(r)}${window.HK_ADDWEEK({ title: `${r.em || (/^day trip/i.test(r.title) ? "⛴️" : "🗺️")} ${r.short || r.title}`, idea: r.title })}</details>` : "";
     const bus = (b) => b ? `<details class="bus" data-k="bus"><summary>🚌 Shuttle bus times</summary>
       ${b.map(([title, rows]) => `<div class="bt"><p class="bt-h">${esc(title)}</p>${rows.map(([stop, time]) => `<div class="bt-row"><span class="bt-stop">${esc(stop)}</span><span class="bt-time">${time.split(/,\s*/).map(esc).join("<br>")}</span></div>`).join("")}</div>`).join("")}
       <p class="muted small">Morning buses run every ~15 min. Times are for the first stop, and buses don't wait.</p></details>` : "";
@@ -816,7 +850,7 @@
     let preview = "";
     if (trayPick) {
       const o = trayPick.idea && OUTINGS.find((x) => x.title === trayPick.idea), p = trayPick.place && byId[trayPick.place];
-      const body = o ? `<b>${esc(o.em || "🗺️")} ${esc(o.title)}</b><ol>${o.steps.map(([em, text, q]) => { const pl = q && findPlace(q); return `<li><span class="re">${em}</span><span>${esc(text)}${pl ? ` <button class="rlink" data-jump="${pl.id}">Map →</button>` : ""}</span></li>`; }).join("")}</ol>`
+      const body = o ? `<b>${esc(o.em || "🗺️")} ${esc(o.title)}</b><ol>${o.steps.map(([em, text, q]) => { const pl = q && findPlace(q); return `<li><span class="re">${em}</span><span>${esc(text)}${pl ? ` <button class="rlink" data-jump="${pl.id}">Map →</button>` : ""}</span></li>`; }).join("")}</ol>${walkLink(o)}`
         : p ? `<b>${esc(emojiOf(p))} ${esc(p.name)}</b><p class="small">${esc(p.intro || "")}</p><button class="rlink" data-jump="${p.id}">Open on the map →</button>` : "";
       preview = body ? `<div class="pick-preview">${body}
         <div class="pp-actions"><button type="button" class="cc-mini go" data-addpick="1">⭐ Add to ${esc(dayLabel(PLAN[planDay].iso))}</button><span class="muted small">or drag its chip onto any day</span><button type="button" class="cc-mini" data-closepick="1">Close</button></div></div>` : "";
@@ -1118,6 +1152,16 @@
     }
     const to = e.target.closest("[data-tasteopen]");
     if (to) { openTaste = openTaste === to.dataset.tasteopen ? null : to.dataset.tasteopen; renderStart(); return; }
+    const sr = e.target.closest("[data-showroute]");
+    if (sr) {
+      e.stopPropagation();
+      const id = sr.dataset.showroute;
+      if (mapHidden()) { setMapHidden(false); setTimeout(() => { map.invalidateSize(); focus(id, { open: true }); }, 180); } // after the map has unfolded and redrawn
+      else focus(id, { open: true });
+      const m = document.getElementById("map");
+      if (m && m.getBoundingClientRect().top < 0) m.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     const j = e.target.closest("[data-jump]");
     if (j) {
       const p = byId[j.dataset.jump];
