@@ -148,8 +148,8 @@
     // a step's stop: the guide place it names, or its own map point [lat, lng, name] for stops not in the guide
     const hop = (a, b) => { const r = Math.PI / 180, x = (b.lng - a.lng) * r * Math.cos((a.lat + b.lat) * r / 2), y = (b.lat - a.lat) * r; return 6371 * Math.hypot(x, y); };
     OUTINGS.forEach((o) => {
-      const stops = [];
-      o.steps.forEach((st) => { const p = stopOf(st, find); if (p && p.lat != null && !stops.some((x) => x === p || x.name === p.name)) stops.push(p); });
+      const stops = [], label = new Map(); // a step's own pin name (e.g. "Sou gaai 2: …") wins over the guide place's name
+      o.steps.forEach((st) => { const p = stopOf(st, find); if (p && p.lat != null && !stops.some((x) => x === p || x.name === p.name)) { stops.push(p); label.set(p, (Array.isArray(st[3]) && st[3][2]) || p.name); } });
       const day = /day trip/i.test(o.title);
       const onFoot = !day && stops.length >= 3 && stops.length <= 10 && stops.every((p, i) => !i || hop(stops[i - 1], p) <= 1.2);
       const cat = [day ? "daytrip" : onFoot || /\bwalk\b/i.test(o.title) ? "walk" : "half"];
@@ -165,9 +165,10 @@
         // the plan's own one-line description; otherwise the first few steps, without times, cut at a comma or colon (not inside 09:30)
         intro: o.intro || o.steps.map(([, t]) => t.replace(/^\d{1,2}:\d{2}\s*/, "").split(/[,(;]|: | then /)[0].trim()).slice(0, 4).join(" → ") + (o.steps.length > 4 ? " …" : ""),
         order: o.steps.map(([em, t]) => `${em} ${t}`),
+        funFact: o.funFact,
         facts: [["Stops", String(o.steps.length)], ["On the map", stops.length ? `${stops.length} place${stops.length > 1 ? "s" : ""}` : "not mapped"]],
         lat: stops[0]?.lat ?? null, lng: stops[0]?.lng ?? null,
-        pins: stops.length ? stops.map((p, i) => ({ lat: p.lat, lng: p.lng, label: `${i + 1}. ${p.name}`, n: i + 1, place: p.id })) : undefined, // pins go on the map in the order of the plan
+        pins: stops.length ? stops.map((p, i) => ({ lat: p.lat, lng: p.lng, label: `${i + 1}. ${label.get(p)}`, n: i + 1, place: p.id })) : undefined, // pins go on the map in the order of the plan
         routes: stops.length > 1 ? stops.slice(1).map((_, i) => [i, i + 1]) : undefined,
         photo: stops.find((p) => p.photo)?.photo,
       };

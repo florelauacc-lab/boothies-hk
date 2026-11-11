@@ -734,7 +734,8 @@
     "🏙️ More skyscrapers than any other city on Earth, yet about 40% of the land is country park.",
     "🛗 The Central–Mid-Levels escalator is the world's longest outdoor covered escalator, about 800 m uphill.",
     "🚋 The ding ding trams are the world's largest double-decker tram fleet, running since 1904.",
-    "🌸 \"Hong Kong\" means \"Fragrant Harbour\"."
+    "🌸 \"Hong Kong\" means \"Fragrant Harbour\".",
+    "🏝️ Hong Kong is more than 260 islands, not one. Lantau, the biggest, is almost twice the size of Hong Kong Island."
    ]
   }
  ],
@@ -4976,7 +4977,8 @@
    ],
    "em": "🚠",
    "short": "Big Buddha & Tai O",
-   "intro": "Cable car to the Big Buddha, vegetarian lunch at Po Lin, then seafood in Tai O's stilt-house village."
+   "intro": "Cable car to the Big Buddha, vegetarian lunch at Po Lin, then seafood in Tai O's stilt-house village.",
+   "funFact": "Lantau, home of the Big Buddha and the airport, is Hong Kong's largest island: almost twice the size of Hong Kong Island."
   },
   {
    "title": "Day trip: Cheung Chau island",
@@ -4992,8 +4994,23 @@
      ]
     ],
     [
+     "🍢",
+     "Sou gaai time! It's Cantonese for \"sweeping the street\", HK slang for a street-food crawl. Lunch is four stops round the village. Bring cash, and go Wed–Sun if you can, as several stalls close on Monday or Tuesday",
+     null
+    ],
+    [
+     "🥩",
+     "Sou gaai 1 · Satay beef macaroni at Chan Tung Kee, stall 13 in the cooked food centre of the Municipal Services Building, by the pier (about 07:00–16:00, closed Mondays)",
+     null,
+     [
+      22.20682,
+      114.02835,
+      "Sou gaai 1: Chan Tung Kee (satay beef)"
+     ]
+    ],
+    [
      "🛕",
-     "Pak Tai Temple (1783), home of the Bun Festival, five minutes north along the waterfront",
+     "Pak Tai Temple (1783), home of the Bun Festival, a short walk north along the waterfront",
      null,
      [
       22.21235,
@@ -5002,13 +5019,33 @@
      ]
     ],
     [
-     "🍡",
-     "Lunch on the go through the village lanes near the temple: giant mango mochi, curry fish balls, and peace buns at Kwok Kam Kee (closed Tuesdays; fresh buns from about 14:00)",
+     "🥯",
+     "Sou gaai 2 · Peace buns at Kwok Kam Kee, 46 Pak She Street, the bakery behind the Bun Festival (closed Tuesdays)",
      "Kwok Kam Kee Cake Shop",
      [
       22.21145,
       114.02815,
-      "Kwok Kam Kee Cake Shop"
+      "Sou gaai 2: Kwok Kam Kee (peace buns)"
+     ]
+    ],
+    [
+     "🥭",
+     "Sou gaai 3 · Mango mochi at Wan Sing Dessert, 5 San Hing Street, said to be where Cheung Chau's giant mango mochi began (closed Tuesdays)",
+     null,
+     [
+      22.21079,
+      114.02857,
+      "Sou gaai 3: Wan Sing Dessert (mango mochi)"
+     ]
+    ],
+    [
+     "🍡",
+     "Sou gaai 4 · Giant fish balls at Welcome Food Court, 150 San Hing Back Street. The famous Kam Wing Tai closed in 2024; this is the best-known stall still going (about 11:00–17:00)",
+     null,
+     [
+      22.20908,
+      114.02939,
+      "Sou gaai 4: Welcome Food Court (fish balls)"
      ]
     ],
     [
@@ -5064,7 +5101,8 @@
    ],
    "em": "⛴️",
    "short": "Cheung Chau island",
-   "intro": "Ferry to a car-free island: temple, snack lunch, beaches, a pirate cave and a seafood dinner."
+   "intro": "Ferry to a car-free island: temple, a street-food crawl for lunch, beaches, a pirate cave and seafood.",
+   "funFact": "Hong Kong has more than 260 islands. Cheung Chau (\"long island\") is shaped like a dumbbell and has about 20,000 people, but no cars."
   },
   {
    "title": "Day trip: Macau",
@@ -5147,7 +5185,8 @@
      null
     ]
    ],
-   "intro": "Ferry to Macau: Senado Square, wonton noodles, St Paul's, egg tarts and a Portuguese dinner in Taipa."
+   "intro": "Ferry to Macau: Senado Square, wonton noodles, St Paul's, egg tarts and a Portuguese dinner in Taipa.",
+   "funFact": "Macau was Portuguese until 1999. The Ruins of St Paul's are just the front wall of a church that burned down in 1835."
   },
   {
    "title": "Day trip: Lamma Island walk & seafood",
@@ -5210,7 +5249,8 @@
      ]
     ]
    ],
-   "intro": "Village brunch, the easy Family Trail past a beach, and seafood over the water in Sok Kwu Wan."
+   "intro": "Village brunch, the easy Family Trail past a beach, and seafood over the water in Sok Kwu Wan.",
+   "funFact": "Lamma is Hong Kong's third-largest island, and the film star Chow Yun-fat grew up there."
   },
   {
    "title": "Day trip: Ocean Park & a seafood dinner",
