@@ -1200,6 +1200,14 @@
     const linkify = (t) => esc(t).replace(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g, (m, l, u) => `<a href="${u}" target="_blank" rel="noopener">${l}</a>`);
     $("#tips").innerHTML = TIPS.map((g) => `<div><h3>${esc(g.title)}</h3><ul>${g.items.map((x) => `<li>${linkify(x)}</li>`).join("")}</ul></div>`).join("");
   }
+  // trip soundtrack: swap the thumbnail for the YouTube player only when tapped
+  document.addEventListener("click", (e) => {
+    const yt = e.target.closest?.("[data-yt]"); if (!yt) return;
+    const f = document.createElement("iframe");
+    f.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(yt.dataset.yt)}?autoplay=1&rel=0&playsinline=1`;
+    f.title = "Hong Kong music video"; f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen = true;
+    yt.replaceWith(f);
+  });
   document.addEventListener("click", (e) => {
     const t = e.target.closest("[data-taste]");
     if (t) {
