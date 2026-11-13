@@ -20272,6 +20272,8 @@ window.HK = {
    "items": [
     "💳 Tap Visa or Mastercard on the MTR, buses, trams and in most shops.",
     "💵 Carry some cash in small notes (HK$20–100): many shops won't take HK$1,000 notes, and some small local spots are cash or Octopus only.",
+    "🙅 No tipping culture: sit-down restaurants add a 10% service charge to the bill, and that's it. Cha chaan tengs, noodle shops and food stalls don't add one, and nobody expects a tip. Taxis: just round up or keep the change.",
+    "🧾 No sales tax: the price on the tag or menu is what you pay (plus that 10% at restaurants).",
     "🐙 Octopus is Hong Kong's tap card for the MTR, buses, minibuses, trams, the Star Ferry, most taxis, 7-Eleven and many cafés. Bank cards work on the MTR and most buses, but minibuses, some ferries and small shops only take Octopus or cash. iPhone: get [Octopus for Tourists](https://apps.apple.com/app/octopus-for-tourists/id1505492952) and top up with Apple Pay. Android: buy a card at the airport, any MTR station or 7-Eleven. [How Octopus works](https://www.octopus.com.hk/en/consumer/tourist/choices/index.html)",
     "🚕 Taxi? Tap \"Show the driver\" on any place and hand over your phone.",
     "🛗 Escalators: stand on the right, walk on the left.",
