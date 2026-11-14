@@ -49,6 +49,7 @@ async function state(org) {
 }
 
 // is this name on the class list (study groups, minus those marked * as not in Hong Kong)?
+const GUEST = "Guest (not on the class list)"; // how a waitlisted guest shows
 async function onList(name) {
   const [raw] = await redis([["GET", `${P}meta`]]);
   const m = JSON.parse(raw || "{}");
@@ -133,7 +134,7 @@ export default async function handler(req, res) {
         break;
       }
       /* ---- organisers: places, the waitlist and moving people between them ---- */
-      case "setCap": case "toWaitlist": case "promote": {
+      case "setCap": case "toWaitlist": case "promote": case "guestToWaitlist": {
         if (!org) return res.status(403).json({ error: "organisers only" });
         const [cur] = await redis([["HGET", `${P}events`, ev]]);
         if (!cur) return res.status(404).json({ error: "no event" });
@@ -144,11 +145,18 @@ export default async function handler(req, res) {
           names.forEach((n) => cmds.push(["SREM", `${P}going:${ev}`, n], ["HDEL", `${P}joined:${ev}`, n]));
           e.waitlist = [...(e.waitlist || []).filter((x) => !names.includes(x)), ...names];
         }
-        if (b.op === "promote") { // off the waitlist and into the event
+        if (b.op === "guestToWaitlist") { // one guest (not on the class list) off the count and onto the end of the waitlist
+          if (!(+e.guests > 0)) return res.status(400).json({ error: "no guests to move" });
+          e.guests = +e.guests - 1;
+          const k = (e.waitlist || []).filter((x) => x.startsWith(GUEST)).length;
+          e.waitlist = [...(e.waitlist || []), k ? `${GUEST} ${k + 1}` : GUEST];
+        }
+        if (b.op === "promote") { // off the waitlist and into the event (a guest goes back on the guest count)
           const n = clean(b.name, 60);
           if (!(e.waitlist || []).includes(n)) return res.status(400).json({ error: "not on the waitlist" });
           e.waitlist = e.waitlist.filter((x) => x !== n);
-          cmds.push(["SADD", `${P}going:${ev}`, n], ["HSETNX", `${P}joined:${ev}`, n, String(Date.now())]);
+          if (n.startsWith(GUEST)) e.guests = (+e.guests || 0) + 1;
+          else cmds.push(["SADD", `${P}going:${ev}`, n], ["HSETNX", `${P}joined:${ev}`, n, String(Date.now())]);
         }
         cmds.push(["HSET", `${P}events`, ev, JSON.stringify(e)]);
         await redis(cmds);
