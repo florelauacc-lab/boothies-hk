@@ -1521,3 +1521,4 @@ button.bl .pw-copy { pointer-events: none; }
 .cw-list li span { flex: 1 1 auto; min-width: 0; }
 .cw-list li span.me { font-weight: 700; }
 .cc-imin.wl { color: #ffc44d; background: rgba(255,196,77,.12); border-color: rgba(255,196,77,.5); }
+.cc-wait .cw-over { padding: 8px 10px; border-radius: 10px; background: rgba(255,120,80,.14); color: #ffd2c2; }
