@@ -256,6 +256,19 @@
   const unnamed = (e) => +e.guests || 0; // guests: not on the class list (e.g. another section) or a +1 not named yet; they share the cost and pay the collector directly
   const gS = (n) => `${n} guest${n === 1 ? "" : "s"}`;
   const headcount = (e) => e.going.length + unnamed(e);
+  // capped events (e.g. the tram holds 30): once full, new people go on a waitlist in sign-up order
+  const capOf = (e) => +e.cap || 0, wait = (e) => e.waitlist || [];
+  const isFull = (e) => capOf(e) > 0 && headcount(e) >= capOf(e);
+  const spots = (e) => Math.max(0, capOf(e) - headcount(e));
+  function waitBlock(e) {
+    const c = capOf(e), wl = wait(e), pos = me ? wl.indexOf(me) + 1 : 0;
+    if (!c && !wl.length) return "";
+    return `<div class="cc-wait"><p class="cw-cap">🎟️ <b>${c} places</b> · ${isFull(e) ? "full" : `${spots(e)} left`}${wl.length ? ` · ${wl.length} on the waitlist` : ""}</p>
+      ${pos ? `<p class="cw-you">⏳ You're <b>#${pos}</b> on the waitlist. This one holds ${c}, so the first ${c} to say yes have a place. We'll message you if one opens up.</p>` : ""}
+      ${wl.length ? `<h4>Waitlist <small>in sign-up order</small></h4><ol class="cw-list">${wl.map((n, i) => `<li><span class="${n === me ? "me" : ""}">${esc(n)}</span>${live() ? `${spots(e) && i < spots(e) ? `<button type="button" class="cc-mini go" data-promote="${e.id}" data-name="${esc(n)}">Give them a place</button>` : ""}<button type="button" class="cc-x" data-unwait="${e.id}" data-name="${esc(n)}" aria-label="Take ${esc(n)} off the waitlist">✕</button>` : ""}</li>`).join("")}</ol>
+        <p class="muted small">If someone drops out, an organiser gives their place to the next person on the waitlist and lets them know.</p>` : ""}
+    </div>`;
+  }
   const goingTxt = (e) => `${headcount(e)} going${unnamed(e) ? ` (incl. ${gS(unnamed(e))})` : ""}`;
   const seatsShort = (e) => ((e.tables || []).length ? Math.max(0, headcount(e) - seats(e)) : 0);
   function tablesBlock(e) {
@@ -280,11 +293,15 @@
     const day = DAYS.find(([iso]) => iso === e.iso)?.[1];
     return `<details class="cc-ev${inIt ? " mine" : ""}" id="ev-${e.id}" data-ev="${e.id}"${openEv.has(e.id) || ed ? " open" : ""}>
       <summary><span class="t"><b>${esc(e.title)}</b><small>${esc([day, e.when].filter(Boolean).join(", "))}${e.venue ? ` · ${esc(e.venue)}` : ""}</small></span>
-      <span class="n">${e.going.length}${unnamed(e) ? ` +${unnamed(e)}` : ""} going${inIt ? " · ✓ you" : ""}<br><em>${p ? `${hk(p)} each ≈ ${fx(p)}` : "price to come"}</em></span></summary>
+      <span class="n">${e.going.length}${unnamed(e) ? ` +${unnamed(e)}` : ""}${capOf(e) ? ` of ${capOf(e)}` : ""} going${inIt ? " · ✓ you" : wait(e).includes(me) ? " · ⏳ waitlist" : ""}<br><em>${p ? `${hk(p)} each ≈ ${fx(p)}` : "price to come"}</em></span></summary>
       ${placesFor(e.venue).map((pl) => `<button type="button" class="cc-venue" data-jump="${pl.id}">📍 ${esc(pl.name)} · map &amp; taxi card →</button>`).join("")}
       ${e.note ? `<p class="cc-note">ℹ️ ${esc(e.note)}</p>` : ""}
       ${e.group ? `<p class="cc-either">Pick one: ${data.events.filter((x) => x.group === e.group && x.id !== e.id).map((x) => esc(x.title)).join(" or ")} is the other option. Going to this one takes you off the other.</p>` : ""}
-      ${me && live() ? `<button type="button" class="cc-imin${inIt ? " on" : ""}" data-tick="${e.id}" data-name="${esc(me)}" data-on="${inIt ? 0 : 1}">${inIt ? "✓ I'm going · tap to undo" : "+ I'm going"}</button>` : ""}
+      ${me && live() ? (inIt || !(isFull(e) || wait(e).includes(me))
+        ? `<button type="button" class="cc-imin${inIt ? " on" : ""}" data-tick="${e.id}" data-name="${esc(me)}" data-on="${inIt ? 0 : 1}">${inIt ? "✓ I'm going · tap to undo" : "+ I'm going"}</button>`
+        : wait(e).includes(me)
+          ? `<button type="button" class="cc-imin wl" data-wait="${e.id}" data-on="0">⏳ On the waitlist · tap to leave</button>`
+          : `<button type="button" class="cc-imin wl" data-wait="${e.id}" data-on="1">It's full · join the waitlist</button>`) : ""}
       ${ed
         ? `<p class="cc-hint">Tap names to tick or untick · ${e.going.length} going</p>
           <input class="name-find" data-find="ev" placeholder="Type a name to find them (Enter to tick)" autocomplete="off" aria-label="Find a name">
@@ -296,6 +313,7 @@
       ${live() || unnamed(e) ? `<div class="cc-guests"><span>👤 Guests <small>Not on the class list (e.g. someone from another section) or a +1 not named yet</small></span>
         ${live() ? `<span class="gq"><button type="button" data-guests="${e.id}|-1" aria-label="One fewer guest"${unnamed(e) ? "" : " disabled"}>−</button><b>${unnamed(e)}</b><button type="button" data-guests="${e.id}|1" aria-label="One more guest">+</button></span>` : `<b>${unnamed(e)}</b>`}</div>
         ${unnamed(e) ? `<p class="muted small cc-gnote">Counted for seats and the cost split, so everyone pays a bit less. Guests pay their share to ${esc(data.payTo || "the organiser")} directly. If it turns out they're on the class list, tick their name and tap −.</p>` : ""}` : ""}
+      ${waitBlock(e)}
       ${tablesBlock(e)}
       <div class="cc-bills">
         <h4>Cost</h4>
@@ -323,7 +341,9 @@
           <input name="when" value="${esc(e.when || "")}" placeholder="Time, e.g. 08:15" maxlength="50" aria-label="Time">
           <input name="venue" value="${esc(e.venue || "")}" placeholder="Where" maxlength="80" aria-label="Where" list="cc-places-city">
           <input name="title" value="${esc(e.title)}" placeholder="Event name" maxlength="70" aria-label="Event name" required>
-          <button type="submit">Save</button></form></details>
+          <button type="submit">Save</button></form>
+        <form class="cc-inline" data-setcap="${e.id}"><input name="cap" type="number" inputmode="numeric" min="0" max="500" value="${capOf(e) || ""}" placeholder="No limit" aria-label="Places (organisers)"><button type="submit">Set places (organisers)</button>
+          <span class="muted small">Once it's full, anyone else who says yes goes on the waitlist. Leave empty for no limit.</span></form></details>
         <button type="button" class="cc-del" data-delev="${e.id}">🗑 Remove this event${orgEvent(e) ? " (organisers)" : ""}</button>` : ""}
     </details>`;
   }
@@ -727,7 +747,7 @@
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
       const myT = (e.tables || []).find((t) => (t.names || []).includes(me));
-      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${goingTxt(e)}${(e.tables || []).length ? ` · 🍽️ ${e.tables[0].time ? `tables from ${esc(e.tables[0].time)}` : `${seats(e)} seats booked`}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : seats(e) > headcount(e) ? ` · ${seats(e) - headcount(e)} seat${seats(e) - headcount(e) > 1 ? "s" : ""} free` : ""}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>${e.note ? `<small class="evnote">ℹ️ ${esc(e.note)}</small>` : ""}`;
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${goingTxt(e)}${capOf(e) ? ` · ${isFull(e) ? `full (${capOf(e)} places)` : `${spots(e)} of ${capOf(e)} places left`}${wait(e).length ? ` · ${wait(e).length} on the waitlist` : ""}` : ""}${(e.tables || []).length ? ` · 🍽️ ${e.tables[0].time ? `tables from ${esc(e.tables[0].time)}` : `${seats(e)} seats booked`}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : seats(e) > headcount(e) ? ` · ${seats(e) - headcount(e)} seat${seats(e) - headcount(e) > 1 ? "s" : ""} free` : ""}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>${e.note ? `<small class="evnote">ℹ️ ${esc(e.note)}</small>` : ""}`;
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;
@@ -761,10 +781,20 @@
     if (tick) {
       const ev = tick.dataset.tick, name = tick.dataset.name, on = tick.dataset.on === "1";
       const E = data.events.find((x) => x.id === ev);
+      if (on && isFull(E) && !E.going.includes(name)) { // full: the server puts them on the waitlist instead
+        op({ op: "toggle", ev, name, on }).then((ok) => { const n = ok && wait(data.events.find((x) => x.id === ev)).indexOf(name) + 1; if (n) toast(`It's full, so ${name === me ? "you're" : `${name} is`} #${n} on the waitlist`); });
+        return;
+      }
       op({ op: "toggle", ev, name, on }, () => { E.going = on ? [...new Set([...E.going, name])].sort((a, b) => a.localeCompare(b)) : E.going.filter((n) => n !== name);
         if (on && E.group) data.events.forEach((x) => { if (x !== E && x.group === E.group) x.going = x.going.filter((n) => n !== name); }); });
       return;
     }
+    const wt = t.closest("[data-wait]");
+    if (wt) { const on = wt.dataset.on === "1"; op({ op: "waitlist", ev: wt.dataset.wait, name: me, on }).then((ok) => { if (!ok) return; const n = wait(data.events.find((x) => x.id === wt.dataset.wait)).indexOf(me) + 1; toast(on ? (n ? `You're #${n} on the waitlist` : "You're in!") : "Off the waitlist"); }); return; }
+    const uw = t.closest("[data-unwait]");
+    if (uw) { if (confirm(`Take ${uw.dataset.name} off the waitlist?`)) op({ op: "waitlist", ev: uw.dataset.unwait, name: uw.dataset.name, on: false }); return; }
+    const pm = t.closest("[data-promote]");
+    if (pm) { const n = pm.dataset.name; asOrganiser({ op: "promote", ev: pm.dataset.promote, name: n }, () => toast(`${n} has a place now. Let them know!`)); return; }
     const ed = t.closest("[data-edit]");
     if (ed) { editing = ed.dataset.edit || null; if (editing) openEv.add(editing); render(); return; }
     const dx = t.closest("[data-delexp]");
@@ -935,6 +965,10 @@
       const [ev, table] = f.dataset.edittable.split("|");
       openEv.add(ev);
       op({ op: "editTable", ev, table, time: fd("time"), size: fd("size") }).then((ok) => ok && toast("Booking updated for everyone"));
+    }
+    else if (f.dataset.setcap) {
+      const cap = +fd("cap") || 0;
+      asOrganiser({ op: "setCap", ev: f.dataset.setcap, cap }, () => toast(cap ? `Capped at ${cap} places` : "No limit now"));
     }
     else if (f.dataset.editev) {
       op({ op: "editEvent", ev: f.dataset.editev, when: fd("when"), venue: fd("venue"), title: fd("title") }).then((ok) => ok && toast("Saved for everyone"));

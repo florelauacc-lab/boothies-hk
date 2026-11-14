@@ -1510,3 +1510,14 @@ button.bl .pw-copy { pointer-events: none; }
 .song-card .yt { position: relative; padding: 0; cursor: pointer; }
 .song-card .yt img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .song-card .yt-play { position: absolute; inset: 0; margin: auto; width: 64px; height: 44px; border-radius: 12px; background: rgba(230,0,0,.9); color: #fff; font-size: 22px; display: grid; place-items: center; }
+/* class corner: capped events and their waitlist */
+.cc-wait { margin: 10px 0 4px; padding: 10px 12px; border-radius: 12px; background: rgba(255,196,77,.08); border: 1px solid rgba(255,196,77,.25); }
+.cc-wait p { margin: 0 0 6px; font-size: .9rem; line-height: 1.4; }
+.cc-wait h4 { margin: 8px 0 4px; font-size: .95rem; }
+.cc-wait h4 small { font-weight: 400; opacity: .7; }
+.cc-wait .cw-you { padding: 8px 10px; border-radius: 10px; background: rgba(255,196,77,.16); color: #ffe3a3; }
+.cw-list { margin: 0 0 6px; padding-left: 22px; display: grid; gap: 4px; }
+.cw-list li { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cw-list li span { flex: 1 1 auto; min-width: 0; }
+.cw-list li span.me { font-weight: 700; }
+.cc-imin.wl { color: #ffc44d; background: rgba(255,196,77,.12); border-color: rgba(255,196,77,.5); }

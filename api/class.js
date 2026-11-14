@@ -87,11 +87,20 @@ export default async function handler(req, res) {
         if (!ev || !name) return res.status(400).json({ error: "missing" });
         // names must come from the class list (WhatsApp nicknames are matched to it first; unknown people count as "not named yet")
         if (b.on && !(await onList(name))) return res.status(400).json({ error: "Only names from the class list. Count anyone else under \"Guests\"." });
-        const cmds = [[b.on ? "SADD" : "SREM", `${P}going:${ev}`, name]];
+        // when each person said yes, so a capped event can tell who came first
+        const cmds = [[b.on ? "SADD" : "SREM", `${P}going:${ev}`, name], b.on ? ["HSETNX", `${P}joined:${ev}`, name, String(Date.now())] : ["HDEL", `${P}joined:${ev}`, name]];
         // events in the same group are either/or (e.g. two dim sum lunches): going to one takes you off the others
         if (b.on) {
-          const [cur, all] = await redis([["HGET", `${P}events`, ev], ["HGETALL", `${P}events`]]);
-          const g = cur && JSON.parse(cur).group;
+          const [cur, all, isIn, n] = await redis([["HGET", `${P}events`, ev], ["HGETALL", `${P}events`], ["SISMEMBER", `${P}going:${ev}`, name], ["SCARD", `${P}going:${ev}`]]);
+          const E = cur && JSON.parse(cur);
+          // a capped event that's full: new people go on the end of the waitlist instead (organisers can still add anyone)
+          if (E && E.cap > 0 && !+isIn && !org && +n + (+E.guests || 0) >= E.cap) {
+            E.waitlist = [...new Set([...(E.waitlist || []), name])];
+            await redis([["HSET", `${P}events`, ev, JSON.stringify(E)]]);
+            break;
+          }
+          if (E?.waitlist?.includes(name)) { E.waitlist = E.waitlist.filter((x) => x !== name); cmds.push(["HSET", `${P}events`, ev, JSON.stringify(E)]); }
+          const g = E && E.group;
           if (g) Object.entries(pairs(all)).forEach(([k, v]) => { if (k !== ev && JSON.parse(v).group === g) cmds.push(["SREM", `${P}going:${k}`, name]); });
         }
         await redis(cmds);
@@ -111,6 +120,38 @@ export default async function handler(req, res) {
         const k = `x-${id()}`;
         await redis([["HSET", `${P}events`, k, JSON.stringify({ title, when: clean(b.when, 50), venue: clean(b.venue, 80), iso: clean(b.iso, 10), order: 90, created: Date.now(), by })]]);
         if (by) await redis([["SADD", `${P}going:${k}`, by]]);
+        break;
+      }
+      case "waitlist": { // join or leave an event's waitlist yourself (names from the class list only)
+        const name = clean(b.name, 60);
+        const [cur, isIn] = await redis([["HGET", `${P}events`, ev], ["SISMEMBER", `${P}going:${ev}`, name]]);
+        if (!cur || !name) return res.status(400).json({ error: "missing" });
+        if (b.on && !(await onList(name))) return res.status(400).json({ error: "Only names from the class list." });
+        const e = JSON.parse(cur), wl = (e.waitlist || []).filter((x) => x !== name);
+        e.waitlist = b.on && !+isIn ? [...wl, name] : wl;
+        await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
+        break;
+      }
+      /* ---- organisers: places, the waitlist and moving people between them ---- */
+      case "setCap": case "toWaitlist": case "promote": {
+        if (!org) return res.status(403).json({ error: "organisers only" });
+        const [cur] = await redis([["HGET", `${P}events`, ev]]);
+        if (!cur) return res.status(404).json({ error: "no event" });
+        const e = JSON.parse(cur), cmds = [];
+        if (b.op === "setCap") { const c = Math.round(+b.cap) || 0; e.cap = c > 0 ? Math.min(c, 500) : undefined; }
+        if (b.op === "toWaitlist") { // move these people (in this order) from going to the end of the waitlist
+          const names = [...new Set((b.names || []).map((n) => clean(n, 60)).filter(Boolean))].slice(0, 40);
+          names.forEach((n) => cmds.push(["SREM", `${P}going:${ev}`, n], ["HDEL", `${P}joined:${ev}`, n]));
+          e.waitlist = [...(e.waitlist || []).filter((x) => !names.includes(x)), ...names];
+        }
+        if (b.op === "promote") { // off the waitlist and into the event
+          const n = clean(b.name, 60);
+          if (!(e.waitlist || []).includes(n)) return res.status(400).json({ error: "not on the waitlist" });
+          e.waitlist = e.waitlist.filter((x) => x !== n);
+          cmds.push(["SADD", `${P}going:${ev}`, n], ["HSETNX", `${P}joined:${ev}`, n, String(Date.now())]);
+        }
+        cmds.push(["HSET", `${P}events`, ev, JSON.stringify(e)]);
+        await redis(cmds);
         break;
       }
       case "editEvent": {
@@ -162,7 +203,7 @@ export default async function handler(req, res) {
         const [cur] = await redis([["HGET", `${P}events`, ev]]);
         const e = cur ? JSON.parse(cur) : null;
         if (e && (!e.by || ORGANISERS.includes(e.by)) && !org) return res.status(403).json({ error: "Only organisers can remove this event" });
-        await redis([["HDEL", `${P}events`, ev], ["DEL", `${P}going:${ev}`], ["DEL", `${P}exp:${ev}`]]);
+        await redis([["HDEL", `${P}events`, ev], ["DEL", `${P}going:${ev}`], ["DEL", `${P}exp:${ev}`], ["DEL", `${P}joined:${ev}`]]);
         break;
       }
       case "addExpense": {
@@ -198,6 +239,7 @@ export default async function handler(req, res) {
           const e = JSON.parse(v);
           ["by", "bookedBy", "priceBy"].forEach((f) => { e[f] = sw(e[f]); });
           (e.tables || []).forEach((t) => { t.names = (t.names || []).map(sw); });
+          if (e.waitlist) e.waitlist = [...new Set(e.waitlist.map(sw))];
           cmds.push(["HSET", `${P}events`, k, JSON.stringify(e)]);
         });
         Object.entries(pairs(bills)).forEach(([k, v]) => { const x = JSON.parse(v);
