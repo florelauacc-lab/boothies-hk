@@ -55,7 +55,19 @@
   const fx = (n, c = cur) => { const v = n * rates[c]; return `${SYM[c]}${v >= 100 ? Math.round(v).toLocaleString("en") : v.toFixed(c === "JPY" || c === "KRW" ? 0 : 2)}`; };
   const total = (e) => (e.expenses || []).reduce((t, x) => t + (+x.hkd || 0), 0);
   // each person's share: the set price per person, or (if a bill was entered instead) the bill split evenly
-  const evPayer = (e) => e.paidBy || data.payTo; // who paid a set-price event and collects the price
+  const evPayer = (e) => e.paidBy || data.payTo;
+  // what I owe for an event, and to whom: the set price to whoever paid it, or my share of each bill to its payer
+  const billCost = (e) => {
+    const owe = {}; let paid = 0;
+    if (e.price > 0) { if (me && e.going.includes(me) && evPayer(e) !== me) owe[evPayer(e)] = +e.price; if (evPayer(e) === me) paid += e.price * e.going.filter((n) => n !== me).length; }
+    const bs = (data.bills || []).filter((b) => b.ev === e.id);
+    bs.forEach((b) => { const sh = billShares(b); if (me && sh[me] && b.paidBy !== me) owe[b.paidBy] = (owe[b.paidBy] || 0) + sh[me]; if (b.paidBy === me) paid += named(b) - (sh[me] || 0); });
+    const parts = Object.entries(owe).filter(([, v]) => v >= 1).map(([n, v]) => `you owe ${esc(n)} ${hk(v)}`);
+    if (paid >= 1) parts.push(`you're owed ${hk(paid)}`);
+    if (parts.length) return parts.join(" · ");
+    if (bs.length) return `bill added · ${hk(bs.reduce((t, b) => t + b.hkd, 0))}`;
+    return "";
+  }; // who paid a set-price event and collects the price
   const each = (e) => (e.price > 0 ? +e.price : total(e) && e.going.length ? total(e) / e.going.length : null);
   const PAY_METHODS = ["PayPal / card", "Venmo", "Wise / bank", "FPS", "WeChat Pay", "Cash"];
 
@@ -305,7 +317,7 @@
     const day = DAYS.find(([iso]) => iso === e.iso)?.[1];
     return `<details class="cc-ev${inIt ? " mine" : ""}" id="ev-${e.id}" data-ev="${e.id}"${openEv.has(e.id) || ed ? " open" : ""}>
       <summary><span class="t"><b>${esc(e.title)}</b><small>${esc([day, e.when].filter(Boolean).join(", "))}${e.venue ? ` · ${esc(e.venue)}` : ""}</small></span>
-      <span class="n">${e.going.length}${unnamed(e) ? ` +${unnamed(e)}` : ""}${capOf(e) && !over(e) ? ` of ${capOf(e)}` : ""} going${over(e) ? ` · ${over(e)} over` : ""}${inIt ? " · ✓ you" : wait(e).includes(me) ? " · ⏳ waitlist" : ""}<br><em>${p ? `${hk(p)} each ≈ ${fx(p)}` : "price to come"}</em></span></summary>
+      <span class="n">${e.going.length}${unnamed(e) ? ` +${unnamed(e)}` : ""}${capOf(e) && !over(e) ? ` of ${capOf(e)}` : ""} going${over(e) ? ` · ${over(e)} over` : ""}${inIt ? " · ✓ you" : wait(e).includes(me) ? " · ⏳ waitlist" : ""}<br><em>${billCost(e) || (p ? `${hk(p)} each ≈ ${fx(p)}` : "price to come")}</em></span></summary>
       ${placesFor(e.venue).map((pl) => `<button type="button" class="cc-venue" data-jump="${pl.id}">📍 ${esc(pl.name)} · map &amp; taxi card →</button>`).join("")}
       ${e.note ? `<p class="cc-note">ℹ️ ${esc(e.note)}</p>` : ""}
       ${e.group ? `<p class="cc-either">Pick one: ${data.events.filter((x) => x.group === e.group && x.id !== e.id).map((x) => esc(x.title)).join(" or ")} is the other option. Going to this one takes you off the other.</p>` : ""}
@@ -349,7 +361,7 @@
         ${e.expenses.length ? `<ul>${e.expenses.map((x) => `<li><span>${esc(x.what)} · paid by ${esc(x.paidBy)}</span><b>${hk(+x.hkd)}</b>${live() ? `<button type="button" class="cc-x" data-delexp="${e.id}" data-xid="${x.id}" aria-label="Remove bill">✕</button>` : ""}</li>`).join("")}</ul>` : ""}
         ${live() ? `<form class="cc-evform setprice" data-setprice="${e.id}">
           <div class="ev2"><label class="bf-f"><span>Total bill HK$</span><input name="total" type="number" inputmode="numeric" min="0" step="1" value="${e.total || ""}" placeholder="e.g. 4200" required></label>
-            <label class="bf-f"><span>Who paid it?</span><select name="paidBy">${people().map((n) => `<option${n === evPayer(e) ? " selected" : ""}>${esc(n)}</option>`).join("")}</select></label></div>
+            <label class="bf-f"><span>Who paid it? <small>(type a name)</small></span><input name="paidBy" list="sp-people-${e.id}" value="${esc(e.paidBy || (e.price ? evPayer(e) : ""))}" placeholder="Type a name" autocomplete="off" autocapitalize="words" required>${peopleList(`sp-people-${e.id}`)}</label></div>
           <p class="muted small">Split between ${payCount(e)} ${payCount(e) === 1 ? "person" : "people"}${capOf(e) ? ` (the ${capOf(e)} places)` : ""}. Everyone pays whoever paid.</p>
           <button type="submit" class="cc-mini go">${e.total || e.price ? "Update total" : "Set total"}</button></form>${p ? "" : "</details>"}` : ""}
       </div>
@@ -465,8 +477,13 @@
   let billDraft = null;
   // who paid: for class events Rienno pays everything up front (even if he isn't there), so he's the default;
   // anyone else who covers a table just switches "Paid by". Bills not tied to an event default to you.
-  const defaultPayer = (evId) => (evId && data.payTo ? data.payTo : me || data.payTo);
-  const newDraft = () => ({ id: null, what: "", ev: "", hkd: "", paidBy: me || data.payTo, among: new Set(me ? [me] : []), mode: "equal", shares: {}, q: "", guests: [], gShares: [], gPay: [], cover: [], full: false });
+  const defaultPayer = () => me || ""; // whoever adds the bill usually paid it; type another name if not
+  const findPerson = (v) => { const q = String(v || "").trim().toLowerCase(); if (!q) return ""; const ppl = people();
+    const hit = ppl.find((n) => n.toLowerCase() === q) || (() => { const a = ppl.filter((n) => n.toLowerCase().split(/\s+/).some((w) => w.startsWith(q)) || n.toLowerCase().startsWith(q)); return a.length === 1 ? a[0] : ""; })()
+      || (() => { const a = ppl.filter((n) => n.toLowerCase().includes(q)); return a.length === 1 ? a[0] : ""; })();
+    return hit || ""; };
+  const peopleList = (id) => `<datalist id="${id}">${people().map((n) => `<option value="${esc(n)}">`).join("")}</datalist>`;
+  const newDraft = () => ({ id: null, what: "", ev: "", hkd: "", paidBy: me || "", among: new Set(me ? [me] : []), mode: "equal", shares: {}, q: "", guests: [], gShares: [], gPay: [], cover: [], full: false });
   const blanks = (n) => Array.from({ length: n }, () => "");
   let billSaving = false; // stops a second tap adding the same bill twice
   const bG = (b) => +b.guests || 0; // guests at the table (not on the class list) pay the payer directly
@@ -614,7 +631,7 @@
     (data.xfers || []).filter((x) => x.confirmed && (x.from === me || x.to === me)).forEach((x) => items.push([x.from === me ? `You paid ${x.to}` : `${x.from} paid you`, x.from === me ? x.hkd : -x.hkd, "✓✓ confirmed"]));
     Object.values(data.settle?.[me]?.payments || []).forEach((p) => items.push([`You paid ${data.payTo}`, p.hkd, p.confirmed ? "✓✓ confirmed" : "⏳ needs confirming"]));
     return `<div class="cc-owe">
-      <h3 class="cc-h">💸 Settle up</h3>
+      <h3 class="cc-h">💸 Settle up <small>for ${esc(me)} · not you? change "I'm" above</small></h3>
       <div class="sp-mode" role="group" aria-label="How to settle up"><button type="button" class="cc-mini${settleMode === "net" ? " go" : ""}" data-spmode="net" aria-pressed="${settleMode === "net"}">Fewest payments</button><button type="button" class="cc-mini${settleMode === "each" ? " go" : ""}" data-spmode="each" aria-pressed="${settleMode === "each"}">Pay each person</button></div>
       <p class="muted small">${settleMode === "each" ? "You pay back whoever paid for each thing you shared, one person at a time. More payments, but each one matches a meal or event." : "Everything is netted out, so there are as few payments as possible. You may pay someone different from whoever covered your meal. Tap <b>Pay each person</b> to settle with each person instead."} "How it adds up" shows the detail.</p>
       ${(() => { const un = data.events.filter((e) => unnamed(e)); return un.length ? `<p class="muted small cc-gpay">👤 Guests not on the class list: ${un.map((e) => `${esc(colName(e))} (${unnamed(e)}${e.price > 0 ? ` × ${hk(e.price)}` : ""})`).join(", ")}. ${(() => { const by = [...new Set(un.map((e) => evPayer(e)))]; return `They pay ${by.length === 1 ? esc(by[0] || "the organiser") : "whoever paid each event"} directly`; })()}, so they aren't in the balances here.</p>` : ""; })()}
@@ -706,7 +723,7 @@
       <label class="bf-f"><span>Class event <small>(optional)</small></span><select name="ev" data-bf="ev" aria-label="Which event"><option value="">Not linked to an event</option>${data.events.map((e) => `<option value="${e.id}"${d.ev === e.id ? " selected" : ""}>${esc(e.title)}</option>`).join("")}</select></label>
       <div class="bf-2">
         <label class="bf-f"><span>Total HK$</span><input name="hkd" type="number" inputmode="decimal" min="1" step="0.01" value="${esc(d.hkd)}" data-bf="hkd" required></label>
-        <label class="bf-f"><span>Paid by <small>(everyone pays them)</small></span><select name="paidBy" data-bf="paidBy">${ppl.map((x) => `<option${x === d.paidBy ? " selected" : ""}>${esc(x)}</option>`).join("")}</select></label>
+        <label class="bf-f"><span>Paid by <small>(type a name; everyone pays them)</small></span><input name="paidBy" data-bf="paidBy" list="bf-people" value="${esc(d.paidBy)}" placeholder="Who paid? Type a name" autocomplete="off" autocapitalize="words" required>${peopleList("bf-people")}</label>
       </div>
       <label class="bf-check"><input type="checkbox" data-bf="fronted"${d.fronted ? " checked" : ""}> <span>Someone else paid the restaurant: ${esc(d.paidBy)} collects from everyone and pays them back</span></label>
       ${d.fronted ? `<label class="bf-f"><span>Who paid the restaurant?</span><select name="frontedBy" data-bf="frontedBy">${ppl.filter((x) => x !== d.paidBy).map((x) => `<option${x === (d.frontedBy || me) ? " selected" : ""}>${esc(x)}</option>`).join("")}</select></label>` : ""}
@@ -839,6 +856,7 @@
     if (!billDraft || !root.contains(t) || !t.dataset.bf) return;
     if (t.dataset.bf === "fronted") { billDraft.fronted = t.checked; if (t.checked && !billDraft.frontedBy) billDraft.frontedBy = me !== billDraft.paidBy ? me : ""; render(); return; }
     billDraft[t.dataset.bf] = t.value;
+    if (t.dataset.bf === "paidBy") { const n = findPerson(t.value); if (n) { billDraft.paidBy = n; render(); } return; }
     if (t.dataset.bf === "ev" && t.value) { const E = data.events.find((x) => x.id === t.value); if (E) { billDraft.among = new Set(E.going); billDraft.guests = blanks(unnamed(E)); billDraft.paidBy = defaultPayer(E.id); if (!billDraft.what) billDraft.what = E.title; } render(); }
   });
 
@@ -866,7 +884,7 @@
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
       const myT = (e.tables || []).find((t) => (t.names || []).includes(me));
-      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${goingTxt(e)}${capOf(e) ? ` · ${over(e) ? `⚠️ ${over(e)} over the ${capOf(e)} places` : isFull(e) ? `full (${capOf(e)} places)` : `${spots(e)} of ${capOf(e)} places left`}${wait(e).length ? ` · ${wait(e).length} on the waitlist` : ""}` : ""}${(e.tables || []).length ? ` · 🍽️ ${e.tables[0].time ? `tables from ${esc(e.tables[0].time)}` : `${seats(e)} seats booked`}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : seats(e) > headcount(e) ? ` · ${seats(e) - headcount(e)} seat${seats(e) - headcount(e) > 1 ? "s" : ""} free` : ""}` : ""}${p ? ` · ${hk(p)} each` : ""}</button>${e.note ? `<small class="evnote">ℹ️ ${esc(e.note)}</small>` : ""}`;
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${goingTxt(e)}${capOf(e) ? ` · ${over(e) ? `⚠️ ${over(e)} over the ${capOf(e)} places` : isFull(e) ? `full (${capOf(e)} places)` : `${spots(e)} of ${capOf(e)} places left`}${wait(e).length ? ` · ${wait(e).length} on the waitlist` : ""}` : ""}${(e.tables || []).length ? ` · 🍽️ ${e.tables[0].time ? `tables from ${esc(e.tables[0].time)}` : `${seats(e)} seats booked`}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : seats(e) > headcount(e) ? ` · ${seats(e) - headcount(e)} seat${seats(e) - headcount(e) > 1 ? "s" : ""} free` : ""}` : ""}${billCost(e) ? ` · ${billCost(e)}` : p ? ` · ${hk(p)} each` : ""}</button>${e.note ? `<small class="evnote">ℹ️ ${esc(e.note)}</small>` : ""}`;
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;
@@ -1061,6 +1079,9 @@
       if (billSaving) return;
       const d = billDraft, among = [...d.among], editing = !!d.id;
       if (!among.length && !d.guests.length) { toast("Pick who's sharing the bill"); return; }
+      const payer = findPerson(f.elements.paidBy?.value ?? d.paidBy);
+      if (!payer) { toast("Pick who paid from the class list: type their name"); f.elements.paidBy?.focus(); return; }
+      d.paidBy = payer;
       const body = { op: editing ? "editBill" : "addBill", id: d.id || undefined, what: d.what, ev: d.ev, hkd: +d.hkd, paidBy: d.paidBy, among, guestNames: d.guests.map((x) => x.trim()), guestPay: d.guests.map((_, i) => d.gPay[i] || ""), cover: Object.fromEntries(d.cover.filter(([f, by]) => f && by && f !== by && d.among.has(f) && d.among.has(by))) };
       if (d.fronted) body.frontedBy = f.elements.frontedBy?.value || d.frontedBy;
       if (d.mode === "custom") { body.shares = Object.fromEntries(among.map((n) => [n, +d.shares[n] || 0])); body.guestShares = d.guests.map((_, i) => +d.gShares[i] || 0); }
@@ -1116,7 +1137,9 @@
     else if (f.dataset.setprice) {
       const E = data.events.find((x) => x.id === f.dataset.setprice);
       if (!E.going.length) { toast("Tick who's going first, then enter the total"); return; }
-      op({ op: "setPrice", ev: E.id, total: fd("total"), count: payCount(E), paidBy: fd("paidBy") }).then((ok) => ok && toast(`Saved: ${hk(+fd("total") / payCount(E))} each, paid to ${fd("paidBy") || data.payTo}`));
+      const pb = findPerson(fd("paidBy"));
+      if (!pb) { toast("Pick who paid from the class list: type their name"); f.elements.paidBy?.focus(); return; }
+      op({ op: "setPrice", ev: E.id, total: fd("total"), count: payCount(E), paidBy: pb }).then((ok) => ok && toast(`Saved: ${hk(+fd("total") / payCount(E))} each, paid to ${pb}`));
     }
   });
 
