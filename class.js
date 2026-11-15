@@ -696,18 +696,18 @@
   const billGuests = (b) => { const n = bG(b); return Array.from({ length: n }, (_, i) => gName((b.guestNames || [])[i], i)); };
   let delArm = null; // the bill whose 🗑 was tapped once: a second tap deletes it (no pop-up, works in in-app browsers)
   // a short guide to everything the class corner does, at the top
-  const quickHelp = () => `<details class="cc-sub cc-help"><summary>❓ How this works <small>money, bills and plans in 1 minute</small></summary>
+  const quickHelp = () => `<details class="cc-sub cc-help"${get("hk-help-v1") === "closed" ? "" : " open"}><summary>❓ How this works <small>money, bills and plans in 1 minute</small></summary>
     <ol class="how-steps">
       <li><b>Pick your name</b> in "I'm" above. Everything here is then about you.</li>
-      <li><b>Class events:</b> tap one and tick yourself going. <b>⭐ My week</b> at the top shows just yours.</li>
-      <li><b>Ate out together?</b> Tap <b>🍜 Add the bill</b>: the total, who paid, and who shared it. It works out everyone's share, guests too. Restaurants usually split between 2 cards at most, so one person pays and everyone pays them back here.</li>
-      <li><b>Ask to be paid:</b> on a bill you paid, tap <b>📲 Ask on WhatsApp</b> to send everyone their share.</li>
-      <li><b>Pay someone:</b> <b>💸 Settle up</b> shows who you owe, with their PayPal, Venmo, FPS or bank. Pay, then tap <b>✓ I've paid</b>. Choose <b>Fewest payments</b> or <b>Pay each person</b>.</li>
-      <li><b>See who owes you:</b> under <b>Owed to you</b>. Tap <b>✓ Paid me</b> when the money arrives.</li>
-      <li><b>Get paid easily:</b> add your details in <b>💳 My payment details</b> (how-to guides inside).</li>
-      <li><b>Paying for someone else:</b> in a bill, add a guest and pick who pays for them, or tap <b>🤝 Someone pays for someone</b> for a classmate.</li>
-      <li><b>Your own plans:</b> <b>➕ Add an event for the class</b> for a hike, drinks or a meal. Classmates can tick that they're going.</li>
-      <li><b>Made a mistake?</b> Every bill has ✏️ Edit and 🗑 Delete.</li>
+      <li><b>Class events:</b> tap one and tick yourself going. <b>⭐&nbsp;My week</b> at the top shows just yours.</li>
+      <li><b>Ate out together?</b> Tap <b>🍜&nbsp;Add the bill</b>: the total, who paid, and who shared it. It works out everyone's share, guests too. Restaurants usually split between 2 cards at most, so one person pays and everyone pays them back here.</li>
+      <li><b>Ask to be paid:</b> on a bill you paid, tap <b>📲&nbsp;Ask on WhatsApp</b> to send everyone their share.</li>
+      <li><b>Pay someone:</b> <b>💸&nbsp;Settle up</b> shows who you owe, with their PayPal, Venmo, FPS or bank. Pay, then tap <b>✓&nbsp;I've paid</b>. Choose <b>Fewest payments</b> or <b>Pay each person</b>.</li>
+      <li><b>See who owes you:</b> under <b>Owed to you</b>. Tap <b>✓&nbsp;Paid me</b> when the money arrives.</li>
+      <li><b>Get paid easily:</b> add your details in <b>💳&nbsp;My payment details</b> (how-to guides inside).</li>
+      <li><b>Paying for someone else:</b> in a bill, add a guest and pick who pays for them, or tap <b>🤝&nbsp;Someone pays for someone</b> for a classmate.</li>
+      <li><b>Your own plans:</b> <b>➕&nbsp;Add an event for the class</b> for a hike, drinks or a meal. Classmates can tick that they're going.</li>
+      <li><b>Made a mistake?</b> Every bill has ✏️&nbsp;Edit and 🗑&nbsp;Delete.</li>
     </ol></details>`;
   // a bill you paid → one WhatsApp message with everyone's share
   const askText = (b) => {
@@ -923,7 +923,9 @@
 
   /* ---------- events ---------- */
   root.addEventListener("toggle", (e) => {
-    const d = e.target; if (!d.matches?.("details[data-ev]")) return;
+    const d = e.target;
+    if (d.matches?.(".cc-help")) { set("hk-help-v1", d.open ? "open" : "closed"); return; } // open until you fold it, then stays folded
+    if (!d.matches?.("details[data-ev]")) return;
     if (d.open) openEv.add(d.dataset.ev); else openEv.delete(d.dataset.ev);
   }, true);
   document.addEventListener("click", (e) => {
