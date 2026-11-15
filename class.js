@@ -297,6 +297,17 @@
         <p class="muted small">If someone drops out, an organiser gives their place to the next person on the waitlist and lets them know.</p>` : ""}
     </div>`;
   }
+  // organisers: a fresh start for a capped event (e.g. the tram): clear everyone, pause, then open sign-ups at the announcement
+  function resetBlock(e) {
+    const r = e.reset, opened = e.openedAt && new Date(e.openedAt).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Hong_Kong" });
+    if (e.closed) return `<div class="cc-reset paused"><p class="small"><b>Organisers:</b> ${r ? `reset by ${esc(r.by || "an organiser")}. ${r.going.length} ${r.going.length === 1 ? "person was" : "people were"} going${r.waitlist.length ? `, ${r.waitlist.length} on the waitlist` : ""}${r.guests ? `, ${gS(r.guests)}` : ""}.` : "sign-ups are paused."}</p>
+      <button type="button" class="cc-mini go cc-open" data-opensign="${e.id}">🟢 Open sign-ups now</button>
+      ${r ? `<button type="button" class="cc-mini" data-undoreset="${e.id}">↩ Undo the reset</button>` : ""}</div>`;
+    return `<div class="cc-reset">${opened ? `<p class="small muted">Sign-ups opened at ${opened}.</p>` : ""}
+      <button type="button" class="cc-mini cc-resetbtn${resetArm === e.id ? " armed" : ""}" data-resetgo="${e.id}">${resetArm === e.id ? `Tap again to clear ${headcount(e) === 1 ? "1 person" : `all ${headcount(e)} people`} and pause` : "🔄 Reset sign-ups (organisers)"}</button>
+      ${resetArm === e.id ? `<p class="small muted">Everyone, the waitlist and guests are cleared, and sign-ups pause until you tap <b>Open sign-ups now</b>. A copy is kept, so you can undo until then.</p>` : ""}</div>`;
+  }
+  let resetArm = null, resetTimer = null;
   const goingTxt = (e) => `${headcount(e)} going${unnamed(e) ? ` (incl. ${gS(unnamed(e))})` : ""}`;
   const seatsShort = (e) => ((e.tables || []).length ? Math.max(0, headcount(e) - seats(e)) : 0);
   function tablesBlock(e) {
@@ -321,11 +332,12 @@
     const day = DAYS.find(([iso]) => iso === e.iso)?.[1];
     return `<details class="cc-ev${inIt ? " mine" : ""}" id="ev-${e.id}" data-ev="${e.id}"${openEv.has(e.id) || ed ? " open" : ""}>
       <summary><span class="t"><b>${esc(e.title)}</b><small>${esc([day, e.when].filter(Boolean).join(", "))}${e.venue ? ` · ${esc(e.venue)}` : ""}</small></span>
-      <span class="n">${e.going.length}${unnamed(e) ? ` +${unnamed(e)}` : ""}${capOf(e) && !over(e) ? ` of ${capOf(e)}` : ""} going${over(e) ? ` · ${over(e)} over` : ""}${inIt ? " · ✓ you" : wait(e).includes(me) ? " · ⏳ waitlist" : ""}<br><em>${billCost(e) || (p ? `${hk(p)} each ≈ ${fx(p)}` : "price to come")}</em></span></summary>
+      <span class="n">${e.going.length}${unnamed(e) ? ` +${unnamed(e)}` : ""}${capOf(e) && !over(e) ? ` of ${capOf(e)}` : ""} going${over(e) ? ` · ${over(e)} over` : ""}${e.closed ? " · ⏸️ paused" : inIt ? " · ✓ you" : wait(e).includes(me) ? " · ⏳ waitlist" : ""}<br><em>${billCost(e) || (p ? `${hk(p)} each ≈ ${fx(p)}` : "price to come")}</em></span></summary>
       ${placesFor(e.venue).map((pl) => `<button type="button" class="cc-venue" data-jump="${pl.id}">📍 ${esc(pl.name)} · map &amp; taxi card →</button>`).join("")}
       ${e.note ? `<p class="cc-note">ℹ️ ${esc(e.note)}</p>` : ""}
       ${e.group ? `<p class="cc-either">Pick one: ${data.events.filter((x) => x.group === e.group && x.id !== e.id).map((x) => esc(x.title)).join(" or ")} is the other option. Going to this one takes you off the other.</p>` : ""}
-      ${me && live() ? (inIt || !(isFull(e) || wait(e).includes(me))
+      ${e.closed ? `<p class="cw-paused">⏸️ <b>Sign-ups are paused for a fresh start.</b> They open after the announcement in person, then the first ${capOf(e) || "people"} to tap <b>+&nbsp;I'm&nbsp;going</b> get a place${capOf(e) ? " and everyone after goes on the waitlist in order" : ""}.</p>` : ""}
+      ${me && live() && !e.closed ? (inIt || !(isFull(e) || wait(e).includes(me))
         ? `<button type="button" class="cc-imin${inIt ? " on" : ""}" data-tick="${e.id}" data-name="${esc(me)}" data-on="${inIt ? 0 : 1}">${inIt ? "✓ I'm going · tap to undo" : "+ I'm going"}</button>`
         : wait(e).includes(me)
           ? `<button type="button" class="cc-imin wl" data-wait="${e.id}" data-on="0">⏳ On the waitlist · tap to leave</button>`
@@ -342,6 +354,7 @@
         ${live() ? `<span class="gq"><button type="button" data-guests="${e.id}|-1" aria-label="One fewer guest"${unnamed(e) ? "" : " disabled"}>−</button><b>${unnamed(e)}</b><button type="button" data-guests="${e.id}|1" aria-label="One more guest">+</button></span>` : `<b>${unnamed(e)}</b>`}</div>
         ${unnamed(e) ? `<p class="muted small cc-gnote">Counted for seats and the cost split, so everyone pays a bit less. Guests pay their share to ${esc(data.payTo || "the organiser")} directly. If it turns out they're on the class list, tick their name and tap −.</p>` : ""}` : ""}
       ${waitBlock(e)}
+      ${capOf(e) && live() ? resetBlock(e) : ""}
       ${tablesBlock(e)}
       <div class="cc-bills">
         <h4>Cost</h4>
@@ -908,7 +921,7 @@
       if (!e) { el.innerHTML = data ? "" : `<button class="evlock" data-cclink="1">🔒 Who's going</button>`; return; }
       const p = each(e);
       const myT = (e.tables || []).find((t) => (t.names || []).includes(me));
-      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${goingTxt(e)}${capOf(e) ? ` · ${over(e) ? `⚠️ ${over(e)} over the ${capOf(e)} places` : isFull(e) ? `full (${capOf(e)} places)` : `${spots(e)} of ${capOf(e)} places left`}${wait(e).length ? ` · ${wait(e).length} on the waitlist` : ""}` : ""}${(e.tables || []).length ? ` · 🍽️ ${e.tables[0].time ? `tables from ${esc(e.tables[0].time)}` : `${seats(e)} seats booked`}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : seats(e) > headcount(e) ? ` · ${seats(e) - headcount(e)} seat${seats(e) - headcount(e) > 1 ? "s" : ""} free` : ""}` : ""}${billCost(e) ? ` · ${billCost(e)}` : p ? ` · ${hk(p)} each` : ""}</button>${e.note ? `<small class="evnote">ℹ️ ${esc(e.note)}</small>` : ""}`;
+      el.innerHTML = `<button class="evlock open" data-cclink="${e.id}">👥 ${e.closed ? "⏸️ Sign-ups open after the announcement" : goingTxt(e)}${e.closed ? "" : capOf(e) ? ` · ${over(e) ? `⚠️ ${over(e)} over the ${capOf(e)} places` : isFull(e) ? `full (${capOf(e)} places)` : `${spots(e)} of ${capOf(e)} places left`}${wait(e).length ? ` · ${wait(e).length} on the waitlist` : ""}` : ""}${(e.tables || []).length ? ` · 🍽️ ${e.tables[0].time ? `tables from ${esc(e.tables[0].time)}` : `${seats(e)} seats booked`}${seatsShort(e) ? ` · ⚠️ ${seatsShort(e)} seat${seatsShort(e) > 1 ? "s" : ""} short` : seats(e) > headcount(e) ? ` · ${seats(e) - headcount(e)} seat${seats(e) - headcount(e) > 1 ? "s" : ""} free` : ""}` : ""}${billCost(e) ? ` · ${billCost(e)}` : p ? ` · ${hk(p)} each` : ""}</button>${e.note ? `<small class="evnote">ℹ️ ${esc(e.note)}</small>` : ""}`;
     });
   }
   window.HK_PRIVATE_RENDER = fillPlan;
@@ -956,6 +969,15 @@
     if (wt) { const on = wt.dataset.on === "1"; op({ op: "waitlist", ev: wt.dataset.wait, name: me, on }).then((ok) => { if (!ok) return; const n = wait(data.events.find((x) => x.id === wt.dataset.wait)).indexOf(me) + 1; toast(on ? (n ? `You're #${n} on the waitlist` : "You're in!") : "Off the waitlist"); }); return; }
     const uw = t.closest("[data-unwait]");
     if (uw) { if (confirm(`Take ${uw.dataset.name} off the waitlist?`)) op({ op: "waitlist", ev: uw.dataset.unwait, name: uw.dataset.name, on: false }); return; }
+    const rg = t.closest("[data-resetgo]");
+    if (rg) { const ev = rg.dataset.resetgo;
+      if (resetArm !== ev) { resetArm = ev; clearTimeout(resetTimer); resetTimer = setTimeout(() => { resetArm = null; render(); }, 8000); render(); return; }
+      resetArm = null; clearTimeout(resetTimer);
+      asOrganiser({ op: "resetGoing", ev }, () => toast("Reset done. Sign-ups are paused: tap Open sign-ups now when you announce it")); return; }
+    const os = t.closest("[data-opensign]");
+    if (os) { asOrganiser({ op: "openSignups", ev: os.dataset.opensign }, () => toast("Sign-ups are open. First come, first served")); return; }
+    const ur = t.closest("[data-undoreset]");
+    if (ur) { asOrganiser({ op: "undoReset", ev: ur.dataset.undoreset }, () => toast("Undone: everyone is back as before")); return; }
     const pm = t.closest("[data-promote]");
     if (pm) { const n = pm.dataset.name; asOrganiser({ op: "promote", ev: pm.dataset.promote, name: n }, () => toast(`${n} has a place now. Let them know!`)); return; }
     const ed = t.closest("[data-edit]");

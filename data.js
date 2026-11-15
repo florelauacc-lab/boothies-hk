@@ -19364,7 +19364,7 @@ window.HK = {
      "rsvp"
     ],
     [
-     "Evening",
+     "18:30",
      "Hotpot + Karaoke",
      "ours",
      "mon-hotpot",

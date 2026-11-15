@@ -1626,3 +1626,10 @@ p, li, label, .how-steps li, .bi-meta, .bi-names { text-wrap: pretty; }
 /* long links (https://paypal.me/yourname) may break so the box can't be pushed wider */
 .how-steps, .pay-form p, .bi-names, .paylook-out { overflow-wrap: anywhere; }
 .pay-form .fps-box, .how-steps { min-width: 0; }
+
+/* fresh start for a capped event */
+.cw-paused { margin: 8px 14px; padding: 10px 12px; border-radius: 12px; background: rgba(255,196,77,.1); border: 1px solid rgba(255,196,77,.4); font-size: .9rem; line-height: 1.4; text-wrap: pretty; }
+.cc-reset { margin: 8px 14px 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.cc-reset p { margin: 0; flex: 1 1 100%; }
+.cc-reset.paused { padding: 10px 12px; border-radius: 12px; border: 1px dashed rgba(255,255,255,.2); }
+.cc-resetbtn.armed { background: #c0392b; border-color: #c0392b; color: #fff; }

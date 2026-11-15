@@ -89,6 +89,7 @@ export default async function handler(req, res) {
         // names must come from the class list (WhatsApp nicknames are matched to it first; unknown people count as "not named yet")
         if (b.on && !(await onList(name))) return res.status(400).json({ error: "Only names from the class list. Count anyone else under \"Guests\"." });
         // when each person said yes, so a capped event can tell who came first
+        if (b.on && !org) { const [c0] = await redis([["HGET", `${P}events`, ev]]); if (c0 && JSON.parse(c0).closed) return res.status(409).json({ error: "sign-ups for this one are paused. They open after the announcement in person" }); }
         const cmds = [[b.on ? "SADD" : "SREM", `${P}going:${ev}`, name], b.on ? ["HSETNX", `${P}joined:${ev}`, name, String(Date.now())] : ["HDEL", `${P}joined:${ev}`, name]];
         // events in the same group are either/or (e.g. two dim sum lunches): going to one takes you off the others
         if (b.on) {
@@ -111,6 +112,7 @@ export default async function handler(req, res) {
         const [cur] = await redis([["HGET", `${P}events`, ev]]);
         if (!cur) return res.status(404).json({ error: "no event" });
         const e = JSON.parse(cur);
+        if (e.closed && !org && (Math.round(+b.n) || 0) > (+e.guests || 0)) return res.status(409).json({ error: "sign-ups for this one are paused. They open after the announcement in person" });
         e.guests = Math.max(0, Math.min(40, Math.round(+b.n) || 0));
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
@@ -129,6 +131,7 @@ export default async function handler(req, res) {
         if (!cur || !name) return res.status(400).json({ error: "missing" });
         if (b.on && !(await onList(name))) return res.status(400).json({ error: "Only names from the class list." });
         const e = JSON.parse(cur), wl = (e.waitlist || []).filter((x) => x !== name);
+        if (b.on && e.closed && !org) return res.status(409).json({ error: "sign-ups for this one are paused. They open after the announcement in person" });
         e.waitlist = b.on && !+isIn ? [...wl, name] : wl;
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
@@ -157,6 +160,28 @@ export default async function handler(req, res) {
           e.waitlist = e.waitlist.filter((x) => x !== n);
           if (n.startsWith(GUEST)) e.guests = (+e.guests || 0) + 1;
           else cmds.push(["SADD", `${P}going:${ev}`, n], ["HSETNX", `${P}joined:${ev}`, n, String(Date.now())]);
+        }
+        cmds.push(["HSET", `${P}events`, ev, JSON.stringify(e)]);
+        await redis(cmds);
+        break;
+      }
+      case "resetGoing": case "openSignups": case "undoReset": {
+        if (!org) return res.status(403).json({ error: "organisers only" });
+        const [cur, members, joined] = await redis([["HGET", `${P}events`, ev], ["SMEMBERS", `${P}going:${ev}`], ["HGETALL", `${P}joined:${ev}`]]);
+        if (!cur) return res.status(404).json({ error: "no event" });
+        const e = JSON.parse(cur), cmds = [];
+        if (b.op === "resetGoing") { // a fresh start: everyone signs up again once it opens
+          e.reset = { going: members || [], joined: pairs(joined), waitlist: e.waitlist || [], guests: +e.guests || 0, at: Date.now(), by };
+          e.waitlist = []; e.guests = 0; e.closed = true; delete e.openedAt;
+          cmds.push(["DEL", `${P}going:${ev}`], ["DEL", `${P}joined:${ev}`]);
+        }
+        if (b.op === "openSignups") { e.closed = false; e.openedAt = Date.now(); }
+        if (b.op === "undoReset") { // only while still paused, so nobody's new sign-up is lost
+          if (!e.reset || !e.closed) return res.status(400).json({ error: "nothing to undo (sign-ups have already reopened)" });
+          const r = e.reset; e.waitlist = r.waitlist || []; e.guests = r.guests || 0; e.closed = false; delete e.reset;
+          cmds.push(["DEL", `${P}going:${ev}`], ["DEL", `${P}joined:${ev}`]);
+          if ((r.going || []).length) cmds.push(["SADD", `${P}going:${ev}`, ...r.going]);
+          const jp = Object.entries(r.joined || {}).flat(); if (jp.length) cmds.push(["HSET", `${P}joined:${ev}`, ...jp]);
         }
         cmds.push(["HSET", `${P}events`, ev, JSON.stringify(e)]);
         await redis(cmds);
