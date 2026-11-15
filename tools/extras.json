@@ -726,7 +726,8 @@
     "🚕 Taxi? Tap \"Show the driver\" on any place and hand over your phone.",
     "🛗 Escalators: stand on the right, walk on the left.",
     "🧭 Citymapper is the best app for getting around · [iPhone](https://apps.apple.com/app/id469463298) · [Android](https://play.google.com/store/apps/details?id=com.citymapper.app.release)",
-    "🆘 999 for emergencies · 🔌 UK 3-pin plugs (Type G), so bring an adapter"
+    "🆘 999 for emergencies · 🔌 UK 3-pin plugs (Type G), so bring an adapter",
+    "🛍️ Supermarkets charge at least HK$1 for each plastic bag, so bring a foldable one. Octopus and cards work at the till. Japanese supermarkets and Don Don Donki are good for snacks to take home."
    ]
   },
   {
@@ -3810,6 +3811,210 @@
     ]
    ],
    "funFact": "There are no cars on Lamma, and the film star Chow Yun-fat grew up here."
+  },
+  {
+   "tab": "shop",
+   "name": "Don Don Donki (Central)",
+   "area": "Central",
+   "cuisine": "Japanese discount store",
+   "category": [
+    "snacks",
+    "gifts"
+   ],
+   "emoji": "🐧",
+   "intro": "Japan's famous discount store, piled high with snacks, beauty, sake and gadgets. The closest one to campus.",
+   "order": [
+    "Roasted Japanese sweet potatoes",
+    "Japanese snacks and Kit Kat flavours",
+    "Fresh sushi and bento"
+   ],
+   "hours": "Daily 08:00–01:00",
+   "tips": "Two other branches are open 24 hours: Tsim Sha Tsui (Mira Place) and Causeway Bay (Pearl City).",
+   "addressEn": "LG/F & B/F, 100QRC, 100 Queen's Road Central, Central",
+   "url": "https://www.dondondonki.com/hk/?shop_id=220004",
+   "lat": 22.28332,
+   "lng": 114.15496
+  },
+  {
+   "tab": "shop",
+   "name": "Don Don Donki (Tsim Sha Tsui)",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Japanese discount store",
+   "category": [
+    "snacks",
+    "gifts"
+   ],
+   "emoji": "🐧",
+   "intro": "Open 24 hours on Nathan Road: the late-night snack run after dinner in Kowloon.",
+   "order": [
+    "Roasted Japanese sweet potatoes",
+    "Japanese snacks and Kit Kat flavours",
+    "Fresh sushi and bento"
+   ],
+   "hours": "Open 24 hours",
+   "tips": "AEON Supermarket at The ONE is a short walk down Nathan Road if you want more Japanese snacks.",
+   "addressEn": "B/F, Mira Place 2, 118–130 Nathan Road, Tsim Sha Tsui",
+   "url": "https://www.dondondonki.com/hk/?shop_id=220001",
+   "lat": 22.30011,
+   "lng": 114.17223
+  },
+  {
+   "tab": "shop",
+   "name": "Don Don Donki (Causeway Bay)",
+   "area": "Causeway Bay",
+   "cuisine": "Japanese discount store",
+   "category": [
+    "snacks",
+    "gifts"
+   ],
+   "emoji": "🐧",
+   "intro": "Four floors of Japanese snacks, beauty and gadgets in Causeway Bay, open 24 hours.",
+   "order": [
+    "Roasted Japanese sweet potatoes",
+    "Japanese snacks and Kit Kat flavours",
+    "Fresh sushi and bento"
+   ],
+   "hours": "Open 24 hours",
+   "addressEn": "1/F–4/F, Pearl City, 22–36 Paterson Street, Causeway Bay",
+   "url": "https://www.dondondonki.com/hk/?shop_id=220003",
+   "lat": 22.28122,
+   "lng": 114.18574
+  },
+  {
+   "tab": "shop",
+   "name": "YATA Supermarket (Sai Wan)",
+   "area": "Sai Wan",
+   "cuisine": "Japanese supermarket",
+   "category": [
+    "snacks",
+    "gifts",
+    "local"
+   ],
+   "emoji": "🛒",
+   "intro": "A Japanese-style supermarket a few minutes from campus: snacks, sake, sushi and bento, plus local staples.",
+   "order": [
+    "Japanese snacks and sake",
+    "Vita lemon tea",
+    "Garden biscuits (Pop Pan chive crackers)"
+   ],
+   "hours": "Daily 09:00–21:30",
+   "addressEn": "Hong Kong Plaza, 188 Connaught Road West, Sai Wan",
+   "url": "https://www.yata.hk/eng/store/sai-wan/",
+   "lat": 22.2873,
+   "lng": 114.1366
+  },
+  {
+   "tab": "shop",
+   "name": "city'super (IFC)",
+   "area": "Central",
+   "cuisine": "Upmarket Japanese & imported supermarket",
+   "category": [
+    "snacks",
+    "gifts"
+   ],
+   "emoji": "🛒",
+   "intro": "The upmarket choice for Japanese and imported treats, in ifc mall above Hong Kong MTR station.",
+   "order": [
+    "Japanese premium snacks and fruit",
+    "Lee Kum Kee XO sauce",
+    "Calbee Hot & Spicy chips"
+   ],
+   "hours": "Daily 08:00–21:30",
+   "tips": "Also at Harbour City (Tsim Sha Tsui) and Times Square (Causeway Bay), 09:00–22:00.",
+   "addressEn": "Shops 1041–1049, Level 1, ifc mall, 8 Finance Street, Central",
+   "url": "http://ifc.com.hk/en/mall/shop/citysuper/",
+   "lat": 22.28509,
+   "lng": 114.1586
+  },
+  {
+   "tab": "shop",
+   "name": "759 Store (Sai Ying Pun)",
+   "area": "Sai Ying Pun",
+   "cuisine": "Imported snack store",
+   "category": [
+    "snacks",
+    "gifts"
+   ],
+   "emoji": "🛒",
+   "intro": "Cheap snacks shipped straight from Japan, Korea and Europe. This bigger branch is a short walk from campus.",
+   "order": [
+    "Japanese biscuits and sweets",
+    "Korean snacks and instant noodles",
+    "Japanese drinks"
+   ],
+   "hours": "Daily 09:00–22:00",
+   "addressEn": "Shops A & B, LG/F, 23A Eastern Street, Sai Ying Pun",
+   "url": "https://www.759store.com/shop_detail.php?id=173&lang=eng&brand=1",
+   "lat": 22.2856,
+   "lng": 114.1437
+  },
+  {
+   "tab": "shop",
+   "name": "AEON Supermarket (Tsim Sha Tsui)",
+   "area": "Tsim Sha Tsui",
+   "cuisine": "Japanese supermarket",
+   "category": [
+    "snacks",
+    "gifts"
+   ],
+   "emoji": "🛒",
+   "intro": "A big Japanese supermarket under The ONE on Nathan Road, open until 23:00 and a short walk from Donki.",
+   "order": [
+    "Japanese snacks",
+    "Hong Kong-style milk tea sachets",
+    "Lee Kum Kee sauces"
+   ],
+   "hours": "Daily 10:00–23:00",
+   "addressEn": "LG1 & LG2, The ONE, 100 Nathan Road, Tsim Sha Tsui",
+   "url": "https://www.aeonstores.com.hk/shop_info/detail?id=292&lang=en",
+   "lat": 22.2992,
+   "lng": 114.1721
+  },
+  {
+   "tab": "shop",
+   "name": "Wellcome (Kennedy Town)",
+   "area": "Kennedy Town",
+   "cuisine": "Local supermarket",
+   "category": [
+    "snacks",
+    "gifts",
+    "local"
+   ],
+   "emoji": "🛒",
+   "intro": "Hong Kong's everyday supermarket at local prices, and the cheapest place for local food gifts.",
+   "order": [
+    "Garden biscuits",
+    "Vita lemon tea",
+    "Lee Kum Kee oyster or XO sauce",
+    "Calbee Hot & Spicy chips"
+   ],
+   "hours": "Daily 08:00–22:30",
+   "addressEn": "LG/F, Smithfield Terrace, 71–77 Smithfield Road, Kennedy Town",
+   "url": "https://www.wellcome.com.hk/en/store_locator",
+   "lat": 22.28036,
+   "lng": 114.12895
+  },
+  {
+   "tab": "shop",
+   "name": "Living PLAZA by AEON (Kennedy Town)",
+   "area": "Kennedy Town",
+   "cuisine": "Fixed-price Japanese goods",
+   "category": [
+    "snacks",
+    "gifts"
+   ],
+   "emoji": "🏷️",
+   "intro": "Japanese snacks, kitchen gadgets and small gifts near campus, most at HK$12.",
+   "order": [
+    "Japanese sweets and snacks",
+    "Bento and kitchen gadgets",
+    "Small stationery gifts"
+   ],
+   "hours": "Daily 10:00–22:00",
+   "addressEn": "Shop 1, LG/F, Luen Tak Apartments, 45 Smithfield, Kennedy Town",
+   "url": "https://www.aeonstores.com.hk/shop_info/detail?id=74&lang=en",
+   "lat": 22.28172,
+   "lng": 114.12816
   }
  ],
  "patch": {

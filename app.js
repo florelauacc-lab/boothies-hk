@@ -51,6 +51,7 @@
       moods: [
         { k: "luxury", label: "Luxury malls", em: "👜", c: C.gold },
         { k: "gifts", label: "Gifts to take home", em: "🎁", c: C.orange },
+        { k: "snacks", label: "Snacks & supermarkets", em: "🛒", c: C.lime },
         { k: "malls", label: "Malls", em: "🛍️", c: C.violet },
         { k: "local", label: "Local finds", em: "🏮", c: C.pink },
       ],
@@ -343,7 +344,7 @@
   }
   // Broad picks ("dinner", "drinks", "sights") show the top few of each sub-category, so nobody has to tap "show more";
   // as soon as something narrower is chosen it's one ranked top-10 list.
-  const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate", "hard", "beach", "run", "active"], shop: ["luxury", "gifts", "malls", "local"], plans: ["walk", "half", "daytrip"] };
+  const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate", "hard", "beach", "run", "active"], shop: ["luxury", "gifts", "snacks", "malls", "local"], plans: ["walk", "half", "daytrip"] };
   function groupLabel() {
     if (FOOD.has(state.tab)) return { all: "eat & drink picks", drinks: "bars", breakfast: "breakfast picks", lunch: "lunch picks", dinner: "dinner picks", dessert: "dessert picks", "late-night": "late-night picks" }[state.mood] || "picks";
     return { sights: "sights", hikes: "outdoor picks", shop: "shopping", plans: "plans" }[state.tab] || "picks";

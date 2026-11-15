@@ -167,6 +167,8 @@ export default async function handler(req, res) {
         if (!cur) return res.status(404).json({ error: "no event" });
         const e = JSON.parse(cur);
         ["title", "when", "venue", "bookedBy", "group", "note"].forEach((f) => { if (b[f] != null) e[f] = clean(b[f], f === "venue" || f === "note" ? 80 : 70); });
+        // classmates' own events can move to another day (the built-in ones follow the week plan)
+        if (b.iso && ev.startsWith("x-") && /^\d{4}-\d{2}-\d{2}$/.test(String(b.iso))) e.iso = String(b.iso);
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
       }
@@ -179,6 +181,8 @@ export default async function handler(req, res) {
         const price = total === 0 ? 0 : total && count ? Math.round(total / count) : Math.round(+b.price || 0); // a total of 0 clears it
         if (!(price >= 0) || price > 100000 || (total != null && !(total >= 0))) return res.status(400).json({ error: "bad amount" });
         e.price = price || null; e.priceBy = by;
+        // who paid it (and collects the price); Rienno, the default collector, is stored as no one
+        if (b.paidBy != null) { const pb = clean(b.paidBy, 60); const [mraw] = await redis([["GET", `${P}meta`]]); const payTo = (JSON.parse(mraw || "{}")).payTo; e.paidBy = pb && pb !== payTo ? pb : undefined; }
         if (total != null) { e.total = total || null; e.priceCount = count || null; }
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
@@ -245,7 +249,7 @@ export default async function handler(req, res) {
         Object.entries(E).forEach(([k, v], i) => {
           if (has[i]) cmds.push(["SREM", `${P}going:${k}`, from], ["SADD", `${P}going:${k}`, to]);
           const e = JSON.parse(v);
-          ["by", "bookedBy", "priceBy"].forEach((f) => { e[f] = sw(e[f]); });
+          ["by", "bookedBy", "priceBy", "paidBy"].forEach((f) => { if (e[f] != null) e[f] = sw(e[f]); });
           (e.tables || []).forEach((t) => { t.names = (t.names || []).map(sw); });
           if (e.waitlist) e.waitlist = [...new Set(e.waitlist.map(sw))];
           cmds.push(["HSET", `${P}events`, k, JSON.stringify(e)]);
@@ -254,6 +258,8 @@ export default async function handler(req, res) {
           ["paidBy", "frontedBy", "by"].forEach((f) => { x[f] = sw(x[f]); });
           x.among = (x.among || []).map(sw);
           if (x.shares) x.shares = Object.fromEntries(Object.entries(x.shares).map(([n, a]) => [sw(n), a]));
+          if (x.cover) x.cover = Object.fromEntries(Object.entries(x.cover).map(([f, b]) => [sw(f), sw(b)]));
+          if (x.guestPay) x.guestPay = x.guestPay.map(sw);
           cmds.push(["HSET", `${P}bills`, k, JSON.stringify(x)]); });
         Object.entries(pairs(xfers)).forEach(([k, v]) => { const x = JSON.parse(v); ["from", "to", "by"].forEach((f) => { x[f] = sw(x[f]); }); cmds.push(["HSET", `${P}xfers`, k, JSON.stringify(x)]); });
         const pr = pairs(profiles), st = pairs(settle);
@@ -342,6 +348,14 @@ export default async function handler(req, res) {
         const frontedBy = clean(b.frontedBy, 60);
         const bill = { what: clean(b.what, 60) || "Bill", ev: clean(b.ev, 40) || null, paidBy, hkd, among, shares, guestShares: shares && guests ? guestShares : undefined,
           frontedBy: frontedBy && frontedBy !== paidBy ? frontedBy : undefined, guests: guests || undefined, guestNames: guestNames.some(Boolean) ? guestNames : undefined };
+        // how each guest pays: "" = pays paidBy directly, "paid" = already paid, or the classmate who covers them (added to their share)
+        const guestPay = guestNames.map((_, i) => clean((Array.isArray(b.guestPay) ? b.guestPay : [])[i], 60));
+        if (guestPay.some(Boolean)) bill.guestPay = guestPay;
+        // cover: classmates someone else pays for, { "for": "pays" }; both must be on the bill, and a payer can't be paid for too
+        const cover = Object.fromEntries(Object.entries(b.cover && typeof b.cover === "object" ? b.cover : {}).map(([f, by]) => [clean(f, 60), clean(by, 60)])
+          .filter(([f, by]) => f && by && f !== by && among.includes(f) && among.includes(by)));
+        Object.keys(cover).forEach((f) => { if (cover[cover[f]]) delete cover[f]; });
+        if (Object.keys(cover).length) bill.cover = cover;
         if (b.op === "editBill") {
           const key = clean(b.id, 20), [cur] = await redis([["HGET", `${P}bills`, key]]);
           if (!cur) return res.status(404).json({ error: "That bill has been deleted" });

@@ -623,7 +623,7 @@ for p in places:
                 p["emoji"] = em; break
     elif p["tab"] == "shop":
         n = f'{p["name"]} {p.get("cuisine", "")}'.lower()
-        for rx, em in ((r"watch", "⌚"), (r"tailor", "🧵"), (r"electronic|fortress|broadway", "📷"), (r"tea", "🍵"),
+        for rx, em in ((r"donki", "🐧"), (r"supermarket|city.super|wellcome|yata|759 store", "🛒"), (r"living plaza", "🏷️"), (r"watch", "⌚"), (r"tailor", "🧵"), (r"electronic|fortress|broadway", "📷"), (r"tea", "🍵"),
                        (r"sasa|mannings|beauty", "💄"), (r"jewel|diamond|chow|lukfook|tsl|king fook", "💎"),
                        (r"stanley|market", "🧧"), (r"pmq|design", "🎨"), (r"k11|musea", "🖼️"), (r"mall|place|plaza|square|gardens|sogo|landmark|harbour city|ifc", "🛍️")):
             if re.search(rx, n):
