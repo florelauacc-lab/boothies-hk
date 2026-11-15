@@ -66,7 +66,7 @@ export default async function handler(req, res) {
     if (req.method === "GET") return res.status(200).json(await state(org));
     if (req.method !== "POST") return res.status(405).end();
     const b = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
-    if (["setPay", "setInfo", "confirmPaid", "unconfirmPaid"].includes(b.op) && !org) return res.status(403).json({ error: "organisers only" });
+    if (["setPay", "setInfo", "setGroups", "confirmPaid", "unconfirmPaid"].includes(b.op) && !org) return res.status(403).json({ error: "organisers only" });
     if (b.op === "markPaid" && b.confirmed && !org) return res.status(403).json({ error: "organisers only" });
     const by = clean(b.by, 60);
     const ev = clean(b.ev, 40);
@@ -266,6 +266,16 @@ export default async function handler(req, res) {
         if (pr[from] && !pr[to]) cmds.push(["HSET", `${P}profiles`, to, pr[from]], ["HDEL", `${P}profiles`, from]);
         if (st[from] && !st[to]) cmds.push(["HSET", `${P}settle`, to, st[from]], ["HDEL", `${P}settle`, from]);
         await redis(cmds);
+        break;
+      }
+      case "setGroups": { // organisers: replace the study groups (the class list); a name ending in * is in the section but not in Hong Kong
+        if (!Array.isArray(b.groups) || !b.groups.length || b.groups.length > 20) return res.status(400).json({ error: "groups: [[name, [people]]]" });
+        const groups = b.groups.map(([g, ns]) => [clean(g, 40), (Array.isArray(ns) ? ns : []).map((n) => clean(n, 61)).filter(Boolean).slice(0, 20)]).filter(([g, ns]) => g && ns.length);
+        if (!groups.length) return res.status(400).json({ error: "no groups" });
+        const [cur] = await redis([["GET", `${P}meta`]]);
+        const m = JSON.parse(cur || "{}");
+        m.groups = groups;
+        await redis([["SET", `${P}meta`, JSON.stringify(m)]]);
         break;
       }
       case "setInfo": { // organisers: payment wording shown to everyone
