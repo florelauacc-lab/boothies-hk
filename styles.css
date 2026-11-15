@@ -1599,3 +1599,10 @@ button.bl .pw-copy { pointer-events: none; }
 .cc-capform { margin-top: 12px; padding-top: 10px !important; border-top: 1px dashed rgba(255,255,255,.12); }
 .tbform { margin-top: 8px; }
 .cc-owe p.small b, .cc-owe p.muted b, .cc-owe .sp-for b { font-size: inherit; }
+
+/* quick help + "ate out together?" + ask on WhatsApp */
+.cc-help > summary small { font-weight: 500; opacity: .7; }
+.cc-help .how-steps { margin-top: 8px; }
+.cc-add-bill.quick { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2px 8px; text-align: center; padding: 8px 12px; border-style: solid; background: rgba(255,196,77,.12); }
+.cc-add-bill.quick small { font-weight: 600; font-size: .78rem; opacity: .8; }
+.bi-ask { text-decoration: none; display: inline-flex; align-items: center; }

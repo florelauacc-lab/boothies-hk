@@ -1433,7 +1433,7 @@
   document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") loadWeather(); });
   renderStart();
   const start = location.hash.slice(1);
-  setTab(["saiwan", "start", "city", "sights", "hikes", "shop", "week"].includes(start) ? start : "city");
+  setTab(["saiwan", "start", "city", "sights", "hikes", "shop", "week"].includes(start) ? start : start === "cc" ? "week" : "city");
   booted = true;
   if (shared) { $("#shortlist-btn").click(); toast("Showing the shortlist someone shared with you"); }
 })();

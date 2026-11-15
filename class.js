@@ -167,7 +167,9 @@
   }
 
   /* ---------- render ---------- */
+  let ccJumped = false;
   function render() {
+    if (!ccJumped && location.hash === "#cc") { ccJumped = true; setTimeout(() => root.scrollIntoView({ block: "start" }), 80); } // the link in "Ask on WhatsApp" lands here
     if (!data) {
       root.innerHTML = `<div class="cc-lock">
         <h2>🔒 Class corner</h2>
@@ -200,6 +202,8 @@
         <label>I'm <select id="cc-me" aria-label="Your name"><option value="">choose your name</option>${opts}</select></label>
         <label>Prices in <select id="cc-cur" aria-label="Currency">${curOpts}</select></label>
       </div>
+      ${live() ? quickHelp() : ""}
+      ${live() && !billDraft ? `<button type="button" class="cc-add-bill quick" data-bf-new="1">🍜 Ate out together? Add the bill <small>everyone's share is worked out</small></button>` : ""}
       ${settleBox()}
       <h3 class="cc-h">🎉 Class events <small>tap one to tick who's going or enter the bill</small></h3>
       <div class="cc-events">${evs.map((e) => evCard(e, ppl)).join("")}</div>
@@ -691,6 +695,26 @@
   const gName = (n, i) => (n && n.trim() ? `${n.trim()} (guest)` : `Guest ${i + 1}`);
   const billGuests = (b) => { const n = bG(b); return Array.from({ length: n }, (_, i) => gName((b.guestNames || [])[i], i)); };
   let delArm = null; // the bill whose 🗑 was tapped once: a second tap deletes it (no pop-up, works in in-app browsers)
+  // a short guide to everything the class corner does, at the top
+  const quickHelp = () => `<details class="cc-sub cc-help"><summary>❓ How this works <small>money, bills and plans in 1 minute</small></summary>
+    <ol class="how-steps">
+      <li><b>Pick your name</b> in "I'm" above. Everything here is then about you.</li>
+      <li><b>Class events:</b> tap one and tick yourself going. <b>⭐ My week</b> at the top shows just yours.</li>
+      <li><b>Ate out together?</b> Tap <b>🍜 Add the bill</b>: the total, who paid, and who shared it. It works out everyone's share, guests too. Restaurants usually split between 2 cards at most, so one person pays and everyone pays them back here.</li>
+      <li><b>Ask to be paid:</b> on a bill you paid, tap <b>📲 Ask on WhatsApp</b> to send everyone their share.</li>
+      <li><b>Pay someone:</b> <b>💸 Settle up</b> shows who you owe, with their PayPal, Venmo, FPS or bank. Pay, then tap <b>✓ I've paid</b>. Choose <b>Fewest payments</b> or <b>Pay each person</b>.</li>
+      <li><b>See who owes you:</b> under <b>Owed to you</b>. Tap <b>✓ Paid me</b> when the money arrives.</li>
+      <li><b>Get paid easily:</b> add your details in <b>💳 My payment details</b> (how-to guides inside).</li>
+      <li><b>Paying for someone else:</b> in a bill, add a guest and pick who pays for them, or tap <b>🤝 Someone pays for someone</b> for a classmate.</li>
+      <li><b>Your own plans:</b> <b>➕ Add an event for the class</b> for a hike, drinks or a meal. Classmates can tick that they're going.</li>
+      <li><b>Made a mistake?</b> Every bill has ✏️ Edit and 🗑 Delete.</li>
+    </ol></details>`;
+  // a bill you paid → one WhatsApp message with everyone's share
+  const askText = (b) => {
+    const sh = billShares(b), lines = Object.entries(sh).filter(([n, v]) => n !== b.paidBy && v > 0.5).map(([n, v]) => `• ${n}: ${hk(v)}`);
+    billGuests(b).forEach((x, i) => { if (!(b.guestPay || [])[i]) lines.push(`• ${x} (guest): ${hk(gAmt(b, i))}`); });
+    return `🧾 *${b.what || "Bill"}* · ${hk(b.hkd)}\nI paid, so here's what everyone owes me:\n${lines.join("\n")}\n\nMy PayPal, Venmo, FPS or bank details are in Boothies in HK. Pay me, then tap "✓ I've paid" under 💸 Settle up: https://boothies-hk.vercel.app/#cc`;
+  };
   function billItem(b, evName) {
     const sh = billShares(b), g = bG(b), n = b.among.length + g, ev = b.ev && evName(b.ev);
     const eq = b.shares ? null : b.hkd / (n || 1);
@@ -704,7 +728,7 @@
       <p class="bi-names">${who.join(", ")}</p>
       ${direct ? `<p class="bi-meta">👤 ${direct === g ? (g === 1 ? "The guest pays" : "Guests pay") : `${direct} guest${direct === 1 ? "" : "s"} pay${direct === 1 ? "s" : ""}`} ${esc(b.paidBy)} directly.</p>` : ""}
       ${b.editedBy ? `<p class="bi-meta muted">Edited by ${esc(b.editedBy)}</p>` : ""}
-      <div class="bi-act"><button type="button" class="cc-mini" data-bedit="${b.id}">✏️ Edit</button>
+      <div class="bi-act">${me && me === b.paidBy ? `<a class="cc-mini go bi-ask" href="https://wa.me/?text=${encodeURIComponent(askText(b))}" target="_blank" rel="noopener">📲 Ask on WhatsApp</a>` : ""}<button type="button" class="cc-mini" data-bedit="${b.id}">✏️ Edit</button>
         <button type="button" class="cc-mini bi-del${delArm === b.id ? " armed" : ""}" data-bdel="${b.id}">${delArm === b.id ? "Tap again to delete" : "🗑 Delete"}</button></div>
     </li>`;
   }
@@ -960,7 +984,7 @@
       return;
     }
     if (t.closest("[data-orgout]")) { orgPass = ""; forget("hk-org-v1"); api("GET").then((s) => { data = s; render(); }); return; }
-    if (t.closest("[data-bf-new]")) { billDraft = newDraft(); render(); return; }
+    if (t.closest("[data-bf-new]")) { billDraft = newDraft(); render(); setTimeout(() => document.getElementById("bill-form")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50); return; }
     const spm = t.closest("[data-spmode]");
     if (spm) { settleMode = spm.dataset.spmode; set("hk-settle-v1", settleMode); render(); return; }
     const st = t.closest("[data-seat]");
@@ -1086,7 +1110,7 @@
       if (d.fronted) body.frontedBy = f.elements.frontedBy?.value || d.frontedBy;
       if (d.mode === "custom") { body.shares = Object.fromEntries(among.map((n) => [n, +d.shares[n] || 0])); body.guestShares = d.guests.map((_, i) => +d.gShares[i] || 0); }
       billSaving = true; render();
-      op(body).then((ok) => { billSaving = false; if (ok) { billDraft = null; toast(editing ? "Bill updated for everyone" : "Bill added: everyone's share is worked out"); } render(); });
+      op(body).then((ok) => { billSaving = false; if (ok) { billDraft = null; toast(editing ? "Bill updated for everyone" : payer === me ? "Bill added. Tap 📲 Ask on WhatsApp on it to tell everyone" : "Bill added: everyone's share is worked out"); } render(); });
     }
     else if (f.dataset.xfer) {
       const x = JSON.parse(f.dataset.xfer);
