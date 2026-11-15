@@ -371,7 +371,8 @@
 
   // bank details one line at a time, each with its own Copy (that's how bank apps ask for them)
   function bankLines(o) {
-    const lines = [["Account name", o.accName], ["Bank", o.bankName], ["Account number", o.accNo], ["SWIFT / bank code", o.swift]].filter(([, v]) => v);
+    const lines = [["Account name", o.accName], ["Bank", o.bankName], ["Country & currency", o.bankCountry], ["Account number / IBAN", o.accNo], ["SWIFT / BIC (from abroad)", o.swift],
+      ["Routing / sort / bank & branch code", o.localCode], ["Other details", o.bankExtra]].filter(([, v]) => v);
     if (!lines.length && o.bank) lines.push(["Bank details", o.bank]);
     const all = lines.map(([k, v]) => `${k}: ${v}`).join("\n");
     return lines.length ? `<div class="bank-lines">${lines.map(([k, v]) => `<button type="button" class="bl" data-copy="${esc(v)}"><span><small>${k}</small>${esc(v)}</span><span class="pw-copy">Copy</span></button>`).join("")}
@@ -761,23 +762,32 @@
       ${(() => { const withPay = people().filter((n) => payOpts(n, 0).length); return `<details class="cc-sub cc-paylook"><summary>📇 Look up someone's payment details${withPay.length ? ` · ${withPay.length}` : ""}</summary>
         ${withPay.length ? `<div class="paylook"><select data-paylook="1" aria-label="Whose payment details"><option value="">Pick a name…</option>${withPay.map((n) => `<option>${esc(n)}</option>`).join("")}</select><div class="paylook-out"></div></div>`
           : `<p class="muted small">Nobody has saved payment details yet. Once they add them under "My payment details", they show here and next to anything you owe them.</p>`}</details>`; })()}
-      ${me ? `<details class="cc-sub"><summary>💳 My payment details${pr.paypal || pr.venmo || pr.fps || pr.bank || pr.accNo || pr.note || pr.wechat ? " ✓" : ""}</summary>
+      ${me ? `<details class="cc-sub"><summary>💳 My payment details${pr.paypal || pr.venmo || pr.fps || pr.bank || pr.accNo || pr.localCode || pr.note || pr.wechat ? " ✓" : ""}</summary>
         <form class="pay-form" id="my-pay" autocomplete="off">
           <p class="small muted">So people can pay you back when you cover a bill. Fill in only what you use; only classmates with the passcode can see these.</p>
           <fieldset><legend>💳 PayPal</legend>
-            <label>PayPal.me link<input name="paypal" inputmode="url" placeholder="paypal.me/yourname" value="${esc(pr.paypal || "")}"></label>
+            <label>PayPal.me link<input name="paypal" inputmode="url" placeholder="https://paypal.me/yourname" value="${esc(pr.paypal || "")}"></label>
             <details class="fps-box how"><summary>How do I get paid by PayPal?</summary><ol class="how-steps">
               <li>Open the PayPal app or paypal.com and log in. No account? Sign up free with your email.</li>
               <li>Get your PayPal.me link: in the app, tap your profile picture and look for <b>PayPal.me</b>; on the web, go to <b>paypal.me</b> and create your link.</li>
               <li>Pick a name. Your link is <b>paypal.me/yourname</b>.</li>
-              <li>Paste it in the box above (starting https://) and tap <b>Save my details</b>.</li></ol>
+              <li>Type or paste it in the box above, for example <b>https://paypal.me/yourname</b> (the https:// is added for you if you leave it off), and tap <b>Save my details</b>.</li></ol>
               <p class="small muted">Classmates then get a Pay button with the HK$ amount filled in. PayPal changes it into your own currency. Paying by card adds a fee of about 3–5%; paying from a PayPal balance or linked bank usually costs less.</p></details></fieldset>
           <fieldset><legend>🌍 Bank transfer</legend>
-            <label>Account name<input name="accName" placeholder="Name on the account" value="${esc(pr.accName || "")}"></label>
-            <label>Bank<input name="bankName" placeholder="e.g. Chase, Barclays, MUFG" value="${esc(pr.bankName || "")}"></label>
-            <label>Account number / IBAN<input name="accNo" value="${esc(pr.accNo || "")}"></label>
-            <label>SWIFT / routing / sort code<input name="swift" value="${esc(pr.swift || "")}"></label>
-            <label>Wise payment link <small>(optional)</small><input name="wiseLink" inputmode="url" placeholder="https://wise.com/pay/…" value="${esc(pr.wiseLink || "")}"></label></fieldset>
+            <label>Account name <small>(exactly as your bank has it)</small><input name="accName" placeholder="Name on the account" value="${esc(pr.accName || "")}"></label>
+            <label>Bank<input name="bankName" placeholder="e.g. Chase, Barclays, HSBC" value="${esc(pr.bankName || "")}"></label>
+            <label>Country & currency of the account<input name="bankCountry" placeholder="e.g. USA · USD" maxlength="60" value="${esc(pr.bankCountry || "")}"></label>
+            <label>Account number or IBAN<input name="accNo" value="${esc(pr.accNo || "")}"></label>
+            <label>SWIFT / BIC <small>(for payments from abroad)</small><input name="swift" autocapitalize="characters" placeholder="e.g. CHASUS33" value="${esc(pr.swift || "")}"></label>
+            <label>Routing number, sort code, or HK bank & branch code <small>(for payments in the same country)</small><input name="localCode" maxlength="40" value="${esc(pr.localCode || "")}"></label>
+            <label>Anything else your bank needs <small>(optional)</small><input name="bankExtra" maxlength="120" placeholder="e.g. checking account" value="${esc(pr.bankExtra || "")}"></label>
+            <label>Wise payment link <small>(optional)</small><input name="wiseLink" inputmode="url" placeholder="https://wise.com/pay/…" value="${esc(pr.wiseLink || "")}"></label>
+            <details class="fps-box how"><summary>How do I get paid by bank transfer?</summary><ol class="how-steps">
+              <li>Write the account name exactly as your bank has it. Transfers can bounce if it doesn't match.</li>
+              <li>Add what your country uses:<br>🇺🇸 <b>US:</b> routing number and account number (say checking or savings). From abroad, also SWIFT.<br>🇬🇧 <b>UK:</b> sort code and account number. From abroad, IBAN and SWIFT/BIC.<br>🇪🇺 <b>Europe:</b> IBAN and SWIFT/BIC.<br>🇭🇰 <b>Hong Kong:</b> bank code, branch code and account number, or just add FPS below.<br>🌏 <b>Elsewhere:</b> account number and SWIFT/BIC.</li>
+              <li>Add the country and currency so people know what to send.</li>
+              <li>Tap <b>Save my details</b>. Classmates see each line with a Copy button for their banking app or Wise.</li></ol>
+              <p class="small muted">Sending money abroad from a bank can cost a fee. Wise is usually cheapest, and a Wise payment link (in the Wise app: Request, then Share link) lets people pay you in one tap. For small amounts, PayPal, Venmo or FPS are often easier.</p></details></fieldset>
           <fieldset><legend>📱 Other apps</legend>
             <label>💙 Venmo username <small>(US accounts)</small><input name="venmo" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="@yourname" value="${esc(pr.venmo ? `@${String(pr.venmo).replace(/^@/, "")}` : "")}"></label>
             <details class="fps-box how"><summary>Where do I find my Venmo username?</summary>
@@ -1070,11 +1080,11 @@
     }
     else if (f.id === "my-pay" && fd("orgcode")) { // organiser resets a forgotten PIN
       const keep = orgPass; orgPass = fd("orgcode").toLowerCase();
-      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), venmo: fd("venmo"), note: fd("note"), newPin: fd("newPin") })
+      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), venmo: fd("venmo"), bankCountry: fd("bankCountry"), localCode: fd("localCode"), bankExtra: fd("bankExtra"), note: fd("note"), newPin: fd("newPin") })
         .then((ok) => { orgPass = keep; if (ok) toast(fd("newPin") ? "PIN reset and details saved" : "Details saved"); });
     }
     else if (f.id === "my-pay") {
-      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), venmo: fd("venmo"), note: fd("note"), pin: fd("pin"), newPin: fd("newPin") })
+      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), venmo: fd("venmo"), bankCountry: fd("bankCountry"), localCode: fd("localCode"), bankExtra: fd("bankExtra"), note: fd("note"), pin: fd("pin"), newPin: fd("newPin") })
         .then((ok) => ok && toast("Your payment details are saved"));
     }
     else if (f.id === "cc-org") {

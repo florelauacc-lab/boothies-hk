@@ -379,13 +379,16 @@ export default async function handler(req, res) {
         const [cur] = await redis([["HGET", `${P}profiles`, name]]);
         const prevP = cur ? JSON.parse(cur) : {};
         if (prevP.pinHash && !org && sha(`${name}|${b.pin || ""}`) !== prevP.pinHash) return res.status(403).json({ error: "Wrong PIN for these payment details" });
-        const url = (v) => { const u = clean(v, 200); return !u ? "" : /^https:\/\//i.test(u) ? u : null; };
-        const paypal = url(b.paypal), wise = url(b.wiseLink);
-        if (paypal === null || wise === null) return res.status(400).json({ error: "Links must start with https://" });
+        // links: https:// is added for you (people often type "paypal.me/name" or "wise.com/pay/…")
+        const url = (v) => { let u = clean(v, 200).replace(/\s+/g, ""); if (!u) return ""; u = u.replace(/^http:\/\//i, "https://"); if (!/^https:\/\//i.test(u) && /^[\w.-]+\.[a-z]{2,}\//i.test(u)) u = `https://${u}`; return /^https:\/\//i.test(u) ? u : null; };
+        // PayPal: a bare PayPal.me name (or @name) becomes https://paypal.me/name
+        const pp = clean(b.paypal, 200).replace(/\s+/g, "");
+        const paypal = url(/^@?[A-Za-z0-9]{2,20}$/.test(pp) ? `paypal.me/${pp.replace(/^@/, "")}` : pp), wise = url(b.wiseLink);
+        if (paypal === null || wise === null) return res.status(400).json({ error: "That link doesn't look right: try https://paypal.me/yourname" });
         const venmo = clean(b.venmo, 60).replace(/^https?:\/\/(www\.)?venmo\.com\/(u\/)?/i, "").replace(/^@/, "").replace(/\/$/, "");
         if (venmo && !/^[A-Za-z0-9_-]{2,30}$/.test(venmo)) return res.status(400).json({ error: "Venmo username: letters, numbers, - and _ only (e.g. @yourname)" });
         const next = { paypal, fps: clean(b.fps, 60), bank: clean(b.bank, 160), accName: clean(b.accName, 80), bankName: clean(b.bankName, 80), accNo: clean(b.accNo, 40), swift: clean(b.swift, 20), wechat: clean(b.wechat, 60),
-          wiseLink: wise, venmo: venmo || "", cash: !!b.cash, note: clean(b.note, 120), pinHash: prevP.pinHash || null };
+          wiseLink: wise, venmo: venmo || "", bankCountry: clean(b.bankCountry, 60), localCode: clean(b.localCode, 40), bankExtra: clean(b.bankExtra, 120), cash: !!b.cash, note: clean(b.note, 120), pinHash: prevP.pinHash || null };
         if (b.newPin) next.pinHash = sha(`${name}|${clean(b.newPin, 12)}`);
         await redis([["HSET", `${P}profiles`, name, JSON.stringify(next)]]);
         break;
