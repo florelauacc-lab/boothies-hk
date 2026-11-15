@@ -53,7 +53,7 @@
   const total = (e) => (e.expenses || []).reduce((t, x) => t + (+x.hkd || 0), 0);
   // each person's share: the set price per person, or (if a bill was entered instead) the bill split evenly
   const each = (e) => (e.price > 0 ? +e.price : total(e) && e.going.length ? total(e) / e.going.length : null);
-  const PAY_METHODS = ["PayPal / card", "Wise / bank", "FPS", "WeChat Pay", "Cash"];
+  const PAY_METHODS = ["PayPal / card", "Venmo", "Wise / bank", "FPS", "WeChat Pay", "Cash"];
 
   /* ---------- state ---------- */
   let data = null, mode = "locked", pass = get("hk-pass-v1") || "", orgPass = get("hk-org-v1") || "";
@@ -173,6 +173,8 @@
     const canConfirm = data.organiser && isPayer; // only Rienno (with the organiser code) decides what's been received
     const opts = ppl.filter((p) => !p.away).map((p) => `<option${p.name === me ? " selected" : ""}>${esc(p.name)}</option>`).join("");
     const curOpts = CUR.map(([c]) => `<option${c === cur ? " selected" : ""}>${c}</option>`).join("");
+    const dKey = (el) => el.dataset.ev || `${el.className}|${(el.querySelector("summary")?.textContent || "").replace(/[\d·✓,]/g, "").trim().slice(0, 40)}`;
+    const wasOpen = new Map([...root.querySelectorAll("details")].map((el) => [dKey(el), el.open]));
     root.innerHTML = `<div class="cc-head">
         <h2>👥 Class corner</h2>
         <span class="cc-mode ${mode}">${live() ? "● Shared with the class" : "Read-only (offline)"}</span>
@@ -202,6 +204,7 @@
       <details class="cc-groups"><summary>📚 Becker study groups</summary>
         <div class="cc-grid">${(data.groups || []).map(([g, ns]) => `<div><h4>${esc(g)}</h4><ul>${ns.filter((n) => !/\*$/.test(n)).map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`).join("")}</div>
       </details>`;
+    root.querySelectorAll("details").forEach((el) => { const k = dKey(el); if (wasOpen.has(k) && !el.dataset.ev) el.open = wasOpen.get(k); }); // a redraw (every 30 s) keeps what you opened
     fillPlan();
     root.querySelectorAll(".name-find").forEach((inp) => { if (inp.value) inp.dispatchEvent(new Event("input", { bubbles: true })); }); // keep the name filter after a redraw
     window.HK_REPLAN?.();
@@ -328,7 +331,7 @@
           ${unnamed(e) ? `<p class="cc-gpay">👤 Includes ${gS(unnamed(e))}: ${unnamed(e) === 1 ? "they pay" : "each pays"} ${hk(p)} to ${esc(data.payTo || "the organiser")} directly.</p>` : ""}`
           : (() => { // no set price: split the bill(s) between whoever was there, whoever paid
               const evBills = (data.bills || []).filter((b) => b.ev === e.id);
-              return `${evBills.length ? `<ul class="ev-bills">${evBills.map((b) => `<li><span>🧾 ${esc(b.what)} · paid by ${esc(b.paidBy)} · ${b.among.length} people${bG(b) ? ` + ${gS(bG(b))}` : ""}</span><b>${hk(b.hkd)}</b></li>`).join("")}</ul>` : ""}
+              return `${evBills.length ? `<ul class="ev-bills">${evBills.map((b) => `<li><span>🧾 ${esc(b.what)} · paid by ${esc(b.paidBy)} · ${b.among.length} people${bG(b) ? ` + ${gS(bG(b))}` : ""}</span><b>${hk(b.hkd)}</b>${live() ? `<button type="button" class="cc-mini" data-bedit="${b.id}">✏️ Edit</button>` : ""}</li>`).join("")}</ul>` : ""}
                 ${live() ? `<p class="muted small">One bill per table if tables ate different things; each is split only between the people at that table.</p>
                 <button type="button" class="cc-mini go" data-splitev="${e.id}">🧾 ${evBills.length ? "Add another table's bill" : "Add the bill (or the first table's)"}</button>
                 <details class="cc-collect"><summary>${esc(data.payTo)} collecting a set price instead?</summary>` : ""}`;
@@ -447,8 +450,10 @@
   // who paid: for class events Rienno pays everything up front (even if he isn't there), so he's the default;
   // anyone else who covers a table just switches "Paid by". Bills not tied to an event default to you.
   const defaultPayer = (evId) => (evId && data.payTo ? data.payTo : me || data.payTo);
-  const newDraft = () => ({ what: "", ev: "", hkd: "", paidBy: me || data.payTo, among: new Set(me ? [me] : []), mode: "equal", shares: {}, q: "", guests: 0 });
-  const bG = (b) => (b.shares ? 0 : +b.guests || 0); // guests at the table pay the payer directly
+  const newDraft = () => ({ id: null, what: "", ev: "", hkd: "", paidBy: me || data.payTo, among: new Set(me ? [me] : []), mode: "equal", shares: {}, q: "", guests: [], gShares: [], full: false });
+  const blanks = (n) => Array.from({ length: n }, () => "");
+  let billSaving = false; // stops a second tap adding the same bill twice
+  const bG = (b) => +b.guests || 0; // guests at the table (not on the class list) pay the payer directly
   const billShares = (b) => b.shares || Object.fromEntries(b.among.map((n) => [n, b.hkd / (b.among.length + bG(b))]));
   const named = (b) => Object.values(billShares(b)).reduce((t, v) => t + v, 0); // what the people on the list owe
   function billBalances() { // + means you're owed, - means you owe
@@ -502,6 +507,8 @@
     const pr = profileOf(to), bl = bankLines(pr);
     return [
       pr.paypal && ["PayPal / card", `<div class="paybtns"><a class="paybtn" href="${esc(pr.paypal.replace(/\/$/, ""))}${/paypal\.me/i.test(pr.paypal) && amt ? `/${Math.round(amt)}HKD` : ""}" target="_blank" rel="noopener">💳 Pay ${amt ? `${hk(amt)} ` : ""}by PayPal / card</a></div><small class="pm-hint">Opens PayPal${amt ? " with the amount filled in" : ""}. A card fee of about 3–5% applies.</small>`],
+      pr.venmo && ["Venmo", (() => { const u = String(pr.venmo).replace(/^@/, ""), usd = amt ? (amt * rates.USD).toFixed(2) : "";
+        return `<div class="paybtns"><a class="paybtn" href="https://venmo.com/u/${encodeURIComponent(u)}" target="_blank" rel="noopener">💙 Pay @${esc(u)} on Venmo</a></div>${usd ? `<div class="bank-lines"><button type="button" class="bl" data-copy="${usd}"><span><small>Amount to send in US$ (${hk(amt)} today)</small>US$${usd}</span><span class="pw-copy">Copy</span></button></div>` : ""}<small class="pm-hint">US bank accounts only, in US dollars. Opens Venmo; type in the amount.</small>`; })()],
       pr.fps && ["FPS", `<div class="bank-lines"><button type="button" class="bl" data-copy="${esc(pr.fps)}"><span><small>FPS ID / phone</small>${esc(pr.fps)}</span><span class="pw-copy">Copy</span></button></div><small class="pm-hint">Hong Kong bank accounts only: instant and free.</small>`],
       (bl || pr.wiseLink) && ["Wise / bank", `${pr.wiseLink ? `<div class="paybtns"><a class="paybtn" href="${esc(pr.wiseLink)}" target="_blank" rel="noopener">🌍 Pay with Wise</a></div>` : ""}${bl}`],
       pr.wechat && ["WeChat Pay", `<div class="bank-lines"><button type="button" class="bl" data-copy="${esc(pr.wechat)}"><span><small>WeChat ID</small>${esc(pr.wechat)}</span><span class="pw-copy">Copy</span></button></div><small class="pm-hint">Add them on WeChat, then Transfer. Only works if your WeChat Pay uses a Chinese or HK bank account.</small>`],
@@ -614,6 +621,68 @@
     </div>`;
   }
 
+
+  // the guests on a bill: named if someone typed a name, otherwise "Guest 1", "Guest 2"…
+  const gName = (n, i) => (n && n.trim() ? `${n.trim()} (guest)` : `Guest ${i + 1}`);
+  const billGuests = (b) => { const n = bG(b); return Array.from({ length: n }, (_, i) => gName((b.guestNames || [])[i], i)); };
+  let delArm = null; // the bill whose 🗑 was tapped once: a second tap deletes it (no pop-up, works in in-app browsers)
+  function billItem(b, evName) {
+    const sh = billShares(b), g = bG(b), n = b.among.length + g, ev = b.ev && evName(b.ev);
+    const eq = b.shares ? null : b.hkd / (n || 1);
+    const who = [...b.among.map((x) => `${esc(x)}${b.shares ? ` <b>${hk(sh[x])}</b>` : ""}`), ...billGuests(b).map((x, i) => `<i>${esc(x)}</i>${b.shares && b.guestShares ? ` <b>${hk(b.guestShares[i] || 0)}</b>` : ""}`)];
+    return `<li class="bi">
+      <div class="bi-top"><b class="bi-what">${esc(b.what)}</b><span class="bi-amt">${hk(b.hkd)}</span></div>
+      <p class="bi-meta">${ev && ev !== b.what ? `${esc(ev)} · ` : ""}Paid by <b>${esc(b.paidBy)}</b>${b.frontedBy ? ` (${esc(b.frontedBy)} paid the restaurant)` : ""}</p>
+      <p class="bi-meta">${n} ${n === 1 ? "person" : "people"}${g ? ` (${b.among.length} from the class + ${gS(g)})` : ""} · ${eq ? `<b>${hk(eq)}</b> each` : "custom split"}</p>
+      <p class="bi-names">${who.join(", ")}</p>
+      ${g ? `<p class="bi-meta">👤 Guests pay ${esc(b.paidBy)} directly.</p>` : ""}
+      ${b.editedBy ? `<p class="bi-meta muted">Edited by ${esc(b.editedBy)}</p>` : ""}
+      <div class="bi-act"><button type="button" class="cc-mini" data-bedit="${b.id}">✏️ Edit</button>
+        <button type="button" class="cc-mini bi-del${delArm === b.id ? " armed" : ""}" data-bdel="${b.id}">${delArm === b.id ? "Tap again to delete" : "🗑 Delete"}</button></div>
+    </li>`;
+  }
+  // a saved bill back into the form, for editing
+  const draftFrom = (b) => ({ ...newDraft(), id: b.id, what: b.what || "", ev: b.ev || "", hkd: String(b.hkd), paidBy: b.paidBy, among: new Set(b.among),
+    mode: b.shares ? "custom" : "equal", shares: b.shares ? Object.fromEntries(Object.entries(b.shares).map(([k, v]) => [k, String(v)])) : {},
+    guests: Array.from({ length: bG(b) }, (_, i) => (b.guestNames || [])[i] || ""), gShares: (b.guestShares || []).map(String),
+    fronted: !!b.frontedBy, frontedBy: b.frontedBy || "" });
+  function billForm(d, ppl, evName) {
+    const total = +d.hkd || 0, among = [...d.among], gs = d.guests, g = gs.length, n = among.length + g;
+    const sum = among.reduce((t, x) => t + (+d.shares[x] || 0), 0) + gs.reduce((t, _, i) => t + (+d.gShares[i] || 0), 0);
+    const rest = ppl.filter((x) => !d.among.has(x));
+    return `<form class="bill-form" id="bill-form" autocomplete="off">
+      <p class="bf-title">${d.id ? "✏️ Edit this bill" : "🧾 New bill"}</p>
+      <label class="bf-f"><span>What was it?</span><input name="what" placeholder="e.g. Thu dinner, table 2" maxlength="60" value="${esc(d.what)}" data-bf="what"></label>
+      <label class="bf-f"><span>Class event <small>(optional)</small></span><select name="ev" data-bf="ev" aria-label="Which event"><option value="">Not linked to an event</option>${data.events.map((e) => `<option value="${e.id}"${d.ev === e.id ? " selected" : ""}>${esc(e.title)}</option>`).join("")}</select></label>
+      <div class="bf-2">
+        <label class="bf-f"><span>Total HK$</span><input name="hkd" type="number" inputmode="decimal" min="1" step="0.01" value="${esc(d.hkd)}" data-bf="hkd" required></label>
+        <label class="bf-f"><span>Paid by <small>(everyone pays them)</small></span><select name="paidBy" data-bf="paidBy">${ppl.map((x) => `<option${x === d.paidBy ? " selected" : ""}>${esc(x)}</option>`).join("")}</select></label>
+      </div>
+      <label class="bf-check"><input type="checkbox" data-bf="fronted"${d.fronted ? " checked" : ""}> <span>Someone else paid the restaurant: ${esc(d.paidBy)} collects from everyone and pays them back</span></label>
+      ${d.fronted ? `<label class="bf-f"><span>Who paid the restaurant?</span><select name="frontedBy" data-bf="frontedBy">${ppl.filter((x) => x !== d.paidBy).map((x) => `<option${x === (d.frontedBy || me) ? " selected" : ""}>${esc(x)}</option>`).join("")}</select></label>` : ""}
+
+      <fieldset class="bf-sec"><legend>Who's sharing it? <small>${n} ${n === 1 ? "person" : "people"}</small></legend>
+        ${among.length ? `<div class="cc-names edit bf-picked">${among.map((x) => `<button type="button" class="on" data-bf-toggle="${esc(x)}" aria-label="Remove ${esc(x)}">${esc(x)}<span aria-hidden="true">✕</span></button>`).join("")}</div>` : `<p class="small muted">Nobody picked yet.</p>`}
+        <div class="bf-btns">${d.ev ? `<button type="button" class="cc-mini" data-bf-all="1">Everyone at the event</button>` : ""}${among.length ? `<button type="button" class="cc-mini" data-bf-none="1">Clear</button>` : ""}</div>
+        <input class="name-find" data-find="bf" placeholder="Add a classmate: type a name" value="${esc(d.q || "")}" autocomplete="off" aria-label="Find a classmate">
+        <div class="cc-names edit bf-rest${d.full ? " full" : ""}">${rest.map((x) => `<button type="button" data-bf-toggle="${esc(x)}" data-nm="${esc(x.toLowerCase())}">${esc(x)}</button>`).join("")}</div>
+        ${rest.length > 8 ? `<button type="button" class="cc-mini bf-more" data-bf-full="1">${d.full ? "Show fewer names ▴" : `Show all ${rest.length} classmates ▾`}</button>` : ""}
+        <div class="bf-guests"><p class="bf-gh">👤 Guests not on the class list <small>they pay ${esc(d.paidBy || "the payer")} directly</small></p>
+          ${gs.map((x, i) => `<div class="bf-grow"><input value="${esc(x)}" placeholder="Guest ${i + 1}: name (optional)" maxlength="40" data-bf-gname="${i}" aria-label="Guest ${i + 1} name"><button type="button" class="cc-x" data-bf-gdel="${i}" aria-label="Remove guest ${i + 1}">✕</button></div>`).join("")}
+          <button type="button" class="cc-mini" data-bf-gadd="1">➕ Add a guest</button></div>
+        ${g > among.length && among.length ? `<p class="small warn-t">Check: ${gS(g)} but only ${among.length} from the class. Guests are only people not on the class list.</p>` : ""}
+      </fieldset>
+
+      <fieldset class="bf-sec"><legend>Split</legend>
+        <div class="bf-mode"><button type="button" class="cc-mini${d.mode === "equal" ? " go" : ""}" data-bf-mode="equal" aria-pressed="${d.mode === "equal"}">Equally</button><button type="button" class="cc-mini${d.mode === "custom" ? " go" : ""}" data-bf-mode="custom" aria-pressed="${d.mode === "custom"}">Custom amounts</button></div>
+        ${d.mode === "equal" ? `<p class="small bf-each">${eqLine(total, among.length, g)}</p>`
+          : `<div class="bf-custom">${among.map((x) => `<label><span>${esc(x)}</span><input type="number" inputmode="decimal" min="0" step="0.01" value="${esc(d.shares[x] ?? "")}" data-bf-share="${esc(x)}" placeholder="HK$"></label>`).join("")}${gs.map((x, i) => `<label><span>${esc(gName(x, i))}</span><input type="number" inputmode="decimal" min="0" step="0.01" value="${esc(d.gShares[i] ?? "")}" data-bf-gshare="${i}" placeholder="HK$"></label>`).join("")}</div>
+             <p class="small bf-sum ${Math.abs(sum - total) > 1 ? "warn-t" : "ok-t"}">Adds up to ${hk(sum)} of ${hk(total)}${Math.abs(sum - total) > 1 ? ` · ${hk(total - sum)} left to assign` : " ✓"}</p>`}
+      </fieldset>
+      <div class="bf-actions"><button type="submit" class="paybtn"${billSaving ? " disabled" : ""}>${billSaving ? "Saving…" : d.id ? "Save changes" : "Add bill"}</button><button type="button" class="cc-mini" data-bf-cancel="1">Cancel</button>
+        ${d.id ? `<button type="button" class="cc-mini bi-del${delArm === d.id ? " armed" : ""}" data-bdel="${d.id}">${delArm === d.id ? "Tap again to delete" : "🗑 Delete bill"}</button>` : ""}</div>
+    </form>`;
+  }
   function billsSection() {
     if (!live()) return "";
     const bal = billBalances(), sugg = simplify(bal);
@@ -624,49 +693,18 @@
     const mineSugg = me ? sugg.filter((t) => t.from === me || t.to === me) : [];
     const others = sugg.filter((t) => !mineSugg.includes(t));
     const d = billDraft;
-    const form = d ? (() => {
-      const total = +d.hkd || 0, among = [...d.among];
-      const g = d.mode === "equal" ? +d.guests || 0 : 0;
-      const each = among.length ? total / (among.length + g) : 0;
-      const sum = among.reduce((t, n) => t + (+d.shares[n] || 0), 0);
-      return `<form class="bill-form" id="bill-form" autocomplete="off">
-        <div class="bf-row"><input name="what" placeholder="What (e.g. Thu dinner, table 2)" maxlength="60" value="${esc(d.what)}" data-bf="what">
-          <select name="ev" data-bf="ev" aria-label="Which event"><option value="">Not linked to an event</option>${data.events.map((e) => `<option value="${e.id}"${d.ev === e.id ? " selected" : ""}>${esc(e.title)}</option>`).join("")}</select></div>
-        <div class="bf-row"><label class="bf-l">Total HK$<input name="hkd" type="number" inputmode="decimal" min="1" step="0.01" value="${esc(d.hkd)}" data-bf="hkd" required></label>
-          <label class="bf-l">Paid by <small>(everyone pays them)</small><select name="paidBy" data-bf="paidBy">${ppl.map((n) => `<option${n === d.paidBy ? " selected" : ""}>${esc(n)}</option>`).join("")}</select></label></div>
-        <label class="bf-check"><input type="checkbox" data-bf="fronted"${d.fronted ? " checked" : ""}> Someone else paid the restaurant: ${esc(d.paidBy)} collects from everyone and pays them back</label>
-        ${d.fronted ? `<label class="bf-l">Who paid the restaurant?<select name="frontedBy" data-bf="frontedBy">${ppl.filter((n) => n !== d.paidBy).map((n) => `<option${n === (d.frontedBy || me) ? " selected" : ""}>${esc(n)}</option>`).join("")}</select></label>` : ""}
-        <p class="bf-h">Who's at this table? <small>${among.length} picked</small>
-          ${d.ev ? `<button type="button" class="cc-mini" data-bf-all="1">Everyone at ${esc(evName(d.ev) || "the event")}</button>` : ""}
-          <button type="button" class="cc-mini" data-bf-none="1">Clear</button></p>
-        <input class="name-find" data-find="bf" placeholder="Type a name to find them (Enter to tick)" value="${esc(d.q || "")}" autocomplete="off" aria-label="Find a name">
-        <div class="cc-names edit">${ppl.map((n) => `<button type="button" class="${d.among.has(n) ? "on" : ""}" data-bf-toggle="${esc(n)}" data-nm="${esc(n.toLowerCase())}">${d.among.has(n) ? "✓ " : ""}${esc(n)}</button>`).join("")}</div>
-        <p class="bf-h">Split
-          <button type="button" class="cc-mini${d.mode === "equal" ? " go" : ""}" data-bf-mode="equal">Equally</button>
-          <button type="button" class="cc-mini${d.mode === "custom" ? " go" : ""}" data-bf-mode="custom">Custom amounts</button></p>
-        ${d.mode === "equal" ? `<label class="bf-l bf-g">Guests at this table <small>not on the class list; they pay ${esc(d.paidBy || "the payer")} directly</small><input type="number" inputmode="numeric" min="0" max="20" step="1" value="${g || ""}" placeholder="0" data-bf="guests" aria-label="Guests at this table"></label>
-          <p class="small bf-each">${eqLine(total, among.length, g)}</p>`
-          : `<div class="bf-custom">${among.map((n) => `<label>${esc(n)}<input type="number" inputmode="decimal" min="0" step="0.01" value="${esc(d.shares[n] ?? "")}" data-bf-share="${esc(n)}" placeholder="HK$"></label>`).join("")}</div>
-             <p class="small ${Math.abs(sum - total) > 1 ? "warn-t" : "ok-t"}">Adds up to ${hk(sum)} of ${hk(total)}${Math.abs(sum - total) > 1 ? ` · ${hk(total - sum)} left to assign` : " ✓"}</p>`}
-        <div class="bf-row"><button type="submit" class="paybtn">Add bill</button><button type="button" class="cc-mini" data-bf-cancel="1">Cancel</button></div>
-      </form>`;
-    })() : `<button type="button" class="cc-add-bill" data-bf-new="1">➕ Add a bill</button>`;
+    const form = d ? billForm(d, ppl, evName) : `<button type="button" class="cc-add-bill" data-bf-new="1">➕ Add a bill</button>`;
     const bills = (data.bills || []).slice().reverse();
     const pr = me ? (data.profiles || {})[me] || {} : null;
     return `<div class="cc-bills2">
-      <h3 class="cc-h">🧾 Add a bill <small>whoever paid; split by table, equally or custom</small></h3>
+      <h3 class="cc-h">🧾 Bills <small>whoever paid; split by table, equally or custom</small></h3>
 
       ${form}
-      ${bills.length ? `<details class="cc-sub"><summary>All bills · ${bills.length}</summary><ul class="bill-list">${bills.map((b) => {
-        const sh = billShares(b);
-        return `<li><div class="sp-top"><b>${esc(b.what)}</b>${b.ev && evName(b.ev) ? ` <small>· ${esc(evName(b.ev))}</small>` : ""}<span class="amt">${hk(b.hkd)}</span>
-          <button type="button" class="cc-x" data-bdel="${b.id}" aria-label="Delete bill">✕</button></div>
-          <p class="small">Paid by ${esc(b.paidBy)}${b.frontedBy ? ` (${esc(b.frontedBy)} paid the restaurant)` : ""} · ${b.shares ? "custom split" : `${hk(b.hkd / (b.among.length + bG(b)))} each${bG(b) ? ` (+ ${gS(bG(b))} paying directly)` : ""}`}: ${b.among.map((n) => `${esc(n)}${b.shares ? ` ${hk(sh[n])}` : ""}`).join(", ")}</p></li>`;
-      }).join("")}</ul></details>` : ""}
+      ${bills.length ? `<details class="cc-sub cc-allbills"${bills.length <= 8 ? " open" : ""}><summary>All bills · ${bills.length}</summary><ul class="bill-list">${bills.map((b) => billItem(b, evName)).join("")}</ul></details>` : ""}
       ${(() => { const withPay = people().filter((n) => payOpts(n, 0).length); return `<details class="cc-sub cc-paylook"><summary>📇 Look up someone's payment details${withPay.length ? ` · ${withPay.length}` : ""}</summary>
         ${withPay.length ? `<div class="paylook"><select data-paylook="1" aria-label="Whose payment details"><option value="">Pick a name…</option>${withPay.map((n) => `<option>${esc(n)}</option>`).join("")}</select><div class="paylook-out"></div></div>`
           : `<p class="muted small">Nobody has saved payment details yet. Once they add them under "My payment details", they show here and next to anything you owe them.</p>`}</details>`; })()}
-      ${me ? `<details class="cc-sub"><summary>💳 My payment details${pr.paypal || pr.fps || pr.bank || pr.accNo || pr.note || pr.wechat ? " ✓" : ""}</summary>
+      ${me ? `<details class="cc-sub"><summary>💳 My payment details${pr.paypal || pr.venmo || pr.fps || pr.bank || pr.accNo || pr.note || pr.wechat ? " ✓" : ""}</summary>
         <form class="pay-form" id="my-pay" autocomplete="off">
           <p class="small muted">So people can pay you back when you cover a bill. Fill in only what you use; only classmates with the passcode can see these.</p>
           <fieldset><legend>💳 PayPal</legend>
@@ -678,7 +716,8 @@
             <label>SWIFT / routing / sort code<input name="swift" value="${esc(pr.swift || "")}"></label>
             <label>Wise payment link <small>(optional)</small><input name="wiseLink" inputmode="url" placeholder="https://wise.com/pay/…" value="${esc(pr.wiseLink || "")}"></label></fieldset>
           <fieldset><legend>📱 Other apps</legend>
-            <label>Venmo, Revolut, Zelle, PayNow…<input name="note" placeholder="e.g. Venmo @yourname" value="${esc(pr.note || "")}"></label></fieldset>
+            <label>💙 Venmo username <small>(US accounts)</small><input name="venmo" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="@yourname" value="${esc(pr.venmo ? `@${String(pr.venmo).replace(/^@/, "")}` : "")}"></label>
+            <label>Revolut, Zelle, PayNow…<input name="note" placeholder="e.g. Zelle: your email" value="${esc(pr.note || "")}"></label></fieldset>
           <details class="fps-box"${pr.wechat ? " open" : ""}><summary>💬 Use WeChat Pay with a Chinese or HK bank account? Add your WeChat ID</summary>
             <p class="small muted">Classmates whose WeChat Pay is also linked to a Chinese or HK bank can add you and send a transfer. WeChat Pay on an overseas card can't send money to people, so keep PayPal or bank details too.</p>
             <label>WeChat ID<input name="wechat" autocapitalize="off" value="${esc(pr.wechat || "")}"></label></details>
@@ -699,31 +738,31 @@
     const t = e.target;
     if (!billDraft || !root.contains(t)) return;
     if (t.dataset.bf) billDraft[t.dataset.bf] = t.value;
-    if (t.dataset.bfShare) { billDraft.shares[t.dataset.bfShare] = t.value; const p = t.closest(".bill-form"); if (p) refreshSum(p); }
-    if (t.dataset.bf === "hkd" || t.dataset.bf === "guests") { const p = t.closest(".bill-form"); if (p) refreshSum(p); }
+    if (t.dataset.bfShare) billDraft.shares[t.dataset.bfShare] = t.value;
+    if (t.dataset.bfGshare != null) billDraft.gShares[+t.dataset.bfGshare] = t.value;
+    if (t.dataset.bfGname != null) billDraft.guests[+t.dataset.bfGname] = t.value;
+    if (t.dataset.bfShare || t.dataset.bfGshare != null || t.dataset.bf === "hkd") { const p = t.closest(".bill-form"); if (p) refreshSum(p); }
   });
   function eqLine(total, n, g) {
-    return n && total ? `${hk(total)} ÷ ${n + g} = <b>${hk(total / (n + g))}</b> each${g ? ` · incl. ${gS(g)}` : ""}` : "Pick who's in it and enter the total.";
+    return (n + g) && total ? `${hk(total)} ÷ ${n + g} people = <b>${hk(total / (n + g))}</b> each${g ? ` · ${n} from the class + ${gS(g)}` : ""}` : "Pick who's sharing it and enter the total.";
   }
   function refreshSum(formEl) { // update the "adds up to" line without redrawing (keeps the keyboard open)
     const d = billDraft, total = +d.hkd || 0, among = [...d.among];
-    const line = formEl.querySelector(".bf-custom + p.small") || formEl.querySelector('[data-bf-mode="equal"].go') && formEl.querySelector(".bf-row ~ p.small");
     if (d.mode === "custom") {
-      const sum = among.reduce((t, n) => t + (+d.shares[n] || 0), 0);
-      const p = formEl.querySelector(".bf-custom + p.small");
-      if (p) { p.className = `small ${Math.abs(sum - total) > 1 ? "warn-t" : "ok-t"}`; p.innerHTML = `Adds up to ${hk(sum)} of ${hk(total)}${Math.abs(sum - total) > 1 ? ` · ${hk(total - sum)} left to assign` : " ✓"}`; }
+      const sum = among.reduce((t, n) => t + (+d.shares[n] || 0), 0) + d.guests.reduce((t, _, i) => t + (+d.gShares[i] || 0), 0);
+      const p = formEl.querySelector("p.bf-sum");
+      if (p) { p.className = `small bf-sum ${Math.abs(sum - total) > 1 ? "warn-t" : "ok-t"}`; p.innerHTML = `Adds up to ${hk(sum)} of ${hk(total)}${Math.abs(sum - total) > 1 ? ` · ${hk(total - sum)} left to assign` : " ✓"}`; }
     } else {
       const p = formEl.querySelector("p.bf-each");
-      if (p) p.innerHTML = eqLine(total, among.length, +d.guests || 0);
+      if (p) p.innerHTML = eqLine(total, among.length, d.guests.length);
     }
-    return line;
   }
   document.addEventListener("change", (e) => {
     const t = e.target;
     if (!billDraft || !root.contains(t) || !t.dataset.bf) return;
     if (t.dataset.bf === "fronted") { billDraft.fronted = t.checked; if (t.checked && !billDraft.frontedBy) billDraft.frontedBy = me !== billDraft.paidBy ? me : ""; render(); return; }
     billDraft[t.dataset.bf] = t.value;
-    if (t.dataset.bf === "ev" && t.value) { const E = data.events.find((x) => x.id === t.value); if (E) { billDraft.among = new Set(E.going); billDraft.guests = unnamed(E); billDraft.paidBy = defaultPayer(E.id); if (!billDraft.what) billDraft.what = E.title; } render(); }
+    if (t.dataset.bf === "ev" && t.value) { const E = data.events.find((x) => x.id === t.value); if (E) { billDraft.among = new Set(E.going); billDraft.guests = blanks(unnamed(E)); billDraft.paidBy = defaultPayer(E.id); if (!billDraft.what) billDraft.what = E.title; } render(); }
   });
 
 
@@ -854,7 +893,7 @@
     const se = t.closest("[data-splitev]");
     if (se) {
       const E = data.events.find((x) => x.id === se.dataset.splitev);
-      billDraft = { ...newDraft(), ev: E.id, what: E.title, among: new Set(E.going), guests: unnamed(E), paidBy: defaultPayer(E.id) };
+      billDraft = { ...newDraft(), ev: E.id, what: E.title, among: new Set(E.going), guests: blanks(unnamed(E)), paidBy: defaultPayer(E.id) };
       render();
       setTimeout(() => document.getElementById("bill-form")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
       return;
@@ -862,12 +901,19 @@
     if (t.closest("[data-bf-cancel]")) { billDraft = null; render(); return; }
     const bt = t.closest("[data-bf-toggle]");
     if (bt && billDraft) { const n = bt.dataset.bfToggle; if (billDraft.among.has(n)) billDraft.among.delete(n); else billDraft.among.add(n); render(); return; }
-    if (t.closest("[data-bf-all]") && billDraft) { const E = data.events.find((x) => x.id === billDraft.ev); if (E) { billDraft.among = new Set(E.going); billDraft.guests = unnamed(E); } render(); return; }
+    if (t.closest("[data-bf-all]") && billDraft) { const E = data.events.find((x) => x.id === billDraft.ev); if (E) { billDraft.among = new Set(E.going); billDraft.guests = blanks(unnamed(E)); } render(); return; }
     if (t.closest("[data-bf-none]") && billDraft) { billDraft.among = new Set(); render(); return; }
+    if (t.closest("[data-bf-full]") && billDraft) { billDraft.full = !billDraft.full; render(); return; }
+    if (t.closest("[data-bf-gadd]") && billDraft) { billDraft.guests.push(""); render(); setTimeout(() => { const ins = root.querySelectorAll("[data-bf-gname]"); ins[ins.length - 1]?.focus(); }, 30); return; }
+    const gdel = t.closest("[data-bf-gdel]");
+    if (gdel && billDraft) { const i = +gdel.dataset.bfGdel; billDraft.guests.splice(i, 1); billDraft.gShares.splice(i, 1); render(); return; }
+    const bed = t.closest("[data-bedit]");
+    if (bed) { const B = (data.bills || []).find((x) => x.id === bed.dataset.bedit); if (B) { billDraft = draftFrom(B); delArm = null; render(); setTimeout(() => document.getElementById("bill-form")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50); } return; }
     const bm = t.closest("[data-bf-mode]");
     if (bm && billDraft) {
       billDraft.mode = bm.dataset.bfMode;
-      if (billDraft.mode === "custom") { const n = billDraft.among.size, tot = +billDraft.hkd || 0; [...billDraft.among].forEach((x) => { if (billDraft.shares[x] == null && n && tot) billDraft.shares[x] = (Math.round((tot / n) * 100) / 100).toString(); }); }
+      if (billDraft.mode === "custom") { const n = billDraft.among.size + billDraft.guests.length, tot = +billDraft.hkd || 0, sh = n && tot ? (Math.round((tot / n) * 100) / 100).toString() : null;
+        if (sh) { [...billDraft.among].forEach((x) => { if (billDraft.shares[x] == null) billDraft.shares[x] = sh; }); billDraft.guests.forEach((_, i) => { if (billDraft.gShares[i] == null) billDraft.gShares[i] = sh; }); } }
       render(); return;
     }
     const xm = t.closest("[data-xmark]");
@@ -877,7 +923,13 @@
     const xu = t.closest("[data-xundo]");
     if (xu) { op({ op: "undoXfer", id: xu.dataset.xundo }).then((ok) => ok && toast("Undone")); return; }
     const bd = t.closest("[data-bdel]");
-    if (bd) { if (confirm("Delete this bill for everyone?")) op({ op: "delBill", id: bd.dataset.bdel }); return; }
+    if (bd) {
+      const id = bd.dataset.bdel;
+      if (delArm !== id) { delArm = id; render(); setTimeout(() => { if (delArm === id) { delArm = null; render(); } }, 5000); return; }
+      delArm = null; if (billDraft?.id === id) billDraft = null;
+      op({ op: "delBill", id }).then((ok) => ok && toast("Bill deleted for everyone"));
+      return;
+    }
     const p1 = t.closest("[data-payev]");
     if (p1) {
       const E = data.events.find((x) => x.id === p1.dataset.payev);
@@ -923,12 +975,14 @@
     if (f.id === "cc-form") { msg("Checking…"); unlock(fd("cc-pass") || $("#cc-pass").value); }
     else if (f.id === "cc-newev") { op({ op: "addEvent", title: fd("title"), iso: fd("iso"), when: fd("when"), venue: fd("venue") }).then((ok) => ok && toast("Event added for everyone")); }
     else if (f.id === "bill-form" && billDraft) {
-      const d = billDraft, among = [...d.among];
-      const body = { op: "addBill", what: d.what, ev: d.ev, hkd: +d.hkd, paidBy: d.paidBy, among };
+      if (billSaving) return;
+      const d = billDraft, among = [...d.among], editing = !!d.id;
+      if (!among.length && !d.guests.length) { toast("Pick who's sharing the bill"); return; }
+      const body = { op: editing ? "editBill" : "addBill", id: d.id || undefined, what: d.what, ev: d.ev, hkd: +d.hkd, paidBy: d.paidBy, among, guestNames: d.guests.map((x) => x.trim()) };
       if (d.fronted) body.frontedBy = f.elements.frontedBy?.value || d.frontedBy;
-      if (d.mode === "custom") body.shares = Object.fromEntries(among.map((n) => [n, +d.shares[n] || 0]));
-      else if (+d.guests > 0) body.guests = +d.guests;
-      op(body).then((ok) => { if (ok) { billDraft = null; render(); toast("Bill added: everyone's share is worked out"); } });
+      if (d.mode === "custom") { body.shares = Object.fromEntries(among.map((n) => [n, +d.shares[n] || 0])); body.guestShares = d.guests.map((_, i) => +d.gShares[i] || 0); }
+      billSaving = true; render();
+      op(body).then((ok) => { billSaving = false; if (ok) { billDraft = null; toast(editing ? "Bill updated for everyone" : "Bill added: everyone's share is worked out"); } render(); });
     }
     else if (f.dataset.xfer) {
       const x = JSON.parse(f.dataset.xfer);
@@ -943,11 +997,11 @@
     }
     else if (f.id === "my-pay" && fd("orgcode")) { // organiser resets a forgotten PIN
       const keep = orgPass; orgPass = fd("orgcode").toLowerCase();
-      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), note: fd("note"), newPin: fd("newPin") })
+      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), venmo: fd("venmo"), note: fd("note"), newPin: fd("newPin") })
         .then((ok) => { orgPass = keep; if (ok) toast(fd("newPin") ? "PIN reset and details saved" : "Details saved"); });
     }
     else if (f.id === "my-pay") {
-      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), note: fd("note"), pin: fd("pin"), newPin: fd("newPin") })
+      op({ op: "setProfile", name: me, paypal: fd("paypal"), fps: fd("fps"), accName: fd("accName"), bankName: fd("bankName"), accNo: fd("accNo"), swift: fd("swift"), wechat: fd("wechat"), wiseLink: fd("wiseLink"), venmo: fd("venmo"), note: fd("note"), pin: fd("pin"), newPin: fd("newPin") })
         .then((ok) => ok && toast("Your payment details are saved"));
     }
     else if (f.id === "cc-org") {

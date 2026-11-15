@@ -322,22 +322,38 @@ export default async function handler(req, res) {
         break;
       }
       /* ---- splitting bills between anyone (dinners by table, own events) ---- */
-      case "addBill": {
+      case "addBill":
+      case "editBill": {
         const hkd = Math.round(+b.hkd * 100) / 100, among = [...new Set((b.among || []).map((n) => clean(n, 60)).filter(Boolean))].slice(0, 80);
         const paidBy = clean(b.paidBy, 60);
-        if (!(hkd > 0) || hkd > 1e6 || !paidBy || !among.length) return res.status(400).json({ error: "Add the total, who paid and who it's split between" });
-        // shares: equal by default, or custom amounts per person that must add up to the total
-        let shares = null;
+        // guests at the table who aren't on the class list: a name is optional; they pay paidBy directly
+        const guestNames = (Array.isArray(b.guestNames) ? b.guestNames.map((n) => clean(n, 40)) : Array.from({ length: Math.round(+b.guests) || 0 }, () => "")).slice(0, 20);
+        const guests = guestNames.length;
+        if (!(hkd > 0) || hkd > 1e6 || !paidBy || !(among.length + guests)) return res.status(400).json({ error: "Add the total, who paid and who it's split between" });
+        // shares: equal by default, or custom amounts per person (guests too) that must add up to the total
+        let shares = null, guestShares;
         if (b.shares && typeof b.shares === "object") {
           shares = Object.fromEntries(among.map((n) => [n, Math.round((+b.shares[n] || 0) * 100) / 100]));
-          const sum = Object.values(shares).reduce((t, x) => t + x, 0);
+          guestShares = guestNames.map((_, i) => Math.round((+(b.guestShares || [])[i] || 0) * 100) / 100);
+          const sum = [...Object.values(shares), ...guestShares].reduce((t, x) => t + x, 0);
           if (Math.abs(sum - hkd) > 1) return res.status(400).json({ error: `The amounts add up to HK$${Math.round(sum)}, not HK$${Math.round(hkd)}` });
         }
         // frontedBy: someone else paid the restaurant; everyone still pays paidBy, who then pays frontedBy back
         const frontedBy = clean(b.frontedBy, 60);
-        // guests at the table who aren't on the class list (equal split only): the bill is divided by among + guests, and they pay paidBy directly
-        const guests = shares ? 0 : Math.max(0, Math.min(20, Math.round(+b.guests) || 0));
-        await redis([["HSET", `${P}bills`, `b-${id()}`, JSON.stringify({ what: clean(b.what, 60) || "Bill", ev: clean(b.ev, 40) || null, paidBy, hkd, among, shares, frontedBy: frontedBy && frontedBy !== paidBy ? frontedBy : undefined, guests: guests || undefined, by, at: Date.now() })]]);
+        const bill = { what: clean(b.what, 60) || "Bill", ev: clean(b.ev, 40) || null, paidBy, hkd, among, shares, guestShares: shares && guests ? guestShares : undefined,
+          frontedBy: frontedBy && frontedBy !== paidBy ? frontedBy : undefined, guests: guests || undefined, guestNames: guestNames.some(Boolean) ? guestNames : undefined };
+        if (b.op === "editBill") {
+          const key = clean(b.id, 20), [cur] = await redis([["HGET", `${P}bills`, key]]);
+          if (!cur) return res.status(404).json({ error: "That bill has been deleted" });
+          const old = JSON.parse(cur);
+          await redis([["HSET", `${P}bills`, key, JSON.stringify({ ...bill, by: old.by, at: old.at, editedBy: by, editedAt: Date.now() })]]);
+          break;
+        }
+        // the same bill tapped in twice within two minutes is only added once
+        const [all] = await redis([["HGETALL", `${P}bills`]]);
+        const sig = (x) => JSON.stringify([x.what, x.hkd, x.paidBy, [...x.among].sort(), x.guests || 0]);
+        if (Object.values(pairs(all)).some((v) => { const x = JSON.parse(v); return Date.now() - x.at < 120000 && sig(x) === sig(bill); })) break;
+        await redis([["HSET", `${P}bills`, `b-${id()}`, JSON.stringify({ ...bill, by, at: Date.now() })]]);
         break;
       }
       case "delBill":
@@ -352,8 +368,10 @@ export default async function handler(req, res) {
         const url = (v) => { const u = clean(v, 200); return !u ? "" : /^https:\/\//i.test(u) ? u : null; };
         const paypal = url(b.paypal), wise = url(b.wiseLink);
         if (paypal === null || wise === null) return res.status(400).json({ error: "Links must start with https://" });
+        const venmo = clean(b.venmo, 60).replace(/^https?:\/\/(www\.)?venmo\.com\/(u\/)?/i, "").replace(/^@/, "").replace(/\/$/, "");
+        if (venmo && !/^[A-Za-z0-9_-]{2,30}$/.test(venmo)) return res.status(400).json({ error: "Venmo username: letters, numbers, - and _ only (e.g. @yourname)" });
         const next = { paypal, fps: clean(b.fps, 60), bank: clean(b.bank, 160), accName: clean(b.accName, 80), bankName: clean(b.bankName, 80), accNo: clean(b.accNo, 40), swift: clean(b.swift, 20), wechat: clean(b.wechat, 60),
-          wiseLink: wise, cash: !!b.cash, note: clean(b.note, 120), pinHash: prevP.pinHash || null };
+          wiseLink: wise, venmo: venmo || "", cash: !!b.cash, note: clean(b.note, 120), pinHash: prevP.pinHash || null };
         if (b.newPin) next.pinHash = sha(`${name}|${clean(b.newPin, 12)}`);
         await redis([["HSET", `${P}profiles`, name, JSON.stringify(next)]]);
         break;
