@@ -366,13 +366,14 @@
 
   // Every way to pay, with the actual details, so settling up is one look and one tap
   function payWays(amt) {
-    const L = data.payLinks || {};
+    const L = profileOf(data.payTo);
     const a = Math.round(amt);
     const soon = `<span class="pw-soon">coming soon</span>`;
     const copy = (v) => `<button type="button" class="pw-copy" data-copy="${esc(v)}">Copy</button>`;
     return `<div class="payways">
       ${L.paypal ? `<a class="paybtn big" href="${esc(L.paypal.replace(/\/$/, ""))}${a ? `/${a}HKD` : ""}" target="_blank" rel="noopener">💳 Pay ${a ? `${hk(a)} ` : ""}with PayPal or card</a>`
         : `<div class="pw"><span class="pw-i">💳</span><div><b>PayPal or card</b><small>Works from any country. A card fee of about 3–5% applies.</small></div>${soon}</div>`}
+      ${L.venmo ? (() => { const u = String(L.venmo).replace(/^@/, ""); return `<a class="paybtn big" href="https://venmo.com/u/${encodeURIComponent(u)}" target="_blank" rel="noopener">💙 Pay @${esc(u)} on Venmo${a ? ` (≈ US$${(a * rates.USD).toFixed(2)})` : ""}</a>`; })() : ""}
       <div class="pw"><span class="pw-i">⚡</span><div><b>FPS</b><small>Hong Kong bank accounts: instant and free${L.fps ? ` · <span class="pw-v">${esc(L.fps)}</span>` : ""}</small></div>${L.fps ? copy(L.fps) : soon}</div>
       <div class="pw pw-bank"><span class="pw-i">🌍</span><div><b>Bank transfer (Wise)</b><small>Cheapest from abroad</small>${bankLines(L)}</div>${L.bank || L.accNo ? "" : soon}</div>
       <div class="pw"><span class="pw-i">💬</span><div><b>WeChat Pay</b><small>Only if your WeChat Pay uses a Chinese or HK bank account (overseas cards can't send to people)${L.wechat ? ` · <span class="pw-v">${esc(L.wechat)}</span>` : ""}</small></div>${L.wechat ? copy(L.wechat) : soon}</div>
@@ -536,7 +537,7 @@
   /* ---------- one combined balance: set-price events (Rienno paid), every bill, every payment ---------- */
     // each payment: who → who and the amount on top; status and buttons on their own line (anyone can mark or confirm)
   const sRow = (t) => `<li class="sp${t.to === me ? " owed" : t.from === me ? " me" : ""}">
-      <div class="sp-top"><span class="sp-who">${t.to === me ? `<b>${esc(t.from)}</b> owes you` : t.from === me ? `To <b>${esc(t.to)}</b>` : `<b>${esc(t.from)}</b> → <b>${esc(t.to)}</b>`}${t.direct ? `<small class="sp-for">Paid up front: ${esc(t.note)}</small>` : ""}</span><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
+      <div class="sp-top"><span class="sp-who">${t.to === me ? `<b>${esc(t.from)}</b> owes you` : t.from === me ? `To <b>${esc(t.to)}</b>` : `<b>${esc(t.from)}</b> → <b>${esc(t.to)}</b>`}${t.direct ? `<small class="sp-for">Paid up front: ${esc(t.note)}</small>` : t.for ? `<small class="sp-for">For ${esc(t.for)}</small>` : ""}</span><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
       ${t.from === me ? payForm(t)
         : `<button type="button" class="cc-mini go sp-paid" data-xmark="${esc(JSON.stringify(t))}" aria-label="${esc(t.from)} has paid me">✓ Paid me</button>`}</li>`;
   const pRow = (x) => `<li class="sp pending">
@@ -552,11 +553,35 @@
     Object.entries(billBalances()).forEach(([n, v]) => add(n, v)); // bills and payments between people
     return bal;
   }
+  // "Pay each person": what I owe each person (and they owe me) for the things we actually shared, without netting through others
+  let settleMode = get("hk-settle-v1") === "each" ? "each" : "net";
+  function pairRows() {
+    const owes = {}, why = {}; // owes[X] > 0: I owe X; < 0: X owes me
+    const add = (x, v, what) => { if (!x || x === me || !v) return; owes[x] = (owes[x] || 0) + v; if (what) (why[x] = why[x] || new Set()).add(what); };
+    data.events.forEach((e) => {
+      const sh = each(e); if (!sh) return;
+      const payers = e.price > 0 ? [[data.payTo, 1]] : (() => { const tot = e.expenses.reduce((t, x) => t + (+x.hkd || 0), 0); return tot ? e.expenses.map((x) => [x.paidBy, (+x.hkd || 0) / tot]) : []; })();
+      payers.forEach(([pb, f]) => {
+        if (e.going.includes(me)) add(pb, sh * f, e.title);
+        if (pb === me) e.going.forEach((n) => add(n, -sh * f, e.title));
+      });
+    });
+    Object.entries(data.settle || {}).forEach(([n, v]) => (v.payments || []).forEach((pm) => { if (n === me) add(data.payTo, -pm.hkd); if (data.payTo === me) add(n, pm.hkd); }));
+    (data.bills || []).forEach((b) => Object.entries(billShares(b)).forEach(([n, v]) => {
+      if (n === me) add(b.paidBy, v, b.what);
+      if (b.paidBy === me) add(n, -v, b.what);
+    }));
+    (data.xfers || []).filter((x) => !x.direct).forEach((x) => { if (x.from === me) add(x.to, -x.hkd); if (x.to === me) add(x.from, x.hkd); });
+    const rows = Object.entries(owes).filter(([, v]) => Math.abs(v) >= 1).map(([x, v]) => (v > 0 ? { from: me, to: x, hkd: Math.round(v) } : { from: x, to: me, hkd: Math.round(-v) }))
+      .map((t) => ({ ...t, for: [...(why[t.from === me ? t.to : t.from] || [])].join(", ") }))
+      .sort((a, b) => b.hkd - a.hkd);
+    return offsetPairs(rows, directDebts().filter((d) => d.from === me || d.to === me));
+  }
   // the top box: what you owe and what you're owed, after netting everything out
   function settleBox() {
     if (!me) return `<div class="cc-owe"><h3 class="cc-h">💸 Settle up</h3><p class="small">Pick your name above to see what you owe and what you're owed.</p></div>`;
     const bal = allBalances(), sugg = simplify(bal);
-    const all = offsetPairs(sugg, directDebts());
+    const all = settleMode === "each" ? pairRows() : offsetPairs(sugg, directDebts());
     const owe = all.filter((t) => t.from === me), owed = all.filter((t) => t.to === me);
     const pend = (data.xfers || []).filter((x) => !x.confirmed && (x.from === me || x.to === me));
     const sum = (a) => a.reduce((t, x) => t + x.hkd, 0);
@@ -568,7 +593,8 @@
     Object.values(data.settle?.[me]?.payments || []).forEach((p) => items.push([`You paid ${data.payTo}`, p.hkd, p.confirmed ? "✓✓ confirmed" : "⏳ needs confirming"]));
     return `<div class="cc-owe">
       <h3 class="cc-h">💸 Settle up</h3>
-      <p class="muted small">Everything is netted out: who paid for what, your share, and what's already been paid back. So you may pay someone different from whoever covered your meal. "How it adds up" shows the detail.</p>
+      <div class="sp-mode" role="group" aria-label="How to settle up"><button type="button" class="cc-mini${settleMode === "net" ? " go" : ""}" data-spmode="net" aria-pressed="${settleMode === "net"}">Fewest payments</button><button type="button" class="cc-mini${settleMode === "each" ? " go" : ""}" data-spmode="each" aria-pressed="${settleMode === "each"}">Pay each person</button></div>
+      <p class="muted small">${settleMode === "each" ? "You pay back whoever paid for each thing you shared, one person at a time. More payments, but each one matches a meal or event." : "Everything is netted out, so there are as few payments as possible. You may pay someone different from whoever covered your meal. Tap <b>Pay each person</b> to settle with each person instead."} "How it adds up" shows the detail.</p>
       ${(() => { const un = data.events.filter((e) => unnamed(e)); return un.length ? `<p class="muted small cc-gpay">👤 Guests not on the class list: ${un.map((e) => `${esc(colName(e))} (${unnamed(e)}${e.price > 0 ? ` × ${hk(e.price)}` : ""})`).join(", ")}. They pay ${esc(data.payTo || "the organiser")} directly, so they aren't in the balances here.</p>` : ""; })()}
       ${!owe.length && !owed.length ? `<p class="small">✓ You're all square right now.</p>` : ""}
       ${owe.length ? `<p class="sp-h">💸 You owe <b>${hk(sum(owe))}</b> <small>≈ ${fx(sum(owe))}</small></p><ul class="sp-list">${owe.map(sRow).join("")}</ul>` : ""}
@@ -708,7 +734,13 @@
         <form class="pay-form" id="my-pay" autocomplete="off">
           <p class="small muted">So people can pay you back when you cover a bill. Fill in only what you use; only classmates with the passcode can see these.</p>
           <fieldset><legend>💳 PayPal</legend>
-            <label>PayPal.me link<input name="paypal" inputmode="url" placeholder="paypal.me/yourname" value="${esc(pr.paypal || "")}"></label></fieldset>
+            <label>PayPal.me link<input name="paypal" inputmode="url" placeholder="paypal.me/yourname" value="${esc(pr.paypal || "")}"></label>
+            <details class="fps-box how"><summary>How do I get paid by PayPal?</summary><ol class="how-steps">
+              <li>Open the PayPal app or paypal.com and log in. No account? Sign up free with your email.</li>
+              <li>Get your PayPal.me link: in the app, tap your profile picture and look for <b>PayPal.me</b>; on the web, go to <b>paypal.me</b> and create your link.</li>
+              <li>Pick a name. Your link is <b>paypal.me/yourname</b>.</li>
+              <li>Paste it in the box above (starting https://) and tap <b>Save my details</b>.</li></ol>
+              <p class="small muted">Classmates then get a Pay button with the HK$ amount filled in. PayPal changes it into your own currency. Paying by card adds a fee of about 3–5%; paying from a PayPal balance or linked bank usually costs less.</p></details></fieldset>
           <fieldset><legend>🌍 Bank transfer</legend>
             <label>Account name<input name="accName" placeholder="Name on the account" value="${esc(pr.accName || "")}"></label>
             <label>Bank<input name="bankName" placeholder="e.g. Chase, Barclays, MUFG" value="${esc(pr.bankName || "")}"></label>
@@ -717,6 +749,8 @@
             <label>Wise payment link <small>(optional)</small><input name="wiseLink" inputmode="url" placeholder="https://wise.com/pay/…" value="${esc(pr.wiseLink || "")}"></label></fieldset>
           <fieldset><legend>📱 Other apps</legend>
             <label>💙 Venmo username <small>(US accounts)</small><input name="venmo" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="@yourname" value="${esc(pr.venmo ? `@${String(pr.venmo).replace(/^@/, "")}` : "")}"></label>
+            <details class="fps-box how"><summary>Where do I find my Venmo username?</summary>
+              <p class="small muted">In the Venmo app, tap <b>Me</b>: your username is the @name under your name. Type it here and tap <b>Save my details</b>. Classmates get a button that opens your Venmo, plus the amount in US$ to send. Venmo only works between US accounts.</p></details>
             <label>Revolut, Zelle, PayNow…<input name="note" placeholder="e.g. Zelle: your email" value="${esc(pr.note || "")}"></label></fieldset>
           <details class="fps-box"${pr.wechat ? " open" : ""}><summary>💬 Use WeChat Pay with a Chinese or HK bank account? Add your WeChat ID</summary>
             <p class="small muted">Classmates whose WeChat Pay is also linked to a Chinese or HK bank can add you and send a transfer. WeChat Pay on an overseas card can't send money to people, so keep PayPal or bank details too.</p>
@@ -866,6 +900,8 @@
     }
     if (t.closest("[data-orgout]")) { orgPass = ""; forget("hk-org-v1"); api("GET").then((s) => { data = s; render(); }); return; }
     if (t.closest("[data-bf-new]")) { billDraft = newDraft(); render(); return; }
+    const spm = t.closest("[data-spmode]");
+    if (spm) { settleMode = spm.dataset.spmode; set("hk-settle-v1", settleMode); render(); return; }
     const st = t.closest("[data-seat]");
     if (st) {
       const E = data.events.find((x) => x.id === st.dataset.seat), on = st.dataset.on === "1", name = st.dataset.name;
