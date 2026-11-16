@@ -19546,14 +19546,8 @@ window.HK = {
      }
     ],
     [
-     "Evening",
-     "Tram Party",
-     "ours",
-     "wed-tram"
-    ],
-    [
-     "Evening",
-     "Happy Valley night races (same night as the tram party)",
+     "18:40–22:50",
+     "Happy Valley night races: 9 races, the first at 18:40 and the last at 22:50, so you can go before the tram party (22:00)",
      "event",
      null,
      [
@@ -19577,6 +19571,12 @@ window.HK = {
       "label": "Jazz Fest free shows",
       "url": "https://www.westk.hk/en/event/cathay-westk-jazz-fest#free-music-programmes"
      }
+    ],
+    [
+     "22:00–00:00",
+     "Tram Party",
+     "ours",
+     "wed-tram"
     ]
    ],
    "bus": [

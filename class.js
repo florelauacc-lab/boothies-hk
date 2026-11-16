@@ -61,7 +61,10 @@
     const owe = {}; let paid = 0;
     if (e.price > 0) { if (me && e.going.includes(me) && evPayer(e) !== me) owe[evPayer(e)] = +e.price; if (evPayer(e) === me) paid += e.price * e.going.filter((n) => n !== me).length; }
     const bs = (data.bills || []).filter((b) => b.ev === e.id);
-    bs.forEach((b) => { const sh = billShares(b); if (me && sh[me] && b.paidBy !== me) owe[b.paidBy] = (owe[b.paidBy] || 0) + sh[me]; if (b.paidBy === me) paid += named(b) - (sh[me] || 0); });
+    bs.forEach((b) => { if (!me) return; const sh = billShares(b);
+      if (!isPayer(b, me)) { payersOf(b).forEach(([p]) => { const v = owesOn(b, me, p); if (v > 0) owe[p] = (owe[p] || 0) + v; }); return; }
+      const mine = payersOf(b).filter(([p]) => p === me).reduce((t, [, v]) => t + v, 0), net = mine - (sh[me] || 0);
+      if (net > 0) paid += net; else payersOf(b).forEach(([p]) => { const v = p === me ? 0 : owesOn(b, me, p); if (v > 0) owe[p] = (owe[p] || 0) + v; }); });
     const parts = Object.entries(owe).filter(([, v]) => v >= 1).map(([n, v]) => `you owe ${esc(n)} ${hk(v)}`);
     if (paid >= 1) parts.push(`you're owed ${hk(paid)}`);
     if (parts.length) return parts.join(" · ");
@@ -219,6 +222,7 @@
           <p class="small muted">Everyone with the passcode sees it and can tick that they're going. You're ticked as going.</p>
           <button type="submit" class="paybtn">Add event</button>
         </form></details>` : ""}
+      ${live() ? guestBook() : ""}
       ${billsSection()}
       ${everyoneBalances()}
       ${live() ? nameFixer() : ""}
@@ -280,6 +284,19 @@
   const orgEvent = (e) => !e.by || ORGANISERS.includes(e.by);
   const unnamed = (e) => +e.guests || 0; // guests: not on the class list (e.g. another section) or a +1 not named yet; they share the cost and pay the collector directly
   const gS = (n) => `${n} guest${n === 1 ? "" : "s"}`;
+  // named guests (not in Becker) are part of the guest count; the rest are +1s not named yet
+  const gList = (e) => e.guestList || [], gUnnamed = (e) => Math.max(0, unnamed(e) - gList(e).length);
+  const gWho = (g) => `${esc(g.name)}${g.of ? ` <small>${esc(g.of)}'s guest</small>` : ""}`;
+  const evGuests = (E) => [...gList(E).map((g) => g.name), ...blanks(gUnnamed(E))]; // a bill from an event starts with its guests
+  function guestBook() { // everyone coming who isn't in Becker, to check against
+    const evs = data.events.filter((e) => unnamed(e)); if (!evs.length) return "";
+    const n = evs.reduce((t, e) => t + gList(e).length, 0), u = evs.reduce((t, e) => t + gUnnamed(e), 0);
+    return `<details class="cc-sub cc-gbook"><summary>👤 Guest list <small>not in Becker · ${n} named${u ? `, ${u} not named yet` : ""}</small></summary>
+      <p class="muted small gb-intro">Everyone coming who isn't in Becker, by event, and whose guest they are. Use it to check names at the door or on a bill. Add or name guests in each event under 👤&nbsp;Guests.</p>
+      ${evs.map((e) => `<div class="gb-ev"><p class="gb-h"><b>${esc(e.title)}</b> <small>${esc([DAYS.find(([iso]) => iso === e.iso)?.[1], e.when].filter(Boolean).join(", "))}</small></p>
+        <ul class="cc-glist">${gList(e).map((g) => `<li><span>${gWho(g)}</span></li>`).join("")}${gUnnamed(e) ? `<li class="muted"><span>+${gUnnamed(e)} not named yet</span></li>` : ""}</ul></div>`).join("")}
+    </details>`;
+  }
   const headcount = (e) => e.going.length + unnamed(e);
   // capped events (e.g. the tram holds 30): once full, new people go on a waitlist in sign-up order
   const capOf = (e) => +e.cap || 0, wait = (e) => e.waitlist || [];
@@ -350,8 +367,13 @@
           <button type="button" class="cc-done" data-edit="">Done</button>`
         : `<div class="cc-names">${e.going.map((n) => `<span class="${n === me ? "me" : ""}">${esc(n)}</span>`).join("") || `<em class="muted">Nobody yet</em>`}</div>
           ${live() ? `<button type="button" class="cc-editbtn" data-edit="${e.id}">✏️ Tick who's going</button>` : ""}`}
-      ${live() || unnamed(e) ? `<div class="cc-guests"><span>👤 Guests <small>Not on the class list (e.g. someone from another section) or a +1 not named yet</small></span>
-        ${live() ? `<span class="gq"><button type="button" data-guests="${e.id}|-1" aria-label="One fewer guest"${unnamed(e) ? "" : " disabled"}>−</button><b>${unnamed(e)}</b><button type="button" data-guests="${e.id}|1" aria-label="One more guest">+</button></span>` : `<b>${unnamed(e)}</b>`}</div>
+      ${live() || unnamed(e) ? `<div class="cc-guests"><span>👤 Guests <small>Not in Becker (a partner, a friend, someone from another section), named or not</small></span>
+        ${live() ? `<span class="gq"><button type="button" data-guests="${e.id}|-1" aria-label="One fewer guest not named yet"${gUnnamed(e) ? "" : " disabled"}>−</button><b>${unnamed(e)}</b><button type="button" data-guests="${e.id}|1" aria-label="One more guest">+</button></span>` : `<b>${unnamed(e)}</b>`}</div>
+        ${unnamed(e) ? `<ul class="cc-glist">${gList(e).map((g) => `<li><span>${gWho(g)}</span>${live() ? `<button type="button" class="cc-x" data-gdel="${e.id}" data-name="${esc(g.name)}" aria-label="Take ${esc(g.name)} off the guest list">✕</button>` : ""}</li>`).join("")}${gUnnamed(e) ? `<li class="muted"><span>+${gUnnamed(e)} not named yet</span></li>` : ""}</ul>` : ""}
+        ${live() && me ? `<form class="cc-gadd" data-gadd="${e.id}"><label class="bf-f"><span>Guest's name</span><input name="gname" maxlength="40" placeholder="e.g. Alex Chan" autocomplete="off" autocapitalize="words" required></label>
+          <label class="bf-f"><span>Whose guest?</span><input name="gof" list="cc-gof-${e.id}" value="${esc(me)}" placeholder="Type a name" autocomplete="off" autocapitalize="words"></label><datalist id="cc-gof-${e.id}">${people().map((n) => `<option value="${esc(n)}">`).join("")}</datalist>
+          <button type="submit" class="cc-mini go">${gUnnamed(e) ? "Name a guest" : "+&nbsp;Add a named guest"}</button>
+          ${gUnnamed(e) ? `<p class="muted small">This names one of the +${gUnnamed(e)} already counted. For an extra guest, tap + first.</p>` : ""}</form>` : ""}
         ${unnamed(e) ? `<p class="muted small cc-gnote">Counted for seats and the cost split, so everyone pays a bit less. Guests pay their share to ${esc(data.payTo || "the organiser")} directly. If it turns out they're on the class list, tick their name and tap −.</p>` : ""}` : ""}
       ${waitBlock(e)}
       ${capOf(e) && live() ? resetBlock(e) : ""}
@@ -366,11 +388,11 @@
           <p class="small">💳 Paid by <b>${esc(evPayer(e))}</b>: everyone going pays them ${hk(p)}.</p>
           ${unnamed(e) ? `<p class="cc-gpay">👤 Includes ${gS(unnamed(e))}: ${unnamed(e) === 1 ? "they pay" : "each pays"} ${hk(p)} to ${esc(evPayer(e) || "the organiser")} directly.</p>` : ""}
           ${(() => { const xb = (data.bills || []).filter((b) => b.ev === e.id);
-            return `${xb.length ? `<p class="small"><b>Other costs</b></p><ul class="ev-bills">${xb.map((b) => `<li><span>🧾 ${esc(b.what)} · paid by ${esc(b.paidBy)} · ${b.among.length} people${bG(b) ? ` + ${gS(bG(b))}` : ""}</span><b>${hk(b.hkd)}</b>${live() ? `<button type="button" class="cc-mini" data-bedit="${b.id}">✏️ Edit</button>` : ""}</li>`).join("")}</ul>` : ""}
+            return `${xb.length ? `<p class="small"><b>Other costs</b></p><ul class="ev-bills">${xb.map((b) => `<li><span>🧾 ${esc(b.what)} · paid by ${esc(paidList(b))} · ${b.among.length} people${bG(b) ? ` + ${gS(bG(b))}` : ""}</span><b>${hk(b.hkd)}</b>${live() ? `<button type="button" class="cc-mini" data-bedit="${b.id}">✏️ Edit</button>` : ""}</li>`).join("")}</ul>` : ""}
             ${live() ? `<button type="button" class="cc-mini" data-splitev="${e.id}">🧾 Add another cost someone else paid (e.g. drinks)</button>` : ""}`; })()}`
           : (() => { // no set price: split the bill(s) between whoever was there, whoever paid
               const evBills = (data.bills || []).filter((b) => b.ev === e.id);
-              return `${evBills.length ? `<ul class="ev-bills">${evBills.map((b) => `<li><span>🧾 ${esc(b.what)} · paid by ${esc(b.paidBy)} · ${b.among.length} people${bG(b) ? ` + ${gS(bG(b))}` : ""}</span><b>${hk(b.hkd)}</b>${live() ? `<button type="button" class="cc-mini" data-bedit="${b.id}">✏️ Edit</button>` : ""}</li>`).join("")}</ul>` : ""}
+              return `${evBills.length ? `<ul class="ev-bills">${evBills.map((b) => `<li><span>🧾 ${esc(b.what)} · paid by ${esc(paidList(b))} · ${b.among.length} people${bG(b) ? ` + ${gS(bG(b))}` : ""}</span><b>${hk(b.hkd)}</b>${live() ? `<button type="button" class="cc-mini" data-bedit="${b.id}">✏️ Edit</button>` : ""}</li>`).join("")}</ul>` : ""}
                 ${live() ? `<p class="muted small">One bill per table if tables ate different things; each is split only between the people at that table.</p>
                 <button type="button" class="cc-mini go" data-splitev="${e.id}">🧾 ${evBills.length ? "Add another table's bill" : "Add the bill (or the first table's)"}</button>
                 <details class="cc-collect"><summary>${esc(data.payTo)} collecting a set price instead?</summary>` : ""}`;
@@ -500,7 +522,7 @@
       || (() => { const a = ppl.filter((n) => n.toLowerCase().includes(q)); return a.length === 1 ? a[0] : ""; })();
     return hit || ""; };
   const peopleList = (id) => `<datalist id="${id}">${people().map((n) => `<option value="${esc(n)}">`).join("")}</datalist>`;
-  const newDraft = () => ({ id: null, what: "", ev: "", hkd: "", paidBy: me || "", among: new Set(me ? [me] : []), mode: "equal", shares: {}, q: "", guests: [], gShares: [], gPay: [], cover: [], full: false });
+  const newDraft = () => ({ id: null, what: "", ev: "", hkd: "", paidBy: me || "", among: new Set(me ? [me] : []), mode: "equal", shares: {}, q: "", guests: [], gShares: [], gPay: [], cover: [], also: [], full: false });
   const blanks = (n) => Array.from({ length: n }, () => "");
   let billSaving = false; // stops a second tap adding the same bill twice
   const bG = (b) => +b.guests || 0; // guests at the table (not on the class list) pay the payer directly
@@ -513,10 +535,19 @@
     return base;
   };
   const named = (b) => Object.values(billShares(b)).reduce((t, v) => t + v, 0); // what the people on the list owe
+  // a bill paid with more than one card: alsoPaid { name: amount }, and paidBy paid the rest (and collects from guests who pay directly)
+  const alsoSum = (b) => Object.values(b.alsoPaid || {}).reduce((t, v) => t + (+v || 0), 0);
+  const paidAt = (b) => [[b.paidBy, b.hkd - alsoSum(b)], ...Object.entries(b.alsoPaid || {}).map(([p, v]) => [p, +v || 0])]; // what each paid at the restaurant
+  const payersOf = (b) => [[b.paidBy, named(b) - alsoSum(b)], ...Object.entries(b.alsoPaid || {}).map(([p, v]) => [p, +v || 0])]; // what each is owed back by the classmates
+  const isPayer = (b, n) => !!n && (b.paidBy === n || (b.alsoPaid || {})[n] != null);
+  const andList = (a) => (a.length > 1 ? `${a.slice(0, -1).join(", ")} and ${a[a.length - 1]}` : a[0] || "");
+  const paidList = (b) => andList(paidAt(b).map(([p]) => p));
+  // what person n owes payer p on a bill (shares are paid back in proportion to what each payer put in)
+  const owesOn = (b, n, p) => { const N = named(b); if (!N) return 0; const sh = billShares(b), c = (x) => payersOf(b).filter(([q]) => q === x).reduce((t, [, v]) => t + v, 0); return ((sh[n] || 0) * c(p) - (sh[p] || 0) * c(n)) / N; };
   function billBalances() { // + means you're owed, - means you owe
     const bal = {};
     (data.bills || []).forEach((b) => {
-      bal[b.paidBy] = (bal[b.paidBy] || 0) + named(b);
+      payersOf(b).forEach(([p, c]) => { bal[p] = (bal[p] || 0) + c; });
       Object.entries(billShares(b)).forEach(([n, v]) => { bal[n] = (bal[n] || 0) - v; });
     });
     (data.xfers || []).filter((x) => !x.direct).forEach((x) => { bal[x.from] = (bal[x.from] || 0) + x.hkd; bal[x.to] = (bal[x.to] || 0) - x.hkd; });
@@ -538,7 +569,7 @@
   // money someone fronted for a bill that another person collects: the collector pays them back directly
   function directDebts() {
     const m = {};
-    (data.bills || []).filter((b) => b.frontedBy).forEach((b) => { const k = `${b.paidBy}|${b.frontedBy}`; (m[k] = m[k] || { from: b.paidBy, to: b.frontedBy, hkd: 0, what: [] }).hkd += b.hkd; m[k].what.push(b.what); });
+    (data.bills || []).filter((b) => b.frontedBy).forEach((b) => { const k = `${b.paidBy}|${b.frontedBy}`; (m[k] = m[k] || { from: b.paidBy, to: b.frontedBy, hkd: 0, what: [] }).hkd += b.hkd - alsoSum(b); m[k].what.push(b.what); });
     (data.xfers || []).filter((x) => x.direct).forEach((x) => { const k = `${x.from}|${x.to}`; if (m[k]) m[k].hkd -= x.hkd; });
     return Object.values(m).filter((d) => d.hkd >= 1).map((d) => ({ from: d.from, to: d.to, hkd: Math.round(d.hkd), direct: true, note: d.what.join(", ") }));
   }
@@ -623,10 +654,11 @@
       });
     });
     Object.entries(data.settle || {}).forEach(([n, v]) => (v.payments || []).forEach((pm) => { if (n === me) add(data.payTo, -pm.hkd); if (data.payTo === me) add(n, pm.hkd); }));
-    (data.bills || []).forEach((b) => Object.entries(billShares(b)).forEach(([n, v]) => {
-      if (n === me) add(b.paidBy, v, b.what);
-      if (b.paidBy === me) add(n, -v, b.what);
-    }));
+    (data.bills || []).forEach((b) => { const N = named(b); if (!N) return; const ps = payersOf(b);
+      Object.entries(billShares(b)).forEach(([n, v]) => ps.forEach(([p, c]) => {
+        if (n === me) add(p, (v * c) / N, b.what);
+        if (p === me) add(n, (-v * c) / N, b.what);
+      })); });
     (data.xfers || []).filter((x) => !x.direct).forEach((x) => { if (x.from === me) add(x.to, -x.hkd); if (x.to === me) add(x.from, x.hkd); });
     const rows = Object.entries(owes).filter(([, v]) => Math.abs(v) >= 1).map(([x, v]) => (v > 0 ? { from: me, to: x, hkd: Math.round(v) } : { from: x, to: me, hkd: Math.round(-v) }))
       .map((t) => ({ ...t, for: [...(why[t.from === me ? t.to : t.from] || [])].join(", ") }))
@@ -643,7 +675,8 @@
     const sum = (a) => a.reduce((t, x) => t + x.hkd, 0);
     const items = [];
     data.events.forEach((e) => { if (e.price > 0 && e.going.includes(me)) items.push([e.title, -e.price, `paid by ${evPayer(e)}`]); if (e.price > 0 && evPayer(e) === me) items.push([`You paid: ${e.title}`, e.price * e.going.filter((n) => n !== me).length + (e.going.includes(me) ? e.price : 0), `${e.going.length} people × ${hk(e.price)}`]); });
-    (data.bills || []).forEach((b) => { const sh = billShares(b)[me]; if (sh) items.push([b.what, -sh, `paid by ${b.paidBy}`]); if (b.paidBy === me) items.push([b.frontedBy ? `You collect: ${b.what}` : `You paid: ${b.what}`, named(b), `for ${b.among.length} people${bG(b) ? ` (+ ${gS(bG(b))} who pay you directly)` : ""}`]);
+    (data.bills || []).forEach((b) => { const sh = billShares(b)[me]; if (sh) items.push([b.what, -sh, `paid by ${paidList(b)}`]); if (b.paidBy === me) items.push([b.frontedBy ? `You collect: ${b.what}` : `You paid: ${b.what}`, named(b) - alsoSum(b), `for ${b.among.length} people${bG(b) ? ` (+ ${gS(bG(b))} who pay you directly)` : ""}${b.alsoPaid ? `, less the ${hk(alsoSum(b))} the others paid` : ""}`]);
+      if ((b.alsoPaid || {})[me] != null) items.push([`You paid part of: ${b.what}`, +b.alsoPaid[me], `${hk(+b.alsoPaid[me])} of ${hk(b.hkd)}`]);
       if (b.frontedBy === me) items.push([`You paid the restaurant: ${b.what}`, b.hkd, `${b.paidBy} pays you back`]); if (b.frontedBy && b.paidBy === me) items.push([`${b.frontedBy} paid the restaurant`, -b.hkd, "you pay them back"]); });
     (data.xfers || []).filter((x) => x.confirmed && (x.from === me || x.to === me)).forEach((x) => items.push([x.from === me ? `You paid ${x.to}` : `${x.from} paid you`, x.from === me ? x.hkd : -x.hkd, "✓✓ confirmed"]));
     Object.values(data.settle?.[me]?.payments || []).forEach((p) => items.push([`You paid ${data.payTo}`, p.hkd, p.confirmed ? "✓✓ confirmed" : "⏳ needs confirming"]));
@@ -712,8 +745,8 @@
   const quickHelp = () => `<details class="cc-sub cc-help"${get("hk-help-v1") === "closed" ? "" : " open"}><summary>❓ How this works <small>money, bills and plans in 1 minute</small></summary>
     <ol class="how-steps">
       <li><b>Pick your name</b> in "I'm" above. Everything here is then about you.</li>
-      <li><b>Class events:</b> tap one and tick yourself going. <b>⭐&nbsp;My week</b> at the top shows just yours.</li>
-      <li><b>Ate out together?</b> Tap <b>🍜&nbsp;Add the bill</b>: the total, who paid, and who shared it. It works out everyone's share, guests too. Restaurants usually split between 2 cards at most, so one person pays and everyone pays them back here.</li>
+      <li><b>Class events:</b> tap one and tick yourself going. Bringing someone from outside Becker? Add them under <b>👤&nbsp;Guests</b>, with or without a name. <b>⭐&nbsp;My week</b> at the top shows just yours.</li>
+      <li><b>Ate out together?</b> Tap <b>🍜&nbsp;Add the bill</b>: the total, who paid, and who shared it. It works out everyone's share, guests too. Paid with 2 cards? Tap <b>💳&nbsp;Add who else paid</b> and everyone pays each of you back.</li>
       <li><b>Ask to be paid:</b> on a bill you paid, tap <b>📲&nbsp;Ask on WhatsApp</b> to send everyone their share.</li>
       <li><b>Pay someone:</b> <b>💸&nbsp;Settle up</b> shows who you owe, with their PayPal, Venmo, FPS or bank. Pay, then tap <b>✓&nbsp;I've paid</b>. Choose <b>Fewest payments</b> or <b>Pay each person</b>.</li>
       <li><b>See who owes you:</b> under <b>Owed to you</b>. Tap <b>✓&nbsp;Paid me</b> when the money arrives.</li>
@@ -724,9 +757,10 @@
     </ol></details>`;
   // a bill you paid → one WhatsApp message with everyone's share
   const askText = (b) => {
-    const sh = billShares(b), lines = Object.entries(sh).filter(([n, v]) => n !== b.paidBy && v > 0.5).map(([n, v]) => `• ${n}: ${hk(v)}`);
-    billGuests(b).forEach((x, i) => { if (!(b.guestPay || [])[i]) lines.push(`• ${x} (guest): ${hk(gAmt(b, i))}`); });
-    return `🧾 *${b.what || "Bill"}* · ${hk(b.hkd)}\nI paid, so here's what everyone owes me:\n${lines.join("\n")}\n\nMy PayPal, Venmo, FPS or bank details are in Boothies in HK. Pay me, then tap "✓ I've paid" under 💸 Settle up: https://boothies-hk.vercel.app/#cc`;
+    const lines = Object.keys(billShares(b)).filter((n) => n !== me).map((n) => [n, owesOn(b, n, me)]).filter(([, v]) => v > 0.5).map(([n, v]) => `• ${n}: ${hk(v)}`);
+    if (me === b.paidBy) billGuests(b).forEach((x, i) => { if (!(b.guestPay || [])[i]) lines.push(`• ${x} (guest): ${hk(gAmt(b, i))}`); });
+    const mine = paidAt(b).filter(([p]) => p === me).reduce((t, [, v]) => t + v, 0);
+    return `🧾 *${b.what || "Bill"}* · ${hk(b.hkd)}\n${b.alsoPaid ? `I paid ${hk(mine)} of it, so here's what everyone owes me:` : "I paid, so here's what everyone owes me:"}\n${lines.join("\n")}\n\nMy PayPal, Venmo, FPS or bank details are in Boothies in HK. Pay me, then tap "✓ I've paid" under 💸 Settle up: https://boothies-hk.vercel.app/#cc`;
   };
   function billItem(b, evName) {
     const sh = billShares(b), g = bG(b), n = b.among.length + g, ev = b.ev && evName(b.ev);
@@ -736,12 +770,12 @@
     const direct = billGuests(b).filter((_, i) => !gp(i)).length;
     return `<li class="bi">
       <div class="bi-top"><b class="bi-what">${esc(b.what)}</b><span class="bi-amt">${hk(b.hkd)}</span></div>
-      <p class="bi-meta">${ev && ev !== b.what ? `${esc(ev)} · ` : ""}Paid by <b>${esc(b.paidBy)}</b>${b.frontedBy ? ` (${esc(b.frontedBy)} paid the restaurant)` : ""}</p>
+      <p class="bi-meta">${ev && ev !== b.what ? `${esc(ev)} · ` : ""}Paid by ${b.alsoPaid ? paidAt(b).map(([p, v]) => `<b>${esc(p)}</b>&nbsp;${hk(v)}`).join(" + ") : `<b>${esc(b.paidBy)}</b>`}${b.frontedBy ? ` (${esc(b.frontedBy)} paid the restaurant)` : ""}</p>
       <p class="bi-meta">${n} ${n === 1 ? "person" : "people"}${g ? ` (${b.among.length} from the class + ${gS(g)})` : ""} · ${eq ? `<b>${hk(eq)}</b> each` : "custom split"}</p>
       <p class="bi-names">${who.join(", ")}</p>
       ${direct ? `<p class="bi-meta">👤 ${direct === g ? (g === 1 ? "The guest pays" : "Guests pay") : `${direct} guest${direct === 1 ? "" : "s"} pay${direct === 1 ? "s" : ""}`} ${esc(b.paidBy)} directly.</p>` : ""}
       ${b.editedBy ? `<p class="bi-meta muted">Edited by ${esc(b.editedBy)}</p>` : ""}
-      <div class="bi-act">${me && me === b.paidBy ? `<a class="cc-mini go bi-ask" href="https://wa.me/?text=${encodeURIComponent(askText(b))}" target="_blank" rel="noopener">📲 Ask on WhatsApp</a>` : ""}<button type="button" class="cc-mini" data-bedit="${b.id}">✏️ Edit</button>
+      <div class="bi-act">${isPayer(b, me) ? `<a class="cc-mini go bi-ask" href="https://wa.me/?text=${encodeURIComponent(askText(b))}" target="_blank" rel="noopener">📲 Ask on WhatsApp</a>` : ""}<button type="button" class="cc-mini" data-bedit="${b.id}">✏️ Edit</button>
         <button type="button" class="cc-mini bi-del${delArm === b.id ? " armed" : ""}" data-bdel="${b.id}">${delArm === b.id ? "Tap again to delete" : "🗑 Delete"}</button></div>
     </li>`;
   }
@@ -749,7 +783,9 @@
   const draftFrom = (b) => ({ ...newDraft(), id: b.id, what: b.what || "", ev: b.ev || "", hkd: String(b.hkd), paidBy: b.paidBy, among: new Set(b.among),
     mode: b.shares ? "custom" : "equal", shares: b.shares ? Object.fromEntries(Object.entries(b.shares).map(([k, v]) => [k, String(v)])) : {},
     guests: Array.from({ length: bG(b) }, (_, i) => (b.guestNames || [])[i] || ""), gShares: (b.guestShares || []).map(String), gPay: (b.guestPay || []).slice(), cover: Object.entries(b.cover || {}),
-    fronted: !!b.frontedBy, frontedBy: b.frontedBy || "" });
+    fronted: !!b.frontedBy, frontedBy: b.frontedBy || "", also: Object.entries(b.alsoPaid || {}).map(([n, a]) => [n, String(a)]) });
+  const alsoLine = (d) => { const tot = +d.hkd || 0, s = d.also.reduce((t, [, a]) => t + (+a || 0), 0), rest = tot - s;
+    return tot && rest <= 0 ? `<span class="warn-t">The others add up to ${hk(s)}, the whole bill. Check the amounts.</span>` : `${esc(d.paidBy || "The main payer")} paid the rest${tot ? `: <b>${hk(rest)}</b>` : ""}. Everyone pays each payer back in proportion.`; };
   function billForm(d, ppl, evName) {
     const total = +d.hkd || 0, among = [...d.among], gs = d.guests, g = gs.length, n = among.length + g;
     const sum = among.reduce((t, x) => t + (+d.shares[x] || 0), 0) + gs.reduce((t, _, i) => t + (+d.gShares[i] || 0), 0);
@@ -762,6 +798,12 @@
         <label class="bf-f"><span>Total HK$</span><input name="hkd" type="number" inputmode="decimal" min="1" step="0.01" value="${esc(d.hkd)}" data-bf="hkd" required></label>
         <label class="bf-f"><span>Paid by <small>(type a name; everyone pays them)</small></span><input name="paidBy" data-bf="paidBy" list="bf-people" value="${esc(d.paidBy)}" placeholder="Who paid? Type a name" autocomplete="off" autocapitalize="words" required>${peopleList("bf-people")}</label>
       </div>
+      <div class="bf-also">${d.also.map(([n, a], i) => `<div class="bf-gcard"><div class="bf-2">
+          <label class="bf-f"><span>Also paid</span><input data-bf-aname="${i}" list="bf-people" value="${esc(n)}" placeholder="Type a name" autocomplete="off" autocapitalize="words" aria-label="Who else paid"></label>
+          <label class="bf-f"><span>How much HK$</span><input type="number" inputmode="decimal" min="1" step="0.01" data-bf-aamt="${i}" value="${esc(a)}" aria-label="How much they paid"></label></div>
+          <button type="button" class="cc-mini" data-bf-adel="${i}">✕ Remove</button></div>`).join("")}
+        ${d.also.length ? `<p class="small bf-arest">${alsoLine(d)}</p>` : ""}
+        <button type="button" class="cc-mini" data-bf-aadd="1">💳 ${d.also.length ? "Someone else paid part too" : "Paid with more than one card? Add who else paid"}</button></div>
       <label class="bf-check"><input type="checkbox" data-bf="fronted"${d.fronted ? " checked" : ""}> <span>Someone else paid the restaurant: ${esc(d.paidBy)} collects from everyone and pays them back</span></label>
       ${d.fronted ? `<label class="bf-f"><span>Who paid the restaurant?</span><select name="frontedBy" data-bf="frontedBy">${ppl.filter((x) => x !== d.paidBy).map((x) => `<option${x === (d.frontedBy || me) ? " selected" : ""}>${esc(x)}</option>`).join("")}</select></label>` : ""}
 
@@ -871,6 +913,9 @@
     if (t.dataset.bfGshare != null) billDraft.gShares[+t.dataset.bfGshare] = t.value;
     if (t.dataset.bfGname != null) billDraft.guests[+t.dataset.bfGname] = t.value;
     if (t.dataset.bfGpay != null) billDraft.gPay[+t.dataset.bfGpay] = t.value;
+    if (t.dataset.bfAname != null) billDraft.also[+t.dataset.bfAname][0] = t.value;
+    if (t.dataset.bfAamt != null) billDraft.also[+t.dataset.bfAamt][1] = t.value;
+    if (t.dataset.bfAamt != null || t.dataset.bf === "hkd") { const p = t.closest(".bill-form")?.querySelector(".bf-arest"); if (p) p.innerHTML = alsoLine(billDraft); }
     if (t.dataset.bfCby != null || t.dataset.bfCfor != null) { const i = +(t.dataset.bfCby ?? t.dataset.bfCfor); billDraft.cover[i][t.dataset.bfCby != null ? 1 : 0] = t.value; render(); }
     if (t.dataset.bfShare || t.dataset.bfGshare != null || t.dataset.bf === "hkd") { const p = t.closest(".bill-form"); if (p) refreshSum(p); }
   });
@@ -894,7 +939,7 @@
     if (t.dataset.bf === "fronted") { billDraft.fronted = t.checked; if (t.checked && !billDraft.frontedBy) billDraft.frontedBy = me !== billDraft.paidBy ? me : ""; render(); return; }
     billDraft[t.dataset.bf] = t.value;
     if (t.dataset.bf === "paidBy") { const n = findPerson(t.value); if (n) { billDraft.paidBy = n; render(); } return; }
-    if (t.dataset.bf === "ev" && t.value) { const E = data.events.find((x) => x.id === t.value); if (E) { billDraft.among = new Set(E.going); billDraft.guests = blanks(unnamed(E)); billDraft.paidBy = defaultPayer(E.id); if (!billDraft.what) billDraft.what = E.title; } render(); }
+    if (t.dataset.bf === "ev" && t.value) { const E = data.events.find((x) => x.id === t.value); if (E) { billDraft.among = new Set(E.going); billDraft.guests = evGuests(E); billDraft.paidBy = defaultPayer(E.id); if (!billDraft.what) billDraft.what = E.title; } render(); }
   });
 
 
@@ -967,6 +1012,8 @@
     }
     const wt = t.closest("[data-wait]");
     if (wt) { const on = wt.dataset.on === "1"; op({ op: "waitlist", ev: wt.dataset.wait, name: me, on }).then((ok) => { if (!ok) return; const n = wait(data.events.find((x) => x.id === wt.dataset.wait)).indexOf(me) + 1; toast(on ? (n ? `You're #${n} on the waitlist` : "You're in!") : "Off the waitlist"); }); return; }
+    const gd = t.closest("[data-gdel]");
+    if (gd) { const n = gd.dataset.name; if (confirm(`Take ${n} off the guest list?`)) op({ op: "delGuest", ev: gd.dataset.gdel, name: n }).then((ok) => ok && toast(`${n} is off the guest list`)); return; }
     const uw = t.closest("[data-unwait]");
     if (uw) { if (confirm(`Take ${uw.dataset.name} off the waitlist?`)) op({ op: "waitlist", ev: uw.dataset.unwait, name: uw.dataset.name, on: false }); return; }
     const rg = t.closest("[data-resetgo]");
@@ -1038,7 +1085,7 @@
     const se = t.closest("[data-splitev]");
     if (se) {
       const E = data.events.find((x) => x.id === se.dataset.splitev);
-      billDraft = { ...newDraft(), ev: E.id, what: E.title, among: new Set(E.going), guests: blanks(unnamed(E)), paidBy: defaultPayer(E.id) };
+      billDraft = { ...newDraft(), ev: E.id, what: E.title, among: new Set(E.going), guests: evGuests(E), paidBy: defaultPayer(E.id) };
       render();
       setTimeout(() => document.getElementById("bill-form")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
       return;
@@ -1046,9 +1093,12 @@
     if (t.closest("[data-bf-cancel]")) { billDraft = null; render(); return; }
     const bt = t.closest("[data-bf-toggle]");
     if (bt && billDraft) { const n = bt.dataset.bfToggle; if (billDraft.among.has(n)) billDraft.among.delete(n); else billDraft.among.add(n); render(); return; }
-    if (t.closest("[data-bf-all]") && billDraft) { const E = data.events.find((x) => x.id === billDraft.ev); if (E) { billDraft.among = new Set(E.going); billDraft.guests = blanks(unnamed(E)); } render(); return; }
+    if (t.closest("[data-bf-all]") && billDraft) { const E = data.events.find((x) => x.id === billDraft.ev); if (E) { billDraft.among = new Set(E.going); billDraft.guests = evGuests(E); } render(); return; }
     if (t.closest("[data-bf-none]") && billDraft) { billDraft.among = new Set(); render(); return; }
     if (t.closest("[data-bf-full]") && billDraft) { billDraft.full = !billDraft.full; render(); return; }
+    if (t.closest("[data-bf-aadd]") && billDraft) { billDraft.also.push(["", ""]); render(); setTimeout(() => { const ins = root.querySelectorAll("[data-bf-aname]"); ins[ins.length - 1]?.focus(); }, 30); return; }
+    const adel = t.closest("[data-bf-adel]");
+    if (adel && billDraft) { billDraft.also.splice(+adel.dataset.bfAdel, 1); render(); return; }
     if (t.closest("[data-bf-gadd]") && billDraft) { billDraft.guests.push(""); render(); setTimeout(() => { const ins = root.querySelectorAll("[data-bf-gname]"); ins[ins.length - 1]?.focus(); }, 30); return; }
     if (t.closest("[data-bf-cadd]") && billDraft) { const am = [...billDraft.among], by = am.includes(me) ? me : am[0], taken = billDraft.cover.map(([f]) => f);
       billDraft.cover.push([am.find((n) => n !== by && !taken.includes(n)) || am[1] || "", by]); render(); return; }
@@ -1133,6 +1183,13 @@
       const body = { op: editing ? "editBill" : "addBill", id: d.id || undefined, what: d.what, ev: d.ev, hkd: +d.hkd, paidBy: d.paidBy, among, guestNames: d.guests.map((x) => x.trim()), guestPay: d.guests.map((_, i) => d.gPay[i] || ""), cover: Object.fromEntries(d.cover.filter(([f, by]) => f && by && f !== by && d.among.has(f) && d.among.has(by))) };
       if (d.fronted) body.frontedBy = f.elements.frontedBy?.value || d.frontedBy;
       if (d.mode === "custom") { body.shares = Object.fromEntries(among.map((n) => [n, +d.shares[n] || 0])); body.guestShares = d.guests.map((_, i) => +d.gShares[i] || 0); }
+      const also = d.also.filter(([n, a]) => String(n).trim() || +a), ap = {};
+      for (const [n, a] of also) { const p = findPerson(n);
+        if (!p) { toast("Who else paid? Type a name from the class list"); return; }
+        if (p === payer) { toast(`${p} is already the main payer`); return; }
+        if (!(+a > 0)) { toast(`How much did ${p} pay?`); return; }
+        ap[p] = (ap[p] || 0) + +a; }
+      if (also.length) { if (Object.values(ap).reduce((t, v) => t + v, 0) >= +d.hkd) { toast(`The others add up to the whole bill: ${payer} paid nothing. Check the amounts`); return; } body.alsoPaid = ap; }
       billSaving = true; render();
       op(body).then((ok) => { billSaving = false; if (ok) { billDraft = null; toast(editing ? "Bill updated for everyone" : payer === me ? "Bill added. Tap 📲 Ask on WhatsApp on it to tell everyone" : "Bill added: everyone's share is worked out"); } render(); });
     }
@@ -1140,6 +1197,9 @@
       const x = JSON.parse(f.dataset.xfer);
       op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: fd("method"), direct: !!x.direct, note: x.direct ? x.note : "" }).then((ok) => ok && toast(`Thanks! ${x.to} will confirm when it arrives`));
     }
+    else if (f.dataset.gadd) { const E = data.events.find((x) => x.id === f.dataset.gadd), name = fd("gname"); if (!E || !name) return;
+      const host = fd("gof") ? findPerson(fd("gof")) : me; if (!host) { toast("Whose guest? Type a name from the class list"); return; }
+      op({ op: "addGuest", ev: E.id, name, of: host, fill: gUnnamed(E) > 0 }).then((ok) => ok && toast(`${name} is on the guest list`)); }
     else if (f.dataset.fixname) { const from = f.dataset.fixname, to = fd("to"); if (to) asOrganiser({ op: "renamePerson", from, to }, () => toast(`${from} is now ${to} everywhere`)); }
     else if (f.dataset.aliasname) { const from = fd("from"), to = fd("to"); if (from && to && confirm(`Show ${from} as "${to}" everywhere?`)) asOrganiser({ op: "renamePerson", from, to }, () => toast(`${from} now shows as ${to}`)); }
     else if (f.id === "cc-collect") {

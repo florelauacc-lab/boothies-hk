@@ -1633,3 +1633,27 @@ p, li, label, .how-steps li, .bi-meta, .bi-names { text-wrap: pretty; }
 .cc-reset p { margin: 0; flex: 1 1 100%; }
 .cc-reset.paused { padding: 10px 12px; border-radius: 12px; border: 1px dashed rgba(255,255,255,.2); }
 .cc-resetbtn.armed { background: #c0392b; border-color: #c0392b; color: #fff; }
+
+/* named guests + more than one payer */
+.cc-glist { list-style: none; margin: 4px 14px 8px; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.cc-glist li { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 10px; border-radius: 10px; background: rgba(255,255,255,.05); min-width: 0; }
+.cc-glist li > span { min-width: 0; overflow-wrap: anywhere; text-wrap: pretty; }
+.cc-glist li small { display: inline-block; margin-left: 4px; opacity: .7; white-space: nowrap; }
+.cc-gadd { margin: 4px 14px 10px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.cc-gadd > label { flex: 1 1 200px; min-width: 0; }
+.cc-gadd input { width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; }
+.cc-gadd button { align-self: flex-end; }
+.cc-gadd button { flex: 0 0 auto; }
+.cc-gadd p { flex: 1 1 100%; margin: 0; }
+.cc-gbook .gb-intro { margin: 4px 14px 8px; }
+.cc-gbook .gb-ev { margin: 0 0 6px; }
+.cc-gbook .gb-h { margin: 6px 14px 2px; text-wrap: pretty; }
+.cc-gbook .gb-h small { opacity: .7; }
+.bf-also { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.bf-also > button { align-self: flex-start; }
+.bf-also .bf-arest { margin: 0; }
+/* bill form: a guest's "how do they pay?" box or a long name never pushes the form wider than the phone */
+.bill-form fieldset { min-inline-size: 0; min-width: 0; }
+.bill-form fieldset > *, .bf-gcard, .bf-gcard > *, .bf-grow, .bf-2 > * { min-width: 0; }
+.bill-form input, .bill-form select { max-width: 100%; min-width: 0; box-sizing: border-box; }
+.cc-gadd input { font: inherit; font-size: 16px; padding: 9px 11px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); background: rgba(0,0,0,.3); color: var(--text); }

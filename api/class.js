@@ -113,7 +113,33 @@ export default async function handler(req, res) {
         if (!cur) return res.status(404).json({ error: "no event" });
         const e = JSON.parse(cur);
         if (e.closed && !org && (Math.round(+b.n) || 0) > (+e.guests || 0)) return res.status(409).json({ error: "sign-ups for this one are paused. They open after the announcement in person" });
-        e.guests = Math.max(0, Math.min(40, Math.round(+b.n) || 0));
+        if (!org && e.cap > 0 && (Math.round(+b.n) || 0) > (+e.guests || 0)) { const [cnt] = await redis([["SCARD", `${P}going:${ev}`]]); if (+cnt + (Math.round(+b.n) || 0) > e.cap) return res.status(409).json({ error: "It's full. Join the waitlist instead" }); }
+        e.guests = Math.max((e.guestList || []).length, Math.min(40, Math.round(+b.n) || 0));
+        await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
+        break;
+      }
+      // named guests (not in Becker): { name, of: the classmate who brings them }; they're part of the guest count
+      case "addGuest": case "delGuest": {
+        const [cur] = await redis([["HGET", `${P}events`, ev]]);
+        if (!cur) return res.status(404).json({ error: "no event" });
+        const e = JSON.parse(cur), name = clean(b.name, 40), gl = e.guestList || [];
+        if (!name) return res.status(400).json({ error: "Type the guest's name" });
+        const at = gl.findIndex((x) => x.name.toLowerCase() === name.toLowerCase());
+        if (b.op === "delGuest") {
+          if (at < 0) return res.status(404).json({ error: "That guest isn't on the list" });
+          gl.splice(at, 1); if (!b.keep) e.guests = Math.max(0, (+e.guests || 0) - 1);
+        } else {
+          if (at >= 0) return res.status(400).json({ error: `${name} is already on the guest list` });
+          if (await onList(name)) return res.status(400).json({ error: `${name} is on the class list: tick them as going instead` });
+          const fill = b.fill && (+e.guests || 0) > gl.length; // naming one of the +1s already counted
+          if (!fill && !org) {
+            if (e.closed) return res.status(409).json({ error: "sign-ups for this one are paused. They open after the announcement in person" });
+            if (e.cap > 0) { const [cnt] = await redis([["SCARD", `${P}going:${ev}`]]); if (+cnt + (+e.guests || 0) >= e.cap) return res.status(409).json({ error: "It's full. Join the waitlist instead" }); }
+          }
+          gl.push({ name, of: clean(b.of, 60) || by || undefined, by: by || undefined, at: Date.now() });
+          if (!fill) e.guests = (+e.guests || 0) + 1;
+        }
+        e.guestList = gl.length ? gl : undefined;
         await redis([["HSET", `${P}events`, ev, JSON.stringify(e)]]);
         break;
       }
@@ -171,14 +197,15 @@ export default async function handler(req, res) {
         if (!cur) return res.status(404).json({ error: "no event" });
         const e = JSON.parse(cur), cmds = [];
         if (b.op === "resetGoing") { // a fresh start: everyone signs up again once it opens
-          e.reset = { going: members || [], joined: pairs(joined), waitlist: e.waitlist || [], guests: +e.guests || 0, at: Date.now(), by };
-          e.waitlist = []; e.guests = 0; e.closed = true; delete e.openedAt;
+          e.reset = { going: members || [], joined: pairs(joined), waitlist: e.waitlist || [], guests: +e.guests || 0, guestList: e.guestList || [], at: Date.now(), by };
+          e.waitlist = []; e.guests = 0; delete e.guestList; e.closed = true; delete e.openedAt;
           cmds.push(["DEL", `${P}going:${ev}`], ["DEL", `${P}joined:${ev}`]);
         }
         if (b.op === "openSignups") { e.closed = false; e.openedAt = Date.now(); }
         if (b.op === "undoReset") { // only while still paused, so nobody's new sign-up is lost
           if (!e.reset || !e.closed) return res.status(400).json({ error: "nothing to undo (sign-ups have already reopened)" });
           const r = e.reset; e.waitlist = r.waitlist || []; e.guests = r.guests || 0; e.closed = false; delete e.reset;
+          if ((r.guestList || []).length) e.guestList = r.guestList; else delete e.guestList;
           cmds.push(["DEL", `${P}going:${ev}`], ["DEL", `${P}joined:${ev}`]);
           if ((r.going || []).length) cmds.push(["SADD", `${P}going:${ev}`, ...r.going]);
           const jp = Object.entries(r.joined || {}).flat(); if (jp.length) cmds.push(["HSET", `${P}joined:${ev}`, ...jp]);
@@ -277,6 +304,7 @@ export default async function handler(req, res) {
           ["by", "bookedBy", "priceBy", "paidBy"].forEach((f) => { if (e[f] != null) e[f] = sw(e[f]); });
           (e.tables || []).forEach((t) => { t.names = (t.names || []).map(sw); });
           if (e.waitlist) e.waitlist = [...new Set(e.waitlist.map(sw))];
+          (e.guestList || []).forEach((g) => { if (g.of) g.of = sw(g.of); });
           cmds.push(["HSET", `${P}events`, k, JSON.stringify(e)]);
         });
         Object.entries(pairs(bills)).forEach(([k, v]) => { const x = JSON.parse(v);
@@ -285,6 +313,7 @@ export default async function handler(req, res) {
           if (x.shares) x.shares = Object.fromEntries(Object.entries(x.shares).map(([n, a]) => [sw(n), a]));
           if (x.cover) x.cover = Object.fromEntries(Object.entries(x.cover).map(([f, b]) => [sw(f), sw(b)]));
           if (x.guestPay) x.guestPay = x.guestPay.map(sw);
+          if (x.alsoPaid) x.alsoPaid = Object.fromEntries(Object.entries(x.alsoPaid).map(([n, a]) => [sw(n), a]));
           cmds.push(["HSET", `${P}bills`, k, JSON.stringify(x)]); });
         Object.entries(pairs(xfers)).forEach(([k, v]) => { const x = JSON.parse(v); ["from", "to", "by"].forEach((f) => { x[f] = sw(x[f]); }); cmds.push(["HSET", `${P}xfers`, k, JSON.stringify(x)]); });
         const pr = pairs(profiles), st = pairs(settle);
@@ -391,6 +420,13 @@ export default async function handler(req, res) {
           .filter(([f, by]) => f && by && f !== by && among.includes(f) && among.includes(by)));
         Object.keys(cover).forEach((f) => { if (cover[cover[f]]) delete cover[f]; });
         if (Object.keys(cover).length) bill.cover = cover;
+        const also = Object.entries(b.alsoPaid && typeof b.alsoPaid === "object" ? b.alsoPaid : {}).map(([n, a]) => [clean(n, 60), Math.round(+a * 100) / 100])
+          .filter(([n, a]) => n && n !== paidBy && a > 0).slice(0, 8);
+        if (also.length) {
+          const s = also.reduce((t, [, a]) => t + a, 0);
+          if (s >= hkd) return res.status(400).json({ error: `The others paid HK$${Math.round(s)}, which leaves nothing for ${paidBy}. Check the amounts` });
+          bill.alsoPaid = Object.fromEntries(also);
+        }
         if (b.op === "editBill") {
           const key = clean(b.id, 20), [cur] = await redis([["HGET", `${P}bills`, key]]);
           if (!cur) return res.status(404).json({ error: "That bill has been deleted" });
