@@ -652,7 +652,7 @@
       <div class="sp-top"><span class="sp-who">${x.to === me ? `From <b>${esc(x.from)}</b>` : `To <b>${esc(x.to)}</b>`}${x.note ? `<small class="sp-for">${esc(x.note)}</small>` : ""}</span><span class="amt">${hk(x.hkd)}</span></div>
       ${pendLine(x)}</li>`;
   // what everyone still owes me, ready to send on WhatsApp (e.g. after a bill went up)
-  const remindText = (owed) => `💸 *Still to pay me* (Boothies in HK)\n${owed.map((t) => { const p = pSum(pendXf(t.from, me, t.direct)); return `• ${t.from}: ${hk(t.hkd)}${p ? ` (you've marked ${hk(p)} as paid: I'll check it)` : ""}`; }).join("\n")}\n\nThis is what's left after what you've already paid, so if a bill went up you only pay the difference. My payment details are in Boothies in HK: pay me, then tap "✓ I've paid" under 💸 Settle up: https://boothies-hk.vercel.app/#cc`;
+  const remindText = (owed) => `💸 *Still to pay me* (Boothies in HK)\n${owed.map((t) => { const p = pSum(pendXf(t.from, me, t.direct)); return `• ${t.from}: ${hk(t.hkd)}${p ? ` (you've marked ${hk(p)} as paid: I'll check it)` : ""}`; }).join("\n")}\n\nThis is what's left after what you've already paid, so if a bill went up you only pay the difference. These are the "${settleMode === "each" ? "Pay each person" : "Fewest payments"}" amounts in 💸 Settle up. My payment details are in Boothies in HK: pay me, then tap "✓ I've paid" under 💸 Settle up: https://boothies-hk.vercel.app/#cc`;
 
   function allBalances() { // + means you're owed, - means you owe
     const bal = balances(); // set-price events: Rienno paid, everyone ticked owes the set price
