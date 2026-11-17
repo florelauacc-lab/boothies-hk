@@ -467,6 +467,7 @@ export default async function handler(req, res) {
       case "markXfer": { // "I've paid X" for a bill split; X confirms when it arrives
         const from = clean(b.from, 60), to = clean(b.to, 60), hkd = Math.round(+b.hkd);
         if (!from || !to || from === to || !(hkd > 0)) return res.status(400).json({ error: "missing" });
+        if (!org && by !== from && by !== to) return res.status(403).json({ error: `Only ${from} or ${to} can mark this payment` });
         // the person being paid can record it as received straight away
         const conf = !!b.confirmed && by === to;
         // direct: paying back money someone fronted (kept apart from the netted balances); note: what it was for
@@ -477,12 +478,14 @@ export default async function handler(req, res) {
         const k = clean(b.id, 20);
         const [cur] = await redis([["HGET", `${P}xfers`, k]]);
         if (!cur) return res.status(404).json({ error: "no payment" });
-        const x = JSON.parse(cur);
-        if (b.op === "undoXfer") {
-          if (x.confirmed && !org) return res.status(403).json({ error: `${x.to} has already confirmed it` });
+        const x = JSON.parse(cur), isTo = by === x.to;
+        if (b.op === "undoXfer") { // the payer can take back an unconfirmed "I've paid"; the person paid can always say "not received"
+          if (!org && !isTo && !(by === x.from && !x.confirmed)) return res.status(403).json({ error: x.confirmed ? `${x.to} has already confirmed it` : `Only ${x.from} or ${x.to} can undo this` });
           await redis([["HDEL", `${P}xfers`, k]]);
-        } else {
-          x.confirmed = b.op === "confirmXfer"; x.confirmedBy = by;
+        } else { // only the person being paid decides whether it arrived (and can change their mind)
+          if (!org && !isTo) return res.status(403).json({ error: `Only ${x.to} can confirm they got it` });
+          x.confirmed = b.op === "confirmXfer"; x.confirmedBy = x.confirmed ? by : undefined;
+          if (!x.confirmed) { x.unconfirmedBy = by; x.unconfirmedAt = Date.now(); }
           await redis([["HSET", `${P}xfers`, k, JSON.stringify(x)]]);
         }
         break;

@@ -1657,3 +1657,21 @@ p, li, label, .how-steps li, .bi-meta, .bi-names { text-wrap: pretty; }
 .bill-form fieldset > *, .bf-gcard, .bf-gcard > *, .bf-grow, .bf-2 > * { min-width: 0; }
 .bill-form input, .bill-form select { max-width: 100%; min-width: 0; box-sizing: border-box; }
 .cc-gadd input { font: inherit; font-size: 16px; padding: 9px 11px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); background: rgba(0,0,0,.3); color: var(--text); }
+
+/* payments waiting for the person paid to confirm; no payment details */
+.sp-pend { margin: 8px 0 0; padding: 8px 10px; border-radius: 10px; background: rgba(255,196,77,.08); border: 1px solid rgba(255,196,77,.3); }
+.sp-pend p { margin: 0; line-height: 1.4; text-wrap: pretty; overflow-wrap: anywhere; }
+.sp-pend .sp-act { margin-top: 6px; }
+.sp-left { margin: 8px 0 0; }
+.pm-none { margin: 8px 0 0; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.pm-none p { margin: 0; line-height: 1.4; text-wrap: pretty; }
+.pm-none .pm-other { align-self: stretch; }
+.pm-none .pm-other summary { cursor: pointer; font-size: .86rem; color: var(--muted, #aab); text-wrap: pretty; }
+.sp-nodet { margin: 4px 0 8px; padding: 8px 10px; border-radius: 10px; background: rgba(255,159,159,.08); border: 1px solid rgba(255,159,159,.3); text-wrap: pretty; }
+.sp-remind { margin: 8px 0 4px; text-wrap: balance; }
+.cc-got .sp-list { margin-top: 6px; }
+.pm-none a.cc-mini, a.sp-remind { text-decoration: none; display: inline-flex; align-items: center; }
+/* an owed row with a payment waiting: the waiting box goes under the name, full width */
+.sp.owed { flex-wrap: wrap; }
+.sp.owed .sp-pend { flex: 1 1 100%; margin-top: 4px; }
+.cc-got > p { margin: 0 14px 8px; text-wrap: pretty; }

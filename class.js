@@ -65,8 +65,8 @@
       if (!isPayer(b, me)) { payersOf(b).forEach(([p]) => { const v = owesOn(b, me, p); if (v > 0) owe[p] = (owe[p] || 0) + v; }); return; }
       const mine = payersOf(b).filter(([p]) => p === me).reduce((t, [, v]) => t + v, 0), net = mine - (sh[me] || 0);
       if (net > 0) paid += net; else payersOf(b).forEach(([p]) => { const v = p === me ? 0 : owesOn(b, me, p); if (v > 0) owe[p] = (owe[p] || 0) + v; }); });
-    const parts = Object.entries(owe).filter(([, v]) => v >= 1).map(([n, v]) => `you owe ${esc(n)} ${hk(v)}`);
-    if (paid >= 1) parts.push(`you're owed ${hk(paid)}`);
+    const parts = Object.entries(owe).filter(([, v]) => v >= 1).map(([n, v]) => `you owe ${esc(n)}&nbsp;${hk(v)}`);
+    if (paid >= 1) parts.push(`you're owed&nbsp;${hk(paid)}`);
     if (parts.length) return parts.join(" · ");
     if (bs.length) return `bill added · ${hk(bs.reduce((t, b) => t + b.hkd, 0))}`;
     return "";
@@ -550,7 +550,7 @@
       payersOf(b).forEach(([p, c]) => { bal[p] = (bal[p] || 0) + c; });
       Object.entries(billShares(b)).forEach(([n, v]) => { bal[n] = (bal[n] || 0) - v; });
     });
-    (data.xfers || []).filter((x) => !x.direct).forEach((x) => { bal[x.from] = (bal[x.from] || 0) + x.hkd; bal[x.to] = (bal[x.to] || 0) - x.hkd; });
+    (data.xfers || []).filter((x) => !x.direct && x.confirmed).forEach((x) => { bal[x.from] = (bal[x.from] || 0) + x.hkd; bal[x.to] = (bal[x.to] || 0) - x.hkd; });
     return bal;
   }
   // when two people owe each other (one way netted, the other a payback), show only the difference
@@ -570,7 +570,7 @@
   function directDebts() {
     const m = {};
     (data.bills || []).filter((b) => b.frontedBy).forEach((b) => { const k = `${b.paidBy}|${b.frontedBy}`; (m[k] = m[k] || { from: b.paidBy, to: b.frontedBy, hkd: 0, what: [] }).hkd += b.hkd - alsoSum(b); m[k].what.push(b.what); });
-    (data.xfers || []).filter((x) => x.direct).forEach((x) => { const k = `${x.from}|${x.to}`; if (m[k]) m[k].hkd -= x.hkd; });
+    (data.xfers || []).filter((x) => x.direct && x.confirmed).forEach((x) => { const k = `${x.from}|${x.to}`; if (m[k]) m[k].hkd -= x.hkd; });
     return Object.values(m).filter((d) => d.hkd >= 1).map((d) => ({ from: d.from, to: d.to, hkd: Math.round(d.hkd), direct: true, note: d.what.join(", ") }));
   }
   // fewest payments that settle everyone up (largest debts paid to largest credits first)
@@ -609,34 +609,55 @@
     return o.length ? `${o.map(([m, h]) => `<div class="pm-all"><p class="pm-h">${esc(m)}</p>${h}</div>`).join("")}${note ? `<p class="muted small">${esc(note)}</p>` : ""}` : noDetails(to);
   }
   const pmChoice = {};
-  // paying one person: pick how, see just that method's details, then "I've paid"
+  const askDetails = (to, amt) => `https://wa.me/?text=${encodeURIComponent(`Hi ${to}, I owe you ${hk(amt)} on Boothies in HK, but I can't see your payment details. Could you add them under 💳 My payment details (https://boothies-hk.vercel.app/#cc), or send me your PayPal, FPS or WeChat ID? Thanks!`)}`;
+  // paying one person: pick how, see just that method's details, then "I've paid" (asks again before it's recorded)
   function payForm(t) {
     const o = payOpts(t.to, t.hkd), note = profileOf(t.to).note;
-    const methods = o.length ? [...o.map(([m]) => m), "Cash"] : PAY_METHODS;
+    if (!o.length) return `<div class="pm-none"><p class="small">⚠️ <b>${esc(t.to)} hasn't added payment details yet</b>, so there's nothing to pay to here. Ask them for their details first.</p>
+      <a class="cc-mini go" href="${askDetails(t.to, t.hkd)}" target="_blank" rel="noopener">📲 Ask ${esc(t.to)} for their details</a>
+      ${note ? `<p class="muted small">${esc(note)}</p>` : ""}
+      <details class="pm-other"><summary>Already paid ${esc(t.to)} another way, like cash?</summary>
+        <form class="cc-inline paid pm-form" data-xfer="${esc(JSON.stringify(t))}">
+          <label class="pm-pick"><span>How did you pay?</span><select name="method">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select></label>
+          <button type="submit">✓ I've paid ${esc(t.to)}</button></form></details></div>`;
+    const methods = [...o.map(([m]) => m), "Cash"];
     const pick = methods.includes(pmChoice[t.to]) ? pmChoice[t.to] : methods[0]; // keep the method you chose across redraws
-    return `${o.length ? "" : noDetails(t.to)}<form class="cc-inline paid pm-form" data-xfer="${esc(JSON.stringify(t))}">
+    return `<form class="cc-inline paid pm-form" data-xfer="${esc(JSON.stringify(t))}">
       <label class="pm-pick"><span>How are you paying ${esc(t.to)}?</span><select name="method" data-pmsel="${esc(t.to)}">${methods.map((m) => `<option${m === pick ? " selected" : ""}>${m}</option>`).join("")}</select></label>
       ${o.map(([m, h]) => `<div class="pm-pane" data-pm="${esc(m)}"${m === pick ? "" : " hidden"}>${h}</div>`).join("")}
+      <div class="pm-pane" data-pm="Cash"${pick === "Cash" ? "" : " hidden"}><small class="pm-hint">Hand it to ${esc(t.to)} in person, then tap I've paid.</small></div>
       ${note ? `<p class="muted small">${esc(note)}</p>` : ""}
       <button type="submit">✓ I've paid ${esc(t.to)}</button></form>`;
   }
 
   /* ---------- one combined balance: set-price events (Rienno paid), every bill, every payment ---------- */
-    // each payment: who → who and the amount on top; status and buttons on their own line (anyone can mark or confirm)
-  const sRow = (t) => `<li class="sp${t.to === me ? " owed" : t.from === me ? " me" : ""}">
+  // a payment someone has marked counts only once the person being paid confirms it arrived
+  const pendXf = (from, to, direct) => (data.xfers || []).filter((x) => !x.confirmed && x.from === from && x.to === to && !x.direct === !direct);
+  const pSum = (a) => a.reduce((t, x) => t + x.hkd, 0);
+  const whenHK = (ms) => (ms ? new Date(ms).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Hong_Kong" }) : "");
+  let shownPend = new Set();
+  const pendLine = (x) => { const toMe = x.to === me, who = x.by && x.by !== x.from ? (x.by === me ? "You" : esc(x.by)) : null;
+    return `<div class="sp-pend"><p class="small">⏳ ${toMe ? (who ? `${who} marked that <b>${esc(x.from)}</b> paid you` : `<b>${esc(x.from)}</b> says they paid you`) : who ? `${who} marked that you paid` : "You marked"} <b>${hk(x.hkd)}</b>${!toMe && !who ? " as paid" : ""}${x.method ? ` by ${esc(x.method)}` : ""}${x.at ? ` on ${whenHK(x.at)}` : ""}. ${toMe ? "It doesn't count until you say it arrived." : `It counts once ${esc(x.to)} confirms they got it, so don't pay it again.`}</p>
+      <div class="sp-act">${toMe ? `<button type="button" class="cc-mini go" data-xconfirm="${x.id}">✓ Yes, it arrived</button><button type="button" class="cc-mini undo" data-xreject="${x.id}">✗ Not received</button>` : `<span class="sp-status wait">⏳ Waiting for ${esc(x.to)}</span><button type="button" class="cc-mini undo" data-xundo="${x.id}">↩ Undo</button>`}</div></div>`; };
+  // each payment: who → who and the amount on top; then any "I've paid" waiting to be confirmed, then how to pay (or "Paid me")
+  const sRow = (t) => { const pend = t.from === me ? pendXf(me, t.to, t.direct) : t.to === me ? pendXf(t.from, me, t.direct) : [];
+    pend.forEach((x) => shownPend.add(x.id));
+    const left = Math.round(t.hkd - (t.from === me ? pSum(pend) : 0));
+    return `<li class="sp${t.to === me ? " owed" : t.from === me ? " me" : ""}">
       <div class="sp-top"><span class="sp-who">${t.to === me ? `<b>${esc(t.from)}</b> owes you` : t.from === me ? `To <b>${esc(t.to)}</b>` : `<b>${esc(t.from)}</b> → <b>${esc(t.to)}</b>`}${t.direct ? `<small class="sp-for">Paid up front: ${esc(t.note)}</small>` : t.for ? `<small class="sp-for">For ${esc(t.for)}</small>` : ""}</span><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
-      ${t.from === me ? payForm(t)
-        : `<button type="button" class="cc-mini go sp-paid" data-xmark="${esc(JSON.stringify(t))}" aria-label="${esc(t.from)} has paid me">✓ Paid me</button>`}</li>`;
+      ${pend.map(pendLine).join("")}
+      ${t.from === me ? (left >= 1 ? `${pend.length ? `<p class="small sp-left">Still to pay: <b>${hk(left)}</b></p>` : ""}${payForm({ ...t, hkd: left })}` : "")
+        : pend.length ? "" : `<button type="button" class="cc-mini go sp-paid" data-xmark="${esc(JSON.stringify(t))}" aria-label="${esc(t.from)} has paid me">✓ Paid me</button>`}</li>`; };
   const pRow = (x) => `<li class="sp pending">
-      <div class="sp-top"><span class="sp-who"><b>${esc(x.from)}</b> paid <b>${esc(x.to)}</b>${x.method ? ` <small>· ${esc(x.method)}</small>` : ""}${x.note ? ` <small>· ${esc(x.note)}</small>` : ""}</span><span class="amt">${hk(x.hkd)}</span></div>
-      <div class="sp-act"><span class="sp-status wait">⏳ Needs confirming</span>
-        <button type="button" class="cc-mini go" data-xconfirm="${x.id}">✓ Confirm received</button>
-        <button type="button" class="cc-mini undo" data-xundo="${x.id}">↩ Undo</button></div></li>`;
+      <div class="sp-top"><span class="sp-who">${x.to === me ? `From <b>${esc(x.from)}</b>` : `To <b>${esc(x.to)}</b>`}${x.note ? `<small class="sp-for">${esc(x.note)}</small>` : ""}</span><span class="amt">${hk(x.hkd)}</span></div>
+      ${pendLine(x)}</li>`;
+  // what everyone still owes me, ready to send on WhatsApp (e.g. after a bill went up)
+  const remindText = (owed) => `💸 *Still to pay me* (Boothies in HK)\n${owed.map((t) => { const p = pSum(pendXf(t.from, me, t.direct)); return `• ${t.from}: ${hk(t.hkd)}${p ? ` (you've marked ${hk(p)} as paid: I'll check it)` : ""}`; }).join("\n")}\n\nThis is what's left after what you've already paid, so if a bill went up you only pay the difference. My payment details are in Boothies in HK: pay me, then tap "✓ I've paid" under 💸 Settle up: https://boothies-hk.vercel.app/#cc`;
 
   function allBalances() { // + means you're owed, - means you owe
     const bal = balances(); // set-price events: Rienno paid, everyone ticked owes the set price
     const add = (n, v) => { bal[n] = (bal[n] || 0) + v; };
-    Object.entries(data.settle || {}).forEach(([n, v]) => (v.payments || []).forEach((p) => { add(n, p.hkd); add(data.payTo, -p.hkd); }));
+    Object.entries(data.settle || {}).forEach(([n, v]) => (v.payments || []).filter((p) => p.confirmed).forEach((p) => { add(n, p.hkd); add(data.payTo, -p.hkd); }));
     Object.entries(billBalances()).forEach(([n, v]) => add(n, v)); // bills and payments between people
     return bal;
   }
@@ -653,13 +674,13 @@
         if (pb === me) e.going.forEach((n) => add(n, -sh * f, e.title));
       });
     });
-    Object.entries(data.settle || {}).forEach(([n, v]) => (v.payments || []).forEach((pm) => { if (n === me) add(data.payTo, -pm.hkd); if (data.payTo === me) add(n, pm.hkd); }));
+    Object.entries(data.settle || {}).forEach(([n, v]) => (v.payments || []).filter((pm) => pm.confirmed).forEach((pm) => { if (n === me) add(data.payTo, -pm.hkd); if (data.payTo === me) add(n, pm.hkd); }));
     (data.bills || []).forEach((b) => { const N = named(b); if (!N) return; const ps = payersOf(b);
       Object.entries(billShares(b)).forEach(([n, v]) => ps.forEach(([p, c]) => {
         if (n === me) add(p, (v * c) / N, b.what);
         if (p === me) add(n, (-v * c) / N, b.what);
       })); });
-    (data.xfers || []).filter((x) => !x.direct).forEach((x) => { if (x.from === me) add(x.to, -x.hkd); if (x.to === me) add(x.from, x.hkd); });
+    (data.xfers || []).filter((x) => !x.direct && x.confirmed).forEach((x) => { if (x.from === me) add(x.to, -x.hkd); if (x.to === me) add(x.from, x.hkd); });
     const rows = Object.entries(owes).filter(([, v]) => Math.abs(v) >= 1).map(([x, v]) => (v > 0 ? { from: me, to: x, hkd: Math.round(v) } : { from: x, to: me, hkd: Math.round(-v) }))
       .map((t) => ({ ...t, for: [...(why[t.from === me ? t.to : t.from] || [])].join(", ") }))
       .sort((a, b) => b.hkd - a.hkd);
@@ -671,7 +692,10 @@
     const bal = allBalances(), sugg = simplify(bal);
     const all = settleMode === "each" ? pairRows() : offsetPairs(sugg, directDebts());
     const owe = all.filter((t) => t.from === me), owed = all.filter((t) => t.to === me);
-    const pend = (data.xfers || []).filter((x) => !x.confirmed && (x.from === me || x.to === me));
+    shownPend = new Set();
+    const oweHtml = owe.map(sRow).join(""), owedHtml = owed.map(sRow).join("");
+    const pend = (data.xfers || []).filter((x) => !x.confirmed && (x.from === me || x.to === me) && !shownPend.has(x.id));
+    const got = (data.xfers || []).filter((x) => x.confirmed && x.to === me).sort((a, b) => (b.at || 0) - (a.at || 0));
     const sum = (a) => a.reduce((t, x) => t + x.hkd, 0);
     const items = [];
     data.events.forEach((e) => { if (e.price > 0 && e.going.includes(me)) items.push([e.title, -e.price, `paid by ${evPayer(e)}`]); if (e.price > 0 && evPayer(e) === me) items.push([`You paid: ${e.title}`, e.price * e.going.filter((n) => n !== me).length + (e.going.includes(me) ? e.price : 0), `${e.going.length} people × ${hk(e.price)}`]); });
@@ -679,16 +703,19 @@
       if ((b.alsoPaid || {})[me] != null) items.push([`You paid part of: ${b.what}`, +b.alsoPaid[me], `${hk(+b.alsoPaid[me])} of ${hk(b.hkd)}`]);
       if (b.frontedBy === me) items.push([`You paid the restaurant: ${b.what}`, b.hkd, `${b.paidBy} pays you back`]); if (b.frontedBy && b.paidBy === me) items.push([`${b.frontedBy} paid the restaurant`, -b.hkd, "you pay them back"]); });
     (data.xfers || []).filter((x) => x.confirmed && (x.from === me || x.to === me)).forEach((x) => items.push([x.from === me ? `You paid ${x.to}` : `${x.from} paid you`, x.from === me ? x.hkd : -x.hkd, "✓✓ confirmed"]));
-    Object.values(data.settle?.[me]?.payments || []).forEach((p) => items.push([`You paid ${data.payTo}`, p.hkd, p.confirmed ? "✓✓ confirmed" : "⏳ needs confirming"]));
+    Object.values(data.settle?.[me]?.payments || []).forEach((p) => items.push([`You paid ${data.payTo}`, p.hkd, p.confirmed ? "✓✓ confirmed" : "⏳ not counted until confirmed"]));
     return `<div class="cc-owe">
       <h3 class="cc-h">💸 Settle up <small>for ${esc(me)} · not you? change "I'm" above</small></h3>
       <div class="sp-mode" role="group" aria-label="How to settle up"><button type="button" class="cc-mini${settleMode === "net" ? " go" : ""}" data-spmode="net" aria-pressed="${settleMode === "net"}">Fewest payments</button><button type="button" class="cc-mini${settleMode === "each" ? " go" : ""}" data-spmode="each" aria-pressed="${settleMode === "each"}">Pay each person</button></div>
       <p class="muted small">${settleMode === "each" ? "You pay back whoever paid for each thing you shared, one person at a time. More payments, but each one matches a meal or event." : "Everything is netted out, so there are as few payments as possible. You may pay someone different from whoever covered your meal. Tap <b>Pay each person</b> to settle with each person instead."} "How it adds up" shows the detail.</p>
       ${(() => { const un = data.events.filter((e) => unnamed(e)); return un.length ? `<p class="muted small cc-gpay">👤 Guests not on the class list: ${un.map((e) => `${esc(colName(e))} (${unnamed(e)}${e.price > 0 ? ` × ${hk(e.price)}` : ""})`).join(", ")}. ${(() => { const by = [...new Set(un.map((e) => evPayer(e)))]; return `They pay ${by.length === 1 ? esc(by[0] || "the organiser") : "whoever paid each event"} directly`; })()}, so they aren't in the balances here.</p>` : ""; })()}
       ${!owe.length && !owed.length ? `<p class="small">✓ You're all square right now.</p>` : ""}
-      ${owe.length ? `<p class="sp-h">💸 You owe <b>${hk(sum(owe))}</b> <small>≈ ${fx(sum(owe))}</small></p><ul class="sp-list">${owe.map(sRow).join("")}</ul>` : ""}
-      ${owed.length ? `<p class="sp-h">💰 Owed to you <b>${hk(sum(owed))}</b></p><ul class="sp-list">${owed.map(sRow).join("")}</ul>` : ""}
+      ${owe.length ? `<p class="sp-h">💸 You owe <b>${hk(sum(owe))}</b> <small>≈ ${fx(sum(owe))}</small></p><ul class="sp-list">${oweHtml}</ul>` : ""}
+      ${owed.length ? `<p class="sp-h">💰 Owed to you <b>${hk(sum(owed))}</b></p>${payOpts(me).length ? "" : `<p class="small sp-nodet">⚠️ You haven't added payment details, so people can't see how to pay you. Add them under <b>💳&nbsp;My payment details</b> below.</p>`}<ul class="sp-list">${owedHtml}</ul>
+        ${live() ? `<a class="cc-mini go sp-remind" href="https://wa.me/?text=${encodeURIComponent(remindText(owed))}" target="_blank" rel="noopener">📲 Tell everyone what they still owe you</a>` : ""}` : ""}
       ${pend.length ? `<p class="sp-h">⏳ Waiting to be confirmed</p><ul class="sp-list">${pend.map(pRow).join("")}</ul>` : ""}
+      ${got.length ? `<details class="cc-sub cc-got"><summary>✓ Payments you've received · ${got.length}</summary><p class="muted small">Tap <b>Not received after all</b> if one hasn't arrived. It goes back to waiting, and they owe it again.</p><ul class="sp-list">${got.map((x) => `<li class="sp"><div class="sp-top"><span class="sp-who"><b>${esc(x.from)}</b>${x.method ? ` <small>· ${esc(x.method)}</small>` : ""}${x.at ? ` <small>· ${whenHK(x.at)}</small>` : ""}</span><span class="amt">${hk(x.hkd)}</span></div>
+        <div class="sp-act"><span class="sp-status ok">✓ Received</span><button type="button" class="cc-mini undo" data-xunconf="${x.id}">✗ Not received after all</button></div></li>`).join("")}</ul></details>` : ""}
       ${live() ? `<details class="cc-collect"><summary>💵 Someone paid you for their share? Record it</summary>
         <form class="cc-inline" id="cc-collect"><p class="muted small">For example, a classmate pays you by FPS or cash for an event ${esc(data.payTo)} paid. Record it here: their balance clears, and you then owe ${esc(data.payTo)} that amount instead.</p>
           <select name="from" aria-label="Who paid you" required><option value="">Who paid you?</option>${people().filter((n) => n !== me).map((n) => `<option>${esc(n)}</option>`).join("")}</select>
@@ -748,8 +775,8 @@
       <li><b>Class events:</b> tap one and tick yourself going. Bringing someone from outside Becker? Add them under <b>👤&nbsp;Guests</b>, with or without a name. <b>⭐&nbsp;My week</b> at the top shows just yours.</li>
       <li><b>Ate out together?</b> Tap <b>🍜&nbsp;Add the bill</b>: the total, who paid, and who shared it. It works out everyone's share, guests too. Paid with 2 cards? Tap <b>💳&nbsp;Add who else paid</b> and everyone pays each of you back.</li>
       <li><b>Ask to be paid:</b> on a bill you paid, tap <b>📲&nbsp;Ask on WhatsApp</b> to send everyone their share.</li>
-      <li><b>Pay someone:</b> <b>💸&nbsp;Settle up</b> shows who you owe, with their PayPal, Venmo, FPS or bank. Pay, then tap <b>✓&nbsp;I've paid</b>. Choose <b>Fewest payments</b> or <b>Pay each person</b>.</li>
-      <li><b>See who owes you:</b> under <b>Owed to you</b>. Tap <b>✓&nbsp;Paid me</b> when the money arrives.</li>
+      <li><b>Pay someone:</b> <b>💸&nbsp;Settle up</b> shows who you owe, with their PayPal, Venmo, FPS or bank. Pay, then tap <b>✓&nbsp;I've paid</b> and confirm. It counts once they say it arrived. No details? Tap <b>📲&nbsp;Ask for their details</b>. Choose <b>Fewest payments</b> or <b>Pay each person</b>.</li>
+      <li><b>See who owes you:</b> under <b>Owed to you</b>. When someone says they've paid, check your account, then tap <b>✓&nbsp;Yes, it arrived</b> or <b>✗&nbsp;Not received</b>. You can change your mind later under <b>✓&nbsp;Payments you've received</b>.</li>
       <li><b>Get paid easily:</b> add your details in <b>💳&nbsp;My payment details</b> (how-to guides inside).</li>
       <li><b>Paying for someone else:</b> in a bill, add a guest and pick who pays for them, or tap <b>🤝&nbsp;Someone pays for someone</b> for a classmate.</li>
       <li><b>Your own plans:</b> <b>➕&nbsp;Add an event for the class</b> for a hike, drinks or a meal. Classmates can tick that they're going.</li>
@@ -1116,9 +1143,19 @@
       render(); return;
     }
     const xm = t.closest("[data-xmark]");
-    if (xm) { const x = JSON.parse(xm.dataset.xmark); op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: "", confirmed: x.to === me, direct: !!x.direct, note: x.direct ? x.note : "" }).then((ok) => ok && toast(x.to === me ? `Got it: ${x.from} has paid you` : `Marked: ${x.from} paid ${x.to}`)); return; }
+    if (xm) { const x = JSON.parse(xm.dataset.xmark);
+      if (!confirm(`Has ${x.from} paid you ${hk(x.hkd)}?\n\nOnly tap OK once the money is in your account. It then counts as paid.`)) return;
+      op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: "", confirmed: x.to === me, direct: !!x.direct, note: x.direct ? x.note : "" }).then((ok) => ok && toast(x.to === me ? `Got it: ${x.from} has paid you` : `Marked: ${x.from} paid ${x.to}`)); return; }
     const xc = t.closest("[data-xconfirm]");
-    if (xc) { op({ op: "confirmXfer", id: xc.dataset.xconfirm }).then((ok) => ok && toast("Marked as received")); return; }
+    const xOf = (id) => (data.xfers || []).find((x) => x.id === id) || {};
+    if (xc) { const x = xOf(xc.dataset.xconfirm); if (!confirm(`Did ${hk(x.hkd)} from ${x.from} arrive${x.method ? ` by ${x.method}` : ""}?\n\nOnly tap OK if you can see it in your account.`)) return;
+      op({ op: "confirmXfer", id: x.id }).then((ok) => ok && toast(`Confirmed: ${x.from} has paid you`)); return; }
+    const xr = t.closest("[data-xreject]");
+    if (xr) { const x = xOf(xr.dataset.xreject); if (!confirm(`Mark ${hk(x.hkd)} from ${x.from} as not received?\n\nIt comes off the list and ${x.from} owes it again.`)) return;
+      op({ op: "undoXfer", id: x.id }).then((ok) => ok && toast(`Marked as not received: ${x.from} still owes you`)); return; }
+    const xn = t.closest("[data-xunconf]");
+    if (xn) { const x = xOf(xn.dataset.xunconf); if (!confirm(`Mark ${hk(x.hkd)} from ${x.from} as not received after all?\n\nIt goes back to waiting, and ${x.from} owes it again until you say it arrived.`)) return;
+      op({ op: "unconfirmXfer", id: x.id }).then((ok) => ok && toast("Back to waiting to be confirmed")); return; }
     const xu = t.closest("[data-xundo]");
     if (xu) { op({ op: "undoXfer", id: xu.dataset.xundo }).then((ok) => ok && toast("Undone")); return; }
     const bd = t.closest("[data-bdel]");
@@ -1133,6 +1170,7 @@
     if (p1) {
       const E = data.events.find((x) => x.id === p1.dataset.payev);
       const method = $("#cc-paid select[name=method]")?.value || "";
+      if (!confirm(`Have you already sent ${hk(Math.round(each(E)))} to ${data.payTo} for ${E.title}?\n\nOnly tap OK once the money has gone. ${data.payTo} then confirms it.`)) return;
       op({ op: "markPaid", name: me, hkd: Math.round(each(E)), evs: [E.id], method }).then((ok) => ok && toast(`Thanks! ${data.payTo} will confirm ${E.title}`));
       return;
     }
@@ -1194,7 +1232,8 @@
       op(body).then((ok) => { billSaving = false; if (ok) { billDraft = null; toast(editing ? "Bill updated for everyone" : payer === me ? "Bill added. Tap 📲 Ask on WhatsApp on it to tell everyone" : "Bill added: everyone's share is worked out"); } render(); });
     }
     else if (f.dataset.xfer) {
-      const x = JSON.parse(f.dataset.xfer);
+      const x = JSON.parse(f.dataset.xfer), m = fd("method");
+      if (!confirm(`Have you already sent ${hk(x.hkd)} to ${x.to}${m ? ` by ${m}` : ""}?\n\nOnly tap OK once the money has gone. ${x.to} then confirms they got it. Until then it shows as waiting.`)) return;
       op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: fd("method"), direct: !!x.direct, note: x.direct ? x.note : "" }).then((ok) => ok && toast(`Thanks! ${x.to} will confirm when it arrives`));
     }
     else if (f.dataset.gadd) { const E = data.events.find((x) => x.id === f.dataset.gadd), name = fd("gname"); if (!E || !name) return;
@@ -1205,6 +1244,7 @@
     else if (f.id === "cc-collect") {
       const from = fd("from"), hkd = Math.round(+fd("hkd"));
       if (!from || !(hkd > 0)) return;
+      if (!confirm(`Has ${from} paid you ${hk(hkd)}?\n\nOnly tap OK once the money is in your account.`)) return;
       op({ op: "markXfer", from, to: me, hkd, method: "Collected", confirmed: true, note: `collected for ${data.payTo}` }).then((ok) => ok && toast(`Recorded: ${from} paid you ${hk(hkd)}`));
     }
     else if (f.id === "my-pay" && fd("orgcode")) { // organiser resets a forgotten PIN
@@ -1225,6 +1265,7 @@
       const unpaid = data.events.filter((e) => e.going.includes(me) && each(e) && !evPay(me, e.id));
       const pick = fd("what") === "all" ? unpaid : unpaid.filter((e) => e.id === fd("what"));
       const st = status(me, balances()), sum = Math.round(pick.reduce((t, e) => t + each(e), 0));
+      if (!confirm(`Have you already sent ${hk(fd("what") === "all" ? Math.min(sum, st.left) : sum)} to ${data.payTo}?\n\nOnly tap OK once the money has gone. ${data.payTo} then confirms it.`)) return;
       op({ op: "markPaid", name: me, hkd: fd("what") === "all" ? Math.min(sum, st.left) : sum, evs: pick.map((e) => e.id), method: fd("method") }).then((ok) => ok && toast(`Thanks! ${data.payTo} will confirm once it arrives`)); }
     else if (f.dataset.addtable) {
       openEv.add(f.dataset.addtable);
