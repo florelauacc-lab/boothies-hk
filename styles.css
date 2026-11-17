@@ -1675,3 +1675,13 @@ p, li, label, .how-steps li, .bi-meta, .bi-names { text-wrap: pretty; }
 .sp.owed { flex-wrap: wrap; }
 .sp.owed .sp-pend { flex: 1 1 100%; margin-top: 4px; }
 .cc-got > p { margin: 0 14px 8px; text-wrap: pretty; }
+
+/* what you've already paid; bills whose total changed */
+.sp-note { margin: 0 0 8px; padding: 8px 10px; border-radius: 10px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); }
+.sp-note p { margin: 0; line-height: 1.4; text-wrap: pretty; }
+.sp-note p + p { margin-top: 4px; }
+.sp.owed .sp-already { flex: 1 1 100%; margin: 2px 0 0; }
+.bi-chg { color: var(--gold, #ffc44d); text-wrap: pretty; }
+.pm-pane > p.small { margin: 0 0 6px; line-height: 1.4; text-wrap: pretty; }
+.pm-pane > a.cc-mini { text-decoration: none; display: inline-flex; align-items: center; }
+.sp-note b, .sp-already b { font-size: inherit; font-weight: 800; }

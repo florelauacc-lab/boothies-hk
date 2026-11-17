@@ -608,7 +608,7 @@
     const o = payOpts(to, amt), note = profileOf(to).note;
     return o.length ? `${o.map(([m, h]) => `<div class="pm-all"><p class="pm-h">${esc(m)}</p>${h}</div>`).join("")}${note ? `<p class="muted small">${esc(note)}</p>` : ""}` : noDetails(to);
   }
-  const pmChoice = {};
+  const pmChoice = {}, OTHER = "Another way (not listed)";
   const askDetails = (to, amt) => `https://wa.me/?text=${encodeURIComponent(`Hi ${to}, I owe you ${hk(amt)} on Boothies in HK, but I can't see your payment details. Could you add them under 💳 My payment details (https://boothies-hk.vercel.app/#cc), or send me your PayPal, FPS or WeChat ID? Thanks!`)}`;
   // paying one person: pick how, see just that method's details, then "I've paid" (asks again before it's recorded)
   function payForm(t) {
@@ -620,12 +620,13 @@
         <form class="cc-inline paid pm-form" data-xfer="${esc(JSON.stringify(t))}">
           <label class="pm-pick"><span>How did you pay?</span><select name="method">${PAY_METHODS.map((m) => `<option>${m}</option>`).join("")}</select></label>
           <button type="submit">✓ I've paid ${esc(t.to)}</button></form></details></div>`;
-    const methods = [...o.map(([m]) => m), "Cash"];
+    const methods = [...o.map(([m]) => m), "Cash", OTHER];
     const pick = methods.includes(pmChoice[t.to]) ? pmChoice[t.to] : methods[0]; // keep the method you chose across redraws
     return `<form class="cc-inline paid pm-form" data-xfer="${esc(JSON.stringify(t))}">
       <label class="pm-pick"><span>How are you paying ${esc(t.to)}?</span><select name="method" data-pmsel="${esc(t.to)}">${methods.map((m) => `<option${m === pick ? " selected" : ""}>${m}</option>`).join("")}</select></label>
       ${o.map(([m, h]) => `<div class="pm-pane" data-pm="${esc(m)}"${m === pick ? "" : " hidden"}>${h}</div>`).join("")}
       <div class="pm-pane" data-pm="Cash"${pick === "Cash" ? "" : " hidden"}><small class="pm-hint">Hand it to ${esc(t.to)} in person, then tap I've paid.</small></div>
+      <div class="pm-pane" data-pm="${OTHER}"${pick === OTHER ? "" : " hidden"}><p class="small">⚠️ ${esc(t.to)} hasn't listed another way to be paid. Ask them for the details first, and only tap I've paid once the money has gone.</p><a class="cc-mini go" href="${askDetails(t.to, t.hkd)}" target="_blank" rel="noopener">📲 Ask ${esc(t.to)} for their details</a></div>
       ${note ? `<p class="muted small">${esc(note)}</p>` : ""}
       <button type="submit">✓ I've paid ${esc(t.to)}</button></form>`;
   }
@@ -645,6 +646,7 @@
     const left = Math.round(t.hkd - (t.from === me ? pSum(pend) : 0));
     return `<li class="sp${t.to === me ? " owed" : t.from === me ? " me" : ""}">
       <div class="sp-top"><span class="sp-who">${t.to === me ? `<b>${esc(t.from)}</b> owes you` : t.from === me ? `To <b>${esc(t.to)}</b>` : `<b>${esc(t.from)}</b> → <b>${esc(t.to)}</b>`}${t.direct ? `<small class="sp-for">Paid up front: ${esc(t.note)}</small>` : t.for ? `<small class="sp-for">For ${esc(t.for)}</small>` : ""}</span><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
+      ${t.to === me && (() => { const v = pSum((data.xfers || []).filter((x) => x.confirmed && x.from === t.from && x.to === me && !x.direct)); return v >= 1; })() ? `<p class="small sp-left sp-already">✓ Already paid you ${hk(pSum((data.xfers || []).filter((x) => x.confirmed && x.from === t.from && x.to === me && !x.direct)))}. This is what's left.</p>` : ""}
       ${pend.map(pendLine).join("")}
       ${t.from === me ? (left >= 1 ? `${pend.length ? `<p class="small sp-left">Still to pay: <b>${hk(left)}</b></p>` : ""}${payForm({ ...t, hkd: left })}` : "")
         : pend.length ? "" : `<button type="button" class="cc-mini go sp-paid" data-xmark="${esc(JSON.stringify(t))}" aria-label="${esc(t.from)} has paid me">✓ Paid me</button>`}</li>`; };
@@ -652,7 +654,7 @@
       <div class="sp-top"><span class="sp-who">${x.to === me ? `From <b>${esc(x.from)}</b>` : `To <b>${esc(x.to)}</b>`}${x.note ? `<small class="sp-for">${esc(x.note)}</small>` : ""}</span><span class="amt">${hk(x.hkd)}</span></div>
       ${pendLine(x)}</li>`;
   // what everyone still owes me, ready to send on WhatsApp (e.g. after a bill went up)
-  const remindText = (owed) => `💸 *Still to pay me* (Boothies in HK)\n${owed.map((t) => { const p = pSum(pendXf(t.from, me, t.direct)); return `• ${t.from}: ${hk(t.hkd)}${p ? ` (you've marked ${hk(p)} as paid: I'll check it)` : ""}`; }).join("\n")}\n\nThis is what's left after what you've already paid, so if a bill went up you only pay the difference. These are the "${settleMode === "each" ? "Pay each person" : "Fewest payments"}" amounts in 💸 Settle up. My payment details are in Boothies in HK: pay me, then tap "✓ I've paid" under 💸 Settle up: https://boothies-hk.vercel.app/#cc`;
+  const remindText = (owed) => `💸 *Still to pay me* (Boothies in HK)\n${(data.bills || []).filter((b) => isPayer(b, me) && chgOf(b).length).map((b) => { const c = chgOf(b), n = b.shares ? 0 : b.among.length + bG(b); return `🔺 ${b.what} ${chgText(b, { ...c[c.length - 1], from: c[0].from })}${n ? `: ${hk(c[0].from / n)} → ${hk(b.hkd / n)} each` : ""}.\n`; }).join("")}${owed.map((t) => { const p = pSum(pendXf(t.from, me, t.direct)); return `• ${t.from}: ${hk(t.hkd)}${p ? ` (you've marked ${hk(p)} as paid: I'll check it)` : ""}`; }).join("\n")}\n\nThis is what's left after what you've already paid, so if a bill went up you only pay the difference. These are the "${settleMode === "each" ? "Pay each person" : "Fewest payments"}" amounts in 💸 Settle up. My payment details are in Boothies in HK: pay me, then tap "✓ I've paid" under 💸 Settle up: https://boothies-hk.vercel.app/#cc`;
 
   function allBalances() { // + means you're owed, - means you owe
     const bal = balances(); // set-price events: Rienno paid, everyone ticked owes the set price
@@ -710,7 +712,10 @@
       <p class="muted small">${settleMode === "each" ? "You pay back whoever paid for each thing you shared, one person at a time. More payments, but each one matches a meal or event." : "Everything is netted out, so there are as few payments as possible. You may pay someone different from whoever covered your meal. Tap <b>Pay each person</b> to settle with each person instead."} "How it adds up" shows the detail.</p>
       ${(() => { const un = data.events.filter((e) => unnamed(e)); return un.length ? `<p class="muted small cc-gpay">👤 Guests not on the class list: ${un.map((e) => `${esc(colName(e))} (${unnamed(e)}${e.price > 0 ? ` × ${hk(e.price)}` : ""})`).join(", ")}. ${(() => { const by = [...new Set(un.map((e) => evPayer(e)))]; return `They pay ${by.length === 1 ? esc(by[0] || "the organiser") : "whoever paid each event"} directly`; })()}, so they aren't in the balances here.</p>` : ""; })()}
       ${!owe.length && !owed.length ? `<p class="small">✓ You're all square right now.</p>` : ""}
-      ${owe.length ? `<p class="sp-h">💸 You owe <b>${hk(sum(owe))}</b> <small>≈ ${fx(sum(owe))}</small></p><ul class="sp-list">${oweHtml}</ul>` : ""}
+      ${owe.length ? `<p class="sp-h">💸 You owe <b>${hk(sum(owe))}</b> <small>≈ ${fx(sum(owe))}</small></p>${(() => {
+        const paid = {}; (data.xfers || []).filter((x) => x.confirmed && x.from === me && !x.direct).forEach((x) => { paid[x.to] = (paid[x.to] || 0) + x.hkd; });
+        const ch = chgLines((data.bills || []).filter((b) => billShares(b)[me]), me);
+        return Object.keys(paid).length || ch.length ? `<div class="sp-note small">${Object.keys(paid).length ? `<p>✓ You've already paid ${Object.entries(paid).map(([p, v]) => `${esc(p)}&nbsp;<b>${hk(v)}</b>`).join(", ")}. What's below is what's left.</p>` : ""}${ch.map((l) => `<p>🔺 ${esc(l)}.</p>`).join("")}</div>` : ""; })()}<ul class="sp-list">${oweHtml}</ul>` : ""}
       ${owed.length ? `<p class="sp-h">💰 Owed to you <b>${hk(sum(owed))}</b></p>${payOpts(me).length ? "" : `<p class="small sp-nodet">⚠️ You haven't added payment details, so people can't see how to pay you. Add them under <b>💳&nbsp;My payment details</b> below.</p>`}<ul class="sp-list">${owedHtml}</ul>
         ${live() ? `<a class="cc-mini go sp-remind" href="https://wa.me/?text=${encodeURIComponent(remindText(owed))}" target="_blank" rel="noopener">📲 Tell everyone what they still owe you</a>` : ""}` : ""}
       ${pend.length ? `<p class="sp-h">⏳ Waiting to be confirmed</p><ul class="sp-list">${pend.map(pRow).join("")}</ul>` : ""}
@@ -783,11 +788,21 @@
       <li><b>Made a mistake?</b> Every bill has ✏️&nbsp;Edit and 🗑&nbsp;Delete.</li>
     </ol></details>`;
   // a bill you paid → one WhatsApp message with everyone's share
+  // a bill whose total changed: "from HK$20,946 to HK$22,946 on 17 Nov"; your share scales with the total
+  const dayHK = (ms) => (ms ? new Date(ms).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "Asia/Hong_Kong" }) : "");
+  const chgOf = (b) => (b.changes || []).filter((c) => Math.round(c.from) !== Math.round(c.to));
+  const chgFirst = (b) => { const c = chgOf(b); return c.length ? c[0].from : null; };
+  const chgText = (b, c) => `${c.to > c.from ? "went up" : "went down"} from ${hk(c.from)} to ${hk(c.to)}${c.at ? ` on ${dayHK(c.at)}` : ""}${c.why ? ` (${c.why})` : ""}`;
+  const shareWas = (b, n) => { const f = chgFirst(b), sh = billShares(b)[n]; return f && sh && b.hkd ? (sh * f) / b.hkd : null; };
+  const chgLines = (bs, n) => bs.filter((b) => chgOf(b).length).map((b) => { const c = chgOf(b), last = c[c.length - 1], was = n ? shareWas(b, n) : null, now = n ? billShares(b)[n] : null;
+    return `${b.what} ${chgText(b, { ...last, from: c[0].from })}${was && now && Math.round(was) !== Math.round(now) ? `, so ${n === me ? "your share" : "each share"} went from ${hk(was)} to ${hk(now)}` : ""}`; });
   const askText = (b) => {
     const lines = Object.keys(billShares(b)).filter((n) => n !== me).map((n) => [n, owesOn(b, n, me)]).filter(([, v]) => v > 0.5).map(([n, v]) => `• ${n}: ${hk(v)}`);
     if (me === b.paidBy) billGuests(b).forEach((x, i) => { if (!(b.guestPay || [])[i]) lines.push(`• ${x} (guest): ${hk(gAmt(b, i))}`); });
     const mine = paidAt(b).filter(([p]) => p === me).reduce((t, [, v]) => t + v, 0);
-    return `🧾 *${b.what || "Bill"}* · ${hk(b.hkd)}\n${b.alsoPaid ? `I paid ${hk(mine)} of it, so here's what everyone owes me:` : "I paid, so here's what everyone owes me:"}\n${lines.join("\n")}\n\nMy PayPal, Venmo, FPS or bank details are in Boothies in HK. Pay me, then tap "✓ I've paid" under 💸 Settle up: https://boothies-hk.vercel.app/#cc`;
+    const ch = chgOf(b), eqN = b.shares ? 0 : b.among.length + bG(b);
+    const chLine = ch.length ? `🔺 The total ${chgText(b, { ...ch[ch.length - 1], from: ch[0].from })}${eqN ? `: ${hk(ch[0].from / eqN)} → ${hk(b.hkd / eqN)} each` : ""}. If you paid before, just send the difference.\n` : "";
+    return `🧾 *${b.what || "Bill"}* · ${hk(b.hkd)}\n${chLine}${b.alsoPaid ? `I paid ${hk(mine)} of it, so here's what everyone owes me:` : "I paid, so here's what everyone owes me:"}\n${lines.join("\n")}\n\nMy PayPal, Venmo, FPS or bank details are in Boothies in HK. Pay me, then tap "✓ I've paid" under 💸 Settle up: https://boothies-hk.vercel.app/#cc`;
   };
   function billItem(b, evName) {
     const sh = billShares(b), g = bG(b), n = b.among.length + g, ev = b.ev && evName(b.ev);
@@ -801,6 +816,7 @@
       <p class="bi-meta">${n} ${n === 1 ? "person" : "people"}${g ? ` (${b.among.length} from the class + ${gS(g)})` : ""} · ${eq ? `<b>${hk(eq)}</b> each` : "custom split"}</p>
       <p class="bi-names">${who.join(", ")}</p>
       ${direct ? `<p class="bi-meta">👤 ${direct === g ? (g === 1 ? "The guest pays" : "Guests pay") : `${direct} guest${direct === 1 ? "" : "s"} pay${direct === 1 ? "s" : ""}`} ${esc(b.paidBy)} directly.</p>` : ""}
+      ${chgOf(b).map((c) => `<p class="bi-meta bi-chg">🔺 Total ${esc(chgText(b, c))}${c.by ? ` by ${esc(c.by)}` : ""}${eq ? `: ${hk(c.from / (n || 1))} → ${hk(c.to / (n || 1))} each` : ""}</p>`).join("")}
       ${b.editedBy ? `<p class="bi-meta muted">Edited by ${esc(b.editedBy)}</p>` : ""}
       <div class="bi-act">${isPayer(b, me) ? `<a class="cc-mini go bi-ask" href="https://wa.me/?text=${encodeURIComponent(askText(b))}" target="_blank" rel="noopener">📲 Ask on WhatsApp</a>` : ""}<button type="button" class="cc-mini" data-bedit="${b.id}">✏️ Edit</button>
         <button type="button" class="cc-mini bi-del${delArm === b.id ? " armed" : ""}" data-bdel="${b.id}">${delArm === b.id ? "Tap again to delete" : "🗑 Delete"}</button></div>
@@ -825,6 +841,7 @@
         <label class="bf-f"><span>Total HK$</span><input name="hkd" type="number" inputmode="decimal" min="1" step="0.01" value="${esc(d.hkd)}" data-bf="hkd" required></label>
         <label class="bf-f"><span>Paid by <small>(type a name; everyone pays them)</small></span><input name="paidBy" data-bf="paidBy" list="bf-people" value="${esc(d.paidBy)}" placeholder="Who paid? Type a name" autocomplete="off" autocapitalize="words" required>${peopleList("bf-people")}</label>
       </div>
+      ${d.id ? `<label class="bf-f"><span>Changing the total? Say why <small>(optional; everyone sees it next to the old and new total)</small></span><input name="why" data-bf="why" maxlength="120" placeholder="e.g. the drinks came to HK$2,000 more" value="${esc(d.why || "")}"></label>` : ""}
       <div class="bf-also">${d.also.map(([n, a], i) => `<div class="bf-gcard"><div class="bf-2">
           <label class="bf-f"><span>Also paid</span><input data-bf-aname="${i}" list="bf-people" value="${esc(n)}" placeholder="Type a name" autocomplete="off" autocapitalize="words" aria-label="Who else paid"></label>
           <label class="bf-f"><span>How much HK$</span><input type="number" inputmode="decimal" min="1" step="0.01" data-bf-aamt="${i}" value="${esc(a)}" aria-label="How much they paid"></label></div>
@@ -1218,7 +1235,7 @@
       const payer = findPerson(f.elements.paidBy?.value ?? d.paidBy);
       if (!payer) { toast("Pick who paid from the class list: type their name"); f.elements.paidBy?.focus(); return; }
       d.paidBy = payer;
-      const body = { op: editing ? "editBill" : "addBill", id: d.id || undefined, what: d.what, ev: d.ev, hkd: +d.hkd, paidBy: d.paidBy, among, guestNames: d.guests.map((x) => x.trim()), guestPay: d.guests.map((_, i) => d.gPay[i] || ""), cover: Object.fromEntries(d.cover.filter(([f, by]) => f && by && f !== by && d.among.has(f) && d.among.has(by))) };
+      const body = { op: editing ? "editBill" : "addBill", id: d.id || undefined, why: editing ? (d.why || "").trim() : undefined, what: d.what, ev: d.ev, hkd: +d.hkd, paidBy: d.paidBy, among, guestNames: d.guests.map((x) => x.trim()), guestPay: d.guests.map((_, i) => d.gPay[i] || ""), cover: Object.fromEntries(d.cover.filter(([f, by]) => f && by && f !== by && d.among.has(f) && d.among.has(by))) };
       if (d.fronted) body.frontedBy = f.elements.frontedBy?.value || d.frontedBy;
       if (d.mode === "custom") { body.shares = Object.fromEntries(among.map((n) => [n, +d.shares[n] || 0])); body.guestShares = d.guests.map((_, i) => +d.gShares[i] || 0); }
       const also = d.also.filter(([n, a]) => String(n).trim() || +a), ap = {};
@@ -1233,7 +1250,8 @@
     }
     else if (f.dataset.xfer) {
       const x = JSON.parse(f.dataset.xfer), m = fd("method");
-      if (!confirm(`Have you already sent ${hk(x.hkd)} to ${x.to}${m ? ` by ${m}` : ""}?\n\nOnly tap OK once the money has gone. ${x.to} then confirms they got it. Until then it shows as waiting.`)) return;
+      if (m === OTHER && !confirm(`${x.to} hasn't listed this way to be paid.\n\nHave you checked with ${x.to} how to pay them? Tap Cancel to ask them first.`)) return;
+      if (!confirm(`Have you already sent ${hk(x.hkd)} to ${x.to}${m && m !== OTHER ? ` by ${m}` : ""}?\n\nOnly tap OK once the money has gone. ${x.to} then confirms they got it. Until then it shows as waiting.`)) return;
       op({ op: "markXfer", from: x.from, to: x.to, hkd: x.hkd, method: fd("method"), direct: !!x.direct, note: x.direct ? x.note : "" }).then((ok) => ok && toast(`Thanks! ${x.to} will confirm when it arrives`));
     }
     else if (f.dataset.gadd) { const E = data.events.find((x) => x.id === f.dataset.gadd), name = fd("gname"); if (!E || !name) return;

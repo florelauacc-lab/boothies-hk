@@ -430,8 +430,10 @@ export default async function handler(req, res) {
         if (b.op === "editBill") {
           const key = clean(b.id, 20), [cur] = await redis([["HGET", `${P}bills`, key]]);
           if (!cur) return res.status(404).json({ error: "That bill has been deleted" });
-          const old = JSON.parse(cur);
-          await redis([["HSET", `${P}bills`, key, JSON.stringify({ ...bill, by: old.by, at: old.at, editedBy: by, editedAt: Date.now() })]]);
+          const old = JSON.parse(cur), changes = (old.changes || []).slice(-9), why = clean(b.why, 120);
+          if (Math.round(+old.hkd * 100) !== Math.round(hkd * 100)) changes.push({ at: Date.now(), by: by || undefined, from: +old.hkd, to: hkd, why: why || undefined });
+          else if (why && changes.length) changes[changes.length - 1].why = why; // a reason added later
+          await redis([["HSET", `${P}bills`, key, JSON.stringify({ ...bill, changes: changes.length ? changes : undefined, by: old.by, at: old.at, editedBy: by, editedAt: Date.now() })]]);
           break;
         }
         // the same bill tapped in twice within two minutes is only added once
@@ -462,6 +464,16 @@ export default async function handler(req, res) {
           wiseLink: wise, venmo: venmo || "", bankCountry: clean(b.bankCountry, 60), localCode: clean(b.localCode, 40), bankExtra: clean(b.bankExtra, 120), cash: !!b.cash, note: clean(b.note, 120), pinHash: prevP.pinHash || null };
         if (b.newPin) next.pinHash = sha(`${name}|${clean(b.newPin, 12)}`);
         await redis([["HSET", `${P}profiles`, name, JSON.stringify(next)]]);
+        break;
+      }
+      case "addBillChange": { // organisers: record a change to a total made before changes were kept
+        if (!org) return res.status(403).json({ error: "organisers only" });
+        const key = clean(b.id, 20), [cur] = await redis([["HGET", `${P}bills`, key]]);
+        if (!cur) return res.status(404).json({ error: "no bill" });
+        const x = JSON.parse(cur), from = Math.round(+b.from * 100) / 100;
+        if (!(from > 0)) return res.status(400).json({ error: "missing" });
+        x.changes = [...(x.changes || []), { at: +b.at || Date.now(), by: clean(b.changedBy, 60) || by || undefined, from, to: +x.hkd, why: clean(b.why, 120) || undefined }].slice(-10);
+        await redis([["HSET", `${P}bills`, key, JSON.stringify(x)]]);
         break;
       }
       case "markXfer": { // "I've paid X" for a bill split; X confirms when it arrives
