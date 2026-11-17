@@ -172,6 +172,7 @@
   /* ---------- render ---------- */
   let ccJumped = false;
   function render() {
+    if (data) data.events.forEach((e) => { if (e.total > 0 && payCount(e)) { e.price = Math.round(e.total / payCount(e)); e.priceCount = payCount(e); } });
     if (!ccJumped && location.hash === "#cc") { ccJumped = true; setTimeout(() => root.scrollIntoView({ block: "start" }), 80); } // the link in "Ask on WhatsApp" lands here
     if (!data) {
       root.innerHTML = `<div class="cc-lock">
@@ -381,10 +382,8 @@
       <div class="cc-bills">
         <h4>Cost</h4>
         ${p ? `<p class="cc-price"><b>${hk(p)}</b> each <span>≈ ${["USD", "GBP", "EUR", "JPY"].map((c) => fx(p, c)).join(" · ")}</span></p>
-          <p class="muted small">${e.total ? `Total ${hk(e.total)} ÷ ${e.priceCount || Math.round(e.total / p)} people = ${hk(p)} each` : `${hk(p)} per person`}</p>
-          ${e.total && e.priceCount && e.priceCount !== payCount(e) && payCount(e) && live()
-            ? `<p class="cc-recalc">${over(e) ? `Split for the ${capOf(e)} places.` : `Now ${goingTxt(e)}.`} <button type="button" class="cc-mini go" data-recalc="${e.id}">Recalculate: ${hk(e.total / payCount(e))} each</button></p>` : ""}
-          ${e.total ? `<p class="muted small">The price follows the final headcount: if more people join, tap Recalculate.</p>` : ""}
+          <p class="muted small">${e.total ? `Total ${hk(e.total)} ÷ ${payCount(e)} ${payCount(e) === 1 ? "person" : "people"}${unnamed(e) ? ` (guests included)` : ""} = ${hk(p)} each` : `${hk(p)} per person`}</p>
+          ${e.total ? `<p class="muted small">This updates by itself when people join or drop out, so what everyone owes stays right.</p>` : ""}
           <p class="small">💳 Paid by <b>${esc(evPayer(e))}</b>: everyone going pays them ${hk(p)}.</p>
           ${unnamed(e) ? `<p class="cc-gpay">👤 Includes ${gS(unnamed(e))}: ${unnamed(e) === 1 ? "they pay" : "each pays"} ${hk(p)} to ${esc(evPayer(e) || "the organiser")} directly.</p>` : ""}
           ${(() => { const xb = (data.bills || []).filter((b) => b.ev === e.id);
@@ -632,6 +631,17 @@
   }
 
   /* ---------- one combined balance: set-price events (Rienno paid), every bill, every payment ---------- */
+  // why a row says what it says: each thing shared and each payment (Pay each person), or how netting picked this person
+  function whyFold(t) {
+    const cp = t.from === me ? t.to : t.from, sgn = t.from === me ? 1 : -1;
+    if (t.items && t.items.length) {
+      const li = t.items.map((o) => { const v = o.v * sgn, lab = o.pay ? (o.v < 0 ? `You paid ${esc(cp)}` : `${esc(cp)} paid you`) : o.v > 0 ? `Your share of <b>${esc(o.what)}</b> <small>(${esc(cp)} paid)</small>` : `${esc(cp)}'s share of <b>${esc(o.what)}</b> <small>(you paid)</small>`;
+        return `<li><span>${lab}</span><b class="${v < 0 ? "neg" : "pos"}">${v < 0 ? "−" : "+"}${hk(Math.abs(v))}</b></li>`; }).join("");
+      return `<details class="sp-why"><summary>Why ${hk(t.hkd)}?</summary><ul>${li}<li class="sp-why-tot"><span>${t.from === me ? `You owe ${esc(cp)}` : `${esc(cp)} owes you`}</span><b>${hk(t.hkd)}</b></li></ul></details>`;
+    }
+    if (settleMode === "net" && !t.direct) return `<details class="sp-why"><summary>Why ${esc(cp)}?</summary><p class="small">"Fewest payments" adds everything up first. Overall ${t.from === me ? `you owe money and ${esc(cp)} is owed money, so you pay ${esc(cp)}` : `${esc(cp)} owes money and you're owed money, so ${esc(cp)} pays you`}, even if ${t.from === me ? `${esc(cp)} didn't pay for your things` : "you didn't pay for their things"}. Same total, fewer payments. Tap <b>Pay each person</b> above to see who paid for what.</p></details>`;
+    return "";
+  }
   // a payment someone has marked counts only once the person being paid confirms it arrived
   const pendXf = (from, to, direct) => (data.xfers || []).filter((x) => !x.confirmed && x.from === from && x.to === to && !x.direct === !direct);
   const pSum = (a) => a.reduce((t, x) => t + x.hkd, 0);
@@ -647,6 +657,7 @@
     return `<li class="sp${t.to === me ? " owed" : t.from === me ? " me" : ""}">
       <div class="sp-top"><span class="sp-who">${t.to === me ? `<b>${esc(t.from)}</b> owes you` : t.from === me ? `To <b>${esc(t.to)}</b>` : `<b>${esc(t.from)}</b> → <b>${esc(t.to)}</b>`}${t.direct ? `<small class="sp-for">Paid up front: ${esc(t.note)}</small>` : t.for ? `<small class="sp-for">For ${esc(t.for)}</small>` : ""}</span><span class="amt">${hk(t.hkd)} <small>≈ ${fx(t.hkd)}</small></span></div>
       ${t.to === me && (() => { const v = pSum((data.xfers || []).filter((x) => x.confirmed && x.from === t.from && x.to === me && !x.direct)); return v >= 1; })() ? `<p class="small sp-left sp-already">✓ Already paid you ${hk(pSum((data.xfers || []).filter((x) => x.confirmed && x.from === t.from && x.to === me && !x.direct)))}. This is what's left.</p>` : ""}
+      ${whyFold(t)}
       ${pend.map(pendLine).join("")}
       ${t.from === me ? (left >= 1 ? `${pend.length ? `<p class="small sp-left">Still to pay: <b>${hk(left)}</b></p>` : ""}${payForm({ ...t, hkd: left })}` : "")
         : pend.length ? "" : `<button type="button" class="cc-mini go sp-paid" data-xmark="${esc(JSON.stringify(t))}" aria-label="${esc(t.from)} has paid me">✓ Paid me</button>`}</li>`; };
@@ -664,10 +675,10 @@
     return bal;
   }
   // "Pay each person": what I owe each person (and they owe me) for the things we actually shared, without netting through others
-  let settleMode = get("hk-settle-v1") === "each" ? "each" : "net";
+  let settleMode = get("hk-settle-v1") === "net" ? "net" : "each"; // "Pay each person" first: you pay whoever paid for what you shared
   function pairRows() {
     const owes = {}, why = {}; // owes[X] > 0: I owe X; < 0: X owes me
-    const add = (x, v, what) => { if (!x || x === me || !v) return; owes[x] = (owes[x] || 0) + v; if (what) (why[x] = why[x] || new Set()).add(what); };
+    const add = (x, v, what, pay) => { if (!x || x === me || !v) return; owes[x] = (owes[x] || 0) + v; if (what) { const m = (why[x] = why[x] || {}), k = `${pay ? "$" : ""}${what}`; (m[k] = m[k] || { what, v: 0, pay: !!pay }).v += v; } };
     data.events.forEach((e) => {
       const sh = each(e); if (!sh) return;
       const payers = e.price > 0 ? [[evPayer(e), 1]] : (() => { const tot = e.expenses.reduce((t, x) => t + (+x.hkd || 0), 0); return tot ? e.expenses.map((x) => [x.paidBy, (+x.hkd || 0) / tot]) : []; })();
@@ -676,15 +687,15 @@
         if (pb === me) e.going.forEach((n) => add(n, -sh * f, e.title));
       });
     });
-    Object.entries(data.settle || {}).forEach(([n, v]) => (v.payments || []).filter((pm) => pm.confirmed).forEach((pm) => { if (n === me) add(data.payTo, -pm.hkd); if (data.payTo === me) add(n, pm.hkd); }));
+    Object.entries(data.settle || {}).forEach(([n, v]) => (v.payments || []).filter((pm) => pm.confirmed).forEach((pm) => { if (n === me) add(data.payTo, -pm.hkd, "paid", true); if (data.payTo === me) add(n, pm.hkd, "paid", true); }));
     (data.bills || []).forEach((b) => { const N = named(b); if (!N) return; const ps = payersOf(b);
       Object.entries(billShares(b)).forEach(([n, v]) => ps.forEach(([p, c]) => {
         if (n === me) add(p, (v * c) / N, b.what);
         if (p === me) add(n, (-v * c) / N, b.what);
       })); });
-    (data.xfers || []).filter((x) => !x.direct && x.confirmed).forEach((x) => { if (x.from === me) add(x.to, -x.hkd); if (x.to === me) add(x.from, x.hkd); });
+    (data.xfers || []).filter((x) => !x.direct && x.confirmed).forEach((x) => { if (x.from === me) add(x.to, -x.hkd, "paid", true); if (x.to === me) add(x.from, x.hkd, "paid", true); });
     const rows = Object.entries(owes).filter(([, v]) => Math.abs(v) >= 1).map(([x, v]) => (v > 0 ? { from: me, to: x, hkd: Math.round(v) } : { from: x, to: me, hkd: Math.round(-v) }))
-      .map((t) => ({ ...t, for: [...(why[t.from === me ? t.to : t.from] || [])].join(", ") }))
+      .map((t) => { const m = Object.values(why[t.from === me ? t.to : t.from] || {}); return { ...t, for: m.filter((o) => !o.pay).map((o) => o.what).join(", "), items: m.filter((o) => Math.abs(o.v) >= 0.5) }; })
       .sort((a, b) => b.hkd - a.hkd);
     return offsetPairs(rows, directDebts().filter((d) => d.from === me || d.to === me));
   }
@@ -709,7 +720,8 @@
     return `<div class="cc-owe">
       <h3 class="cc-h">💸 Settle up <small>for ${esc(me)} · not you? change "I'm" above</small></h3>
       <div class="sp-mode" role="group" aria-label="How to settle up"><button type="button" class="cc-mini${settleMode === "net" ? " go" : ""}" data-spmode="net" aria-pressed="${settleMode === "net"}">Fewest payments</button><button type="button" class="cc-mini${settleMode === "each" ? " go" : ""}" data-spmode="each" aria-pressed="${settleMode === "each"}">Pay each person</button></div>
-      <p class="muted small">${settleMode === "each" ? "You pay back whoever paid for each thing you shared, one person at a time. More payments, but each one matches a meal or event." : "Everything is netted out, so there are as few payments as possible. You may pay someone different from whoever covered your meal. Tap <b>Pay each person</b> to settle with each person instead."} "How it adds up" shows the detail.</p>
+      <p class="small sp-tip">💡 Totals can still change until the week ends: drinks, final bills, people joining or dropping out. Best to settle up at the end of the week, on Sat 21 or Sun 22 Nov. Anything you've already paid still counts.</p>
+      <p class="muted small">${settleMode === "each" ? "You pay back whoever paid for each thing you shared, one person at a time. Tap <b>Why</b> on a row to see each thing and what's already paid. <b>Fewest payments</b> nets it all out into fewer payments." : "Everything is netted out, so there are as few payments as possible. You may pay someone different from whoever covered your meal. Tap <b>Pay each person</b> to settle with each person instead. Tap <b>Why</b> on a row to see how it was worked out."} "How it adds up" shows the detail.</p>
       ${(() => { const un = data.events.filter((e) => unnamed(e)); return un.length ? `<p class="muted small cc-gpay">👤 Guests not on the class list: ${un.map((e) => `${esc(colName(e))} (${unnamed(e)}${e.price > 0 ? ` × ${hk(e.price)}` : ""})`).join(", ")}. ${(() => { const by = [...new Set(un.map((e) => evPayer(e)))]; return `They pay ${by.length === 1 ? esc(by[0] || "the organiser") : "whoever paid each event"} directly`; })()}, so they aren't in the balances here.</p>` : ""; })()}
       ${!owe.length && !owed.length ? `<p class="small">✓ You're all square right now.</p>` : ""}
       ${owe.length ? `<p class="sp-h">💸 You owe <b>${hk(sum(owe))}</b> <small>≈ ${fx(sum(owe))}</small></p>${(() => {
@@ -780,7 +792,7 @@
       <li><b>Class events:</b> tap one and tick yourself going. Bringing someone from outside Becker? Add them under <b>👤&nbsp;Guests</b>, with or without a name. <b>⭐&nbsp;My week</b> at the top shows just yours.</li>
       <li><b>Ate out together?</b> Tap <b>🍜&nbsp;Add the bill</b>: the total, who paid, and who shared it. It works out everyone's share, guests too. Paid with 2 cards? Tap <b>💳&nbsp;Add who else paid</b> and everyone pays each of you back.</li>
       <li><b>Ask to be paid:</b> on a bill you paid, tap <b>📲&nbsp;Ask on WhatsApp</b> to send everyone their share.</li>
-      <li><b>Pay someone:</b> <b>💸&nbsp;Settle up</b> shows who you owe, with their PayPal, Venmo, FPS or bank. Pay, then tap <b>✓&nbsp;I've paid</b> and confirm. It counts once they say it arrived. No details? Tap <b>📲&nbsp;Ask for their details</b>. Choose <b>Fewest payments</b> or <b>Pay each person</b>.</li>
+      <li><b>Pay someone:</b> <b>💸&nbsp;Settle up</b> shows who you owe, with their PayPal, Venmo, FPS or bank. Pay, then tap <b>✓&nbsp;I've paid</b> and confirm. It counts once they say it arrived. No details? Tap <b>📲&nbsp;Ask for their details</b>. Tap <b>Why</b> on a row to see what it's for. Best to pay at the end of the week, once all the bills are in.</li>
       <li><b>See who owes you:</b> under <b>Owed to you</b>. When someone says they've paid, check your account, then tap <b>✓&nbsp;Yes, it arrived</b> or <b>✗&nbsp;Not received</b>. You can change your mind later under <b>✓&nbsp;Payments you've received</b>.</li>
       <li><b>Get paid easily:</b> add your details in <b>💳&nbsp;My payment details</b> (how-to guides inside).</li>
       <li><b>Paying for someone else:</b> in a bill, add a guest and pick who pays for them, or tap <b>🤝&nbsp;Someone pays for someone</b> for a classmate.</li>

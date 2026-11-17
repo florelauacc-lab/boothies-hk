@@ -1685,3 +1685,19 @@ p, li, label, .how-steps li, .bi-meta, .bi-names { text-wrap: pretty; }
 .pm-pane > p.small { margin: 0 0 6px; line-height: 1.4; text-wrap: pretty; }
 .pm-pane > a.cc-mini { text-decoration: none; display: inline-flex; align-items: center; }
 .sp-note b, .sp-already b { font-size: inherit; font-weight: 800; }
+
+/* why you owe what you owe; when to settle */
+.sp-tip { margin: 6px 0 8px; padding: 8px 10px; border-radius: 10px; background: rgba(62,232,181,.07); border: 1px solid rgba(62,232,181,.25); line-height: 1.4; text-wrap: pretty; }
+.sp-why { margin: 6px 0 0; flex: 1 1 100%; }
+.sp-why > summary { cursor: pointer; font-size: .84rem; font-weight: 700; color: var(--gold, #ffc44d); min-height: 32px; display: flex; align-items: center; }
+.sp-why ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 4px; }
+.sp-why li { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: .84rem; line-height: 1.35; }
+.sp-why li span { min-width: 0; text-wrap: pretty; overflow-wrap: anywhere; }
+.sp-why li b { flex: none; font-variant-numeric: tabular-nums; }
+.sp-why li b.neg { color: #3ee8b5; }
+.sp-why .sp-why-tot { border-top: 1px solid rgba(255,255,255,.12); padding-top: 4px; font-weight: 800; }
+.sp-why p { margin: 4px 0 0; line-height: 1.4; text-wrap: pretty; }
+.sp.owed .sp-why { order: 9; }
+.sp-why b, .sp-why summary { font-size: inherit; }
+.sp-why li b { font-weight: 800; }
+.sp-why li span b { font-weight: 700; }
