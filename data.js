@@ -19860,7 +19860,7 @@ window.HK = {
     ],
     [
      "Morning",
-     "Late start: a hike, the Peak, the Big Buddha, a pedicure or beauty shopping before lunch. Back at Booth by 14:00 (Big Buddha: leave by 09:00)",
+     "Late start: a hike, the Peak, the Big Buddha, a pedicure or beauty shopping. Back at Booth by 14:00 (Big Buddha: leave by 09:00)",
      "optional",
      null,
      [
@@ -19869,8 +19869,8 @@ window.HK = {
        "q": "Red Incense Burner Summit (Braemar Hill)"
       },
       {
-       "label": "The longer hike",
-       "q": "Red Incense Burner, Braemar Hill & Siu Ma Shan"
+       "label": "Hike up to the Peak",
+       "q": "Wan Chai to the Peak (Wan Chai Green Trail)"
       },
       {
        "label": "The Peak",

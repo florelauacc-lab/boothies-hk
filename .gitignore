@@ -8,3 +8,4 @@ tools/research/boothies.json
 
 # classmates, attendance and payments: only the encrypted private.enc.js is published
 tools/private/
+whatsapp-*.md
