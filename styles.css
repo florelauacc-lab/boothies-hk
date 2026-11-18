@@ -1701,3 +1701,9 @@ p, li, label, .how-steps li, .bi-meta, .bi-names { text-wrap: pretty; }
 .sp-why b, .sp-why summary { font-size: inherit; }
 .sp-why li b { font-weight: 800; }
 .sp-why li span b { font-weight: 700; }
+
+/* class events: "Where?" suggestions from the whole guide */
+.ev-sugg { display: flex; flex-wrap: wrap; gap: 6px; margin: -2px 0 8px; }
+.ev-sugg:empty { display: none; }
+.ev-sugg .cc-mini { min-height: 36px; max-width: 100%; text-align: left; text-wrap: balance; overflow-wrap: anywhere; }
+.ev-sugg p { margin: 0; line-height: 1.4; text-wrap: pretty; }

@@ -54,6 +54,8 @@
         { k: "snacks", label: "Snacks & supermarkets", em: "🛒", c: C.lime },
         { k: "malls", label: "Malls", em: "🛍️", c: C.violet },
         { k: "local", label: "Local finds", em: "🏮", c: C.pink },
+        { k: "beauty", label: "Beauty & K-beauty", em: "💄", c: C.violet },
+        { k: "nails", label: "Nails & pedicure", em: "💅", c: C.pink },
       ],
     },
   };
@@ -344,7 +346,7 @@
   }
   // Broad picks ("dinner", "drinks", "sights") show the top few of each sub-category, so nobody has to tap "show more";
   // as soon as something narrower is chosen it's one ranked top-10 list.
-  const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate", "hard", "beach", "run", "active"], shop: ["luxury", "gifts", "snacks", "malls", "local"], plans: ["walk", "half", "daytrip"] };
+  const GROUP_TABS = { sights: ["iconic", "photo", "harbour", "hip", "culture", "daytrip", "night", "neon"], hikes: ["easy", "moderate", "hard", "beach", "run", "active"], shop: ["luxury", "gifts", "snacks", "beauty", "nails", "malls", "local"], plans: ["walk", "half", "daytrip"] };
   function groupLabel() {
     if (FOOD.has(state.tab)) return { all: "eat & drink picks", drinks: "bars", breakfast: "breakfast picks", lunch: "lunch picks", dinner: "dinner picks", dessert: "dessert picks", "late-night": "late-night picks" }[state.mood] || "picks";
     return { sights: "sights", hikes: "outdoor picks", shop: "shopping", plans: "plans" }[state.tab] || "picks";
@@ -1433,7 +1435,11 @@
   document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") loadWeather(); });
   renderStart();
   const start = location.hash.slice(1);
-  setTab(["saiwan", "start", "city", "sights", "hikes", "shop", "week"].includes(start) ? start : start === "cc" ? "week" : "city");
+  // #p=<place id> opens that place (links in the class WhatsApp)
+  const deepPlace = (h) => { const m = /^p=(.+)$/.exec(h || ""); const p = m && byId[decodeURIComponent(m[1])]; if (!p) return false;
+    setTab(p.tab, { where: FOOD.has(p.tab) ? whereOf(p) : "all" }); setTimeout(() => { window.scrollTo({ top: contentTop() }); focus(p.id, { fromMap: true }); }, 400); return true; };
+  if (!deepPlace(start)) setTab(["saiwan", "start", "city", "sights", "hikes", "shop", "week"].includes(start) ? start : start === "cc" ? "week" : "city");
+  window.addEventListener("hashchange", () => deepPlace(location.hash.slice(1)));
   booted = true;
   if (shared) { $("#shortlist-btn").click(); toast("Showing the shortlist someone shared with you"); }
 })();

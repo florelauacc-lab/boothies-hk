@@ -41,6 +41,21 @@
       .filter(([p, i]) => i >= 0 && !seen.has(p.name) && seen.add(p.name)).sort((a, b) => a[1] - b[1]).map(([p]) => p);
   }
 
+  // "Where?" for class events: any guide place whose name has every word typed, in any order
+  const fold = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[’']/g, "");
+  function placeSearch(q, n = 6) {
+    const words = fold(q).split(/[^a-z0-9]+/).filter((w) => w.length >= 2);
+    if (!words.length) return [];
+    const seen = new Set();
+    return PLACES.filter((p) => { const nm = fold(p.name); return words.every((w) => nm.includes(w)) && !seen.has(p.name) && seen.add(p.name); })
+      .sort((a, b) => (fold(a.name).startsWith(words[0]) ? 0 : 1) - (fold(b.name).startsWith(words[0]) ? 0 : 1) || a.name.length - b.name.length).slice(0, n);
+  }
+  // save the guide's own name when what was typed clearly means one place, so it gets its 📍 map tag
+  const guideName = (v) => { const t = String(v || "").trim(); if (!t) return ""; const ex = PLACES.find((p) => fold(p.name) === fold(t)); if (ex) return ex.name; const m = placeSearch(t, 2); return m.length === 1 ? m[0].name : t; };
+  const venueSugg = (v) => { const t = String(v || "").trim(); if (t.length < 2) return ""; const ex = PLACES.find((p) => fold(p.name) === fold(t));
+    if (ex) return `<p class="small ev-ok">📍 In the guide: it shows on the map.</p>`;
+    const m = placeSearch(t); return m.length ? m.map((p) => `<button type="button" class="cc-mini" data-pickplace="${esc(p.name)}">📍 ${esc(p.name)}</button>`).join("") : `<p class="small muted">Not in the guide. That's fine: it's saved as you typed it.</p>`; };
+
   /* ---------- money ---------- */
   let rates = { USD: 0.128, GBP: 0.099, EUR: 0.111, JPY: 19.6, CNY: 0.92, KRW: 179, SGD: 0.166, TWD: 4.1, CAD: 0.178, AUD: 0.196, INR: 10.9, ILS: 0.47, CHF: 0.103 };
   let liveRates = false;
@@ -77,7 +92,7 @@
   /* ---------- state ---------- */
   let data = null, mode = "locked", pass = get("hk-pass-v1") || "", orgPass = get("hk-org-v1") || "";
   let me = get("hk-me-v1") || "", cur = get("hk-cur-v1") || "USD";
-  let editing = null, busy = false, newEvKind = null; // newEvKind: which places "Where" suggests when adding an event
+  let editing = null, busy = false;
   const openEv = new Set();
   const live = () => mode === "live";
 
@@ -129,7 +144,7 @@
     catch (e) { toast(`Couldn't save: ${e.message}`); try { data = await api("GET"); } catch (e2) { /* keep local */ } return false; }
     finally { busy = false; render(); }
   }
-  async function refresh() { if (live() && !busy && !editing && !billDraft && !seatEditing && document.visibilityState === "visible" && !root.contains(document.activeElement)) { try { data = await api("GET"); render(); } catch (e) { /* ignore */ } } }
+  async function refresh() { if (live() && !busy && !editing && !billDraft && !seatEditing && document.visibilityState === "visible" && !root.contains(document.activeElement) && ![...root.querySelectorAll("form input:not([type=hidden]), form textarea")].some((i) => i.value !== i.defaultValue)) { try { data = await api("GET"); render(); } catch (e) { /* ignore */ } } }
   setInterval(refresh, 30000); // pick up other people's ticks
   document.addEventListener("visibilitychange", refresh);
 
@@ -216,10 +231,8 @@
           <label class="bf-f"><span>What is it?</span><input name="title" placeholder="e.g. Dragon's Back hike, drinks in Soho" required maxlength="70"></label>
           <div class="ev2"><label class="bf-f"><span>Day</span><select name="iso">${dayOpts()}</select></label>
             <label class="bf-f"><span>Time</span><input name="when" placeholder="e.g. 19:00" maxlength="40"></label></div>
-          <label class="bf-f"><span>What kind? <small>(suggests places below)</small></span><select name="kind" data-evkind="1">${[["hikes", "🌿 Hike or beach"], ["sights", "📸 Sight or outing"], ["city", "🍽️ Food & drink"], ["shop", "🛍️ Shopping"], ["", "Other"]].map(([k, l]) => `<option value="${k}"${(newEvKind ?? "hikes") === k ? " selected" : ""}>${l}</option>`).join("")}</select>
-          </label>
-          <label class="bf-f"><span>Where? <small>(pick from the guide or type a place)</small></span><input name="venue" placeholder="Start typing a place" maxlength="80" list="cc-places-${newEvKind ?? "hikes"}"></label>
-          ${[["hikes", ["hikes"]], ["sights", ["sights"]], ["city", ["city", "saiwan"]], ["shop", ["shop"]]].map(([k, tabs]) => `<datalist id="cc-places-${k}">${PLACES.filter((p) => tabs.includes(p.tab)).map((p) => `<option value="${esc(p.name)}">`).join("")}</datalist>`).join("")}
+          <label class="bf-f"><span>Where? <small>(type a few letters: places from the guide show up to tap)</small></span><input name="venue" placeholder="e.g. Hakuba, Dragon's Back, Peak" maxlength="80" autocomplete="off" data-venue="1"></label>
+          <div class="ev-sugg" aria-live="polite"></div>
           <p class="small muted">Everyone with the passcode sees it and can tick that they're going. You're ticked as going.</p>
           <button type="submit" class="paybtn">Add event</button>
         </form></details>` : ""}
@@ -408,7 +421,8 @@
           <label class="bf-f"><span>Event name</span><input name="title" value="${esc(e.title)}" maxlength="70" required></label>
           <div class="ev2">${e.id.startsWith("x-") && e.iso ? `<label class="bf-f"><span>Day</span><select name="iso">${dayOpts(e.iso)}</select></label>` : ""}
             <label class="bf-f"><span>Time</span><input name="when" value="${esc(e.when || "")}" placeholder="e.g. 08:15" maxlength="50"></label></div>
-          <label class="bf-f"><span>Where?</span><input name="venue" value="${esc(e.venue || "")}" placeholder="Start typing a place" maxlength="80" list="cc-places-city"></label>
+          <label class="bf-f"><span>Where? <small>(type a few letters: places from the guide show up to tap)</small></span><input name="venue" value="${esc(e.venue || "")}" placeholder="e.g. Hakuba, Dragon's Back, Peak" maxlength="80" autocomplete="off" data-venue="1"></label>
+          <div class="ev-sugg" aria-live="polite">${e.venue ? venueSugg(e.venue) : ""}</div>
           <button type="submit" class="paybtn">Save changes</button></form>
         <form class="cc-evform cc-capform" data-setcap="${e.id}">
           <label class="bf-f"><span>Places <small>(organisers; leave empty for no limit)</small></span><input name="cap" type="number" inputmode="numeric" min="0" max="500" value="${capOf(e) || ""}" placeholder="No limit"></label>
@@ -1001,6 +1015,7 @@
 
   // name finder: filters the chips as you type; Enter ticks the first visible match
   document.addEventListener("input", (e) => {
+    if (e.target.dataset?.venue) { const box = e.target.closest("label")?.nextElementSibling; if (box?.classList.contains("ev-sugg")) box.innerHTML = venueSugg(e.target.value); return; }
     const inp = e.target.closest?.(".name-find");
     if (!inp) return;
     const q = inp.value.trim().toLowerCase(), box = inp.nextElementSibling;
@@ -1044,6 +1059,8 @@
   }, true);
   document.addEventListener("click", (e) => {
     const t = e.target;
+    const pk = t.closest("[data-pickplace]");
+    if (pk) { const box = pk.closest(".ev-sugg"), inp = box?.previousElementSibling?.querySelector("input[data-venue]"); if (inp) { inp.value = pk.dataset.pickplace; box.innerHTML = venueSugg(inp.value); } return; }
     const cl = t.closest("[data-cclink]");
     if (cl) {
       if (cl.dataset.cclink !== "1") openEv.add(cl.dataset.cclink);
@@ -1229,7 +1246,6 @@
   document.addEventListener("change", (e) => {
     if (e.target.dataset?.pmsel) { pmChoice[e.target.dataset.pmsel] = e.target.value; e.target.form.querySelectorAll(".pm-pane").forEach((p) => { p.hidden = p.dataset.pm !== e.target.value; }); return; }
     if (e.target.dataset?.paylook) { const out = e.target.parentElement.querySelector(".paylook-out"); if (out) out.innerHTML = e.target.value ? waysToPay(e.target.value, 0) : ""; return; }
-    if (e.target.dataset?.evkind) { newEvKind = e.target.value; const v = e.target.form?.elements.venue; if (v) v.setAttribute("list", `cc-places-${newEvKind || "none"}`); return; }
     if (e.target.id === "cc-me") { me = e.target.value; set("hk-me-v1", me); render(); }
     if (e.target.id === "cc-cur") { cur = e.target.value; set("hk-cur-v1", cur); render(); }
   });
@@ -1239,7 +1255,7 @@
     e.preventDefault();
     const fd = (k) => f.elements[k]?.value?.trim() || "";
     if (f.id === "cc-form") { msg("Checking…"); unlock(fd("cc-pass") || $("#cc-pass").value); }
-    else if (f.id === "cc-newev") { op({ op: "addEvent", title: fd("title"), iso: fd("iso"), when: fd("when"), venue: fd("venue") }).then((ok) => ok && toast("Event added for everyone")); }
+    else if (f.id === "cc-newev") { op({ op: "addEvent", title: fd("title"), iso: fd("iso"), when: fd("when"), venue: guideName(fd("venue")) }).then((ok) => ok && toast("Event added for everyone")); }
     else if (f.id === "bill-form" && billDraft) {
       if (billSaving) return;
       const d = billDraft, among = [...d.among], editing = !!d.id;
@@ -1311,7 +1327,7 @@
       asOrganiser({ op: "setCap", ev: f.dataset.setcap, cap }, () => toast(cap ? `Capped at ${cap} places` : "No limit now"));
     }
     else if (f.dataset.editev) {
-      op({ op: "editEvent", ev: f.dataset.editev, when: fd("when"), venue: fd("venue"), title: fd("title"), iso: fd("iso") || undefined }).then((ok) => ok && toast("Saved for everyone"));
+      op({ op: "editEvent", ev: f.dataset.editev, when: fd("when"), venue: guideName(fd("venue")), title: fd("title"), iso: fd("iso") || undefined }).then((ok) => ok && toast("Saved for everyone"));
     }
     else if (f.dataset.setprice) {
       const E = data.events.find((x) => x.id === f.dataset.setprice);

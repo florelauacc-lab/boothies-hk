@@ -7123,7 +7123,7 @@ window.HK = {
    ],
    "intro": "A steep funicular ride up to the city's highest viewpoints, with the full skyline and harbour spread below. It is the classic first-night view of Hong Kong.",
    "funFact": "The tram opened in 1888 as Asia's first cable funicular. On the steep ride up, the skyscrapers outside appear to lean toward the Peak, an optical illusion studied by University of Hong Kong researchers.",
-   "tips": "Peak Tram fares are HK$82 one way and HK$116 return (2026). Buy e-tickets at thepeak.com.hk, and avoid weekend afternoons when the queue is longest. Or take the 15 bus up. For the classic skyline photo, walk 20 minutes along flat Lugard Road to the lookout.",
+   "tips": "Peak Tram fares are HK$82 one way and HK$116 return (2026). Octopus and tap cards no longer open the gates, so buy a ticket online (webstore.thepeak.com.hk) or at the counter. Mornings (08:00–10:00) are quietest; weekend afternoons and sunset are the worst. Or take the 15 bus up, or a taxi (about 20–25 mins from Causeway Bay). For the classic skyline photo, walk 20 minutes along flat Lugard Road to the lookout. Eat up there: Men Wah Bing Teng (1970s-style café, Peak Galleria), Bubba Gump (Peak Tower, harbour views) or Messina's egg tart gelato.",
    "getting": "Lower terminus on Garden Road, Central. From Park Lane: MTR to Admiralty or Central, then about a 10–15 min walk, or a taxi (about 15 min). From campus: taxi to Garden Road (about 15–20 min). A taxi straight up to the Peak is an alternative when the tram queue is long.",
    "facts": [
     [
@@ -13175,7 +13175,7 @@ window.HK = {
    "emoji": "🚠",
    "intro": "Ride a 25-minute cable car over the bay and mountains to a 34-metre bronze Buddha and a lively working monastery. It is Hong Kong's classic half-day escape from the city.",
    "getting": "MTR to Tung Chung (Causeway Bay to Tung Chung about 45 min, change at Central/Hong Kong or Lai King), then Ngong Ping 360 cable car about 25 min. Or bus 23 from Tung Chung.",
-   "tips": "Book cable car online in advance and go early on a weekday to avoid long queues; check the cable car is running that day.",
+   "tips": "Book the cable car online in advance and go early on a weekday; check the cable car is running that day (it stops in strong wind). Only have a morning? It takes about 4.5 hours there and back. Red taxis can't drive up to the Buddha, so go by MTR (Tung Chung line to Tung Chung, about 45 mins from Causeway Bay) or a red taxi to Tung Chung (40–50 mins, roughly HK$350–450), then the cable car (25 mins each way; weekdays from 10:00). Leave by 09:00, be on the cable car down by 12:00, and you're back at Booth by about 13:30. Leaving later? Save it for Sunday and add Tai O.",
    "hours": "Cable car: weekdays 10:00-18:00, weekends and public holidays 09:00-18:30; service can pause for wind or maintenance",
    "lat": 22.254,
    "lng": 113.905,
@@ -13186,7 +13186,11 @@ window.HK = {
    "facts": [
     [
      "Time",
-     "Half a day"
+     "Half a day (about 4.5 hrs from the city)"
+    ],
+    [
+     "Cable car",
+     "Return HK$295 (Crystal cabin HK$365); weekdays 10:00–18:00, weekends 09:00–18:30"
     ],
     [
      "Pair with",
@@ -18462,6 +18466,242 @@ window.HK = {
    "lat": 22.28172,
    "lng": 114.12816,
    "id": "living-plaza-by-aeon-kennedy-town"
+  },
+  {
+   "tab": "hikes",
+   "name": "Red Incense Burner, Braemar Hill & Siu Ma Shan",
+   "area": "Braemar Hill to Quarry Bay",
+   "cuisine": "Moderate hike",
+   "category": [
+    "moderate",
+    "views"
+   ],
+   "emoji": "🌇",
+   "intro": "The short Red Incense Burner climb, then on over Braemar Hill and up the Siu Ma Shan staircase: three of the best city views on the Island in one walk.",
+   "order": [
+    "Red Incense Burner Summit's boulders over Causeway Bay and the harbour",
+    "Shaded, paved Sir Cecil's Ride round Braemar Hill",
+    "The Siu Ma Shan staircase (Wilson Trail 2) to the 424 m top"
+   ],
+   "getting": "From Park Lane: green minibus 25 from Paterson Street, Causeway Bay (5–10 mins' walk, every 5–8 mins) to the Upper Braemar Hill terminus, or a taxi (about 10 mins). Take the alley opposite the terminus: right at the fork for Red Incense Burner Summit (5–10 mins), then back to the fork and left along the Braemar Hill / Sir Cecil's Ride signs. At Siu Ma Shan Bridge take the stairs up (Wilson Trail Stage 2). From the top, go down to the Quarry Gap pavilion and turn left down Mount Parker Road to King's Road, a few minutes from Quarry Bay MTR. The Island Line goes straight back to Causeway Bay.",
+   "tips": "The more intense version of Red Incense Burner: the Siu Ma Shan stairs have no shade, and Mount Parker Road is a long, steep concrete descent that is hard on knees. Carry 1.5 litres of water: the last shop is the 7-Eleven on Braemar Hill Road. Want the sunset? Do it the other way round, up Mount Parker Road from Quarry Bay, and finish at Red Incense Burner as the sun goes down (about 17:40), then minibus 25 back. Bring a torch.",
+   "facts": [
+    [
+     "Distance",
+     "About 7 km (our estimate)"
+    ],
+    [
+     "Time",
+     "3–3.5 hrs"
+    ],
+    [
+     "Level",
+     "Moderate to hard"
+    ]
+   ],
+   "lat": 22.28362,
+   "lng": 114.1989,
+   "mapsQuery": "Braemar Hill Bus Terminus, Hong Kong",
+   "links": [
+    {
+     "label": "Red Incense Burner (HikerHero)",
+     "url": "https://hikerhero.com/red-incense-burner-summit/"
+    },
+    {
+     "label": "Siu Ma Shan (Hong Kong Hike)",
+     "url": "https://www.hongkonghike.com/siu-ma-shan-hike-arguably-a-better-city-view-than-victoria-peak/"
+    }
+   ],
+   "id": "red-incense-burner-braemar-hill-siu-ma-s"
+  },
+  {
+   "tab": "shop",
+   "name": "Queen's Nail Beauty (Causeway Bay)",
+   "area": "Causeway Bay",
+   "cuisine": "Nail salon",
+   "category": [
+    "nails"
+   ],
+   "emoji": "💄",
+   "intro": "A small budget nail chain 30 m from Causeway Bay MTR Exit C, a 5-minute walk from the Park Lane.",
+   "order": [
+    "Gel pedicure (about HK$258)",
+    "Gel manicure (about HK$198)"
+   ],
+   "tips": "Rated 4.4 on Toby (34 reviews). Book online on Toby. Message them to book or check before you go: hours and prices change.",
+   "addressEn": "1/F, 506 Lockhart Road, Causeway Bay (above Yee Shun Dairy)",
+   "url": "https://www.hellotoby.com/en/biz/queen%E2%80%99s-nail-beauty%E7%BE%8E%E7%94%B2-%E9%8A%85%E9%91%BC%E7%81%A3%E5%BA%97-causeway-bay",
+   "lat": 22.28053,
+   "lng": 114.18332,
+   "id": "queen-s-nail-beauty-causeway-bay"
+  },
+  {
+   "tab": "shop",
+   "name": "Pure Massage (Gloucester Road)",
+   "area": "Causeway Bay",
+   "cuisine": "Foot care & massage",
+   "category": [
+    "nails"
+   ],
+   "emoji": "🦶",
+   "intro": "A massage chain about a minute from the Park Lane, open late. Its Shanghai-style pedicure is foot and nail care, not colour.",
+   "order": [
+    "Shanghai-style pedicure (about HK$218, 20 mins)",
+    "Foot massage"
+   ],
+   "hours": "Daily 11:00–00:00",
+   "tips": "Good for anyone who wants tidy feet without polish, and for after a hike. Message them to book or check before you go: hours and prices change.",
+   "addressEn": "No. 1–2, G/F, 264–268 Gloucester Road, Causeway Bay",
+   "url": "https://puremassage.com.hk/en/causeway-bay-en/",
+   "lat": 22.28173,
+   "lng": 114.18302,
+   "id": "pure-massage-gloucester-road"
+  },
+  {
+   "tab": "shop",
+   "name": "Susan Gurung Beauty Studio (Sai Ying Pun)",
+   "area": "Sai Ying Pun",
+   "cuisine": "Nails & threading",
+   "category": [
+    "nails"
+   ],
+   "emoji": "💄",
+   "intro": "A friendly little studio in Sai Ying Pun that locals recommend: pedicures, gel and BIAB nails, and eyebrow threading. 5 mins' walk from Sai Ying Pun MTR, on the way to campus.",
+   "order": [
+    "Express pedicure (HK$180)",
+    "Pedicure (HK$310, 1 hr)",
+    "Soft gel pedicure (HK$410)",
+    "BIAB nails, eyebrow threading"
+   ],
+   "hours": "Tue–Sun 10:00–20:00, closed Mondays",
+   "tips": "Book a time online (Setmore) or by Instagram message (@_susanbbeautystudio_); it works by appointment, so don't count on walking in.",
+   "addressEn": "Shop 4, G/F, Comfort Court, 52 Third Street, Sai Ying Pun",
+   "url": "https://susangurungbeautystudio.setmore.com/",
+   "links": [
+    {
+     "label": "Book on Setmore",
+     "url": "https://susangurungbeautystudio.setmore.com/book"
+    },
+    {
+     "label": "Instagram",
+     "url": "https://www.instagram.com/_susanbbeautystudio_/"
+    }
+   ],
+   "lat": 22.28553,
+   "lng": 114.14232,
+   "id": "susan-gurung-beauty-studio-sai-ying-pun"
+  },
+  {
+   "tab": "shop",
+   "name": "Sasa (Windsor House, Causeway Bay)",
+   "area": "Causeway Bay",
+   "cuisine": "Beauty chain",
+   "category": [
+    "beauty"
+   ],
+   "emoji": "💄",
+   "intro": "Hong Kong's biggest beauty chain, right across Gloucester Road from the Park Lane. Good prices on well-known Korean and Japanese brands.",
+   "order": [
+    "Korean cushion foundations and serums",
+    "Sheet masks by the box",
+    "Japanese sunscreen"
+   ],
+   "hours": "Daily 10:30–22:30",
+   "tips": "Best for the big names rather than niche brands. Another Sasa is at 1 Great George Street (to 23:00).",
+   "addressEn": "Shop 118–119, 1/F, Windsor House, 311 Gloucester Road, Causeway Bay",
+   "url": "https://www.sasa.com.hk/Shop/StoreDetail/17/219?lang=en-US",
+   "lat": 22.28027,
+   "lng": 114.18652,
+   "id": "sasa-windsor-house-causeway-bay"
+  },
+  {
+   "tab": "shop",
+   "name": "Lung Fung Mall (Causeway Bay)",
+   "area": "Causeway Bay",
+   "cuisine": "Pharmacy & beauty",
+   "category": [
+    "beauty"
+   ],
+   "emoji": "💄",
+   "intro": "A big local pharmacy and beauty chain with its own buyers in Japan and Korea: skincare and make-up next to the medicine and health aisles.",
+   "order": [
+    "Korean and Japanese skincare",
+    "Pharmacy items and supplements"
+   ],
+   "hours": "Mon–Thu 10:00–23:00, Fri–Sun 10:00–23:30",
+   "tips": "Hours vary between listings, so check before a late visit. Another is at 37 Queen's Road Central (09:30–22:30), on the way to campus.",
+   "addressEn": "Shop G01, G/F, LAFORET, 24–26 East Point Road, Causeway Bay",
+   "url": "https://www.lungfung.hk/en/store-locations/",
+   "lat": 22.28106,
+   "lng": 114.18434,
+   "id": "lung-fung-mall-causeway-bay"
+  },
+  {
+   "tab": "shop",
+   "name": "Sephora (Windsor House, Causeway Bay)",
+   "area": "Causeway Bay",
+   "cuisine": "Beauty store",
+   "category": [
+    "beauty"
+   ],
+   "emoji": "💄",
+   "intro": "Sephora's big Causeway Bay store, in the same building as Sasa, across the road from the Park Lane. Since October 2026 Sephora in Hong Kong also carries Olive Young's K-Beauty Edit.",
+   "order": [
+    "Olive Young K-Beauty Edit (Korean brands)",
+    "Make-up and skincare to try before you buy"
+   ],
+   "tips": "The K-Beauty Edit is in 8 of Sephora's Hong Kong stores; ask here, or check sephora.hk before you go. Pricier than Sasa or Colourmix, but more brands to test.",
+   "addressEn": "G21–23 & G25, G/F, Windsor House, 311 Gloucester Road, Causeway Bay",
+   "url": "https://www.sephora.hk/pages/olive-young",
+   "lat": 22.28035,
+   "lng": 114.18642,
+   "id": "sephora-windsor-house-causeway-bay"
+  },
+  {
+   "tab": "shop",
+   "name": "Colourmix (Lockhart Road, Causeway Bay)",
+   "area": "Causeway Bay",
+   "cuisine": "Beauty chain",
+   "category": [
+    "beauty"
+   ],
+   "emoji": "💄",
+   "intro": "A local beauty chain with lots of Korean and Japanese brands at everyday prices, a 5-minute walk from the Park Lane.",
+   "order": [
+    "Korean skincare and make-up",
+    "Japanese drugstore favourites",
+    "Sheet masks"
+   ],
+   "hours": "About 10:30–22:00",
+   "addressEn": "G/F, 523 Lockhart Road, Causeway Bay",
+   "url": "https://www.colourmix-cosmetics.com/Shop/StoreDetail/87/1583",
+   "lat": 22.28077,
+   "lng": 114.18405,
+   "id": "colourmix-lockhart-road-causeway-bay"
+  },
+  {
+   "tab": "shop",
+   "name": "Sai Yeung Choi Street South (Mong Kok)",
+   "area": "Mong Kok",
+   "cuisine": "Beauty shopping street",
+   "category": [
+    "beauty",
+    "local"
+   ],
+   "emoji": "💄",
+   "intro": "Mong Kok's cosmetics strip: Sasa, Lung Fung and dozens of other beauty shops in a few blocks, so it's the easiest place to compare prices.",
+   "order": [
+    "Sasa (160–162 Sai Yeung Choi Street South)",
+    "Lung Fung Mall (13–15 Sai Yeung Choi Street South)",
+    "Lung Fung's biggest shop at Gala Place (56 Dundas Street)"
+   ],
+   "hours": "Most shops about 10:00–23:00",
+   "tips": "MTR to Mong Kok (about 30 mins from Causeway Bay, change at Admiralty). Pair it with the Ladies' Market and the neon at night.",
+   "addressEn": "Sai Yeung Choi Street South, Mong Kok",
+   "mapsQuery": "Sai Yeung Choi Street South, Mong Kok",
+   "lat": 22.3207,
+   "lng": 114.1696,
+   "id": "sai-yeung-choi-street-south-mong-kok"
   }
  ],
  "OUTINGS": [
@@ -19617,6 +19857,40 @@ window.HK = {
      "Morning",
      "Breakfast on your own",
      "school"
+    ],
+    [
+     "Morning",
+     "Late start: a hike, the Peak, the Big Buddha, a pedicure or beauty shopping before lunch. Back at Booth by 14:00 (Big Buddha: leave by 09:00)",
+     "optional",
+     null,
+     [
+      {
+       "label": "Red Incense Burner",
+       "q": "Red Incense Burner Summit (Braemar Hill)"
+      },
+      {
+       "label": "The longer hike",
+       "q": "Red Incense Burner, Braemar Hill & Siu Ma Shan"
+      },
+      {
+       "label": "The Peak",
+       "q": "Victoria Peak & the Peak Tram"
+      },
+      {
+       "label": "Big Buddha",
+       "q": "Big Buddha & Ngong Ping 360 cable car"
+      },
+      {
+       "label": "Nails & pedicure",
+       "tab": "shop",
+       "mood": "nails"
+      },
+      {
+       "label": "Beauty & K-beauty",
+       "tab": "shop",
+       "mood": "beauty"
+      }
+     ]
     ],
     [
      "10:00–11:30",
